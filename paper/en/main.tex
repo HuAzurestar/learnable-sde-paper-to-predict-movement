@@ -1,0 +1,191 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage[hidelinks]{hyperref}
+
+\title{Learnable Stochastic Differential Equations for Movement Prediction}
+\author{Author information to be added after approval}
+\date{Draft --- no empirical claims included}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Movement prediction for search and rescue must represent uncertainty rather
+than returning a single nominal path. This draft specifies a research paper
+around a learnable stochastic differential equation (SDE) implementation and a
+separate Lean formalization of selected probability identities. The executable
+baseline is a segment-level latent-regime underdamped Langevin model with
+exact-Gaussian, Euler--Maruyama, split-step, and common-random-number inference
+routes. The formal development checks algebraic statements for soft evidence
+and mixture weights. No private trajectory data, trained checkpoint, empirical
+metric, or performance conclusion is reported here. The experimental sections
+state a protocol to be completed only with approved, versioned aggregate
+evidence.
+\end{abstract}
+
+\section{Introduction}
+
+Search planning benefits from a forecast distribution over plausible movement
+states at one or more future horizons. Such a distribution must retain the
+uncertainty induced by incomplete observations and heterogeneous movement
+behaviour. A stochastic differential equation provides a direct representation
+of state evolution while allowing the forecast to be sampled or summarized by
+moments.
+
+This paper documents the present research artefacts without extending their
+claims. The software repository implements a typed Python framework for model
+fitting and inference. Its current executable baseline uses a latent regime
+that remains fixed inside a trajectory segment. The Lean repository formalizes
+a finite-dimensional, finite-measure algebraic core for soft evidence. Analytic
+existence, uniqueness, and Doob \(h\)-transform results are outside its stated
+formalization scope.
+
+The paper will make three bounded contributions once the required evidence is
+available: an auditable implementation description, a precise account of the
+machine-checked theorem boundary, and a preregistered evaluation protocol. It
+does not claim that the current model improves any search-and-rescue outcome.
+
+\section{Problem formulation}
+
+Let \(X_t=(p_t,v_t)^\top\in\mathbb{R}^2\) denote a position--velocity state
+for one coordinate of a movement segment. A contextual model may be written as
+
+\begin{equation}
+  dX_t=b_\theta(t,X_t,c_t)\,dt+\sigma_\theta(t,X_t,c_t)\,dW_t,
+  \label{eq:general-sde}
+\end{equation}
+
+where \(c_t\) contains approved contextual inputs and \(W_t\) is a Wiener
+process. The released repository does not include a registered neural SDE or a
+public context-data pipeline. Equation~\eqref{eq:general-sde} therefore states
+the modelling interface, not an empirical model claim.
+
+Given an observed initial state, the forecast task returns samples or moments
+of \(X_{t+\tau}\) for requested horizons \(\tau\). Evaluation must use splits
+defined outside the source repository and report only approved aggregate
+statistics.
+
+\section{Implemented segment-level model}
+
+The current baseline is an affine underdamped Langevin SDE with a latent regime
+\(r\in\{1,\ldots,K\}\). The regime is supplied explicitly and is constant
+within each segment. Its dynamics are
+
+\begin{align}
+  dp_t &= v_t\,dt, \\
+  dv_t &= \left[-\Gamma_r v_t+(a_r-\kappa)p_t+c_r\right]dt+g_r\,dW_t.
+  \label{eq:segment-sde}
+\end{align}
+
+Here \(\Gamma_r\), \(a_r\), \(c_r\), and \(g_r\) are regime-specific
+parameters, while \(\kappa\) is a model parameter shared by regimes. The
+state transition is affine Gaussian, so the implementation provides an exact
+transition kernel when this model is selected.
+
+The estimation code initializes segment labels from features derived from
+velocity and displacement variation. It then alternates segment posterior
+weights with weighted least-squares updates of a discrete transition, followed
+by a discrete-to-continuous conversion. This is an implementation description;
+convergence of the estimator on a target dataset remains an empirical question.
+
+\section{Inference and software boundary}
+
+The Python framework separates the SDE model, estimator, inference engine,
+evaluation rule, and artifact adapters. Exact-Gaussian sampling is available
+for models that provide an exact transition. Euler--Maruyama is an explicitly
+selected numerical route. The segment-level model also has a split-step route,
+and common random numbers can be used for shared-path, multi-horizon sampling.
+Unsupported combinations fail explicitly rather than silently selecting another
+method.
+
+The repository's synthetic workflow is deterministic and is intended for
+installation and regression tests. It is not evidence for real-data predictive
+accuracy. Neural-SDE and Fokker--Planck variants remain unregistered research
+skeletons, and condition-feature alignment has not fully moved into the
+declarative data-source layer.
+
+\section{Soft evidence and formal verification boundary}
+
+For binary soft evidence with prior \(\pi\), likelihoods \(\ell_1\) and
+\(\ell_0\), the formal development includes the posterior mixture weight
+
+\begin{equation}
+  w=\frac{\ell_1\pi}{\ell_1\pi+\ell_0(1-\pi)}.
+  \label{eq:posterior-weight}
+\end{equation}
+
+It checks the mixture identity, a likelihood-ratio form of
+Equation~\eqref{eq:posterior-weight}, a total-variation mixture bound, and
+properties of the logistic weight. The Lean development also covers a product
+identity for evidence-pattern weights and a nested-evidence concentration
+result under the assumptions encoded in its theorem signature.
+
+These results are not a formal proof of SDE well-posedness or of a Doob
+\(h\)-transform for the target process. The manuscript must preserve this
+boundary: only declarations present in the Lean source and its axiom audit may
+be described as machine checked.
+
+\section{Data governance and reproducibility}
+
+The paper repository must not contain raw or transformed trajectories,
+coordinates, timestamps, identifiers, row-level predictions, non-public
+checkpoints, or archives containing such material. The current software
+contract expects a locally controlled data root with a main trajectory table
+and a split manifest. Its physical authoritative location and data steward are
+not established by this paper draft.
+
+Every reported result should record a logical data version, split-manifest
+version, source revision of the Python and Lean repositories, random-seed
+policy, model configuration, and aggregate-only output. A controlled runner may
+mount the approved data root read-only. Public continuous integration should use
+only deterministic synthetic data.
+
+\section{Experimental protocol}
+
+This section is intentionally a protocol, not a result section. Before any
+table or conclusion is added, the following items must be fixed and reviewed:
+
+\begin{enumerate}
+  \item the authorised dataset snapshot, split manifest, licence, and privacy classification;
+  \item forecast horizons, observation window, state construction, and missing-data handling;
+  \item baseline models and the exact inference configuration for each comparison;
+  \item aggregate scoring rules, including one explicit energy-score convention;
+  \item the number of seeds, uncertainty intervals, and the rule for handling failed runs;
+  \item a disclosure of known numerical limitations and any deviation from the preregistered plan.
+\end{enumerate}
+
+Table~\ref{tab:results-template} is a publication template. Its cells must
+remain blank until values are generated by an approved run and independently
+checked against the recorded configuration.
+
+\begin{table}[ht]
+\centering
+\caption{Aggregate evaluation template. Values are intentionally absent.}
+\label{tab:results-template}
+\begin{tabular}{llll}
+\toprule
+Model & Horizon & Aggregate score & Run reference \\
+\midrule
+Segment-level SDE & [to be specified] & [not yet available] & [to be specified] \\
+Approved baseline & [to be specified] & [not yet available] & [to be specified] \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Limitations and conclusion}
+
+The current artefacts establish an executable baseline, explicit numerical
+routing, deterministic synthetic tests, and a bounded formalization. They do
+not establish predictive performance on private trajectories, operational value
+for a search mission, or formal analytic properties beyond the Lean scope. The
+next revision should add only reviewed aggregate evidence and must update the
+limitations when the software or formal boundary changes.
+
+\paragraph{Source-artifact note.} Technical statements in this draft are
+traceable to the \href{https://github.com/HuAzurestar/learnable-sde-for-movement-prediction}{Python implementation repository}
+and the \href{https://github.com/HuAzurestar/learnable-sde-theory-to-predict-movement}{Lean formalization repository}.
+Bibliographic citations have deliberately not been invented; verified references
+belong in \texttt{references.bib} before submission.
+
+\end{document}
