@@ -36,5 +36,9 @@ approved aggregate material.
 
 ## CI/CD and releases
 
-For workflow triggers, the English/Chinese compilation checks, and the tagged
-PDF release assets, see [CI_CD.md](CI_CD.md).
+Pull requests to `main` run validation only. When one is merged, GitHub pushes
+the merge commit to `main`; that push automatically compiles both manuscripts
+and creates a new immutable GitHub Release. It never publishes from a
+`pull_request` event. Each Release contains only the English PDF, Chinese PDF,
+and `SHA256SUMS`; the workflow refuses to replace an existing tag or Release.
+For the full trigger and verification details, see [CI_CD.md](CI_CD.md).

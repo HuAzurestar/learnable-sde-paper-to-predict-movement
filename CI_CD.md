@@ -9,9 +9,10 @@ and event displayed by GitHub Actions, and no remote result is asserted here.
 `CI` runs for pushes to `main`, pull requests targeting `main`, and manual
 `workflow_dispatch` runs. It has read-only repository permission.
 
-`Release` can be dispatched manually for a reproducible build, but publishes a
-GitHub Release only from a `paper-v*` tag ref. The publish job is the only job
-granted `contents: write`, so a non-tag manual run cannot publish assets.
+`Paper release` runs **only** for a `push` to `main`. Therefore, when GitHub
+merges a pull request into `main`, the merge commit's push automatically starts
+the release workflow. The pull-request event itself never publishes a Release.
+The publish job alone is granted `contents: write`.
 
 ## CI jobs
 
@@ -24,11 +25,19 @@ granted `contents: write`, so a non-tag manual run cannot publish assets.
 
 ## Release outputs
 
-For a `paper-v*` tag, `Release` repeats the policy scan and both isolated TeX
-builds, including the unresolved-reference checks. The English and Chinese PDFs
-are retained as short-lived build artifacts first. When both succeed, the
-tag-only publish job downloads them, generates `SHA256SUMS`, and attaches the
-two PDFs plus that checksum file to the GitHub Release.
+For every commit pushed to `main`, `Paper release` repeats the policy scan and
+both isolated TeX builds, including the unresolved-reference checks. The
+English and Chinese PDFs are retained as short-lived build artifacts first.
+When both succeed, the publish job downloads them, generates `SHA256SUMS`, and
+creates a GitHub Release with exactly the two PDFs and that checksum file.
+
+The Release identity is `paper-release-<12-character-commit-sha>`. Before
+publishing, the workflow checks for both that Release and tag and fails if
+either already exists; it never edits or replaces an existing Release. A
+re-run of the same `main` commit consequently fails at this safeguard instead
+of overwriting the published assets. GitHub may display its built-in “Source
+code” archive links on the Release page; they are platform-generated links, not
+assets uploaded by this workflow.
 
 To verify a downloaded release, put all assets in one directory and run
 `sha256sum -c SHA256SUMS`. The checksums identify the exact bytes attached to
