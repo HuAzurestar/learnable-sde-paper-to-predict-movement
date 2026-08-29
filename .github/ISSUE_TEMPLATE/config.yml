@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Paper contribution policy
+    url: https://github.com/HuAzurestar/learnable-sde-paper-to-predict-movement/blob/main/CONTRIBUTING.md
+    about: Read the issue, branch, PDF validation, and public-artifact requirements.

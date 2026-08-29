@@ -1,0 +1,83 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  policy:
+    name: policy
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.10"
+      - name: Validate PR traceability
+        if: github.event_name == 'pull_request'
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_BRANCH: ${{ github.head_ref }}
+        run: python scripts/check_pr_title.py "$PR_TITLE" "$PR_BRANCH"
+      - name: Public release scan
+        run: python scripts/check_public_release.py
+  tex-en:
+    name: tex / en
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: xu-cheng/latex-action@v4
+        with:
+          root_file: main.tex
+          working_directory: paper/en
+          args: -interaction=nonstopmode -halt-on-error -file-line-error
+      - name: Reject unresolved references and citations
+        run: '! grep -E "Undefined (references|citations)|Rerun to get" paper/en/main.log'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: paper-en-${{ github.sha }}
+          path: paper/en/main.pdf
+          retention-days: 7
+  tex-zh:
+    name: tex / zh
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: xu-cheng/latex-action@v4
+        with:
+          root_file: main.tex
+          working_directory: paper/zh
+          args: -xelatex -interaction=nonstopmode -halt-on-error -file-line-error
+      - name: Reject unresolved references and citations
+        run: '! grep -E "Undefined (references|citations)|Rerun to get" paper/zh/main.log'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: paper-zh-${{ github.sha }}
+          path: paper/zh/main.pdf
+          retention-days: 7
+  required:
+    name: ci / required
+    if: ${{ always() }}
+    needs: [policy, tex-en, tex-zh]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Require successful gates
+        env:
+          POLICY: ${{ needs.policy.result }}
+          TEX_EN: ${{ needs.tex-en.result }}
+          TEX_ZH: ${{ needs.tex-zh.result }}
+        run: test "$POLICY" = success && test "$TEX_EN" = success && test "$TEX_ZH" = success
