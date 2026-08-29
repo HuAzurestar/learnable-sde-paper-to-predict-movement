@@ -54,7 +54,7 @@ jobs:
         with:
           root_file: main.tex
           working_directory: paper/en
-          args: -interaction=nonstopmode -halt-on-error -file-line-error
+          args: -pdf -interaction=nonstopmode -halt-on-error -file-line-error
       - name: Reject unresolved references and citations
         run: '! grep -E "Undefined (references|citations)|Rerun to get" paper/en/main.log'
       - uses: actions/upload-artifact@v4
