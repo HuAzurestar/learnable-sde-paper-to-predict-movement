@@ -19,16 +19,16 @@ granted `contents: write`, so a non-tag manual run cannot publish assets.
 | --- | --- | --- |
 | `policy / traceability and public boundary` | On pull requests, checks title/branch traceability. On every trigger, scans the source tree for material outside the public-release boundary. | Keeps manuscript revisions auditable and prevents private research material from entering public automation. |
 | `tex / English PDF and references` | Compiles `paper/en/main.tex` with pdfLaTeX in halt-on-error mode, rejects unresolved references/citations or a required rerun notice, and stores the resulting PDF briefly as an Actions artifact. | Ensures the English source of record produces a complete PDF. |
-| `tex / Chinese PDF and references` | Compiles `paper/zh/main.tex` with XeLaTeX in halt-on-error mode, applies the same log checks, and stores the PDF briefly as an Actions artifact. | Ensures the Chinese translation can be independently typeset with its required engine. |
-| `ci / required` | Runs even after an upstream failure and passes only when `policy`, `tex / en`, and `tex / zh` all succeed. | Provides branch protection with one clear aggregate result. |
+| `ci / required` | Runs even after an upstream failure and passes only when `policy` and `tex / en` succeed. | Provides branch protection with one clear aggregate result. |
 
 ## Release outputs
 
-For a `paper-v*` tag, `Release` repeats the policy scan and both isolated TeX
-builds, including the unresolved-reference checks. The English and Chinese PDFs
-are retained as short-lived build artifacts first. When both succeed, the
-tag-only publish job downloads them, generates `SHA256SUMS`, and attaches the
-two PDFs plus that checksum file to the GitHub Release.
+For a `paper-v*` tag, `Release` repeats the policy scan and isolated English
+TeX build, including the unresolved-reference checks. The target manuscript's
+English PDF is retained briefly as a build artifact. When it succeeds, the
+tag-only publish job generates `SHA256SUMS` and attaches that PDF plus the
+checksum file to the GitHub Release. The archived Chinese generic draft is not
+published because it is not a translation of the target manuscript.
 
 To verify a downloaded release, put all assets in one directory and run
 `sha256sum -c SHA256SUMS`. The checksums identify the exact bytes attached to
@@ -36,8 +36,8 @@ that release; they do not replace reviewing the sources and tag.
 
 ## Publication boundary
 
-The workflows compile manuscript sources and approved aggregate material only.
+The workflows compile the current manuscript source and approved aggregate material only.
 Raw or transformed trajectories, coordinates, timestamps, identifiers,
 checkpoints, row-level predictions, and unreviewed empirical results must not
 be committed, uploaded as CI artifacts, or attached to a Release. The English
-source remains authoritative; the Chinese source is its aligned translation.
+source remains authoritative.

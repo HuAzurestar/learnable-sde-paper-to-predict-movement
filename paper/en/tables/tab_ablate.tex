@@ -1,0 +1,33 @@
+\begin{tabular}{rlll}
+\toprule
+Arm & Variant & $\Delta$ (ES) & Verdict \\
+\midrule
+\multicolumn{4}{l}{\emph{Model dimension}} \\
+1 & model:M1:seg\_constant\_mode (I-1) & 0 & redundant \\
+2 & model:M1:pointwise\_mixture & -47.475 & loss \\
+3 & model:M1:single\_gaussian\_OU\_CRW & 0 & redundant \\
+4 & model:M1:gmm\_kernel (I-3) & -47.833 & loss \\
+5 & model:M1:explicit\_decomp (S-1 scheme-1) & -41.057 & loss \\
+6 & model:M2:dt\_sensitivity {30..600}s & 37.868 & redundant \\
+16 & model:T3:solar\_elev\_continuous (C-7) & 0 & redundant \\
+17 & model:T3:uncond/is\_day/weather/terrain & -0.581 & redundant \\
+17-terrain & model:T3:terrain (has\_map=1 subset) & -36.579 & loss \\
+\multicolumn{4}{l}{\emph{Algorithm dimension}} \\
+7 & algorithm:E1:crps\_energy (C-1) & 0 & redundant \\
+8 & algorithm:E1:qmle & 0.006 & redundant \\
+9 & algorithm:E1:c2\_mixed/pure\_ES & -7.225 & loss \\
+10 & algorithm:E2:d2\_mc/closed\_alt & 0 & redundant \\
+\multicolumn{4}{l}{\emph{Learning dimension}} \\
+11 & learning:T1:c5\_full\_finetune & 0 & redundant \\
+12 & learning:T1:scratch & 0 & redundant \\
+13 & learning:T1:c3\_animal\_pretrain & --- & blocked \\
+14 & learning:T1:c6\_metalearning & -0.015 & loss \\
+15 & learning:T2:drift\_only/two\_step & 0.01 & redundant \\
+\multicolumn{4}{l}{\emph{Inference dimension}} \\
+18 & inference:R1:j1\_split (J-1) & 0 & redundant \\
+19 & inference:R1:em/euler\_maruyama & -0.277 & redundant \\
+20 & inference:R2:j2\_fp (J-2) & 0 & redundant \\
+21 & inference:R2:mc/j3\_crn & 0 & redundant \\
+22 & inference:R3:i2\_bridge/SB/soft\_endpoint & 240.878 & redundant \\
+\bottomrule
+\end{tabular}

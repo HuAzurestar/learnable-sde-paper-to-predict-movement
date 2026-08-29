@@ -1,0 +1,24 @@
+Arm,Variant,Delta,Verdict
+1,model:M1:seg_constant_mode (I-1),0,redundant
+2,model:M1:pointwise_mixture,-47.475,loss
+3,model:M1:single_gaussian_OU_CRW,0,redundant
+4,model:M1:gmm_kernel (I-3),-47.833,loss
+5,model:M1:explicit_decomp (S-1 方案一),-41.057,loss
+6,model:M2:dt_sensitivity {30..600}s,37.868,redundant
+16,model:T3:solar_elev_continuous (C-7),0,redundant
+17,model:T3:uncond/is_day/weather/terrain,-0.581,redundant
+7,algorithm:E1:crps_energy (C-1),0,redundant
+8,algorithm:E1:qmle,0.006,redundant
+9,algorithm:E1:c2_mixed/pure_ES,-7.225,loss
+10,algorithm:E2:d2_mc/closed_alt,0,redundant
+11,learning:T1:c5_full_finetune,0,redundant
+12,learning:T1:scratch,0,redundant
+13,learning:T1:c3_animal_pretrain,---,blocked
+14,learning:T1:c6_metalearning,-0.015,loss
+15,learning:T2:drift_only/two_step,0.01,redundant
+18,inference:R1:j1_split (J-1),0,redundant
+19,inference:R1:em/euler_maruyama,-0.277,redundant
+20,inference:R2:j2_fp (J-2),0,redundant
+21,inference:R2:mc/j3_crn,0,redundant
+22,inference:R3:i2_bridge/SB/soft_endpoint,240.878,redundant
+17-terrain,model:T3:terrain (has_map=1 subset),-36.579,loss

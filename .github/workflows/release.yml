@@ -48,34 +48,10 @@ jobs:
           path: release-assets/learnable-sde-paper-en.pdf
           if-no-files-found: error
           retention-days: 14
-  tex-zh:
-    name: release / Chinese PDF
-    needs: policy
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    steps:
-      - uses: actions/checkout@v7
-      - uses: xu-cheng/latex-action@v4
-        with:
-          root_file: main.tex
-          working_directory: paper/zh
-          args: -xelatex -interaction=nonstopmode -halt-on-error -file-line-error
-      - name: Reject unresolved references and citations
-        run: '! grep -E "Undefined (references|citations)|Rerun to get" paper/zh/main.log'
-      - name: Stage uniquely named Chinese release PDF
-        run: |
-          mkdir -p release-assets
-          cp paper/zh/main.pdf release-assets/learnable-sde-paper-zh.pdf
-      - uses: actions/upload-artifact@v4
-        with:
-          name: paper-zh-release-${{ github.sha }}
-          path: release-assets/learnable-sde-paper-zh.pdf
-          if-no-files-found: error
-          retention-days: 14
   publish:
     name: release / publish
     if: github.ref_type == 'tag'
-    needs: [tex-en, tex-zh]
+    needs: [tex-en]
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
@@ -85,16 +61,11 @@ jobs:
         with:
           name: paper-en-release-${{ github.sha }}
           path: release-assets
-      - uses: actions/download-artifact@v4
-        with:
-          name: paper-zh-release-${{ github.sha }}
-          path: release-assets
-      - name: Verify complete bilingual asset set and generate checksums
+      - name: Verify the current manuscript asset and generate checksums
         run: |
           test -s release-assets/learnable-sde-paper-en.pdf
-          test -s release-assets/learnable-sde-paper-zh.pdf
-          (cd release-assets && sha256sum learnable-sde-paper-en.pdf learnable-sde-paper-zh.pdf > SHA256SUMS)
+          (cd release-assets && sha256sum learnable-sde-paper-en.pdf > SHA256SUMS)
       - name: Publish immutable tag assets
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "$GITHUB_REF_NAME" --verify-tag --generate-notes release-assets/learnable-sde-paper-en.pdf release-assets/learnable-sde-paper-zh.pdf release-assets/SHA256SUMS
+        run: gh release create "$GITHUB_REF_NAME" --verify-tag --generate-notes release-assets/learnable-sde-paper-en.pdf release-assets/SHA256SUMS

@@ -62,34 +62,10 @@ jobs:
           name: paper-en-${{ github.sha }}
           path: paper/en/main.pdf
           retention-days: 7
-  tex-zh:
-    name: tex / Chinese PDF and references
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    steps:
-      - uses: actions/checkout@v7
-      - name: Explain Chinese PDF validation
-        run: |
-          {
-            echo "## Chinese paper gate"
-            echo "Builds the Chinese PDF and fails on unresolved references or citations."
-          } >> "$GITHUB_STEP_SUMMARY"
-      - uses: xu-cheng/latex-action@v4
-        with:
-          root_file: main.tex
-          working_directory: paper/zh
-          args: -xelatex -interaction=nonstopmode -halt-on-error -file-line-error
-      - name: Reject unresolved references and citations
-        run: '! grep -E "Undefined (references|citations)|Rerun to get" paper/zh/main.log'
-      - uses: actions/upload-artifact@v4
-        with:
-          name: paper-zh-${{ github.sha }}
-          path: paper/zh/main.pdf
-          retention-days: 7
   required:
     name: ci / required
     if: ${{ always() }}
-    needs: [policy, tex-en, tex-zh]
+    needs: [policy, tex-en]
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -97,11 +73,10 @@ jobs:
         run: |
           {
             echo "## Required gate"
-            echo "Passes only when policy plus both English and Chinese PDF gates succeed."
+            echo "Passes only when policy and the current English PDF gate succeed."
           } >> "$GITHUB_STEP_SUMMARY"
       - name: Require successful gates
         env:
           POLICY: ${{ needs.policy.result }}
           TEX_EN: ${{ needs.tex-en.result }}
-          TEX_ZH: ${{ needs.tex-zh.result }}
-        run: test "$POLICY" = success && test "$TEX_EN" = success && test "$TEX_ZH" = success
+        run: test "$POLICY" = success && test "$TEX_EN" = success

@@ -9,7 +9,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 FORBIDDEN_SUFFIXES = {".parquet", ".npy", ".npz", ".pt", ".pth", ".ckpt", ".zip", ".7z"}
 PATTERNS = {
-    "workstation path": re.compile(r"(?i)(?:\b[A-Z]:[\\/]|[\\/]Users[\\/][^\\/]+|[\\/]home[\\/][^\\/]+)"),
+    # Keep the drive letter case-sensitive: TeX expressions such as `a:\nabla`
+    # are not Windows paths.
+    "workstation path": re.compile(r"(?:\b[A-Z]:[\\/]|(?i:[\\/]Users[\\/][^\\/]+|[\\/]home[\\/][^\\/]+))"),
     "private key": re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----"),
     "common access token": re.compile(r"(?:gh[pousr]_[A-Za-z0-9]{20,}|sk-[A-Za-z0-9_-]{20,})"),
 }
