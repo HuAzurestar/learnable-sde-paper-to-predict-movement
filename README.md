@@ -33,3 +33,8 @@ The repository must not contain raw or transformed trajectories, coordinates,
 timestamps, identifiers, checkpoints, row-level predictions, or unreviewed
 empirical results. Public builds use only the included manuscript sources and
 approved aggregate material.
+
+## CI/CD and releases
+
+For workflow triggers, the English/Chinese compilation checks, and the tagged
+PDF release assets, see [CI_CD.md](CI_CD.md).

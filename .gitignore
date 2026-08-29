@@ -329,3 +329,18 @@ TSWLatexianTemp*
 # option is specified. Footnotes are the stored in a file with suffix Notes.bib.
 # Uncomment the next line to have this generated file ignored.
 #*Notes.bib
+
+## Restricted research assets (never commit)
+data/
+trajectory/
+checkpoints/
+outputs/
+artifacts/
+*.parquet
+*.npy
+*.npz
+*.pt
+*.pth
+*.ckpt
+*.zip
+*.7z

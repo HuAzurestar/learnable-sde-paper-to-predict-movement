@@ -1,0 +1,36 @@
+name: Paper or PDF issue
+description: Report a manuscript, bibliography, rendering, or bilingual-alignment problem
+title: "paper: "
+labels: [paper]
+body:
+  - type: dropdown
+    id: language
+    attributes:
+      label: Affected source
+      options: [English, Chinese, Both]
+    validations:
+      required: true
+  - type: input
+    id: root_document
+    attributes:
+      label: Root document and engine
+      placeholder: paper/en/main.tex — pdflatex
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and observed rendering
+    validations:
+      required: true
+  - type: textarea
+    id: log_excerpt
+    attributes:
+      label: Minimal sanitized log excerpt
+      description: Remove local paths, data, identifiers, credentials, and private output.
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+    validations:
+      required: true
