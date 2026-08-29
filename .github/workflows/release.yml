@@ -2,7 +2,7 @@ name: Paper release
 
 on:
   push:
-    branches: [release]
+    branches: [main]
 
 concurrency:
   group: paper-release-${{ github.sha }}
@@ -76,8 +76,6 @@ jobs:
     needs: [tex-en, tex-zh]
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    environment:
-      name: paper-release
     permissions:
       contents: write
     steps:
@@ -116,7 +114,7 @@ jobs:
             --repo "$GITHUB_REPOSITORY" \
             --target "$GITHUB_SHA" \
             --title "Paper release $RELEASE_TAG" \
-            --notes "Built from the protected release branch at $GITHUB_SHA." \
+            --notes "Built automatically from the commit merged into main: $GITHUB_SHA." \
             release-assets/learnable-sde-paper-en.pdf \
             release-assets/learnable-sde-paper-zh.pdf \
             release-assets/SHA256SUMS
