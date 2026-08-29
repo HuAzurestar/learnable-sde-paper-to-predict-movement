@@ -1,12 +1,11 @@
-name: Release
+name: Paper release
 
 on:
   push:
-    tags: ["paper-v*"]
-  workflow_dispatch:
+    branches: [release]
 
 concurrency:
-  group: release-${{ github.workflow }}-${{ github.ref }}
+  group: paper-release-${{ github.sha }}
   cancel-in-progress: false
 
 permissions:
@@ -73,11 +72,12 @@ jobs:
           if-no-files-found: error
           retention-days: 14
   publish:
-    name: release / publish
-    if: github.ref_type == 'tag'
+    name: release / publish immutable PDFs
     needs: [tex-en, tex-zh]
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    environment:
+      name: paper-release
     permissions:
       contents: write
     steps:
@@ -94,7 +94,35 @@ jobs:
           test -s release-assets/learnable-sde-paper-en.pdf
           test -s release-assets/learnable-sde-paper-zh.pdf
           (cd release-assets && sha256sum learnable-sde-paper-en.pdf learnable-sde-paper-zh.pdf > SHA256SUMS)
-      - name: Publish immutable tag assets
+      - name: Reserve a new immutable release identity
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "$GITHUB_REF_NAME" --verify-tag --generate-notes release-assets/learnable-sde-paper-en.pdf release-assets/learnable-sde-paper-zh.pdf release-assets/SHA256SUMS
+        run: |
+          release_tag="paper-release-${GITHUB_SHA::12}"
+          echo "RELEASE_TAG=$release_tag" >> "$GITHUB_ENV"
+          if gh api "repos/$GITHUB_REPOSITORY/releases/tags/$release_tag" >/dev/null 2>&1; then
+            echo "Refusing to overwrite existing Release: $release_tag" >&2
+            exit 1
+          fi
+          if gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/$release_tag" >/dev/null 2>&1; then
+            echo "Refusing to reuse existing tag: $release_tag" >&2
+            exit 1
+          fi
+      - name: Publish bilingual PDF assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$RELEASE_TAG" \
+            --repo "$GITHUB_REPOSITORY" \
+            --target "$GITHUB_SHA" \
+            --title "Paper release $RELEASE_TAG" \
+            --notes "Built from the protected release branch at $GITHUB_SHA." \
+            release-assets/learnable-sde-paper-en.pdf \
+            release-assets/learnable-sde-paper-zh.pdf \
+            release-assets/SHA256SUMS
+          {
+            echo "## Paper release published"
+            echo "- Release tag: \`$RELEASE_TAG\`"
+            echo "- Commit: \`$GITHUB_SHA\`"
+            echo "- Assets: English PDF, Chinese PDF, SHA256SUMS"
+          } >> "$GITHUB_STEP_SUMMARY"

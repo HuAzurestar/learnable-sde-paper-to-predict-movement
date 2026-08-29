@@ -17,10 +17,19 @@ def main(title: str, branch: str) -> int:
     if re.fullmatch(r"chore: repository bootstrap(?: .+)?", title):
         return 0 if branch.startswith("chore/") else 1
     match = HEADER.fullmatch(title)
-    if match and branch.startswith(f"{TYPE_TO_PREFIX[match.group(2)]}/{match.group(1)}-"):
-        return 0
-    print("PR title/branch must use #<issue> <type>: summary and <prefix>/<issue>-<summary>")
-    return 1
+    if not match:
+        print("PR title must use #<issue> <type>(optional-scope): summary")
+        return 1
+
+    issue, change_type = match.group(1), match.group(2)
+    expected_prefix = f"{TYPE_TO_PREFIX[change_type]}/{issue}-"
+    if not branch.startswith(expected_prefix):
+        print(
+            f"PR type '{change_type}' requires branch '{expected_prefix}<summary>'; "
+            f"received '{branch}'"
+        )
+        return 1
+    return 0
 
 
 if __name__ == "__main__":
