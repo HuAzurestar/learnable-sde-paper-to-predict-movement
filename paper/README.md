@@ -1,22 +1,24 @@
-# Current manuscript
+# Paper source draft
 
-`en/main.tex` is the reviewed NEX-345 v4.2 source of record for the
-search-and-rescue manuscript, *Learning a Dual-Conditioned Stochastic
-Differential Equation for Lost-Person Movement Prediction in Search and
-Rescue*.
+This handoff contains parallel English and Chinese LaTeX sources for the
+proposed paper repository.  The two files have matching section structure so
+that a revision to one can be reviewed against the other.
 
 ## Proposed repository layout
 
 ```text
 paper/
   en/main.tex       English source of record
-  en/figures/       reviewed aggregate figures only
-  en/tables/        reviewed aggregate tables only
-  archive/          pre-target generic draft, not a release candidate
+  zh/main.tex       Chinese translation, kept section-for-section aligned
+  figures/          source figures only; never trajectory images or samples
+  tables/           aggregate, reviewed tables only
+  references.bib    verified bibliographic records
 ```
 
-The historical Chinese generic draft is archived because it is not a translation
-of the current target manuscript. Do not publish it as the v4.2 paper.
+`en/main.tex` is the source of record.  The Chinese document is a translation
+draft, not an independent claim set.  Before submission, add only verified
+references to `references.bib`, replace every marked placeholder with evidence
+from a versioned run, and obtain data/privacy review for any aggregate result.
 
-No dataset, checkpoint, trajectory, example coordinate, row-level prediction,
-or reproducibility archive belongs in this repository.
+No dataset, checkpoint, trajectory, example coordinate, or experimental metric
+is included in this handoff.

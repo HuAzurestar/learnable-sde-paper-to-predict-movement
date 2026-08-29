@@ -1,27 +1,23 @@
 # Learnable SDE paper to predict movement
 
-The current source of record is the NEX-345 v4.2 manuscript, *Learning a
-Dual-Conditioned Stochastic Differential Equation for Lost-Person Movement
-Prediction in Search and Rescue*. The former generic bilingual draft is
-archived and must not be released as the current paper.
+TeX manuscript sources for the learnable stochastic differential equation
+research on movement prediction.
 
 ## Layout
 
 ```text
 paper/
-  en/main.tex       Current English source of record (NEX-345 v4.2)
-  en/main.pdf       Checked PDF supplied with the reviewed delivery
-  en/figures/       Reviewed, aggregate-only figures
-  en/tables/        Reviewed, aggregate-only tables
-  archive/          Historical drafts, excluded from the current release
-formalization/
-  lean/e-series/    Lean4 source for the paper's formalized core
+  en/main.tex       English source of record
+  en/main.pdf       Checked preview of the English draft
+  zh/main.tex       Chinese translation, aligned section by section
+  zh/main.pdf       Checked preview of the Chinese draft
+  figures/          Approved source figures only
+  tables/           Aggregate, reviewed tables only
 ```
 
-The English source is authoritative. A reviewed Chinese translation of this
-specific manuscript has not been supplied, so this revision releases no Chinese
-PDF. The bibliography is embedded in `main.tex` and should be independently
-verified before external submission.
+The English source is authoritative; the Chinese manuscript is a translation
+draft and must remain aligned with it. Add `references.bib` only after each
+bibliographic record has been verified.
 
 ## Build
 
@@ -29,6 +25,8 @@ verified before external submission.
 Set-Location paper/en
 pdflatex -interaction=nonstopmode -halt-on-error main.tex
 
+Set-Location ../zh
+xelatex -interaction=nonstopmode -halt-on-error main.tex
 ```
 
 The repository must not contain raw or transformed trajectories, coordinates,
@@ -38,5 +36,5 @@ approved aggregate material.
 
 ## CI/CD and releases
 
-For workflow triggers, the English compilation check, and the tagged PDF
-release asset, see [CI_CD.md](CI_CD.md).
+For workflow triggers, the English/Chinese compilation checks, and the tagged
+PDF release assets, see [CI_CD.md](CI_CD.md).

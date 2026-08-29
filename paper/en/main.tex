@@ -177,7 +177,7 @@ Let $X_t\in\R^2$ be the location under a diffusion
 \begin{equation}
   dX_t=b(t,X_t)\,dt+\sigma(t,X_t)\,dW_t,\label{eq:sde}
 \end{equation}
-with generator $\mathcal{L}f=b\cdot\nabla f+\tfrac12 a:\nabla^2 f$, $a=\sigma\sigma^\top$.
+with generator $\mathcal{L}f=b\cdot\nabla f+\tfrac12 a\,\nabla^2 f$, $a=\sigma\sigma^\top$.
 The predictive density solves the forward Fokker--Planck equation $\partial_t
 p=\mathcal{L}^*p$. A search outcome is negative (region $\Aregion$ searched over
 $[t_0,t_1]$, not found) or positive (expert presence evidence with misclassification
@@ -441,14 +441,14 @@ $\sigma^*\in\{0,1\}^k$ be the true presence pattern.
 The joint posterior after $k$ items is a mixture over patterns $\sigma\in\{0,1\}^k$,
 \begin{equation}
   \mathbb{Q}_k=\sum_{\sigma\in\{0,1\}^k}W_k(\sigma)\,
-  \mathbb{P}\Big(\cdot\;\Big|\;\bigcap_{i:\sigma_i=1}E_i\cap\bigcap_{i:\sigma_i=0}E_i^{c}\Big),\qquad
-  W_k(\sigma)\propto\prod_{i:\sigma_i=1}\ell_{1,i}\pi_i\prod_{i:\sigma_i=0}\ell_{0,i}(1-\pi_i).
+  \mathbb{P}\Big(\cdot\;\Big|\;\bigcap_{i\,\mid\,\sigma_i=1}E_i\cap\bigcap_{i\,\mid\,\sigma_i=0}E_i^{c}\Big),\qquad
+  W_k(\sigma)\propto\prod_{i\,\mid\,\sigma_i=1}\ell_{1,i}\pi_i\prod_{i\,\mid\,\sigma_i=0}\ell_{0,i}(1-\pi_i).
 \end{equation}
 For every $\sigma\ne\sigma^*$, the exact weight ratio is a product over mismatched
 coordinates
 \begin{equation}
   \frac{W_k(\sigma)}{W_k(\sigma^*)}
-  =\prod_{i:\sigma_i\ne\sigma^*_i}\frac{\mathrm{wf}_i(\sigma)}{\mathrm{wf}_i(\sigma^*)},
+  =\prod_{i\,\mid\,\sigma_i\ne\sigma^*_i}\frac{\mathrm{wf}_i(\sigma)}{\mathrm{wf}_i(\sigma^*)},
 \end{equation}
 where matched coordinates cancel (ratio $1$) and each mismatched factor is
 $\ell_{0,i}(1-\pi_i)/(\ell_{1,i}\pi_i)$ if $\sigma^*_i=1,\sigma_i=0$, or
@@ -456,8 +456,8 @@ $\ell_{1,i}\pi_i/(\ell_{0,i}(1-\pi_i))$ if $\sigma^*_i=0,\sigma_i=1$
 (\lean{weight\_ratio\_eq}, \lean{mismatch\_factor}). Under balanced priors
 ($\pi_i=\tfrac12$), informative items ($\lambda_i=\log(\ell_{1,i}/\ell_{0,i})>0$), and
 monotone (nested) deviations $\sigma\subseteq\sigma^*$, this reduces to
-$\prod_{i:\sigma_i\ne\sigma^*_i}e^{-|\lambda_i|}\to 0$ at rate
-$\sum_{i:\sigma_i\ne\sigma^*_i}|\lambda_i|$ (\lean{nested\_concentration}); by TV-continuity
+$\prod_{i\,\mid\,\sigma_i\ne\sigma^*_i}e^{-|\lambda_i|}\to 0$ at rate
+$\sum_{i\,\mid\,\sigma_i\ne\sigma^*_i}|\lambda_i|$ (\lean{nested\_concentration}); by TV-continuity
 of the mixture in its weights (as in E6), the posterior search-region priority converges in
 total variation to the true-pattern bridge.
 \end{theorem}

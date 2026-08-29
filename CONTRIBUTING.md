@@ -1,8 +1,8 @@
 # Contributing
 
-The English source is authoritative. The archived Chinese generic draft is not
-a translation of the current manuscript. Keep a change focused on one source,
-rendering concern, or reviewed paper claim. Never add raw or transformed trajectories, coordinates,
+The English source is authoritative; the Chinese source is a section-aligned
+translation. Keep a change focused on one source, rendering concern, or
+reviewed paper claim. Never add raw or transformed trajectories, coordinates,
 timestamps, identifiers, row-level predictions, checkpoints, private logs,
 local paths, credentials, or archives containing them.
 
@@ -28,6 +28,9 @@ hotfix, and release rules.
 Set-Location paper/en
 pdflatex -interaction=nonstopmode -halt-on-error -file-line-error main.tex
 pdflatex -interaction=nonstopmode -halt-on-error -file-line-error main.tex
+Set-Location ../zh
+xelatex -interaction=nonstopmode -halt-on-error -file-line-error main.tex
+xelatex -interaction=nonstopmode -halt-on-error -file-line-error main.tex
 Set-Location ../..
 python scripts/check_public_release.py
 ```
