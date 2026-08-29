@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   policy:
-    name: policy
+    name: policy / traceability and public boundary
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -24,6 +24,12 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: "3.10"
+      - name: Explain policy validation
+        run: |
+          {
+            echo "## Policy gate"
+            echo "Validates PR traceability and rejects non-public artifacts or identifiers."
+          } >> "$GITHUB_STEP_SUMMARY"
       - name: Validate PR traceability
         if: github.event_name == 'pull_request'
         env:
@@ -33,11 +39,17 @@ jobs:
       - name: Public release scan
         run: python scripts/check_public_release.py
   tex-en:
-    name: tex / en
+    name: tex / English PDF and references
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v7
+      - name: Explain English PDF validation
+        run: |
+          {
+            echo "## English paper gate"
+            echo "Builds the English PDF and fails on unresolved references or citations."
+          } >> "$GITHUB_STEP_SUMMARY"
       - uses: xu-cheng/latex-action@v4
         with:
           root_file: main.tex
@@ -51,11 +63,17 @@ jobs:
           path: paper/en/main.pdf
           retention-days: 7
   tex-zh:
-    name: tex / zh
+    name: tex / Chinese PDF and references
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v7
+      - name: Explain Chinese PDF validation
+        run: |
+          {
+            echo "## Chinese paper gate"
+            echo "Builds the Chinese PDF and fails on unresolved references or citations."
+          } >> "$GITHUB_STEP_SUMMARY"
       - uses: xu-cheng/latex-action@v4
         with:
           root_file: main.tex
@@ -75,6 +93,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+      - name: Explain required-check result
+        run: |
+          {
+            echo "## Required gate"
+            echo "Passes only when policy plus both English and Chinese PDF gates succeed."
+          } >> "$GITHUB_STEP_SUMMARY"
       - name: Require successful gates
         env:
           POLICY: ${{ needs.policy.result }}

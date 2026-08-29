@@ -14,7 +14,7 @@ permissions:
 
 jobs:
   policy:
-    name: release / policy
+    name: release / public boundary
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -25,7 +25,7 @@ jobs:
       - name: Validate public release policy
         run: python scripts/check_public_release.py
   tex-en:
-    name: release / tex-en
+    name: release / English PDF
     needs: policy
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -38,14 +38,18 @@ jobs:
           args: -interaction=nonstopmode -halt-on-error -file-line-error
       - name: Reject unresolved references and citations
         run: '! grep -E "Undefined (references|citations)|Rerun to get" paper/en/main.log'
+      - name: Stage uniquely named English release PDF
+        run: |
+          mkdir -p release-assets
+          cp paper/en/main.pdf release-assets/learnable-sde-paper-en.pdf
       - uses: actions/upload-artifact@v4
         with:
           name: paper-en-release-${{ github.sha }}
-          path: paper/en/main.pdf
+          path: release-assets/learnable-sde-paper-en.pdf
           if-no-files-found: error
           retention-days: 14
   tex-zh:
-    name: release / tex-zh
+    name: release / Chinese PDF
     needs: policy
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -58,10 +62,14 @@ jobs:
           args: -xelatex -interaction=nonstopmode -halt-on-error -file-line-error
       - name: Reject unresolved references and citations
         run: '! grep -E "Undefined (references|citations)|Rerun to get" paper/zh/main.log'
+      - name: Stage uniquely named Chinese release PDF
+        run: |
+          mkdir -p release-assets
+          cp paper/zh/main.pdf release-assets/learnable-sde-paper-zh.pdf
       - uses: actions/upload-artifact@v4
         with:
           name: paper-zh-release-${{ github.sha }}
-          path: paper/zh/main.pdf
+          path: release-assets/learnable-sde-paper-zh.pdf
           if-no-files-found: error
           retention-days: 14
   publish:
@@ -81,9 +89,12 @@ jobs:
         with:
           name: paper-zh-release-${{ github.sha }}
           path: release-assets
-      - name: Generate checksums
-        run: (cd release-assets && sha256sum * > SHA256SUMS)
+      - name: Verify complete bilingual asset set and generate checksums
+        run: |
+          test -s release-assets/learnable-sde-paper-en.pdf
+          test -s release-assets/learnable-sde-paper-zh.pdf
+          (cd release-assets && sha256sum learnable-sde-paper-en.pdf learnable-sde-paper-zh.pdf > SHA256SUMS)
       - name: Publish immutable tag assets
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "$GITHUB_REF_NAME" --verify-tag --generate-notes release-assets/*
+        run: gh release create "$GITHUB_REF_NAME" --verify-tag --generate-notes release-assets/learnable-sde-paper-en.pdf release-assets/learnable-sde-paper-zh.pdf release-assets/SHA256SUMS

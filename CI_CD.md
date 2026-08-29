@@ -17,9 +17,9 @@ granted `contents: write`, so a non-tag manual run cannot publish assets.
 
 | Job shown in GitHub | What it verifies | Why it exists |
 | --- | --- | --- |
-| `policy` | On pull requests, checks title/branch traceability. On every trigger, scans the source tree for material outside the public-release boundary. | Keeps manuscript revisions auditable and prevents private research material from entering public automation. |
-| `tex / en` | Compiles `paper/en/main.tex` with pdfLaTeX in halt-on-error mode, rejects unresolved references/citations or a required rerun notice, and stores the resulting PDF briefly as an Actions artifact. | Ensures the English source of record produces a complete PDF. |
-| `tex / zh` | Compiles `paper/zh/main.tex` with XeLaTeX in halt-on-error mode, applies the same log checks, and stores the PDF briefly as an Actions artifact. | Ensures the Chinese translation can be independently typeset with its required engine. |
+| `policy / traceability and public boundary` | On pull requests, checks title/branch traceability. On every trigger, scans the source tree for material outside the public-release boundary. | Keeps manuscript revisions auditable and prevents private research material from entering public automation. |
+| `tex / English PDF and references` | Compiles `paper/en/main.tex` with pdfLaTeX in halt-on-error mode, rejects unresolved references/citations or a required rerun notice, and stores the resulting PDF briefly as an Actions artifact. | Ensures the English source of record produces a complete PDF. |
+| `tex / Chinese PDF and references` | Compiles `paper/zh/main.tex` with XeLaTeX in halt-on-error mode, applies the same log checks, and stores the PDF briefly as an Actions artifact. | Ensures the Chinese translation can be independently typeset with its required engine. |
 | `ci / required` | Runs even after an upstream failure and passes only when `policy`, `tex / en`, and `tex / zh` all succeed. | Provides branch protection with one clear aggregate result. |
 
 ## Release outputs
