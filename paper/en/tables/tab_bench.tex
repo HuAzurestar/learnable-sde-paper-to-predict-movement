@@ -1,0 +1,13 @@
+\begin{tabular}{lccccc}
+\toprule
+Model & ES $\downarrow$ & HDR90$_x$ & HDR90$_y$ & CEP(R50) $\downarrow$ & $A_{90}$ $\uparrow$ \\
+\midrule
+Kalman-CA & $1.42\times10^{6}$ & 1.000 & 1.000 & $4.32\times10^{6}$ & $3\times10^{-8}$ \\
+Kalman-CV & 1,056.7 & 0.887 & 0.897 & 2,967.9 & $1.49\times10^{-5}$ \\
+OU & 350.9 & 0.700 & 0.773 & 493.6 & $6.69\times10^{-6}$ \\
+HMM & 288.8 & 0.763 & 0.830 & 484 & $1.8\times10^{-5}$ \\
+LSTM & 315.2 & 0.737 & 0.760 & 467.5 & $1.11\times10^{-5}$ \\
+CRW & 293.8 & 0.847 & 0.867 & 498 & $9.26\times10^{-6}$ \\
+Base (I-1 SDE) & 367.3 & 0.543 & 0.583 & \textbf{437.9} & \textbf{$1.95\times10^{-5}$} \\
+\bottomrule
+\end{tabular}

@@ -1,106 +1,109 @@
+% !TeX program = xelatex
+% NEX-345 v4.2 中文译稿；paper/en/main.tex 为唯一权威文本。
 \documentclass[UTF8,11pt]{ctexart}
 \usepackage[margin=1in]{geometry}
-\usepackage{amsmath,amssymb,booktabs}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx,booktabs,array}
+\usepackage[table]{xcolor}
 \usepackage[hidelinks]{hyperref}
+\graphicspath{{../en/figures/}}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}[theorem]{引理}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Aregion}{\mathcal{A}}
+\newcommand{\E}[1]{\mathbb{E}\left[#1\right]}
+\newcommand{\lean}[1]{\texttt{#1}}
 
-\title{面向人员运动预测的可学习随机微分方程}
-\author{作者信息待审批后补充}
-\date{草稿，不包含实证结论}
-
+\title{用于搜救失联人员运动预测的双条件化可学习随机微分方程}
+\author{数学研究员与算法研究员\\搜救研究中心，Learnable-SDE 项目\\
+v4.2 中文译稿（\textbf{英文原稿为准}）}
+\date{2026 年 8 月 16 日}
 \begin{document}
 \maketitle
 
 \begin{abstract}
-搜救场景中的人员运动预测不能只给出单一路径，还应描述未来状态的不确定性。本文草稿围绕可学习随机微分方程模型、相应的 Python 实现和独立维护的 Lean 形式化工程组织论文主体。现有可执行基线是段级隐状态欠阻尼 Langevin 模型，支持精确高斯、Euler--Maruyama、分裂步进和公共随机数推断。Lean 工程验证了软证据与混合权重的一组代数恒等式。本文不报告私有轨迹数据、训练检查点、实验指标或性能结论。实验部分只给出待审阅的方案，后续仅可根据获准数据和版本化运行记录补充汇总证据。
+本文研究荒野搜救中的失联人员运动预测，以及如何将两类性质不同的现场证据重新并入预测密度：负信息是某一区域已被搜索却未发现目标；正信息是专家根据痕迹判断目标可能出现过、但该判断有非零误判概率。目标是使证据不断累积时的搜索区域优先级可以量化地收敛。我们以可学习、分段内参数恒定的欠阻尼 Langevin 随机微分方程（SDE）建模运动，并通过具有两类对偶边界条件的 Doob $h$-变换在路径空间上条件化：排除信息采用 Dirichlet $0$，存在信息采用 Dirichlet $1$。软存在证据可精确写成两条桥的二点混合。
+
+英文原稿报告的范围和数值在此忠实转述而不扩大：(i) 基础 SDE 并不在原始 energy score 上全面占优，但在六个外部基线中取得最佳 CEP(R50) $437.9$；经重校准，1--3 小时时域 HDR90 由 $0.324/0.364$ 修复到 $0.904/0.899$。(ii) 真实长期数据不足：$\ge6$ 小时仅有 GeoLife 可行性补充，$\ge12$ 小时没有实证精度声明。(iii) 排除桥在 $2.5\%$ 搜索面积下将合成目标由先验第 3 名提升至第 1 名；存在桥将 surprise-tail 合成目标从第 27 名提升至第 2 名，并将 CEP50 搜索面积降低 $4.5$ 倍；真实轨迹段的平均目标名次从 $23.6$ 改善为 $16.6$。混合恒等式、TV--Lipschitz 稳健性、对偶性和集中性已由 Lean4 形式化且无 \texttt{sorry}；PDE 与一般 $h$-变换存在性只按文档级数学证明陈述，未伪称形式化。
 \end{abstract}
 
 \section{引言}
+搜救需要的是多个预测时域上人员位置与速度的概率分布，而非单一路径。救援队按分布安排搜索；当队伍返回 ``搜过但未发现'' 的负反馈，或专家报告带有误判率的正痕迹，分布必须以可解释、可复查的方式更新。本文的问题是：怎样在不把软信息误当硬终点或硬排除的前提下更新密度，并验证搜索优先级是否朝正确区域收敛。
 
-搜救规划需要在多个预测时域上获得人员可能位置和速度的分布。观测不完整、行为差异和环境条件都会影响预测，因此模型需要保留不确定性。随机微分方程可以描述状态的连续演化，并通过样本或矩给出预测分布。
+本文模型为分段级欠阻尼 Langevin SDE，保留预测不确定性并支持样本、密度和搜索排序输出。所有经验结论仅适用于英文原稿登记的数据划分、指标和实验协议。本仓库不包含原始轨迹、坐标、时间戳、标识符、逐样本预测或 checkpoint。
 
-本文如实记录现有研究资产及其边界。Python 仓库实现了模型拟合与推断框架，当前基线在每个轨迹段内采用固定的隐状态。Lean 仓库形式化了软证据的有限维、有限测度代数部分。抛物型偏微分方程的解存在性与唯一性，以及 Doob \(h\)-变换的构造，不在该形式化工程的范围内。
+\subsection{数据与贡献边界}
+真实评估中 $\ge1$ 小时段有 242 条，$\ge3$ 小时段有 14 条；$\ge6$ 小时的真实证据不足以支持一般性精度结论。GeoLife 仅提供长期可行性补充，不能被写成长期搜救准确性的证明；$\ge12$ 小时明确是数据空白。本文贡献限定为：将负搜索反馈和带误判的存在证据置于同一路径空间的对偶桥框架；报告可追溯的聚合实验；划清人类可读证明与 Lean4 已覆盖范围。它不宣称对所有指标、区域或时域都优于基线。
 
-待补充实证材料后，本文将形成三项有限的工作内容：说明可审计的软件实现，划定机器检查定理的边界，并给出预先确定的评估方案。当前版本不对搜救效果或预测精度作出结论。
-
-\section{问题表述}
-
-设 \(X_t=(p_t,v_t)^\top\in\mathbb{R}^2\) 表示一个运动段在单个坐标方向上的位置和速度状态。带上下文的模型可写为
-
+\section{问题表述与方法}
+令 $X_t$ 为位置--速度状态，考虑
 \begin{equation}
-  dX_t=b_\theta(t,X_t,c_t)\,dt+\sigma_\theta(t,X_t,c_t)\,dW_t,
-  \label{eq:general-sde-zh}
+dX_t=b(t,X_t)\,dt+\sigma(t,X_t)\,dW_t,
 \end{equation}
+其中 $b$ 是漂移、$\sigma$ 是扩散项、$W_t$ 是 Wiener 过程，生成元为 $\mathcal Lf=b\cdot\nabla f+\tfrac12 a\,\nabla^2f$，$a=\sigma\sigma^\top$。预测密度满足相应的前向 Fokker--Planck 方程。
 
-其中，\(c_t\) 为经批准的上下文输入，\(W_t\) 为 Wiener 过程。当前公开的软件仓库没有注册可用的神经随机微分方程，也没有公开的上下文数据管线。因此，式\eqref{eq:general-sde-zh} 只给出建模接口，不表示已经完成的实证模型。
+假设被搜索区域、时间窗和探测机制可登记；正信息有明确误判模型；条件化只更新预测分布，不回写原始观测；每一次更新均记录证据、参数和版本。前提不满足时，应明确不能得出条件化结论，而不能将猜测写入分布。
 
-给定初始状态后，预测任务在若干时域 \(\tau\) 上返回 \(X_{t+\tau}\) 的样本或矩。评估应使用仓库外维护的划分文件，且只发布经过审查的汇总统计量。
+\subsection{三条桥}
+硬排除桥令已搜索且未发现事件的条件概率为零；硬存在桥令指定存在事件的条件概率为一；软存在桥按专家证据的似然比混合两者。三者都定义在同一基准路径测度上，因此 ``可能出现过'' 不会被误写成观察到的精确终点。
 
-\section{已实现的段级模型}
+模型采用分段内参数恒定的欠阻尼 Langevin 结构，原因是它表达位置--速度耦合、保留随机性，并具有精确高斯转移核；学习与推断可与 Euler--Maruyama、分裂步进和共同随机数路线作一致比较。数据划分和指标聚合遵循英文原稿注册表，不能按结果事后修改。
 
-当前基线是带隐状态 \(r\in\{1,\ldots,K\}\) 的仿射欠阻尼 Langevin 随机微分方程。隐状态由模型上下文显式给出，并在单个运动段内保持不变。模型为
+\subsection{负信息、正信息与收敛}
+对区域 $\Aregion$ 的负搜索信息，排除桥以生存概率重加权原过程，使已确认搜索且未发现的区域不再获得不合理的高优先级。该更新受搜索范围、时间窗、探测假设和模型误设约束，不是目标全局不可能存在的声明。
 
-\begin{align}
-  dp_t &= v_t\,dt, \\
-  dv_t &= \left[-\Gamma_r v_t+(a_r-\kappa)p_t+c_r\right]dt+g_r\,dW_t.
-  \label{eq:segment-sde-zh}
-\end{align}
-
-\(\Gamma_r\)、\(a_r\)、\(c_r\) 和 \(g_r\) 为状态相关参数，\(\kappa\) 在各状态之间共享。该模型的状态转移为仿射高斯形式，因此实现中提供了对应的精确转移核。
-
-估计代码根据速度和位移变化构造特征，对各段做聚类初始化。随后交替计算段后验权重和加权最小二乘转移更新，再将离散转移转换为连续时间参数。这一描述对应软件实现，不能替代其在目标数据集上的收敛性验证。
-
-\section{推断与软件边界}
-
-Python 框架将随机微分方程模型、估计器、推断引擎、评价规则和结果适配器分离。能够提供精确转移核的模型可使用精确高斯采样。Euler--Maruyama 是显式选择的数值推断方式。段级模型还提供分裂步进方法，公共随机数可用于共享路径的多时域采样。不支持的模型与推断组合会直接报错，不会隐式切换为其他算法。
-
-仓库中的合成数据流程是确定性的，用于安装与回归测试，不构成真实数据上的预测证据。神经随机微分方程和 Fokker--Planck 变体仍是未注册的研究骨架，条件特征对齐也尚未完全进入声明式数据源层。
-
-\section{软证据与形式化边界}
-
-对先验概率为 \(\pi\) 的二元软证据，记两类似然为 \(\ell_1\) 与 \(\ell_0\)，后验混合权重为
-
+对带误判的正痕迹，设先验概率为 $\pi$、两类似然为 $\ell_1,\ell_0$，存在模式的后验权重为
 \begin{equation}
-  w=\frac{\ell_1\pi}{\ell_1\pi+\ell_0(1-\pi)}.
-  \label{eq:posterior-weight-zh}
+w=\frac{\ell_1\pi}{\ell_1\pi+\ell_0(1-\pi)}.
 \end{equation}
+因此软存在桥是硬存在桥及补集桥的混合，显式暴露先验、误判率和更新强度。在多次相容证据下，模式权重的精确比值分解为不匹配证据项的乘积；在独立、信息方向正确和嵌套偏离条件下，该比值随累积对数似然比衰减，混合分布在全变差意义下接近真实模式桥。
 
-Lean 工程验证了该混合恒等式、式\eqref{eq:posterior-weight-zh} 的似然比形式、混合分布的总变差界和 logistic 权重的若干性质。它还验证了证据模式权重的乘积恒等式，以及在定理签名所列假设下的嵌套证据集中结论。
+Lean4 工程形式化了后验混合、权重比、TV 界、logistic 权重性质、对偶概率恒等式和嵌套集中性。PDE 解的存在唯一性及一般 Doob $h$-变换仍是文档级数学论证，中文稿与英文稿均不把它标作 Lean 已证明。
 
-这些结论不构成目标随机微分方程适定性或 Doob \(h\)-变换的形式化证明。论文中只有 Lean 源码和公理审计实际覆盖的声明才能称为机器检查结果。
+\section{实验}
+\subsection{数据、协议和公开边界}
+训练、验证和评估按文件级划分以避免泄漏；论文只包含审定聚合图、表和数值。合成场景只验证机制，不替代真实搜救成效。外部基线比较包括 Kalman、OU--CRW、HMM、LSTM 等；基础 SDE 的 raw energy score 不全面占优，但 CEP(R50) 最好，且登记的重校准使 HDR90 覆盖在 1--3 小时段改善。该结果不推出所有时域、所有区域或所有指标上的优势。
 
-\section{数据治理与可复现性}
+\input{../en/tables/tab_bench.tex}
+\input{../en/tables/tab_benchverdict.tex}
+\input{../en/tables/tab_sens.tex}
+\input{../en/tables/tab_data_hor.tex}
 
-论文仓库不得包含原始或变换后的轨迹、坐标、时间戳、标识符、逐样本预测、非公开检查点，或含有上述内容的压缩文件。现有软件契约要求从受控的本地数据根读取主轨迹表和数据划分文件。该权威物理位置及其数据保管人尚未由本文草稿确认。
+\subsection{证据下的搜索优先级}
+排除桥实验检验 ``搜过而未发现'' 后的重排序；存在桥实验检验带误判痕迹对 surprise-tail 目标及真实腿的影响。所有改进都必须与搜索面积、误判率、时间窗、评估段及 bootstrap 口径一同阅读，不能脱离这些条件泛化。
 
-每项结果都应记录逻辑数据版本、划分文件版本、Python 与 Lean 仓库的提交版本、随机种子策略、模型配置和只含汇总信息的输出。受控运行器可对批准的数据根做只读挂载。公开持续集成只运行确定性的合成数据。
+\begin{figure}[ht]\centering
+\includegraphics[width=.82\linewidth]{fig_excl_convergence.png}
+\caption{排除桥下搜索优先级的收敛（审定聚合图）。}\end{figure}
+\begin{figure}[ht]\centering
+\includegraphics[width=.82\linewidth]{fig_exist_convergence.png}
+\caption{存在桥下搜索优先级的收敛（审定聚合图）。}\end{figure}
+\begin{figure}[ht]\centering
+\includegraphics[width=.82\linewidth]{fig_robustness.png}
+\caption{存在证据误判率的稳健性诊断。}\end{figure}
 
-\section{实验方案}
+\subsection{22 臂消融和搜救价值}
+22 臂消融分解模型、条件化和特征选择的影响。它是有限数据、有限特征表示和已登记协议下的证据，而非对地形、道路或人类行为机制的普遍证明。terrain 的负结果只限于英文原稿所述 map 覆盖子集及特征表示，不能推翻搜救地形偏好的既有研究。
+\input{../en/tables/tab_ablate.tex}
+\begin{figure}[ht]\centering
+\includegraphics[width=.9\linewidth]{fig_forest_22arm.png}
+\caption{22 臂消融的审定森林图。}\end{figure}
 
-本节是实验方案，不是结果报告。在添加任何表格或结论前，应固定并审查数据快照、划分文件、许可和隐私等级；预测时域、观测窗口、状态构造和缺失数据处理；比较模型及其推断配置；汇总评分规则和能量评分的具体约定；随机种子数量、区间估计和失败运行的处理规则；以及对已知数值问题和方案偏离的披露方式。
+\section{讨论、局限与结论}
+本研究的价值是把搜救现场可取得的正、负信息纳入同一概率预测与搜索排序框架，同时显式暴露不确定性、证据误判和数据空白。主要局限是长期真实评估不足、覆盖校准依赖重校准、桥接结果对模型误设敏感、真实地形特征不完整，以及 Lean 仅覆盖测度代数核心。未来工作应补足数据、代码审计或理论前提，而不应扩大当前结论。
 
-表\ref{tab:results-template-zh} 为待填模板。只有经批准的运行产生数值，并且数值与记录的配置相互核对后，才可填写其中的单元格。
+在英文原稿限定的范围内，双条件化 SDE 使负搜索反馈和概率性正痕迹能够以可审计方式更新运动预测密度，并给出搜索优先级收敛的理论和实验线索。英文稿是唯一权威文本；本中文稿为阅读便利而作，不得独立改变结论、数值、引用、证明或形式化覆盖范围。
 
-\begin{table}[ht]
-\centering
-\caption{汇总评估结果模板，当前不填入数值。}
-\label{tab:results-template-zh}
-\begin{tabular}{llll}
-\toprule
-模型 & 时域 & 汇总评分 & 运行记录 \\
-\midrule
-段级随机微分方程 & [待确定] & [尚无结果] & [待确定] \\
-批准的基线模型 & [待确定] & [尚无结果] & [待确定] \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\section{局限性与结论}
-
-现有资产提供了可执行的基线模型、明确的数值推断路由、确定性的合成测试和范围受限的形式化证明。它们尚不足以说明私有轨迹上的预测表现、搜救任务中的业务价值，或 Lean 范围以外的解析性质。后续版本只能加入经过审查的汇总证据；软件或形式化边界发生变化时，也应同步修改本节。
-
-\paragraph{源代码说明。} 本文草稿中的技术表述对应
-\href{https://github.com/HuAzurestar/learnable-sde-for-movement-prediction}{Python 实现仓库}
-和 \href{https://github.com/HuAzurestar/learnable-sde-theory-to-predict-movement}{Lean 形式化仓库}。
-文献条目尚未核验，不能虚构；提交前应将核验后的条目写入 \texttt{references.bib}。
-
+\appendix
+\section{完整材料的对照说明}
+英文原稿附录包含 E0--E8、L1--L4 的完整人类可读证明、Lean 映射、图表清单、指标引用清单、实验注册表、复现包说明、原计划到交付的映射及时间线。需要精确符号、推导步骤、文献条目、实验编号、文件名或数值时，一律以 \texttt{paper/en/main.tex} 为准。
+\begin{figure}[ht]\centering
+\includegraphics[width=.85\linewidth]{fig_train_convergence.png}
+\caption{训练/收敛诊断图（审定聚合图）。}\end{figure}
+\begin{figure}[ht]\centering
+\includegraphics[width=.85\linewidth]{fig_benchmark.png}
+\caption{外部基线比较图（审定聚合图）。}\end{figure}
+\begin{figure}[ht]\centering
+\includegraphics[width=.85\linewidth]{fig_sensitivity.png}
+\caption{三指标敏感性与重校准图（审定聚合图）。}\end{figure}
 \end{document}

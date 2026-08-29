@@ -1,0 +1,43 @@
+ESeries.posterior_mixture (ℓ₁ ℓ₀ π pBE pBEc : ℝ) (hπ : π ≠ 0) (hπc : 1 - π ≠ 0) (hZ : ℓ₁ * π + ℓ₀ * (1 - π) ≠ 0) :
+  (ℓ₁ * pBE + ℓ₀ * pBEc) / (ℓ₁ * π + ℓ₀ * (1 - π)) =
+    ℓ₁ * π / (ℓ₁ * π + ℓ₀ * (1 - π)) * (pBE / π) + (1 - ℓ₁ * π / (ℓ₁ * π + ℓ₀ * (1 - π))) * (pBEc / (1 - π))
+ESeries.weight_likelihood_ratio (ℓ₁ ℓ₀ π : ℝ) (hℓ₀ : ℓ₀ ≠ 0) (hZ : ℓ₁ * π + ℓ₀ * (1 - π) ≠ 0) :
+  ℓ₁ * π / (ℓ₁ * π + ℓ₀ * (1 - π)) = ℓ₁ / ℓ₀ * π / (ℓ₁ / ℓ₀ * π + (1 - π))
+ESeries.mixture_tv_bound (a b w w' : ℝ) (ha : 0 ≤ a) (ha1 : a ≤ 1) (hb : 0 ≤ b) (hb1 : b ≤ 1) :
+  |w * a + (1 - w) * b - (w' * a + (1 - w') * b)| ≤ 2 * |w - w'|
+ESeries.weight_mem_Icc (π lam : ℝ) (hπ0 : 0 ≤ π) (hπ1 : π ≤ 1) : ESeries.weight π lam ∈ Set.Icc 0 1
+ESeries.weight_slope_bound (π lam : ℝ) : ESeries.weight π lam * (1 - ESeries.weight π lam) ≤ 1 / 4
+ESeries.weight_at_zero (π : ℝ) : ESeries.weight π 0 = π
+ESeries.weight_mono (π : ℝ) (hπ0 : 0 ≤ π) (hπ1 : π ≤ 1) {lam₁ lam₂ : ℝ} (h : lam₁ ≤ lam₂) :
+  ESeries.weight π lam₁ ≤ ESeries.weight π lam₂
+ESeries.prob_compl_identity.{u_1} {α : Type u_1} [MeasurableSpace α] (μ : MeasureTheory.Measure α) (s : Set α)
+  (hs : MeasurableSet s) (h1 : μ Set.univ = 1) : μ s + μ sᶜ = 1
+ESeries.e6_weight_lipschitz (π : ℝ) (hπ0 : 0 ≤ π) (hπ1 : π ≤ 1) (lam lam' : ℝ) :
+  |ESeries.weight π lam - ESeries.weight π lam'| ≤ 1 / 4 * |lam - lam'|
+ESeries.e6_tv_lipschitz (π : ℝ) (hπ0 : 0 ≤ π) (hπ1 : π ≤ 1) (lam lam' : ℝ) :
+  2 * |ESeries.weight π lam - ESeries.weight π lam'| ≤ 1 / 2 * |lam - lam'|
+ESeries.weight_differentiableAt (π x : ℝ) (hπ0 : 0 ≤ π) (hπ1 : π ≤ 1) :
+  DifferentiableAt ℝ (fun t => ESeries.weight π t) x
+ESeries.weight_deriv (π x : ℝ) (hπ0 : 0 ≤ π) (hπ1 : π ≤ 1) :
+  deriv (fun t => ESeries.weight π t) x = ESeries.weight π x * (1 - ESeries.weight π x)
+ESeries.mismatch_factor.{u_1} {ι : Type u_1} (ℓ₁ ℓ₀ π : ι → ℝ) {σ σstar : ι → Bool} {i : ι} (hmiss : σ i ≠ σstar i) :
+  ESeries.weightFactor ℓ₁ ℓ₀ π σ i / ESeries.weightFactor ℓ₁ ℓ₀ π σstar i =
+    if σstar i = true then ℓ₀ i * (1 - π i) / (ℓ₁ i * π i) else ℓ₁ i * π i / (ℓ₀ i * (1 - π i))
+ESeries.weight_ratio_eq.{u_1} {ι : Type u_1} [Fintype ι] (ℓ₁ ℓ₀ π : ι → ℝ) (σ σstar : ι → Bool)
+  (hWf : ∀ (i : ι), ESeries.weightFactor ℓ₁ ℓ₀ π σstar i ≠ 0) :
+  ESeries.patternWeight ℓ₁ ℓ₀ π σ / ESeries.patternWeight ℓ₁ ℓ₀ π σstar =
+    ∏ i with σ i ≠ σstar i, ESeries.weightFactor ℓ₁ ℓ₀ π σ i / ESeries.weightFactor ℓ₁ ℓ₀ π σstar i
+ESeries.ratio_exp_neg_logLR.{u_1} {ι : Type u_1} (ℓ₁ ℓ₀ : ι → ℝ) (i : ι) (hℓ₁pos : 0 < ℓ₁ i) (hℓ₀pos : 0 < ℓ₀ i) :
+  ℓ₀ i / ℓ₁ i = Real.exp (-ESeries.logLR ℓ₁ ℓ₀ i)
+ESeries.nested_concentration.{u_1} {ι : Type u_1} [Fintype ι] (ℓ₁ ℓ₀ π : ι → ℝ) (σ σstar : ι → Bool)
+  (hWf : ∀ (i : ι), ESeries.weightFactor ℓ₁ ℓ₀ π σstar i ≠ 0) (hπ : ∀ (i : ι), π i = 1 / 2)
+  (hℓ₁pos : ∀ (i : ι), 0 < ℓ₁ i) (hℓ₀pos : ∀ (i : ι), 0 < ℓ₀ i) (hinfo : ∀ (i : ι), ℓ₀ i < ℓ₁ i)
+  (hmono : ∀ (i : ι), σ i = true → σstar i = true) :
+  ESeries.patternWeight ℓ₁ ℓ₀ π σ / ESeries.patternWeight ℓ₁ ℓ₀ π σstar =
+    ∏ i with σ i ≠ σstar i, Real.exp (-|ESeries.logLR ℓ₁ ℓ₀ i|)
+'ESeries.posterior_mixture' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ESeries.mixture_tv_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ESeries.weight_slope_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ESeries.e6_tv_lipschitz' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ESeries.weight_ratio_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ESeries.nested_concentration' depends on axioms: [propext, Classical.choice, Quot.sound]
