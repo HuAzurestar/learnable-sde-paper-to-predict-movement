@@ -81,6 +81,45 @@ def _contrast(baseline_manifest: str, candidate_manifest: str):
     }
 
 
+def _uncertainty(contrast_path):
+    values = {
+        metric: {
+            "candidate_minus_baseline": (-0.3 - 0.2 + 0.1) / 3,
+            "ci_low": -0.4,
+            "ci_high": 0.1,
+            "interval_excludes_zero": False,
+            "bootstrap_fraction_below_zero": 0.9,
+        }
+        for metric in (
+            "position_energy_score_d2",
+            "position_cep50_error",
+            "velocity_endpoint_rmse",
+        )
+    }
+    return {
+        "schema_version": "nex326-phase-space-segment-bootstrap-v1",
+        "analysis_id": "fixture-segment-bootstrap",
+        "baseline_benchmark_id": "baseline",
+        "candidate_benchmark_id": "candidate",
+        "cohort_fingerprint": "f" * 64,
+        "replicate_seeds": [11, 22, 33],
+        "prediction_samples_per_segment": 64,
+        "bootstrap_unit": "paired_evaluation_segment",
+        "evaluation_segment_count": 28,
+        "bootstrap_iterations": 1000,
+        "bootstrap_seed": 17,
+        "confidence_level": 0.95,
+        "uncertainty_scope": "heldout_segment_sampling_only",
+        "uncertainty": values,
+        "integrity": {
+            "protocol_sha256": "e" * 64,
+            "baseline_manifest_sha256": "b" * 64,
+            "candidate_manifest_sha256": "c" * 64,
+            "contrast_sha256": hashlib.sha256(contrast_path.read_bytes()).hexdigest(),
+        },
+    }
+
+
 def test_phase_space_aggregate_is_hash_bound_and_exploratory(tmp_path):
     baseline_manifest = "b" * 64
     candidate_manifest = "c" * 64
@@ -100,21 +139,37 @@ def test_phase_space_aggregate_is_hash_bound_and_exploratory(tmp_path):
         json.dumps(_contrast(baseline_manifest, candidate_manifest)),
         encoding="utf-8",
     )
+    uncertainty_path = tmp_path / "uncertainty.json"
+    uncertainty_path.write_text(
+        json.dumps(_uncertainty(contrast_path)), encoding="utf-8"
+    )
 
     output = tmp_path / "aggregate"
     summary = aggregate_phase_space(
-        [baseline_path, candidate_path], [contrast_path], output
+        [baseline_path, candidate_path],
+        [contrast_path],
+        output,
+        uncertainty_paths=[uncertainty_path],
     )
     assert summary["scientific_status"] == "exploratory_only"
     assert summary["assessment"] == "not_assessed"
     assert summary["model_count"] == 2
     assert summary["contrast_count"] == 1
+    assert summary["uncertainty_analysis_count"] == 1
     assert summary["descriptive_lowest_energy_score_benchmark"] == "candidate"
     with (output / "nex326_phase_space_models.csv").open(
         encoding="utf-8", newline=""
     ) as source:
         models = list(csv.DictReader(source))
     assert [row["benchmark_id"] for row in models] == ["baseline", "candidate"]
+    with (output / "nex326_phase_space_uncertainty.csv").open(
+        encoding="utf-8", newline=""
+    ) as source:
+        uncertainty_rows = list(csv.DictReader(source))
+    assert len(uncertainty_rows) == 3
+    assert {row["analysis_id"] for row in uncertainty_rows} == {
+        "fixture-segment-bootstrap"
+    }
     for reference in summary["artifacts"].values():
         artifact = output / reference["path"]
         assert artifact.stat().st_size == reference["size_bytes"]

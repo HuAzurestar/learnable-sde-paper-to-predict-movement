@@ -47,6 +47,7 @@ Aggregate its compact PSDE receipts and paired contrasts with:
 python scripts/aggregate_nex326_phase_space.py \
   --receipts /path/to/phase_space_*_receipt.json \
   --contrasts /path/to/phase_space_*_contrast.json \
+  --uncertainties /path/to/phase_space_*_segment_bootstrap.json \
   --output .local/nex326-phase-space-aggregate
 ```
 
@@ -55,6 +56,8 @@ coverage, tampered manifest bindings, and inconsistent paired summaries. It writ
 model and contrast CSVs plus a hash-bound summary. The output remains
 `exploratory_only/not_assessed`; sampling-seed repeats over one fitted cohort and one
 evaluation set are not treated as independent scientific replications.
+When supplied, paired-segment uncertainty files are checked against both receipt
+manifest hashes and the exact contrast-file hash before their intervals are emitted.
 
 ## CI/CD and releases
 

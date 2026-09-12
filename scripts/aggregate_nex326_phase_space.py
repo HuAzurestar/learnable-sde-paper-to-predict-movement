@@ -14,6 +14,7 @@ from typing import Mapping, Sequence
 
 RECEIPT_SCHEMA = "nex326-phase-space-dsde-receipt-v1"
 CONTRAST_SCHEMA = "nex326-phase-space-paired-contrast-v1"
+UNCERTAINTY_SCHEMA = "nex326-phase-space-segment-bootstrap-v1"
 METRICS = (
     "position_energy_score_d2",
     "position_hdr90_coverage",
@@ -41,6 +42,24 @@ CONTRAST_HEADER = (
     "prediction_samples_per_segment",
     *(f"delta_{metric}_{suffix}" for metric in METRICS for suffix in ("mean", "candidate_better_seed_count")),
     "contrast_sha256",
+)
+UNCERTAINTY_HEADER = (
+    "analysis_id",
+    "baseline_benchmark_id",
+    "candidate_benchmark_id",
+    "metric",
+    "candidate_minus_baseline",
+    "ci_low",
+    "ci_high",
+    "interval_excludes_zero",
+    "bootstrap_fraction_below_zero",
+    "bootstrap_unit",
+    "evaluation_segment_count",
+    "bootstrap_iterations",
+    "bootstrap_seed",
+    "confidence_level",
+    "uncertainty_scope",
+    "uncertainty_sha256",
 )
 
 
@@ -208,15 +227,95 @@ def _validated_contrast(
     return contrast
 
 
+def _validated_uncertainty(
+    path: Path,
+    receipts: Mapping[str, Mapping[str, object]],
+    contrasts: Mapping[tuple[str, str], tuple[Mapping[str, object], Path]],
+) -> dict[str, object]:
+    uncertainty = _load(path, "phase-space uncertainty")
+    if uncertainty.get("schema_version") != UNCERTAINTY_SCHEMA:
+        raise PhaseSpaceAggregateError("unsupported phase-space uncertainty schema")
+    baseline_id = str(uncertainty.get("baseline_benchmark_id", ""))
+    candidate_id = str(uncertainty.get("candidate_benchmark_id", ""))
+    key = (baseline_id, candidate_id)
+    if baseline_id not in receipts or candidate_id not in receipts or key not in contrasts:
+        raise PhaseSpaceAggregateError("uncertainty references missing evidence")
+    baseline = receipts[baseline_id]
+    candidate = receipts[candidate_id]
+    contrast, contrast_path = contrasts[key]
+    if (
+        uncertainty.get("cohort_fingerprint") != baseline["cohort"]["fingerprint"]
+        or uncertainty.get("replicate_seeds") != baseline["replicate_seeds"]
+        or uncertainty.get("prediction_samples_per_segment")
+        != baseline["prediction_samples_per_segment"]
+        or candidate["cohort"]["fingerprint"] != baseline["cohort"]["fingerprint"]
+    ):
+        raise PhaseSpaceAggregateError("uncertainty identity does not match receipts")
+    integrity = uncertainty.get("integrity")
+    if not isinstance(integrity, Mapping) or (
+        integrity.get("baseline_manifest_sha256")
+        != baseline["integrity"]["manifest_sha256"]
+        or integrity.get("candidate_manifest_sha256")
+        != candidate["integrity"]["manifest_sha256"]
+        or integrity.get("contrast_sha256") != _sha256(contrast_path)
+    ):
+        raise PhaseSpaceAggregateError("uncertainty evidence hash chain is invalid")
+    _hash(integrity.get("protocol_sha256"), "uncertainty protocol")
+    if (
+        uncertainty.get("bootstrap_unit") != "paired_evaluation_segment"
+        or not isinstance(uncertainty.get("evaluation_segment_count"), int)
+        or int(uncertainty["evaluation_segment_count"]) < 2
+        or not isinstance(uncertainty.get("bootstrap_iterations"), int)
+        or int(uncertainty["bootstrap_iterations"]) < 100
+        or uncertainty.get("uncertainty_scope") != "heldout_segment_sampling_only"
+    ):
+        raise PhaseSpaceAggregateError("uncertainty bootstrap protocol is invalid")
+    metrics = uncertainty.get("uncertainty")
+    expected_metrics = (
+        "position_energy_score_d2",
+        "position_cep50_error",
+        "velocity_endpoint_rmse",
+    )
+    if not isinstance(metrics, Mapping) or set(metrics) != set(expected_metrics):
+        raise PhaseSpaceAggregateError("uncertainty metric coverage is invalid")
+    for metric in expected_metrics:
+        values = metrics[metric]
+        if not isinstance(values, Mapping):
+            raise PhaseSpaceAggregateError(f"uncertainty {metric} is invalid")
+        point = _finite(values.get("candidate_minus_baseline"), f"uncertainty {metric}")
+        low = _finite(values.get("ci_low"), f"uncertainty {metric} lower interval")
+        high = _finite(values.get("ci_high"), f"uncertainty {metric} upper interval")
+        fraction = _finite(
+            values.get("bootstrap_fraction_below_zero"),
+            f"uncertainty {metric} direction fraction",
+        )
+        if (
+            low > high
+            or not 0.0 <= fraction <= 1.0
+            or values.get("interval_excludes_zero") != (high < 0.0 or low > 0.0)
+            or not math.isclose(
+                point,
+                float(contrast["delta_summary"][metric]["mean"]),
+                rel_tol=1e-12,
+                abs_tol=1e-12,
+            )
+        ):
+            raise PhaseSpaceAggregateError(f"uncertainty {metric} is inconsistent")
+    return uncertainty
+
+
 def aggregate_phase_space(
     receipt_paths: Sequence[Path | str],
     contrast_paths: Sequence[Path | str],
     output: Path | str,
+    *,
+    uncertainty_paths: Sequence[Path | str] = (),
 ) -> dict[str, object]:
     if len(receipt_paths) < 2:
         raise PhaseSpaceAggregateError("at least two phase-space receipts are required")
     receipt_files = [Path(path).resolve() for path in receipt_paths]
     contrast_files = [Path(path).resolve() for path in contrast_paths]
+    uncertainty_files = [Path(path).resolve() for path in uncertainty_paths]
     receipts: dict[str, dict[str, object]] = {}
     for path in receipt_files:
         receipt = _validated_receipt(path)
@@ -248,6 +347,22 @@ def aggregate_phase_space(
             raise PhaseSpaceAggregateError("phase-space contrast is duplicated")
         seen_contrasts.add(key)
         contrasts.append(contrast)
+    contrast_sources = {
+        (
+            str(contrast["baseline_benchmark_id"]),
+            str(contrast["candidate_benchmark_id"]),
+        ): (contrast, path)
+        for path, contrast in zip(contrast_files, contrasts)
+    }
+    uncertainties = [
+        _validated_uncertainty(path, receipts, contrast_sources)
+        for path in uncertainty_files
+    ]
+    analysis_ids = [str(item.get("analysis_id", "")) for item in uncertainties]
+    if any(not analysis_id for analysis_id in analysis_ids) or len(analysis_ids) != len(
+        set(analysis_ids)
+    ):
+        raise PhaseSpaceAggregateError("uncertainty analysis id is missing or duplicated")
 
     model_rows: list[dict[str, object]] = []
     for path, receipt in sorted(
@@ -305,16 +420,51 @@ def aggregate_phase_space(
             ]
         contrast_rows.append(row)
 
+    uncertainty_rows: list[dict[str, object]] = []
+    for path, uncertainty in sorted(
+        zip(uncertainty_files, uncertainties), key=lambda item: str(item[1]["analysis_id"])
+    ):
+        for metric, values in uncertainty["uncertainty"].items():
+            uncertainty_rows.append(
+                {
+                    "analysis_id": uncertainty["analysis_id"],
+                    "baseline_benchmark_id": uncertainty["baseline_benchmark_id"],
+                    "candidate_benchmark_id": uncertainty["candidate_benchmark_id"],
+                    "metric": metric,
+                    "candidate_minus_baseline": values["candidate_minus_baseline"],
+                    "ci_low": values["ci_low"],
+                    "ci_high": values["ci_high"],
+                    "interval_excludes_zero": values["interval_excludes_zero"],
+                    "bootstrap_fraction_below_zero": values[
+                        "bootstrap_fraction_below_zero"
+                    ],
+                    "bootstrap_unit": uncertainty["bootstrap_unit"],
+                    "evaluation_segment_count": uncertainty[
+                        "evaluation_segment_count"
+                    ],
+                    "bootstrap_iterations": uncertainty["bootstrap_iterations"],
+                    "bootstrap_seed": uncertainty["bootstrap_seed"],
+                    "confidence_level": uncertainty["confidence_level"],
+                    "uncertainty_scope": uncertainty["uncertainty_scope"],
+                    "uncertainty_sha256": _sha256(path),
+                }
+            )
+
     destination = Path(output)
     model_path = destination / "nex326_phase_space_models.csv"
     contrast_path = destination / "nex326_phase_space_contrasts.csv"
+    uncertainty_path = destination / "nex326_phase_space_uncertainty.csv"
     summary_path = destination / "nex326_phase_space_summary.json"
-    if any(path.exists() for path in (model_path, contrast_path, summary_path)):
+    if any(
+        path.exists()
+        for path in (model_path, contrast_path, uncertainty_path, summary_path)
+    ):
         raise PhaseSpaceAggregateError("one or more phase-space aggregate outputs exist")
     destination.mkdir(parents=True, exist_ok=True)
     for path, header, rows in (
         (model_path, MODEL_HEADER, model_rows),
         (contrast_path, CONTRAST_HEADER, contrast_rows),
+        (uncertainty_path, UNCERTAINTY_HEADER, uncertainty_rows),
     ):
         with path.open("w", encoding="utf-8", newline="") as target:
             writer = csv.DictWriter(target, fieldnames=header)
@@ -332,6 +482,7 @@ def aggregate_phase_space(
         "prediction_samples_per_segment": next(iter(protocols))[1],
         "model_count": len(model_rows),
         "contrast_count": len(contrast_rows),
+        "uncertainty_analysis_count": len(uncertainties),
         "descriptive_lowest_energy_score_benchmark": best["benchmark_id"],
         "caveat": "Sampling-seed repeats share one fitted cohort and evaluation set; no inferential or scientific verdict is issued.",
         "inputs": {
@@ -343,6 +494,10 @@ def aggregate_phase_space(
                 {"name": path.name, "sha256": _sha256(path)}
                 for path in sorted(contrast_files)
             ],
+            "uncertainties": [
+                {"name": path.name, "sha256": _sha256(path)}
+                for path in sorted(uncertainty_files)
+            ],
         },
         "artifacts": {
             path.name: {
@@ -350,7 +505,7 @@ def aggregate_phase_space(
                 "sha256": _sha256(path),
                 "size_bytes": path.stat().st_size,
             }
-            for path in (model_path, contrast_path)
+            for path in (model_path, contrast_path, uncertainty_path)
         },
     }
     summary_path.write_text(
@@ -363,9 +518,15 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--receipts", type=Path, nargs="+", required=True)
     parser.add_argument("--contrasts", type=Path, nargs="+", required=True)
+    parser.add_argument("--uncertainties", type=Path, nargs="*", default=())
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args(argv)
-    summary = aggregate_phase_space(args.receipts, args.contrasts, args.output)
+    summary = aggregate_phase_space(
+        args.receipts,
+        args.contrasts,
+        args.output,
+        uncertainty_paths=args.uncertainties,
+    )
     print(json.dumps(summary, ensure_ascii=False, indent=2))
     return 0
 
