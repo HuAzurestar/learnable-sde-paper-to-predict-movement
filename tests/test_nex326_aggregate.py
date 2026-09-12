@@ -89,6 +89,45 @@ def test_tsde_regenerates_process_status_and_plot_from_run_records_only(tmp_path
     assert svg.startswith("<svg") and svg.count("<circle") == 36
 
 
+def test_arm17_terrain_compares_only_with_identical_evaluation_selection(tmp_path):
+    records = load_records(FIXTURE)
+    reference = next(
+        record
+        for record in records
+        if record["arm_id"] == 16 and record["subconfig_id"] == "full"
+    )
+    terrain = next(
+        record
+        for record in records
+        if record["arm_id"] == 17 and record["subconfig_id"] == "terrain"
+    )
+    selection_hash = "a" * 64
+    reference["dataset"]["selected_segment_ids_sha256"] = {
+        "evaluation": selection_hash
+    }
+    terrain["dataset"]["selected_segment_ids_sha256"] = {
+        "evaluation": selection_hash
+    }
+
+    summary = aggregate(records, tmp_path)
+    assert summary["comparison"]["status"] == {
+        "reference": 8,
+        "exploratory_point_estimate": 25,
+        "no_registered_reference": 3,
+    }
+    with (tmp_path / "nex326_pilot_comparisons.csv").open(
+        encoding="utf-8", newline=""
+    ) as source:
+        rows = list(csv.DictReader(source))
+    terrain_row = next(
+        row
+        for row in rows
+        if row["arm_id"] == "17" and row["subconfig_id"] == "terrain"
+    )
+    assert terrain_row["comparison_status"] == "exploratory_point_estimate"
+    assert terrain_row["delta_energy_score_d2"]
+
+
 def test_historical_eight_arm_artifact_cannot_pass_completeness(tmp_path):
     fixture_records = load_records(FIXTURE)
     records = [

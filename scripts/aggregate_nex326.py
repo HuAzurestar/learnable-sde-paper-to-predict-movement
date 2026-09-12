@@ -519,6 +519,25 @@ def _relative_delta(value: float, reference: float) -> float | str:
     return 100.0 * (value - reference) / abs(reference)
 
 
+def _evaluation_selection_fingerprint(
+    record: Mapping[str, object],
+) -> str | None:
+    dataset = record.get("dataset")
+    if not isinstance(dataset, Mapping):
+        return None
+    fingerprints = dataset.get("selected_segment_ids_sha256")
+    if not isinstance(fingerprints, Mapping):
+        return None
+    value = fingerprints.get("evaluation")
+    return (
+        value
+        if isinstance(value, str)
+        and len(value) == 64
+        and all(character in "0123456789abcdef" for character in value)
+        else None
+    )
+
+
 def _comparison_rows(
     records: Sequence[Mapping[str, object]],
 ) -> list[dict[str, object]]:
@@ -537,12 +556,16 @@ def _comparison_rows(
         reference = by_execution.get(reference_key) if reference_key is not None else None
         if record["run_status"] != "succeeded":
             comparison_status = "data_unavailable"
-        elif key == (17, "terrain"):
-            comparison_status = "requires_coverage_matched_reference"
         elif reference_key is None:
             comparison_status = "no_registered_reference"
         elif reference is None or reference["run_status"] != "succeeded":
             comparison_status = "reference_unavailable"
+        elif key == (17, "terrain") and (
+            _evaluation_selection_fingerprint(record) is None
+            or _evaluation_selection_fingerprint(record)
+            != _evaluation_selection_fingerprint(reference)
+        ):
+            comparison_status = "requires_coverage_matched_reference"
         elif key == reference_key:
             comparison_status = "reference"
         else:

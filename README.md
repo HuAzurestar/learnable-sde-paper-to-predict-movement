@@ -39,6 +39,10 @@ approved aggregate material.
 `scripts/aggregate_nex326.py` validates and summarizes the frozen 22-arm,
 36-execution RunRecord matrix. `scripts/aggregate_nex326_replicates.py` then combines
 its independently validated per-seed summaries without issuing an inferential verdict.
+Arm 17 terrain is compared with its registered Full reference only when both records
+provide the same evaluation segment-ID fingerprint; otherwise it remains
+`requires_coverage_matched_reference`. Prediction artifacts are still checked for
+identical segment IDs and targets before paired bootstrap intervals are produced.
 
 The supplemental four-dimensional benchmark stays outside that frozen arm matrix.
 Aggregate its compact PSDE receipts and paired contrasts with:
