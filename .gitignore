@@ -331,6 +331,8 @@ TSWLatexianTemp*
 #*Notes.bib
 
 ## Restricted research assets (never commit)
+__pycache__/
+*.py[cod]
 data/
 trajectory/
 checkpoints/
