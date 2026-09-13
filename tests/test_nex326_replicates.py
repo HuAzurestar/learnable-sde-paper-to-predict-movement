@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import csv
 import hashlib
 import json
 from pathlib import Path
@@ -77,6 +78,12 @@ def test_cross_replicate_aggregate_is_descriptive_and_hash_bound(tmp_path):
     reference = summary["artifacts"]["nex326_cross_replicate_comparisons.csv"]
     table = output / reference["path"]
     assert hashlib.sha256(table.read_bytes()).hexdigest() == reference["sha256"]
+    with table.open(encoding="utf-8", newline="") as source:
+        first = next(csv.DictReader(source))
+    assert "delta_hdr90_abs_error_from_90_mean" in first
+    assert "delta_hdr90_coverage_mean" not in first
+    assert first["reference_arm_id"]
+    assert first["reference_subconfig_id"]
 
 
 def test_cross_replicate_aggregate_rejects_tampered_input(tmp_path):

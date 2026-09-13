@@ -198,6 +198,73 @@ def _sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def _scope_contract(path: Path | str | None) -> dict[str, object] | None:
+    if path is None:
+        return None
+    source = Path(path).resolve()
+    try:
+        policy = json.loads(source.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise AggregateError("scope policy cannot be read") from exc
+    exclusions = policy.get("approved_excluded_arms")
+    if (
+        policy.get("schema_version") != "pirc19-reproduction-scope-v1"
+        or policy.get("experiment_id") != "NEX326"
+        or not isinstance(exclusions, list)
+    ):
+        raise AggregateError("scope policy does not match the NEX326 contract")
+    try:
+        excluded_ids = {int(item["arm_id"]) for item in exclusions}
+    except (KeyError, TypeError, ValueError) as exc:
+        raise AggregateError("scope policy exclusions are invalid") from exc
+    if excluded_ids != {13, 17, 22}:
+        raise AggregateError("approved excluded arms must remain exactly 13, 17, and 22")
+    expected_keys = {
+        (arm_id, subconfig_id)
+        for arm_id, subconfig_ids in EXPECTED_EXECUTIONS.items()
+        if arm_id not in excluded_ids
+        for subconfig_id in subconfig_ids
+    }
+    if int(policy.get("required_execution_count", -1)) != len(expected_keys):
+        raise AggregateError("scope policy required execution count is stale")
+    return {
+        "source": source,
+        "sha256": _sha256(source),
+        "excluded_ids": excluded_ids,
+        "expected_keys": expected_keys,
+    }
+
+
+def _verify_scoped_manifest(
+    root: Path,
+    records: Sequence[Mapping[str, object]],
+    scope: Mapping[str, object],
+) -> dict[str, object]:
+    manifest_path = root / "manifest.json"
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise AggregateError("scoped records manifest cannot be read") from exc
+    arm_ids = sorted({int(record["arm_id"]) for record in records})
+    record_paths = sorted(f"{record['run_id']}/run_record.json" for record in records)
+    manifest_scope = manifest.get("scope")
+    if (
+        manifest.get("schema_version") != "nex326-scoped-run-manifest-v1"
+        or manifest.get("record_count") != len(records)
+        or manifest.get("arm_ids") != arm_ids
+        or sorted(manifest.get("run_records", [])) != record_paths
+        or not isinstance(manifest_scope, Mapping)
+        or manifest_scope.get("policy_sha256") != scope["sha256"]
+        or manifest_scope.get("required_execution_count") != len(records)
+    ):
+        raise AggregateError("scoped records manifest does not match records or policy")
+    return {
+        "path": manifest_path.name,
+        "sha256": _sha256(manifest_path),
+        "size_bytes": manifest_path.stat().st_size,
+    }
+
+
 def _verify_directory_artifacts(root: Path, record: Mapping[str, object]) -> None:
     artifacts = record.get("artifacts")
     if not isinstance(artifacts, Mapping) or not artifacts:
@@ -240,7 +307,11 @@ def load_records(source: Path | str) -> list[dict[str, object]]:
     return [dict(item) for item in payload]
 
 
-def validate_records(records: Sequence[Mapping[str, object]]) -> None:
+def validate_records(
+    records: Sequence[Mapping[str, object]],
+    *,
+    scope_policy: Path | str | None = None,
+) -> None:
     if not records:
         raise AggregateError("no NEX326 records supplied")
     keys: set[tuple[int, str]] = set()
@@ -394,22 +465,32 @@ def validate_records(records: Sequence[Mapping[str, object]]) -> None:
             anchor_configs.add(json.dumps(record.get("config"), sort_keys=True, separators=(",", ":")))
             if record.get("full_config_id") != "NEX326-FULL-v2":
                 raise AggregateError(f"arm {arm_id} references a different Full configuration")
+    scope = _scope_contract(scope_policy)
+    expected_keys = (
+        scope["expected_keys"]
+        if scope is not None
+        else {
+            (arm_id, subconfig_id)
+            for arm_id, subconfig_ids in EXPECTED_EXECUTIONS.items()
+            for subconfig_id in subconfig_ids
+        }
+    )
+    expected_arms = {arm_id for arm_id, _ in expected_keys}
     arms = {arm_id for arm_id, _ in keys}
-    if arms != EXPECTED_ARMS:
+    if arms != expected_arms:
         # This explicitly rejects the historical same-name eight-arm result.
-        raise AggregateError(
-            f"NEX326 requires arms 1..22; observed {len(arms)}: {sorted(arms)}"
+        requirement = (
+            "arms 1..22" if scope is None else f"arms {sorted(expected_arms)}"
         )
-    expected_keys = {
-        (arm_id, subconfig_id)
-        for arm_id, subconfig_ids in EXPECTED_EXECUTIONS.items()
-        for subconfig_id in subconfig_ids
-    }
+        raise AggregateError(
+            f"NEX326 requires {requirement}; "
+            f"observed {len(arms)}: {sorted(arms)}"
+        )
     if keys != expected_keys:
         missing = sorted(expected_keys - keys)
         unexpected = sorted(keys - expected_keys)
         raise AggregateError(
-            "NEX326 requires the exact 36-execution matrix; "
+            f"NEX326 requires the exact {len(expected_keys)}-execution matrix; "
             f"missing={missing}, unexpected={unexpected}"
         )
     arm_groups: dict[int, set[str]] = defaultdict(set)
@@ -418,7 +499,7 @@ def validate_records(records: Sequence[Mapping[str, object]]) -> None:
     if any(len(groups) != 1 for groups in arm_groups.values()):
         raise AggregateError("one arm cannot appear in multiple groups")
     observed_counts = Counter(next(iter(groups)) for groups in arm_groups.values())
-    if dict(observed_counts) != GROUP_COUNTS:
+    if scope is None and dict(observed_counts) != GROUP_COUNTS:
         raise AggregateError(f"group counts must be {GROUP_COUNTS}, got {dict(observed_counts)}")
     if anchor_ids != FULL_ANCHORS or len(anchor_configs) != 1:
         raise AggregateError("the six Full slot anchors are missing or do not share one configuration")
@@ -861,8 +942,15 @@ def aggregate(
     output: Path | str,
     *,
     records_root: Path | str | None = None,
+    scope_policy: Path | str | None = None,
 ) -> dict[str, object]:
-    validate_records(records)
+    validate_records(records, scope_policy=scope_policy)
+    scope = _scope_contract(scope_policy)
+    scoped_manifest = None
+    if scope is not None:
+        if records_root is None:
+            raise AggregateError("scoped aggregation requires a records directory")
+        scoped_manifest = _verify_scoped_manifest(Path(records_root), records, scope)
     destination = Path(output)
     destination.mkdir(parents=True, exist_ok=True)
     process_path = destination / "nex326_process.csv"
@@ -880,7 +968,7 @@ def aggregate(
     summary = {
         "schema_version": "nex326-tsde-aggregate-v1",
         "spec_version": SPEC_VERSION,
-        "arm_count": 22,
+        "arm_count": len({int(item["arm_id"]) for item in records}),
         "execution_count": len(records),
         "protocol_seed": next(iter({int(item["seed"]) for item in records})),
         "replicate_seed": next(iter({int(item["replicate_seed"]) for item in records})),
@@ -940,6 +1028,13 @@ def aggregate(
             for path in (process_path, status_path, comparison_path, plot_path)
         },
     }
+    if scope is not None:
+        summary["scope"] = {
+            "policy_file": Path(scope["source"]).name,
+            "policy_sha256": scope["sha256"],
+            "approved_excluded_arm_ids": sorted(scope["excluded_ids"]),
+            "records_manifest": scoped_manifest,
+        }
     (destination / "nex326_summary.json").write_text(
         json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8"
     )
@@ -950,11 +1045,17 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--records", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument(
+        "--scope-policy",
+        type=Path,
+        help="approved exclusion policy for a scoped records directory",
+    )
     args = parser.parse_args(argv)
     summary = aggregate(
         load_records(args.records),
         args.output,
         records_root=args.records if args.records.is_dir() else None,
+        scope_policy=args.scope_policy,
     )
     print(json.dumps(summary, ensure_ascii=False, indent=2))
     return 0
