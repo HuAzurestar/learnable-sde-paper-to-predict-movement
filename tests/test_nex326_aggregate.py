@@ -8,7 +8,13 @@ from pathlib import Path
 
 import pytest
 
-from scripts.aggregate_nex326 import AggregateError, aggregate, load_records
+from scripts.aggregate_nex326 import (
+    AggregateError,
+    _verify_scoped_manifest,
+    aggregate,
+    load_records,
+    validate_records,
+)
 
 
 FIXTURE = Path(__file__).parent / "fixtures" / "nex326_run_records.json"
@@ -154,6 +160,79 @@ def test_missing_registered_subconfig_cannot_pass_completeness(tmp_path):
     ]
     with pytest.raises(AggregateError, match="exact 36-execution matrix"):
         aggregate(records, tmp_path)
+
+
+def test_approved_scope_accepts_exact_28_execution_matrix(tmp_path):
+    records = [
+        record
+        for record in load_records(FIXTURE)
+        if record["arm_id"] not in {13, 17, 22}
+    ]
+    policy = {
+        "schema_version": "pirc19-reproduction-scope-v1",
+        "experiment_id": "NEX326",
+        "required_execution_count": 28,
+        "approved_excluded_arms": [
+            {"arm_id": arm_id, "reason": "fixture"}
+            for arm_id in (13, 17, 22)
+        ],
+    }
+    policy_path = tmp_path / "scope.json"
+    policy_path.write_text(json.dumps(policy), encoding="utf-8")
+
+    validate_records(records, scope_policy=policy_path)
+
+    records.pop()
+    with pytest.raises(AggregateError, match="exact 28-execution matrix"):
+        validate_records(records, scope_policy=policy_path)
+
+
+def test_scope_policy_rejects_exclusion_drift(tmp_path):
+    records = load_records(FIXTURE)
+    policy = {
+        "schema_version": "pirc19-reproduction-scope-v1",
+        "experiment_id": "NEX326",
+        "required_execution_count": 35,
+        "approved_excluded_arms": [{"arm_id": 13, "reason": "fixture"}],
+    }
+    policy_path = tmp_path / "scope.json"
+    policy_path.write_text(json.dumps(policy), encoding="utf-8")
+
+    with pytest.raises(AggregateError, match="exactly 13, 17, and 22"):
+        validate_records(records, scope_policy=policy_path)
+
+
+def test_scoped_manifest_binds_records_and_policy_hash(tmp_path):
+    records = [
+        record
+        for record in load_records(FIXTURE)
+        if record["arm_id"] not in {13, 17, 22}
+    ]
+    policy_hash = "a" * 64
+    manifest = {
+        "schema_version": "nex326-scoped-run-manifest-v1",
+        "record_count": 28,
+        "arm_ids": sorted({record["arm_id"] for record in records}),
+        "run_records": [
+            f"{record['run_id']}/run_record.json" for record in records
+        ],
+        "scope": {
+            "policy_sha256": policy_hash,
+            "required_execution_count": 28,
+        },
+    }
+    (tmp_path / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+
+    reference = _verify_scoped_manifest(
+        tmp_path, records, {"sha256": policy_hash}
+    )
+    assert reference["path"] == "manifest.json"
+    assert len(reference["sha256"]) == 64
+
+    manifest["scope"]["policy_sha256"] = "b" * 64
+    (tmp_path / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+    with pytest.raises(AggregateError, match="does not match records or policy"):
+        _verify_scoped_manifest(tmp_path, records, {"sha256": policy_hash})
 
 
 def test_one_aggregate_cannot_mix_replicate_seeds(tmp_path):
