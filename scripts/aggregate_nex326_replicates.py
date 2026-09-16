@@ -14,13 +14,15 @@ from typing import Mapping, Sequence
 
 METRICS = (
     "delta_energy_score_d2",
-    "delta_hdr90_coverage",
+    "delta_hdr90_abs_error_from_90",
     "delta_cep50_error",
 )
 OUTPUT_HEADER = (
     "arm_id",
     "subconfig_id",
     "slot",
+    "reference_arm_id",
+    "reference_subconfig_id",
     "comparison_status",
     "replicate_status",
     "replicate_count",
@@ -120,6 +122,23 @@ def aggregate_replicates(
         if not isinstance(entry, Mapping) or not isinstance(entry.get("manifest"), Mapping):
             raise ReplicateAggregateError("batch contains an invalid replicate entry")
         _verified_artifact(batch_root, entry["manifest"], "per-seed manifest")
+    execution_count = int(batch.get("executions_per_replicate", 36))
+    batch_scope = batch.get("scope_policy")
+    if batch_scope is None:
+        expected_arm_count = 22
+        if execution_count != 36:
+            raise ReplicateAggregateError("unscoped batch must contain 36 executions")
+    else:
+        expected_arm_count = 19
+        if (
+            execution_count != 28
+            or not isinstance(batch_scope, Mapping)
+            or not isinstance(batch_scope.get("sha256"), str)
+            or len(batch_scope["sha256"]) != 64
+        ):
+            raise ReplicateAggregateError("scoped batch identity is invalid")
+    if any(entry.get("record_count") != execution_count for entry in entries):
+        raise ReplicateAggregateError("batch replicate execution counts are inconsistent")
 
     if len(summary_paths) != len(seeds):
         raise ReplicateAggregateError("one aggregate summary is required for every seed")
@@ -140,8 +159,8 @@ def aggregate_replicates(
             summary.get("schema_version") != "nex326-tsde-aggregate-v1"
             or summary.get("spec_version") != batch.get("spec_version")
             or summary.get("protocol_seed") != batch.get("protocol_seed")
-            or summary.get("execution_count") != 36
-            or summary.get("arm_count") != 22
+            or summary.get("execution_count") != execution_count
+            or summary.get("arm_count") != expected_arm_count
             or summary.get("dataset_fingerprint") != batch.get("cohort", {}).get("fingerprint")
             or (
                 batch_source_bundle is not None
@@ -155,6 +174,19 @@ def aggregate_replicates(
             )
         ):
             raise ReplicateAggregateError(f"aggregate summary for seed {seed} is incompatible")
+        summary_scope = summary.get("scope")
+        if batch_scope is not None and (
+            not isinstance(summary_scope, Mapping)
+            or summary_scope.get("policy_sha256") != batch_scope["sha256"]
+            or summary_scope.get("approved_excluded_arm_ids") != [13, 17, 22]
+        ):
+            raise ReplicateAggregateError(
+                f"aggregate summary for seed {seed} has incompatible scope"
+            )
+        if batch_scope is None and summary_scope is not None:
+            raise ReplicateAggregateError(
+                f"aggregate summary for seed {seed} unexpectedly declares a scope"
+            )
         artifacts = summary.get("artifacts")
         if not isinstance(artifacts, Mapping):
             raise ReplicateAggregateError(f"aggregate summary for seed {seed} lacks artifacts")
@@ -166,8 +198,10 @@ def aggregate_replicates(
         )
         with comparison_path.open(encoding="utf-8", newline="") as source:
             rows = list(csv.DictReader(source))
-        if len(rows) != 36:
-            raise ReplicateAggregateError(f"seed {seed} must contain 36 comparison rows")
+        if len(rows) != execution_count:
+            raise ReplicateAggregateError(
+                f"seed {seed} must contain {execution_count} comparison rows"
+            )
         summaries[seed] = summary
         comparison_rows[seed] = rows
         inputs.append(
@@ -186,7 +220,7 @@ def aggregate_replicates(
     expected_keys: set[tuple[int, str]] | None = None
     for seed, rows in comparison_rows.items():
         index = {(int(row["arm_id"]), row["subconfig_id"]): row for row in rows}
-        if len(index) != 36:
+        if len(index) != execution_count:
             raise ReplicateAggregateError(f"seed {seed} repeats a comparison execution")
         if expected_keys is None:
             expected_keys = set(index)
@@ -204,10 +238,13 @@ def aggregate_replicates(
         if len(comparison_states) != 1 or len(references) != 1:
             raise ReplicateAggregateError(f"comparison contract differs across seeds for {key}")
         run_states = {row["run_status"] for row in rows}
+        reference_arm_id, reference_subconfig_id = next(iter(references))
         row_out: dict[str, object] = {
             "arm_id": key[0],
             "subconfig_id": key[1],
             "slot": rows[0]["slot"],
+            "reference_arm_id": reference_arm_id,
+            "reference_subconfig_id": reference_subconfig_id,
             "comparison_status": next(iter(comparison_states)),
             "replicate_status": next(iter(run_states)) if len(run_states) == 1 else "mixed",
             "replicate_count": len(seeds),
@@ -256,7 +293,7 @@ def aggregate_replicates(
         "protocol_seed": batch["protocol_seed"],
         "replicate_seeds": list(seeds),
         "replicate_count": len(seeds),
-        "execution_count_per_replicate": 36,
+        "execution_count_per_replicate": execution_count,
         "dataset_fingerprint": batch["cohort"]["fingerprint"],
         "implementation_source_bundle_sha256": batch_source_bundle,
         "implementation_execution_identity_sha256": batch_execution_identity,
@@ -272,6 +309,12 @@ def aggregate_replicates(
             }
         },
     }
+    if batch_scope is not None:
+        summary["scope"] = {
+            "policy_file": batch_scope.get("source_file"),
+            "policy_sha256": batch_scope["sha256"],
+            "approved_excluded_arm_ids": [13, 17, 22],
+        }
     (destination / "nex326_replicate_summary.json").write_text(
         json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
