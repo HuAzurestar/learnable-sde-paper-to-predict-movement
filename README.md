@@ -71,6 +71,24 @@ evaluation set are not treated as independent scientific replications.
 When supplied, paired-segment uncertainty files are checked against both receipt
 manifest hashes and the exact contrast-file hash before their intervals are emitted.
 
+## Shared research evidence
+
+`scripts/pirc25/aggregate.py` consumes the authorized, hash-bound shared-runtime
+bundle. Missing/failed cells stay in the expected denominator; seed repeats are
+averaged within independent blocks. Mixed units/protocols are rejected. Paired
+intervals are unavailable with fewer than two complete independent blocks.
+Formal comparisons require a frozen comparison plan and qualified inputs.
+
+```console
+python scripts/pirc25/aggregate.py /absolute/runtime/bundle.json --expected-hash BUNDLE_HASH --output /absolute/runtime/evidence-v1
+python -m pytest tests/test_shared_evidence.py -q
+```
+
+Output must stay outside Git. The immutable package contains `aggregate.json`,
+`metrics.csv`, `PaperEvidenceIndex.json` and a file-hash manifest. PSDE's read-only
+UI imports these exact bytes. This adds no scientific manuscript claim, executes
+no experiment and reads no trajectory data.
+
 ## CI/CD and releases
 
 Pull requests to `main` run validation only. When one is merged, GitHub pushes
