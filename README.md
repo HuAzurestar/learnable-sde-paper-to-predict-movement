@@ -89,6 +89,14 @@ runtime to recover dimensions lost by an older exporter. Budget arm IDs do not
 change. New runtime exports additionally bind dimensions to the hashed registered
 cell, and formal validation checks them against the admission receipt.
 
+New runtime bundles also freeze all-attempt reservation/settlement sources.
+The aggregator validates source hashes, identities and charge policy, rejects
+duplicate sources, and retains failed/retried resource use in each stratum's
+cost summary. Quality can exclude incomplete blocks without erasing their costs.
+CSV and evidence claims carry the same `slot-ms` charged/reserved/measured values;
+unknown measured cost remains null and legacy absent costs remain unavailable.
+These are frozen export costs, not a query of the runtime's current arm balance.
+
 `--formal` also validates each successful cell's `pirc25-admission-v1` receipt:
 spec/cell/attempt identity, protocol and execution grant, actual input exposure
 events, frozen preregistration/history, package/upstream/command bindings, and

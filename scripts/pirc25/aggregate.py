@@ -23,9 +23,11 @@ from statistics import mean
 if __package__:
     from .admission import validate_admission
     from .dimensions import comparison_dimensions
+    from .costs import validate_cost, summarize_cost
 else:
     from admission import validate_admission
     from dimensions import comparison_dimensions
+    from costs import validate_cost, summarize_cost
 
 
 def canonical(value):
@@ -55,7 +57,9 @@ def validate_bundle(bundle, *, formal=False):
         raise ValueError("every expected cell needs exactly one explicit disposition")
     compatibility = None
     seen = set()
+    cost_sources = set()
     for cell in rows.values():
+        validate_cost(cell, bundle, cost_sources)
         if any(cell[key] != expected[cell["cell_hash"]][key] for key in ("arm_id", "block_id", "seed")):
             raise ValueError("cell identity changed")
         dimensions = comparison_dimensions(cell)
@@ -147,6 +151,7 @@ def aggregate_stratum(rows, baseline, candidates):
         metrics = {metric: mean(block[metric] for block in block_metrics.values())
                    for metric in next(iter(block_metrics.values()), {})}
         arms.append({"arm_id": arm_id, "expected_cells": len(cells), "successful_cells": len(successful),
+                     "cost": summarize_cost(cells),
                      "dispositions": dict(sorted(Counter(c["status"] for c in cells).items())),
                      "expected_blocks": len(blocks), "independent_n": len(complete),
                      "complete_block_ids": sorted(complete), "incomplete_block_ids": sorted(set(blocks) - complete.keys()),
@@ -181,14 +186,15 @@ def aggregate_stratum(rows, baseline, candidates):
 def csv_bytes(aggregate_value):
     stream = io.StringIO(newline="")
     writer = csv.writer(stream, lineterminator="\n")
-    writer.writerow(["aggregate_hash", "arm_id", "metric", "value", "unit", "independent_n", "expected_cells", "successful_cells", "status", "stratum_id", "comparison_dimensions"])
+    writer.writerow(["aggregate_hash", "arm_id", "metric", "value", "unit", "independent_n", "expected_cells", "successful_cells", "status", "stratum_id", "comparison_dimensions", "charged_ms", "reserved_ms", "measured_ms", "cost_unit", "cost_scope"])
     for arm in aggregate_value["arms"]:
+        costs = [arm["cost"][key] for key in ("charged_ms", "reserved_ms", "measured_ms", "unit", "scope")]
         if not arm["metrics"]:
             writer.writerow([aggregate_value["aggregate_hash"], arm["arm_id"], "", "", "", arm["independent_n"],
-                             arm["expected_cells"], arm["successful_cells"], arm["status"], arm["stratum_id"], canonical(arm["comparison_dimensions"]).decode()])
+                             arm["expected_cells"], arm["successful_cells"], arm["status"], arm["stratum_id"], canonical(arm["comparison_dimensions"]).decode(), *costs])
         for metric, value in sorted(arm["metrics"].items()):
             writer.writerow([aggregate_value["aggregate_hash"], arm["arm_id"], metric, value, arm["metric_units"][metric],
-                             arm["independent_n"], arm["expected_cells"], arm["successful_cells"], arm["status"], arm["stratum_id"], canonical(arm["comparison_dimensions"]).decode()])
+                             arm["independent_n"], arm["expected_cells"], arm["successful_cells"], arm["status"], arm["stratum_id"], canonical(arm["comparison_dimensions"]).decode(), *costs])
     return stream.getvalue().encode()
 
 
@@ -200,6 +206,7 @@ def evidence_index(value, csv_content):
                 {"claim_id": fingerprint([arm['arm_id'], arm['stratum_id'], metric]), "metric": metric, "value": number,
                  "arm_id": arm["arm_id"], "stratum_id": arm["stratum_id"], "comparison_dimensions": arm["comparison_dimensions"],
                  "evidence_status": arm["status"], "independent_n": arm["independent_n"],
+                 "cost": arm["cost"],
                  "unit": arm["metric_units"][metric], "aggregate_hash": value["aggregate_hash"],
                  "attempt_ids": [c["attempt_id"] for c in value["cell_dispositions"]
                                  if c["arm_id"] == arm["arm_id"] and c["status"] == "SUCCEEDED"
