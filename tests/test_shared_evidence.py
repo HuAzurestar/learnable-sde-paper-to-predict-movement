@@ -31,6 +31,24 @@ def seal(value):
     return {**value, "bundle_hash": fingerprint({k: v for k, v in value.items() if k != "bundle_hash"})}
 
 
+@pytest.mark.parametrize("status", ["MISSING", "FAILED", "TIMEOUT", "BUDGET_EXHAUSTED", "RUNNING"])
+def test_status_rates_use_registered_cells_and_survive_csv(status):
+    value = bundle()
+    value["cells"][0].update(status=status, metrics=None, artifact_id=None)
+    result = aggregate(seal(value))
+    arm = result["arms"][0]
+    rates = arm["status_rates"]
+    assert rates["denominator"] == 4
+    assert rates["denominator_kind"] == "registered-cells-in-arm-stratum"
+    assert rates["unit"] == "fraction"
+    assert rates["values"][status] == 0.25
+    assert rates["values"]["SUCCEEDED"] == 0.75
+    assert sum(rates["values"].values()) == 1
+    assert arm["independent_n"] == 1  # rate denominator is not scientific n
+    rows = list(csv.DictReader(io.StringIO(csv_bytes(result).decode())))
+    assert all(json.loads(row["status_rates"]) == rates for row in rows if row["arm_id"] == arm["arm_id"])
+
+
 def test_seed_replicates_are_not_independent_blocks():
     value = aggregate(bundle())
     assert value["expected_cell_count"] == 8
