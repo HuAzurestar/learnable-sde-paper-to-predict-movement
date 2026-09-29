@@ -38,6 +38,17 @@ jobs:
         run: python scripts/check_pr_title.py "$PR_TITLE" "$PR_BRANCH"
       - name: Public release scan
         run: python scripts/check_public_release.py
+  evidence:
+    name: test / shared evidence contracts
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.10"
+      - run: python -m pip install pytest
+      - run: python -m pytest tests/test_shared_evidence.py -q
   tex-en:
     name: tex / English PDF and references
     runs-on: ubuntu-latest
@@ -89,7 +100,7 @@ jobs:
   required:
     name: ci / required
     if: ${{ always() }}
-    needs: [policy, tex-en, tex-zh]
+    needs: [policy, evidence, tex-en, tex-zh]
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -97,11 +108,12 @@ jobs:
         run: |
           {
             echo "## Required gate"
-            echo "Passes only when policy plus both English and Chinese PDF gates succeed."
+            echo "Passes only when policy, shared evidence, and both PDF gates succeed."
           } >> "$GITHUB_STEP_SUMMARY"
       - name: Require successful gates
         env:
           POLICY: ${{ needs.policy.result }}
+          EVIDENCE: ${{ needs.evidence.result }}
           TEX_EN: ${{ needs.tex-en.result }}
           TEX_ZH: ${{ needs.tex-zh.result }}
-        run: test "$POLICY" = success && test "$TEX_EN" = success && test "$TEX_ZH" = success
+        run: test "$POLICY" = success && test "$EVIDENCE" = success && test "$TEX_EN" = success && test "$TEX_ZH" = success
