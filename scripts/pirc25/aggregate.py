@@ -150,9 +150,12 @@ def aggregate_stratum(rows, baseline, candidates):
         successful = [c for c in cells if c["status"] == "SUCCEEDED"]
         metrics = {metric: mean(block[metric] for block in block_metrics.values())
                    for metric in next(iter(block_metrics.values()), {})}
+        dispositions = dict(sorted(Counter(c["status"] for c in cells).items()))
         arms.append({"arm_id": arm_id, "expected_cells": len(cells), "successful_cells": len(successful),
                      "cost": summarize_cost(cells),
-                     "dispositions": dict(sorted(Counter(c["status"] for c in cells).items())),
+                     "dispositions": dispositions,
+                     "status_rates": {"denominator": len(cells), "denominator_kind": "registered-cells-in-arm-stratum",
+                                      "unit": "fraction", "values": {state: count / len(cells) for state, count in dispositions.items()}},
                      "expected_blocks": len(blocks), "independent_n": len(complete),
                      "complete_block_ids": sorted(complete), "incomplete_block_ids": sorted(set(blocks) - complete.keys()),
                      "metrics": metrics, "metric_units": successful[0]["metric_units"] if successful else {},
@@ -186,15 +189,16 @@ def aggregate_stratum(rows, baseline, candidates):
 def csv_bytes(aggregate_value):
     stream = io.StringIO(newline="")
     writer = csv.writer(stream, lineterminator="\n")
-    writer.writerow(["aggregate_hash", "arm_id", "metric", "value", "unit", "independent_n", "expected_cells", "successful_cells", "status", "stratum_id", "comparison_dimensions", "charged_ms", "reserved_ms", "measured_ms", "cost_unit", "cost_scope"])
+    writer.writerow(["aggregate_hash", "arm_id", "metric", "value", "unit", "independent_n", "expected_cells", "successful_cells", "status", "stratum_id", "comparison_dimensions", "charged_ms", "reserved_ms", "measured_ms", "cost_unit", "cost_scope", "status_rates"])
     for arm in aggregate_value["arms"]:
         costs = [arm["cost"][key] for key in ("charged_ms", "reserved_ms", "measured_ms", "unit", "scope")]
+        rates = canonical(arm.get("status_rates")).decode()
         if not arm["metrics"]:
             writer.writerow([aggregate_value["aggregate_hash"], arm["arm_id"], "", "", "", arm["independent_n"],
-                             arm["expected_cells"], arm["successful_cells"], arm["status"], arm["stratum_id"], canonical(arm["comparison_dimensions"]).decode(), *costs])
+                             arm["expected_cells"], arm["successful_cells"], arm["status"], arm["stratum_id"], canonical(arm["comparison_dimensions"]).decode(), *costs, rates])
         for metric, value in sorted(arm["metrics"].items()):
             writer.writerow([aggregate_value["aggregate_hash"], arm["arm_id"], metric, value, arm["metric_units"][metric],
-                             arm["independent_n"], arm["expected_cells"], arm["successful_cells"], arm["status"], arm["stratum_id"], canonical(arm["comparison_dimensions"]).decode(), *costs])
+                             arm["independent_n"], arm["expected_cells"], arm["successful_cells"], arm["status"], arm["stratum_id"], canonical(arm["comparison_dimensions"]).decode(), *costs, rates])
     return stream.getvalue().encode()
 
 
