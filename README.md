@@ -78,6 +78,17 @@ bundle. Missing/failed cells stay in the expected denominator; seed repeats are
 averaged within independent blocks. Mixed units/protocols are rejected. Paired
 intervals are unavailable with fewer than two complete independent blocks.
 Formal comparisons require a frozen comparison plan and qualified inputs.
+Comparison summaries are keyed by `(arm_id, stratum_id)`. Exact
+`comparison_dimensions` (including horizon/region/scenario and explicitly
+registered extension axes) are preserved in aggregate rows, CSV, and evidence
+claims. Seeds are averaged only within a block and stratum; paired comparisons
+never pool different horizons. Absent arms and incomplete blocks produce explicit
+no-pair dispositions. Evidence claim sources contain only contributing complete
+blocks. Legacy dimensionless bundles use one empty stratum; re-export from the
+runtime to recover dimensions lost by an older exporter. Budget arm IDs do not
+change. New runtime exports additionally bind dimensions to the hashed registered
+cell, and formal validation checks them against the admission receipt.
+
 `--formal` also validates each successful cell's `pirc25-admission-v1` receipt:
 spec/cell/attempt identity, protocol and execution grant, actual input exposure
 events, frozen preregistration/history, package/upstream/command bindings, and

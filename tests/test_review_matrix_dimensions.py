@@ -89,3 +89,49 @@ def test_true_duplicate_inside_one_stratum_remains_rejected():
         ("cell_hash", "arm_id", "block_id", "seed", "comparison_dimensions")})
     with pytest.raises(ValueError, match="duplicate"):
         aggregate(seal(value))
+
+
+def test_absent_arm_in_stratum_never_compares_across_horizons():
+    value = matrix()
+    value["cells"] = [row for row in value["cells"] if
+                      row["arm_id"] == ("baseline" if row["comparison_dimensions"]["horizon"] == 1 else "candidate")]
+    retained = {row["cell_hash"] for row in value["cells"]}
+    value["expected_cells"] = [row for row in value["expected_cells"] if row["cell_hash"] in retained]
+    result = aggregate(seal(value))
+    assert len(result["comparisons"]) == 2
+    assert all(row["independent_n"] == 0 and row["metrics"] == {} for row in result["comparisons"])
+    assert all(len(row["absent_arms"]) == 1 for row in result["comparisons"])
+
+
+def test_claim_sources_exclude_successes_in_incomplete_blocks():
+    value = matrix()
+    value["cells"][0].update(status="TIMEOUT", metrics=None)
+    excluded = value["cells"][1]["attempt_id"]
+    result = aggregate(seal(value))
+    claims = evidence_index(result, csv_bytes(result))["claims"]
+    assert all(excluded not in row["attempt_ids"] for row in claims)
+
+
+@pytest.mark.parametrize("dimension", [None, [], {"seed": 2}])
+def test_invalid_dimension_mapping_is_rejected(dimension):
+    value = matrix()
+    value["cells"][0]["comparison_dimensions"] = dimension
+    value["expected_cells"][0]["comparison_dimensions"] = dimension
+    with pytest.raises(ValueError, match="dimension"):
+        aggregate(seal(value))
+
+
+def test_registered_cell_prevents_resealed_dimension_omission():
+    value = bundle()
+    for row, expected in zip(value["cells"], value["expected_cells"]):
+        registered = {key: row[key] for key in ("arm_id", "block_id", "seed")}
+        registered["horizon"] = 1
+        row["registered_cell"] = registered
+        row["cell_hash"] = expected["cell_hash"] = fingerprint(registered)
+        row["comparison_dimensions"] = {"horizon": 1}
+        expected["comparison_dimensions"] = {"horizon": 1}
+    aggregate(seal(value))
+    value["cells"][0]["comparison_dimensions"] = {}
+    value["expected_cells"][0]["comparison_dimensions"] = {}
+    with pytest.raises(ValueError, match="registered cell dimension"):
+        aggregate(seal(value))

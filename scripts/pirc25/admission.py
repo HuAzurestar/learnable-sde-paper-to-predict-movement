@@ -9,6 +9,11 @@ from datetime import datetime
 import hashlib
 import json
 
+if __package__:
+    from .dimensions import comparison_dimensions, canonical
+else:
+    from dimensions import comparison_dimensions, canonical
+
 
 def fingerprint(value):
     return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(",", ":"),
@@ -60,6 +65,7 @@ def validate_admission(bundle, row):
                 fingerprint(cell) == receipt["cell_hash"] == row["cell_hash"] and cell in spec["cells"], "spec/cell identity")
         require(receipt["attempt_id"] == row["attempt_id"] and receipt["run_id"] == row["run_id"], "attempt/run identity")
         require(all(cell[key] == row[key] for key in ("arm_id", "block_id", "seed")), "matrix identity")
+        require(canonical(comparison_dimensions(cell)) == canonical(comparison_dimensions(row)), "matrix dimensions")
         require(all(spec[key] == bundle[key] for key in ("study_id", "code_hash", "data_hash", "protocol_hash")), "bundle input identity")
         protocol, grant, package = docs["protocol"], docs["authorization"], docs["package"]
         settings = spec["admission"]

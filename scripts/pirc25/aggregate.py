@@ -22,8 +22,10 @@ from statistics import mean
 
 if __package__:
     from .admission import validate_admission
+    from .dimensions import comparison_dimensions
 else:
     from admission import validate_admission
+    from dimensions import comparison_dimensions
 
 
 def canonical(value):
@@ -56,7 +58,16 @@ def validate_bundle(bundle, *, formal=False):
     for cell in rows.values():
         if any(cell[key] != expected[cell["cell_hash"]][key] for key in ("arm_id", "block_id", "seed")):
             raise ValueError("cell identity changed")
-        key = (cell["arm_id"], cell["block_id"], cell["seed"])
+        dimensions = comparison_dimensions(cell)
+        if canonical(dimensions) != canonical(comparison_dimensions(expected[cell["cell_hash"]])):
+            raise ValueError("cell comparison dimension identity changed")
+        if "registered_cell" in cell:
+            registered = cell["registered_cell"]
+            if (fingerprint(registered) != cell["cell_hash"] or
+                    any(registered[k] != cell[k] for k in ("arm_id", "block_id", "seed")) or
+                    canonical(comparison_dimensions(registered)) != canonical(dimensions)):
+                raise ValueError("registered cell dimension identity changed")
+        key = (cell["arm_id"], cell["block_id"], cell["seed"], canonical(dimensions))
         if key in seen:
             raise ValueError("duplicate block/seed identity")
         seen.add(key)
@@ -87,8 +98,40 @@ def validate_bundle(bundle, *, formal=False):
 
 def aggregate(bundle, *, formal=False):
     rows = validate_bundle(bundle, formal=formal)
-    grouped = defaultdict(list)
+    strata = defaultdict(list)
     for row in rows.values():
+        strata[canonical(comparison_dimensions(row))].append(row)
+    arms, comparisons = [], []
+    registered_arms = {row["arm_id"] for row in rows.values()}
+    plan = bundle.get("comparison_plan") or {}
+    baseline = plan.get("reference_arm_id", min(registered_arms))
+    candidates = plan.get("candidate_arm_ids", sorted(registered_arms - {baseline}))
+    if (baseline not in registered_arms or len(candidates) != len(set(candidates)) or
+            any(candidate not in registered_arms or candidate == baseline for candidate in candidates)):
+        raise ValueError("comparison plan refers to unregistered or identical arms")
+    for key, cells in sorted(strata.items()):
+        dimensions = json.loads(key)
+        stratum_arms, stratum_comparisons = aggregate_stratum(cells, baseline, candidates)
+        for summary in [*stratum_arms, *stratum_comparisons]:
+            summary.update(comparison_dimensions=dimensions, stratum_id=fingerprint(dimensions))
+        arms.extend(stratum_arms)
+        comparisons.extend(stratum_comparisons)
+    result = {"schema_version": "pirc25-aggregate-v1", "study_id": bundle["study_id"],
+              "spec_hash": bundle["spec_hash"], "protocol_hash": bundle["protocol_hash"],
+              "data_hash": bundle["data_hash"], "code_hash": bundle["code_hash"], "source_bundle_hash": bundle["bundle_hash"],
+              "independent_unit": "block_id", "seed_policy": "average-within-block-not-independent-replication",
+              "stratum_policy": "exact-comparison-dimensions-no-cross-stratum-pooling",
+              "qualification": "formal" if formal else "engineering-fixture", "arms": arms, "comparisons": comparisons,
+              "expected_cell_count": len(rows), "successful_cell_count": sum(c["status"] == "SUCCEEDED" for c in rows.values()),
+              "cell_dispositions": list(rows.values()), "disclosure_scope": bundle["disclosure_scope"],
+              "visibility": bundle.get("visibility", "restricted")}
+    return {**result, "aggregate_hash": fingerprint(result)}
+
+
+def aggregate_stratum(rows, baseline, candidates):
+    """Average seeds inside a block, then compare only matching strata."""
+    grouped = defaultdict(list)
+    for row in rows:
         grouped[row["arm_id"]].append(row)
     arms, complete_blocks = [], {}
     for arm_id, cells in sorted(grouped.items()):
@@ -112,17 +155,14 @@ def aggregate(bundle, *, formal=False):
     comparisons = []
     # Deterministic reference ordering is explicit in the aggregate, not a claim
     # that alphabetical order constitutes scientific preregistration.
-    if len(arms) > 1:
-        plan = bundle.get("comparison_plan") or {}
-        baseline = plan.get("reference_arm_id", arms[0]["arm_id"])
-        candidates = plan.get("candidate_arm_ids", [arm["arm_id"] for arm in arms if arm["arm_id"] != baseline])
-        if baseline not in complete_blocks or any(c not in complete_blocks or c == baseline for c in candidates):
-            raise ValueError("comparison plan refers to unregistered or identical arms")
+    if candidates:
         for candidate_id in candidates:
-            shared = sorted(complete_blocks[baseline].keys() & complete_blocks[candidate_id].keys())
+            reference_blocks = complete_blocks.get(baseline, {})
+            candidate_blocks = complete_blocks.get(candidate_id, {})
+            shared = sorted(reference_blocks.keys() & candidate_blocks.keys())
             metrics = {}
-            for metric in complete_blocks[baseline].get(shared[0], {}) if shared else ():
-                differences = [complete_blocks[candidate_id][b][metric] - complete_blocks[baseline][b][metric] for b in shared]
+            for metric in reference_blocks.get(shared[0], {}) if shared else ():
+                differences = [candidate_blocks[b][metric] - reference_blocks[b][metric] for b in shared]
                 interval = None
                 if len(shared) >= 2:
                     rng = random.Random(20260929)
@@ -130,31 +170,25 @@ def aggregate(bundle, *, formal=False):
                     interval = [estimates[24], estimates[974]]
                 metrics[metric] = {"candidate_minus_reference": mean(differences), "interval95": interval}
             comparisons.append({"reference": baseline, "candidate": candidate_id, "paired_block_ids": shared,
+                                "status": "comparable" if shared else "no-complete-paired-blocks",
+                                "absent_arms": [arm for arm in (baseline, candidate_id) if arm not in grouped],
                                 "independent_n": len(shared), "metrics": metrics,
                                 "interval_kind": "paired-block-percentile-bootstrap" if len(shared) >= 2 else "insufficient-independent-blocks",
                                 "bootstrap_seed": 20260929, "bootstrap_replicates": 1000})
-    result = {"schema_version": "pirc25-aggregate-v1", "study_id": bundle["study_id"],
-              "spec_hash": bundle["spec_hash"], "protocol_hash": bundle["protocol_hash"],
-              "data_hash": bundle["data_hash"], "code_hash": bundle["code_hash"], "source_bundle_hash": bundle["bundle_hash"],
-              "independent_unit": "block_id", "seed_policy": "average-within-block-not-independent-replication",
-              "qualification": "formal" if formal else "engineering-fixture", "arms": arms, "comparisons": comparisons,
-              "expected_cell_count": len(rows), "successful_cell_count": sum(c["status"] == "SUCCEEDED" for c in rows.values()),
-              "cell_dispositions": list(rows.values()), "disclosure_scope": bundle["disclosure_scope"],
-              "visibility": bundle.get("visibility", "restricted")}
-    return {**result, "aggregate_hash": fingerprint(result)}
+    return arms, comparisons
 
 
 def csv_bytes(aggregate_value):
     stream = io.StringIO(newline="")
     writer = csv.writer(stream, lineterminator="\n")
-    writer.writerow(["aggregate_hash", "arm_id", "metric", "value", "unit", "independent_n", "expected_cells", "successful_cells", "status"])
+    writer.writerow(["aggregate_hash", "arm_id", "metric", "value", "unit", "independent_n", "expected_cells", "successful_cells", "status", "stratum_id", "comparison_dimensions"])
     for arm in aggregate_value["arms"]:
         if not arm["metrics"]:
             writer.writerow([aggregate_value["aggregate_hash"], arm["arm_id"], "", "", "", arm["independent_n"],
-                             arm["expected_cells"], arm["successful_cells"], arm["status"]])
+                             arm["expected_cells"], arm["successful_cells"], arm["status"], arm["stratum_id"], canonical(arm["comparison_dimensions"]).decode()])
         for metric, value in sorted(arm["metrics"].items()):
             writer.writerow([aggregate_value["aggregate_hash"], arm["arm_id"], metric, value, arm["metric_units"][metric],
-                             arm["independent_n"], arm["expected_cells"], arm["successful_cells"], arm["status"]])
+                             arm["independent_n"], arm["expected_cells"], arm["successful_cells"], arm["status"], arm["stratum_id"], canonical(arm["comparison_dimensions"]).decode()])
     return stream.getvalue().encode()
 
 
@@ -163,11 +197,14 @@ def evidence_index(value, csv_content):
             "aggregate_hash": value["aggregate_hash"], "table_sha256": hashlib.sha256(csv_content).hexdigest(),
             "code_hash": value["code_hash"], "evidence_status": "active", "relation": None,
             "disclosure_scope": value["disclosure_scope"], "claims": [
-                {"claim_id": f"{arm['arm_id']}-{metric}", "metric": metric, "value": number,
+                {"claim_id": fingerprint([arm['arm_id'], arm['stratum_id'], metric]), "metric": metric, "value": number,
+                 "arm_id": arm["arm_id"], "stratum_id": arm["stratum_id"], "comparison_dimensions": arm["comparison_dimensions"],
                  "evidence_status": arm["status"], "independent_n": arm["independent_n"],
                  "unit": arm["metric_units"][metric], "aggregate_hash": value["aggregate_hash"],
                  "attempt_ids": [c["attempt_id"] for c in value["cell_dispositions"]
-                                 if c["arm_id"] == arm["arm_id"] and c["status"] == "SUCCEEDED"]}
+                                 if c["arm_id"] == arm["arm_id"] and c["status"] == "SUCCEEDED"
+                                 and c["block_id"] in arm["complete_block_ids"]
+                                 and canonical(comparison_dimensions(c)) == canonical(arm["comparison_dimensions"])]}
                 for arm in value["arms"] for metric, number in sorted(arm["metrics"].items())]}
 
 
