@@ -20,6 +20,11 @@ import random
 import tempfile
 from statistics import mean
 
+if __package__:
+    from .admission import validate_admission
+else:
+    from admission import validate_admission
+
 
 def canonical(value):
     return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False).encode()
@@ -65,6 +70,8 @@ def validate_bundle(bundle, *, formal=False):
             raise ValueError("successful evidence has no immutable attempt/artifact source")
         if formal and cell.get("qualification") != "qualified":
             raise ValueError("fixture or unqualified results cannot enter formal comparison")
+        if formal:
+            validate_admission(bundle, cell)
         if cell.get("protocol_hash") != bundle["protocol_hash"]:
             raise ValueError("mixed data protocol")
         current = (cell.get("state_order"), cell.get("units"), cell.get("metric_units"))
@@ -132,7 +139,8 @@ def aggregate(bundle, *, formal=False):
               "independent_unit": "block_id", "seed_policy": "average-within-block-not-independent-replication",
               "qualification": "formal" if formal else "engineering-fixture", "arms": arms, "comparisons": comparisons,
               "expected_cell_count": len(rows), "successful_cell_count": sum(c["status"] == "SUCCEEDED" for c in rows.values()),
-              "cell_dispositions": list(rows.values()), "disclosure_scope": bundle["disclosure_scope"]}
+              "cell_dispositions": list(rows.values()), "disclosure_scope": bundle["disclosure_scope"],
+              "visibility": bundle.get("visibility", "restricted")}
     return {**result, "aggregate_hash": fingerprint(result)}
 
 

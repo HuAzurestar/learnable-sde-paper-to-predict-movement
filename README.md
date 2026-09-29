@@ -78,6 +78,17 @@ bundle. Missing/failed cells stay in the expected denominator; seed repeats are
 averaged within independent blocks. Mixed units/protocols are rejected. Paired
 intervals are unavailable with fewer than two complete independent blocks.
 Formal comparisons require a frozen comparison plan and qualified inputs.
+`--formal` also validates each successful cell's `pirc25-admission-v1` receipt:
+spec/cell/attempt identity, protocol and execution grant, actual input exposure
+events, frozen preregistration/history, package/upstream/command bindings, and
+the referenced qualification checks. A `qualified` string alone is rejected.
+Foreign frozen models carry their own source protocol and consumer authorization.
+The trusted expected bundle hash remains required; internal hashes do not prove
+the truth of arbitrary operator-imported scientific attestations. Runtime inputs
+and registration APIs are documented in PSDE's `docs/pirc-38-shared-engineering.md`.
+Restricted attachments remain restricted when imported back into the runtime,
+even when their parent cells are synthetic. Do not publish these local bundles
+as public paper data merely because their aggregation succeeds.
 
 ```console
 python scripts/pirc25/aggregate.py /absolute/runtime/bundle.json --expected-hash BUNDLE_HASH --output /absolute/runtime/evidence-v1
