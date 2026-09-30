@@ -8,6 +8,7 @@ No runtime/provider dependency or raw research-data access is required.
 from datetime import datetime
 import hashlib
 import json
+import re
 
 if __package__:
     from .dimensions import comparison_dimensions, canonical
@@ -27,6 +28,16 @@ def require(condition, detail):
 
 def event_valid(event):
     return fingerprint({key: value for key, value in event.items() if key != "hash"}) == event["hash"]
+
+
+def same_source(left, right):
+    left_hash = left.get("sha256")
+    if isinstance(left_hash, str) and re.fullmatch(r"[0-9a-f]{64}", left_hash) and left_hash == right.get("sha256"):
+        return True
+    return (left.get("dataset_id") == right.get("dataset_id") and
+            (not isinstance(left_hash, str) or not re.fullmatch(r"[0-9a-f]{64}", left_hash) or
+             left.get("source_block_id", left.get("block_id")) ==
+             right.get("source_block_id", right.get("block_id"))))
 
 
 def qualification(package, prereg, report, evidence, grant):
@@ -103,17 +114,27 @@ def validate_admission(bundle, row):
                 == bundle["comparison_plan"]["preregistration_hash"] == spec["comparison_plan"]["preregistration_hash"], "preregistration binding")
         binding = fingerprint({k: v for k, v in protocol.items() if k not in {"preregistration_hash", "history_hash", "history_status"}})
         require(binding in prereg["protocol_bindings"] and spec["study_id"] in prereg["study_ids"], "preregistration scope")
-        require(prereg["selection_rule"].strip() and prereg["stopping_rule"].strip()
-                and set(row["metrics"]) <= set(prereg["primary_metrics"]), "preregistered rules/metrics")
+        primary = prereg["primary_metrics"]
+        require(isinstance(primary, list) and primary and
+                all(isinstance(metric, str) and metric.strip() for metric in primary) and
+                len(primary) == len(set(primary)) and
+                prereg["selection_rule"].strip() and prereg["stopping_rule"].strip() and
+                set(row["metrics"]) == set(primary), "preregistered primary metrics must be complete")
         comparison = {"reference": bundle["comparison_plan"]["reference_arm_id"],
                       "candidates": bundle["comparison_plan"]["candidate_arm_ids"]}
         require(comparison in prereg["comparisons"] and bundle["comparison_plan"] == spec["comparison_plan"], "preregistered comparison differs")
         require(fingerprint(history) == protocol["history_hash"] and history["schema_version"] == "pirc25-exposure-history-v1"
                 and fingerprint(history["source_evidence"]) == history["source_evidence_hash"] and history["source"].strip(), "historical evidence binding")
-        matching = [r for r in history["source_evidence"]["records"] if all(r[k] == v for k, v in {
+        records = history["source_evidence"]["records"]
+        require(isinstance(records, list) and records and
+                all(isinstance(record, dict) and record.get("status") in {"unexposed", "exposed", "unknown"}
+                    for record in records), "historical exposure records")
+        matching = [r for r in records if all(r[k] == v for k, v in {
             "dataset_id": block["dataset_id"], "release_id": block["release_id"], "sha256": block["sha256"],
             "source_block_id": block.get("source_block_id", block["block_id"])}.items())]
         require(len(matching) == 1 and matching[0]["status"] == "unexposed", "historical data coverage")
+        require(not any(same_source(record, block) and record["status"] in {"exposed", "unknown"}
+                        for record in records), "conflicting historical exposure")
         frozen = docs["preregistration_event"]
         require(event_valid(frozen) and frozen["event_kind"] == "MANIFEST" and
                 frozen["payload"] == {"object_id": "preregistration-" + fingerprint(prereg), "sha256": fingerprint(prereg)}, "preregistration publication event")
