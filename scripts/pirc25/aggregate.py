@@ -97,6 +97,26 @@ def validate_bundle(bundle, *, formal=False):
             raise ValueError("metric units missing")
         if any(isinstance(v, bool) or not isinstance(v, (int, float)) or not math.isfinite(v) for v in cell["metrics"].values()):
             raise ValueError("nonfinite/invalid metric")
+    if formal:
+        source = bundle.get("registered_spec")
+        if source is None:
+            # Legacy successful receipts already carry the same frozen spec.
+            # All-failed legacy bundles cannot prove their original matrix.
+            source = next((c.get("admission", {}).get("spec") for c in rows.values()
+                           if c["status"] == "SUCCEEDED"), None)
+        if not isinstance(source, dict) or fingerprint(source) != bundle["spec_hash"]:
+            raise ValueError("formal registered matrix requires its bound source spec/admission")
+        if (any(source.get(k) != bundle[k] for k in ("study_id", "code_hash", "data_hash", "protocol_hash")) or
+                source.get("comparison_plan") != bundle["comparison_plan"]):
+            raise ValueError("formal registered matrix source identity/plan changed")
+        registered = {fingerprint(c): c for c in source["cells"]}
+        if len(registered) != len(source["cells"]) or registered.keys() != rows.keys():
+            raise ValueError("formal registered matrix was clipped or changed")
+        for cell_hash, cell in rows.items():
+            original = registered[cell_hash]
+            if (any(cell[k] != original[k] for k in ("arm_id", "block_id", "seed")) or
+                    canonical(comparison_dimensions(cell)) != canonical(comparison_dimensions(original))):
+                raise ValueError("formal registered matrix identity/dimensions changed")
     return rows
 
 
