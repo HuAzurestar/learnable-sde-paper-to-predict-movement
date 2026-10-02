@@ -55,3 +55,24 @@ def test_figure_renderer_escapes_labels_and_rejects_quota_before_drawing():
     tree = ET.fromstring(svg)
     assert all(node.tag != "{http://www.w3.org/2000/svg}script" for node in tree.iter())
     assert '<script>' not in svg and '&lt;script&gt;' in svg
+
+
+def test_joint_graph_and_statistics_quota_rejects_before_adjudication(monkeypatch):
+    from scripts.pirc25 import comparison
+    calls = []
+    original = comparison.adjudicate
+    def observed(*args, **kwargs):
+        calls.append(True)
+        return original(*args, **kwargs)
+    monkeypatch.setattr(comparison, "adjudicate", observed)
+    # Statistics alone fit (4024), but the whole package bound is 4472.
+    with pytest.raises(ValueError, match="RESOURCE_PLAN_REJECTED"):
+        comparison.compare_package(evidence(), {"manifest_id": "synthetic"}, max_operations=4300)
+    assert calls == []
+
+
+def test_total_graph_bytes_are_bounded_before_retaining_outputs():
+    from scripts.pirc25.figures import comparison_figures
+    value = compare_package(evidence(), {"manifest_id": "synthetic"})["aggregate"]
+    with pytest.raises(ValueError, match="RESOURCE_PLAN_REJECTED"):
+        comparison_figures(value, maximum_total_bytes=1)
