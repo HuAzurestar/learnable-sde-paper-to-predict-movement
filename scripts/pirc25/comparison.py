@@ -7,6 +7,7 @@ this avoids circular hashes between the measured cost and worker output.
 
 from .adjudication import adjudicate
 from .aggregate import aggregate, fingerprint, csv_bytes, evidence_index
+from .figures import comparison_figures
 
 
 def compare_package(bundle, computation_ref, *, formal=False, max_operations=20_000_000):
@@ -16,5 +17,7 @@ def compare_package(bundle, computation_ref, *, formal=False, max_operations=20_
     body.update(adjudication=decision, computation_ref=computation_ref)
     value = {**body, "aggregate_hash": fingerprint(body)}
     table = csv_bytes(value)
+    figures = comparison_figures(value, maximum_operations=max_operations)
     return {"aggregate": value, "metrics_csv": table.decode("utf-8"),
-            "paper_index": evidence_index(value, table)}
+            "paper_index": {**evidence_index(value, table), "figure_index_hash": fingerprint(figures["figure_index"])},
+            **figures}
