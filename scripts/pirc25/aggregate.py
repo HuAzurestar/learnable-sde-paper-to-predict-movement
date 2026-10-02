@@ -120,7 +120,7 @@ def validate_bundle(bundle, *, formal=False):
     return rows
 
 
-def aggregate(bundle, *, formal=False):
+def aggregate(bundle, *, formal=False, descriptive_intervals=True):
     rows = validate_bundle(bundle, formal=formal)
     strata = defaultdict(list)
     for row in rows.values():
@@ -135,7 +135,8 @@ def aggregate(bundle, *, formal=False):
         raise ValueError("comparison plan refers to unregistered or identical arms")
     for key, cells in sorted(strata.items()):
         dimensions = json.loads(key)
-        stratum_arms, stratum_comparisons = aggregate_stratum(cells, baseline, candidates)
+        stratum_arms, stratum_comparisons = aggregate_stratum(cells, baseline, candidates,
+                                                           descriptive_intervals=descriptive_intervals)
         for summary in [*stratum_arms, *stratum_comparisons]:
             summary.update(comparison_dimensions=dimensions, stratum_id=fingerprint(dimensions))
         arms.extend(stratum_arms)
@@ -152,7 +153,7 @@ def aggregate(bundle, *, formal=False):
     return {**result, "aggregate_hash": fingerprint(result)}
 
 
-def aggregate_stratum(rows, baseline, candidates):
+def aggregate_stratum(rows, baseline, candidates, *, descriptive_intervals=True):
     """Average seeds inside a block, then compare only matching strata."""
     grouped = defaultdict(list)
     for row in rows:
@@ -192,7 +193,7 @@ def aggregate_stratum(rows, baseline, candidates):
             for metric in reference_blocks.get(shared[0], {}) if shared else ():
                 differences = [candidate_blocks[b][metric] - reference_blocks[b][metric] for b in shared]
                 interval = None
-                if len(shared) >= 2:
+                if descriptive_intervals and len(shared) >= 2:
                     rng = random.Random(20260929)
                     estimates = sorted(mean(rng.choices(differences, k=len(differences))) for _ in range(1000))
                     interval = [estimates[24], estimates[974]]
@@ -201,24 +202,28 @@ def aggregate_stratum(rows, baseline, candidates):
                                 "status": "comparable" if shared else "no-complete-paired-blocks",
                                 "absent_arms": [arm for arm in (baseline, candidate_id) if arm not in grouped],
                                 "independent_n": len(shared), "metrics": metrics,
-                                "interval_kind": "paired-block-percentile-bootstrap" if len(shared) >= 2 else "insufficient-independent-blocks",
-                                "bootstrap_seed": 20260929, "bootstrap_replicates": 1000})
+                                "interval_kind": ("paired-block-percentile-bootstrap" if len(shared) >= 2 else "insufficient-independent-blocks")
+                                                 if descriptive_intervals else "descriptive-point-only-see-adjudication",
+                                "bootstrap_seed": 20260929 if descriptive_intervals else None,
+                                "bootstrap_replicates": 1000 if descriptive_intervals else 0})
     return arms, comparisons
 
 
 def csv_bytes(aggregate_value):
     stream = io.StringIO(newline="")
     writer = csv.writer(stream, lineterminator="\n")
-    writer.writerow(["aggregate_hash", "arm_id", "metric", "value", "unit", "independent_n", "expected_cells", "successful_cells", "status", "stratum_id", "comparison_dimensions", "charged_ms", "reserved_ms", "measured_ms", "cost_unit", "cost_scope", "status_rates"])
+    extra = [name for name in ("adjudication", "computation_ref") if name in aggregate_value]
+    writer.writerow(["aggregate_hash", "arm_id", "metric", "value", "unit", "independent_n", "expected_cells", "successful_cells", "status", "stratum_id", "comparison_dimensions", "charged_ms", "reserved_ms", "measured_ms", "cost_unit", "cost_scope", "status_rates", *extra])
+    frozen = [canonical(aggregate_value[name]).decode() for name in extra]
     for arm in aggregate_value["arms"]:
         costs = [arm["cost"][key] for key in ("charged_ms", "reserved_ms", "measured_ms", "unit", "scope")]
         rates = canonical(arm.get("status_rates")).decode()
         if not arm["metrics"]:
             writer.writerow([aggregate_value["aggregate_hash"], arm["arm_id"], "", "", "", arm["independent_n"],
-                             arm["expected_cells"], arm["successful_cells"], arm["status"], arm["stratum_id"], canonical(arm["comparison_dimensions"]).decode(), *costs, rates])
+                             arm["expected_cells"], arm["successful_cells"], arm["status"], arm["stratum_id"], canonical(arm["comparison_dimensions"]).decode(), *costs, rates, *frozen])
         for metric, value in sorted(arm["metrics"].items()):
             writer.writerow([aggregate_value["aggregate_hash"], arm["arm_id"], metric, value, arm["metric_units"][metric],
-                             arm["independent_n"], arm["expected_cells"], arm["successful_cells"], arm["status"], arm["stratum_id"], canonical(arm["comparison_dimensions"]).decode(), *costs, rates])
+                             arm["independent_n"], arm["expected_cells"], arm["successful_cells"], arm["status"], arm["stratum_id"], canonical(arm["comparison_dimensions"]).decode(), *costs, rates, *frozen])
     return stream.getvalue().encode()
 
 
@@ -226,7 +231,8 @@ def evidence_index(value, csv_content):
     return {"schema_version": "pirc25-paper-evidence-v1", "study_id": value["study_id"],
             "aggregate_hash": value["aggregate_hash"], "table_sha256": hashlib.sha256(csv_content).hexdigest(),
             "code_hash": value["code_hash"], "evidence_status": "active", "relation": None,
-            "disclosure_scope": value["disclosure_scope"], "claims": [
+            "disclosure_scope": value["disclosure_scope"],
+            **{name: value[name] for name in ("adjudication", "computation_ref") if name in value}, "claims": [
                 {"claim_id": fingerprint([arm['arm_id'], arm['stratum_id'], metric]), "metric": metric, "value": number,
                  "arm_id": arm["arm_id"], "stratum_id": arm["stratum_id"], "comparison_dimensions": arm["comparison_dimensions"],
                  "evidence_status": arm["status"], "independent_n": arm["independent_n"],
