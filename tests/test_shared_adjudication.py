@@ -18,6 +18,7 @@ def policy():
         "multiplicity": "bonferroni", "practical_threshold": 0.5,
         "attempt_policy": "first-successful-attempt", "missing_policy": "exclude-incomplete-paired-blocks",
         "stopping_rule": "fixed-family-no-test-driven-expansion",
+        "quality_gates": {"minimum_ess": None, "maximum_reference_error": None},
         "contrasts": [{"comparison_id": "primary", "reference": "baseline", "candidate": "candidate",
                        "stratum_weights": [{"comparison_dimensions": {}, "weight": 1.0}]}],
     }
@@ -192,3 +193,49 @@ def test_computation_quota_is_checked_before_resampling():
     with pytest.raises(ValueError, match="RESOURCE_PLAN_REJECTED"):
         compare(evidence(), max_operations=1)
 
+
+@pytest.mark.parametrize("gate,diagnostic,value", [("minimum_ess", "ess", 1.0),
+                                                  ("maximum_reference_error", "reference_error", None)])
+def test_low_ess_and_unknown_reference_error_are_explicit(gate, diagnostic, value):
+    spec = policy()
+    spec["quality_gates"][gate] = 2 if gate == "minimum_ess" else 0.1
+    evidence_value = evidence(spec)
+    for row in evidence_value["cells"]:
+        row["comparison_diagnostics"] = {diagnostic: value}
+    record = compare(seal(evidence_value))["records"][0]
+    assert record["verdict"] == "INAPPLICABLE" and record["interval"] is None
+    assert any(diagnostic in message for message in record["diagnostics"])
+
+
+def test_failed_attempt_before_success_remains_in_attempt_denominator():
+    value = evidence()
+    row = value["cells"][0]
+    row["history"] = [{"attempt_id": "failed-first", "state": "FAILED"},
+                       {"attempt_id": row["attempt_id"], "state": "SUCCEEDED"}]
+    record = compare(seal(value))["records"][0]
+    assert record["verdict"] == "GAIN" and record["attempt_counts"]["failed"] == 1
+    assert record["attempt_counts"]["observed"] == 9
+    assert record["attempt_counts"]["complete_history"] is False
+    assert record["cell_counts"]["failed"] == 0
+
+
+def test_frozen_policy_and_full_computation_plan_are_in_compare_record():
+    value = compare(evidence())
+    assert value["adjudication_spec"] == policy()
+    assert value["resource_plan"]["planned_operations"] >= value["resource_plan"]["bootstrap_operations"]
+    assert value["resource_plan"]["planned_operations"] <= value["resource_plan"]["maximum_operations"]
+
+
+@pytest.mark.parametrize("mutation", ["duplicate-attempt", "unknown-attempt-state", "corrected-tail-too-small"])
+def test_extra_contract_counterexamples_fail_closed(mutation):
+    spec = policy()
+    if mutation == "corrected-tail-too-small":
+        spec["interval"]["confidence"] = 0.99999
+    value = evidence(spec)
+    if mutation == "duplicate-attempt":
+        row = value["cells"][0]
+        row["history"] = [{"attempt_id": row["attempt_id"], "state": "SUCCEEDED"}] * 2
+    elif mutation == "unknown-attempt-state":
+        value["cells"][0]["history"] = [{"attempt_id": "unknown", "state": "UNKNOWN_STATE"}]
+    with pytest.raises(ValueError):
+        compare(seal(value))
