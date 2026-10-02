@@ -239,3 +239,29 @@ def test_extra_contract_counterexamples_fail_closed(mutation):
         value["cells"][0]["history"] = [{"attempt_id": "unknown", "state": "UNKNOWN_STATE"}]
     with pytest.raises(ValueError):
         compare(seal(value))
+
+
+def differing_seeds(value):
+    for row, expected in zip(value["cells"], value["expected_cells"]):
+        if row["arm_id"] == "candidate":
+            row["seed"] += 10
+            row["cell_hash"] = fingerprint([row["arm_id"], row["block_id"], row["seed"]])
+            expected.update(seed=row["seed"], cell_hash=row["cell_hash"])
+    return seal(value)
+
+
+def test_seed_pairing_must_be_a_frozen_decision():
+    spec = policy()
+    spec.pop("seed_pairing", None)
+    result = compare(evidence(spec))
+    assert result["status"] == "NEEDS_PREREGISTRATION" and "seed_pairing" in result["diagnostics"]
+
+
+@pytest.mark.parametrize("pairing,verdict,n", [("independent-within-block", "GAIN", 2),
+                                             ("identical-registered-seeds", "INSUFFICIENT_DATA", 0)])
+def test_block_pairing_does_not_silently_impose_seed_pairing(pairing, verdict, n):
+    spec = policy()
+    spec["seed_pairing"] = pairing
+    record = compare(differing_seeds(evidence(spec)))["records"][0]
+    assert record["verdict"] == verdict and record["independent_n"] == n
+    assert record["seed_pairing"] == pairing
