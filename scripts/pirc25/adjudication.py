@@ -24,7 +24,7 @@ else:
 
 SCHEMA = "pirc25-adjudication-spec-v1"
 REQUIRED = ("schema_version", "primary_metric", "independent_unit", "seed_aggregation",
-            "minimum_seeds", "minimum_paired_blocks", "interval", "multiplicity",
+            "minimum_seeds", "minimum_paired_blocks", "seed_pairing", "interval", "multiplicity",
             "practical_threshold", "attempt_policy", "missing_policy", "stopping_rule", "quality_gates", "contrasts")
 FAILED = frozenset({"FAILED", "INTERRUPTED", "TIMEOUT", "BUDGET_EXHAUSTED", "PREFLIGHT_FAILED", "CANCELLED"})
 MAX_OPERATIONS = 20_000_000
@@ -76,6 +76,7 @@ def validate_policy(spec):
             "versioned metric definition and unit required")
     require(metric["direction"] in {"minimize", "maximize"}, "primary direction")
     require(spec["independent_unit"] == "block_id" and spec["seed_aggregation"] == "mean-within-block", "sampling/seed policy")
+    require(spec["seed_pairing"] in {"independent-within-block", "identical-registered-seeds"}, "explicit seed pairing")
     require(type(spec["minimum_seeds"]) is int and spec["minimum_seeds"] >= 1, "minimum seeds")
     require(type(spec["minimum_paired_blocks"]) is int and spec["minimum_paired_blocks"] >= 2, "minimum paired blocks")
     interval = spec["interval"]
@@ -198,6 +199,7 @@ def _prepare_record(rows, contrast, spec, family_size):
     record = {"schema_version": "pirc25-compare-record-v1", **contrast, **_counts(cells),
               "primary_metric": spec["primary_metric"], "practical_threshold": spec["practical_threshold"],
               "minimum_paired_blocks": spec["minimum_paired_blocks"], "minimum_seeds": spec["minimum_seeds"],
+              "seed_pairing": spec["seed_pairing"],
               "cost": summarize_cost(cells), "family_size": family_size, "multiplicity": spec["multiplicity"],
               "paired_block_ids": [], "independent_n": 0, "candidate_minus_reference": None,
               "effect": None, "interval": None, "interval_conditional_on": "successful-complete-paired-blocks",
@@ -228,7 +230,7 @@ def _prepare_record(rows, contrast, spec, family_size):
         reference = _block_values(grouped[contrast["reference"]], spec["primary_metric"]["name"], spec["minimum_seeds"])
         candidate = _block_values(grouped[contrast["candidate"]], spec["primary_metric"]["name"], spec["minimum_seeds"])
         values[stratum] = {b: candidate[b][0] - reference[b][0] for b in reference.keys() & candidate.keys()
-                           if reference[b][1] == candidate[b][1]}
+                           if spec["seed_pairing"] == "independent-within-block" or reference[b][1] == candidate[b][1]}
     shared = sorted(set.intersection(*(set(blocks) for blocks in values.values())))
     differences = [math.fsum(strata[s] * values[s][b] for s in strata) for b in shared]
     require(all(math.isfinite(v) for v in differences), "nonfinite block difference")
