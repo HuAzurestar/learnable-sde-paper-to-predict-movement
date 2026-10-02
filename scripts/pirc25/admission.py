@@ -64,6 +64,21 @@ def qualification(package, prereg, report, evidence, grant):
                 and value["preregistration_hash"] == fingerprint(prereg), "qualification test outcome/bindings")
 
 
+def validate_model_permission(model, grant, spec, admitted_at):
+    foreign = model["study_id"] != spec["study_id"]
+    settings = spec["admission"]
+    expected_id = settings.get("model_authorization_id") if foreign else settings["authorization_id"]
+    require(grant.get("authorization_id") == expected_id and expected_id is not None,
+            "frozen model grant identity")
+    require(grant.get("protocol_hash") == model["protocol_hash"], "frozen model grant protocol binding")
+    require(grant["study_id"] == model["study_id"] and
+            (not foreign or spec["study_id"] in grant.get("consumer_study_ids", [])), "frozen model consumer grant")
+    require("evaluate" in grant["purposes"] and model.get("visibility", "restricted") in grant["visibilities"],
+            "model visibility/purpose permission")
+    start, expiry = datetime.fromisoformat(admitted_at), datetime.fromisoformat(grant["expires_at"])
+    require(start.tzinfo is not None and expiry.tzinfo is not None and start < expiry, "model grant expired")
+
+
 def validate_admission(bundle, row):
     try:
         receipt = row["admission"]
@@ -166,10 +181,7 @@ def validate_admission(bundle, row):
                     and fingerprint({k: v for k, v in model_protocol.items() if k not in
                         {"preregistration_hash", "history_hash", "history_status"}}) in model_prereg["protocol_bindings"], "frozen model source preregistration")
             model_grant = docs["model_authorization"]
-            require(model.get("visibility", "restricted") in model_grant["visibilities"], "model visibility permission")
-            require(model_grant["study_id"] == model["study_id"] and
-                    (model["study_id"] == spec["study_id"] or spec["study_id"] in model_grant["consumer_study_ids"]), "frozen model consumer grant")
-            require(datetime.fromisoformat(receipt["admitted_at"]) < datetime.fromisoformat(model_grant["expires_at"]), "model grant expired")
+            validate_model_permission(model, model_grant, spec, receipt["admitted_at"])
             qualification(model, docs["model_preregistration"], docs["model_qualification"], docs["model_qualification_evidence"], model_grant)
     except (KeyError, TypeError, StopIteration, AttributeError) as exc:
         raise ValueError("missing or malformed admission evidence") from exc
