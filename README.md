@@ -101,6 +101,17 @@ These are frozen export costs, not a query of the runtime's current arm balance.
 spec/cell/attempt identity, protocol and execution grant, actual input exposure
 events, frozen preregistration/history, package/upstream/command bindings, and
 the referenced qualification checks. A `qualified` string alone is rejected.
+New formal evidence also requires an immutable upstream snapshot and operator
+acceptance catalog bound to the package and pre-read per-study cutover. The
+stdlib-only independent `scripts/pirc25/upstream.py` checks complete cell scope,
+exact selected accepted metadata/schema/hash/size/license declarations, recorded
+physical size/time, explicit PIRC-22 cutover/zero-final-eval selection, consumer
+identity and original publication/validation events before input exposure.
+A ready flag or recomputed enclosing checksum cannot replace those bindings.
+No runtime/provider is imported and original metadata/data roots are not opened.
+Missing new evidence is rejected for formal claims, not backfilled after reads;
+legacy nonformal bundles remain readable. Explicit old public recipe bindings
+are optional additional checks, never a substitute for the mandatory snapshot.
 Foreign frozen models carry their own source protocol and consumer authorization.
 The trusted expected bundle hash remains required; internal hashes do not prove
 the truth of arbitrary operator-imported scientific attestations. Runtime inputs

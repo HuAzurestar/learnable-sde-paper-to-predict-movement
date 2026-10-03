@@ -12,8 +12,10 @@ import re
 
 if __package__:
     from .dimensions import comparison_dimensions, canonical
+    from .upstream import validate_upstream
 else:
     from dimensions import comparison_dimensions, canonical
+    from upstream import validate_upstream
 
 
 def fingerprint(value):
@@ -125,10 +127,12 @@ def validate_admission(bundle, row):
                 package["recovery_command_hash" if receipt["execution_kind"] == "resume" else "command_hash"], "execution/recovery command binding")
         require(package["state_order"] == row["state_order"] == ["x", "y", "vx", "vy"] and
                 package["units"] == row["units"] == ["m", "m", "m/s", "m/s"], "package/result state/units")
-        upstream = docs["upstream"]
-        require(fingerprint({k: v for k, v in upstream.items() if k != "manifest_hash"}) == upstream["manifest_hash"]
-                == settings["upstream_hash"] == package["upstream_hash"], "upstream binding")
-        require([obj["object_id"] for obj in upstream["objects"]] == settings["upstream_ids"], "upstream dependency set")
+        validate_upstream(receipt)
+        if "upstream_hash" in settings or "upstream_hash" in package:
+            upstream = docs["upstream"]
+            require(fingerprint({k: v for k, v in upstream.items() if k != "manifest_hash"}) == upstream["manifest_hash"]
+                    == settings["upstream_hash"] == package["upstream_hash"], "legacy upstream binding")
+            require([obj["object_id"] for obj in upstream["objects"]] == settings["upstream_ids"], "legacy upstream dependency set")
         prereg, history = docs["preregistration"], docs["history"]
         require(prereg["schema_version"] == "pirc25-preregistration-v1" and prereg["test_mode"] == "blind", "blind frozen plan required")
         require(fingerprint(prereg) == protocol["preregistration_hash"] == package["preregistration_hash"]
