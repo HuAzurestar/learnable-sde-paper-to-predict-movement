@@ -39,6 +39,19 @@ def test_selected_authorization_version_cannot_be_substituted(foreign, received)
         validate_model_permission(model, grant, spec, "2026-10-02T00:00:00+00:00")
 
 
+@pytest.mark.parametrize("foreign", [False, True])
+def test_matching_selected_authorization_version_is_accepted(foreign):
+    model, grant, spec = inputs()
+    grant["version"] = "v2"
+    if foreign:
+        spec["admission"]["model_authorization_version"] = "v2"
+    else:
+        spec["study_id"] = "owner"
+        grant["authorization_id"] = "execution"
+        spec["admission"]["authorization_version"] = "v2"
+    validate_model_permission(model, grant, spec, "2026-10-02T00:00:00+00:00")
+
+
 @pytest.mark.parametrize("mutation", ["missing-protocol", "wrong-protocol", "wrong-owner", "wrong-consumer",
     "wrong-grant", "wrong-purpose", "wrong-visibility", "expired", "naive-expiry", "missing-grant-id"])
 def test_invalid_model_source_grant_rejected(mutation):

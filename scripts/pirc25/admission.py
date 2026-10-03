@@ -70,6 +70,9 @@ def validate_model_permission(model, grant, spec, admitted_at):
     expected_id = settings.get("model_authorization_id") if foreign else settings["authorization_id"]
     require(grant.get("authorization_id") == expected_id and expected_id is not None,
             "frozen model grant identity")
+    version = settings.get("model_authorization_version" if foreign else "authorization_version")
+    require(grant.get("version") == version and
+            ("version" not in grant or isinstance(version, str) and bool(version)), "frozen model grant version")
     require(grant.get("protocol_hash") == model["protocol_hash"], "frozen model grant protocol binding")
     require(grant["study_id"] == model["study_id"] and
             (not foreign or spec["study_id"] in grant.get("consumer_study_ids", [])), "frozen model consumer grant")
@@ -99,6 +102,9 @@ def validate_admission(bundle, row):
         require(fingerprint(protocol) == spec["protocol_hash"] == package["protocol_hash"] == grant["protocol_hash"], "protocol binding")
         require(protocol["study_id"] == grant["study_id"] == spec["study_id"] and
                 protocol["protocol_id"] == settings["protocol_id"] and grant["authorization_id"] == settings["authorization_id"], "grant identity")
+        version = settings.get("authorization_version")
+        require(grant.get("version") == version and
+                ("version" not in grant or isinstance(version, str) and bool(version)), "grant version")
         data = [{"dataset_id": b["dataset_id"], "release_id": b["release_id"],
                  "source_block_id": b.get("source_block_id", b["block_id"]), "sha256": b["sha256"],
                  "block_id": b["block_id"], "split_role": b["split_role"]} for b in protocol["blocks"]]
@@ -162,6 +168,11 @@ def validate_admission(bundle, row):
                     and read["study_id"] == spec["study_id"] and read["block_id"] == cell["block_id"]
                     and read["sha256"] == block["sha256"] and read["authorization_id"] == grant["authorization_id"]
                     and read["protocol_hash"] == spec["protocol_hash"] and read["purpose"] == "evaluate", "input exposure binding")
+            # Older unversioned receipts remain readable. Explicit versions
+            # always require the exact grant hash and version at the read.
+            if "version" in grant or "authorization_hash" in read:
+                require(read.get("authorization_version") == grant.get("version") and
+                        read.get("authorization_hash") == fingerprint(grant), "input authorization version/hash")
             require(read["preregistration_hash"] == fingerprint(prereg) and read["history_hash"] == fingerprint(history)
                     and read["test_mode"] == "blind" and read["frozen_sequence"] == frozen["sequence"] < event["sequence"], "test freeze preceded exposure")
         qualification(package, prereg, docs["qualification"], docs["qualification_evidence"], grant)
