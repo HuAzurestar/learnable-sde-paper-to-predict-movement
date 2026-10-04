@@ -87,6 +87,10 @@ def input_metadata(record):
                 and checks.get('immutability_policy') == 'new_selection_version_required'
                 and checks.get('source_selection_identity_sha256') == record['selection_hash'],
                 'immutable zero-final-eval selection')
+        binding = record.get('benchmark_binding')
+        require(isinstance(binding, dict) and set(binding) == {'matrix_object_id', 'matrix_lock_object_id'}
+                and all(isinstance(value, str) and bool(value) for value in binding.values()),
+                'explicit frozen selection matrix/lock references')
 
 
 def publication(event, object_id, content_hash):
@@ -165,16 +169,34 @@ def _validate_upstream(receipt):
     require(finished <= timestamp(receipt['admitted_at']), 'validation after admission')
     resolved = rows_by_id(validation['resolved'], 'object_id')
     require(set(resolved) == set(dependencies), 'complete resolved input set')
+    semantic_ids = set()
+    for record in terrain:
+        input_metadata(record)
+        semantic_ids.update([record['object_id'], *record['benchmark_binding'].values()])
     for name in dependencies:
         record, actual = inputs[name], resolved[name]
         input_metadata(record)
         entry = accepted.get(version(record))
         require(entry is not None and entry.get('status') == 'accepted'
                 and identity(entry['input']) == identity(record), 'input not in exact accepted version')
-        require(identity({key: value for key, value in actual.items() if key not in {'physical_size_bytes', 'last_validated_at'}})
+        extras = {'physical_size_bytes', 'last_validated_at'}
+        if name in semantic_ids:
+            extras.add('semantic_document')
+        require(identity({key: value for key, value in actual.items() if key not in extras})
                 == identity(record) and type(actual.get('physical_size_bytes')) is int
                 and actual['physical_size_bytes'] == record['artifact_size_bytes']
                 and actual.get('last_validated_at') == validation['validation_finished_at'], 'recorded input hash/physical size/time')
+    # Separate pure module; never import the runtime or reopen source roots.
+    if __package__:
+        from .selection import common_primary, selection_documents
+    else:
+        from selection import common_primary, selection_documents
+    for record in terrain:
+        selection_documents(record, inputs, resolved, dependencies)
+    if cutover['mode'] == 'adopted_primary' and selected['role'] == 'primary':
+        primary = [row for row in snapshot['cells'] if row.get('study_id') == study_id and row.get('role') == 'primary']
+        actual_primary = [row for row in spec['cells'] if cells[fingerprint(row)].get('role') == 'primary']
+        common_primary(cutover, terrain, inputs, resolved, dependencies, primary, actual_primary)
     publications = evidence['publication_events']
     frozen = docs['preregistration_event']
     prereg_sequence = publication(frozen, 'preregistration-' + fingerprint(prereg), fingerprint(prereg))

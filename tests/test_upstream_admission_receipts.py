@@ -24,6 +24,7 @@ def test_complete_explicit_metadata_contract_is_readable():
     selection['selection_hash'] = fingerprint('synthetic selection, not actual evidence')
     selection['metadata_checks'].update(status='selected', final_eval_read_count=0,
         source_selection_identity_sha256=selection['selection_hash'], immutability_policy='new_selection_version_required')
+    selection['benchmark_binding'] = {'matrix_object_id': 'matrix', 'matrix_lock_object_id': 'matrix-lock'}
     input_metadata(selection)
 
 
