@@ -16,7 +16,8 @@ def compare_package(bundle, computation_ref, *, formal=False, max_operations=20_
     decision = adjudicate(bundle, formal=formal, max_operations=plan["maximum_analysis_operations"])
     descriptive = aggregate(bundle, formal=formal, descriptive_intervals=False)
     body = {key: value for key, value in descriptive.items() if key != "aggregate_hash"}
-    body.update(adjudication=decision, computation_ref=computation_ref)
+    body.update(adjudication=decision, computation_ref=computation_ref,
+                qualification="formal" if formal else "engineering-fixture")
     value = {**body, "aggregate_hash": fingerprint(body)}
     table = csv_bytes(value)
     figures = comparison_figures(value, maximum_operations=plan["graph_operation_bound"])

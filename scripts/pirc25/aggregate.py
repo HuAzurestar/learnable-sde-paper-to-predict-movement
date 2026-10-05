@@ -146,7 +146,9 @@ def aggregate(bundle, *, formal=False, descriptive_intervals=True):
               "data_hash": bundle["data_hash"], "code_hash": bundle["code_hash"], "source_bundle_hash": bundle["bundle_hash"],
               "independent_unit": "block_id", "seed_policy": "average-within-block-not-independent-replication",
               "stratum_policy": "exact-comparison-dimensions-no-cross-stratum-pooling",
-              "qualification": "formal" if formal else "engineering-fixture", "arms": arms, "comparisons": comparisons,
+              # --formal validates the source admission; this standalone
+              # transformation has no supervisor/settlement proof of its own.
+              "qualification": "descriptive", "arms": arms, "comparisons": comparisons,
               "expected_cell_count": len(rows), "successful_cell_count": sum(c["status"] == "SUCCEEDED" for c in rows.values()),
               "cell_dispositions": list(rows.values()), "disclosure_scope": bundle["disclosure_scope"],
               "visibility": bundle.get("visibility", "restricted")}

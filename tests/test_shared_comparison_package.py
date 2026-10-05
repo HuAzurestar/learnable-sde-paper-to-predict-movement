@@ -4,9 +4,20 @@ import csv
 import io
 import json
 
-from scripts.pirc25.aggregate import fingerprint
+from scripts.pirc25.aggregate import fingerprint, write_package
 from scripts.pirc25.comparison import compare_package
 from test_shared_adjudication import evidence
+
+
+def test_standalone_input_and_managed_result_have_distinct_qualification(tmp_path):
+    source = evidence()
+    descriptive = write_package(source, tmp_path / "input")
+    assert descriptive["qualification"] == "descriptive"
+    assert "adjudication" not in descriptive and "computation_ref" not in descriptive
+    reference = {"manifest_id": "synthetic-worker-receipt", "attempt_id": "synthetic"}
+    managed = compare_package(source, reference)["aggregate"]
+    assert managed["qualification"] == "engineering-fixture"
+    assert managed["computation_ref"] == reference
 
 
 def test_managed_outputs_share_full_policy_decision_and_reference():

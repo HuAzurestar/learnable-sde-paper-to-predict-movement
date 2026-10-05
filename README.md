@@ -130,6 +130,12 @@ Output must stay outside Git. The immutable package contains `aggregate.json`,
 UI imports these exact bytes. This adds no scientific manuscript claim, executes
 no experiment and reads no trajectory data.
 
+Standalone packages carry `qualification: descriptive`, including when `--formal`
+validates qualified source admission. They are inputs to the runtime's budgeted
+`compare` command, not formal statistical evidence. Formal outputs require the
+managed adjudication and its settled `ComputationReceipt.json`; removing their
+proof fields cannot turn a rehashed descriptive package into formal evidence.
+
 ## CI/CD and releases
 
 Pull requests to `main` run validation only. When one is merged, GitHub pushes
