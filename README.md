@@ -113,6 +113,18 @@ Missing new evidence is rejected for formal claims, not backfilled after reads;
 legacy nonformal bundles remain readable. Explicit old public recipe bindings
 are optional additional checks, never a substitute for the mandatory snapshot.
 Foreign frozen models carry their own source protocol and consumer authorization.
+For heterogeneous adapters, `admission.cell_packages` freezes an explicit
+`pirc25-cell-packages-v1` table with exactly one `cell_hash`/`package_hash`
+binding for each executable registered cell. Optional model-source grant/version
+and protocol references belong to that same entry, not another cell or a default.
+`scripts/pirc25/admission_selection.py` independently checks exact coverage,
+unique identities, unavailable declarations, the receipt's entry/table hashes,
+selected package content and common mode. Tables cannot coexist with default
+package/model references or override common protocol, execution grant or upstream
+authority. Matrix/table counts are bounded to10,000 and table metadata to4 MiB;
+there is no lookup or fallback. Explicit legacy single-package admission remains
+readable. These checks verify recorded bindings, not scientific eligibility or
+new authority. Standalone aggregation remains descriptive even with `--formal`.
 The trusted expected bundle hash remains required; internal hashes do not prove
 the truth of arbitrary operator-imported scientific attestations. Runtime inputs
 and registration APIs are documented in PSDE's `docs/pirc-38-shared-engineering.md`.

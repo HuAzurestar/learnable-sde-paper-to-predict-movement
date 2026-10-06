@@ -13,9 +13,11 @@ import re
 if __package__:
     from .dimensions import comparison_dimensions, canonical
     from .upstream import validate_upstream
+    from .admission_selection import selected_settings
 else:
     from dimensions import comparison_dimensions, canonical
     from upstream import validate_upstream
+    from admission_selection import selected_settings
 
 
 def fingerprint(value):
@@ -66,9 +68,10 @@ def qualification(package, prereg, report, evidence, grant):
                 and value["preregistration_hash"] == fingerprint(prereg), "qualification test outcome/bindings")
 
 
-def validate_model_permission(model, grant, spec, admitted_at):
+def validate_model_permission(model, grant, spec, admitted_at, *, cell=None, receipt=None):
     foreign = model["study_id"] != spec["study_id"]
-    settings = spec["admission"]
+    settings = (selected_settings(spec, cell, receipt) if "cell_packages" in spec["admission"]
+                else spec["admission"])
     expected_id = settings.get("model_authorization_id") if foreign else settings["authorization_id"]
     require(grant.get("authorization_id") == expected_id and expected_id is not None,
             "frozen model grant identity")
@@ -99,7 +102,7 @@ def validate_admission(bundle, row):
         require(canonical(comparison_dimensions(cell)) == canonical(comparison_dimensions(row)), "matrix dimensions")
         require(all(spec[key] == bundle[key] for key in ("study_id", "code_hash", "data_hash", "protocol_hash")), "bundle input identity")
         protocol, grant, package = docs["protocol"], docs["authorization"], docs["package"]
-        settings = spec["admission"]
+        settings = selected_settings(spec, cell, receipt)
         require(settings["mode"] == "formal" and protocol["schema_version"] == "pirc25-data-protocol-v1", "protocol version/mode")
         require(fingerprint(protocol) == spec["protocol_hash"] == package["protocol_hash"] == grant["protocol_hash"], "protocol binding")
         require(protocol["study_id"] == grant["study_id"] == spec["study_id"] and
@@ -196,7 +199,7 @@ def validate_admission(bundle, row):
                     and fingerprint({k: v for k, v in model_protocol.items() if k not in
                         {"preregistration_hash", "history_hash", "history_status"}}) in model_prereg["protocol_bindings"], "frozen model source preregistration")
             model_grant = docs["model_authorization"]
-            validate_model_permission(model, model_grant, spec, receipt["admitted_at"])
+            validate_model_permission(model, model_grant, spec, receipt["admitted_at"], cell=cell, receipt=receipt)
             qualification(model, docs["model_preregistration"], docs["model_qualification"], docs["model_qualification_evidence"], model_grant)
     except (KeyError, TypeError, StopIteration, AttributeError) as exc:
         raise ValueError("missing or malformed admission evidence") from exc
