@@ -14,10 +14,12 @@ if __package__:
     from .dimensions import comparison_dimensions, canonical
     from .upstream import validate_upstream
     from .admission_selection import selected_settings
+    from .analytic_qualification import validate_analytic_qualification
 else:
     from dimensions import comparison_dimensions, canonical
     from upstream import validate_upstream
     from admission_selection import selected_settings
+    from analytic_qualification import validate_analytic_qualification
 
 
 def fingerprint(value):
@@ -183,6 +185,13 @@ def validate_admission(bundle, row):
             require(read["preregistration_hash"] == fingerprint(prereg) and read["history_hash"] == fingerprint(history)
                     and read["test_mode"] == "blind" and read["frozen_sequence"] == frozen["sequence"] < event["sequence"], "test freeze preceded exposure")
         qualification(package, prereg, docs["qualification"], docs["qualification_evidence"], grant)
+        # An analytic package pointer or a propagation adapter must never
+        # silently fall back to the older generic operator pass contract.
+        if ("managed_analytic_qualification" in package["payload"]
+                or docs.get("propagation_qualification") is not None
+                or cell.get("plugin_id") in {"affine-propagation", "affine-propagation-chunk",
+                    "synthetic-propagation", "synthetic-propagation-chunk"}):
+            validate_analytic_qualification(receipt, row)
         if package.get("requires_frozen_model"):
             model = docs["frozen_model"]
             require(fingerprint(model) == package["model_hash"] and model["kind"] == "FrozenDynamicsPackage"

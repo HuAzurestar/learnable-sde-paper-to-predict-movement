@@ -101,6 +101,24 @@ These are frozen export costs, not a query of the runtime's current arm balance.
 spec/cell/attempt identity, protocol and execution grant, actual input exposure
 events, frozen preregistration/history, package/upstream/command bindings, and
 the referenced qualification checks. A `qualified` string alone is rejected.
+Affine analytic receipts additionally require the managed qualification worker's
+actual result, admission, resource contract, start/native-stop/settlement and
+completion events, same cumulative arm, explicit source-consumer/export grant,
+and preregistered request/model/source-bound numerical policy. The independent
+stdlib reader checks bounded saved dyadic intervals and recomputes their widths,
+signed grid bias, scaled transition growth, current scalar roundoff and absolute
+error upper. Target artifact bytes and metric/forecast provenance are bound;
+model error remains unknown. It does not replay matrix exponentials/CDFs or
+authenticate arbitrary self-rehashed journals: the authorized export's expected
+bundle hash remains the trusted transport boundary.
+
+For a single analytic cell, run `python scripts/pirc25/validate_analytic.py
+bundle.json --expected-hash <authorized-bundle-hash>` to verify admission only.
+This does not produce a comparison, statistical adjudication or model approval.
+The existing `aggregate.py --formal` comparison-plan requirements are unchanged.
+Missing numeric proof or target bytes cannot fall back to generic operator
+checks; other propagation methods cannot borrow an affine analytic proof.
+
 New formal evidence also requires an immutable upstream snapshot and operator
 acceptance catalog bound to the package and pre-read per-study cutover. The
 stdlib-only independent `scripts/pirc25/upstream.py` checks complete cell scope,
