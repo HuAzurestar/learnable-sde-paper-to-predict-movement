@@ -71,6 +71,71 @@ evaluation set are not treated as independent scientific replications.
 When supplied, paired-segment uncertainty files are checked against both receipt
 manifest hashes and the exact contrast-file hash before their intervals are emitted.
 
+## Shared research evidence
+
+`scripts/pirc25/aggregate.py` consumes the authorized, hash-bound shared-runtime
+bundle. Missing/failed cells stay in the expected denominator; seed repeats are
+averaged within independent blocks. Mixed units/protocols are rejected. Paired
+intervals are unavailable with fewer than two complete independent blocks.
+Formal comparisons require a frozen comparison plan and qualified inputs.
+Comparison summaries are keyed by `(arm_id, stratum_id)`. Exact
+`comparison_dimensions` (including horizon/region/scenario and explicitly
+registered extension axes) are preserved in aggregate rows, CSV, and evidence
+claims. Seeds are averaged only within a block and stratum; paired comparisons
+never pool different horizons. Absent arms and incomplete blocks produce explicit
+no-pair dispositions. Evidence claim sources contain only contributing complete
+blocks. Legacy dimensionless bundles use one empty stratum; re-export from the
+runtime to recover dimensions lost by an older exporter. Budget arm IDs do not
+change. New runtime exports additionally bind dimensions to the hashed registered
+cell, and formal validation checks them against the admission receipt.
+
+New runtime bundles also freeze all-attempt reservation/settlement sources.
+The aggregator validates source hashes, identities and charge policy, rejects
+duplicate sources, and retains failed/retried resource use in each stratum's
+cost summary. Quality can exclude incomplete blocks without erasing their costs.
+CSV and evidence claims carry the same `slot-ms` charged/reserved/measured values;
+unknown measured cost remains null and legacy absent costs remain unavailable.
+These are frozen export costs, not a query of the runtime's current arm balance.
+
+`--formal` also validates each successful cell's `pirc25-admission-v1` receipt:
+spec/cell/attempt identity, protocol and execution grant, actual input exposure
+events, frozen preregistration/history, package/upstream/command bindings, and
+the referenced qualification checks. A `qualified` string alone is rejected.
+New formal evidence also requires an immutable upstream snapshot and operator
+acceptance catalog bound to the package and pre-read per-study cutover. The
+stdlib-only independent `scripts/pirc25/upstream.py` checks complete cell scope,
+exact selected accepted metadata/schema/hash/size/license declarations, recorded
+physical size/time, explicit PIRC-22 cutover/zero-final-eval selection, consumer
+identity and original publication/validation events before input exposure.
+A ready flag or recomputed enclosing checksum cannot replace those bindings.
+No runtime/provider is imported and original metadata/data roots are not opened.
+Missing new evidence is rejected for formal claims, not backfilled after reads;
+legacy nonformal bundles remain readable. Explicit old public recipe bindings
+are optional additional checks, never a substitute for the mandatory snapshot.
+Foreign frozen models carry their own source protocol and consumer authorization.
+The trusted expected bundle hash remains required; internal hashes do not prove
+the truth of arbitrary operator-imported scientific attestations. Runtime inputs
+and registration APIs are documented in PSDE's `docs/pirc-38-shared-engineering.md`.
+Restricted attachments remain restricted when imported back into the runtime,
+even when their parent cells are synthetic. Do not publish these local bundles
+as public paper data merely because their aggregation succeeds.
+
+```console
+python scripts/pirc25/aggregate.py /absolute/runtime/bundle.json --expected-hash BUNDLE_HASH --output /absolute/runtime/evidence-v1
+python -m pytest tests/test_shared_evidence.py -q
+```
+
+Output must stay outside Git. The immutable package contains `aggregate.json`,
+`metrics.csv`, `PaperEvidenceIndex.json` and a file-hash manifest. PSDE's read-only
+UI imports these exact bytes. This adds no scientific manuscript claim, executes
+no experiment and reads no trajectory data.
+
+Standalone packages carry `qualification: descriptive`, including when `--formal`
+validates qualified source admission. They are inputs to the runtime's budgeted
+`compare` command, not formal statistical evidence. Formal outputs require the
+managed adjudication and its settled `ComputationReceipt.json`; removing their
+proof fields cannot turn a rehashed descriptive package into formal evidence.
+
 ## CI/CD and releases
 
 Pull requests to `main` run validation only. When one is merged, GitHub pushes
