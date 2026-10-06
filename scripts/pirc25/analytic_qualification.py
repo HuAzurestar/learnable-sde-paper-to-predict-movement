@@ -107,7 +107,7 @@ def timestamp(value):
     return result
 
 
-def artifact(result, metadata, spec, cell):
+def artifact(result, metadata, spec, cell, *, resume_level="restart-only"):
     bounded(result, 512*1024)
     require(metadata["artifact_id"] == metadata["sha256"] == fingerprint(result)
         and type(metadata["size_bytes"]) is int and metadata["size_bytes"] == len(encoded(result))
@@ -117,7 +117,7 @@ def artifact(result, metadata, spec, cell):
         and result["spec_hash"] == fingerprint(spec) and result["cell_hash"] == fingerprint(cell)
         and result["protocol_hash"] == spec["protocol_hash"] and result["input_hash"] == spec["data_hash"]
         and result["state_order"] == ["x", "y", "vx", "vy"] and result["units"] == ["m", "m", "m/s", "m/s"]
-        and result["time_unit"] == "s" and result["resume_level"] == "restart-only", "result input/schema")
+        and result["time_unit"] == "s" and result["resume_level"] == resume_level, "result input/schema")
     require(result["output_hash"] == fingerprint({k: result[k] for k in ("metrics", "forecast", "fit", "source_schema")}),
         "actual output content hash")
 
@@ -208,7 +208,7 @@ def analysis_values(analysis, policy, request, method, estimate):
     return cb, tb, bias
 
 
-def source_chain(evidence, receipt, pointer, policy):
+def source_chain(evidence, receipt, pointer, policy, *, source_kind="analytic"):
     attempt, run, result = (evidence[k] for k in ("source_attempt", "source_run", "source_result"))
     admission, metadata, spec, cell = (evidence["source_admission"], evidence["source_artifact"],
         evidence["source_admission"]["spec"], evidence["source_run"]["cell"])
@@ -225,18 +225,24 @@ def source_chain(evidence, receipt, pointer, policy):
         and run["study_id"] == spec["study_id"] and admission["cell"] == cell and cell in spec["cells"]
         and admission["mode"] == "pilot" and admission["qualification"] == result["qualification"] == "fixture"
         and result["admission_hash"] == admission["admission_hash"], "source pilot receipt/result")
+    require(source_kind in {"analytic", "mlmc"}, "explicit source kind")
     require(spec["runtime_binding"] == target_spec["runtime_binding"] and spec["code_hash"] == target_spec["code_hash"]
-        and cell["plugin_id"] == "affine-propagation-qualification" and cell["execution_role"] == "qualification"
-        and cell["arm_id"] == target_cell["arm_id"] and cell["frozen_dynamics"] == target_cell["frozen_dynamics"]
-        and cell["propagation_request"] == target_cell["propagation_request"]
-        and cell["affine_qualification_policy"] == policy
-        and cell["execution"]["config"]["method"] == policy["method"], "same source/model/request/arm/root")
+        and cell["arm_id"] == target_cell["arm_id"] and cell["frozen_dynamics"] == target_cell["frozen_dynamics"],
+        "same source/model/arm/root")
+    if source_kind == "analytic":
+        require(cell["plugin_id"] == "affine-propagation-qualification" and cell["execution_role"] == "qualification"
+            and cell["propagation_request"] == target_cell["propagation_request"] and cell["affine_qualification_policy"] == policy
+            and cell["execution"]["config"]["method"] == policy["method"], "analytic source/request/policy")
+    else:
+        require(cell["plugin_id"] == "affine-mlmc-qualification-chunk" and cell["execution_role"] == "pilot"
+            and cell["affine_mlmc_reference_policy"] == policy
+            and cell["execution"]["config"]["method"] == "mlmc-pilot", "MLMC source pilot/policy")
     def arm(registered):
         rows = [a for a in registered["arms"] if a["arm_id"] == cell["arm_id"]]
         require(len(rows) == 1, "unique original family arm")
         return rows[0]
     require(arm(spec) == arm(target_spec), "same cumulative arm family")
-    artifact(result, metadata, spec, cell)
+    artifact(result, metadata, spec, cell, resume_level="chunk" if source_kind == "mlmc" else "restart-only")
     grant = evidence["authorization"]
     require(grant["authorization_id"] == pointer["source_authorization_id"]
         and grant.get("version") == pointer["source_authorization_version"]
