@@ -225,7 +225,7 @@ def source_chain(evidence, receipt, pointer, policy, *, source_kind="analytic"):
         and run["study_id"] == spec["study_id"] and admission["cell"] == cell and cell in spec["cells"]
         and admission["mode"] == "pilot" and admission["qualification"] == result["qualification"] == "fixture"
         and result["admission_hash"] == admission["admission_hash"], "source pilot receipt/result")
-    require(source_kind in {"analytic", "mlmc"}, "explicit source kind")
+    require(source_kind in {"analytic", "mlmc", "mixture"}, "explicit source kind")
     require(spec["runtime_binding"] == target_spec["runtime_binding"] and spec["code_hash"] == target_spec["code_hash"]
         and cell["arm_id"] == target_cell["arm_id"] and cell["frozen_dynamics"] == target_cell["frozen_dynamics"],
         "same source/model/arm/root")
@@ -233,10 +233,16 @@ def source_chain(evidence, receipt, pointer, policy, *, source_kind="analytic"):
         require(cell["plugin_id"] == "affine-propagation-qualification" and cell["execution_role"] == "qualification"
             and cell["propagation_request"] == target_cell["propagation_request"] and cell["affine_qualification_policy"] == policy
             and cell["execution"]["config"]["method"] == policy["method"], "analytic source/request/policy")
-    else:
+    elif source_kind == "mlmc":
         require(cell["plugin_id"] == "affine-mlmc-qualification-chunk" and cell["execution_role"] == "pilot"
             and cell["affine_mlmc_reference_policy"] == policy
             and cell["execution"]["config"]["method"] == "mlmc-pilot", "MLMC source pilot/policy")
+    else:
+        require(cell["plugin_id"] == "affine-mixture-qualification" and cell["execution_role"] == "qualification"
+            and cell["propagation_request"] == target_cell["propagation_request"]
+            and cell["mixture_policy"] == target_cell["mixture_policy"]
+            and cell["mixture_qualification_policy"] == policy
+            and cell["execution"]["config"]["method"] == "mixture", "mixture source/request/policies")
     def arm(registered):
         rows = [a for a in registered["arms"] if a["arm_id"] == cell["arm_id"]]
         require(len(rows) == 1, "unique original family arm")
