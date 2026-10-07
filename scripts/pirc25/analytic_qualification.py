@@ -225,7 +225,7 @@ def source_chain(evidence, receipt, pointer, policy, *, source_kind="analytic"):
         and run["study_id"] == spec["study_id"] and admission["cell"] == cell and cell in spec["cells"]
         and admission["mode"] == "pilot" and admission["qualification"] == result["qualification"] == "fixture"
         and result["admission_hash"] == admission["admission_hash"], "source pilot receipt/result")
-    require(source_kind in {"analytic", "mlmc", "mixture"}, "explicit source kind")
+    require(source_kind in {"analytic", "mlmc", "mixture", "path"}, "explicit source kind")
     require(spec["runtime_binding"] == target_spec["runtime_binding"] and spec["code_hash"] == target_spec["code_hash"]
         and cell["arm_id"] == target_cell["arm_id"] and cell["frozen_dynamics"] == target_cell["frozen_dynamics"],
         "same source/model/arm/root")
@@ -237,6 +237,10 @@ def source_chain(evidence, receipt, pointer, policy, *, source_kind="analytic"):
         require(cell["plugin_id"] == "affine-mlmc-qualification-chunk" and cell["execution_role"] == "pilot"
             and cell["affine_mlmc_reference_policy"] == policy
             and cell["execution"]["config"]["method"] == "mlmc-pilot", "MLMC source pilot/policy")
+    elif source_kind == "path":
+        require(cell["plugin_id"] == "affine-path-qualification" and cell["execution_role"] == "qualification"
+            and cell["path_qualification_policy"] == policy
+            and cell["execution"]["config"]["method"] == policy["method"], "own path source/policy")
     else:
         require(cell["plugin_id"] == "affine-mixture-qualification" and cell["execution_role"] == "qualification"
             and cell["propagation_request"] == target_cell["propagation_request"]

@@ -24,10 +24,12 @@ if __package__:
     from .admission import validate_admission
     from .dimensions import comparison_dimensions
     from .costs import validate_cost, summarize_cost
+    from .output_eligibility import comparison_eligible, path_output_counts
 else:
     from admission import validate_admission
     from dimensions import comparison_dimensions
     from costs import validate_cost, summarize_cost
+    from output_eligibility import comparison_eligible, path_output_counts
 
 
 def canonical(value):
@@ -150,6 +152,8 @@ def aggregate(bundle, *, formal=False, descriptive_intervals=True):
               # transformation has no supervisor/settlement proof of its own.
               "qualification": "descriptive", "arms": arms, "comparisons": comparisons,
               "expected_cell_count": len(rows), "successful_cell_count": sum(c["status"] == "SUCCEEDED" for c in rows.values()),
+              "comparison_eligible_cell_count": sum(comparison_eligible(c) for c in rows.values()),
+              "path_output_dispositions": path_output_counts(rows.values()),
               "cell_dispositions": list(rows.values()), "disclosure_scope": bundle["disclosure_scope"],
               "visibility": bundle.get("visibility", "restricted")}
     return {**result, "aggregate_hash": fingerprint(result)}
@@ -166,7 +170,7 @@ def aggregate_stratum(rows, baseline, candidates, *, descriptive_intervals=True)
         for cell in cells:
             blocks[cell["block_id"]].append(cell)
         complete = {block_id: values for block_id, values in blocks.items()
-                    if all(c["status"] == "SUCCEEDED" for c in values)}
+                    if all(comparison_eligible(c) for c in values)}
         block_metrics = {block_id: {metric: mean(c["metrics"][metric] for c in values)
                                    for metric in values[0]["metrics"]} for block_id, values in complete.items()}
         complete_blocks[arm_id] = block_metrics
@@ -175,6 +179,8 @@ def aggregate_stratum(rows, baseline, candidates, *, descriptive_intervals=True)
                    for metric in next(iter(block_metrics.values()), {})}
         dispositions = dict(sorted(Counter(c["status"] for c in cells).items()))
         arms.append({"arm_id": arm_id, "expected_cells": len(cells), "successful_cells": len(successful),
+                     "comparison_eligible_cells": sum(comparison_eligible(c) for c in cells),
+                     "path_output_dispositions": path_output_counts(cells),
                      "cost": summarize_cost(cells),
                      "dispositions": dispositions,
                      "status_rates": {"denominator": len(cells), "denominator_kind": "registered-cells-in-arm-stratum",
@@ -215,17 +221,18 @@ def csv_bytes(aggregate_value):
     stream = io.StringIO(newline="")
     writer = csv.writer(stream, lineterminator="\n")
     extra = [name for name in ("adjudication", "computation_ref") if name in aggregate_value]
-    writer.writerow(["aggregate_hash", "arm_id", "metric", "value", "unit", "independent_n", "expected_cells", "successful_cells", "status", "stratum_id", "comparison_dimensions", "charged_ms", "reserved_ms", "measured_ms", "cost_unit", "cost_scope", "status_rates", *extra])
+    writer.writerow(["aggregate_hash", "arm_id", "metric", "value", "unit", "independent_n", "expected_cells", "successful_cells", "status", "stratum_id", "comparison_dimensions", "charged_ms", "reserved_ms", "measured_ms", "cost_unit", "cost_scope", "status_rates", "comparison_eligible_cells", "path_output_dispositions", *extra])
     frozen = [canonical(aggregate_value[name]).decode() for name in extra]
     for arm in aggregate_value["arms"]:
         costs = [arm["cost"][key] for key in ("charged_ms", "reserved_ms", "measured_ms", "unit", "scope")]
         rates = canonical(arm.get("status_rates")).decode()
+        eligibility = [arm["comparison_eligible_cells"], canonical(arm["path_output_dispositions"]).decode()]
         if not arm["metrics"]:
             writer.writerow([aggregate_value["aggregate_hash"], arm["arm_id"], "", "", "", arm["independent_n"],
-                             arm["expected_cells"], arm["successful_cells"], arm["status"], arm["stratum_id"], canonical(arm["comparison_dimensions"]).decode(), *costs, rates, *frozen])
+                             arm["expected_cells"], arm["successful_cells"], arm["status"], arm["stratum_id"], canonical(arm["comparison_dimensions"]).decode(), *costs, rates, *eligibility, *frozen])
         for metric, value in sorted(arm["metrics"].items()):
             writer.writerow([aggregate_value["aggregate_hash"], arm["arm_id"], metric, value, arm["metric_units"][metric],
-                             arm["independent_n"], arm["expected_cells"], arm["successful_cells"], arm["status"], arm["stratum_id"], canonical(arm["comparison_dimensions"]).decode(), *costs, rates, *frozen])
+                             arm["independent_n"], arm["expected_cells"], arm["successful_cells"], arm["status"], arm["stratum_id"], canonical(arm["comparison_dimensions"]).decode(), *costs, rates, *eligibility, *frozen])
     return stream.getvalue().encode()
 
 

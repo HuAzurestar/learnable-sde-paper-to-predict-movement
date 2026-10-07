@@ -134,6 +134,25 @@ authenticity. Failed rows remain in the expected-cell denominator; the existing
 formal comparison-plan requirements are unchanged. Missing mixture proof cannot
 fall back to a generic operator pass.
 
+For owner-admitted independent path Monte Carlo or unnormalized IS targets, use
+`python scripts/pirc25/validate_paths.py bundle.json --expected-hash
+<authorized-bundle-hash>`. The separate stdlib reader checks the settled own-path
+pilot, source-consumer/export permission and frozen original-arm policies. Source
+and target must share the same physical law, grid and functional but have distinct
+request, seed and coupling identities (not an independence theorem). Saved final
+statistics reconstruct the actual target output and its sampling/ESS checks;
+bounded same-law reference intervals are reused without sampler or matrix/CDF
+replay. Source PASSED cannot promote a current FAILED output. The CLI reports
+current passed and failed counts separately, retaining completed numerical
+failures and noncompleted rows in the expected-cell denominator. Outputs with
+FAILED or unresolved current classification are excluded from
+complete paired-block aggregation and adjudication, without erasing their
+computational SUCCEEDED status or cost; CSV records both counts separately.
+Observed scalar distance is not a stochastic coverage or predictive-distribution bound; sampler
+roundoff and model error remain unknown. This is admission verification only,
+not a full study, statistical comparison or scientific model approval. Missing
+path proof cannot fall back to generic operator or Gaussian approval.
+
 New formal evidence also requires an immutable upstream snapshot and operator
 acceptance catalog bound to the package and pre-read per-study cutover. The
 stdlib-only independent `scripts/pirc25/upstream.py` checks complete cell scope,
