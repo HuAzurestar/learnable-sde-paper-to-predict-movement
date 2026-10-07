@@ -119,6 +119,21 @@ The existing `aggregate.py --formal` comparison-plan requirements are unchanged.
 Missing numeric proof or target bytes cannot fall back to generic operator
 checks; other propagation methods cannot borrow an affine analytic proof.
 
+For a settled affine mixture target, use `python scripts/pirc25/validate_mixture.py
+bundle.json --expected-hash <authorized-bundle-hash>`. Its separate stdlib reader
+checks actual pilot settlement/native-stop order before protected reads, source
+consumer/export permission, full frozen mixture/request/model/policy identity,
+and the current retained functional and lineage. It recomputes direct retained
+error against the saved Euler law and total error against the saved continuous
+law, along with reference width, signed time bias, scaled growth and operation
+caps. It never borrows Gaussian approval or replays a numerical engine. Closure,
+implementation roundoff and model error remain unknown/inseparable, not zero.
+This verifies recorded admission of one functional only, not a full-distribution
+claim, statistical comparison, scientific model approval or arbitrary journal
+authenticity. Failed rows remain in the expected-cell denominator; the existing
+formal comparison-plan requirements are unchanged. Missing mixture proof cannot
+fall back to a generic operator pass.
+
 New formal evidence also requires an immutable upstream snapshot and operator
 acceptance catalog bound to the package and pre-read per-study cutover. The
 stdlib-only independent `scripts/pirc25/upstream.py` checks complete cell scope,
