@@ -64,6 +64,56 @@ def test_zero_sources_are_unavailable_not_free():
     assert "independent_n" not in result
 
 
+def verified_cost(*, store="one", attempt="attempt", charged=12, settlement="1"*64):
+    from scripts.pirc25.analytic_qualification import fingerprint
+    return {"source_cost": {"store_id": store, "attempt_id": attempt,
+        "source_id": fingerprint([store, attempt]), "charged_ms": charged}, "settlement_hash": settlement}
+
+
+def test_cost_deduplication_uses_store_and_attempt_not_reference_count():
+    first = verified_cost()
+    second_store = verified_cost(store="two")
+    summary = summarize_calibration_sources([first, deepcopy(first), second_store])
+    assert summary["unique_sources"] == 2 and summary["charged_ms"] == 24
+    assert "independent_n" not in summary
+
+
+@pytest.mark.parametrize("conflict", ["amount", "settlement", "bool", "identity"])
+def test_original_cost_conflicts_are_not_silently_deduplicated(conflict):
+    first, second = verified_cost(), verified_cost()
+    if conflict == "amount":
+        second["source_cost"]["charged_ms"] += 1
+    elif conflict == "settlement":
+        second["settlement_hash"] = "2"*64
+    elif conflict == "bool":
+        second["source_cost"]["charged_ms"] = True
+    else:
+        second["source_cost"]["source_id"] = "0"*64
+    with pytest.raises(ValueError, match="calibration"):
+        summarize_calibration_sources([first, second])
+
+
+def test_cyclic_saved_proof_is_bounded_before_hashing():
+    proof = {}
+    proof["cycle"] = proof
+    with pytest.raises(ValueError, match="calibration"):
+        validate_saved_calibration(proof, {}, consumer_study_id="consumer")
+
+
+@pytest.mark.parametrize("expected", [None, "", "g"*64, "0"*64])
+def test_inspection_never_infers_its_trusted_transport_hash(expected):
+    from scripts.pirc25.validate_calibration import validate
+    with pytest.raises(ValueError, match="trusted expected calibration"):
+        validate({}, expected)
+
+
+@pytest.mark.parametrize("content", [b'{"x":1,"x":2}', b'{ "x": 1 }', b'{"x":NaN}'])
+def test_inspection_requires_unambiguous_canonical_finite_bytes(content):
+    from scripts.pirc25.validate_calibration import load_document
+    with pytest.raises(ValueError):
+        load_document(content)
+
+
 def test_saved_reader_has_no_runtime_provider_or_free_reference_imports():
     path = Path(__file__).resolve().parents[1]/"scripts/pirc25/probability_calibration.py"
     tree = ast.parse(path.read_text(encoding="utf-8"))

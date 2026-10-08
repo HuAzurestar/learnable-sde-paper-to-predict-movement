@@ -26,6 +26,9 @@ def same(left, right):
 
 
 def policy_values(policy, model, template, code_hash):
+    bounded(policy, 8192, nodes=512, depth_limit=8, string_limit=256)
+    bounded(model, 65536, nodes=10000, depth_limit=12, string_limit=16384)
+    bounded(template, 8192, nodes=512, depth_limit=8, string_limit=256)
     required = {"schema_version", "source_request_hash", "model_package_hash", "code_hash",
         "target_probability", "maximum_relative_probability_error", "maximum_relative_probability_width",
         "maximum_operations", "maximum_job_seconds"}
@@ -317,7 +320,12 @@ preparation cost summary, not a cell-error aggregate or independent n.
     require(type(verified) is list and len(verified) <= 10000, "bounded verified source list")
     sources = {}
     for item in verified:
+        bounded(item, 8192, nodes=512, depth_limit=8, string_limit=256)
         cost = item["source_cost"]
+        require(set(cost) == {"source_id", "store_id", "attempt_id", "charged_ms"}
+            and type(cost["charged_ms"]) is int and cost["charged_ms"] > 0
+            and all(type(cost[k]) is str and 0 < len(cost[k]) <= 128 for k in ("store_id", "attempt_id"))
+            and cost["source_id"] == fingerprint([cost["store_id"], cost["attempt_id"]]), "verified cost shape/identity")
         key = (cost["store_id"], cost["attempt_id"])
         if key in sources:
             require(same(sources[key]["source_cost"], cost)
@@ -352,6 +360,10 @@ def validate_calibrated_admission(receipt, row):
         sealed(entry, "binding_hash")
         require(sum(same(entry, item) for item in table) == 1 and entry["status"] == "CALIBRATED"
             and entry["consumer_study_id"] == spec["study_id"], "unique calibrated table binding")
+        selected_functionals = [f for f in functionals if f.get("functional_id") == cell.get("functional_id")]
+        require(len(selected_functionals) == 1 and finite(selected_functionals[0]["target_probability"])
+            and selected_functionals[0]["target_probability"] == entry["source_pointer"]["policy"]["target_probability"],
+            "frozen target probability, not a coerced scalar")
         proof = docs["probability_calibration"]
         verified = validate_saved_calibration(proof, entry["source_pointer"], consumer_study_id=spec["study_id"])
         require(entry["source_evidence_hash"] == verified["evidence_hash"]

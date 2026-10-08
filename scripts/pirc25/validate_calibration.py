@@ -9,10 +9,10 @@ import json
 from pathlib import Path
 
 if __package__:
-    from .analytic_qualification import bounded, fingerprint
+    from .analytic_qualification import bounded, encoded, fingerprint
     from .probability_calibration import validate_saved_calibration, summarize_calibration_sources
 else:
-    from analytic_qualification import bounded, fingerprint
+    from analytic_qualification import bounded, encoded, fingerprint
     from probability_calibration import validate_saved_calibration, summarize_calibration_sources
 
 
@@ -39,6 +39,23 @@ def validate(document, expected_hash):
         "scope": "recorded preparation only; no export authorization, admission, statistical adjudication or model qualification"}
 
 
+def load_document(content):
+    if type(content) is not bytes or len(content) > 64*1024*1024:
+        raise ValueError("calibration inspection exceeds byte quota")
+    def pairs(items):
+        value = {}
+        for key, item in items:
+            if key in value:
+                raise ValueError("duplicate calibration inspection JSON field")
+            value[key] = item
+        return value
+    document = json.loads(content, object_pairs_hook=pairs)
+    bounded(document, 64*1024*1024, nodes=1000000, depth_limit=32, string_limit=16384)
+    if content != encoded(document):
+        raise ValueError("canonical calibration inspection bytes required")
+    return document
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("document", type=Path)
@@ -48,7 +65,7 @@ def main():
         content = stream.read(64*1024*1024+1)
     if len(content) > 64*1024*1024:
         raise ValueError("calibration inspection exceeds byte quota")
-    print(json.dumps(validate(json.loads(content), args.expected_hash), sort_keys=True, separators=(",", ":"), allow_nan=False))
+    print(json.dumps(validate(load_document(content), args.expected_hash), sort_keys=True, separators=(",", ":"), allow_nan=False))
 
 
 if __name__ == "__main__":
