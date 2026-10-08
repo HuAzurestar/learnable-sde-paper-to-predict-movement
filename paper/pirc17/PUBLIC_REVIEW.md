@@ -7,8 +7,8 @@ paths are mapped to published filenames in `published_pdf_files`.
 The manifest records the actual inspected pages and route-input check. This is compilation
 and public-copy checking, not full manuscript/scientific acceptance.
 
-Local source and full evidence revision:
-`bd0a4ad57c16f6ca920e24947c350667a52e86e0`.
+Local manuscript source revision:
+`de71e4bc3c4effa25631214c4aa7eb19accfb871`.
 Previous complete local PDFs were delivered at
 `42906141d41174ecb0ba43d3c47e31e6b65777b4` (English 85 pages,
 Chinese 82 pages). Those PDFs are **not** uploaded because they embed
@@ -46,9 +46,9 @@ query is run for this projection.
 
 ## Pending experiment delivery
 
-At 2026-10-08 15:11 Hong Kong time: original science 11,015 successful,
+At 2026-10-08 15:23 Hong Kong time: original science 11,015 successful,
 5 failed and 0 runnable out of 11,020; common scores 11,368 rows/58 groups;
-original auxiliary work 207/261 successful, 54 remaining. These are workload
+original auxiliary work 208/261 successful, 53 remaining. These are workload
 dispositions, not 11,020 independent participants or final accepted effects.
 The single independent saved-output audit, final aggregate export, original
 16 tables/16 figure groups and final numeric manuscript integration remain
