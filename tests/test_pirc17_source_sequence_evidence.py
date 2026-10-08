@@ -129,6 +129,11 @@ def test_new_source_table_preserves_every_previous_scientific_environment(langua
             terminal = [block for block in new if r"\label{tab:terminal-score-inventory}" in block]
             assert len(terminal) == 1
             new.remove(terminal[0])
+            # This additional analysis-state table has its own complete
+            # source/arithmetic/row checks; every older table stays exact.
+            analysis = [block for block in new if r"\label{tab:saved-analysis-states}" in block]
+            assert len(analysis) == 1
+            new.remove(analysis[0])
             added = [block for block in new if r"\label{tab:source-sequence-screen}" in block]
             assert len(added) == 1 and len(new) == len(old)+1
             new.remove(added[0])
