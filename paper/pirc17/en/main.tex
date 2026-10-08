@@ -3249,6 +3249,23 @@ is a lower bound, and a process-lifetime peak is not a per-trial peak.
 Nested map-query time is already included in rollout time and must not be
 added again. GPU timing and GPU memory do not apply to this CPU experiment.
 
+\paragraph{Observed host interruption.}
+One original provider-cold trial (terrain \texttt{loo-surface}, repetition~0)
+overlapped a confirmed host sleep/resume event. Its saved
+\texttt{perf\_counter\_ns} interval is 2315.996~s for an actual final target
+time of 1801~s; the host-event timestamps are 30~min~43~s apart.
+The overlap was established by mapping the saved counter endpoints using
+a later paired clock observation, not by original stored UTC endpoints.
+Artifact completion does not certify uninterrupted timing. We retain the
+original value, charges and five-trial denominator, without subtracting
+sleep, excluding the trial or rerunning it. This trial and any affected
+quantile or normalized mean describe interruption-exposed elapsed time,
+not isolated uninterrupted prediction latency or evidence of a speedup.
+The nested terrain-query span shares this limitation. Other trials have
+not thereby been certified free of interruption, and complete runtime
+qualification remains pending. This timing disclosure alone neither
+recomputes nor independently validates the saved predictive scores.
+
 
 \section{Discussion and limitations}
 \subsection{A lower distributional score is not a point-error guarantee}
