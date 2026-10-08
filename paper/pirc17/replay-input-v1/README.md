@@ -55,15 +55,17 @@ quantiles or predictive-disk radii. This command runs no resampling or forecasts
 
 ## Remaining full-paper reproducibility work
 
-This closes publication of the missing original anonymous input and permits
-the standard-library diagnostic rebuild. It does **not yet** certify a clean
-public end-to-end rebuild of all original paired verdicts, sixteen tables,
-sixteen figure groups and PDFs. The PSDE offline paired replay still needs
-its public import/dependency path resolved and independently verified; an
-isolated import currently reaches an unavailable `pyarrow` dependency even
-though the saved-scalar arithmetic itself does not require map/data backends.
-Existing TEST-02 receipts document the earlier actual local replay, not that
-missing clean-public-environment proof. No gate is waived or claimed green.
+The standard-library diagnostic rebuild above is complete. A separate
+[clean public paired replay](../public-paired-replay-v1/README.md) now reproduces
+all 90 comparisons and 120 metric views, canonically identical to the original,
+in a new NumPy-only environment. It compiles unchanged selected definitions
+from hash-pinned public PSDE source and verifies the frozen policy; it does not
+modify the sealed producer or pretend its heavyweight CLI has no backend
+dependencies. Original fixed statistical streams are replayed, not retuned.
+This still does **not** certify a complete public end-to-end rebuild of all
+sixteen tables, sixteen figure groups and PDFs. Existing TEST-02 receipts
+and the new arithmetic proof do not replace raw-source or human acceptance.
+No gate is waived or claimed green.
 
 Final review-response adjudication, manuscript cleanup, verified authorship,
 privacy/map publication decisions and actual human acceptance remain required.
