@@ -75,4 +75,5 @@ def test_new_ledger_pins_exact_files_and_retains_every_previous_root_and_review_
     review=json.loads((PAPER/"review-response-v1.json").read_text(encoding="utf-8"))
     assert review["accepted_items"]==0 and not review["all_review_items_or_paper_complete"]
     assert review["status_counts"]=={"draft_checked":20,"partial":14,"awaiting_original_results":7,"permission_unverified":1}
-    assert len(review["evidence_files"])==79
+    assert len(review["evidence_files"])==80
+    assert "paper/pirc17/terrain-family-completeness-v1.json" in {f["path"] for f in review["evidence_files"]}

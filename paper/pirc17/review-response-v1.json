@@ -34,6 +34,10 @@
   "response_does_not_replace_original_full_goal": true,
   "evidence_files": [
     {
+      "path": "paper/pirc17/terrain-family-completeness-v1.json",
+      "sha256": "6d2a580bcec9db8d00b593a2aa5446b65713453f18a7dbc8532c6ae0fa332c0c"
+    },
+    {
       "path": "paper/pirc17/point-error-horizon-description-v1.json",
       "sha256": "73e5eff2550fb1572a8a449500adf3f17c88be219932eb5c343d927be258176c"
     },
@@ -175,19 +179,19 @@
     },
     {
       "path": "paper/pirc17/en/main.tex",
-      "sha256": "6708532b017dfca8bc92db67d042df26b5620e3b66c943d0854c3ae7d9a5f2a7"
+      "sha256": "e7f915ad7fffc78accb9cb4d9b012bff57c83200531318862b12269780469655"
     },
     {
       "path": "paper/pirc17/zh/main.tex",
-      "sha256": "75941a03ae01cbf206a8faadb4ad619e62e8a78917171723ac507f3afa57f088"
+      "sha256": "84b0b204239e4fe81326473deef79db1b5cd4363567df230c2cd31f70a3673f5"
     },
     {
       "path": "paper/pirc17/en/main.pdf",
-      "sha256": "b90bd72f58c8ff4587c84d390701d13cfccf3c370f8ab34802df7dfdd750de82"
+      "sha256": "8e934e47244050f0aaa873d0060bbb507e516b73fc254c835566c633f3f4fbbc"
     },
     {
       "path": "paper/pirc17/zh/main.pdf",
-      "sha256": "e5bbdc6cee6c80441596e97c08418e234b3098d1421df76e54a6aa9a76bde634"
+      "sha256": "1087c14d21c2d2f61e7dfb00e05bb3c53230aba70c0d1c9113f3ec5e576fc60c"
     },
     {
       "path": "paper/pirc17/en/all-method-absolute.tex",
@@ -786,13 +790,15 @@
       "status": "awaiting_original_results",
       "manuscript_anchors": [
         "tab:comparison-conditions",
-        "tab:loo-lio-states"
+        "tab:loo-lio-states",
+        "sec:terrain-results"
       ],
       "evidence": [
         "paper/pirc17/inference-description-v1.json",
-        "paper/pirc17/claim-ledger.json"
+        "paper/pirc17/claim-ledger.json",
+        "paper/pirc17/terrain-family-completeness-v1.json"
       ],
-      "response": "已给布尔裁定条件、缺失/失败优先级与LOO/LIO方向冲突表；种子一致性仅解释为算法流稳定性，方法不套地形归属规则。",
+      "response": "已给布尔裁定条件、缺失/失败优先级与LOO/LIO方向冲突表；种子一致性仅解释为算法流稳定性，方法不套地形归属规则。 已从原闭合11368行/58组评分索引清点两个完整主要地形家族：整体/LOO为1380必需行、1379成功/1失败/0缺项，LIO为1150必需行、1148成功/2失败/0缺项。原登记成员及整族失败优先策略未变；共享230基线行，并集2300行、2297成功/3失败，不将2530家族行当独立预测或观测。正文已把160/131旧缺项数明确隔离为历史快照，说明当前整族不可用源于保留失败而非预测仍未完成。无成功子集效应或区间，也不将不可用当作地形无效或等效。辅助完成及审计本身不能恢复失败比较；仅统计既有状态，无新拟合/预测/评分/重采样/地图查询，不替代原独立输出复算或最终卡片。P1-16仍待原最终结果，未改动验收状态。",
       "remaining": "最终卡片与逐结果资格字段仍待原审计及分析接入；表中的规则不是已执行的最终资格结论。",
       "final_review_accepted": false
     },

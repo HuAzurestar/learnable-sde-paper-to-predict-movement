@@ -2987,19 +2987,37 @@ answers will be reported together, without selecting a more favourable
 comparison after observing results. Six-block secondary summaries will
 describe origin-mode sensitivity without assigning secondary factor verdicts.
 
-At the execution census in Section~\ref{sec:execution-coverage}, the
-primary all/leave-one-out family has 160 missing score-index rows and one
-failed row among its 1380 required rows. The supporting leave-one-in family
-has 131 missing and two failed rows among 1150 required rows. Both complete
-families are unavailable; no terrain effect is estimated from their
-successful intersections. The families share baseline rows, so these
-missing counts must not be added as distinct missing forecasts. These are
-dated scoring dispositions, not final terminal verdicts while work continues.
+The closed score inventory in Table~\ref{tab:terminal-score-inventory}
+contains every planned terrain slot. For the 46 primary recording-hash
+blocks and five fixed forecast seeds, the six configurations required by
+the overall/leave-one-out family contribute 1380 rows: 1379 successful,
+one failed and none missing. The five configurations in the supporting
+leave-one-in family contribute 1150 rows: 1148 successful, two failed and
+none missing. These families share all 230 baseline rows; their union is
+2300 distinct primary terrain forecasts, with 2297 successes and three
+retained failures, not 2530 independent forecasts or observations.
+The count-only projection is \texttt{terrain-family-completeness-v1.json};
+it uses the same closed score index and original comparison membership.
+The earlier 160/131 missing-row counts in
+Section~\ref{sec:execution-coverage} are retained as a dated snapshot,
+not the current unfinished forecast count.
+
+Despite terminal execution, both entire primary-mode terrain families
+remain unavailable under the registered complete-pair rule: the
+all-terrain failure affects the overall and all four leave-one-out
+contrasts; the leave-one-in failures affect the supporting family.
+No terrain effect or interval is estimated from their successful
+intersections. Consequently, these results do not establish that roads,
+rivers, land cover or surface features improve, harm or are equivalent to
+the history baseline. Completing auxiliary trials or the pending audit
+does not by itself replace failed forecasts or restore these comparisons.
+The closed counts are a saved-status description, not an independent
+raw-output audit or final evidence-card acceptance.
 
 \paragraph{Terminal execution and available inference.}
 \label{sec:terminal-failures}
-Under the current no-automatic-retry policy, completing still-missing
-forecasts does not remove already recorded failures. A registered comparison
+Under the current no-automatic-retry policy, all original scientific
+forecasts are terminal and recorded failures are retained. A registered comparison
 family containing any required failed row remains unavailable even when
 every planned task has a terminal disposition. Completion of execution and
 availability of paired inference are therefore different conditions. We do

@@ -8,7 +8,7 @@ The manifest records the actual inspected pages and route-input check. This is c
 and public-copy checking, not full manuscript/scientific acceptance.
 
 Local manuscript source revision:
-`d2dd7d04833f230e15c91250a9daa1947582e33c`.
+`4b10fd315c550cbb5a143b5e5d5b3765d2bb71be`.
 Previous complete local PDFs were delivered at
 `42906141d41174ecb0ba43d3c47e31e6b65777b4` (English 85 pages,
 Chinese 82 pages). Those PDFs are **not** uploaded because they embed
@@ -47,9 +47,9 @@ explicitly identified below; it is not another particle-score computation.
 
 ## Pending experiment delivery
 
-At 2026-10-08 16:37 Hong Kong time: original science 11,015 successful,
+At 2026-10-08 17:09 Hong Kong time: original science 11,015 successful,
 5 failed and 0 runnable out of 11,020; common scores 11,368 rows/58 groups;
-original auxiliary work 217/261 successful, 44 remaining. These are workload
+original auxiliary work 220/261 successful, 41 remaining. These are workload
 dispositions, not 11,020 independent participants or final accepted effects.
 The single independent saved-output audit, final aggregate export, original
 16 tables/16 figure groups and final numeric manuscript integration remain
@@ -102,3 +102,22 @@ are slightly lower than Full's; dt300's are higher at every slot despite
 its lower aggregate ES. These are not new per-horizon significance tests,
 a ranking of all28 methods, independent output audit or deployment claims.
 Original saved scores, target tolerance, parameters and failures are unchanged.
+
+## Current terrain completeness versus the historical census
+
+Section 6 now explains the closed primary terrain status, rather than treating
+the earlier 160/131 missing-row snapshot as current: overall/LOO has 1380
+required rows, 1379 successes, one failure and none missing; LIO has 1150
+required rows, 1148 successes, two failures and none missing. Their 230
+baseline rows are shared, giving 2300 distinct primary forecasts, not 2530
+independent observations. The anonymous count-only projection and exact
+original family/failure bindings are included.
+
+Both entire primary terrain families remain unavailable under the unchanged
+complete-pair policy. No successful-subset effect or interval is substituted;
+unavailability does not establish benefit, harm, zero effect or equivalence.
+Auxiliary completion and audit do not themselves replace failed forecasts.
+The historical census tables, scientific tables/figures/equations and every
+previous claim-ledger root are preserved. No forecast arrays or private routes
+were opened for this count-only correction; it is not the original independent
+saved-output audit, final inference, evidence-card acceptance or full completion.
