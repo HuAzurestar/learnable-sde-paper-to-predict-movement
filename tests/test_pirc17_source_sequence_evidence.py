@@ -134,6 +134,9 @@ def test_new_source_table_preserves_every_previous_scientific_environment(langua
             analysis = [block for block in new if r"\label{tab:saved-analysis-states}" in block]
             assert len(analysis) == 1
             new.remove(analysis[0])
+            audited = [block for block in new if r"\label{tab:audited-review-delivery}" in block]
+            assert len(audited) == 1
+            new.remove(audited[0])
             added = [block for block in new if r"\label{tab:source-sequence-screen}" in block]
             assert len(added) == 1 and len(new) == len(old)+1
             new.remove(added[0])

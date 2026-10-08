@@ -46,13 +46,15 @@ def test_count_evidence_has_original_closed_score_scope_not_scientific_acceptanc
 
 
 @pytest.mark.parametrize("language", ["en", "zh"])
-def test_opening_distinguishes_terminal_predictions_from_pending_audit(language):
+def test_opening_distinguishes_terminal_predictions_completed_audit_and_pending_acceptance(language):
     text = (PAPER / language / "main.tex").read_text(encoding="utf-8")
     opening = text.split(r"\begin{quote}", 1)[1].split(r"\end{quote}", 1)[0]
     assert "11020" in opening and "11015" in opening
     assert "11368" in opening and "58" in opening
     assert ("Pending:" if language == "en" else "未完成：") in opening
-    assert ("auxiliary trials" if language == "en" else "辅助试验") in opening
+    assert ("auxiliary tasks" if language == "en" else "辅助任务") in opening
+    assert "261" in opening
+    assert ("replay are now complete" if language == "en" else "复算现已完成") in opening
     assert ("saved-output replay" if language == "en" else "保存输出复算") in opening
     assert "remaining original predictions" not in opening
     assert "其余原计划预测" not in opening

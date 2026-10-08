@@ -97,3 +97,19 @@ def test_current_paper_updates_audit_and_retains_limitations(language):
     assert ("not certification" if language == "en" else "不认证") in section
     assert ("acceptance" if language == "en" else "验收") in section
 
+
+@pytest.mark.parametrize("kind,label", [
+    ("table", "tab:audited-review-delivery"),
+    ("figure", "fig:audited-method-comparisons"),
+])
+def test_named_addition_keeps_every_original_block_and_becomes_immutable(kind, label):
+    from scripts.pirc17_document_blocks import assert_preserved_blocks
+    added = rf"\begin{{{kind}}}\label{{{label}}}AUDITED\end{{{kind}}}"
+    assert_preserved_blocks(["old-a", "old-b"], ["old-a", added, "old-b"], kind)
+    for invalid in (["old-b", added, "old-a"], ["old-a", added, "changed"],
+                    ["old-a", added, added, "old-b"], ["old-a", "unknown", "old-b"]):
+        with pytest.raises(AssertionError):
+            assert_preserved_blocks(["old-a", "old-b"], invalid, kind)
+    for invalid in (["old-a", "old-b"], ["old-a", added + "edited", "old-b"]):
+        with pytest.raises(AssertionError):
+            assert_preserved_blocks(["old-a", added, "old-b"], invalid, kind)
