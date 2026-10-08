@@ -1,0 +1,2126 @@
+{
+  "history_method_experiment_reading_revision": {
+    "source_base_commit": "dd02d979e8d1f600b628e42ef0b79bce42f8f347",
+    "review_items": [
+      "P2-02"
+    ],
+    "moved_tables": [
+      "tab:history-spans",
+      "tab:development-history-spans"
+    ],
+    "empirical_timing_anchor": "sec:empirical-history-timings",
+    "observed_prefix_statistics_moved_verbatim_to_experimental_setup": true,
+    "buffer_rules_secant_formulas_and_local_noise_limits_retained_in_method": true,
+    "all_original_scientific_blocks_exact_only_two_history_tables_reordered": true,
+    "training_and_final_history_evidence_or_scientific_parameters_changed": false,
+    "new_fits_forecasts_scores_resampling_or_map_queries": 0,
+    "whole_paper_page_reduction_claimed": false,
+    "independent_saved_output_audit_completed": false,
+    "whole_manuscript_reader_acceptance_obtained": false,
+    "all_review_items_or_paper_complete": false
+  },
+  "complete_method_region_description_revision": {
+    "source_base_commit": "66ff1f45ecfb6009f6a7e2587304733c00584711",
+    "review_items": [
+      "P1-19",
+      "P1-20"
+    ],
+    "source_checkpoint": "9743eed72fb850a1666513ee4f0430414285687f",
+    "projection": "paper/pirc17/all-method-region-description-v1.json",
+    "projection_sha256": "43247e7bbec10dc5f087b412c2b1b223f89b9adb33c64f97ba5ce1187a9092d8",
+    "renderer": "scripts/plot_pirc17_method_regions.py",
+    "renderer_sha256": "f663fb538d1807d311b1ee604f7857e38b8933d89e68de0cb581ed09a02b6ccf",
+    "manifest": "paper/pirc17/figures/method-region-manifest-v1.json",
+    "configuration_rows": 28,
+    "primary_saved_score_rows": 6440,
+    "recording_hash_blocks": 46,
+    "retained_probability_levels": [
+      0.5,
+      0.8,
+      0.9,
+      0.95
+    ],
+    "nominal_horizon_minutes": [
+      1,
+      5,
+      15,
+      30
+    ],
+    "table_label": "tab:all-method-regions",
+    "figure_label": "fig:all-method-regions",
+    "original_three_model_complete_profiles_exact": true,
+    "all_original_primary_coverage_means_preserved": true,
+    "all_aliases_references_and_named_controls_retained": true,
+    "mean_area_is_mean_of_individual_disk_areas": true,
+    "all_original_main_literal_scientific_blocks_preserved": true,
+    "block_resolved_diagnostics_remain_three_model_scope": true,
+    "horizon_dependent_tradeoffs_are_descriptive_not_causal": true,
+    "new_fits_forecasts_scores_resampling_or_map_queries": 0,
+    "all_twenty_eight_prediction_array_clocks_audited": false,
+    "conditional_calibration_established": false,
+    "independent_saved_output_audit_completed": false,
+    "original_final_sixteen_figure_inventory_replaced": false,
+    "final_qualification_or_review_complete": false
+  },
+  "reptile_description_readability_revision": {
+    "source_base_commit": "12a9f36c2e2215f9082ac9584757a0d2cb073188",
+    "review_items": [
+      "P2-02"
+    ],
+    "appendix_anchor": "sec:reptile-task-accounting",
+    "exact_source_field_grouping_and_saved_algorithm_path_retained_in_appendix": true,
+    "task_counts_grouping_limits_updates_and_missing_parameters_retained_in_main": true,
+    "all_original_tables_figures_and_equations_preserved": true,
+    "new_fits_forecasts_scores_resampling_or_map_queries": 0,
+    "original_protocol_selection_or_task_definition_changed": false,
+    "full_manuscript_reader_acceptance_obtained": false,
+    "independent_saved_output_audit_completed": false,
+    "all_review_items_or_paper_complete": false
+  },
+  "saved_case_point_error_reading_revision": {
+    "source_base_commit": "2ab85c5e6dd0041489c3e2f2263cd6f65406ff95",
+    "review_items": [
+      "P1-19"
+    ],
+    "source": "paper/pirc17/figures/case-horizons.json",
+    "source_sha256": "bb95e19698632bae6b17c24f5c423e493f599039d14a9982c2a0a82edb0c37c6",
+    "table_label": "tab:case-point-errors",
+    "cases": 3,
+    "existing_forecasts": 6,
+    "existing_point_error_values": 24,
+    "original_case_selection_maps_and_diagnostics_preserved": true,
+    "new_fits_forecasts_scores_resampling_or_map_queries": 0,
+    "all_method_point_error_profiles_reconstructed": false,
+    "population_time_tradeoff_or_terrain_effect_established": false,
+    "original_final_sixteen_figure_inventory_replaced": false,
+    "independent_saved_output_audit_completed": false,
+    "public_distribution_authorized": false,
+    "all_review_items_or_paper_complete": false
+  },
+  "population_description_readability_revision": {
+    "source_base_commit": "60308bea654c6487e16cd18c5af8c41c22d94669",
+    "review_items": [
+      "P2-02"
+    ],
+    "implementation_detail_appendix_anchor": "sec:population-description-construction",
+    "full_population_denominators_and_scientific_caveats_retained_in_main": true,
+    "original_tables_figures_and_equation_blocks_preserved": true,
+    "new_fits_forecasts_scores_resampling_or_map_queries": 0,
+    "original_selection_or_protocol_changed": false,
+    "full_manuscript_reader_acceptance_obtained": false,
+    "independent_saved_output_audit_completed": false,
+    "all_review_items_or_paper_complete": false
+  },
+  "original_method_horizon_description": {
+    "source_base_commit": "aab03aa1dede4236e961a60ab6545c3d7724de05",
+    "review_items": [
+      "P1-19",
+      "P1-20"
+    ],
+    "projection": "paper/pirc17/method-horizon-description-v1.json",
+    "projection_sha256": "196167ed0aaeb1e7c5a1dfb8858068ea339294eb0eaf49aac212ad8f76195106",
+    "renderer": "scripts/plot_pirc17_method_horizons.py",
+    "renderer_sha256": "1f0dce27dd72c279e27dbae373461517d16caf2851458c0df1b9f8a32dcaa5f6",
+    "manifest": "paper/pirc17/figures/method-horizon-manifest-v1.json",
+    "configuration_rows": 28,
+    "nominal_horizon_minutes": [
+      1,
+      5,
+      15,
+      30
+    ],
+    "recording_hash_blocks": 46,
+    "primary_saved_score_rows": 6440,
+    "all_original_four_time_es_and_coverage_values_preserved": true,
+    "all_aliases_references_and_named_controls_retained": true,
+    "new_fits_forecasts_scores_resampling_or_per_horizon_tests": 0,
+    "all_twenty_eight_prediction_array_clocks_audited": false,
+    "independent_saved_output_audit_completed": false,
+    "ranges_are_confidence_intervals_or_global_winner_tests": false,
+    "original_final_sixteen_figure_inventory_replaced": false,
+    "final_qualification_or_review_complete": false
+  },
+  "original_five_seed_description": {
+    "source_base_commit": "c810f357720537f9f213db2f8c6f469569ce6d5c",
+    "review_items": [
+      "P1-19"
+    ],
+    "projection": "paper/pirc17/method-seed-stability-v1.json",
+    "projection_sha256": "0725fc3ec043cd4fd686454f094609b299afa2fb5416da40556d74f929dd6fac",
+    "reader": "scripts/describe_pirc17_seed_stability.py",
+    "reader_sha256": "9a722d5b926d014571f46e96adc74615172cfdb0ebf2b46d27d7b369e383e6bc",
+    "comparison_rows": 21,
+    "recording_hash_blocks": 46,
+    "forecast_seed_ids": [
+      20260814,
+      20260815,
+      20260816,
+      20260817,
+      20260818
+    ],
+    "all_positive_rows": 6,
+    "all_negative_rows": 7,
+    "mixed_sign_rows": 6,
+    "all_exact_zero_rows": 2,
+    "original_candidate_control_and_block_intervals_preserved": true,
+    "new_fits_forecasts_scores_or_resampling": 0,
+    "seed_ranges_are_confidence_intervals": false,
+    "five_seeds_are_independent_refits_or_held_out_studies": false,
+    "independent_saved_output_audit_completed": false,
+    "final_qualification_or_review_complete": false
+  },
+  "results_discussion_reading_revision": {
+    "source_base_commit": "2d32a224ed62c2e5704df4f6ef76ec7b6cb95071",
+    "review_items": [
+      "P2-02"
+    ],
+    "findings_section_label": "sec:method-findings",
+    "source_interpretation_paragraphs_moved_verbatim": true,
+    "interpretation_placed_before_full_paired_table_and_two_full_page_figures": true,
+    "float_barrier_keeps_method_and_metric_guides_before_findings": true,
+    "discussion_scope_grouped_by": [
+      "model_specific_attribution",
+      "population_and_recorded_clock_support",
+      "numerical_and_inferential_support",
+      "unavailable_comparisons"
+    ],
+    "all_original_tables_figures_effect_numbers_and_scientific_scope_preserved": true,
+    "new_fits_forecasts_scores_resampling_or_map_queries": 0,
+    "physical_clock_participant_independence_or_worldwide_performance_certified": false,
+    "independent_saved_output_audit_completed": false,
+    "non_project_reader_acceptance_or_all_review_items_complete": false,
+    "final_paper_or_scientific_qualification_complete": false
+  },
+  "schema_version": "pirc17-manuscript-preparation-v1",
+  "stage": "protocol-bound working draft with explicitly preliminary complete-primary-method arithmetic; final audited integration pending",
+  "manuscript": "paper/pirc17/en/main.tex",
+  "language": "English source and section-aligned Chinese review draft; final numerical alignment pending",
+  "translation": "paper/pirc17/zh/main.tex",
+  "template": "existing article class and one-inch margins",
+  "original_reptile_task_description": {
+    "review_items": [
+      "P1-02",
+      "P1-08"
+    ],
+    "projection": "paper/pirc17/reptile-task-description-v1.json",
+    "projection_sha256": "fbc6d5c4af6f0b224067d199150422cad38a0d8b4c9a1a393909b22fd821b3bc",
+    "reader": "PSDE-SDE/experiments/pirc17/reptile_task_description.py",
+    "reader_sha256": "fac5ed4658b0d6bf104d0677edd32723e942b9285c377015039986ec129cdd98",
+    "source_checkpoint": "3145c11070c286bf7c283abb4ac3c938d708fd13",
+    "original_inventory_sha256": "675b755e7b234698cc2954e5d743b36d41e37284c4abff200ac888da212fe250",
+    "original_model_record_sha256": "cc8030d0ccfbd8a284505efad30004c4cd3b8f21029b80f403bb9340d2835dc9",
+    "membership_identity_sha256": "72b0e7809ec087be2e41cee64b3d06b04c680b0e9732405dfd8bdec96f08d083",
+    "original_training_segments": 328,
+    "source_recordings": 266,
+    "all_label_groups": 84,
+    "eligible_tasks": 30,
+    "eligible_segments": 258,
+    "ineligible_small_groups": 54,
+    "ineligible_segments": 70,
+    "eligible_transitions_per_pass": 20029,
+    "initial_transitions": 26009,
+    "adaptation_transitions": 5762,
+    "outer_epochs": 4,
+    "task_visits": 120,
+    "repeated_task_transition_exposures": 80116,
+    "saved_training_sample_count": 111887,
+    "eligible_within_task_segment_rank_cardinality_totals": [
+      94,
+      86,
+      78
+    ],
+    "section_label": "sec:reptile-task-accounting",
+    "table_label": "tab:reptile-task-accounting",
+    "label_definition": "strip city and prefer it unless empty or case-insensitive nan; else unstripped region or unknown; exact strings without country key or case normalization",
+    "all_train_segments_use_city_branch": true,
+    "small_groups_excluded_from_global_initialization": false,
+    "task_groups_are_independent_participants_or_certified_geographic_units": false,
+    "training_counter_counts_every_inner_step_or_validation_access": false,
+    "actual_directions_multimode_transition_frequencies_or_gmm_residual_labels_reconstructed": false,
+    "pre_meta_or_pre_target_parameters_recovered": false,
+    "new_fits_forecasts_scores_resampling_or_map_queries": 0,
+    "independent_saved_output_audit_completed": false,
+    "all_review_items_or_paper_complete": false
+  },
+  "original_final_cohort_speed_description": {
+    "review_items": [
+      "P1-12"
+    ],
+    "projection": "paper/pirc17/final-cohort-speed-description-v1.json",
+    "projection_sha256": "55d1983efc4dbfdda5c617ccb12cb5bf0524823375217438f1fd774abe94216c",
+    "reader": "PSDE-SDE/experiments/pirc17/cohort_speed_description.py",
+    "reader_sha256": "b55ddf8b6e094b9dcbc31f8ee243ef6e043378e8e11d8c413b43a07d704ddf04",
+    "source_checkpoint": "d4ad2e64aefe92ba6c6ab64b0924cbc4dbd69aea",
+    "original_final_windows": 12370,
+    "selected_origins": 46,
+    "statistic_failures": 0,
+    "table_label": "tab:final-cohort-speeds",
+    "section_label": "sec:final-cohort-speeds",
+    "scalar_definition": "Source saved interval speed; median of all points in each complete released window, then equal-window linear descriptive quartiles",
+    "declared_unit": "m/s according to retained construction script, not independently certified physical speed or historical preprocessing",
+    "original_source_binding_verified": true,
+    "source_construction_scripts_bound_by_original_release": false,
+    "source_endpoint_padding_retained": true,
+    "source_speed_not_centered_velocity_norm": true,
+    "statistical_failures_retained_without_successful_subset_estimates": true,
+    "original_eligibility_or_selection_changed": false,
+    "source_speed_reconstructed_or_outliers_clipped": false,
+    "online_or_simulated_velocity_distribution_reconstructed": false,
+    "physical_speed_calibration_or_causal_effect_established": false,
+    "participant_or_near_route_independence_established": false,
+    "new_fits_forecasts_scores_resampling_or_map_queries": 0,
+    "independent_saved_output_audit_completed": false,
+    "all_review_items_or_paper_complete": false
+  },
+  "original_final_cohort_duration_description": {
+    "projection": "paper/pirc17/final-cohort-duration-description-v1.json",
+    "projection_sha256": "152eb502a0d1ae80e43ba30bc32f341826a327ae3a2ed2413b8bc9d848202f3b",
+    "reader": "PSDE-SDE/experiments/pirc17/cohort_duration_description.py",
+    "reader_sha256": "cae4e4bc859ed6a87800276544ef27786e25b704b470fda6a3de9654f4e76a35",
+    "source_checkpoint": "5a69b86d836dd818febb1eb5c8fac66d4edebb10",
+    "used_clock_files": 1125,
+    "used_clock_sources_sha256": "defd7ab0fd5e3007b00b4722260f19510bf1ded6fbbf16672facd0af69379afd",
+    "original_final_windows": 12370,
+    "selected_origins": 46,
+    "table_label": "tab:final-cohort-durations",
+    "section_label": "sec:final-cohort-durations",
+    "followup_span_definition": "Recorded last minus origin ticks; not forecast duration or physical clock certification",
+    "released_history_spans_are_not_retained_predictor_buffer_spans": true,
+    "clock_statistics_do_not_requalify_or_change_selection": true,
+    "invalid_clock_windows_dropped_or_clipped": false,
+    "speed_distributions_reconstructed": false,
+    "physical_source_clock_provenance_certified": false,
+    "new_fits_forecasts_scores_resampling_or_map_queries": 0,
+    "independent_saved_output_audit_completed": false,
+    "all_review_items_or_paper_complete": false
+  },
+  "original_final_cohort_geography_description": {
+    "projection": "paper/pirc17/final-cohort-geography-description-v1.json",
+    "projection_sha256": "453ae33ebe86937a845844968a5a4c21a5e28efafd40a0b96d97dc45914b116f",
+    "reader": "PSDE-SDE/experiments/pirc17/cohort_geography_description.py",
+    "reader_sha256": "2ab6c3482a0fb1e8dd83ae563e919c82f977a13a705027bb0f3e913e4e1387b1",
+    "source_checkpoint": "b5c7b8f47f2361cc09951528a380520af7a6abf6",
+    "base_final_cohort_description_unchanged": true,
+    "base_selected_geography_unchanged": true,
+    "original_final_windows": 12370,
+    "original_recording_hash_blocks": 1094,
+    "selected_origins": 46,
+    "source_country_counts": {
+      "released": 63,
+      "temporal_support": 21,
+      "joint_feature_validity": 14,
+      "selected_primary": 12
+    },
+    "released_windows_missing_harvest_area_retained": 465,
+    "selected_gb_be_lu_origins": 33,
+    "released_gb_be_lu_recording_hash_blocks": 493,
+    "display_rule": "All selected countries plus the two largest released-window countries absent from selection; remainder pooled; no outcomes inspected",
+    "table_label": "tab:final-cohort-geography",
+    "section_label": "sec:final-cohort-geography",
+    "speeds_or_duration_distributions_reconstructed": false,
+    "participant_or_near_route_independence_established": false,
+    "point_location_or_source_label_certification_established": false,
+    "new_fits_forecasts_scores_resampling_or_map_queries": 0,
+    "original_eligibility_recomputed_or_selection_changed": false,
+    "independent_saved_output_audit_completed": false,
+    "all_review_items_or_paper_complete": false
+  },
+  "original_mode_partition_description": {
+    "review_items": [
+      "P1-02"
+    ],
+    "projection": "paper/pirc17/mode-partition-description-v1.json",
+    "projection_sha256": "3ea7aafaf4751691dd8afa044a37d7edc0dade36124addd5500ba3296a48b55c",
+    "reader": "experiments/pirc17/mode_partition_description.py",
+    "reader_sha256": "56efc19ec52b985f39d52fcb3637ab56055358bd1b617ef5ff9c266413c32028",
+    "reader_checkpoint": "a488b02355f48b06513c61ac02bbe617c2fedf21",
+    "original_fit_records": 16,
+    "prediction_slots": 28,
+    "prepared_segment_population_per_fit": 485,
+    "complete_role_segment_counts": {
+      "train": 328,
+      "adapt": 76,
+      "validation": 81
+    },
+    "whole_role_rank_segment_cardinalities": {
+      "adapt": [
+        26,
+        25,
+        25
+      ],
+      "train": [
+        110,
+        109,
+        109
+      ],
+      "validation": [
+        27,
+        27,
+        27
+      ]
+    },
+    "source_bindings_verified": 2,
+    "equation_label": "eq:segment-rank-mode",
+    "table_label": "tab:mode-rank-cardinality",
+    "actual_multimode_transition_frequencies_recovered": false,
+    "gmm_residual_groups_or_reptile_region_task_counts_reconstructed": false,
+    "raw_development_inputs_reloaded_or_resampled": false,
+    "final_probabilities_inverted_to_counts": false,
+    "new_fits_forecasts_scores_resampling_or_map_queries": 0,
+    "independent_saved_output_audit_completed": false,
+    "all_review_items_or_paper_complete": false
+  },
+  "original_development_history_description": {
+    "review_items": [
+      "P1-05"
+    ],
+    "projection": "paper/pirc17/development-history-description-v1.json",
+    "projection_sha256": "68dbf4604b8bc891c43d6dd45b761693016b50ef07f39b6afe1fbe982c2f1ceb",
+    "reader": "experiments/pirc17/development_history_description.py",
+    "reader_sha256": "1aa9afe35869f5a69783d8d53ef9bc331892c94d8fc92ac93abc1cc217965ab2",
+    "reader_checkpoint": "4bd6e3ac77b2826d901de257be131fcb81991ba2",
+    "base_feature_projection_sha256": "536e6747efac51ba17b54de06f428e7a1063d03fdf7b07fcfa243f08f7a0cd6a",
+    "base_history_projection_sha256": "36752fb1ee92575213e242631a16148dce06b26b3677234876df9c31fefe5087",
+    "training_origins": 404,
+    "validation_origins": 81,
+    "selected_feature_files": 397,
+    "terrain_training_and_validation_prefix_spans_described": true,
+    "all_prefixes_retain_three_observed_points": true,
+    "ordinary_method_resampled_history_described": false,
+    "first_tick_spans_are_buffer_arithmetic_not_simulated_outputs": true,
+    "table_label": "tab:development-history-spans",
+    "section_label": "sec:history-feedback",
+    "original_history_projection_unchanged": true,
+    "positions_velocities_drifts_or_final_numeric_rows_decoded": false,
+    "new_fits_forecasts_scores_resampling_or_map_queries": 0,
+    "training_rollout_distribution_equivalence_established": false,
+    "full_early_late_velocity_drift_distributions_or_history_sensitivity_established": false,
+    "physical_clock_provenance_certified": false,
+    "independent_saved_output_audit_completed": false,
+    "all_review_items_or_paper_complete": false
+  },
+  "original_terrain_fit_scope_description": {
+    "review_items": [
+      "P1-06"
+    ],
+    "projection": "paper/pirc17/terrain-fit-scope-description-v1.json",
+    "projection_sha256": "640577afde5ca2155dc7bbc9fece2cc1b997b834da11fa588f41f5299555a58d",
+    "reader": "experiments/pirc17/terrain_fit_scope_description.py",
+    "reader_sha256": "8db8c0482d921a5bc80d286c972e1287bee1905e8626d417207ac8035fbf070e",
+    "reader_checkpoint": "c391467f2188d2181cc189e5fa808c760cdad32f",
+    "original_fit_projection_sha256": "b3d8b6e440399779f5fbac999aba13b23ab0749144441a4b767e746ae3123e3d",
+    "original_feature_projection_sha256": "536e6747efac51ba17b54de06f428e7a1063d03fdf7b07fcfa243f08f7a0cd6a",
+    "training_transitions": 404,
+    "validation_transitions": 81,
+    "selected_feature_files": 397,
+    "source_bindings_verified": 3,
+    "drift_row_weights": "equal displacement-rate transition rows",
+    "diffusion_row_weights": "duration times fitted rate-residual outer product divided by n",
+    "centered_again": false,
+    "degrees_of_freedom_correction": false,
+    "joint_drift_diffusion_MLE_or_unbiased_estimator_claimed": false,
+    "terrain_negative_eigenvalue_rejection_threshold_m2_per_s": -1e-10,
+    "terrain_symmetry_absolute_tolerance_m2_per_s": 1e-12,
+    "saved_terrain_negative_roundoff_repairs_required": 0,
+    "terrain_positive_floor_or_jitter_added": false,
+    "equation_label": "eq:terrain-rate-Q",
+    "table_label": "tab:terrain-fit-intervals",
+    "section_label": "sec:terrain-fit-intervals",
+    "original_ten_saved_Q_spectra_unchanged": true,
+    "physical_clock_provenance_certified": false,
+    "new_fits_forecasts_particle_scores_resampling_or_map_queries": 0,
+    "independent_saved_output_audit_completed": false,
+    "all_review_items_or_paper_complete": false
+  },
+  "saved_map_provider_description": {
+    "review_items": [
+      "P1-13"
+    ],
+    "projection": "paper/pirc17/map-provider-description-v1.json",
+    "projection_sha256": "7b5ebb90c52304fcdbb2b8e2a45934e41ed95a9ad1ef490807c9d2894c7d1b97",
+    "reader": "experiments/pirc17/map_provider_description.py",
+    "reader_sha256": "9b42287c55b6ac217b957d7e14046c505f0a75902708e7bb96f70a5678f04d6e",
+    "reader_checkpoint": "2895c8106c04119090c7f930ee179a475cf03064",
+    "source_binding_count": 10,
+    "receipt_files": 5,
+    "receipt_assets": 1354,
+    "snapshot_parent_assets": 1283,
+    "snapshot_parents_already_in_receipts": 1232,
+    "additional_snapshot_parent_assets": 51,
+    "retained_catalog_assets": 1405,
+    "table_label": "tab:model-map-catalog",
+    "section_labels": [
+      "sec:model-map-support",
+      "sec:map-query-details"
+    ],
+    "equation_labels": [
+      "eq:map-frames",
+      "eq:dem-metric-spacing",
+      "eq:dem-stencil"
+    ],
+    "declared_nominal_specs_distinguished_from_measured_all_asset_geometry": true,
+    "admitted_catalog_not_actual_use_or_coverage": true,
+    "first_containing_raster_NoData_triggers_other_product_fallback": false,
+    "model_sources_not_inferred_from_case_backgrounds": true,
+    "all_forecast_invalid_query_rates_available": false,
+    "all_parent_only_product_versions_verified": false,
+    "map_vintages_matched_to_every_source_track": false,
+    "raw_raster_arrays_or_private_use_traces_exported": false,
+    "new_fits_forecasts_particle_scores_or_map_queries": 0,
+    "original_provider_or_scientific_parameters_changed": false,
+    "independent_saved_output_audit_completed": false,
+    "all_review_items_or_paper_complete": false
+  },
+  "data_reference_roles_revision": {
+    "projection": "paper/pirc17/data-reference-description-v1.json",
+    "projection_sha256": "cff851b4489d495f94cd66c0bbb9dc20e3e02e3cbcac5af117c1a82f2185dd98",
+    "review_item": "P2-10",
+    "section_label": "sec:data-reference-roles",
+    "bilingual_bibliography_entries": 23,
+    "all_entries_have_identical_bilingual_content": true,
+    "model_input_products_distinguished_from_case_and_licence_references": true,
+    "skadi_distribution_and_pure_srtm_provenance_distinguished": true,
+    "documentation_commit_does_not_reassign_original_data_release": true,
+    "original_asset_receipts_and_catalog_unchanged": true,
+    "all_23_full_texts_read_this_revision": false,
+    "target_journal_specific_style_finalized": false,
+    "per_tile_upstream_identity_certified": false,
+    "publication_permission_verified": false,
+    "new_fits_forecasts_scores_resampling_or_map_queries": 0,
+    "independent_saved_output_audit_completed": false,
+    "paper_or_human_acceptance_completed": false
+  },
+  "aggregate_capture_reconciliation": {
+    "projection": "paper/pirc17/capture-count-reconciliation-v1.json",
+    "projection_sha256": "cb4fd99c3a1d3acff76da3b07ad58bd62778dab1d1fa792b38d115cc198f9a9c",
+    "generator": "scripts/describe_pirc17_capture_difference.py",
+    "generator_sha256": "2e661c661307364eee901805cdb6ff84c0d444cedb6b563a17b17af7268b81ea",
+    "earlier_capture_utc": "2026-10-06T00:54:18.683579+00:00",
+    "later_capture_utc": "2026-10-06T06:53:13.846553+00:00",
+    "count_cells": 114,
+    "changed_count_cells": 22,
+    "net_success_count_difference": 130,
+    "terrain_net_success_by_mode": {
+      "causal_prefix": 57,
+      "known_velocity": 8,
+      "point_only": 65
+    },
+    "all_84_method_count_cells_unchanged": true,
+    "original_method_statistics_changed": false,
+    "section_label": "sec:score-execution-snapshots",
+    "table_label": "tab:capture-count-difference",
+    "individual_work_id_sets_retained_in_sources": false,
+    "individual_identity_difference_reconstructed": false,
+    "no_within_cell_replacement_established": false,
+    "independent_saved_output_audit_completed": false,
+    "new_scientific_computation": false,
+    "final_acceptance_added": false
+  },
+  "reader_mainline_revision": {
+    "review_items": [
+      "P2-02"
+    ],
+    "source_base_commit": "8457769ad6c76238525f1ee166c21a7b6895c948",
+    "source_measurement_commit": "6eace0e308b8122123ace010d5b859ea6b759ba9",
+    "main_summary_labels": [
+      "sec:development-fit-summary",
+      "sec:method-model",
+      "sec:method-reader",
+      "sec:preliminary-methods"
+    ],
+    "appendix_labels": [
+      "sec:method-implementation-map",
+      "sec:saved-fit-diagnostics",
+      "sec:score-execution-snapshots",
+      "sec:bootstrap-table-detail"
+    ],
+    "moved_tables_data_and_detailed_development_text_unchanged": true,
+    "method_noise_definition_and_spectra_retained_in_main": true,
+    "primary_result_tables_figures_and_model_equations_retained_in_main": true,
+    "source_character_measurement": {
+      "en": {
+        "main_before": 182643,
+        "main_after": 170285
+      },
+      "zh": {
+        "main_before": 86629,
+        "main_after": 79130
+      }
+    },
+    "character_measurement_is_not_reader_acceptance": true,
+    "new_fits_forecasts_scores_resampling_or_map_queries": 0,
+    "scientific_scope_numbers_failure_dispositions_or_parameters_changed": false,
+    "non_project_reader_acceptance_or_all_review_items_complete": false,
+    "final_paper_or_scientific_qualification_complete": false
+  },
+  "mainline_structure_revision": {
+    "source_measurement_commit": "e7d8205ce962607e12cdb68e0d465a333cea19ab",
+    "review_items": [
+      "P2-02",
+      "P2-08"
+    ],
+    "source_base_commit": "3c180eb493a5f4e1f8a6f54a269f606aa3b7dc51",
+    "appendix_sections": [
+      "sec:execution-coverage"
+    ],
+    "preserved_main_labels": [
+      "sec:forecast-inventory",
+      "tab:forecast-counts",
+      "sec:method-reader",
+      "tab:method-reader",
+      "tab:metric-reader",
+      "eq:primary-aggregation",
+      "tab:preliminary-method-effects"
+    ],
+    "moved_tables_and_main_source_measurement": {
+      "en": {
+        "main_source_characters_before": 175714,
+        "main_source_characters_after": 172139,
+        "moved_table_body_sha256": {
+          "execution-coverage": "92d80419eb637ad817ea62810fd4d01cc41fb56960250331e86cd5935e5e3a54",
+          "family-coverage": "60ff8c0314c423812f9516eb9f3171a6b42a46b394777b527a989d593723672b",
+          "forecast-counts": "9803fe95c6bd464e5522f8de0f090d9a314ded8f91e869c7914ca6ed9e76f61b"
+        }
+      },
+      "zh": {
+        "main_source_characters_before": 83065,
+        "main_source_characters_after": 81397,
+        "moved_table_body_sha256": {
+          "execution-coverage": "2e373cd4c322fbad38543f9b3549658d7247917b7824af49722c614e508dc361",
+          "family-coverage": "9ad4633ec91992805a3e83e9024b4bbb508fbb29ba067dd5fb45109f7af43bed",
+          "forecast-counts": "fe9e5f5d3e6db5a08e220ffdd22ba903f80c811f2cdc128a102b9aae7bb8108a"
+        }
+      }
+    },
+    "scope": "Source-character counts include TeX and are not readability scores or evidence of complete mainline compression. One primary workload table remains in experimental setup; two execution/completeness tables move to the appendix. Counts and dispositions are unchanged. Original table-body hashes are verified after reversing only the harmonized training/adaptation family label. Scientific guides and comparative results remain in the main text. Five method families include three separate numerical diagnostic panels, not seven families.",
+    "new_fits_forecasts_scores_or_statistical_inference": 0,
+    "registered_scope_or_failed_family_dispositions_changed": false,
+    "all_review_items_or_paper_complete": false
+  },
+  "final_cohort_description": {
+    "review_items": [
+      "P1-12"
+    ],
+    "projection": "paper/pirc17/final-cohort-description-v1.json",
+    "projection_sha256": "bb48e9fa6b09807f6ad8ebfb4036d286e2506d9b1abccf08398438df6422bf05",
+    "reader": "scripts/describe_pirc17_final_cohort.py",
+    "reader_sha256": "ba68fc4a1d34b8b0d8940dc2940c8710fb19e9b21754ff5f590f1bea35909fe0",
+    "table_label": "tab:final-cohort-funnel",
+    "section_label": "sec:final-cohort-funnel",
+    "released_final_windows": 12370,
+    "temporal_qualified_windows": 127,
+    "joint_qualified_windows": 106,
+    "eligible_recording_blocks": 73,
+    "selected_primary_origins": 46,
+    "first_recorded_and_overlapping_reasons_distinguished": true,
+    "new_fits_forecasts_particle_scores_or_map_queries": 0,
+    "raw_eligibility_recomputed": false,
+    "included_excluded_population_distributions_available": false,
+    "all_review_items_or_paper_complete": false
+  },
+  "target_time_description": {
+    "review_items": [
+      "P1-11"
+    ],
+    "projection": "paper/pirc17/target-time-description-v1.json",
+    "projection_sha256": "aaac7c227220eb38605f8b995b1c5d993ff40608201eab89813a3a06bf43d4bf",
+    "reader": "scripts/describe_pirc17_target_times.py",
+    "reader_sha256": "22f692fd595b32c851c20e8ce9aee2367294067a43e5c4de791725c06d297607",
+    "bound_score_rows": 690,
+    "primary_recording_blocks": 46,
+    "distinct_target_slots": 184,
+    "original_three_configurations_and_five_seeds_time_consistent": true,
+    "table_label": "tab:actual-target-times",
+    "section_label": "sec:target-times",
+    "maximum_actual_stop_seconds": 1814,
+    "actual_stops_after_1800_seconds": 13,
+    "training_resampling_and_no_interpolation_evaluation_distinguished": true,
+    "new_fits_forecasts_particle_scores_or_resampling": 0,
+    "independent_prediction_time_array_audit_completed": false,
+    "physical_source_clock_certified": false,
+    "all_review_items_or_paper_complete": false
+  },
+  "table_layout_revision": {
+    "review_items": [
+      "P2-07"
+    ],
+    "scope": "Five main longtable continuations, top coverage-table caption, and float-page-only spacing in the existing article layout; no claim of target-journal template compliance or complete HTML-review closure",
+    "main_longtable_columns": {
+      "tab:method-inventory": 4,
+      "tab:terrain-factors": 4,
+      "tab:planning-sensitivity": 6,
+      "tab:bootstrap-diagnostics": 5,
+      "tab:preliminary-method-effects": 5
+    },
+    "continued_title_repeats_column_headers": true,
+    "appendix_continuation_already_present": true,
+    "top_caption_label": "tab:preliminary-coverage",
+    "float_only_page_gap_pt": 16,
+    "float_only_pages_top_aligned": true,
+    "body_text_float_spacing_or_font_sizes_changed": false,
+    "unchanged_table_data_baseline_commit": "5805b54cc5032d7614bed6288269be555a7751b4",
+    "normalized_data_body_sha256": {
+      "en": {
+        "tab:method-inventory": "cc10bfccbf6d14e4641467e2f1c745bb098091b3988506861f70d711926e2346",
+        "tab:terrain-factors": "354d4f6eb1d0c08b8e8ab79950a91c49784ac685e4eb8542c68c010e0c71d196",
+        "tab:planning-sensitivity": "389c12c272baed15a88659a92b6f6b910810b232d4931e11fad567b3417f9fcc",
+        "tab:bootstrap-diagnostics": "aa16fa0d498d94070ead2f5e32e38886090c65c6f4cbb9cd9f14d049ccaf2d83",
+        "tab:preliminary-method-effects": "71d9aacefd9ac6248631d9c11a72b27313dc84b2832a9023eca812d680890830"
+      },
+      "zh": {
+        "tab:method-inventory": "a166ac1d84117e76553b927c0e85ff30647c9f8f668f49a5799143866917def7",
+        "tab:terrain-factors": "22d9206e0e4a5e046658559dd0b3485629532b6662b78d7a2716361e674fca46",
+        "tab:planning-sensitivity": "fdc291809e697b9b4f22e6a56716588a589bb6b7324c5a19b60a58f8616112cf",
+        "tab:bootstrap-diagnostics": "aa16fa0d498d94070ead2f5e32e38886090c65c6f4cbb9cd9f14d049ccaf2d83",
+        "tab:preliminary-method-effects": "71d9aacefd9ac6248631d9c11a72b27313dc84b2832a9023eca812d680890830"
+      }
+    },
+    "new_fits_forecasts_scores_or_inference": 0,
+    "all_review_items_or_paper_complete": false
+  },
+  "saved_estimator_calibration_description": {
+    "review_items": [
+      "P1-09",
+      "P1-07"
+    ],
+    "projection": "paper/pirc17/estimator-calibration-description-v1.json",
+    "projection_sha256": "3485aaea261a9a3a4e3887652c7c92cfed5e882f98593a7161b967e998f7498e",
+    "original_saved_fits_described": 4,
+    "original_source_hashes_verified": 8,
+    "equation_labels": [
+      "eq:estimator-drift-grid",
+      "eq:estimator-validation-surrogates",
+      "eq:estimator-objectives"
+    ],
+    "table_label": "tab:estimator-calibration",
+    "full_and_qmle_saved_dynamic_parameters_exactly_equal": true,
+    "mixed_and_pure_es_saved_dynamic_parameters_exactly_equal": true,
+    "calibration_rate_surrogate_distinguished_from_position_path_scores": true,
+    "validation_objectives_not_unbiased_external_performance": true,
+    "candidate_grid_or_validation_fit_parameters_recomputed": false,
+    "new_fits_forecasts_validation_scores_or_map_queries": 0,
+    "independent_saved_output_audit_completed": false,
+    "all_review_items_or_paper_complete": false
+  },
+  "history_and_missing_input_description": {
+    "review_items": [
+      "P1-04",
+      "P1-05"
+    ],
+    "projection": "paper/pirc17/history-missingness-description-v1.json",
+    "projection_sha256": "36752fb1ee92575213e242631a16148dce06b26b3677234876df9c31fefe5087",
+    "original_final_prefixes_described": 46,
+    "original_case_forecast_receipts_described": 6,
+    "previously_projected_diffusion_fits_used": 10,
+    "original_source_hashes_matched_to_execution": 5,
+    "training_prefix_span_distribution_reconstructed": false,
+    "local_variance_or_overlap_formula_not_full_predictor_variance": true,
+    "missing_drift_formula_not_measured_counterfactual": true,
+    "missing_input_robustness_established": false,
+    "full_per_column_forecast_rates_and_velocity_traces_integrated": false,
+    "new_forecasts_fits_queries_or_particle_scores": 0,
+    "independent_saved_output_audit_completed": false,
+    "all_review_items_or_paper_complete": false
+  },
+  "related_work_revision": {
+    "review_items": [
+      "P1-26",
+      "P2-03",
+      "P2-10"
+    ],
+    "section_label": "sec:related-work",
+    "themes": [
+      "continuous-time motion and switching dynamics",
+      "environment-conditioned and learned dynamics",
+      "distributional evaluation and finite-computation evidence"
+    ],
+    "closest_methodological_precedents": [
+      "johnson2008",
+      "ghahramani2000",
+      "avgar2016"
+    ],
+    "primary_sources_accessed_utc_date": "2026-10-06",
+    "issa_corrigendum_checked": true,
+    "issa_likelihood_or_coefficient_formulas_used": false,
+    "published_social_gan_and_trajectron_bibliography_corrected": true,
+    "linear_representation_choice_not_optimality_claim": true,
+    "external_models_executed_as_baselines": false,
+    "original_inertial_reference_complete": false,
+    "new_fits_forecasts_or_experiments": 0,
+    "all_data_source_references_and_licences_resolved": false,
+    "all_review_items_or_paper_complete": false
+  },
+  "inference_and_decision_description": {
+    "review_items": [
+      "P1-14",
+      "P1-15",
+      "P1-16"
+    ],
+    "projection": "paper/pirc17/inference-description-v1.json",
+    "projection_sha256": "10e56e792fff20aa2f96df9df4f55b5929f2d4ab5d81d05ef54629f151b11253",
+    "planning_comparisons": 30,
+    "existing_primary_method_diagnostics": 21,
+    "development_block_count": 3,
+    "planning_and_numerical_scope_not_global_qualification": true,
+    "second_stream_intervals_retained": false,
+    "bootstrap_draws_or_pivots_retained": false,
+    "zero_development_sd_not_power_evidence": true,
+    "missing_evidence_distinguished_from_computed_failure": true,
+    "new_forecasts_fits_particle_scores_or_bootstrap_draws": 0,
+    "final_independent_saved_output_audit_completed": false,
+    "all_review_items_or_paper_complete": false
+  },
+  "scientific_narrative_revision": {
+    "review_items": [
+      "P1-01",
+      "P2-01",
+      "P2-02",
+      "P2-09"
+    ],
+    "research_question_label": "sec:research-questions",
+    "temporal_causality_distinguished_from_causal_effect_identification": true,
+    "model_design_and_empirical_contributions_distinguished_from_execution_accounting": true,
+    "new_neural_architecture_estimator_or_convergence_theorem_claimed": false,
+    "current_conclusions_bound_to_original_stage_evidence": true,
+    "opening_status_separates_reported_unavailable_and_pending": true,
+    "new_forecasts_fits_or_inference_tests": 0,
+    "final_paper_or_all_review_items_complete": false
+  },
+  "retained_execution_failure_description": {
+    "projection": "paper/pirc17/failure-description-v1.json",
+    "projection_sha256": "3d9167511b546c1496b8bc4b644264f920b78120bc49678ec7ab9953151a8d26",
+    "table_labels": [
+      "tab:retained-failures",
+      "tab:failure-family-dispositions"
+    ],
+    "original_terminal_failure_count": 5,
+    "prior_generic_interruptions": 3,
+    "predecessor_inflight_without_reply": 2,
+    "affected_whole_families": 4,
+    "item_specific_exception_or_numerical_divergence_established": false,
+    "historical_run_summaries_distinguished_from_item_logs": true,
+    "reserved_cost_not_measured_prediction_time": true,
+    "unavailable_terrain_verdicts_not_replaced_by_case_examples": true,
+    "new_fits_forecasts_particle_scores_or_retries": 0,
+    "original_failed_dispositions_or_comparison_families_changed": false,
+    "independent_saved_output_audit_completed": false,
+    "final_paper_qualification_added": false
+  },
+  "clock_provenance_description": {
+    "projection": "paper/pirc17/clock-description-v1.json",
+    "projection_sha256": "6831839d7df9cee4a9a4aae932cc831ae92fc7dbfe2e684a67032add1105bfb3",
+    "table_label": "tab:clock-use",
+    "equation_label": "eq:solar-condition",
+    "source_scope": "Five frozen clock sources;16 original saved fit solar policies;reported release counts;first3 original condition file footers only",
+    "footer_files_checked": 3,
+    "footer_timezone_annotations_present": 0,
+    "pointwise_coordinate_speed_or_clock_values_decoded": false,
+    "full_cohort_footer_or_reconciliation_reaudit_completed": false,
+    "source_UTC_or_sensor_clock_provenance_certified": false,
+    "physical_horizon_or_daylight_effect_certified": false,
+    "model_calendar_phase_distinguished_from_physical_time_of_day": true,
+    "new_fits_forecasts_or_particle_scores": 0,
+    "original_clocks_targets_or_predictions_changed": false,
+    "independent_saved_output_audit_or_final_qualification_added": false
+  },
+  "recording_partition_description": {
+    "projection": "paper/pirc17/partition-description-v1.json",
+    "projection_sha256": "e767f97c0cf856cd9559edcc11207147d211617ff3214ce3c9692cfb73cdd9e0",
+    "table_label": "tab:release-partition-identities",
+    "scope": "All 7618 existing assignments and 72046 existing midpoint-window identities; original 16 saved method fit role joins; no raw coordinate speed or clock values read",
+    "block_unit": "Literal-coordinate-and-speed recording hash; not participant or geographic cluster",
+    "cross_split_file_recording_segment_and_sample_identity_intersections": 0,
+    "original_protocol_identity_partition_matched": true,
+    "prior_final_evaluation_exposure_disclosed": true,
+    "user_accepted_existing_partition_scope_unchanged": true,
+    "participant_or_near_route_independence_established": false,
+    "bootstrap_interpretation_conditional_on_recording_block_exchangeability": true,
+    "original_registry_block_fields_and_scientific_results_unchanged": true,
+    "raw_recording_hash_or_source_point_alignment_recomputed": false,
+    "independent_saved_forecast_audit_or_final_qualification_added": false,
+    "new_fits_forecasts_or_particle_scores": 0
+  },
+  "original_feature_design_description": {
+    "projection": "paper/pirc17/feature-design-description-v1.json",
+    "projection_sha256": "536e6747efac51ba17b54de06f428e7a1063d03fdf7b07fcfa243f08f7a0cd6a",
+    "original_context_file_sha256": "921311395ea79212e4d1a7303f5ad37f15617880db490139a2ccebf08dd5e7d1",
+    "original_input_identity_sha256": "07e1d6810eeed977694eadc877fcc8584b8f6ec20c3694d8f5d7ae33bc3b863f",
+    "source_scope": "397 existing hash-bound feature files; exact 404 train and 81 validation origin rows reconstructed using unchanged pointwise transforms; not original matrix dump or whole-snapshot revalidation",
+    "table_label": "tab:raw-terrain-design",
+    "equation_label": "eq:constant-mask-penalty",
+    "all_full_model_masks_constant_one_in_both_development_roles": true,
+    "full_raw_width_train_rank_validation_rank": [
+      57,
+      27,
+      25
+    ],
+    "raw_rank_distinguished_from_augmented_ridge_rank": true,
+    "configuration_dependent_mask_bias_constant_penalty_disclosed": true,
+    "forecast_effect_size_of_mask_penalty_estimated": false,
+    "post_read_scaling_masks_or_penalties_changed": false,
+    "new_fits_forecasts_map_queries_or_final_eval_numeric_reads": 0,
+    "independent_saved_forecast_audit_or_final_qualification_added": false
+  },
+  "saved_calibration_block_description": {
+    "review_items": [
+      "P1-20"
+    ],
+    "projection": "paper/pirc17/calibration-block-description-v1.json",
+    "projection_sha256": "4c844db56c697bb84b9657e90cb4993ba9dffae62588cc2f29cab8b04f005420",
+    "reader": "PSDE-SDE/experiments/pirc17/calibration_description.py",
+    "reader_sha256": "3f20e0f73ed7d680e88652ac8446cfb739f2b38293c6aa8842074900d2ca7a57",
+    "reader_checkpoint": "cae4afee87a474046fa5871a4cc61319a43af330",
+    "base_aggregate_sha256": "3d79b46f7cf368547c4e9773c4f843fce4646044eaaec27032994bb982c062f3",
+    "complete_cached_scores": 690,
+    "recording_blocks": 46,
+    "forecast_seeds_per_block": 5,
+    "probability_levels": [
+      0.5,
+      0.8,
+      0.9,
+      0.95
+    ],
+    "nominal_horizons_seconds": [
+      60,
+      300,
+      900,
+      1800
+    ],
+    "table_label": "tab:block-calibration",
+    "equation_label": "eq:block-calibration-summary",
+    "figure_label": "fig:block-calibration",
+    "figure_manifest": "paper/pirc17/figures/calibration-block-figure-manifest.json",
+    "figure_manifest_sha256": "5a847651961a87fab1b76e4cf23025588b5eb92b2c6aa95f0bfece2954bbc934",
+    "renderer_sha256": "db7844ea5251407e7d59e0bc83be344af177ac6af5d57973aa9e7529bc35c3f6",
+    "descriptive_quantiles": "Linear interpolation at (46-1)*p; not confidence intervals",
+    "anonymous_example_block": 13,
+    "example_selection": "First original block with Full zero and dt300 five covered seeds at 30 minutes;post-outcome illustration,not inference",
+    "old_aggregates_and_scope_unchanged": true,
+    "new_fits_forecasts_particle_scores_or_inference": 0,
+    "all_twenty_eight_models_described": false,
+    "independent_output_audit_or_final_qualification": false,
+    "public_route_case_permission_verified": false,
+    "original_final_sixteen_figures_replaced": false
+  },
+  "saved_calibration_and_area_description": {
+    "projection": "paper/pirc17/calibration-description-v1.json",
+    "projection_sha256": "3d79b46f7cf368547c4e9773c4f843fce4646044eaaec27032994bb982c062f3",
+    "input_bindings_sha256": "64ec590c296689ee17f4a8ae4f6e5bec5253c509d8f3fb09e6d3eafc4f836277",
+    "scope": "Same 690 original primary cached Full/GMM/dt300 scores previously displayed; all four saved marginal disk levels and areas; post-outcome descriptive only",
+    "complete_cached_scores": 690,
+    "independent_blocks": 46,
+    "forecast_ensembles_per_block_and_model": 5,
+    "probability_levels": [
+      0.5,
+      0.8,
+      0.9,
+      0.95
+    ],
+    "table_labels": [
+      "tab:full-calibration-area",
+      "tab:model-region-size"
+    ],
+    "figure_label": "fig:calibration-area",
+    "figure_manifest": "paper/pirc17/figures/calibration-figure-manifest.json",
+    "new_fits_forecasts_scores_tests_or_bootstrap": 0,
+    "source_rows_and_same_target_bindings_checked": true,
+    "original_stage_es_fde_and_90_coverage_reconciled": true,
+    "successful_subset_or_post_read_radius_tuning_used": false,
+    "independent_raw_output_audit_or_final_qualification_added": false,
+    "original_final_sixteen_figure_inventory_replaced": false
+  },
+  "saved_method_noise_description": {
+    "review_items": [
+      "P1-02",
+      "P1-06"
+    ],
+    "projection": "paper/pirc17/method-noise-description-v1.json",
+    "projection_sha256": "5f5979c3fa274e992a39650aeab3047c4f7740c3ccc71c1e905b940ab26e29da",
+    "reader": "experiments/pirc17/method_noise_description.py",
+    "reader_sha256": "74347a69fe1f6ad651534565147caa304eab2f05fa4f027d7227fd6aab26e415",
+    "reader_checkpoint": "70c43775b9c3a4f31323fdaddac5297e241d0ad7",
+    "original_aggregate_projection_sha256": "b3d8b6e440399779f5fbac999aba13b23ab0749144441a4b767e746ae3123e3d",
+    "method_parameter_fits": 16,
+    "prediction_configurations": 28,
+    "mode_parameter_records": 44,
+    "all_original_aggregate_diagnostics_exactly_unchanged": true,
+    "equation_label": "eq:saved-method-noise",
+    "section_label": "sec:method-noise-parameters",
+    "table_label": "tab:method-noise-parameters",
+    "saved_R_already_scaled_by_validation_multiplier_squared": true,
+    "covariance_scale_applied_again": false,
+    "source_bindings_verified": 3,
+    "negative_roundoff_repair_required_for_saved_method_modes": 0,
+    "final_probabilities_are_per_role_mode_frequencies": false,
+    "per_role_mode_counts_available": false,
+    "mixture_predictive_covariance_or_calibration_inferred_from_Q": false,
+    "new_fits_forecasts_particle_scores_resampling_or_map_queries": 0,
+    "independent_saved_output_audit_completed": false,
+    "all_review_items_or_paper_complete": false
+  },
+  "saved_fit_diagnostics": {
+    "projection": "paper/pirc17/fit-diagnostics-v1.json",
+    "projection_sha256": "b3d8b6e440399779f5fbac999aba13b23ab0749144441a4b767e746ae3123e3d",
+    "inventory_sha256": "675b755e7b234698cc2954e5d743b36d41e37284c4abff200ac888da212fe250",
+    "evidence_type": "Hash-bound aggregate diagnostics from 26 original saved development fits, not new fitting or forecasts",
+    "table_labels": [
+      "tab:fit-transition-counts",
+      "tab:terrain-fit-diagnostics"
+    ],
+    "method_fits": 16,
+    "terrain_fits": 10,
+    "terrain_baseline_coefficients_identical": true,
+    "base_and_conditioner_loss_normalizations_distinguished": true,
+    "training_exposure_labels_not_unique_observations": true,
+    "augmented_rank_not_raw_feature_rank": true,
+    "raw_feature_mask_rank_scale_diagnostics_available": true,
+    "raw_feature_diagnostics_source": "Separate original-origin reconstruction above; these fields were not saved in fit records themselves",
+    "coefficient_matrices_or_private_paths_exported": false,
+    "new_fits_predictions_or_particle_scores": 0,
+    "independent_forecast_audit_or_final_qualification_added": false
+  },
+  "execution_coverage_reporting": {
+    "projection": "paper/pirc17/execution-coverage-20261006-v1.json",
+    "projection_sha256": "e736ea70f79f147e00e460b827a2f214368fc68da77a32c0086227df225557b2",
+    "captured_utc": "2026-10-06T06:53:13.846553+00:00",
+    "section_label": "sec:execution-coverage",
+    "table_labels": [
+      "tab:execution-coverage",
+      "tab:family-coverage"
+    ],
+    "scientific_expected": 11020,
+    "forecast_success": 10514,
+    "forecast_failed": 5,
+    "forecast_runnable": 501,
+    "primary_method_rows": 6440,
+    "primary_terrain_runnable": 266,
+    "point_only_terrain_runnable": 235,
+    "ancillary_runnable": 261,
+    "same_grid_references_success": 290,
+    "source": "captured original workload, prediction and score-cache index metadata and exact source bindings; no arrays or score payloads read",
+    "index_complete_is_independent_payload_validation": false,
+    "comparison_family_rows_overlap": true,
+    "failed_families_use_successful_intersection": false,
+    "old_primary_method_statistics_changed": false,
+    "new_forecasts_fits_scores_or_inference": 0,
+    "registered_sixteen_table_figure_inventory_replaced": false,
+    "final_empirical_qualification_or_human_acceptance_added": false
+  },
+  "model_data_flow_exposition": {
+    "figure_label": "fig:model-data-flow",
+    "bilingual_native_vector_schematic": true,
+    "separate_method_and_terrain_fits_and_controls": true,
+    "future_observations_enter_scoring_not_rollout": true,
+    "observation_interval_integration_step_and_horizon_distinguished": true,
+    "source": "existing manuscript equations, registered inventories and unchanged causal rollout contract",
+    "new_forecasts_fits_scores_or_inference": 0,
+    "registered_sixteen_table_figure_inventory_replaced": false,
+    "clock_sensor_verification_or_final_empirical_qualification_added": false
+  },
+  "clock_and_map_source_reporting": {
+    "acknowledgement_record": "paper/pirc17/map-source-acknowledgements-v1.json",
+    "condition_clock_distinguished_from_reconstructed_r1_relative_time": true,
+    "sensor_or_original_gpx_time_independently_verified": false,
+    "horizon_and_solar_claims_conditioned_on_retained_clock": true,
+    "existing_targets_predictions_protocol_and_statistics_changed": false,
+    "official_worldcover_overture_hydrorivers_documents_checked": "2026-10-06",
+    "all_map_attribution_redistribution_requirements_verified": false,
+    "original_trace_acquisition_and_public_release_permission_verified": false,
+    "public_case_release_authorized": false,
+    "private_review_is_final_acceptance": false
+  },
+  "origin_environment_reporting": {
+    "projection": "paper/pirc17/preliminary-origin-environment-v1.json",
+    "projection_sha256": "0fe984e8c9422ffa93e5b033098b0e387878ce69731c2f6363c6381ffdf3e52c",
+    "source": "46 exact frozen offline snapshot origin rows; release recording, segment, block, origin clock and file/condition hashes matched",
+    "origin_feature_files_read": 46,
+    "existing_cached_method_scores_read": 690,
+    "origin_worldcover_counts": {
+      "trees": 27,
+      "grass": 9,
+      "cropland": 3,
+      "built_up": 7
+    },
+    "absent_origin_classes_have_null_metrics": true,
+    "origin_pixel_classifies_whole_route": false,
+    "online_feature_value_equality_independently_verified": false,
+    "descriptive_after_outcome_inspection": true,
+    "subgroup_hypothesis_tests_or_confidence_intervals": false,
+    "environmental_effect_or_model_superiority_verdict_authorized": false,
+    "new_forecasts_fits_or_particle_scores": 0,
+    "original_stage_statistics_unchanged": true,
+    "independent_saved_output_audit_completed": false,
+    "private_routes_coordinates_timestamps_or_identifiers_in_public_projection": false
+  },
+  "geographic_reporting": {
+    "projection": "paper/pirc17/preliminary-geography-v1.json",
+    "projection_sha256": "90acfb5e2eb57778a25fcb79b3066c7e8c7815beb462a1748b914c9d2f4ebe3e",
+    "primary_independent_blocks": 46,
+    "source_countries": 12,
+    "source_harvest_areas": 27,
+    "location_semantics": "source cluster labels; not verified city boundaries, neighbourhoods or street addresses",
+    "raw_harvest_matches_release_sha256": true,
+    "cluster_metadata_in_original_release_binding": false,
+    "private_local_cases_rendered": 3,
+    "case_selection": "first block per first three encountered countries in sealed primary order; first registered RNG seed; no outcome filtering",
+    "private_routes_or_case_maps_in_public_release": false,
+    "publication_ready_case_panels_complete": false,
+    "geographical_performance_inference": false,
+    "new_forecasts_or_fits": 0,
+    "independent_saved_output_audit_completed": false
+  },
+  "related_work_sources": [
+    {
+      "citation": "johnson2008",
+      "primary_url": "https://esajournals.onlinelibrary.wiley.com/doi/10.1890/07-1032.1",
+      "doi": "10.1890/07-1032.1",
+      "role": "integrated Ornstein-Uhlenbeck velocity and state-space observation precedent for irregular animal telemetry; not an executed baseline or matching GPX population"
+    },
+    {
+      "citation": "ghahramani2000",
+      "primary_url": "https://www.cs.toronto.edu/~hinton/absps/switch.pdf",
+      "published_metadata_url": "https://ieeexplore.ieee.org/document/6789465/",
+      "doi": "10.1162/089976600300015619",
+      "role": "discrete regimes and continuous linear dynamics with variational hidden-state inference; not the current fitted-weight prefix mechanism"
+    },
+    {
+      "citation": "avgar2016",
+      "primary_url": "https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.12528",
+      "doi": "10.1111/2041-210X.12528",
+      "role": "joint movement and resource-selection framework; conceptual positioning only, no copied likelihood or coefficient expressions"
+    },
+    {
+      "citation": "avgar2017correction",
+      "primary_url": "https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.12725",
+      "doi": "10.1111/2041-210X.12725",
+      "role": "checked parameter and likelihood corrigendum; no corrected formulas implemented or borrowed"
+    },
+    {
+      "citation": "gupta2018",
+      "primary_url": "https://openaccess.thecvf.com/content_cvpr_2018/html/Gupta_Social_GAN_Socially_CVPR_2018_paper.html",
+      "role": "multimodal social trajectory generation context; not an executed baseline"
+    },
+    {
+      "citation": "salzmann2020",
+      "primary_url": "https://link.springer.com/chapter/10.1007/978-3-030-58523-5_40",
+      "doi": "10.1007/978-3-030-58523-5_40",
+      "role": "dynamics and semantic-map forecasting context; not an executed baseline"
+    },
+    {
+      "citation": "kidger2021",
+      "primary_url": "https://proceedings.mlr.press/v139/kidger21b.html",
+      "role": "published four-author neural-SDE GAN formulation; no approximation certificate claimed for this predictor"
+    },
+    {
+      "citation": "gao2024",
+      "primary_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11254936/",
+      "doi": "10.1038/s41467-024-50378-x",
+      "role": "neural SDE state/drift/diffusion exposition reference; not an executed neural-network or network-interaction baseline"
+    },
+    {
+      "citation": "gneiting2007",
+      "primary_url": "https://sites.stat.washington.edu/people/raftery/Research/PDF/Gneiting2007jasa.pdf",
+      "role": "Section 4.3 Equation 22 and strict propriety; manuscript uses the negative of its reward orientation"
+    }
+  ],
+  "authorship_verified": false,
+  "protocol_sha256": "2267ab84fa77ff4039234a61e8f44be1c3713317d8ad2d1bb4ced9af0c5b293a",
+  "execution_sha256": "c3e44393f6bc5544aaa21bb273c94eaecb9d0becb4e0590771355c4c0be9b6c2",
+  "history_operator_disclosure": {
+    "evidence_type": "source-bound description of unchanged formal forecast calls and kernels; not a new experiment or numerical qualification",
+    "source_sha256": {
+      "experiments/pirc17/origins.py": "e06c6165277e994af943c4b5108f978abb58cc39a005e326c15de6d1f26a6c26",
+      "experiments/pirc17/rollout.py": "b8fda002d6c771e86edf799f7708f3f1ad70fe9bc352b1a571bdbfe0aac2e45a",
+      "experiments/pirc17/method_rollout.py": "076e3964d8f2f18ea45c93c964962be01a74eff62c380cc8719b5e3af4ac3560",
+      "experiments/pirc17/formal_forecasts.py": "a091265b6b5eaa4b149028952340f3909780c00d6018a176ab29c33c3b5ac6f4"
+    },
+    "equation_labels": [
+      "eq:terrain-history",
+      "eq:method-history"
+    ],
+    "terrain": {
+      "clock_seconds": 5,
+      "maximum_retained_points": 3,
+      "velocity_rule": "last minus first retained position divided by actual retained timestamp span; early buffer may mix visible irregular prefix points and predicted ticks",
+      "steady_three_tick_span_seconds": 10,
+      "integration_or_scoring_outputs_append_history": false
+    },
+    "method": {
+      "clock": "registered configuration dt_seconds, not numerical maximum step",
+      "full_clock_seconds": 60,
+      "velocity_rule": "adjacent history tick secant; sampled positions for MC/CRN and per-mode-path conditional centres for Gaussian-moment propagation",
+      "velocity_drift_feature": "speed in explicit_decomp only; no additional fitted velocity SDE or ordinary Full history column"
+    },
+    "comparison_limit": "Cross-matrix differences do not isolate terrain from different dynamics/history operators. All ten terrain configurations share their original history rule.",
+    "scientific_kernels_changed": false,
+    "new_forecasts_fits_scores_or_inference": false,
+    "final_qualified_claims_added": false
+  },
+  "terminal_failure_disclosure": {
+    "evidence_type": "source-bound distinction between terminal execution and complete registered paired inference; not a new analysis or final audit",
+    "source_sha256": {
+      "experiments/pirc17/checkpoint_review.py": "2d6c60621384e2ffbf1c15264bd95ef1031b811d570d490d18805ac27807786e",
+      "experiments/pirc17/formal_paired.py": "8d23bbcf01f740042fb6fd3ad24aa5b8e471c0da392be79ead4e89f26628ece6"
+    },
+    "section_label": "sec:terminal-failures",
+    "pipeline_terminal_includes_failure": true,
+    "failed_required_rows_remain_unavailable": true,
+    "no_success_subset": true,
+    "unavailable_is_not_zero_or_equivalence": true,
+    "existing_scores_or_family_populations_changed": false,
+    "new_scientific_computation": false,
+    "final_qualified_claims_added": false
+  },
+  "terminology_and_display_revision": {
+    "review_items": [
+      "P2-04",
+      "P2-05",
+      "P2-08"
+    ],
+    "scope": "Bilingual terminology, five-family introduction and display precision; not closure of the complete HTML review",
+    "ordinary_method_full_distinct_from_terrain_base_and_all": true,
+    "observation_dt_distinct_from_integration_step": true,
+    "execution_slots_not_independent_algorithms": true,
+    "timing_display_decimals": 3,
+    "timing_source": "paper/pirc17/preliminary-reader-presentation-v1.json",
+    "timing_source_sha256": "6512fd87f68b4d73a67c99da8d03e9a56a9d821523af498346a089ff029bacfb",
+    "registered_delta_m": 41.100259,
+    "ordinary_delta_display_m": 41.1,
+    "registered_delta_or_decision_rules_changed": false,
+    "extra_numerical_digits_are_diagnostics_not_predictive_accuracy": true,
+    "new_fits_forecasts_scores_or_inference": 0,
+    "all_review_items_or_paper_complete": false
+  },
+  "reader_presentation": {
+    "evidence_type": "Reader-facing explanation and three figures of unchanged pinned preliminary aggregates, plus five source-bound ordinary timing examples; not final scientific qualification",
+    "projection_file_sha256": "6512fd87f68b4d73a67c99da8d03e9a56a9d821523af498346a089ff029bacfb",
+    "figure_manifest_sha256": "c2cab2dfa041a963466908b327fbf62802c4c255b8ba0ec88435a2a1ca03bf36",
+    "renderer_sha256": "6e3edf54c7858aa0c068a9479afae10243248148c80d1d602cf483ed079381c8",
+    "review_readability_items": [
+      "P2-06",
+      "P2-05"
+    ],
+    "paired_contrasts_retained": 21,
+    "paired_plot_panels_with_separate_axes": 7,
+    "absolute_plotted_slots": 22,
+    "extra_full_replay_slots_retained_in_table_not_averaged": 6,
+    "all_absolute_table_label": "tab:all-method-absolute",
+    "appendix_table_file_sha256": {
+      "en": "cadac642548bf4cf8fcc28ca5abd702d9668a5865460ee87560eb9f1c4ac49d9",
+      "zh": "d4189243fc531782f14ccf280afcb8733ead0ac8d6826e7844fbe9b1a8ef61a0"
+    },
+    "diagnostic_zoom_is_practical_effect_evidence": false,
+    "table_labels": [
+      "tab:method-reader",
+      "tab:forecast-counts",
+      "tab:metric-reader",
+      "tab:preliminary-cost"
+    ],
+    "figure_labels": [
+      "fig:preliminary-method-effects",
+      "fig:preliminary-method-absolute",
+      "fig:preliminary-full-horizons"
+    ],
+    "aggregation_label": "eq:primary-aggregation",
+    "all_original_twenty_eight_configurations_and_twenty_one_contrasts_retained": true,
+    "raw_locations_or_trajectory_examples_integrated": false,
+    "country_city_street_or_environment_stratified_statistics_verified": false,
+    "map_case_gap_disclosed": true,
+    "timing_examples_are_quantiles_or_isolated_speed_comparison": false,
+    "original_final_sixteen_figure_inventory_replaced": false,
+    "new_forecasts_fits_scores_or_inference": false,
+    "final_qualified_claims_added": false
+  },
+  "method_implementation_notes": {
+    "source_sha256": {
+      "experiments/nex326/model.py": "8863e936419a55d95b4fe31ddb8790fcbb0a923b57cbc3f77cde3e095dea9aa2",
+      "experiments/nex326/experiment.json": "f12dc97a20667212b206e46dd274706b8bf799ee54871729727938d2a7d9e54a",
+      "experiments/pirc17/method_training.py": "65c78934a74f2725bf7f792cd851178fcc539d67a912fc8d33253d45a1d15598",
+      "experiments/pirc17/method_rollout.py": "076e3964d8f2f18ea45c93c964962be01a74eff62c380cc8719b5e3af4ac3560",
+      "experiments/pirc17/method_inputs.py": "11757c38e5aa8a2a7b83520c2465887a467fd63422766330203448e6b3a933b8"
+    },
+    "predictive_family_candidate_counts": [
+      4,
+      4,
+      5,
+      4,
+      4
+    ],
+    "design_inventory_table": {
+      "label": "tab:method-inventory",
+      "source": "experiments/nex326/experiment.json",
+      "arm_count": 22,
+      "slot_count": 36,
+      "required_slot_count": 28,
+      "approved_exempt_arm_slot_counts": {
+        "13": 1,
+        "17": 4,
+        "22": 3
+      },
+      "required_accounting": {
+        "full_anchors": 6,
+        "predictive_candidates": 21,
+        "identical_configuration_replay": 1
+      },
+      "scope": "Bilingual frozen configuration inventory, not success counts, empirical results or verdicts."
+    },
+    "explicit_limits": [
+      "heading-tertile labels are not inferred behavioural states",
+      "explicit features are not a separately fitted radial-tangential model",
+      "all and two_step share the adaptation blend",
+      "drift-only covariance can be rescaled by later calibration",
+      "mixed and pure energy include validation-fitted candidate parameters",
+      "alternative solar-condition arm is exempt",
+      "EM aliases do not provide independent algorithm evidence",
+      "FP uses mean-feature closure, not a spatial PDE"
+    ],
+    "solar_primary_reference": "https://gml.noaa.gov/grad/solcalc/solareqns.PDF",
+    "final_effect_claims_written": false
+  },
+  "sections": [
+    {
+      "section": "Experimental setup",
+      "subsections": [
+        "Cohort and development population",
+        "Three origin modes",
+        "Horizon, observations and experiment size"
+      ],
+      "evidence_type": "frozen protocol",
+      "implementation": [
+        "experiments/pirc17/formal_origins.py",
+        "experiments/pirc17/formal_eligibility.py"
+      ]
+    },
+    {
+      "section": "Forecast models and terrain ownership",
+      "evidence_type": "protocol and implementation",
+      "implementation": [
+        "experiments/pirc17/direct_linear.py",
+        "experiments/pirc17/rollout.py",
+        "experiments/pirc17/configurations.py"
+      ]
+    },
+    {
+      "section": "Experimental setup",
+      "subsections": [
+        "Distributional quality and diagnostics",
+        "Independent blocks and multiplicity",
+        "Conservative factor decisions"
+      ],
+      "evidence_type": "registered operators and rules",
+      "implementation": [
+        "experiments/pirc17/metric_registry.json",
+        "experiments/pirc17/inference.py",
+        "experiments/pirc17/decision_policy.py"
+      ]
+    },
+    {
+      "section": "Method ablation results",
+      "evidence_type": "preliminary complete-primary-method saved-score arithmetic; final audited public result pending",
+      "required_card_inventory": "22 method arms, 36 slots including eight exemptions",
+      "effect_claims_written": false
+    },
+    {
+      "section": "Terrain ablation results",
+      "evidence_type": "pending audited public result",
+      "required_card_ids": [
+        "terrain:all-vs-base",
+        "terrain:road",
+        "terrain:river",
+        "terrain:worldcover",
+        "terrain:surface",
+        "baseline:history"
+      ],
+      "effect_claims_written": false
+    },
+    {
+      "section": "Computational cost and reproducibility",
+      "evidence_type": "execution and runtime design; measurements pending",
+      "implementation": [
+        "experiments/pirc17/checkpoint_parallel.py",
+        "experiments/pirc17/checkpoint_review.py"
+      ]
+    }
+  ],
+  "artifact_integration": {
+    "stage": "planned source mapping; actual qualified artifacts not yet integrated",
+    "table_names": [
+      "comparisons",
+      "accuracy",
+      "terrain",
+      "methods",
+      "arms",
+      "factors",
+      "variants",
+      "kernel_costs",
+      "terrain_configurations",
+      "mechanisms",
+      "diagnostic_witnesses",
+      "variance_witnesses",
+      "replays",
+      "runtime_trials",
+      "runtime_conditions",
+      "accuracy_times"
+    ],
+    "figure_names": [
+      "paired-terrain-causal_prefix",
+      "paired-methods-causal_prefix",
+      "terrain-times-causal_prefix",
+      "mechanisms-causal_prefix",
+      "paired-terrain-known_velocity",
+      "paired-methods-known_velocity",
+      "terrain-times-known_velocity",
+      "mechanisms-known_velocity",
+      "paired-terrain-point_only",
+      "paired-methods-point_only",
+      "terrain-times-point_only",
+      "mechanisms-point_only",
+      "runtime-conditions",
+      "terrain-dimensions",
+      "scientific-dispositions",
+      "recorded-kernel-costs"
+    ],
+    "section_sources": [
+      {
+        "section": "Method ablation results",
+        "tables": [
+          "comparisons",
+          "methods",
+          "arms",
+          "mechanisms",
+          "diagnostic_witnesses",
+          "variance_witnesses"
+        ],
+        "figures": [
+          "paired-methods-causal_prefix",
+          "mechanisms-causal_prefix"
+        ],
+        "selection": "primary origin mode; method families kept separate; diagnostics are not predictive effects"
+      },
+      {
+        "section": "Terrain ablation results",
+        "tables": [
+          "comparisons",
+          "terrain",
+          "terrain_configurations",
+          "accuracy",
+          "accuracy_times",
+          "factors",
+          "variants"
+        ],
+        "figures": [
+          "paired-terrain-causal_prefix",
+          "terrain-times-causal_prefix",
+          "terrain-dimensions"
+        ],
+        "selection": "primary origin mode; all/LOO/LIO and unavailable rows retained"
+      },
+      {
+        "section": "Computational cost and reproducibility",
+        "tables": [
+          "kernel_costs",
+          "replays",
+          "runtime_trials",
+          "runtime_conditions"
+        ],
+        "figures": [
+          "runtime-conditions",
+          "scientific-dispositions",
+          "recorded-kernel-costs"
+        ],
+        "selection": "isolated runtime distinct from ordinary kernel cost; warmup excluded; failures retained"
+      },
+      {
+        "section": "Secondary origin appendix",
+        "tables": [
+          "comparisons",
+          "accuracy",
+          "accuracy_times",
+          "mechanisms"
+        ],
+        "figures": [
+          "paired-terrain-known_velocity",
+          "paired-methods-known_velocity",
+          "terrain-times-known_velocity",
+          "mechanisms-known_velocity",
+          "paired-terrain-point_only",
+          "paired-methods-point_only",
+          "terrain-times-point_only",
+          "mechanisms-point_only"
+        ],
+        "selection": "six-block descriptive origin diagnostics; no population factor verdicts"
+      }
+    ],
+    "comparison_sign": "original tables/forest plots: candidate minus control ES(m), negative favours candidate; positive-benefit prose must negate estimate and reverse negated interval endpoints",
+    "missingness_rule": "retain unavailable fields and whole-family failure dispositions; no zero filling or successful-subset effects",
+    "table_manifest_sha256": null,
+    "figure_manifest_sha256": null,
+    "figure_inputs_sha256": null,
+    "artifact_manifests_verified": false,
+    "claim_links_reviewed": false
+  },
+  "terrain_design_table": {
+    "label": "tab:terrain-design",
+    "scope": "Declared configuration dimensions and composition ownership, not empirical effects, successful-fit certification or final card integration.",
+    "history_retained_in_every_row": true,
+    "width_excludes_solver_intercept_and_base_drift_regressors": true,
+    "source_sha256": {
+      "experiments/pirc17/configurations.py": "2ec5fa1f19ba28fd62823f756ca011e4d54c89ed7ca88f1524ffebf8425556b3",
+      "experiments/pirc17/direct_linear.py": "0c80ec0f01089d056f5652ff81c623c533d7e2080aed5942018b516d5c59181e",
+      "experiments/pirc22/consumer.py": "f13b310ed5eba4b4896a36dd4527c76f23f9df365c6e6bd54c1b513f69d20ef8",
+      "experiments/pirc22/representations.py": "d841a37ff3775b0e936048bf640c57f70f2ca6d675ea5fc465d8464befefd4ec"
+    },
+    "numeric_validity_input_widths": {
+      "base": [
+        2,
+        2,
+        4
+      ],
+      "all-terrain": [
+        28,
+        28,
+        56
+      ],
+      "loo-road": [
+        19,
+        19,
+        38
+      ],
+      "loo-river": [
+        23,
+        23,
+        46
+      ],
+      "loo-worldcover": [
+        20,
+        20,
+        40
+      ],
+      "loo-surface": [
+        20,
+        20,
+        40
+      ],
+      "lio-road": [
+        7,
+        7,
+        14
+      ],
+      "lio-river": [
+        7,
+        7,
+        14
+      ],
+      "lio-worldcover": [
+        6,
+        6,
+        12
+      ],
+      "lio-surface": [
+        10,
+        10,
+        20
+      ]
+    },
+    "shared_worldcover_road_composition": {
+      "removed_from": [
+        "loo-road",
+        "loo-worldcover"
+      ],
+      "absent_from_single_group_additions": [
+        "lio-road",
+        "lio-worldcover"
+      ]
+    },
+    "surface_history_composition_retained_in": "lio-surface"
+  },
+  "terrain_feature_encoding": {
+    "section_label": "sec:feature-encoding",
+    "equation_labels": [
+      "eq:distance-encoding",
+      "eq:feature-compositions",
+      "eq:feature-masks"
+    ],
+    "scope": "Frozen implementation description, not an empirical effect, new fit, feature-selection decision or final evidence-card integration.",
+    "feature_spec_canonical_sha256": "e53857fd2749da76c3bf856537d3ff8e30c7c2989d2d585dcc068ac913058616",
+    "source_file_sha256": {
+      "DSDE-SDE/registry/pirc21_feature_spec.contract.json": "820356d467b99062c5d3c2fa0676d9e486637f19ac0d79603a09f6edbc818c01",
+      "PSDE-SDE/experiments/pirc17/features.py": "7ce422a2a83add8ad8484d52f8a83a4669c05a259d3fcb8c55ab5e06de4cc26c",
+      "PSDE-SDE/experiments/nex326/pirc21_adapter.py": "9f5d039eb0462f94729a2ced8e8ac60df9a71f39c057c23a6231ff59ef31ac86",
+      "PSDE-SDE/experiments/pirc17/rollout.py": "b8fda002d6c771e86edf799f7708f3f1ad70fe9bc352b1a571bdbfe0aac2e45a"
+    },
+    "selected_variant_numeric_columns": 18,
+    "selected_composition_numeric_widths": [
+      2,
+      2,
+      4,
+      2
+    ],
+    "distance_scale_metres": 1,
+    "selected_transform_fit_scope": "none",
+    "surface_composition": "history dot uphill and history dot rotated contour; not a 6 by 2 Cartesian product or a slope-magnitude-weighted projection",
+    "missing_worldcover_is_not_valid_unknown_category": true,
+    "online_canonical_numeric_precision": "float32 before identical registered transform kernels",
+    "conditioner_input_layout": "zero-imputed numeric values followed by one validity column per numeric column"
+  },
+  "runtime_environment_description": {
+    "section_label": "sec:runtime-environment",
+    "scope": "Frozen measurement-interface description, not measured hardware values, new timing trials or a performance conclusion.",
+    "source_sha256": {
+      "PSDE-SDE/experiments/pirc17/runtime.py": "35ae18ffd447b20e68b5acfe59130ac2bb55990558682a0529296479d2518cf9",
+      "PSDE-SDE/experiments/pirc17/formal_timing.py": "1a1ec8b7128b85ba9bab1e5fd34f81f8550f5f75881b59db9c63e17483d3db43",
+      "PSDE-SDE/experiments/pirc17/formal_runtime.py": "2aae986de2c718f4129811c3bf4870a5faf8ee2a5068a25b4994062b58045b4c",
+      "PSDE-SDE/experiments/pirc17/formal_export.py": "428bbc80041a784d6f88ce949afc62d0a16d97835b4606a4762551db9f849d0d"
+    },
+    "trial_schema": "pirc17-formal-runtime-trial-v1",
+    "public_hardware_key": "original full hardware-manifest digest; loaded_threadpools omitted from public entry",
+    "forecast_lanes_are_not_library_thread_counts": true,
+    "unset_thread_environment_does_not_imply_single_thread": true,
+    "timing_starts_with_prepared_inputs_and_resident_parameters": true,
+    "latency_is_not_full_cold_deployment_cost": true,
+    "timed_device": "cpu",
+    "hardware_values_integrated": false,
+    "runtime_measurements_integrated": false
+  },
+  "public_export_sha256": null,
+  "reader_requested_model_clarification": {
+    "scope": "Bilingual explanation of existing models, geometry, score and statistical operators; no experimental changes or final empirical claims.",
+    "factor_table": "tab:terrain-factors",
+    "equation_labels": [
+      "eq:drift-components",
+      "eq:terrain-update",
+      "eq:cover-indicators",
+      "eq:surface-geometry",
+      "eq:method-sde",
+      "eq:population-es",
+      "eq:es-propriety",
+      "eq:ensemble-es",
+      "eq:paired-estimand"
+    ],
+    "section_order": "Introduction; related work; models and terrain ownership; experimental setup including data/origins/scores/inference/verdicts; results",
+    "source_sha256": {
+      "PSDE-SDE/experiments/pirc17/dynamics.py": "15c2c8650ee3fbc0451922d953ff7f8a7235a0f3736b56f776be97ea96fc28f9",
+      "PSDE-SDE/experiments/pirc17/metrics.py": "c00059e40421d5267deb35b73096048f22fd439dc9914801ccaf4fd609885570",
+      "PSDE-SDE/experiments/pirc17/inference.py": "d25def4bec006173f5c0f005ab3eda0eab2c3a35ec39c842e6622ea446e1a1b2",
+      "DSDE-SDE/trajectory/feature_geometry.py": "5df4d18572b48fbf01844a1d4c3e993a722bb5a7f68045dfc1192c6da2a64255",
+      "DSDE-SDE/trajectory/linear_materialization.py": "7e7f59fc0f93d23639b4a3bc9d778cd4f2617d3da4f4ea555c7e74fac4d661c9",
+      "DSDE-SDE/map_data/terrain_features.py": "6a71ea06093db394a6a3be3cca5c2a86f22e14873f806d52f7566f7c04d13376"
+    },
+    "limits": [
+      "Z is causal derived history, not an independently fitted velocity SDE",
+      "linear-in-feature-parameters terrain fits are not neural networks",
+      "method conditional Gaussian modes and resampling clocks differ from terrain fits",
+      "towards-nearest-point direction is neither line tangent nor river flow",
+      "log distance has mathematical compression properties, not an established physical law or final-ablation optimum",
+      "absolute elevation is a derivative source, not a selected direct column",
+      "merged cover classes have no separately identified effects",
+      "flat aspect is a zero-vector convention",
+      "ES U-statistic uses N(N-1), unlike the empirical-distribution N-squared score",
+      "population propriety does not certify numerical forecasts"
+    ],
+    "reference_journal_quartile_in_manuscript": false,
+    "final_empirical_claims_added": false
+  },
+  "evidence_cards_sha256": null,
+  "final_empirical_results_integrated": false,
+  "human_accepted": false,
+  "historical_results_reused_as_pirc17_evidence": false,
+  "remaining_deliverables": [
+    "complete scientific and diagnostic work",
+    "complete scoring and block inference",
+    "independent saved-output audit",
+    "qualified public cards",
+    "sixteen tables and sixteen figures",
+    "numerical results and bounded conclusions",
+    "verified authorship",
+    "final Chinese numerical and claim alignment",
+    "final rebuilt review PDFs",
+    "TEST-02 and REVIEW-02 evidence",
+    "actual ACCEPT-02 decision"
+  ],
+  "preliminary_method_arithmetic": {
+    "snapshot": "paper/pirc17/preliminary-method-statistics-v1.json",
+    "file_sha256": "8900f3dee68d5fc9cafd5ced2e2394503432d2493251601c0ba9cb771cbefba1",
+    "generated_utc": "2026-10-06T00:54:18.683579+00:00",
+    "source_code_commit": "PSDE-SDE@4abf70de9a1b140d5f8e355bf8e85d9eb9a17b95",
+    "private_derivative_file_sha256": "c4a8f38f264de511f5fc71de614dfc0b55bd8e77b6d563a39ae7b21a73ef76e5",
+    "cache_sha256": "892bb89b1d39d376c69d5a41570ad1655e50fe6950be6442db7f2b2f492c2878",
+    "score_index_sha256": "7d062d749d3591f0faacb806893cc0f5014a5f3600a0b1b15bb93ab2b2037b2e",
+    "captured_rows_sha256": "d339731e52bdaa387208db909d507131ac154eec350cd11c2ba500c78ab5efc2",
+    "primary_rows": 6440,
+    "independent_blocks": 46,
+    "configuration_count": 28,
+    "comparison_count": 21,
+    "required_comparison_family_counts": [
+      4,
+      4,
+      5,
+      4,
+      4
+    ],
+    "table_labels": [
+      "tab:preliminary-method-effects",
+      "tab:preliminary-coverage"
+    ],
+    "section_label": "sec:preliminary-methods",
+    "sign": "candidate minus registered control ES, negative favours candidate",
+    "arithmetic_integrated": true,
+    "independent_raw_output_audit_completed": false,
+    "mechanism_audit_completed": false,
+    "final_qualified_verdicts_integrated": false,
+    "public_cards_replaced": false,
+    "registered_sixteen_table_figure_inventory_replaced": false,
+    "scope": "User-authorized interim interpretation while unchanged original forecasts run. Complete primary methods only; whole-family missing/failure rule retained for terrain and secondary failures. Raw fixed-engine confidence arithmetic is not final scientific acceptance. No extra forecasts, refits, particle scoring or tuning.",
+    "abstract_and_discussion_integration": {
+      "abstract_numbers_from_same_snapshot": true,
+      "discussion_labels": [
+        "sec:discussion-score",
+        "sec:discussion-calibration",
+        "sec:discussion-scope"
+      ],
+      "mathematical_explanation": "Jensen bound on ensemble-mean error concerns the first ES term; the subtracted pair-distance term prevents a shared ranking with point error. Propriety is not a per-target guarantee.",
+      "scope_limits": [
+        "observation interval changes fitted observations, history clock and Q=tau*R; not an isolated integration-step effect",
+        "horizon coverage is descriptive on 46 independent targets with five forecast ensembles, not a survival curve or 230 independent outcomes",
+        "no post-evaluation radius rescaling, new calibration experiment or new statistical test",
+        "interval crossing zero neither proves superiority nor equivalence"
+      ],
+      "new_scientific_computation": false,
+      "final_qualified_claims_added": false
+    }
+  },
+  "cohort_denominator_disclosure": {
+    "evidence_type": "unchanged frozen development-eligibility aggregate metadata and saved final selection; not new scoring, fitting or final scientific qualification",
+    "development_eligibility_file_sha256": "7b6773ec628b7a14f586400ab315965d1f88b2227365b0b9a6cb35be9a7f9690",
+    "saved_context_sha256": "61354e87858d8dc54e2759e3b11f2501000e27ca9b2898115d72018b2f051f4f",
+    "final_selection_sha256": "5fcc3ddde79ed4e41c52776c8a1dce70bcd4c442dd9ad39df775b95b0cd1df4f",
+    "table_label": "tab:cohort-denominators",
+    "development_counts": {
+      "released": {
+        "train_windows": 49845,
+        "train_blocks": 5251,
+        "validation_windows": 9831,
+        "validation_blocks": 1099
+      },
+      "temporal_30min": {
+        "train_windows": 509,
+        "train_blocks": 395,
+        "validation_windows": 100,
+        "validation_blocks": 76
+      },
+      "joint_feature_validity": {
+        "train_windows": 404,
+        "train_blocks": 321,
+        "validation_windows": 81,
+        "validation_blocks": 62
+      }
+    },
+    "development_rules": {
+      "complete_original_window": true,
+      "minimum_history_points": 2,
+      "positive_timestamp_gaps": true,
+      "maximum_gap_seconds": 60,
+      "minimum_followup_seconds": 1800,
+      "joint_validity_scope": "origin through registered original target end; surface, road, river, worldcover and historical motion"
+    },
+    "method_role_windows": {
+      "train": 328,
+      "adapt": 76,
+      "validation": 81
+    },
+    "final_selection": {
+      "eligible_independent_blocks": 73,
+      "primary_selected_blocks": 46,
+      "secondary_shared_blocks": 6,
+      "secondary_is_first_six_primary": true,
+      "origin_mode_cases": 58,
+      "origin_mode_cases_are_distinct_independent_blocks": false,
+      "verified_participant_count": null
+    },
+    "original_raw_trajectory_or_feature_files_reopened": false,
+    "saved_context_json_loaded": true,
+    "saved_context_contains_serialized_prefix_and_target_values": true,
+    "prefix_or_target_values_used_for_fitting_scoring_or_selection": false,
+    "new_scientific_computation": false,
+    "registered_sixteen_table_figure_inventory_replaced": false,
+    "historical_final_eval_exposure_reset": false,
+    "scope": "Nested developmental support/coverage counts and final selected-block overlap only. No private origins, source rows, coordinates or machine paths; no population/parameter change, prospective-validation claim or final admission/audit claim."
+  },
+  "review_input_and_sign_contracts": {
+    "scope": "Bilingual description and synthetic software regressions only; no new formal forecasts, fitted parameters, empirical scoring or inference",
+    "source_sha256": {
+      "experiments/nex326/model.py": "8863e936419a55d95b4fe31ddb8790fcbb0a923b57cbc3f77cde3e095dea9aa2",
+      "experiments/pirc17/method_rollout.py": "076e3964d8f2f18ea45c93c964962be01a74eff62c380cc8719b5e3af4ac3560",
+      "experiments/pirc17/method_inputs.py": "11757c38e5aa8a2a7b83520c2465887a467fd63422766330203448e6b3a933b8",
+      "experiments/pirc17/formal_origins.py": "88b355a28945883700127be41cbde0df3330e10abf56d20ed4b3b72d1819dca4",
+      "experiments/pirc17/inference.py": "d25def4bec006173f5c0f005ab3eda0eab2c3a35ec39c842e6622ea446e1a1b2",
+      "experiments/pirc17/decision_policy.py": "a063e05f09ee45a3a63d002ab870b9c205dc41eaba8a3711975fe2c6ac7b9dd5",
+      "tests/test_pirc17_review_contracts.py": "23c666a0239c0ea49ead1bf0a2a78678efd58b83c8dcb0ff6875318744a489a8"
+    },
+    "test_scope": "25 synthetic tests plus138 existing software regression cases;163 passed; short4second16particle fixtures and synthetic scores, no real final-eval inputs",
+    "ordinary_velocity_invariance_requires_fixed_frame_position_clock_condition_parameters_and_stream": true,
+    "mode_probabilities_are_saved_fit_parameters_not_new_prefix_posterior": true,
+    "full_probability_blend": {
+      "pretrain": 0.35,
+      "adapt": 0.65
+    },
+    "primary_and_secondary_coordinate_frames_distinguished": true,
+    "explicit_speed_is_invariant_to_heading_reversal": true,
+    "terrain_sign_role_table": "tab:terrain-sign-roles",
+    "registered_loo_candidate": "all-terrain",
+    "registered_loo_control": "loo-group",
+    "positive_factor_benefit_is_negative_registered_delta": true,
+    "actual_target_stop_distinguished_from_nominal_horizon": true,
+    "preliminary_score_capture_utc": "2026-10-06T00:54:18.683579+00:00",
+    "execution_capture_utc": "2026-10-06T06:53:13.846553+00:00",
+    "success_count_difference": 130,
+    "snapshot_item_difference_independently_audited": false,
+    "full_saved_parameter_inventory_independently_audited": false,
+    "independent_saved_output_audit_completed": false,
+    "final_empirical_qualification_added": false
+  },
+  "saved_method_algorithm_description": {
+    "projection": "paper/pirc17/method-algorithm-description-v1.json",
+    "projection_sha256": "8bd86bb00cd9f7ef0785c34dd7383771b59140ffbf51c277a4251e56e208b741",
+    "inventory_sha256": "675b755e7b234698cc2954e5d743b36d41e37284c4abff200ac888da212fe250",
+    "method_fit_count": 16,
+    "prediction_slots": 28,
+    "reptile_task_count": 30,
+    "reptile_target_retention_weight": 0.35,
+    "source_bound_finite_inner_outer_updates_described": true,
+    "task_local_heading_labels_not_matched_behavioural_states": true,
+    "target_adaptation_not_full_resolve_from_initialization": true,
+    "intermediate_pre_meta_pre_target_parameter_snapshots_available": false,
+    "local_kernels_fp_moments_joint_paths_events_streams_described": true,
+    "global_nonlinear_exactness_or_crn_variance_reduction_proven": false,
+    "new_fits_forecasts_or_particle_scores": 0,
+    "independent_saved_forecast_audit_or_final_qualification_added": false,
+    "equation_labels": [
+      "eq:meta-inner",
+      "eq:meta-outer",
+      "eq:target-blend",
+      "eq:method-kernels",
+      "eq:method-affine-exact",
+      "eq:method-joint-propagation"
+    ]
+  },
+  "horizon_scientific_synthesis_revision": {
+    "source_base_commit": "54ead9cb08125b7f8cbf0f397afbea6bf4c84ca7",
+    "review_items": [
+      "P1-19",
+      "P1-20",
+      "P2-09"
+    ],
+    "original_horizon_projection": "paper/pirc17/method-horizon-description-v1.json",
+    "original_horizon_projection_sha256": "196167ed0aaeb1e7c5a1dfb8858068ea339294eb0eaf49aac212ad8f76195106",
+    "all28_coverage_limits_and_mixture_horizon_tradeoff_integrated_in_abstract_discussion_conclusion": true,
+    "configuration_mean_range_is_not_population_interval_or_new_model_test": true,
+    "joint_area_block_diagnostics_remain_three_model_scope": true,
+    "new_fits_forecasts_scores_resampling_or_map_queries": 0,
+    "independent_saved_output_audit_completed": false,
+    "final_paper_or_all_review_items_complete": false
+  },
+  "literature_primary_metadata_revision": {
+    "source_base_commit": "434d2d99629d59a440772dbb01320f9e7f4902b8",
+    "review_items": [
+      "P1-26",
+      "P2-10"
+    ],
+    "checked_local_date": "2026-10-07",
+    "primary_pages": {
+      "avgar2017correction": {
+        "url": "https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.12725",
+        "canonical_title": "Corrigendum",
+        "year": 2017,
+        "journal_volume_issue_page": "Methods in Ecology and Evolution, 8(9), 1168",
+        "named_author_added": false,
+        "correction_target_is_separate_annotation_not_published_title": true
+      },
+      "kidger2021": {
+        "url": "https://proceedings.mlr.press/v139/kidger21b.html",
+        "conference": "38th International Conference on Machine Learning",
+        "series_volume_pages": "PMLR 139:5453-5463",
+        "year": 2021,
+        "role": "Brownian-driven SDE path generation trained with a neural CDE discriminator; not an executed GPX baseline"
+      },
+      "gao2024": {
+        "url": "https://www.nature.com/articles/s41467-024-50378-x",
+        "journal_volume_article": "Nature Communications, 15, 6029",
+        "year": 2024,
+        "role": "LaGNA network-equation discovery separates self, interaction and diffusion; not equivalent to the single-record forecast task"
+      },
+      "salzmann2020": {
+        "url": "https://link.springer.com/chapter/10.1007/978-3-030-58523-5_40",
+        "book_series_volume_pages": "Computer Vision - ECCV 2020; LNCS 12363:683-700",
+        "year": 2020,
+        "existing_entry_confirmed_not_changed": true
+      }
+    },
+    "primary_metadata_and_abstract_task_scope_check_not_full_literature_audit": true,
+    "all23_full_texts_or_target_journal_style_verified": false,
+    "external_models_executed_or_journal_quartiles_claimed": false,
+    "new_fits_forecasts_scores_resampling_or_map_queries": 0,
+    "original_scientific_values_tables_figures_and_protocol_changed": false,
+    "licences_privacy_independent_output_audit_or_final_paper_complete": false
+  },
+  "computational_cost_reading_revision": {
+    "source_base_commit": "2aa4e10808d1a7b2a70681b0ee89ceb3e80d8fdb",
+    "review_items": [
+      "P1-23",
+      "P2-02"
+    ],
+    "timing_source_sha256": "6512fd87f68b4d73a67c99da8d03e9a56a9d821523af498346a089ff029bacfb",
+    "implementation_sources": {
+      "PSDE-SDE/experiments/pirc17/runtime.py": "35ae18ffd447b20e68b5acfe59130ac2bb55990558682a0529296479d2518cf9",
+      "PSDE-SDE/experiments/pirc17/formal_timing.py": "1a1ec8b7128b85ba9bab1e5fd34f81f8550f5f75881b59db9c63e17483d3db43",
+      "PSDE-SDE/experiments/pirc17/formal_forecasts.py": "a091265b6b5eaa4b149028952340f3909780c00d6018a176ab29c33c3b5ac6f4"
+    },
+    "detailed_environment_manifest_moved_to_appendix": true,
+    "section_label": "sec:runtime-record-details",
+    "raw_p50_p95_milliseconds_distinct_from_horizon_normalized_mean": true,
+    "provider_cold_does_not_certify_operating_system_cache_state": true,
+    "failed_trials_warmup_nested_spans_and_memory_limits_retained": true,
+    "original_tables_figures_and_measured_values_unchanged": true,
+    "original_protocol_receipts_and_forecast_configuration_changed": false,
+    "auxiliary_cost_scenario_is_not_integrated_as_measured_paper_latency": true,
+    "new_fits_forecasts_scores_resampling_or_map_queries": 0,
+    "formal_runtime_results_or_independent_output_audit_completed": false,
+    "non_project_reader_acceptance_or_final_paper_complete": false
+  },
+  "local_case_horizon_illustrations": {
+    "authorization_scope": "Owner explicitly requested the three existing real-map cases at1,5,15,30minutes inside TSDE manuscript; local rendered illustrations only, not raw GPX/coordinate rows or public redistribution",
+    "source": "paper/pirc17/figures/case-horizons.json",
+    "source_sha256": "bb95e19698632bae6b17c24f5c423e493f599039d14a9982c2a0a82edb0c37c6",
+    "section_label": "sec:case-horizons",
+    "table_label": "tab:case-diagnostics",
+    "fixed_cases": 3,
+    "existing_terrain_forecasts": 6,
+    "original_science_denominator": 11020,
+    "particles": 512,
+    "simulation_seed": 20260814,
+    "nominal_horizons_seconds": [
+      60,
+      300,
+      900,
+      1800
+    ],
+    "figure_pairs": 6,
+    "rendered_panels": 24,
+    "comparison": "terrain base versus all-terrain, not method Full01",
+    "actual_target_seconds_preserved": true,
+    "original_90_percent_disks_preserved": true,
+    "same_axes_within_each_time": true,
+    "new_forecasts": 0,
+    "new_fits": 0,
+    "new_particle_scores": 0,
+    "new_inference_tests": 0,
+    "continuous_prediction_paths_saved": false,
+    "independent_saved_output_audit_completed": false,
+    "population_terrain_effect_established": false,
+    "formal_runtime_benchmark_established": false,
+    "registered_sixteen_table_figure_inventory_replaced": false,
+    "public_distribution_authorized": false,
+    "route_privacy_and_map_licensing_review_complete": false,
+    "final_human_accepted": false
+  },
+  "all_level_coverage_reading_revision": {
+    "source_base_commit": "f11bcf39df113eb5b9d7a1d459da50622bf4fe38",
+    "review_items": [
+      "P1-19",
+      "P1-20",
+      "P2-09"
+    ],
+    "source_projection": "paper/pirc17/all-method-region-description-v1.json",
+    "source_sha256": "43247e7bbec10dc5f087b412c2b1b223f89b9adb33c64f97ba5ce1187a9092d8",
+    "renderer_sha256": "f663fb538d1807d311b1ee604f7857e38b8933d89e68de0cb581ed09a02b6ccf",
+    "table_label": "tab:all-level-coverage",
+    "configuration_count": 28,
+    "original_score_rows": 6440,
+    "recording_hash_blocks": 46,
+    "forecast_seeds": 5,
+    "descriptive_table_cells": 16,
+    "probability_levels": [
+      0.5,
+      0.8,
+      0.9,
+      0.95
+    ],
+    "configuration_counts_are_independent_models": false,
+    "ranges_are_confidence_intervals": false,
+    "cross_configuration_average_introduced": false,
+    "floating_equality_tolerance": 1e-12,
+    "floating_tolerance_is_calibration_margin": false,
+    "original_saved_profiles_modified": false,
+    "original_90_percent_table_preserved_verbatim": true,
+    "new_fits_forecasts_scores_resampling_or_map_queries": 0,
+    "forecast_arrays_opened": false,
+    "calibration_certified": false,
+    "independent_saved_output_audit_completed": false,
+    "original_final_sixteen_figure_inventory_replaced": false,
+    "final_paper_or_review_complete": false
+  },
+  "method_base_fit_specification_revision": {
+    "source_base_commit": "0095cff5dcc58f9c72b3b1443c8854ce0c750ef7",
+    "review_items": [
+      "P1-02",
+      "P1-06",
+      "P1-09"
+    ],
+    "frozen_model_source_sha256": "8863e936419a55d95b4fe31ddb8790fcbb0a923b57cbc3f77cde3e095dea9aa2",
+    "source_functions": [
+      "_ridge_fit",
+      "_base_fit",
+      "_one_step_residuals"
+    ],
+    "saved_algorithm_projection": "paper/pirc17/method-algorithm-description-v1.json",
+    "base_ridge": 0.000001,
+    "base_covariance_jitter": 1e-8,
+    "base_ridge_is_mean_normalized": false,
+    "base_ridge_penalizes_intercept": true,
+    "mean_loss_equivalent_base_penalty": "rho/n_m",
+    "normalized_reptile_inner_penalty": "rho",
+    "base_covariance_is_centered": true,
+    "base_covariance_denominator": "n_m-1",
+    "base_covariance_is_regression_degrees_of_freedom_correction": false,
+    "gmm_labels": "first argmax(residual east,residual north,-east-north),plus1 in paper",
+    "exact_zero_residual_component": 1,
+    "base_component_minimum_transitions": 2,
+    "undersized_base_component_fails_without_fallback": true,
+    "gmm_likelihood_em_executed": false,
+    "gmm_labels_recomputed_per_base_batch": true,
+    "gmm_group_models_refit_after_once_only_partition": true,
+    "pooled_coefficients_retained_as_shared_drift": false,
+    "gmm_validation_uses_heading_labels": true,
+    "gmm_validation_residual_groups_reassigned": false,
+    "gmm_validation_uses_posterior_responsibilities": false,
+    "gmm_group_counts_reconstructed": false,
+    "new_equation_labels": [
+      "eq:method-base-ridge",
+      "eq:method-base-covariance",
+      "eq:gmm-residual-partition"
+    ],
+    "original_scientific_blocks_preserved": true,
+    "new_fits_forecasts_scores_resampling_or_map_queries": 0,
+    "original_parameters_predictions_or_scope_changed": false,
+    "independent_saved_output_audit_completed": false,
+    "causal_undercoverage_mechanism_identified": false,
+    "final_paper_or_review_complete": false
+  },
+  "source_sequence_manuscript_revision": {
+    "source_base_commit": "7258b83ecb2025eb299e1797ca901c7272516904",
+    "review_items": [
+      "P0-03"
+    ],
+    "projection": "paper/pirc17/source-sequence-description-v1.json",
+    "projection_sha256": "3c6e119511cdfc09244511cc4b5b839a7dd86585a9c7e76adbb2ae4fe82443b9",
+    "producer_sha256": "40b3fba4961b34bb71397c79c20ffceda8fbb767b61ceded34e2a75235ffcbea",
+    "selected_windows": 531,
+    "source_files": 443,
+    "whole_source_rows": 2499407,
+    "cross_role_comparisons": 6,
+    "cross_role_equal_coordinate_or_coordinate_clock_pairs": 0,
+    "within_role_equal_file_pairs": [
+      9,
+      4,
+      4,
+      0
+    ],
+    "within_role_equal_groups": [
+      5,
+      2,
+      4,
+      0
+    ],
+    "new_different_recording_block_matches": 0,
+    "whole_source_rows_are_fitted_transitions": false,
+    "participant_near_route_partial_overlap_or_physical_utc_independence_established": false,
+    "original_selection_weights_fits_predictions_or_scope_changed": false,
+    "original_scientific_blocks_preserved": true,
+    "new_anchors": [
+      "sec:source-sequence-screen",
+      "tab:source-sequence-screen"
+    ],
+    "new_fits_forecasts_scores_resampling_or_map_queries": 0,
+    "independent_saved_output_audit_completed": false,
+    "final_paper_or_review_complete": false
+  },
+  "source_provenance_readability_revision": {
+    "source_base_commit": "8e739ba307746e54d8c1e4a57432f435c8a52a5a",
+    "review_items": [
+      "P2-02"
+    ],
+    "appendix_anchor": "sec:source-reconciliation-details",
+    "moved_source_descriptions": 9,
+    "original_source_descriptions_retained_verbatim_once": true,
+    "all_original_tables_figures_equations_align_and_display_blocks_exact_ordered": true,
+    "original_bibliography_and_existing_labels_unchanged": true,
+    "main_population_input_clock_permissions_and_failure_limits_retained": true,
+    "experimental_main_source_characters": {
+      "en": {
+        "before": 69517,
+        "after": 65223
+      },
+      "zh": {
+        "before": 32415,
+        "after": 30691
+      }
+    },
+    "source_character_reduction_is_whole_paper_page_reduction": false,
+    "protocol_selection_parameters_or_scientific_values_changed": false,
+    "clock_participant_or_map_provenance_certified": false,
+    "privacy_or_publication_permissions_verified": false,
+    "new_fits_forecasts_scores_resampling_or_map_queries": 0,
+    "independent_saved_output_audit_completed": false,
+    "whole_paper_or_non_project_reader_acceptance_obtained": false,
+    "final_paper_or_review_complete": false
+  },
+  "opening_closing_reader_synthesis_revision": {
+    "source_base_commit": "0ce0a107b8695635fb45a06205ed17ad790145c1",
+    "review_items": [
+      "P2-02",
+      "P2-09"
+    ],
+    "revised_prose_only": [
+      "abstract",
+      "conclusion"
+    ],
+    "body_models_experimental_rules_results_tables_figures_and_appendices_unchanged": true,
+    "original_saved_scores_and_all28_undercoverage_limits_retained": true,
+    "short_abstract_and_three_named_conclusion_topics": true,
+    "original_protocol_selection_parameters_or_scientific_values_changed": false,
+    "new_fits_forecasts_scores_resampling_or_map_queries": 0,
+    "independent_saved_output_audit_completed": false,
+    "full_manuscript_reader_or_human_acceptance_obtained": false,
+    "final_paper_or_all_review_items_complete": false
+  },
+  "clock_scope_fallback_revision": {
+    "source_base_commit": "aff75cc52b6f9f177416550b03ef5459d332cb21",
+    "review_items": ["P0-04"],
+    "original_clock_projection_sha256": "6831839d7df9cee4a9a4aae932cc831ae92fc7dbfe2e684a67032add1105bfb3",
+    "acceptance_branch": "Retained-record-clock task only; no certified physical horizon or daylight effect.",
+    "model_clock_interpretation_is_not_source_UTC_certification": true,
+    "ordinary_method_early_prose_qualification_aligned_with_clock_section": true,
+    "original_review_acceptance_criteria_changed": false,
+    "original_clock_provenance_evidence_or_source_ticks_changed": false,
+    "source_UTC_sensor_clock_physical_horizon_or_daylight_effect_certified": false,
+    "new_fits_forecasts_scores_resampling_or_map_queries": 0,
+    "independent_saved_output_audit_completed": false,
+    "human_or_final_review_acceptance_obtained": false,
+    "final_paper_or_all_review_items_complete": false
+  },
+  "population_support_reading_revision": {
+    "source_base_commit": "da0f9b2a513614923b57a43e3566d9b217f72143",
+    "review_items": ["P2-02"],
+    "main_summary_label": "sec:population-support-summary",
+    "moved_original_table_labels": ["tab:final-cohort-durations", "tab:final-cohort-speeds", "tab:final-cohort-geography"],
+    "appendix_label": "sec:population-description-construction",
+    "original_table_cells_equation_and_explanations_retained": true,
+    "scope": "Bilingual manuscript reading order only. Three existing population-support tables and their original explanations move to the appendix; the main text retains selection limits and direct references. No new statistics or scientific acceptance.",
+    "original_protocol_selection_parameters_or_scientific_values_changed": false,
+    "new_fits_forecasts_scores_resampling_or_map_queries": 0,
+    "independent_saved_output_audit_completed": false,
+    "full_manuscript_reader_or_human_acceptance_obtained": false,
+    "publication_permissions_verified": false,
+    "final_paper_or_all_review_items_complete": false
+  }
+}

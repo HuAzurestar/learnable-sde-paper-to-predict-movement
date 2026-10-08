@@ -20,6 +20,72 @@ draft, not an independent claim set.  Before submission, add only verified
 references to `references.bib`, replace every marked placeholder with evidence
 from a versioned run, and obtain data/privacy review for any aggregate result.
 
+## PIRC-17 manuscript in progress
+
+`pirc17/en/main.tex` is the working source for the current causal component and
+terrain study. It uses the existing English article layout. Its methods are
+bound to the frozen PIRC-17 protocol; its result estimates and final conclusions
+are awaiting the complete audited public evidence cards. The review draft has
+no asserted author identities. The existing `en/main.tex` and `zh/main.tex`
+retain historical studies and must not be mistaken for the new PIRC-17 result.
+
+Build the current review draft from `paper/pirc17/en`:
+
+```text
+latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
+```
+
+The review PDFs are `pirc17/en/main.pdf` and `pirc17/zh/main.pdf`. The Chinese
+review draft follows the English section structure and registered equations;
+build it from `paper/pirc17/zh` with `latexmk -xelatex` and the same flags.
+Before final delivery, integrate the
+audited method and terrain result sections, all required tables and figures,
+claim-to-card links, verified authorship, and aligned final Chinese numerical
+results and claims.
+This draft does not complete DEV-06 or final scientific acceptance.
+
+For one declared bilingual review build from the repository root, use a new
+empty output directory outside `paper/`:
+
+```text
+python scripts/build_pirc17.py --output-dir .local/pirc17-review-build
+```
+
+This checks the public boundary, builds the current English and Chinese sources,
+rejects unresolved references/citations, missing glyphs and clipped boxes, and
+records source/PDF/log hashes in `build-manifest.json`. It never overwrites the
+committed PDFs or previous build evidence, publishes nothing, and explicitly
+does not verify empirical claims or human acceptance. The recorded Git revision
+and dirty-state flag distinguish an interim working build from a clean revision.
+
+### PIRC-17 reproduction boundaries
+
+The current draft was built locally with TeX Live 2024 and latexmk 4.83. English
+uses pdfLaTeX; Chinese uses XeLaTeX/ctex. The observed Windows build uses its
+available CJK fonts; Linux font fallback and cross-platform PDF byte identity
+have not been verified. Use a separate output directory for temporary review
+builds, inspect the final log for unresolved references/citations or missing
+glyphs, and run `python scripts/check_public_release.py` from the repository
+root. Compilation proves document buildability, not empirical correctness.
+
+The three external trajectory/SDE papers cited in the current related-work
+section are context, not newly added benchmark slots. No result against those
+models is claimed and no additional model-fitting experiment is required.
+
+Once qualified public cards exist, reproduce the original 16 tables and 16
+PNG/PDF figures with the pinned commands in
+`scripts/PIRC17_PUBLIC_ARTIFACTS.md`. Record the card content identity, export
+and audit provenance, table and figure manifests, rendering environment, and
+exact manuscript revision alongside the final review. Do not pass private
+method previews as public evidence, repeat bootstrap arithmetic in a renderer,
+or turn failed/missing rows into zero-valued effects.
+
+The existing CI/release jobs build the historical `paper/en` and `paper/zh`
+entrypoints, not the new `paper/pirc17` draft. A historical green build or
+release therefore cannot close PIRC-17. Final entrypoint integration or a
+separately declared PIRC-17 build/release must be reviewed with the completed
+manuscript; no pending draft is published by this local preparation change.
+
 No dataset, checkpoint, trajectory, example coordinate, or experimental metric
 is included in this handoff.
 

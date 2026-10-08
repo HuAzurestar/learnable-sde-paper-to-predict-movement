@@ -1,0 +1,55 @@
+{
+  "schema_version": "pirc17-case-map-acknowledgement-review-v1",
+  "documentation_checked_utc_date": "2026-10-06",
+  "scope": "source acknowledgements for existing private illustrative case maps, not a public-route release decision",
+  "contains_private_coordinates_timestamps_or_recording_ids": false,
+  "public_case_route_release_authorized": false,
+  "all_redistribution_requirements_verified": false,
+  "clock_reporting": {
+    "upstream_r1_relative_time": "reconstructed from inter-point distances and stored speeds",
+    "pirc20_absolute_time": "retained condition t converted to integer nanoseconds; recording/source-point index aligned and segments refined on that clock",
+    "r1_relative_intervals_substituted_for_condition_time": false,
+    "original_sensor_or_gpx_time_independently_verified": false,
+    "horizon_and_solar_interpretation_limit": "conditional on retained condition clock; not independent evidence of real acquisition-clock accuracy",
+    "changes_to_existing_forecast_target_fit_or_protocol": 0
+  },
+  "worldcover": {
+    "version": "2021 v200",
+    "license": "CC BY 4.0",
+    "documentation": "https://esa-worldcover.org/en/data-access",
+    "dataset_citation": "https://doi.org/10.5281/zenodo.7254221",
+    "prescribed_published_map_credit": "© ESA WorldCover project 2021 / Contains modified Copernicus Sentinel data (2021) processed by ESA WorldCover consortium"
+  },
+  "transportation": {
+    "version": "Overture 2026-08-19.0 transportation",
+    "license": "ODbL 1.0; not the places theme CDLA licence",
+    "documentation": "https://docs.overturemaps.org/attribution/",
+    "credit": "© OpenStreetMap contributors, Overture Maps Foundation",
+    "additional_source_acknowledgement": "TomTom",
+    "database_and_produced_map_obligations_require_publication_review": true
+  },
+  "elevation": {
+    "case_display_source": "SRTM tiles in frozen DSDE raster catalog",
+    "selected_belgian_and_polish_tile_receipt_declaration": "Public-domain-SRTM; source attribution retained; Mapzen elevation-tiles/skadi distribution",
+    "british_tile_acquisition_receipt_independently_located_this_review": false,
+    "all_frozen_dem_variants_or_fallbacks_reviewed": false,
+    "do_not_infer_license_from_srtm_filename_alone": true
+  },
+  "hydrorivers": {
+    "version": "v1 / Europe v10 shapefile",
+    "product_documentation": "https://www.hydrosheds.org/products/hydrorivers",
+    "license_documentation": "https://data.hydrosheds.org/file/technical-documentation/HydroSHEDS_TechDoc_v1_4.pdf",
+    "license": "HydroSHEDS product-specific agreement referenced by HydroRIVERS; not assumed CC BY",
+    "notice_review": "Appendix A section 2.2 and Exhibit B, including copyright and non-endorsement notices",
+    "copyright_acknowledgement": "World Wildlife Fund, Inc. (2006-2022)",
+    "scientific_citation": "https://doi.org/10.1002/hyp.9740",
+    "required_full_notice_in_publication_verified": false
+  },
+  "trajectory": {
+    "current_evidence": "internal archive described as OSM harvest; recording-to-area and point-source alignment are available",
+    "trace_acquisition_and_individual_release_permission_independently_verified": false,
+    "osm_map_data_license_is_automatically_private_trace_release_permission": false,
+    "publication_disposition": "private local review only pending source permissions and privacy/publication decision"
+  },
+  "map_vintages_proven_contemporaneous_with_each_track": false
+}

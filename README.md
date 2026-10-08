@@ -34,6 +34,16 @@ timestamps, identifiers, checkpoints, row-level predictions, or unreviewed
 empirical results. Public builds use only the included manuscript sources and
 approved aggregate material.
 
+For PIRC-17, the owner explicitly requested that the three selected real-map
+cases and their four-time predicted position distributions be included in the
+local working manuscript. The narrowly scoped rendered case illustrations
+and coordinate-free case diagnostics are therefore permitted in
+`paper/pirc17/figures/`; raw GPX, coordinate rows, identifiers, model outputs
+and checkpoints remain excluded. This request is not public redistribution
+or final scientific acceptance. The working branch must not be published or
+merged into the automatic release path until route privacy and map-source
+licensing requirements have been resolved.
+
 ## NEX326 aggregation
 
 `scripts/aggregate_nex326.py` validates and summarizes the frozen 22-arm,

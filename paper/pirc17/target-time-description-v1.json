@@ -1,0 +1,103 @@
+{
+  "actual_stops_after_1800_seconds": 13,
+  "bound_score_rows": 690,
+  "cache_sha256": "892bb89b1d39d376c69d5a41570ad1655e50fe6950be6442db7f2b2f492c2878",
+  "cached_score_records_sha256": "0b2bb32cfbe78aad7daa2029b6883d7232996adffa66cacc60182ab971ae9faf",
+  "configurations_checked": [
+    "arm-01/full",
+    "arm-04/gmm_kernel",
+    "arm-06/dt300"
+  ],
+  "distinct_targets_across_four_slots": 184,
+  "forecast_rng_seeds_checked": 5,
+  "horizons": [
+    {
+      "earlier_count": 11,
+      "exact_nominal_count": 26,
+      "later_count": 9,
+      "maximum_absolute_offset_seconds": 11,
+      "maximum_offset_seconds": 7,
+      "maximum_seconds": 67,
+      "mean_seconds": 59.78260869565217,
+      "median_seconds": 60,
+      "minimum_offset_seconds": -11,
+      "minimum_seconds": 49,
+      "nominal_seconds": 60,
+      "recording_blocks": 46
+    },
+    {
+      "earlier_count": 7,
+      "exact_nominal_count": 24,
+      "later_count": 15,
+      "maximum_absolute_offset_seconds": 6,
+      "maximum_offset_seconds": 5,
+      "maximum_seconds": 305,
+      "mean_seconds": 300.3695652173913,
+      "median_seconds": 300,
+      "minimum_offset_seconds": -6,
+      "minimum_seconds": 294,
+      "nominal_seconds": 300,
+      "recording_blocks": 46
+    },
+    {
+      "earlier_count": 10,
+      "exact_nominal_count": 26,
+      "later_count": 10,
+      "maximum_absolute_offset_seconds": 11,
+      "maximum_offset_seconds": 10,
+      "maximum_seconds": 910,
+      "mean_seconds": 900.5434782608696,
+      "median_seconds": 900,
+      "minimum_offset_seconds": -11,
+      "minimum_seconds": 889,
+      "nominal_seconds": 900,
+      "recording_blocks": 46
+    },
+    {
+      "earlier_count": 8,
+      "exact_nominal_count": 25,
+      "later_count": 13,
+      "maximum_absolute_offset_seconds": 15,
+      "maximum_offset_seconds": 14,
+      "maximum_seconds": 1814,
+      "mean_seconds": 1799.7826086956522,
+      "median_seconds": 1800,
+      "minimum_offset_seconds": -15,
+      "minimum_seconds": 1785,
+      "nominal_seconds": 1800,
+      "recording_blocks": 46
+    }
+  ],
+  "input_bindings_sha256": "64ec590c296689ee17f4a8ae4f6e5bec5253c509d8f3fb09e6d3eafc4f836277",
+  "maximum_actual_stop_seconds": 1814,
+  "nominal_tolerance_seconds": 30,
+  "original_stage_sha256": "8900f3dee68d5fc9cafd5ced2e2394503432d2493251601c0ba9cb771cbefba1",
+  "recording_blocks": 46,
+  "schema_version": "pirc17-saved-target-time-description-v1",
+  "scope": {
+    "all_method_or_terrain_output_times_audited": false,
+    "description": "Saved-score target-clock description:46 primary recording blocks, not690 independent targets. Same target identities and times across all three bound configurations and five seeds. Original target tolerance and predictions unchanged; does not independently inspect prediction arrays or original sensor clocks.",
+    "independent_output_audit_completed": false,
+    "new_fits_predictions_particle_scores_or_resampling": 0,
+    "physical_clock_or_utc_provenance_certified": false,
+    "private_coordinates_absolute_clocks_or_recording_ids_exported": false
+  },
+  "target_time_vectors_sha256": "2b68fe0273e4e20ad96a0a81ae6b35a4caf1a4a441c70a0fc525af00ec4751c8",
+  "source_sha256": {
+    "PSDE-SDE/experiments/nex326/cohort.py": "e59617dc9b84fe5071ab94e2555f90af4199c3adb6c370c2cc206ba44f38af15",
+    "PSDE-SDE/experiments/pirc17/method_inputs.py": "11757c38e5aa8a2a7b83520c2465887a467fd63422766330203448e6b3a933b8",
+    "PSDE-SDE/experiments/pirc17/method_training.py": "65c78934a74f2725bf7f792cd851178fcc539d67a912fc8d33253d45a1d15598",
+    "PSDE-SDE/experiments/pirc17/formal_forecasts.py": "a091265b6b5eaa4b149028952340f3909780c00d6018a176ab29c33c3b5ac6f4",
+    "PSDE-SDE/experiments/pirc17/method_rollout.py": "076e3964d8f2f18ea45c93c964962be01a74eff62c380cc8719b5e3af4ac3560"
+  },
+  "reader_sha256": "22f692fd595b32c851c20e8ce9aee2367294067a43e5c4de791725c06d297607",
+  "source_description_repository_commit": "303c0f4c668fe71f306616c84bc6f59412ac4c65",
+  "training_policy": {
+    "grid": "start+j*dt; append original endpoint if grid ends before it",
+    "state_interpolation": "linear development-only position interpolation",
+    "solar": "recompute at interpolated position/calendar time, not interpolate old solar values",
+    "fit_intervals": "remove at most one short terminal interval; require other intervals to equal dt within absolute1e-9s; reject invalid internal intervals or fewer than4 remaining points",
+    "evaluation_target_interpolation": false
+  },
+  "stop_policy": "formal method and terrain forecast calls receive case.score_seconds; method event grid ends at last requested actual target, not nominal1800"
+}

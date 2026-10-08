@@ -1,0 +1,1797 @@
+{
+  "schema_version": "pirc17-existing-inference-description-v1",
+  "source_scope": "Read-only projection of sealed decision policy, closed development aggregate record and existing complete-primary-method arithmetic; not final output audit.",
+  "source_sha256": {
+    "PSDE-SDE/experiments/pirc17/inference.py": "d25def4bec006173f5c0f005ab3eda0eab2c3a35ec39c842e6622ea446e1a1b2",
+    "PSDE-SDE/experiments/pirc17/inference_guard.py": "ac4419a1be4ccd79067df0b05272c5094ec9d0072b5cc6cddfdfdec8c654c416",
+    "PSDE-SDE/experiments/pirc17/decision_policy.py": "a063e05f09ee45a3a63d002ab870b9c205dc41eaba8a3711975fe2c6ac7b9dd5",
+    "PSDE-SDE/experiments/pirc17/formal_paired.py": "8d23bbcf01f740042fb6fd3ad24aa5b8e471c0da392be79ead4e89f26628ece6",
+    "PSDE-SDE/experiments/pirc17/method_comparisons.py": "0715fc1c995fb1419f8606a1ad52d9ef0273132fd919c1dc0d4bedc01939db40",
+    "PSDE-SDE/experiments/pirc17/qualification_record.py": "f83fe0bfcdaddab26c50ee52c1bb9e1715e1b40f657d0f72389dd6179c964e91"
+  },
+  "policy_file_sha256": "ae81d2fd72d80253ee40bf22b4e9cc7b584b7f879231930712ef04b55cfa405f",
+  "policy_payload_sha256": "d78238790bbf4486fc26946574640f819afbf8b6dcbdeb65d6215266a8d36177",
+  "closed_development_file_sha256": "780432b174cf59f4e6a2e243b00f6a33e831c9f546ad73c52242b4db0cbf81f0",
+  "original_method_preview_file_sha256": "8c6f43c272f8c6b0c26d4fbf69471680c585512bce71100b95c31fd1ddd3bd18",
+  "original_method_preview_payload_sha256": "dcdd180044b159be95388d4a51af4e8f9b7faf80d803a1f735d2b1672ec4bad8",
+  "stage_file_sha256": "8900f3dee68d5fc9cafd5ced2e2394503432d2493251601c0ba9cb771cbefba1",
+  "settings_id": "37b7744c96b3a3663d902e3189b1fc9bbff480ced87a1f3e1476455c2840a8a9",
+  "protocol_sha256": "2267ab84fa77ff4039234a61e8f44be1c3713317d8ad2d1bb4ced9af0c5b293a",
+  "execution_sha256": "c3e44393f6bc5544aaa21bb273c94eaecb9d0becb4e0590771355c4c0be9b6c2",
+  "inference_config": {
+    "delta_m": 41.100259,
+    "alpha": 0.05,
+    "bootstrap_iterations": 2000,
+    "bootstrap_seed": 20260926,
+    "mc_check_seed": 20260927,
+    "minimum_blocks": 30,
+    "required_agreeing_seeds": 4,
+    "tail_tolerance_fraction_of_delta": 0.25
+  },
+  "planning_design": {
+    "development_blocks": 3,
+    "origins_per_block": 1,
+    "forecast_seeds": 5,
+    "assumed_improvement_m": 82.200518,
+    "target_power": 0.8,
+    "sd_ddof": 1,
+    "sd_scenarios": [
+      1,
+      2
+    ],
+    "final_block_cap": 46,
+    "terrain_sd_step_seconds": 0.3125,
+    "no_observed_effect_substituted": true,
+    "sd_scenarios_are_confidence_bounds": false,
+    "operational_utility_validated": false
+  },
+  "planning": [
+    {
+      "family_id": "weighted-es-primary",
+      "comparison": "all-vs-base",
+      "candidate": "all-terrain",
+      "control": "base",
+      "development_paired_sd_m": 65.0154741726509,
+      "planning_at46": [
+        {
+          "sd_multiplier": 1.0,
+          "approximate_power": 0.9565236870411776,
+          "required_blocks_normal_approximation": 30,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 65.0154741726509,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        },
+        {
+          "sd_multiplier": 2.0,
+          "approximate_power": 0.3328465647302098,
+          "required_blocks_normal_approximation": 117,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 130.0309483453018,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        }
+      ],
+      "planning_qualified": true,
+      "planning_reason": "registered_1x_SD_planning_requirement_met",
+      "numerical_applicability": {
+        "status": "bounded_development_primary_screen_passed",
+        "pilot_screen_supported": true,
+        "combined_pilot_margin_m": 8.347414804402066,
+        "epsilon_m": 10.27506475,
+        "evidence_sha256": "780432b174cf59f4e6a2e243b00f6a33e831c9f546ad73c52242b4db0cbf81f0",
+        "global_numerically_qualified": false,
+        "precision_invariant_effect_qualified": false,
+        "scope": "Keep fixed-budget performance separate from resolution-invariant/model-limit claims. Three-block finite-reference evidence does not certify all final blocks, metrics or model variants."
+      }
+    },
+    {
+      "family_id": "weighted-es-primary",
+      "comparison": "road",
+      "candidate": "all-terrain",
+      "control": "loo-road",
+      "development_paired_sd_m": 68.37489569412546,
+      "planning_at46": [
+        {
+          "sd_multiplier": 1.0,
+          "approximate_power": 0.9333274024761996,
+          "required_blocks_normal_approximation": 33,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 68.37489569412546,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        },
+        {
+          "sd_multiplier": 2.0,
+          "approximate_power": 0.29549753240847143,
+          "required_blocks_normal_approximation": 130,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 136.7497913882509,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        }
+      ],
+      "planning_qualified": true,
+      "planning_reason": "registered_1x_SD_planning_requirement_met",
+      "numerical_applicability": {
+        "status": "bounded_development_primary_screen_passed",
+        "pilot_screen_supported": true,
+        "combined_pilot_margin_m": 9.05702426393049,
+        "epsilon_m": 10.27506475,
+        "evidence_sha256": "780432b174cf59f4e6a2e243b00f6a33e831c9f546ad73c52242b4db0cbf81f0",
+        "global_numerically_qualified": false,
+        "precision_invariant_effect_qualified": false,
+        "scope": "Keep fixed-budget performance separate from resolution-invariant/model-limit claims. Three-block finite-reference evidence does not certify all final blocks, metrics or model variants."
+      }
+    },
+    {
+      "family_id": "weighted-es-primary",
+      "comparison": "river",
+      "candidate": "all-terrain",
+      "control": "loo-river",
+      "development_paired_sd_m": 81.0705518834614,
+      "planning_at46": [
+        {
+          "sd_multiplier": 1.0,
+          "approximate_power": 0.8058218196812114,
+          "required_blocks_normal_approximation": 46,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 81.0705518834614,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        },
+        {
+          "sd_multiplier": 2.0,
+          "approximate_power": 0.19582921160257866,
+          "required_blocks_normal_approximation": 182,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 162.1411037669228,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        }
+      ],
+      "planning_qualified": true,
+      "planning_reason": "registered_1x_SD_planning_requirement_met",
+      "numerical_applicability": {
+        "status": "bounded_development_primary_screen_passed",
+        "pilot_screen_supported": true,
+        "combined_pilot_margin_m": 9.958348982819441,
+        "epsilon_m": 10.27506475,
+        "evidence_sha256": "780432b174cf59f4e6a2e243b00f6a33e831c9f546ad73c52242b4db0cbf81f0",
+        "global_numerically_qualified": false,
+        "precision_invariant_effect_qualified": false,
+        "scope": "Keep fixed-budget performance separate from resolution-invariant/model-limit claims. Three-block finite-reference evidence does not certify all final blocks, metrics or model variants."
+      }
+    },
+    {
+      "family_id": "weighted-es-primary",
+      "comparison": "worldcover",
+      "candidate": "all-terrain",
+      "control": "loo-worldcover",
+      "development_paired_sd_m": 38.60658266405379,
+      "planning_at46": [
+        {
+          "sd_multiplier": 1.0,
+          "approximate_power": 0.9999982961957483,
+          "required_blocks_normal_approximation": 11,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 38.60658266405379,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        },
+        {
+          "sd_multiplier": 2.0,
+          "approximate_power": 0.8495202136493623,
+          "required_blocks_normal_approximation": 42,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 77.21316532810758,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        }
+      ],
+      "planning_qualified": true,
+      "planning_reason": "registered_1x_SD_planning_requirement_met",
+      "numerical_applicability": {
+        "status": "bounded_development_primary_screen_passed",
+        "pilot_screen_supported": true,
+        "combined_pilot_margin_m": 8.477128934048013,
+        "epsilon_m": 10.27506475,
+        "evidence_sha256": "780432b174cf59f4e6a2e243b00f6a33e831c9f546ad73c52242b4db0cbf81f0",
+        "global_numerically_qualified": false,
+        "precision_invariant_effect_qualified": false,
+        "scope": "Keep fixed-budget performance separate from resolution-invariant/model-limit claims. Three-block finite-reference evidence does not certify all final blocks, metrics or model variants."
+      }
+    },
+    {
+      "family_id": "weighted-es-primary",
+      "comparison": "surface",
+      "candidate": "all-terrain",
+      "control": "loo-surface",
+      "development_paired_sd_m": 35.02097703424808,
+      "planning_at46": [
+        {
+          "sd_multiplier": 1.0,
+          "approximate_power": 0.999999963544051,
+          "required_blocks_normal_approximation": 9,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 35.02097703424808,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        },
+        {
+          "sd_multiplier": 2.0,
+          "approximate_power": 0.9198416330805661,
+          "required_blocks_normal_approximation": 34,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 70.04195406849615,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        }
+      ],
+      "planning_qualified": true,
+      "planning_reason": "registered_1x_SD_planning_requirement_met",
+      "numerical_applicability": {
+        "status": "bounded_development_primary_screen_passed",
+        "pilot_screen_supported": true,
+        "combined_pilot_margin_m": 8.37502084791216,
+        "epsilon_m": 10.27506475,
+        "evidence_sha256": "780432b174cf59f4e6a2e243b00f6a33e831c9f546ad73c52242b4db0cbf81f0",
+        "global_numerically_qualified": false,
+        "precision_invariant_effect_qualified": false,
+        "scope": "Keep fixed-budget performance separate from resolution-invariant/model-limit claims. Three-block finite-reference evidence does not certify all final blocks, metrics or model variants."
+      }
+    },
+    {
+      "family_id": "weighted-es-lio",
+      "comparison": "road",
+      "candidate": "lio-road",
+      "control": "base",
+      "development_paired_sd_m": null,
+      "planning_at46": [],
+      "planning_qualified": false,
+      "planning_reason": "no_comparison_specific_development_SD",
+      "numerical_applicability": {
+        "status": "LIO_has_no_same_fine_reference_study",
+        "pilot_screen_supported": false,
+        "combined_pilot_margin_m": null,
+        "epsilon_m": 10.27506475,
+        "evidence_sha256": "780432b174cf59f4e6a2e243b00f6a33e831c9f546ad73c52242b4db0cbf81f0",
+        "global_numerically_qualified": false,
+        "precision_invariant_effect_qualified": false,
+        "scope": "Keep fixed-budget performance separate from resolution-invariant/model-limit claims. Three-block finite-reference evidence does not certify all final blocks, metrics or model variants."
+      }
+    },
+    {
+      "family_id": "weighted-es-lio",
+      "comparison": "river",
+      "candidate": "lio-river",
+      "control": "base",
+      "development_paired_sd_m": null,
+      "planning_at46": [],
+      "planning_qualified": false,
+      "planning_reason": "no_comparison_specific_development_SD",
+      "numerical_applicability": {
+        "status": "LIO_has_no_same_fine_reference_study",
+        "pilot_screen_supported": false,
+        "combined_pilot_margin_m": null,
+        "epsilon_m": 10.27506475,
+        "evidence_sha256": "780432b174cf59f4e6a2e243b00f6a33e831c9f546ad73c52242b4db0cbf81f0",
+        "global_numerically_qualified": false,
+        "precision_invariant_effect_qualified": false,
+        "scope": "Keep fixed-budget performance separate from resolution-invariant/model-limit claims. Three-block finite-reference evidence does not certify all final blocks, metrics or model variants."
+      }
+    },
+    {
+      "family_id": "weighted-es-lio",
+      "comparison": "worldcover",
+      "candidate": "lio-worldcover",
+      "control": "base",
+      "development_paired_sd_m": null,
+      "planning_at46": [],
+      "planning_qualified": false,
+      "planning_reason": "no_comparison_specific_development_SD",
+      "numerical_applicability": {
+        "status": "LIO_has_no_same_fine_reference_study",
+        "pilot_screen_supported": false,
+        "combined_pilot_margin_m": null,
+        "epsilon_m": 10.27506475,
+        "evidence_sha256": "780432b174cf59f4e6a2e243b00f6a33e831c9f546ad73c52242b4db0cbf81f0",
+        "global_numerically_qualified": false,
+        "precision_invariant_effect_qualified": false,
+        "scope": "Keep fixed-budget performance separate from resolution-invariant/model-limit claims. Three-block finite-reference evidence does not certify all final blocks, metrics or model variants."
+      }
+    },
+    {
+      "family_id": "weighted-es-lio",
+      "comparison": "surface",
+      "candidate": "lio-surface",
+      "control": "base",
+      "development_paired_sd_m": null,
+      "planning_at46": [],
+      "planning_qualified": false,
+      "planning_reason": "no_comparison_specific_development_SD",
+      "numerical_applicability": {
+        "status": "LIO_has_no_same_fine_reference_study",
+        "pilot_screen_supported": false,
+        "combined_pilot_margin_m": null,
+        "epsilon_m": 10.27506475,
+        "evidence_sha256": "780432b174cf59f4e6a2e243b00f6a33e831c9f546ad73c52242b4db0cbf81f0",
+        "global_numerically_qualified": false,
+        "precision_invariant_effect_qualified": false,
+        "scope": "Keep fixed-budget performance separate from resolution-invariant/model-limit claims. Three-block finite-reference evidence does not certify all final blocks, metrics or model variants."
+      }
+    },
+    {
+      "family_id": "method-model-structure",
+      "comparison": "arm-02/pointwise",
+      "candidate": "arm-02/pointwise",
+      "control": "arm-01/full",
+      "development_paired_sd_m": 18.927274310223673,
+      "planning_at46": [
+        {
+          "sd_multiplier": 1.0,
+          "approximate_power": 1.0,
+          "required_blocks_normal_approximation": 3,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 18.927274310223673,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        },
+        {
+          "sd_multiplier": 2.0,
+          "approximate_power": 0.9999994310413052,
+          "required_blocks_normal_approximation": 10,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 37.854548620447346,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        }
+      ],
+      "planning_qualified": true,
+      "planning_reason": "registered_1x_SD_planning_requirement_met",
+      "numerical_applicability": {
+        "status": "method_mechanism_diagnostics_not_total_numerical_bound",
+        "pilot_screen_supported": false,
+        "combined_pilot_margin_m": null,
+        "epsilon_m": 10.27506475,
+        "evidence_sha256": "780432b174cf59f4e6a2e243b00f6a33e831c9f546ad73c52242b4db0cbf81f0",
+        "global_numerically_qualified": false,
+        "precision_invariant_effect_qualified": false,
+        "scope": "Keep fixed-budget performance separate from resolution-invariant/model-limit claims. Three-block finite-reference evidence does not certify all final blocks, metrics or model variants."
+      }
+    },
+    {
+      "family_id": "method-model-structure",
+      "comparison": "arm-03/single_gaussian",
+      "candidate": "arm-03/single_gaussian",
+      "control": "arm-01/full",
+      "development_paired_sd_m": 73.93907304769968,
+      "planning_at46": [
+        {
+          "sd_multiplier": 1.0,
+          "approximate_power": 0.8983782747245561,
+          "required_blocks_normal_approximation": 37,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 73.93907304769968,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        },
+        {
+          "sd_multiplier": 2.0,
+          "approximate_power": 0.2700472090711078,
+          "required_blocks_normal_approximation": 145,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 147.87814609539936,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        }
+      ],
+      "planning_qualified": true,
+      "planning_reason": "registered_1x_SD_planning_requirement_met",
+      "numerical_applicability": {
+        "status": "method_mechanism_diagnostics_not_total_numerical_bound",
+        "pilot_screen_supported": false,
+        "combined_pilot_margin_m": null,
+        "epsilon_m": 10.27506475,
+        "evidence_sha256": "780432b174cf59f4e6a2e243b00f6a33e831c9f546ad73c52242b4db0cbf81f0",
+        "global_numerically_qualified": false,
+        "precision_invariant_effect_qualified": false,
+        "scope": "Keep fixed-budget performance separate from resolution-invariant/model-limit claims. Three-block finite-reference evidence does not certify all final blocks, metrics or model variants."
+      }
+    },
+    {
+      "family_id": "method-model-structure",
+      "comparison": "arm-04/gmm_kernel",
+      "candidate": "arm-04/gmm_kernel",
+      "control": "arm-01/full",
+      "development_paired_sd_m": 54.22226240107379,
+      "planning_at46": [
+        {
+          "sd_multiplier": 1.0,
+          "approximate_power": 0.9958945677383777,
+          "required_blocks_normal_approximation": 20,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 54.22226240107379,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        },
+        {
+          "sd_multiplier": 2.0,
+          "approximate_power": 0.5290110327056636,
+          "required_blocks_normal_approximation": 78,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 108.44452480214758,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        }
+      ],
+      "planning_qualified": true,
+      "planning_reason": "registered_1x_SD_planning_requirement_met",
+      "numerical_applicability": {
+        "status": "method_mechanism_diagnostics_not_total_numerical_bound",
+        "pilot_screen_supported": false,
+        "combined_pilot_margin_m": null,
+        "epsilon_m": 10.27506475,
+        "evidence_sha256": "780432b174cf59f4e6a2e243b00f6a33e831c9f546ad73c52242b4db0cbf81f0",
+        "global_numerically_qualified": false,
+        "precision_invariant_effect_qualified": false,
+        "scope": "Keep fixed-budget performance separate from resolution-invariant/model-limit claims. Three-block finite-reference evidence does not certify all final blocks, metrics or model variants."
+      }
+    },
+    {
+      "family_id": "method-model-structure",
+      "comparison": "arm-05/explicit_decomp",
+      "candidate": "arm-05/explicit_decomp",
+      "control": "arm-01/full",
+      "development_paired_sd_m": 66.242830586491,
+      "planning_at46": [
+        {
+          "sd_multiplier": 1.0,
+          "approximate_power": 0.9564022224574635,
+          "required_blocks_normal_approximation": 29,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 66.242830586491,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        },
+        {
+          "sd_multiplier": 2.0,
+          "approximate_power": 0.3469150996811177,
+          "required_blocks_normal_approximation": 116,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 132.485661172982,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        }
+      ],
+      "planning_qualified": true,
+      "planning_reason": "registered_1x_SD_planning_requirement_met",
+      "numerical_applicability": {
+        "status": "method_mechanism_diagnostics_not_total_numerical_bound",
+        "pilot_screen_supported": false,
+        "combined_pilot_margin_m": null,
+        "epsilon_m": 10.27506475,
+        "evidence_sha256": "780432b174cf59f4e6a2e243b00f6a33e831c9f546ad73c52242b4db0cbf81f0",
+        "global_numerically_qualified": false,
+        "precision_invariant_effect_qualified": false,
+        "scope": "Keep fixed-budget performance separate from resolution-invariant/model-limit claims. Three-block finite-reference evidence does not certify all final blocks, metrics or model variants."
+      }
+    },
+    {
+      "family_id": "method-observation-interval",
+      "comparison": "arm-06/dt30",
+      "candidate": "arm-06/dt30",
+      "control": "arm-01/full",
+      "development_paired_sd_m": 8.99606383946941,
+      "planning_at46": [
+        {
+          "sd_multiplier": 1.0,
+          "approximate_power": 1.0,
+          "required_blocks_normal_approximation": 1,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 8.99606383946941,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        },
+        {
+          "sd_multiplier": 2.0,
+          "approximate_power": 1.0,
+          "required_blocks_normal_approximation": 3,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 17.99212767893882,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        }
+      ],
+      "planning_qualified": true,
+      "planning_reason": "registered_1x_SD_planning_requirement_met",
+      "numerical_applicability": {
+        "status": "method_mechanism_diagnostics_not_total_numerical_bound",
+        "pilot_screen_supported": false,
+        "combined_pilot_margin_m": null,
+        "epsilon_m": 10.27506475,
+        "evidence_sha256": "780432b174cf59f4e6a2e243b00f6a33e831c9f546ad73c52242b4db0cbf81f0",
+        "global_numerically_qualified": false,
+        "precision_invariant_effect_qualified": false,
+        "scope": "Keep fixed-budget performance separate from resolution-invariant/model-limit claims. Three-block finite-reference evidence does not certify all final blocks, metrics or model variants."
+      }
+    },
+    {
+      "family_id": "method-observation-interval",
+      "comparison": "arm-06/dt120",
+      "candidate": "arm-06/dt120",
+      "control": "arm-01/full",
+      "development_paired_sd_m": 13.998020614352917,
+      "planning_at46": [
+        {
+          "sd_multiplier": 1.0,
+          "approximate_power": 1.0,
+          "required_blocks_normal_approximation": 2,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 13.998020614352917,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        },
+        {
+          "sd_multiplier": 2.0,
+          "approximate_power": 0.9999999999999565,
+          "required_blocks_normal_approximation": 6,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 27.996041228705835,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        }
+      ],
+      "planning_qualified": true,
+      "planning_reason": "registered_1x_SD_planning_requirement_met",
+      "numerical_applicability": {
+        "status": "method_mechanism_diagnostics_not_total_numerical_bound",
+        "pilot_screen_supported": false,
+        "combined_pilot_margin_m": null,
+        "epsilon_m": 10.27506475,
+        "evidence_sha256": "780432b174cf59f4e6a2e243b00f6a33e831c9f546ad73c52242b4db0cbf81f0",
+        "global_numerically_qualified": false,
+        "precision_invariant_effect_qualified": false,
+        "scope": "Keep fixed-budget performance separate from resolution-invariant/model-limit claims. Three-block finite-reference evidence does not certify all final blocks, metrics or model variants."
+      }
+    },
+    {
+      "family_id": "method-observation-interval",
+      "comparison": "arm-06/dt300",
+      "candidate": "arm-06/dt300",
+      "control": "arm-01/full",
+      "development_paired_sd_m": 47.980715863946656,
+      "planning_at46": [
+        {
+          "sd_multiplier": 1.0,
+          "approximate_power": 0.9995369006253917,
+          "required_blocks_normal_approximation": 16,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 47.980715863946656,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        },
+        {
+          "sd_multiplier": 2.0,
+          "approximate_power": 0.6580565558074994,
+          "required_blocks_normal_approximation": 61,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 95.96143172789331,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        }
+      ],
+      "planning_qualified": true,
+      "planning_reason": "registered_1x_SD_planning_requirement_met",
+      "numerical_applicability": {
+        "status": "method_mechanism_diagnostics_not_total_numerical_bound",
+        "pilot_screen_supported": false,
+        "combined_pilot_margin_m": null,
+        "epsilon_m": 10.27506475,
+        "evidence_sha256": "780432b174cf59f4e6a2e243b00f6a33e831c9f546ad73c52242b4db0cbf81f0",
+        "global_numerically_qualified": false,
+        "precision_invariant_effect_qualified": false,
+        "scope": "Keep fixed-budget performance separate from resolution-invariant/model-limit claims. Three-block finite-reference evidence does not certify all final blocks, metrics or model variants."
+      }
+    },
+    {
+      "family_id": "method-observation-interval",
+      "comparison": "arm-06/dt600",
+      "candidate": "arm-06/dt600",
+      "control": "arm-01/full",
+      "development_paired_sd_m": 84.35413023768275,
+      "planning_at46": [
+        {
+          "sd_multiplier": 1.0,
+          "approximate_power": 0.790132480542189,
+          "required_blocks_normal_approximation": 47,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 84.35413023768275,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        },
+        {
+          "sd_multiplier": 2.0,
+          "approximate_power": 0.1989403590198386,
+          "required_blocks_normal_approximation": 188,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 168.7082604753655,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        }
+      ],
+      "planning_qualified": false,
+      "planning_reason": "planning_power_below_target",
+      "numerical_applicability": {
+        "status": "method_mechanism_diagnostics_not_total_numerical_bound",
+        "pilot_screen_supported": false,
+        "combined_pilot_margin_m": null,
+        "epsilon_m": 10.27506475,
+        "evidence_sha256": "780432b174cf59f4e6a2e243b00f6a33e831c9f546ad73c52242b4db0cbf81f0",
+        "global_numerically_qualified": false,
+        "precision_invariant_effect_qualified": false,
+        "scope": "Keep fixed-budget performance separate from resolution-invariant/model-limit claims. Three-block finite-reference evidence does not certify all final blocks, metrics or model variants."
+      }
+    },
+    {
+      "family_id": "method-objective-and-score",
+      "comparison": "arm-08/qmle",
+      "candidate": "arm-08/qmle",
+      "control": "arm-07/full",
+      "development_paired_sd_m": 9.70264951449391,
+      "planning_at46": [
+        {
+          "sd_multiplier": 1.0,
+          "approximate_power": 1.0,
+          "required_blocks_normal_approximation": 1,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 9.70264951449391,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        },
+        {
+          "sd_multiplier": 2.0,
+          "approximate_power": 1.0,
+          "required_blocks_normal_approximation": 3,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 19.40529902898782,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        }
+      ],
+      "planning_qualified": true,
+      "planning_reason": "registered_1x_SD_planning_requirement_met",
+      "numerical_applicability": {
+        "status": "method_mechanism_diagnostics_not_total_numerical_bound",
+        "pilot_screen_supported": false,
+        "combined_pilot_margin_m": null,
+        "epsilon_m": 10.27506475,
+        "evidence_sha256": "780432b174cf59f4e6a2e243b00f6a33e831c9f546ad73c52242b4db0cbf81f0",
+        "global_numerically_qualified": false,
+        "precision_invariant_effect_qualified": false,
+        "scope": "Keep fixed-budget performance separate from resolution-invariant/model-limit claims. Three-block finite-reference evidence does not certify all final blocks, metrics or model variants."
+      }
+    },
+    {
+      "family_id": "method-objective-and-score",
+      "comparison": "arm-09/mixed",
+      "candidate": "arm-09/mixed",
+      "control": "arm-07/full",
+      "development_paired_sd_m": 1.2199009210809573,
+      "planning_at46": [
+        {
+          "sd_multiplier": 1.0,
+          "approximate_power": 1.0,
+          "required_blocks_normal_approximation": 1,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 1.2199009210809573,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        },
+        {
+          "sd_multiplier": 2.0,
+          "approximate_power": 1.0,
+          "required_blocks_normal_approximation": 1,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 2.4398018421619145,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        }
+      ],
+      "planning_qualified": true,
+      "planning_reason": "registered_1x_SD_planning_requirement_met",
+      "numerical_applicability": {
+        "status": "method_mechanism_diagnostics_not_total_numerical_bound",
+        "pilot_screen_supported": false,
+        "combined_pilot_margin_m": null,
+        "epsilon_m": 10.27506475,
+        "evidence_sha256": "780432b174cf59f4e6a2e243b00f6a33e831c9f546ad73c52242b4db0cbf81f0",
+        "global_numerically_qualified": false,
+        "precision_invariant_effect_qualified": false,
+        "scope": "Keep fixed-budget performance separate from resolution-invariant/model-limit claims. Three-block finite-reference evidence does not certify all final blocks, metrics or model variants."
+      }
+    },
+    {
+      "family_id": "method-objective-and-score",
+      "comparison": "arm-09/pure_es",
+      "candidate": "arm-09/pure_es",
+      "control": "arm-07/full",
+      "development_paired_sd_m": 6.298838186018459,
+      "planning_at46": [
+        {
+          "sd_multiplier": 1.0,
+          "approximate_power": 1.0,
+          "required_blocks_normal_approximation": 1,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 6.298838186018459,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        },
+        {
+          "sd_multiplier": 2.0,
+          "approximate_power": 1.0,
+          "required_blocks_normal_approximation": 2,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 12.597676372036918,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        }
+      ],
+      "planning_qualified": true,
+      "planning_reason": "registered_1x_SD_planning_requirement_met",
+      "numerical_applicability": {
+        "status": "method_mechanism_diagnostics_not_total_numerical_bound",
+        "pilot_screen_supported": false,
+        "combined_pilot_margin_m": null,
+        "epsilon_m": 10.27506475,
+        "evidence_sha256": "780432b174cf59f4e6a2e243b00f6a33e831c9f546ad73c52242b4db0cbf81f0",
+        "global_numerically_qualified": false,
+        "precision_invariant_effect_qualified": false,
+        "scope": "Keep fixed-budget performance separate from resolution-invariant/model-limit claims. Three-block finite-reference evidence does not certify all final blocks, metrics or model variants."
+      }
+    },
+    {
+      "family_id": "method-objective-and-score",
+      "comparison": "arm-10/d2_mc",
+      "candidate": "arm-10/d2_mc",
+      "control": "arm-07/full",
+      "development_paired_sd_m": 0.0,
+      "planning_at46": [
+        {
+          "sd_multiplier": 1.0,
+          "approximate_power": 1.0,
+          "required_blocks_normal_approximation": 1,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 0.0,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        },
+        {
+          "sd_multiplier": 2.0,
+          "approximate_power": 1.0,
+          "required_blocks_normal_approximation": 1,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 0.0,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        }
+      ],
+      "planning_qualified": false,
+      "planning_reason": "zero_development_SD_is_not_power_evidence",
+      "numerical_applicability": {
+        "status": "method_mechanism_diagnostics_not_total_numerical_bound",
+        "pilot_screen_supported": false,
+        "combined_pilot_margin_m": null,
+        "epsilon_m": 10.27506475,
+        "evidence_sha256": "780432b174cf59f4e6a2e243b00f6a33e831c9f546ad73c52242b4db0cbf81f0",
+        "global_numerically_qualified": false,
+        "precision_invariant_effect_qualified": false,
+        "scope": "Keep fixed-budget performance separate from resolution-invariant/model-limit claims. Three-block finite-reference evidence does not certify all final blocks, metrics or model variants."
+      }
+    },
+    {
+      "family_id": "method-objective-and-score",
+      "comparison": "arm-10/d2_closed",
+      "candidate": "arm-10/d2_closed",
+      "control": "arm-07/full",
+      "development_paired_sd_m": 0.0,
+      "planning_at46": [
+        {
+          "sd_multiplier": 1.0,
+          "approximate_power": 1.0,
+          "required_blocks_normal_approximation": 1,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 0.0,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        },
+        {
+          "sd_multiplier": 2.0,
+          "approximate_power": 1.0,
+          "required_blocks_normal_approximation": 1,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 0.0,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        }
+      ],
+      "planning_qualified": false,
+      "planning_reason": "zero_development_SD_is_not_power_evidence",
+      "numerical_applicability": {
+        "status": "method_mechanism_diagnostics_not_total_numerical_bound",
+        "pilot_screen_supported": false,
+        "combined_pilot_margin_m": null,
+        "epsilon_m": 10.27506475,
+        "evidence_sha256": "780432b174cf59f4e6a2e243b00f6a33e831c9f546ad73c52242b4db0cbf81f0",
+        "global_numerically_qualified": false,
+        "precision_invariant_effect_qualified": false,
+        "scope": "Keep fixed-budget performance separate from resolution-invariant/model-limit claims. Three-block finite-reference evidence does not certify all final blocks, metrics or model variants."
+      }
+    },
+    {
+      "family_id": "method-transfer-adaptation",
+      "comparison": "arm-12/scratch",
+      "candidate": "arm-12/scratch",
+      "control": "arm-11/full",
+      "development_paired_sd_m": 9.049835711758194,
+      "planning_at46": [
+        {
+          "sd_multiplier": 1.0,
+          "approximate_power": 1.0,
+          "required_blocks_normal_approximation": 1,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 9.049835711758194,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        },
+        {
+          "sd_multiplier": 2.0,
+          "approximate_power": 1.0,
+          "required_blocks_normal_approximation": 3,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 18.099671423516387,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        }
+      ],
+      "planning_qualified": true,
+      "planning_reason": "registered_1x_SD_planning_requirement_met",
+      "numerical_applicability": {
+        "status": "method_mechanism_diagnostics_not_total_numerical_bound",
+        "pilot_screen_supported": false,
+        "combined_pilot_margin_m": null,
+        "epsilon_m": 10.27506475,
+        "evidence_sha256": "780432b174cf59f4e6a2e243b00f6a33e831c9f546ad73c52242b4db0cbf81f0",
+        "global_numerically_qualified": false,
+        "precision_invariant_effect_qualified": false,
+        "scope": "Keep fixed-budget performance separate from resolution-invariant/model-limit claims. Three-block finite-reference evidence does not certify all final blocks, metrics or model variants."
+      }
+    },
+    {
+      "family_id": "method-transfer-adaptation",
+      "comparison": "arm-14/reptile",
+      "candidate": "arm-14/reptile",
+      "control": "arm-11/full",
+      "development_paired_sd_m": 32.85482507704025,
+      "planning_at46": [
+        {
+          "sd_multiplier": 1.0,
+          "approximate_power": 0.9999999989296665,
+          "required_blocks_normal_approximation": 8,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 32.85482507704025,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        },
+        {
+          "sd_multiplier": 2.0,
+          "approximate_power": 0.9594662581555699,
+          "required_blocks_normal_approximation": 29,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 65.7096501540805,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        }
+      ],
+      "planning_qualified": true,
+      "planning_reason": "registered_1x_SD_planning_requirement_met",
+      "numerical_applicability": {
+        "status": "method_mechanism_diagnostics_not_total_numerical_bound",
+        "pilot_screen_supported": false,
+        "combined_pilot_margin_m": null,
+        "epsilon_m": 10.27506475,
+        "evidence_sha256": "780432b174cf59f4e6a2e243b00f6a33e831c9f546ad73c52242b4db0cbf81f0",
+        "global_numerically_qualified": false,
+        "precision_invariant_effect_qualified": false,
+        "scope": "Keep fixed-budget performance separate from resolution-invariant/model-limit claims. Three-block finite-reference evidence does not certify all final blocks, metrics or model variants."
+      }
+    },
+    {
+      "family_id": "method-transfer-adaptation",
+      "comparison": "arm-15/drift_only",
+      "candidate": "arm-15/drift_only",
+      "control": "arm-11/full",
+      "development_paired_sd_m": 6.13969644463973,
+      "planning_at46": [
+        {
+          "sd_multiplier": 1.0,
+          "approximate_power": 1.0,
+          "required_blocks_normal_approximation": 1,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 6.13969644463973,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        },
+        {
+          "sd_multiplier": 2.0,
+          "approximate_power": 1.0,
+          "required_blocks_normal_approximation": 1,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 12.27939288927946,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        }
+      ],
+      "planning_qualified": true,
+      "planning_reason": "registered_1x_SD_planning_requirement_met",
+      "numerical_applicability": {
+        "status": "method_mechanism_diagnostics_not_total_numerical_bound",
+        "pilot_screen_supported": false,
+        "combined_pilot_margin_m": null,
+        "epsilon_m": 10.27506475,
+        "evidence_sha256": "780432b174cf59f4e6a2e243b00f6a33e831c9f546ad73c52242b4db0cbf81f0",
+        "global_numerically_qualified": false,
+        "precision_invariant_effect_qualified": false,
+        "scope": "Keep fixed-budget performance separate from resolution-invariant/model-limit claims. Three-block finite-reference evidence does not certify all final blocks, metrics or model variants."
+      }
+    },
+    {
+      "family_id": "method-transfer-adaptation",
+      "comparison": "arm-15/two_step",
+      "candidate": "arm-15/two_step",
+      "control": "arm-11/full",
+      "development_paired_sd_m": 9.996238753100918,
+      "planning_at46": [
+        {
+          "sd_multiplier": 1.0,
+          "approximate_power": 1.0,
+          "required_blocks_normal_approximation": 1,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 9.996238753100918,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        },
+        {
+          "sd_multiplier": 2.0,
+          "approximate_power": 1.0,
+          "required_blocks_normal_approximation": 3,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 19.992477506201837,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        }
+      ],
+      "planning_qualified": true,
+      "planning_reason": "registered_1x_SD_planning_requirement_met",
+      "numerical_applicability": {
+        "status": "method_mechanism_diagnostics_not_total_numerical_bound",
+        "pilot_screen_supported": false,
+        "combined_pilot_margin_m": null,
+        "epsilon_m": 10.27506475,
+        "evidence_sha256": "780432b174cf59f4e6a2e243b00f6a33e831c9f546ad73c52242b4db0cbf81f0",
+        "global_numerically_qualified": false,
+        "precision_invariant_effect_qualified": false,
+        "scope": "Keep fixed-budget performance separate from resolution-invariant/model-limit claims. Three-block finite-reference evidence does not certify all final blocks, metrics or model variants."
+      }
+    },
+    {
+      "family_id": "method-numerical-propagation",
+      "comparison": "arm-19/em",
+      "candidate": "arm-19/em",
+      "control": "arm-18/full",
+      "development_paired_sd_m": 0.016705410970429095,
+      "planning_at46": [
+        {
+          "sd_multiplier": 1.0,
+          "approximate_power": 1.0,
+          "required_blocks_normal_approximation": 1,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 0.016705410970429095,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        },
+        {
+          "sd_multiplier": 2.0,
+          "approximate_power": 1.0,
+          "required_blocks_normal_approximation": 1,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 0.03341082194085819,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        }
+      ],
+      "planning_qualified": true,
+      "planning_reason": "registered_1x_SD_planning_requirement_met",
+      "numerical_applicability": {
+        "status": "method_mechanism_diagnostics_not_total_numerical_bound",
+        "pilot_screen_supported": false,
+        "combined_pilot_margin_m": null,
+        "epsilon_m": 10.27506475,
+        "evidence_sha256": "780432b174cf59f4e6a2e243b00f6a33e831c9f546ad73c52242b4db0cbf81f0",
+        "global_numerically_qualified": false,
+        "precision_invariant_effect_qualified": false,
+        "scope": "Keep fixed-budget performance separate from resolution-invariant/model-limit claims. Three-block finite-reference evidence does not certify all final blocks, metrics or model variants."
+      }
+    },
+    {
+      "family_id": "method-numerical-propagation",
+      "comparison": "arm-19/euler",
+      "candidate": "arm-19/euler",
+      "control": "arm-18/full",
+      "development_paired_sd_m": 0.016705410970429095,
+      "planning_at46": [
+        {
+          "sd_multiplier": 1.0,
+          "approximate_power": 1.0,
+          "required_blocks_normal_approximation": 1,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 0.016705410970429095,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        },
+        {
+          "sd_multiplier": 2.0,
+          "approximate_power": 1.0,
+          "required_blocks_normal_approximation": 1,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 0.03341082194085819,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        }
+      ],
+      "planning_qualified": true,
+      "planning_reason": "registered_1x_SD_planning_requirement_met",
+      "numerical_applicability": {
+        "status": "method_mechanism_diagnostics_not_total_numerical_bound",
+        "pilot_screen_supported": false,
+        "combined_pilot_margin_m": null,
+        "epsilon_m": 10.27506475,
+        "evidence_sha256": "780432b174cf59f4e6a2e243b00f6a33e831c9f546ad73c52242b4db0cbf81f0",
+        "global_numerically_qualified": false,
+        "precision_invariant_effect_qualified": false,
+        "scope": "Keep fixed-budget performance separate from resolution-invariant/model-limit claims. Three-block finite-reference evidence does not certify all final blocks, metrics or model variants."
+      }
+    },
+    {
+      "family_id": "method-numerical-propagation",
+      "comparison": "arm-21/mc",
+      "candidate": "arm-21/mc",
+      "control": "arm-20/full",
+      "development_paired_sd_m": 11.763022269176798,
+      "planning_at46": [
+        {
+          "sd_multiplier": 1.0,
+          "approximate_power": 1.0,
+          "required_blocks_normal_approximation": 1,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 11.763022269176798,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        },
+        {
+          "sd_multiplier": 2.0,
+          "approximate_power": 1.0,
+          "required_blocks_normal_approximation": 4,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 23.526044538353595,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        }
+      ],
+      "planning_qualified": true,
+      "planning_reason": "registered_1x_SD_planning_requirement_met",
+      "numerical_applicability": {
+        "status": "method_mechanism_diagnostics_not_total_numerical_bound",
+        "pilot_screen_supported": false,
+        "combined_pilot_margin_m": null,
+        "epsilon_m": 10.27506475,
+        "evidence_sha256": "780432b174cf59f4e6a2e243b00f6a33e831c9f546ad73c52242b4db0cbf81f0",
+        "global_numerically_qualified": false,
+        "precision_invariant_effect_qualified": false,
+        "scope": "Keep fixed-budget performance separate from resolution-invariant/model-limit claims. Three-block finite-reference evidence does not certify all final blocks, metrics or model variants."
+      }
+    },
+    {
+      "family_id": "method-numerical-propagation",
+      "comparison": "arm-21/crn",
+      "candidate": "arm-21/crn",
+      "control": "arm-20/full",
+      "development_paired_sd_m": 0.00037061196888097834,
+      "planning_at46": [
+        {
+          "sd_multiplier": 1.0,
+          "approximate_power": 1.0,
+          "required_blocks_normal_approximation": 1,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 0.00037061196888097834,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        },
+        {
+          "sd_multiplier": 2.0,
+          "approximate_power": 1.0,
+          "required_blocks_normal_approximation": 1,
+          "assumed_true_improvement_m": 82.200518,
+          "practical_margin_m": 41.100259,
+          "paired_sd_m": 0.0007412239377619567,
+          "target_power": 0.8,
+          "method": "normal_margin_crossing_planning_not_bootstrap_guarantee"
+        }
+      ],
+      "planning_qualified": true,
+      "planning_reason": "registered_1x_SD_planning_requirement_met",
+      "numerical_applicability": {
+        "status": "method_mechanism_diagnostics_not_total_numerical_bound",
+        "pilot_screen_supported": false,
+        "combined_pilot_margin_m": null,
+        "epsilon_m": 10.27506475,
+        "evidence_sha256": "780432b174cf59f4e6a2e243b00f6a33e831c9f546ad73c52242b4db0cbf81f0",
+        "global_numerically_qualified": false,
+        "precision_invariant_effect_qualified": false,
+        "scope": "Keep fixed-budget performance separate from resolution-invariant/model-limit claims. Three-block finite-reference evidence does not certify all final blocks, metrics or model variants."
+      }
+    }
+  ],
+  "primary_method_diagnostics": [
+    {
+      "family_id": "method-model-structure",
+      "candidate": "arm-02/pointwise",
+      "control": "arm-01/full",
+      "delta_estimate_m": 32.9531080630783,
+      "marginal_interval_m": [
+        25.19662568092097,
+        41.20074342605342
+      ],
+      "simultaneous_interval_m": [
+        22.98749987202486,
+        43.36902971139333
+      ],
+      "interval_finite": true,
+      "p_zero_two_sided": 0.0004997501249375312,
+      "holm_adjusted_p_zero": 0.001999000499750125,
+      "seed_delta_m": [
+        32.601070852842994,
+        29.69597511911838,
+        33.88527718689666,
+        33.833997537917114,
+        34.74921961861633
+      ],
+      "tail_check_max_shift_m": 0.5646075003499575,
+      "tail_check_passed": true,
+      "second_stream_interval_m": null,
+      "second_stream_interval_status": "not_retained_by_frozen_engine; no new resampling to reconstruct it"
+    },
+    {
+      "family_id": "method-model-structure",
+      "candidate": "arm-03/single_gaussian",
+      "control": "arm-01/full",
+      "delta_estimate_m": 22.013739338104006,
+      "marginal_interval_m": [
+        -7.830140598255639,
+        52.816490133501645
+      ],
+      "simultaneous_interval_m": [
+        -14.190401879136918,
+        60.81038580814564
+      ],
+      "interval_finite": true,
+      "p_zero_two_sided": 0.16391804097951024,
+      "holm_adjusted_p_zero": 0.3278360819590205,
+      "seed_delta_m": [
+        21.65456603092125,
+        19.019817790128844,
+        21.724251075147027,
+        23.025388236536095,
+        24.644673557786785
+      ],
+      "tail_check_max_shift_m": 3.4045213889485098,
+      "tail_check_passed": true,
+      "second_stream_interval_m": null,
+      "second_stream_interval_status": "not_retained_by_frozen_engine; no new resampling to reconstruct it"
+    },
+    {
+      "family_id": "method-model-structure",
+      "candidate": "arm-04/gmm_kernel",
+      "control": "arm-01/full",
+      "delta_estimate_m": -2.8263470584298918,
+      "marginal_interval_m": [
+        -17.001586423838585,
+        12.798153221032724
+      ],
+      "simultaneous_interval_m": [
+        -21.219952732309977,
+        16.333573171362854
+      ],
+      "interval_finite": true,
+      "p_zero_two_sided": 0.711144427786107,
+      "holm_adjusted_p_zero": 0.711144427786107,
+      "seed_delta_m": [
+        -4.999764832066935,
+        -4.272034919877216,
+        -1.0751347765885182,
+        -2.397970510507719,
+        -1.3868302531090733
+      ],
+      "tail_check_max_shift_m": 1.8094133059582376,
+      "tail_check_passed": true,
+      "second_stream_interval_m": null,
+      "second_stream_interval_status": "not_retained_by_frozen_engine; no new resampling to reconstruct it"
+    },
+    {
+      "family_id": "method-model-structure",
+      "candidate": "arm-05/explicit_decomp",
+      "control": "arm-01/full",
+      "delta_estimate_m": 57.95732336801082,
+      "marginal_interval_m": [
+        10.193952694877886,
+        105.16083615891017
+      ],
+      "simultaneous_interval_m": [
+        -3.0348386483066676,
+        117.07772440418108
+      ],
+      "interval_finite": true,
+      "p_zero_two_sided": 0.017991004497751123,
+      "holm_adjusted_p_zero": 0.05397301349325337,
+      "seed_delta_m": [
+        57.28091092765321,
+        56.48588550714627,
+        58.296768289465135,
+        58.592576986374304,
+        59.13047512941512
+      ],
+      "tail_check_max_shift_m": 0.6469080144007364,
+      "tail_check_passed": true,
+      "second_stream_interval_m": null,
+      "second_stream_interval_status": "not_retained_by_frozen_engine; no new resampling to reconstruct it"
+    },
+    {
+      "family_id": "method-observation-interval",
+      "candidate": "arm-06/dt30",
+      "control": "arm-01/full",
+      "delta_estimate_m": 8.562452948485857,
+      "marginal_interval_m": [
+        4.828664716100082,
+        12.54506507857798
+      ],
+      "simultaneous_interval_m": [
+        3.733112028381705,
+        13.761609806673167
+      ],
+      "interval_finite": true,
+      "p_zero_two_sided": 0.0004997501249375312,
+      "holm_adjusted_p_zero": 0.001999000499750125,
+      "seed_delta_m": [
+        8.38651309020865,
+        6.927125725064813,
+        7.238594487675265,
+        8.723008130447775,
+        11.537023309032792
+      ],
+      "tail_check_max_shift_m": 0.21956097892684845,
+      "tail_check_passed": true,
+      "second_stream_interval_m": null,
+      "second_stream_interval_status": "not_retained_by_frozen_engine; no new resampling to reconstruct it"
+    },
+    {
+      "family_id": "method-observation-interval",
+      "candidate": "arm-06/dt120",
+      "control": "arm-01/full",
+      "delta_estimate_m": -11.557232140871653,
+      "marginal_interval_m": [
+        -18.763003678102258,
+        -4.969821263005038
+      ],
+      "simultaneous_interval_m": [
+        -20.370297340706486,
+        -3.04202751836584
+      ],
+      "interval_finite": true,
+      "p_zero_two_sided": 0.0009995002498750624,
+      "holm_adjusted_p_zero": 0.0029985007496251873,
+      "seed_delta_m": [
+        -10.757821119521763,
+        -14.89033579880113,
+        -10.323152841732155,
+        -11.071605596561856,
+        -10.74324534774136
+      ],
+      "tail_check_max_shift_m": 0.6615653322556199,
+      "tail_check_passed": true,
+      "second_stream_interval_m": null,
+      "second_stream_interval_status": "not_retained_by_frozen_engine; no new resampling to reconstruct it"
+    },
+    {
+      "family_id": "method-observation-interval",
+      "candidate": "arm-06/dt300",
+      "control": "arm-01/full",
+      "delta_estimate_m": -23.404605423908972,
+      "marginal_interval_m": [
+        -42.47827043730176,
+        -6.573191288183242
+      ],
+      "simultaneous_interval_m": [
+        -48.26887354826701,
+        -2.467493424090268
+      ],
+      "interval_finite": true,
+      "p_zero_two_sided": 0.011494252873563218,
+      "holm_adjusted_p_zero": 0.022988505747126436,
+      "seed_delta_m": [
+        -22.477277720588923,
+        -25.66401573500061,
+        -25.48289451261822,
+        -20.083448920888415,
+        -23.315390230448724
+      ],
+      "tail_check_max_shift_m": 1.008814788825994,
+      "tail_check_passed": true,
+      "second_stream_interval_m": null,
+      "second_stream_interval_status": "not_retained_by_frozen_engine; no new resampling to reconstruct it"
+    },
+    {
+      "family_id": "method-observation-interval",
+      "candidate": "arm-06/dt600",
+      "control": "arm-01/full",
+      "delta_estimate_m": -24.691391693957772,
+      "marginal_interval_m": [
+        -57.2075083845324,
+        4.072988396216687
+      ],
+      "simultaneous_interval_m": [
+        -67.65149680393148,
+        9.077053061204392
+      ],
+      "interval_finite": true,
+      "p_zero_two_sided": 0.11594202898550725,
+      "holm_adjusted_p_zero": 0.11594202898550725,
+      "seed_delta_m": [
+        -22.603185608843848,
+        -24.918199696449015,
+        -21.92475087959391,
+        -28.957495070783327,
+        -25.05332721411878
+      ],
+      "tail_check_max_shift_m": 3.038232097553575,
+      "tail_check_passed": true,
+      "second_stream_interval_m": null,
+      "second_stream_interval_status": "not_retained_by_frozen_engine; no new resampling to reconstruct it"
+    },
+    {
+      "family_id": "method-objective-and-score",
+      "candidate": "arm-08/qmle",
+      "control": "arm-07/full",
+      "delta_estimate_m": 0.2755523218728847,
+      "marginal_interval_m": [
+        -1.4245315235735423,
+        2.230214938615539
+      ],
+      "simultaneous_interval_m": [
+        -1.9167750469376164,
+        2.704417142102034
+      ],
+      "interval_finite": true,
+      "p_zero_two_sided": 0.7641179410294853,
+      "holm_adjusted_p_zero": 1.0,
+      "seed_delta_m": [
+        1.898120589312472,
+        -0.41222849064553513,
+        1.6601411342529246,
+        0.5771509529335784,
+        -2.345422576489017
+      ],
+      "tail_check_max_shift_m": 0.22308204808866705,
+      "tail_check_passed": true,
+      "second_stream_interval_m": null,
+      "second_stream_interval_status": "not_retained_by_frozen_engine; no new resampling to reconstruct it"
+    },
+    {
+      "family_id": "method-objective-and-score",
+      "candidate": "arm-09/mixed",
+      "control": "arm-07/full",
+      "delta_estimate_m": -6.550042294489723,
+      "marginal_interval_m": [
+        -14.6164904341484,
+        1.0452056434689698
+      ],
+      "simultaneous_interval_m": [
+        -16.861829984372257,
+        3.1796829073886403
+      ],
+      "interval_finite": true,
+      "p_zero_two_sided": 0.10994502748625687,
+      "holm_adjusted_p_zero": 0.5497251374312844,
+      "seed_delta_m": [
+        -4.130051626019354,
+        -9.303196957948032,
+        -4.583169695553592,
+        -3.958720368485493,
+        -10.775072824442145
+      ],
+      "tail_check_max_shift_m": 0.277811804526765,
+      "tail_check_passed": true,
+      "second_stream_interval_m": null,
+      "second_stream_interval_status": "not_retained_by_frozen_engine; no new resampling to reconstruct it"
+    },
+    {
+      "family_id": "method-objective-and-score",
+      "candidate": "arm-09/pure_es",
+      "control": "arm-07/full",
+      "delta_estimate_m": -5.313594164510165,
+      "marginal_interval_m": [
+        -13.893711221640764,
+        2.6428569629252534
+      ],
+      "simultaneous_interval_m": [
+        -15.975849427704414,
+        5.259756313376008
+      ],
+      "interval_finite": true,
+      "p_zero_two_sided": 0.2098950524737631,
+      "holm_adjusted_p_zero": 0.8395802098950524,
+      "seed_delta_m": [
+        -4.399069885120756,
+        -6.126190366770271,
+        -4.995997035284206,
+        -1.5563983782499387,
+        -9.490315157125648
+      ],
+      "tail_check_max_shift_m": 0.4550632125289731,
+      "tail_check_passed": true,
+      "second_stream_interval_m": null,
+      "second_stream_interval_status": "not_retained_by_frozen_engine; no new resampling to reconstruct it"
+    },
+    {
+      "family_id": "method-objective-and-score",
+      "candidate": "arm-10/d2_mc",
+      "control": "arm-07/full",
+      "delta_estimate_m": 0.0,
+      "marginal_interval_m": [
+        0.0,
+        0.0
+      ],
+      "simultaneous_interval_m": [
+        0.0,
+        0.0
+      ],
+      "interval_finite": true,
+      "p_zero_two_sided": 1.0,
+      "holm_adjusted_p_zero": 1.0,
+      "seed_delta_m": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "tail_check_max_shift_m": 0.0,
+      "tail_check_passed": true,
+      "second_stream_interval_m": null,
+      "second_stream_interval_status": "not_retained_by_frozen_engine; no new resampling to reconstruct it"
+    },
+    {
+      "family_id": "method-objective-and-score",
+      "candidate": "arm-10/d2_closed",
+      "control": "arm-07/full",
+      "delta_estimate_m": 0.0,
+      "marginal_interval_m": [
+        0.0,
+        0.0
+      ],
+      "simultaneous_interval_m": [
+        0.0,
+        0.0
+      ],
+      "interval_finite": true,
+      "p_zero_two_sided": 1.0,
+      "holm_adjusted_p_zero": 1.0,
+      "seed_delta_m": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "tail_check_max_shift_m": 0.0,
+      "tail_check_passed": true,
+      "second_stream_interval_m": null,
+      "second_stream_interval_status": "not_retained_by_frozen_engine; no new resampling to reconstruct it"
+    },
+    {
+      "family_id": "method-transfer-adaptation",
+      "candidate": "arm-12/scratch",
+      "control": "arm-11/full",
+      "delta_estimate_m": 2.6037169087643175,
+      "marginal_interval_m": [
+        -3.235088199908371,
+        8.809096754227554
+      ],
+      "simultaneous_interval_m": [
+        -4.733928913009776,
+        10.023147100100026
+      ],
+      "interval_finite": true,
+      "p_zero_two_sided": 0.4062968515742129,
+      "holm_adjusted_p_zero": 1.0,
+      "seed_delta_m": [
+        2.33498811329242,
+        -0.4340849468600242,
+        3.19797421854895,
+        5.584893254420685,
+        2.334813904419561
+      ],
+      "tail_check_max_shift_m": 0.06816060197211282,
+      "tail_check_passed": true,
+      "second_stream_interval_m": null,
+      "second_stream_interval_status": "not_retained_by_frozen_engine; no new resampling to reconstruct it"
+    },
+    {
+      "family_id": "method-transfer-adaptation",
+      "candidate": "arm-14/reptile",
+      "control": "arm-11/full",
+      "delta_estimate_m": 2.194724471910266,
+      "marginal_interval_m": [
+        -7.882014668026901,
+        10.775933754474437
+      ],
+      "simultaneous_interval_m": [
+        -11.946509337741741,
+        12.909470230227312
+      ],
+      "interval_finite": true,
+      "p_zero_two_sided": 0.6351824087956022,
+      "holm_adjusted_p_zero": 1.0,
+      "seed_delta_m": [
+        2.522471202771407,
+        -1.3914273823059662,
+        2.6068654358209358,
+        3.879551814012706,
+        3.3561612892522383
+      ],
+      "tail_check_max_shift_m": 1.4682882185900148,
+      "tail_check_passed": true,
+      "second_stream_interval_m": null,
+      "second_stream_interval_status": "not_retained_by_frozen_engine; no new resampling to reconstruct it"
+    },
+    {
+      "family_id": "method-transfer-adaptation",
+      "candidate": "arm-15/drift_only",
+      "control": "arm-11/full",
+      "delta_estimate_m": 0.5048379485533587,
+      "marginal_interval_m": [
+        -1.1208460451918836,
+        2.0445955132466382
+      ],
+      "simultaneous_interval_m": [
+        -1.5215829928028777,
+        2.4869736201694357
+      ],
+      "interval_finite": true,
+      "p_zero_two_sided": 0.49975012493753124,
+      "holm_adjusted_p_zero": 1.0,
+      "seed_delta_m": [
+        0.4959570382666981,
+        -1.1206622557565016,
+        -0.8084198886271207,
+        3.842653716483429,
+        0.11466113240028836
+      ],
+      "tail_check_max_shift_m": 0.020027791472048584,
+      "tail_check_passed": true,
+      "second_stream_interval_m": null,
+      "second_stream_interval_status": "not_retained_by_frozen_engine; no new resampling to reconstruct it"
+    },
+    {
+      "family_id": "method-transfer-adaptation",
+      "candidate": "arm-15/two_step",
+      "control": "arm-11/full",
+      "delta_estimate_m": -0.035914912051011445,
+      "marginal_interval_m": [
+        -1.9746590791239091,
+        1.4440012741027852
+      ],
+      "simultaneous_interval_m": [
+        -2.597689383094756,
+        1.8134643993895787
+      ],
+      "interval_finite": true,
+      "p_zero_two_sided": 0.9685157421289355,
+      "holm_adjusted_p_zero": 1.0,
+      "seed_delta_m": [
+        -1.057220800394591,
+        -1.8961310905897397,
+        -1.8181146426525576,
+        1.4008965786554786,
+        3.1909953947263516
+      ],
+      "tail_check_max_shift_m": 0.10972399235426034,
+      "tail_check_passed": true,
+      "second_stream_interval_m": null,
+      "second_stream_interval_status": "not_retained_by_frozen_engine; no new resampling to reconstruct it"
+    },
+    {
+      "family_id": "method-numerical-propagation",
+      "candidate": "arm-19/em",
+      "control": "arm-18/full",
+      "delta_estimate_m": 0.025452802091722654,
+      "marginal_interval_m": [
+        0.011554323317405918,
+        0.044891057062743975
+      ],
+      "simultaneous_interval_m": [
+        0.00774080813916601,
+        0.050924798017468256
+      ],
+      "interval_finite": true,
+      "p_zero_two_sided": 0.0069965017491254375,
+      "holm_adjusted_p_zero": 0.02798600699650175,
+      "seed_delta_m": [
+        0.025422765991702016,
+        0.02502644285903081,
+        0.02542099417352725,
+        0.026205582075461295,
+        0.02518822535889196
+      ],
+      "tail_check_max_shift_m": 0.0017202106339224352,
+      "tail_check_passed": true,
+      "second_stream_interval_m": null,
+      "second_stream_interval_status": "not_retained_by_frozen_engine; no new resampling to reconstruct it"
+    },
+    {
+      "family_id": "method-numerical-propagation",
+      "candidate": "arm-19/euler",
+      "control": "arm-18/full",
+      "delta_estimate_m": 0.025452802091722654,
+      "marginal_interval_m": [
+        0.011554323317405918,
+        0.044891057062743975
+      ],
+      "simultaneous_interval_m": [
+        0.00774080813916601,
+        0.050924798017468256
+      ],
+      "interval_finite": true,
+      "p_zero_two_sided": 0.0069965017491254375,
+      "holm_adjusted_p_zero": 0.02798600699650175,
+      "seed_delta_m": [
+        0.025422765991702016,
+        0.02502644285903081,
+        0.02542099417352725,
+        0.026205582075461295,
+        0.02518822535889196
+      ],
+      "tail_check_max_shift_m": 0.0017202106339224352,
+      "tail_check_passed": true,
+      "second_stream_interval_m": null,
+      "second_stream_interval_status": "not_retained_by_frozen_engine; no new resampling to reconstruct it"
+    },
+    {
+      "family_id": "method-numerical-propagation",
+      "candidate": "arm-21/mc",
+      "control": "arm-20/full",
+      "delta_estimate_m": -0.7793136954436097,
+      "marginal_interval_m": [
+        -2.509423323617624,
+        1.0505815809738035
+      ],
+      "simultaneous_interval_m": [
+        -2.9476694999233786,
+        1.49390450024681
+      ],
+      "interval_finite": true,
+      "p_zero_two_sided": 0.36531734132933535,
+      "holm_adjusted_p_zero": 0.36531734132933535,
+      "seed_delta_m": [
+        -0.18592433909956965,
+        -1.766536561093532,
+        2.0340495246578363,
+        -0.9333378351426759,
+        -3.044819266540107
+      ],
+      "tail_check_max_shift_m": 0.1457811093346657,
+      "tail_check_passed": true,
+      "second_stream_interval_m": null,
+      "second_stream_interval_status": "not_retained_by_frozen_engine; no new resampling to reconstruct it"
+    },
+    {
+      "family_id": "method-numerical-propagation",
+      "candidate": "arm-21/crn",
+      "control": "arm-20/full",
+      "delta_estimate_m": -5.635116077952339e-05,
+      "marginal_interval_m": [
+        -0.00012491671761984282,
+        3.964942229672267e-06
+      ],
+      "simultaneous_interval_m": [
+        -0.00015282414847221973,
+        1.4835609310136108e-05
+      ],
+      "interval_finite": true,
+      "p_zero_two_sided": 0.08345827086456771,
+      "holm_adjusted_p_zero": 0.16691654172913542,
+      "seed_delta_m": [
+        -5.056924027505137e-05,
+        -6.804160947598595e-05,
+        -6.101608558788771e-05,
+        -6.47354348145605e-05,
+        -3.739343374413149e-05
+      ],
+      "tail_check_max_shift_m": 9.578197724634079e-06,
+      "tail_check_passed": true,
+      "second_stream_interval_m": null,
+      "second_stream_interval_status": "not_retained_by_frozen_engine; no new resampling to reconstruct it"
+    }
+  ],
+  "second_stream_intervals_retained": false,
+  "bootstrap_draws_or_pivots_retained": false,
+  "scope": {
+    "new_fits": 0,
+    "new_forecasts": 0,
+    "new_particle_scores": 0,
+    "new_bootstrap_draws": 0,
+    "forecast_arrays_opened": false,
+    "final_independent_saved_output_audit_completed": false,
+    "scientific_claim_authorized": false
+  }
+}

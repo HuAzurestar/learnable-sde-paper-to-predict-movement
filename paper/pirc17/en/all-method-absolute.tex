@@ -1,0 +1,63 @@
+\subsection{Complete absolute method values}
+\label{sec:all-method-absolute}
+Table~\ref{tab:all-method-absolute} retains all 28 execution identities from
+the same pinned stage snapshot. Figure~\ref{fig:preliminary-method-absolute}
+omits only the six extra Full/replay roles from its display, not their
+predictions from the source. They are neither averaged nor assumed to
+have equal finite scores. Every row uses all 46 recording blocks and five
+forecast seeds (230 predictions); these are not 230 independent targets.
+Mean values are rounded for display, with full precision retained in
+\path{paper/pirc17/preliminary-method-statistics-v1.json}.
+Lower is better for each column, but ES, ADE and FDE are different
+quantities. This is not an absolute-score confidence interval or a global
+best-model test. Saved parameter equality and different random streams
+remain relevant (Table~\ref{tab:estimator-calibration}).
+\begingroup\small
+\begin{longtable}{lrrr}
+\caption{All 28 primary-method absolute stage means in metres; no new
+forecasts or statistical inference.}\label{tab:all-method-absolute}\\
+\toprule
+Execution identity & Weighted ES & ADE & FDE\\
+\midrule
+\endfirsthead
+\multicolumn{4}{l}{Table \thetable\ (continued)}\\
+\toprule
+Execution identity & Weighted ES & ADE & FDE\\
+\midrule
+\endhead
+\midrule\multicolumn{4}{r}{Continued on the next page}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\texttt{arm-01/full} & 477.9 & 636.1 & 1326.1\\
+\texttt{arm-02/pointwise} & 510.8 & 635.2 & 1324.2\\
+\texttt{arm-03/single\_gaussian} & 499.9 & 622.9 & 1316.4\\
+\texttt{arm-04/gmm\_kernel} & 475.0 & 622.0 & 1299.1\\
+\texttt{arm-05/explicit\_decomp} & 535.8 & 647.6 & 1403.1\\
+\texttt{arm-06/dt30} & 486.4 & 631.8 & 1317.6\\
+\texttt{arm-06/dt120} & 466.3 & 638.7 & 1329.8\\
+\texttt{arm-06/dt300} & 454.4 & 644.4 & 1335.7\\
+\texttt{arm-06/dt600} & 453.2 & 651.5 & 1340.9\\
+\texttt{arm-08/qmle} & 477.0 & 635.6 & 1325.1\\
+\texttt{arm-09/mixed} & 470.1 & 630.3 & 1315.7\\
+\texttt{arm-09/pure\_es} & 471.4 & 631.4 & 1318.5\\
+\texttt{arm-10/d2\_mc} & 476.7 & 634.8 & 1322.1\\
+\texttt{arm-10/d2\_closed} & 476.7 & 634.8 & 1322.1\\
+\texttt{arm-12/scratch} & 478.6 & 640.1 & 1339.0\\
+\texttt{arm-14/reptile} & 478.2 & 630.0 & 1320.8\\
+\texttt{arm-15/drift\_only} & 476.5 & 634.4 & 1320.6\\
+\texttt{arm-15/two\_step} & 475.9 & 634.3 & 1322.4\\
+\texttt{arm-19/em} & 477.2 & 635.2 & 1325.0\\
+\texttt{arm-19/euler} & 477.2 & 635.2 & 1325.0\\
+\texttt{arm-21/mc} & 475.5 & 633.7 & 1320.0\\
+\texttt{arm-21/crn} & 476.3 & 634.2 & 1320.9\\
+\midrule
+\multicolumn{4}{l}{Additional Full/replay identities, omitted only from the dot figure}\\
+\texttt{arm-06/dt60} & 477.9 & 636.1 & 1326.1\\
+\texttt{arm-07/full} & 476.7 & 634.8 & 1322.1\\
+\texttt{arm-11/full} & 476.0 & 634.0 & 1320.7\\
+\texttt{arm-16/full} & 475.9 & 633.9 & 1321.2\\
+\texttt{arm-18/full} & 477.2 & 635.2 & 1325.0\\
+\texttt{arm-20/full} & 476.3 & 634.2 & 1320.9\\
+\end{longtable}
+\endgroup
