@@ -22,10 +22,12 @@ The manifest records the actual inspected pages and route-input check. This is c
 and public-copy checking, not full manuscript/scientific acceptance.
 
 Local manuscript source revision:
-`54d8a08b9adbdf8f125dd4857ad9e295e64291eb`.
-Current complete local PDFs were delivered at
-`9440f746b4e90e5b9a3cb976732f26ee7a0102d7` (English 88 pages,
-Chinese 85 pages); the public copies are English 81 / Chinese 78 pages.
+`0841433892fec4f54d2614005b78babbb6e1c27b`.
+Current complete local PDFs are bound by `audited-review-build-v1.json`
+(English 90 / Chinese 87 pages); public copies are English 83 / Chinese 80.
+The previous local `9440f746b4e90e5b9a3cb976732f26ee7a0102d7`
+delivery (English 88 / Chinese 85) is historical, with its preceding public
+proof retained in `public-review-runtime-census-build-v1.json`.
 The previous analysis-stage delivery `090de63459a95ffb966701f597cf2b0cb5de9767`
 is historical; its public build proof is retained separately in
 `public-review-analysis-stage-build-v1.json`.
