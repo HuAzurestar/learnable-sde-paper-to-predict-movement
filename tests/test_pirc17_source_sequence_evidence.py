@@ -124,6 +124,11 @@ def test_new_source_table_preserves_every_previous_scientific_environment(langua
         pattern = r"\\begin\{" + kind + r"\}.*?\\end\{" + kind + r"\}"
         old, new = re.findall(pattern,before,re.S), re.findall(pattern,after,re.S)
         if kind == "table":
+            # The separately checked later terminal-count table does not
+            # change the historical source-sequence unit or any older table.
+            terminal = [block for block in new if r"\label{tab:terminal-score-inventory}" in block]
+            assert len(terminal) == 1
+            new.remove(terminal[0])
             added = [block for block in new if r"\label{tab:source-sequence-screen}" in block]
             assert len(added) == 1 and len(new) == len(old)+1
             new.remove(added[0])

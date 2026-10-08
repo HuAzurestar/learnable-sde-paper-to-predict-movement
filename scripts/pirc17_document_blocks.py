@@ -1,8 +1,8 @@
-"""Pure guard: named verbatim relocations and one verified later addition."""
+"""Pure guard: named verbatim relocations and two verified later additions."""
 HISTORY_TABLES = ("tab:history-spans", "tab:development-history-spans")
 POPULATION_TABLES = ("tab:final-cohort-durations", "tab:final-cohort-speeds", "tab:final-cohort-geography")
 POPULATION_EQUATIONS = ("eq:cohort-window-speed",)
-LATER_TABLES = ("tab:source-sequence-screen",)
+LATER_TABLES = ("tab:source-sequence-screen", "tab:terminal-score-inventory")
 
 
 def assert_preserved_blocks(before, after, kind):

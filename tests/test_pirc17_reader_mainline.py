@@ -283,7 +283,7 @@ def test_all_original_table_numbers_and_scientific_data_are_unchanged(language):
                                      "tab:mode-rank-cardinality", "tab:final-cohort-geography",
                                      "tab:final-cohort-durations", "tab:final-cohort-speeds",
                                      "tab:reptile-task-accounting", "tab:case-point-errors",
-                                     "tab:source-sequence-screen"}
+                                     "tab:source-sequence-screen", "tab:terminal-score-inventory"}
 
 
 @pytest.mark.parametrize("language", ["en", "zh"])

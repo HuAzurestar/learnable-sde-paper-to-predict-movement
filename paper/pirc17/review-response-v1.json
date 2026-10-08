@@ -79,7 +79,7 @@
     },
     {
       "path": "paper/pirc17/claim-ledger.json",
-      "sha256": "75bc20703c83e6006d2496b76b5b8f6891249fad25cc04d7031cd9cbb43b0f4d"
+      "sha256": "45fc91d533a761c92386e21edb4fc99dfea70ae21d4cef01e996a7d99e9c26f5"
     },
     {
       "path": "paper/pirc17/partition-description-v1.json",
@@ -155,11 +155,11 @@
     },
     {
       "path": "paper/pirc17/en/main.tex",
-      "sha256": "45279f87aed53dcc261f9c0d93b4e6ffbc5beed0f421f263c0ca40a54041919b"
+      "sha256": "eb09de631dcda62338e7dacac2b28fabd461ee7b21ac6f4c41c430986aee7e4c"
     },
     {
       "path": "paper/pirc17/zh/main.tex",
-      "sha256": "32988eb451751ae26f7391695d4179029cd25872ec7298ccf189ca86d93e6ae8"
+      "sha256": "0d481f74ecec072559c8f66790cb7787060b31b86e52b8e201f4ff948703749d"
     },
     {
       "path": "paper/pirc17/en/main.pdf",
@@ -324,6 +324,10 @@
     {
       "path": "paper/pirc17/source-sequence-description-v1.json",
       "sha256": "3c6e119511cdfc09244511cc4b5b839a7dd86585a9c7e76adbb2ae4fe82443b9"
+    },
+    {
+      "path": "paper/pirc17/terminal-score-inventory-v1.json",
+      "sha256": "2ff1d123d79cb440ee8683ca1c1684ec4c8c8c0129db332b60ff3c6b38a62795"
     }
   ],
   "items": [
@@ -806,15 +810,17 @@
         "sec:execution-coverage",
         "sec:preliminary-methods",
         "sec:score-execution-snapshots",
-        "tab:capture-count-difference"
+        "tab:capture-count-difference",
+        "tab:terminal-score-inventory"
       ],
       "evidence": [
         "paper/pirc17/execution-coverage-20261006-v1.json",
         "paper/pirc17/preliminary-method-statistics-v1.json",
         "paper/pirc17/claim-ledger.json",
-        "paper/pirc17/capture-count-reconciliation-v1.json"
+        "paper/pirc17/capture-count-reconciliation-v1.json",
+        "paper/pirc17/terminal-score-inventory-v1.json"
       ],
-      "response": "已分别绑定执行10514与评分10384的精确时刻、索引哈希和原汇总文件；新增114单元的双语执行／评分计数对账表。22个变化单元全部属于地形：历史前缀57、已知速度8、仅位置65，合计130；各单元失败数不变、成功净增等于缺项减量，84个方法单元计数不变。6440行方法结果及摘要继续绑定较早评分输入，完整性表绑定较晚执行输入，两份原快照和所有效应数字不覆写。",
+      "response": "已分别绑定执行10514与评分10384的精确时刻、索引哈希和原汇总文件；新增114单元的双语执行／评分计数对账表。22个变化单元全部属于地形：历史前缀57、已知速度8、仅位置65，合计130；各单元失败数不变、成功净增等于缺项减量，84个方法单元计数不变。6440行方法结果及摘要继续绑定较早评分输入，完整性表绑定较晚执行输入，两份原快照和所有效应数字不覆写。 另核对2026年10月8日全部58个哈希校验闭合评分块和原任务终态：方法8118成功／2失败、地形2897成功／3失败，科学预测11020项均终止；另290项同网格参考、58条惯性路径，共11368个评分槽位（11363成功、5失败）。双语清点表说明分母，首页不再称科学预测尚待完成；最终独立输出核验、推断及卡片仍待完成。这次终态计数一致不补造历史130项逐身份差集。",
       "remaining": "原汇总未保存逐任务工作标识集合；已解释130项分组计数差，但不能核验130个新增身份或排除单元内成员替换，不把净计数差当逐项差集。原一次保存输出独立复算与最终结果版本绑定仍待完成，P1-18保留partial。",
       "final_review_accepted": false
     },

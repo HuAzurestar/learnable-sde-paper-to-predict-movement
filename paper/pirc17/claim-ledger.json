@@ -2149,5 +2149,29 @@
     "full_manuscript_reader_or_human_acceptance_obtained": false,
     "publication_permissions_verified": false,
     "final_paper_or_all_review_items_complete": false
+  },
+  "terminal_inventory_manuscript_revision": {
+    "source_base_commit": "f1a67c000da3bae1c6db1647f4d1489431e9918b",
+    "review_items": [
+      "P1-18",
+      "P2-02"
+    ],
+    "projection": "paper/pirc17/terminal-score-inventory-v1.json",
+    "projection_sha256": "2ff1d123d79cb440ee8683ca1c1684ec4c8c8c0129db332b60ff3c6b38a62795",
+    "manuscript_anchor": "tab:terminal-score-inventory",
+    "science_terminal": {
+      "expected": 11020,
+      "success": 11015,
+      "failed": 5,
+      "nonterminal": 0
+    },
+    "closed_common_score_rows": 11368,
+    "scope": "Correct obsolete opening status and explain the closed saved-score denominator using whole hash-checked blocks and original completion/failure metadata. Scientific execution/scoring completion is distinct from auxiliary runtime/replay, final inference, independent saved-output audit, cards and human acceptance. All prior evidence values and registered failure-family dispositions retained.",
+    "new_fits_forecasts_scores_resampling_or_map_queries": 0,
+    "independent_saved_output_audit_completed": false,
+    "final_statistics_or_cards_complete": false,
+    "full_manuscript_reader_or_human_acceptance_obtained": false,
+    "publication_permissions_verified": false,
+    "final_paper_or_all_review_items_complete": false
   }
 }
