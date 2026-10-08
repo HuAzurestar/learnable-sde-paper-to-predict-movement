@@ -8,7 +8,7 @@ The manifest records the actual inspected pages and route-input check. This is c
 and public-copy checking, not full manuscript/scientific acceptance.
 
 Local manuscript source revision:
-`de71e4bc3c4effa25631214c4aa7eb19accfb871`.
+`33e2ce7289f954b60dd86d10f512b9e8b30efa17`.
 Previous complete local PDFs were delivered at
 `42906141d41174ecb0ba43d3c47e31e6b65777b4` (English 85 pages,
 Chinese 82 pages). Those PDFs are **not** uploaded because they embed
@@ -46,13 +46,22 @@ query is run for this projection.
 
 ## Pending experiment delivery
 
-At 2026-10-08 15:23 Hong Kong time: original science 11,015 successful,
+At 2026-10-08 15:48 Hong Kong time: original science 11,015 successful,
 5 failed and 0 runnable out of 11,020; common scores 11,368 rows/58 groups;
-original auxiliary work 208/261 successful, 53 remaining. These are workload
+original auxiliary work 212/261 successful, 49 remaining. These are workload
 dispositions, not 11,020 independent participants or final accepted effects.
 The single independent saved-output audit, final aggregate export, original
 16 tables/16 figure groups and final numeric manuscript integration remain
 pending. Audited aggregate results will be added to this PR when available.
+
+The opening now explicitly distinguishes terminal scientific predictions and
+closed scoring from pending auxiliary trials, inference and independent output
+audit. The inventory table in Appendix A.18 reconciles all 11,368 score slots:
+8,120 method forecasts plus 2,900 terrain forecasts, 290 same-grid references
+and 58 inertial paths. Five failed scientific forecasts remain failed slots,
+not zero errors. The 11,368 slots are not independent observed participants.
+`terminal-score-inventory-v1.json` binds this count-only derivative to the
+complete hash-checked common-score index; it does not certify raw outputs.
 
 ## New saved-score manuscript comparison
 
