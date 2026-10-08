@@ -42,10 +42,12 @@ summaries. No sleep subtraction, trial exclusion or replacement measurement.
 
 The audit verifies saved-output consistency without producer-cache numbers, not
 physical clocks, participant independence, untouched holdout status, global numerical
-convergence, map permission or human acceptance. The 65 MB seed-level export and
-private raw audit remain local; this PR publishes bindings plus aggregate cards and
-the complete 16-table/16-figure outputs, not raw rows, private routes, arrays, models,
-maps or host paths. No new fits, forecasts, resampling, scores or map queries were
+convergence, map permission or human acceptance. The unchanged anonymous seed-level
+export is now supplied in [replay-input-v1](../replay-input-v1/README.md), including
+lossless compression, original file/content pins and diagnostic rebuild commands.
+The private raw audit, private routes, particle arrays, models, maps and host paths
+remain unpublished. Full public paired-verdict/table/figure/PDF rebuild qualification
+is still pending; publication alone is not that proof. No new fits, forecasts,
+resampling, scores or map queries were
 performed for copying/typesetting. Manifests' original `manuscript_written: false`
 describes the renderer stage, not absence of the current manuscripts.
-

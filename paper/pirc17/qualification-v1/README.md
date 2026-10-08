@@ -2,7 +2,8 @@
 
 This is an external qualification of the unchanged [original cards](../final-results-v1/cards.json),
 not a new experiment, a rewrite of old candidate flags or final manuscript acceptance.
-The final bilingual numeric integration remains in progress. Current PDFs are unchanged.
+The final bilingual numeric integration remains in progress. This package does not
+change PDFs; the subsequent secondary-score package updated the current PDFs.
 
 - [TEST-02](test02.json): actual pinned public-aggregate offline arithmetic and
   21 evidence/provenance checks, plus 104 frozen-rule software tests.
@@ -29,7 +30,9 @@ records the later TEST-02 linkage. `numerically_qualified`,
 `scientific_claim_authorized` and `human_accepted` remain false. No model superiority
 or terrain-benefit statement follows from these checks.
 
-The original anonymous seed-level input is not included here yet. These receipts
-and rendered outputs alone do not fulfill the final public rebuild requirement;
-that and full manuscript integration remain DEV-06 work. No private route, map,
-model, particle array, host path or new synthetic empirical result is supplied.
+The original anonymous seed-level input is now supplied losslessly in
+[replay-input-v1](../replay-input-v1/README.md). These earlier receipts and rendered
+outputs alone do not fulfill the final public rebuild requirement; clean public
+paired-replay/dependency proof and full manuscript integration remain DEV-06 work.
+No private route, map, model, particle array, host path or new synthetic empirical
+result is supplied.

@@ -43,15 +43,18 @@ all-configuration results remain in both CSVs and `projection.json`.
 `manifest.json` pins all five generated files; `README.md` is explanatory.
 Original 16 CSVs, 32 figures and 34 TeX fragments remain untouched.
 
-With the original anonymous export available, regenerate using the pure
-standard-library consumer from the repository root:
+The original anonymous export is now supplied losslessly in
+[replay-input-v1](../replay-input-v1/README.md). Its README gives complete
+standard-library verification, unpacking, rebuild and byte-comparison commands.
+With the decoded export available, regenerate from the repository root:
 
 ```powershell
 python scripts/project_pirc17_secondary_scores.py --input PUBLIC_EXPORT.json --sha256 29cb892f47301365b3d7b9a2871f3f71d85fe297f7720d0c6489648f8a4d0c50 --output-directory NEW_EMPTY_DIRECTORY
 ```
 
-The full seed-level input is not published here yet; output files alone do
-not satisfy final public rebuild requirements. The externally pinned input
-is required; an internally self-consistent hash alone is not empirical authority.
+Output files alone do not satisfy final public rebuild requirements; the
+published externally pinned input is required. An internally self-consistent
+hash alone is not empirical authority. Full paired-verdict/figure/PDF public
+rebuild qualification remains pending, separately from these diagnostic tables.
 All scientific, numerical-convergence, physical-clock, participant-independence
 and human-acceptance claims remain unasserted by this descriptive projection.
