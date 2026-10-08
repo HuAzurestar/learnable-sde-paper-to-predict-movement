@@ -85,13 +85,17 @@ def test_main_manuscripts_make_affected_cost_claims_explicit(language):
         for phrase in (
             "30~min~43~s", "without subtracting", "five-trial denominator",
             "any affected", "not isolated uninterrupted", "later paired clock",
-            "Other trials have", "qualification remains pending",
+            "Other trials have", "All 165 original timing",
+            "records are complete", "uninterrupted latency is not certified",
+            "retained evidence limitation, not an unfinished trial queue",
         ):
             assert phrase in section
     else:
         for phrase in (
             "30 分 43 秒", "不扣除休眠", "五次试验分母", "受影响的分位数",
-            "不能作为无中断", "后续时钟配对", "不认证其他试验", "资格仍待核对",
+            "不能作为无中断", "后续时钟配对", "不认证其他试验",
+            "全部165条原计时记录现已完成", "清单完整不认证",
+            "无中断延迟", "保留证据的局限，不是尚未完成的试验队列",
         ):
             assert phrase in section
 

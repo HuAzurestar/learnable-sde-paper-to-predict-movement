@@ -12,8 +12,8 @@
     }
   },
   "original_response_base_manuscript_commit": "dc5b05eabe12fff7294e30e50a82c78c9350a0eb",
-  "revision_base_commit": "e7cbeae4b82f2fc3e09cc66b7409869f2cd10cc9",
-  "revision_identity": "Exact current local manuscript evidence is identified by the SHA256 values below. revision_base_commit is the clean source used by audited-review-build-v1.json for the EN91/ZH89 PDFs with saved CRPS/endpoint-quantile diagnostics, not the future commit containing this response. Original42 statuses are historical triage, not promotion to final acceptance. Public projections retain original-local bindings, not certification of withheld cases or replacement public PDFs. Source/PDF hash synchronization is not review acceptance.",
+  "revision_base_commit": "b3147461244c8adcde756b8458f645599a8fe337",
+  "revision_identity": "Exact current local manuscript evidence is identified by the SHA256 values below. revision_base_commit is the clean source used by audited-review-build-v1.json for the EN92/ZH90 PDFs and current42 author responses, not the future commit containing this response. Original42 statuses are historical triage, not promotion to final acceptance; review-current-v2.md records current author responses separately. Public projections retain original-local bindings, not certification of withheld cases or replacement public PDFs. Source/PDF hash synchronization is not review acceptance.",
   "status_definitions": {
     "draft_checked": "已核对当前工作稿中的针对性文稿修复；不是审查人验收，不表示最终实证资格或论文完成。",
     "partial": "已有修改，但原验收仍有证据、诊断或文稿缺口；如实披露限制不等于已经补齐。",
@@ -191,11 +191,11 @@
     },
     {
       "path": "paper/pirc17/en/main.tex",
-      "sha256": "29eff7185c07e08c1758dc4cc3151d57ef92c669943217e8fc56c64c7bc6c1e0"
+      "sha256": "eb57ca22b02f2bb08102ca0b096b6262cb750bcce16d7c46af407f946b6a0213"
     },
     {
       "path": "paper/pirc17/zh/main.tex",
-      "sha256": "eb0acb87395b41df4a85a2a869ef3cd5caace0a2d2420b115ade19a382d7c479"
+      "sha256": "eefdc674db669c101fd9cc62f5dc6637368b596c2698475aa4648ebfe266a683"
     },
     {
       "path": "paper/pirc17/en/main.pdf",
