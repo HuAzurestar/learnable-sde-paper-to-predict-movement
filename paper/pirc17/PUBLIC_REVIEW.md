@@ -1,5 +1,19 @@
 # Public PIRC-17 review projection — not the complete local manuscript
 
+## Current review update: 9 October 2026
+
+The original independent saved-output replay and all 261 original auxiliary
+tasks have now completed. The current manuscript status box and new audit-bound
+review subsection supersede older pending-audit descriptions below; those
+descriptions and original response triage flags are historical records.
+[The actual full aggregate result package](final-results-v1/README.md) includes
+all 16 CSV files, 16 figure groups / 32 images, cards and 34 bilingual optional
+table fragments. No private route, map, array, model or raw audit is uploaded.
+Five scientific failures and whole unavailable terrain families remain retained.
+Full final numeric manuscript integration, qualification and human acceptance
+are not claimed complete. Current PDF build bindings will identify this revision;
+preceding build manifests remain separately retained.
+
 Read the public copies: [English](en/public-review.pdf) and
 [中文](zh/public-review.pdf). `public-review-build.json` binds the strict build-source revision,
 source hashes and exact published PDF hashes. Its original relative build

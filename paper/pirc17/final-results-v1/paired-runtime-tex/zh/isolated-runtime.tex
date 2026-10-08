@@ -1,0 +1,52 @@
+% Public-card rendering only; manuscript integration and acceptance remain pending.
+\begingroup
+\small
+\setlength{\tabcolsep}{3pt}
+\setlength{\LTcapwidth}{\linewidth}
+\begin{longtable}{@{}p{0.28\linewidth}p{0.23\linewidth}p{0.1\linewidth}p{0.1\linewidth}p{0.21\linewidth}@{}}
+\caption{原保存特征提供器冷启动／驻留热启动墙钟耗时：每个条件五次，预热不计入。冷启动仅创建新提供器，不认证操作系统或解释器缓存已重置。本汇总须结合正文的主机中断与时钟限制阅读；受影响汇总及未标记试次均不认证无中断隔离延迟或加速。保留原值与试次分母，不扣除休眠时间、排除试次或补做测量。p50/p95保留原成功试次汇总，不是总体尾延迟保证；失败与不可用汇总均显示。本造表程序不重算分位数。}\label{tab:public-card-isolated-runtime}\\
+\toprule
+矩阵／配置 & 条件／状态 & p50（毫秒） & p95（毫秒） & 全部试次状态\\
+\midrule
+\endfirsthead
+\multicolumn{5}{@{}l}{\tablename~\thetable\ (续表)}\\
+\toprule
+矩阵／配置 & 条件／状态 & p50（毫秒） & p95（毫秒） & 全部试次状态\\
+\midrule
+\endhead
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+NEX326-methods\newline arm-01/\allowbreak{}full & runtime\_\allowbreak{}cold\newline computed & 633.7 & 646.1 & success: 5\\
+NEX326-methods\newline arm-01/\allowbreak{}full & runtime\_\allowbreak{}warm\newline computed & 634.6 & 671 & success: 5\\
+NEX326-methods\newline arm-04/\allowbreak{}gmm\_\allowbreak{}kernel & runtime\_\allowbreak{}cold\newline computed & 643.3 & 695.6 & success: 5\\
+NEX326-methods\newline arm-04/\allowbreak{}gmm\_\allowbreak{}kernel & runtime\_\allowbreak{}warm\newline computed & 647.5 & 690.8 & success: 5\\
+NEX326-methods\newline arm-05/\allowbreak{}explicit\_\allowbreak{}decomp & runtime\_\allowbreak{}cold\newline computed & 808.9 & 878.5 & success: 5\\
+NEX326-methods\newline arm-05/\allowbreak{}explicit\_\allowbreak{}decomp & runtime\_\allowbreak{}warm\newline computed & 784.9 & 822.4 & success: 5\\
+NEX326-methods\newline arm-21/\allowbreak{}crn & runtime\_\allowbreak{}cold\newline computed & 530.9 & 615.6 & success: 5\\
+NEX326-methods\newline arm-21/\allowbreak{}crn & runtime\_\allowbreak{}warm\newline computed & 538.2 & 545.6 & success: 5\\
+NEX326-methods\newline arm-21/\allowbreak{}mc & runtime\_\allowbreak{}cold\newline computed & 524 & 547.3 & success: 5\\
+NEX326-methods\newline arm-21/\allowbreak{}mc & runtime\_\allowbreak{}warm\newline computed & 551.4 & 569.9 & success: 5\\
+terrain\newline all-terrain & runtime\_\allowbreak{}cold\newline computed & 5.443e+05 & 2.517e+06 & success: 5\\
+terrain\newline all-terrain & runtime\_\allowbreak{}warm\newline computed & 3.638e+05 & 4.605e+05 & success: 5\\
+terrain\newline base & runtime\_\allowbreak{}cold\newline computed & 3221 & 3791 & success: 5\\
+terrain\newline base & runtime\_\allowbreak{}warm\newline computed & 1953 & 2020 & success: 5\\
+terrain\newline lio-river & runtime\_\allowbreak{}cold\newline computed & 3.898e+05 & 6.224e+05 & success: 5\\
+terrain\newline lio-river & runtime\_\allowbreak{}warm\newline computed & 4.874e+05 & 4.997e+05 & success: 5\\
+terrain\newline lio-road & runtime\_\allowbreak{}cold\newline computed & 4.287e+05 & 5.102e+05 & success: 5\\
+terrain\newline lio-road & runtime\_\allowbreak{}warm\newline computed & 3.064e+05 & 3.078e+05 & success: 5\\
+terrain\newline lio-surface & runtime\_\allowbreak{}cold\newline computed & 4.168e+05 & 5.484e+05 & success: 5\\
+terrain\newline lio-surface & runtime\_\allowbreak{}warm\newline computed & 4.991e+05 & 5.333e+05 & success: 5\\
+terrain\newline lio-worldcover & runtime\_\allowbreak{}cold\newline computed & 5.252e+05 & 5.681e+05 & success: 5\\
+terrain\newline lio-worldcover & runtime\_\allowbreak{}warm\newline computed & 4.45e+05 & 4.964e+05 & success: 5\\
+terrain\newline loo-river & runtime\_\allowbreak{}cold\newline computed & 6.501e+05 & 7.544e+05 & success: 5\\
+terrain\newline loo-river & runtime\_\allowbreak{}warm\newline computed & 5.365e+05 & 6.01e+05 & success: 5\\
+terrain\newline loo-road & runtime\_\allowbreak{}cold\newline computed & 5.908e+05 & 7.387e+05 & success: 5\\
+terrain\newline loo-road & runtime\_\allowbreak{}warm\newline computed & 4.592e+05 & 5.33e+05 & success: 5\\
+terrain\newline loo-surface & runtime\_\allowbreak{}cold\newline computed & 4.244e+05 & 1.938e+06 & success: 5\\
+terrain\newline loo-surface & runtime\_\allowbreak{}warm\newline computed & 3.362e+05 & 3.464e+05 & success: 5\\
+terrain\newline loo-worldcover & runtime\_\allowbreak{}cold\newline computed & 5.122e+05 & 5.724e+05 & success: 5\\
+terrain\newline loo-worldcover & runtime\_\allowbreak{}warm\newline computed & 3.717e+05 & 4.14e+05 & success: 5\\
+\end{longtable}
+\endgroup
