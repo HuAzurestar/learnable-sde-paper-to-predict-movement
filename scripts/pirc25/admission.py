@@ -13,9 +13,23 @@ import re
 if __package__:
     from .dimensions import comparison_dimensions, canonical
     from .upstream import validate_upstream
+    from .admission_selection import selected_settings
+    from .analytic_qualification import validate_analytic_qualification
+    from .mlmc_qualification import validate_mlmc_qualification
+    from .mixture_qualification import validate_mixture_qualification
+    from .path_qualification import validate_path_qualification
+    from .cubature_qualification import validate_cubature_qualification
+    from .probability_calibration import validate_calibrated_admission
 else:
     from dimensions import comparison_dimensions, canonical
     from upstream import validate_upstream
+    from admission_selection import selected_settings
+    from analytic_qualification import validate_analytic_qualification
+    from mlmc_qualification import validate_mlmc_qualification
+    from mixture_qualification import validate_mixture_qualification
+    from path_qualification import validate_path_qualification
+    from cubature_qualification import validate_cubature_qualification
+    from probability_calibration import validate_calibrated_admission
 
 
 def fingerprint(value):
@@ -66,9 +80,10 @@ def qualification(package, prereg, report, evidence, grant):
                 and value["preregistration_hash"] == fingerprint(prereg), "qualification test outcome/bindings")
 
 
-def validate_model_permission(model, grant, spec, admitted_at):
+def validate_model_permission(model, grant, spec, admitted_at, *, cell=None, receipt=None):
     foreign = model["study_id"] != spec["study_id"]
-    settings = spec["admission"]
+    settings = (selected_settings(spec, cell, receipt) if "cell_packages" in spec["admission"]
+                else spec["admission"])
     expected_id = settings.get("model_authorization_id") if foreign else settings["authorization_id"]
     require(grant.get("authorization_id") == expected_id and expected_id is not None,
             "frozen model grant identity")
@@ -99,7 +114,7 @@ def validate_admission(bundle, row):
         require(canonical(comparison_dimensions(cell)) == canonical(comparison_dimensions(row)), "matrix dimensions")
         require(all(spec[key] == bundle[key] for key in ("study_id", "code_hash", "data_hash", "protocol_hash")), "bundle input identity")
         protocol, grant, package = docs["protocol"], docs["authorization"], docs["package"]
-        settings = spec["admission"]
+        settings = selected_settings(spec, cell, receipt)
         require(settings["mode"] == "formal" and protocol["schema_version"] == "pirc25-data-protocol-v1", "protocol version/mode")
         require(fingerprint(protocol) == spec["protocol_hash"] == package["protocol_hash"] == grant["protocol_hash"], "protocol binding")
         require(protocol["study_id"] == grant["study_id"] == spec["study_id"] and
@@ -180,6 +195,25 @@ def validate_admission(bundle, row):
             require(read["preregistration_hash"] == fingerprint(prereg) and read["history_hash"] == fingerprint(history)
                     and read["test_mode"] == "blind" and read["frozen_sequence"] == frozen["sequence"] < event["sequence"], "test freeze preceded exposure")
         qualification(package, prereg, docs["qualification"], docs["qualification_evidence"], grant)
+        # Region preparation never replaces the independent method contract.
+        # An unexpected embedded proof must not become an opaque generic pass.
+        validate_calibrated_admission(receipt, row)
+        # An analytic package pointer or a propagation adapter must never
+        # silently fall back to the older generic operator pass contract.
+        if ("managed_cubature_qualification" in package["payload"]
+                or cell.get("plugin_id") in {"affine-cubature", "affine-cubature-qualification"}):
+            validate_cubature_qualification(receipt, row)
+        elif ("managed_path_qualification" in package["payload"] or cell.get("plugin_id") == "affine-path-production-chunk"):
+            validate_path_qualification(receipt, row)
+        elif ("managed_mixture_qualification" in package["payload"] or cell.get("plugin_id") == "affine-mixture-production-chunk"):
+            validate_mixture_qualification(receipt, row)
+        elif ("managed_mlmc_qualification" in package["payload"] or cell.get("plugin_id") == "affine-mlmc-production-chunk"):
+            validate_mlmc_qualification(receipt, row)
+        elif ("managed_analytic_qualification" in package["payload"]
+                or docs.get("propagation_qualification") is not None
+                or cell.get("plugin_id") in {"affine-propagation", "affine-propagation-chunk",
+                    "synthetic-propagation", "synthetic-propagation-chunk"}):
+            validate_analytic_qualification(receipt, row)
         if package.get("requires_frozen_model"):
             model = docs["frozen_model"]
             require(fingerprint(model) == package["model_hash"] and model["kind"] == "FrozenDynamicsPackage"
@@ -196,7 +230,7 @@ def validate_admission(bundle, row):
                     and fingerprint({k: v for k, v in model_protocol.items() if k not in
                         {"preregistration_hash", "history_hash", "history_status"}}) in model_prereg["protocol_bindings"], "frozen model source preregistration")
             model_grant = docs["model_authorization"]
-            validate_model_permission(model, model_grant, spec, receipt["admitted_at"])
+            validate_model_permission(model, model_grant, spec, receipt["admitted_at"], cell=cell, receipt=receipt)
             qualification(model, docs["model_preregistration"], docs["model_qualification"], docs["model_qualification_evidence"], model_grant)
     except (KeyError, TypeError, StopIteration, AttributeError) as exc:
         raise ValueError("missing or malformed admission evidence") from exc

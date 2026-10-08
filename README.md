@@ -101,6 +101,71 @@ These are frozen export costs, not a query of the runtime's current arm balance.
 spec/cell/attempt identity, protocol and execution grant, actual input exposure
 events, frozen preregistration/history, package/upstream/command bindings, and
 the referenced qualification checks. A `qualified` string alone is rejected.
+Affine analytic receipts additionally require the managed qualification worker's
+actual result, admission, resource contract, start/native-stop/settlement and
+completion events, same cumulative arm, explicit source-consumer/export grant,
+and preregistered request/model/source-bound numerical policy. The independent
+stdlib reader checks bounded saved dyadic intervals and recomputes their widths,
+signed grid bias, scaled transition growth, current scalar roundoff and absolute
+error upper. Target artifact bytes and metric/forecast provenance are bound;
+model error remains unknown. It does not replay matrix exponentials/CDFs or
+authenticate arbitrary self-rehashed journals: the authorized export's expected
+bundle hash remains the trusted transport boundary.
+
+For a single analytic cell, run `python scripts/pirc25/validate_analytic.py
+bundle.json --expected-hash <authorized-bundle-hash>` to verify admission only.
+This does not produce a comparison, statistical adjudication or model approval.
+The existing `aggregate.py --formal` comparison-plan requirements are unchanged.
+Missing numeric proof or target bytes cannot fall back to generic operator
+checks; other propagation methods cannot borrow an affine analytic proof.
+
+For a settled affine mixture target, use `python scripts/pirc25/validate_mixture.py
+bundle.json --expected-hash <authorized-bundle-hash>`. Its separate stdlib reader
+checks actual pilot settlement/native-stop order before protected reads, source
+consumer/export permission, full frozen mixture/request/model/policy identity,
+and the current retained functional and lineage. It recomputes direct retained
+error against the saved Euler law and total error against the saved continuous
+law, along with reference width, signed time bias, scaled growth and operation
+caps. It never borrows Gaussian approval or replays a numerical engine. Closure,
+implementation roundoff and model error remain unknown/inseparable, not zero.
+This verifies recorded admission of one functional only, not a full-distribution
+claim, statistical comparison, scientific model approval or arbitrary journal
+authenticity. Failed rows remain in the expected-cell denominator; the existing
+formal comparison-plan requirements are unchanged. Missing mixture proof cannot
+fall back to a generic operator pass.
+
+For a settled affine eight-point cubature target, use
+`python scripts/pirc25/validate_cubature.py bundle.json --expected-hash
+<authorized-bundle-hash>`. Its dedicated stdlib reader validates the actual
+cubature pilot's policy, own source/worker/cost/read order and saved continuous
+and Euler certificates, then checks the current target scalar and method
+diagnostics. Missing cubature proof or an analytic substitute cannot fall through
+generic admission. Mathematical finite-grid Gaussian closure is identified
+only for the declared affine law; floating implementation error and continuous
+grid bias remain separately bounded, model error unknown. This is recorded
+admission verification, not nonlinear or scientific model qualification,
+independent-block inference or statistical adjudication. Failed/missing rows
+stay in the expected-cell denominator; comparison-plan requirements are unchanged.
+
+For owner-admitted independent path Monte Carlo or unnormalized IS targets, use
+`python scripts/pirc25/validate_paths.py bundle.json --expected-hash
+<authorized-bundle-hash>`. The separate stdlib reader checks the settled own-path
+pilot, source-consumer/export permission and frozen original-arm policies. Source
+and target must share the same physical law, grid and functional but have distinct
+request, seed and coupling identities (not an independence theorem). Saved final
+statistics reconstruct the actual target output and its sampling/ESS checks;
+bounded same-law reference intervals are reused without sampler or matrix/CDF
+replay. Source PASSED cannot promote a current FAILED output. The CLI reports
+current passed and failed counts separately, retaining completed numerical
+failures and noncompleted rows in the expected-cell denominator. Outputs with
+FAILED or unresolved current classification are excluded from
+complete paired-block aggregation and adjudication, without erasing their
+computational SUCCEEDED status or cost; CSV records both counts separately.
+Observed scalar distance is not a stochastic coverage or predictive-distribution bound; sampler
+roundoff and model error remain unknown. This is admission verification only,
+not a full study, statistical comparison or scientific model approval. Missing
+path proof cannot fall back to generic operator or Gaussian approval.
+
 New formal evidence also requires an immutable upstream snapshot and operator
 acceptance catalog bound to the package and pre-read per-study cutover. The
 stdlib-only independent `scripts/pirc25/upstream.py` checks complete cell scope,
@@ -113,6 +178,18 @@ Missing new evidence is rejected for formal claims, not backfilled after reads;
 legacy nonformal bundles remain readable. Explicit old public recipe bindings
 are optional additional checks, never a substitute for the mandatory snapshot.
 Foreign frozen models carry their own source protocol and consumer authorization.
+For heterogeneous adapters, `admission.cell_packages` freezes an explicit
+`pirc25-cell-packages-v1` table with exactly one `cell_hash`/`package_hash`
+binding for each executable registered cell. Optional model-source grant/version
+and protocol references belong to that same entry, not another cell or a default.
+`scripts/pirc25/admission_selection.py` independently checks exact coverage,
+unique identities, unavailable declarations, the receipt's entry/table hashes,
+selected package content and common mode. Tables cannot coexist with default
+package/model references or override common protocol, execution grant or upstream
+authority. Matrix/table counts are bounded to10,000 and table metadata to4 MiB;
+there is no lookup or fallback. Explicit legacy single-package admission remains
+readable. These checks verify recorded bindings, not scientific eligibility or
+new authority. Standalone aggregation remains descriptive even with `--formal`.
 The trusted expected bundle hash remains required; internal hashes do not prove
 the truth of arbitrary operator-imported scientific attestations. Runtime inputs
 and registration APIs are documented in PSDE's `docs/pirc-38-shared-engineering.md`.
