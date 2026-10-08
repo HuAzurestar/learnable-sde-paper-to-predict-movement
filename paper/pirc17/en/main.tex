@@ -43,8 +43,10 @@ Unavailable under the current complete-family rule: overall and factor-level
 terrain inference, and two known-velocity method families, because required
 forecasts were interrupted (Tables~\ref{tab:retained-failures}
 and~\ref{tab:failure-family-dispositions}).
-All 261 original auxiliary tasks are complete. Pending: final statistical
-qualification, complete manuscript integration and cost interpretation,
+All 261 original auxiliary tasks are complete. Saved-output and aggregate
+arithmetic qualification are complete for the fixed-budget comparisons;
+global numerical convergence is not established. Pending: complete manuscript
+integration and cost interpretation,
 authorship and publication review. Remaining computation does not by itself
 remove the retained failures. English is the source manuscript; the Chinese
 review version uses the same evidence boundaries.
@@ -2556,7 +2558,7 @@ This small-seed descriptive check does not estimate Monte Carlo convergence,
 between-fit variability or precision-invariant effects. It adds no scores,
 resampling, adjusted tests or qualification to the existing intervals.
 
-\subsection{Complete primary method arithmetic: preliminary snapshot}
+\subsection{Complete primary method results under the fixed simulation budget}
 \label{sec:preliminary-methods}
 The primary results use all 28 configurations on the same 46 recording-hash
 blocks and five forecast seeds: 6440 saved-score rows, or 230 per
@@ -2565,10 +2567,11 @@ recording blocks. The estimates come from the fixed 6 October scoring
 snapshot; its exact capture time and reconciliation with the later execution
 census are documented in Appendix~\ref{sec:score-execution-snapshots}.
 
-These are preliminary saved-score estimates: independent output replay and
-global numerical qualification remain incomplete, as summarized
-in the opening evidence-status box. Final component verdicts are therefore
-not assigned here. All 21 prespecified
+The independent saved-output replay and subsequent anonymous aggregate replay
+reproduce the estimates and registered decision states for the original fixed
+simulation budget. This qualification does not establish global numerical
+convergence or effects invariant to particle count and integration step.
+All 21 prespecified
 method contrasts are retained in Table~\ref{tab:preliminary-method-effects}.
 The unchanged 2000-draw paired-block procedure and independent fixed-seed
 tail check provide nominal 95\% simultaneous intervals within each of the
@@ -2581,7 +2584,7 @@ using the unrounded registered value for all calculations. The integration
 and CRN rows retain extra digits solely to show numerical diagnostic scale,
 not centimetre-level predictive accuracy or practical improvement.
 
-\paragraph{Recorded analysis states, before independent replay.}
+\paragraph{Reproduced finite-budget decision states.}
 \label{sec:saved-analysis-status}
 The original registered analysis has now completed once on all 58 closed
 score blocks. Its anonymous scalar projection is
@@ -2590,8 +2593,13 @@ new bootstrap draws were added by this projection. The 21 primary contrasts
 retain exactly the estimates, intervals and Holm values already shown below.
 The saved decision procedure records 14 practical-equivalence states and
 seven inconclusive states, with no practically beneficial or harmful state
-(Table~\ref{tab:saved-analysis-states}). These are algorithm-recorded states,
-not independently verified or finally accepted findings. All three origin
+(Table~\ref{tab:saved-analysis-states}). The saved-output audit and the pinned
+aggregate replay now verify this arithmetic; they are not independent empirical
+replications or final human acceptance. The external qualification is recorded
+in \path{paper/pirc17/qualification-v1/test02.json}: 21 evidence/provenance
+checks and 104 frozen-rule software tests, without new forecasts or bootstrap
+draws. All 112 evidence-card/disposition references are checked in
+\path{paper/pirc17/qualification-v1/card-inventory.json}. All three origin
 modes and four whole unavailable comparison families remain in the analysis;
 the two six-block secondary modes do not acquire hypothesis tests.
 
@@ -2614,7 +2622,10 @@ The primary same-grid split diagnostic is $2.19\times10^{-5}$ m against its
 0.1937 against 0.2, using the registered finite scoring-only draws.
 Passing these particular checks is not a global $N$/step convergence bound.
 Every primary method comparison still records resolution-invariant inference
-as inconclusive, and whole-output audit remains pending.
+as inconclusive; final manuscript and human acceptance remain pending.
+The stage captions retained in the following two original tables are historical:
+their pending-replay wording does not describe the completed replay. The numeric
+cells and the practical-equivalence versus inconclusive distinction are unchanged.
 
 \begin{table}[htbp]
 \centering\small
@@ -3030,11 +3041,53 @@ comparisons and their evidence qualification.
 \input{inertial-primary-comparison.tex}
 \input{point-error-horizons.tex}
 
+\subsection{Marginal CRPS and within-forecast endpoint error quantiles}
+\label{sec:secondary-score-diagnostics}
+Table~\ref{tab:crps-endpoint-diagnostics} uses the same four models already
+compared above, not a new selection by the best diagnostic value. Coordinate
+CRPS measures the local east/north marginal distributions in metres; lower is
+better on that marginal, but two good marginals do not certify the joint
+distribution, dependence structure or predictive-disk calibration. The two
+coordinate scores are not summed and renamed joint ES.
+
+The lower panel distinguishes mean-position FDE from particle endpoint-error
+quantiles. For each original forecast, the stored $q_{.50}$, $q_{.90}$ and
+$q_{.95}$ are quantiles of particle distances to that forecast's observed
+endpoint. We average those already-saved quantiles over seeds and recording
+blocks. They are neither population FDE quantiles nor quantiles after pooling
+particles across cases, and are not radii around the ensemble mean. No best
+particle is selected. Inertial is a single point, so all three per-forecast
+quantiles equal its FDE before aggregation.
+
+The diagnostics show why one score cannot stand for all prediction quality.
+At nominal 30 minutes, dt300 has lower east/north CRPS than Full01
+(687.11/524.07 versus 737.72/535.72 m), yet a slightly higher mean-position
+FDE (1335.73 versus 1326.09 m) and a larger mean within-forecast $q_{.95}$
+(2827.57 versus 2346.62 m). GMM's corresponding $q_{.95}$ is 2138.12 m,
+not a promise that a 2138.12 m predictive disk has 95\% target coverage.
+These means are descriptive; no per-horizon significance, general superiority
+or causal explanation is added, and the reported long-horizon undercoverage
+remains a limitation.
+
+The complete \path{paper/pirc17/secondary-scores-v1/} supplement retains all
+120 configuration/mode views and 480 repeated time views from the original
+11368 score rows, including five configuration/mode views with failed required
+rows and null means. Seeds are averaged within origins and then equally
+across the same recording-hash blocks; inertial is not repeated five times.
+No prediction, particle scoring or resampling is repeated. The anonymous
+projection binds source export \texttt{29cb892f}, audit \texttt{8ff917ad} and
+analysis \texttt{d1d67a3b}; actual recorded target-time ranges are retained,
+without certifying physical UTC or independent participants.
+\input{secondary-score-diagnostics.tex}
+
 \section{Terrain ablation results}
 \label{sec:terrain-results}
-\pending\ The overall comparison links to \texttt{terrain:all-vs-base}.
+The registered complete-family disposition is unavailable, not waiting for
+remaining forecasts: retained required failures prevent overall/LOO and LIO
+inference under the unchanged rule. This is not a zero-effect or equivalence
+result. The overall comparison links to \texttt{terrain:all-vs-base}.
 Four group summaries link to \texttt{terrain:road}, \texttt{terrain:river},
-\texttt{terrain:worldcover} and \texttt{terrain:surface}. Each will report
+\texttt{terrain:worldcover} and \texttt{terrain:surface}. Their evidence covers
 the primary full-model removal, its baseline addition, input dimensions,
 coverage and missingness, paired effect and uncertainty, stability, evidence
 qualification, verdict, cost and limitation.

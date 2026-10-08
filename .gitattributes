@@ -1,3 +1,6 @@
 # Immutable experiment exports are byte-bound; never translate line endings.
 paper/pirc17/final-results-v1/** -text
 paper/pirc17/qualification-v1/*.json -text
+paper/pirc17/secondary-scores-v1/** -text
+paper/pirc17/*/secondary-score-diagnostics.tex -text
+scripts/project_pirc17_secondary_scores.py -text

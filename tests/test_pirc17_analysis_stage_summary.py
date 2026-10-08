@@ -113,7 +113,7 @@ def test_complete_mechanism_counts_do_not_become_global_accuracy_certification()
 
 
 @pytest.mark.parametrize("language", ["en", "zh"])
-def test_bilingual_main_discloses_saved_states_and_pending_verification(language):
+def test_bilingual_main_discloses_saved_states_and_later_arithmetic_qualification(language):
     text = (PAPER / language / "main.tex").read_text(encoding="utf-8")
     assert text.count(r"\label{sec:saved-analysis-status}") == 1
     assert text.count(r"\label{tab:saved-analysis-states}") == 1
@@ -122,7 +122,12 @@ def test_bilingual_main_discloses_saved_states_and_pending_verification(language
                   "41.100259", "dt300", "dt600", "0.1937", "28", "2.19", r"\geq0"):
         assert token in status
     assert ("pending" if language == "en" else "待完成") in status
-    assert ("not independently verified" if language == "en" else "不是独立复核") in status
+    # The original projection remains a historical stage record. The later
+    # externally bound receipt completes arithmetic, not global science/acceptance.
+    for name in ('qualification-v1/test02.json', 'qualification-v1/card-inventory.json'):
+        assert name in status
+    assert ("not independent empirical" if language == "en" else "不是独立实证") in status
+    assert ("historical" if language == "en" else "历史记录") in status
     historical = text.split(r"\label{sec:bootstrap-table-detail}", 1)[1].split(r"\begin{longtable}", 1)[0]
     assert ("historical caption" if language == "en" else "历史表题") in historical
     names = (["Model structure", "Observation interval", "Fitting and score route",

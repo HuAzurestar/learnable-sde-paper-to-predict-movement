@@ -68,7 +68,8 @@ def test_each_response_anchor_exists_in_bilingual_reviewed_manuscript(language):
     assert set(inputs) == {"all-method-absolute.tex", "method-seed-stability.tex",
                            "method-horizon-overview.tex", "method-horizon-tables.tex",
                            "method-region-overview.tex", "method-region-tables.tex",
-                           "inertial-primary-comparison.tex", "point-error-horizons.tex"}
+                           "inertial-primary-comparison.tex", "point-error-horizons.tex",
+                           "secondary-score-diagnostics.tex"}
     for filename in inputs:
         text += (PAPER / language / filename).read_text(encoding="utf-8")
     labels = Counter(re.findall(r"\\label\{([^}]+)\}", text))
