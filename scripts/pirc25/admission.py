@@ -18,6 +18,7 @@ if __package__:
     from .mlmc_qualification import validate_mlmc_qualification
     from .mixture_qualification import validate_mixture_qualification
     from .path_qualification import validate_path_qualification
+    from .cubature_qualification import validate_cubature_qualification
 else:
     from dimensions import comparison_dimensions, canonical
     from upstream import validate_upstream
@@ -26,6 +27,7 @@ else:
     from mlmc_qualification import validate_mlmc_qualification
     from mixture_qualification import validate_mixture_qualification
     from path_qualification import validate_path_qualification
+    from cubature_qualification import validate_cubature_qualification
 
 
 def fingerprint(value):
@@ -193,7 +195,10 @@ def validate_admission(bundle, row):
         qualification(package, prereg, docs["qualification"], docs["qualification_evidence"], grant)
         # An analytic package pointer or a propagation adapter must never
         # silently fall back to the older generic operator pass contract.
-        if ("managed_path_qualification" in package["payload"] or cell.get("plugin_id") == "affine-path-production-chunk"):
+        if ("managed_cubature_qualification" in package["payload"]
+                or cell.get("plugin_id") in {"affine-cubature", "affine-cubature-qualification"}):
+            validate_cubature_qualification(receipt, row)
+        elif ("managed_path_qualification" in package["payload"] or cell.get("plugin_id") == "affine-path-production-chunk"):
             validate_path_qualification(receipt, row)
         elif ("managed_mixture_qualification" in package["payload"] or cell.get("plugin_id") == "affine-mixture-production-chunk"):
             validate_mixture_qualification(receipt, row)

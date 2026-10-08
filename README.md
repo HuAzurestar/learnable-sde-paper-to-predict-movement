@@ -134,6 +134,19 @@ authenticity. Failed rows remain in the expected-cell denominator; the existing
 formal comparison-plan requirements are unchanged. Missing mixture proof cannot
 fall back to a generic operator pass.
 
+For a settled affine eight-point cubature target, use
+`python scripts/pirc25/validate_cubature.py bundle.json --expected-hash
+<authorized-bundle-hash>`. Its dedicated stdlib reader validates the actual
+cubature pilot's policy, own source/worker/cost/read order and saved continuous
+and Euler certificates, then checks the current target scalar and method
+diagnostics. Missing cubature proof or an analytic substitute cannot fall through
+generic admission. Mathematical finite-grid Gaussian closure is identified
+only for the declared affine law; floating implementation error and continuous
+grid bias remain separately bounded, model error unknown. This is recorded
+admission verification, not nonlinear or scientific model qualification,
+independent-block inference or statistical adjudication. Failed/missing rows
+stay in the expected-cell denominator; comparison-plan requirements are unchanged.
+
 For owner-admitted independent path Monte Carlo or unnormalized IS targets, use
 `python scripts/pirc25/validate_paths.py bundle.json --expected-hash
 <authorized-bundle-hash>`. The separate stdlib reader checks the settled own-path
