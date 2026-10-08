@@ -1,6 +1,6 @@
 {
   "schema_version": "pirc17-review-build-v1",
-  "repository_head": "c8b0dd1ac2c1b7a441598ef71a5eea0642e0ddfd",
+  "repository_head": "dca4aac6dce8339b84815af1d02e802c1eceb64c",
   "working_tree_dirty_at_start": false,
   "claim_ledger_sha256": "1846fd94213477e0261819cfac2adeca0ae0bca7cb4fccfab1d1bebd894e6793",
   "manuscripts": [
@@ -8,23 +8,23 @@
       "language": "en",
       "engine": "-pdf",
       "source": "paper/pirc17/en/main.tex",
-      "source_sha256": "a88acf92237a767ec1c7a3523fdf5d419e415886aa598a0b5271eab87494d158",
+      "source_sha256": "c3cf48f13a258ed22ce824db564f328ab827c9e08cb885bc371d0d4baa5f67ae",
       "pdf": "en/main.pdf",
-      "pdf_sha256": "c4a725045d815822f56347df2d283a0ed78260f03c36b58a4e78a0a326ae64ca",
+      "pdf_sha256": "3b9215a411f3165edb532e448a58c09904a39b38d0f3f6f069489302a4487670",
       "log": "en/main.log",
-      "log_sha256": "8663f9f9ecde5ef9f569555ba9f452e9707310d55ae5aeeba6feab54722e8c6e",
-      "tex_banner": "This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.3.1)  8 OCT 2026 16:41"
+      "log_sha256": "4872111c611f2661aa6335a1c4bec6889cb55c94ca4f758657cc713a5c84de92",
+      "tex_banner": "This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.3.1)  8 OCT 2026 17:24"
     },
     {
       "language": "zh",
       "engine": "-xelatex",
       "source": "paper/pirc17/zh/main.tex",
-      "source_sha256": "1b05c822c859c723d7ed07208e26d13289775115b421f2e92563ff3431aac40d",
+      "source_sha256": "3c3ee0c6a9c2d4d83475668fc7faa01a33856e99948c169f09e396484a0215a1",
       "pdf": "zh/main.pdf",
-      "pdf_sha256": "58ef79811b4bcad9ed9b64ee577235f8a5df8a57e2ba4d0e91c787d329f08f4b",
+      "pdf_sha256": "9d8abb5fd5e7c748df07fd5a3544f9ca605f8e8e4c82c0c6d14bd3671bbccca3",
       "log": "zh/main.log",
-      "log_sha256": "9b890cb63a87ebb7b8f1570d6d9ae9b649d16976c391edd91be46edb1b26a1fe",
-      "tex_banner": "This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.1)  8 OCT 2026 16:42"
+      "log_sha256": "2f1f3228b689bb1606e627d8f36897bbfa114c984a60f2953e2b47d6360e215b",
+      "tex_banner": "This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.1)  8 OCT 2026 17:25"
     }
   ],
   "compilation_verified": true,
@@ -42,16 +42,14 @@
   "original_local_review_bindings_requalified": false,
   "reviewed_pages": {
     "en": [
-      50,
       51
     ],
     "zh": [
-      47,
       48
     ]
   },
   "page_counts": {
-    "en": 79,
+    "en": 80,
     "zh": 77
   }
 }
