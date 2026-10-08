@@ -1,5 +1,14 @@
 # Public PIRC-17 review projection — not the complete local manuscript
 
+Read the public copies: [English (78 pages)](en/public-review.pdf) and
+[中文（75页）](zh/public-review.pdf). Both passed the existing strict bilingual
+build checks. `public-review-build.json` binds the build-source revision,
+source hashes and exact published PDF hashes. Its original relative build
+paths are mapped to published filenames in `published_pdf_files`.
+Four actual pages were inspected: English 1/51 and Chinese 1/48.
+No route-map input appears in the TeX recorder inputs. This is compilation
+and public-copy checking, not full manuscript/scientific acceptance.
+
 Local source and full evidence revision:
 `378d5088a9a19e23458a54fe7ed66e9b89eb847a`.
 Existing complete local PDFs were delivered at

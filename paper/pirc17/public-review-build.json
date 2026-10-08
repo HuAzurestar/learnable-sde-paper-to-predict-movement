@@ -1,0 +1,53 @@
+{
+  "schema_version": "pirc17-review-build-v1",
+  "repository_head": "5949ae788d7adc7abc194d0cd334fe13e70c93be",
+  "working_tree_dirty_at_start": false,
+  "claim_ledger_sha256": "a31d70595019cc02470edf427286027508a0bdee2c9d229e987eb94bd2ba97c8",
+  "manuscripts": [
+    {
+      "language": "en",
+      "engine": "-pdf",
+      "source": "paper/pirc17/en/main.tex",
+      "source_sha256": "2d4fcf30a24cc376810948bc291686d27c24973b9444505e506aa9d0ff280ae9",
+      "pdf": "en/main.pdf",
+      "pdf_sha256": "409cdfa1a0b590dc0e53769caa9c0c54451043735ed4d61dadb63825c83acfc4",
+      "log": "en/main.log",
+      "log_sha256": "accc2266c5034b70688f3d75c863c074c0ad29fd7d34fac82b097a35ccfb86c7",
+      "tex_banner": "This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.3.1)  8 OCT 2026 10:38"
+    },
+    {
+      "language": "zh",
+      "engine": "-xelatex",
+      "source": "paper/pirc17/zh/main.tex",
+      "source_sha256": "c897642399a319f0b7115ea8355d90211ecc5370a0858fc2a0edf9392bbc6d61",
+      "pdf": "zh/main.pdf",
+      "pdf_sha256": "7475705536fb1d0ffb86b2f8d0847c811bce12eee6eeecd4dfb976366eaef7ab",
+      "log": "zh/main.log",
+      "log_sha256": "570d4969d6ed30317a6d8e1bce7770f8b60820711cd0579511cf8fa7262a57aa",
+      "tex_banner": "This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.1)  8 OCT 2026 10:39"
+    }
+  ],
+  "compilation_verified": true,
+  "empirical_claims_verified_by_build": false,
+  "acceptance_verified_by_build": false,
+  "ledger_declared_empirical_integration": false,
+  "ledger_declared_human_acceptance": false,
+  "public_review_projection": true,
+  "published_pdf_files": {
+    "en": "paper/pirc17/en/public-review.pdf",
+    "zh": "paper/pirc17/zh/public-review.pdf"
+  },
+  "original_local_pdfs_published": false,
+  "original_private_route_assets_loaded": false,
+  "original_local_review_bindings_requalified": false,
+  "reviewed_pages": {
+    "en": [
+      1,
+      51
+    ],
+    "zh": [
+      1,
+      48
+    ]
+  }
+}
