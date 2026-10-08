@@ -8,10 +8,13 @@ The manifest records the actual inspected pages and route-input check. This is c
 and public-copy checking, not full manuscript/scientific acceptance.
 
 Local manuscript source revision:
-`4b10fd315c550cbb5a143b5e5d5b3765d2bb71be`.
-Previous complete local PDFs were delivered at
-`42906141d41174ecb0ba43d3c47e31e6b65777b4` (English 85 pages,
-Chinese 82 pages). Those PDFs are **not** uploaded because they embed
+`f758a02f2391e6426f56561146f6f10fc56575bd`.
+Current complete local PDFs were delivered at
+`090de63459a95ffb966701f597cf2b0cb5de9767` (English 88 pages,
+Chinese 85 pages); the public copies are English 81 / Chinese 78 pages.
+The earlier `42906141d41174ecb0ba43d3c47e31e6b65777b4` delivery
+(English 85 / Chinese 82 pages) is historical, not the current revision.
+The complete local PDFs are **not** uploaded because they embed
 local-only real-route illustrations.
 
 This branch is a public-base-parent snapshot, not an upload of private
@@ -39,6 +42,17 @@ CI installs `requirements-test.txt` for the existing numerical, PDF and image
 test imports. The complete original pytest command remains unchanged; missing
 local route inputs remain explicit failures, not exclusions or acceptance.
 
+Both PDF jobs retain their historical `paper/en` and `paper/zh` builds and
+also compile the current `paper/pirc17/{en,zh}/main.tex` manuscripts.
+The added steps use the original strict `build_pirc17.check_log` checker:
+unresolved references/citations, missing characters and overfull boxes fail.
+Current PIRC-17 CI PDF artifacts are named `pirc17-en-<sha>` and
+`pirc17-zh-<sha>`; historical `paper-en-<sha>`/`paper-zh-<sha>` artifacts
+remain distinct. A passing PDF job is not a scientific audit or permission
+to release the withheld routes, and does not make the complete evidence gate
+pass. The committed public-review PDFs remain bound by their original exact
+source/build manifest; workflow changes alone do not rebuild that evidence.
+
 Public pre-existing aggregate statistics and non-route diagrams are retained.
 No raw GPX, positions, fitted checkpoints, private maps or unpublished
 route illustrations are uploaded. No new fit, forecast, particle scoring or map
@@ -47,17 +61,18 @@ explicitly identified below; it is not another particle-score computation.
 
 ## Pending experiment delivery
 
-At 2026-10-08 17:09 Hong Kong time: original science 11,015 successful,
+At 2026-10-08 19:21 Hong Kong time: original science 11,015 successful,
 5 failed and 0 runnable out of 11,020; common scores 11,368 rows/58 groups;
-original auxiliary work 220/261 successful, 41 remaining. These are workload
+original auxiliary work 235/261 successful, 26 remaining. These are workload
 dispositions, not 11,020 independent participants or final accepted effects.
 The single independent saved-output audit, final aggregate export, original
 16 tables/16 figure groups and final numeric manuscript integration remain
 pending. Audited aggregate results will be added to this PR when available.
 
-The opening now explicitly distinguishes terminal scientific predictions and
-closed scoring from pending auxiliary trials, inference and independent output
-audit. The inventory table in Appendix A.18 reconciles all 11,368 score slots:
+The opening now explicitly distinguishes terminal scientific predictions,
+closed scoring and completed original paired/mechanism analysis from pending
+auxiliary trials and independent output audit. The inventory table in
+Appendix A.18 reconciles all 11,368 score slots:
 8,120 method forecasts plus 2,900 terrain forecasts, 290 same-grid references
 and 58 inertial paths. Five failed scientific forecasts remain failed slots,
 not zero errors. The 11,368 slots are not independent observed participants.
@@ -120,4 +135,29 @@ Auxiliary completion and audit do not themselves replace failed forecasts.
 The historical census tables, scientific tables/figures/equations and every
 previous claim-ledger root are preserved. No forecast arrays or private routes
 were opened for this count-only correction; it is not the original independent
-saved-output audit, final inference, evidence-card acceptance or full completion.
+saved-output audit, evidence-card acceptance or full completion.
+
+## Completed original analysis, pending independent audit
+
+Section 5.4 (English 38 / Chinese 35) adds one analysis-state table alongside
+all unchanged historical scientific tables. The original once-only registered
+analysis returned an immutable result, not independent audit approval.
+`analysis-stage-summary-v1.json` is a hash-bound anonymous scalar projection
+covering all three modes and 21 family dispositions, including the four whole
+unavailable families. Private case IDs, routes and output arrays are absent.
+
+The 21 primary method contrasts retain their original exact estimates,
+simultaneous intervals and Holm values: 14 practical-equivalence states and
+7 inconclusive states, with no practical-benefit or harm state. Equivalence
+requires the original strict interval/decision conditions, not merely a
+non-significant zero test. GMM's interval lies inside the fixed
+plus/minus 41.100259 m band; dt300's interval excludes zero but crosses its
+practical boundary. The two identical d2 aliases remain inconclusive because
+zero development SD is not planning-power evidence; dt600 likewise retains
+insufficient planning power.
+
+All 28 original mechanism gates per mode were computed/passed. Weak
+Euler/EM nonnegative-error checks do not bound accuracy, and every primary
+resolution-invariant verdict remains inconclusive. These are pending-audit
+algorithm-recorded states, not independent verification, a ranking of all
+models, final human acceptance or justification for new large experiments.
