@@ -2242,6 +2242,8 @@ ES 仍为四个登记目标时刻的平均，FDE 为最后目标误差；按类�
 耕地组仅三个记录块，不是 15 条独立轨迹。另七个未覆盖的起点类别在投影中保留 null 指标。
 正式方法推断仍使用全部 46 块；实际地形效应仍须依照独立登记的地形比较及其证据资格判定。
 
+\input{inertial-primary-comparison.tex}
+
 \section{地形消融结果}
 \label{sec:terrain-results}
 \pending\ 整体比较链接 \texttt{terrain:all-vs-base}，四组链接
@@ -2396,8 +2398,6 @@ rollout 及预测期间的地图读取和查询。原始输入与检查点准备
 采样 RSS 是下界，进程生命周期峰值不是单次试验峰值。
 地图查询耗时已包含在 rollout 内，不能再次相加；本 CPU 实验不测 GPU 延迟或显存。
 
-
-\input{inertial-primary-comparison.tex}
 
 \section{讨论与局限}
 \subsection{分布评分降低不保证位置误差降低}

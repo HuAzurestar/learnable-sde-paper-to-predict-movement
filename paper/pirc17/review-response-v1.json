@@ -155,11 +155,11 @@
     },
     {
       "path": "paper/pirc17/en/main.tex",
-      "sha256": "d45fd92a180aac587be56398f4591813afd4a5d739539132c45802001739fa08"
+      "sha256": "45279f87aed53dcc261f9c0d93b4e6ffbc5beed0f421f263c0ca40a54041919b"
     },
     {
       "path": "paper/pirc17/zh/main.tex",
-      "sha256": "bae398b70600253c1d3a04dc6f7dd8d216bae71918eb60fffdf999537255cb07"
+      "sha256": "32988eb451751ae26f7391695d4179029cd25872ec7298ccf189ca86d93e6ae8"
     },
     {
       "path": "paper/pirc17/en/main.pdf",

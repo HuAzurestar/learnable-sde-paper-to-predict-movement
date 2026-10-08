@@ -25,6 +25,9 @@ def test_exact_bilingual_saved_score_tables_and_manuscript_input(language):
     assert "2095.78" in text and "1008.35" in text
     main = (PAPER / language / "main.tex").read_text(encoding="utf-8")
     assert main.count(r"\input{inertial-primary-comparison.tex}") == 1
+    section = "Method ablation results" if language == "en" else "方法消融结果"
+    next_section = "Terrain ablation results" if language == "en" else "地形消融结果"
+    assert main.index(r"\section{" + section + "}") < main.index(r"\input{inertial-primary-comparison.tex}") < main.index(r"\section{" + next_section + "}")
     assert "41.100259" in text
     assert "49--67" in text and "1785--1814" in text
 
