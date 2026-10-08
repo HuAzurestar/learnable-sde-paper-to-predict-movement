@@ -8,14 +8,27 @@ The manifest records the actual inspected pages and route-input check. This is c
 and public-copy checking, not full manuscript/scientific acceptance.
 
 Local manuscript source revision:
-`f758a02f2391e6426f56561146f6f10fc56575bd`.
+`eeea580fa7bafa078532b3bb78402e7fa7ae646d`.
 Current complete local PDFs were delivered at
-`090de63459a95ffb966701f597cf2b0cb5de9767` (English 88 pages,
+`fb859f81c50bd2b60c492740285571af6b1a8829` (English 88 pages,
 Chinese 85 pages); the public copies are English 81 / Chinese 78 pages.
+The previous analysis-stage delivery `090de63459a95ffb966701f597cf2b0cb5de9767`
+is historical; its public build proof is retained separately in
+`public-review-analysis-stage-build-v1.json`.
 The earlier `42906141d41174ecb0ba43d3c47e31e6b65777b4` delivery
 (English 85 / Chinese 82 pages) is historical, not the current revision.
 The complete local PDFs are **not** uploaded because they embed
 local-only real-route illustrations.
+
+The current main manuscripts disclose a confirmed host-interrupted original
+cold-runtime trial (English page56 / 中文52页). The exact original2315.9963217s
+elapsed record, original cost and five-trial denominator remain unchanged.
+The host-event gap is30min43s, not a value to subtract for a corrected latency.
+`runtime-interruption-disclosure-v1.json` contains anonymous bound scalars,
+not maps, raw routes, a replacement trial or a speedup/accuracy certification.
+The affected trial and summaries cannot establish uninterrupted latency;
+other trials are not thereby certified interruption-free. This update does
+not perform a new fit, forecast, score, resampling or map query.
 
 This branch is a public-base-parent snapshot, not an upload of private
 implementation history. The running science branch and experimental parameters

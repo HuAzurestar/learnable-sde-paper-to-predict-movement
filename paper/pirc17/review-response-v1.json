@@ -12,8 +12,8 @@
     }
   },
   "original_response_base_manuscript_commit": "dc5b05eabe12fff7294e30e50a82c78c9350a0eb",
-  "revision_base_commit": "f758a02f2391e6426f56561146f6f10fc56575bd",
-  "revision_identity": "Exact current local manuscript evidence is identified by the SHA256 values below. revision_base_commit is the clean source used by analysis-stage-review-build-v1.json for the EN88/ZH85 PDFs, not the future commit containing this response. Public projections retain these original-local bindings, not certification of withheld cases or replacement public PDFs. Hash synchronization is not review acceptance.",
+  "revision_base_commit": "eeea580fa7bafa078532b3bb78402e7fa7ae646d",
+  "revision_identity": "Exact current local manuscript evidence is identified by the SHA256 values below. revision_base_commit is the clean source used by runtime-interruption-review-build-v1.json for the EN88/ZH85 PDFs, not the future commit containing this response. Public projections retain these original-local bindings, not certification of withheld cases or replacement public PDFs. Hash synchronization and interruption disclosure are not review acceptance.",
   "status_definitions": {
     "draft_checked": "已核对当前工作稿中的针对性文稿修复；不是审查人验收，不表示最终实证资格或论文完成。",
     "partial": "已有修改，但原验收仍有证据、诊断或文稿缺口；如实披露限制不等于已经补齐。",
@@ -195,11 +195,11 @@
     },
     {
       "path": "paper/pirc17/en/main.pdf",
-      "sha256": "8de824801f1d982d8718b21cc1df2f67c49f91552d69b64df07aaa4eb230041f"
+      "sha256": "6fd86728f730fc30cb870b1dd1dbb113dda00cd549f2201ef668772b755e9cc5"
     },
     {
       "path": "paper/pirc17/zh/main.pdf",
-      "sha256": "361b7581ce6138ff9074f77f4004df2b2dd4d990cf0754ba328c2d36f6f84181"
+      "sha256": "e3fc063d2b898a93aa216ecb3b7dcc7a0f84631a97ea1eb3b5397c1cdb7003e7"
     },
     {
       "path": "paper/pirc17/en/all-method-absolute.tex",

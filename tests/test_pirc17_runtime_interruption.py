@@ -115,3 +115,28 @@ def test_cost_review_response_binds_new_disclosure_without_promoting_acceptance(
     ledger = json.loads((PAPER / "claim-ledger.json").read_text(encoding="utf-8"))
     assert not ledger["final_empirical_results_integrated"]
     assert not ledger["human_accepted"]
+
+
+@pytest.mark.parametrize("language", ["en", "zh"])
+def test_delivered_current_pdf_and_source_match_the_actual_new_build(language):
+    public_manifest = PAPER / "public-review-build.json"
+    is_public = public_manifest.exists()
+    manifest_path = public_manifest if is_public else (
+        PAPER / "runtime-interruption-review-build-v1.json")
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    row = next(row for row in manifest["manuscripts"] if row["language"] == language)
+    root = PAPER.parents[1]
+    source = root / row["source"]
+    pdf = root / manifest["published_pdf_files"][language] if is_public else (
+        PAPER / row["pdf"])
+    assert hashlib.sha256(source.read_bytes()).hexdigest() == row["source_sha256"]
+    assert hashlib.sha256(pdf.read_bytes()).hexdigest() == row["pdf_sha256"]
+    assert manifest["compilation_verified"] is True
+    assert manifest["working_tree_dirty_at_start"] is False
+    assert manifest["empirical_claims_verified_by_build"] is False
+    assert manifest["acceptance_verified_by_build"] is False
+    assert manifest["ledger_declared_human_acceptance"] is False
+    if is_public:
+        assert manifest["public_review_projection"] is True
+        assert manifest["original_private_route_assets_loaded"] is False
+        assert manifest["original_local_pdfs_published"] is False

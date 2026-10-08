@@ -1,0 +1,55 @@
+{
+  "schema_version": "pirc17-review-build-v1",
+  "repository_head": "09d6698b85c99a95198d5ced1851b2d55b6ad14a",
+  "working_tree_dirty_at_start": false,
+  "claim_ledger_sha256": "1846fd94213477e0261819cfac2adeca0ae0bca7cb4fccfab1d1bebd894e6793",
+  "manuscripts": [
+    {
+      "language": "en",
+      "engine": "-pdf",
+      "source": "paper/pirc17/en/main.tex",
+      "source_sha256": "d0f117d616ceeaa47a8d8b20d3fa2d22594be50ec9a6c990c77cb88b73639bfc",
+      "pdf": "en/main.pdf",
+      "pdf_sha256": "a362cb0a597227bbf2341ee387b707b3e9f454e2049b4c7f1d63b747d3b901c0",
+      "log": "en/main.log",
+      "log_sha256": "b5f1ce4e8f2a1e17408c434611b4008eb0954fd2914a3aa0d392c17fcb276191",
+      "tex_banner": "This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.3.1)  8 OCT 2026 18:57"
+    },
+    {
+      "language": "zh",
+      "engine": "-xelatex",
+      "source": "paper/pirc17/zh/main.tex",
+      "source_sha256": "b79b89308ed6fbbd14d737469d755e4573f57be5038f0a3a7dea9756dd10976e",
+      "pdf": "zh/main.pdf",
+      "pdf_sha256": "f58987f99b890afcfbeb17631cf0ad8616122e7c32fadb3b751cf43883129d10",
+      "log": "zh/main.log",
+      "log_sha256": "55e2e2cbe8d91db1047202f614b8c3f321735f777f54f80f0a8a05e2b684a45c",
+      "tex_banner": "This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.1)  8 OCT 2026 18:57"
+    }
+  ],
+  "compilation_verified": true,
+  "empirical_claims_verified_by_build": false,
+  "acceptance_verified_by_build": false,
+  "ledger_declared_empirical_integration": false,
+  "ledger_declared_human_acceptance": false,
+  "page_counts": {
+    "en": 81,
+    "zh": 78
+  },
+  "reviewed_pages": {
+    "en": [
+      38
+    ],
+    "zh": [
+      35
+    ]
+  },
+  "public_review_projection": true,
+  "published_pdf_files": {
+    "en": "paper/pirc17/en/public-review.pdf",
+    "zh": "paper/pirc17/zh/public-review.pdf"
+  },
+  "original_local_pdfs_published": false,
+  "original_private_route_assets_loaded": false,
+  "original_local_review_bindings_requalified": false
+}
