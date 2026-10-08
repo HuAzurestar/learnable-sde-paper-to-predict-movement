@@ -18,7 +18,6 @@
 \makeatother
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\ES}{\operatorname{ES}}
-\newcommand{\pending}{\textit{Awaiting the complete audited result bundle.}}
 \title{Probabilistic Movement Forecasting from Visible Trajectory Prefixes:\\
 Method Components and Terrain Information}
 \author{}
@@ -75,8 +74,10 @@ Full's nominal 90\% disk covers only 46.52\% of 30-minute targets; across all
 21.74--79.13\%. Thus an aggregate score improvement need not mean better
 endpoint accuracy or calibrated uncertainty.
 
-The independent saved-output replay is complete; final statistical
-qualification and human acceptance remain incomplete. Retained
+Independent saved-output and fixed-budget aggregate replay are complete.
+The 21 primary method comparisons yield 14 practically equivalent finite-algorithm
+states and seven inconclusive states; all resolution-invariant verdicts remain
+inconclusive, and human acceptance is incomplete. Retained
 interruptions make the registered terrain comparisons unavailable under the
 complete-family rule; map examples cannot establish terrain benefits. The
 evidence supports horizon-specific reporting of score, point error, region
@@ -150,8 +151,9 @@ The terrain design and its current unavailable inference answer are reported
 separately; they are not a positive terrain-performance contribution.
 Execution records support traceability but are not treated as model novelty.
 All reported findings remain conditional on this cohort, retained clock,
-feature representation and finite algorithms; independent replay is still
-required before final qualification.
+feature representation and finite algorithms. Independent saved-output and
+fixed-budget aggregate replay are complete; they do not remove these limits
+or certify resolution-invariant effects or human acceptance.
 
 \section{Related work and scope}\label{sec:related-work}
 \subsection{Continuous-time motion and switching dynamics}
@@ -1732,7 +1734,8 @@ three-point prefix is separate from the retained future observation route.
 Only four forecast times were saved: connecting their means is a visual
 guide, not a continuous saved predictive trajectory. Illustrations generate
 no new forecasts, fits or primary inferential results and do not substitute
-for the pending independent saved-output audit. At the owner's explicit
+for the now-completed independent saved-output audit or establish general
+forecast reliability. At the owner's explicit
 request, selected rendered case panels are now included in this local working
 manuscript (Section~\ref{sec:case-horizons}); raw GPX and coordinate rows
 remain excluded. Public redistribution, privacy and map-licence review are
@@ -2371,11 +2374,12 @@ unique/additive/causal attribution; history is a baseline diagnostic.
 
 The five retained failures already make both primary terrain families
 unavailable (Table~\ref{tab:failure-family-dispositions}). Method tail flags
-and planning rows are not final qualification: whole saved-output verification
-remains pending. The original mechanism analysis has completed, but its saved
-states do not replace independent verification. Final rows must carry availability,
-mechanisms, planning reason, numerical applicability, raw/qualified states and
-tail diagnostics separately. This description does not complete those tasks.
+and planning rows alone are not final qualification. The independent saved-output
+audit and fixed-budget aggregate replay have completed; their evidence bindings
+and the 112-card inventory are given in Section~\ref{sec:audited-review-update}.
+Availability, mechanisms, planning reasons, numerical applicability, raw/qualified
+states and tail diagnostics remain separate fields. Their successful arithmetic
+replay does not establish global numerical convergence or human acceptance.
 
 \section{Method ablation results}
 \label{sec:method-results}
@@ -2386,9 +2390,11 @@ blocks and five forecast seeds. The complete primary method grid contains
 Table~\ref{tab:method-reader} identifies each question and its actual control.
 The identity ledger has 22 arms and 36 execution slots, not 36 independent algorithms.
 Paired distributional changes, numerical diagnostics and computation time
-answer different questions. The results below are preliminary saved-score
-arithmetic, pending output verification, seed stability, mechanism and cost
-evidence. Table~\ref{tab:forecast-counts} in Section~\ref{sec:forecast-inventory}
+answer different questions. The results below retain the original saved scores,
+now checked by the completed independent output audit and fixed-budget aggregate
+replay. Seed/mechanism diagnostics and all 165 runtime records are available;
+their scope and interruption limits are not waived by successful replay.
+Table~\ref{tab:forecast-counts} in Section~\ref{sec:forecast-inventory}
 gives the planned workload; Appendix~\ref{sec:execution-coverage} retains
 the separate captured completeness census.
 
@@ -2772,8 +2778,9 @@ the nominal probability and region size.
 These are original nominal target slots, not new interpolated exact-time
 predictions. The \hyperref[sec:target-times]{saved target-clock description}
 binds the three illustrated models,
-not every prediction array of all 28 configurations; the original independent
-output audit remains pending.
+not every prediction array of all 28 configurations. The separate completed
+whole saved-output audit covers the complete score grid; neither this narrow
+description nor that audit certifies a physically sourced target clock.
 \input{method-horizon-overview.tex}
 
 \FloatBarrier
@@ -2806,7 +2813,9 @@ is slightly lower (45.22\% versus 46.52\%). The display therefore reveals
 horizon-dependent descriptive tradeoffs, not a universal size--quality rule,
 global winner test or causal mechanism. No new per-horizon interval or
 calibration adjustment is introduced; block-resolved diagnostics remain
-the three-model description below, and independent output replay is pending.
+the three-model description below. The completed independent output replay
+does not turn those three illustrative models into all-configuration
+block-resolved calibration evidence.
 \input{method-region-overview.tex}
 \FloatBarrier
 
@@ -2890,7 +2899,9 @@ The projection \path{paper/pirc17/calibration-description-v1.json} retains
 the complete original 690-score bindings without private trajectory IDs
 or coordinates. Its ES, FDE and 90\% coverage reconcile to the unchanged
 original stage table. Missing, failed, duplicate or wrong-source rows reject
-the whole projection; the independent saved-output audit is still pending.
+the whole projection. The separate independent saved-output audit is complete;
+this descriptive projection does not itself establish calibration or participant
+independence.
 
 \begin{figure}[htbp]
 \centering
@@ -3122,8 +3133,8 @@ contrasts; the leave-one-in failures affect the supporting family.
 No terrain effect or interval is estimated from their successful
 intersections. Consequently, these results do not establish that roads,
 rivers, land cover or surface features improve, harm or are equivalent to
-the history baseline. Completing auxiliary trials or the pending audit
-does not by itself replace failed forecasts or restore these comparisons.
+the history baseline. The completed auxiliary trials and saved-output audit
+do not replace failed forecasts or restore these comparisons.
 The closed counts are a saved-status description, not an independent
 raw-output audit or final evidence-card acceptance.
 
@@ -3318,8 +3329,10 @@ sleep, excluding the trial or rerunning it. This trial and any affected
 quantile or normalized mean describe interruption-exposed elapsed time,
 not isolated uninterrupted prediction latency or evidence of a speedup.
 The nested terrain-query span shares this limitation. Other trials have
-not thereby been certified free of interruption, and complete runtime
-qualification remains pending. This timing disclosure alone neither
+not thereby been certified free of interruption. All 165 original timing
+records are complete, but uninterrupted latency is not certified by that
+inventory: this is a retained evidence limitation, not an unfinished trial queue.
+This timing disclosure alone neither
 recomputes nor independently validates the saved predictive scores.
 
 The same later-clock mapping additionally flags \texttt{all-terrain} cold
@@ -3569,7 +3582,8 @@ Confirmed constant-mask regularization confounding also limits a pure
 information-effect interpretation. We therefore withhold claims that terrain
 groups improve forecasting, rather than interpreting unavailable evidence
 as equivalence or no effect. Independent saved-output replay is complete;
-final qualifications remain outstanding, as stated in the opening status box.
+global numerical convergence, publication review and human acceptance remain
+outstanding, as stated in the opening status box.
 The scientific answers above are those of a working draft, not final
 accepted effects.
 
@@ -3579,8 +3593,14 @@ The methods in this draft were checked against protocol content identity
 \path{2267ab84fa77ff4039234a61e8f44be1c3713317d8ad2d1bb4ced9af0c5b293a}
 and execution identity
 \path{c3e44393f6bc5544aaa21bb273c94eaecb9d0becb4e0590771355c4c0be9b6c2}.
-The eventual public export and card identities, exact manuscript revision,
-claim links and review evidence will be bound after result completion.
+The original completed analysis, saved-output audit, public export and cards
+are bound in \path{paper/pirc17/final-results-v1/}; later fixed-budget arithmetic
+and card-link checks are in \path{paper/pirc17/qualification-v1/}.
+The unchanged complete anonymous input is now published losslessly in
+\path{paper/pirc17/replay-input-v1/}. Isolated standard-library commands there
+reproduce all six CRPS/endpoint-quantile package files byte-for-byte, not every
+original paired verdict, figure and PDF. That complete public rebuild path
+remains to be independently verified; source hashes alone cannot replace it.
 The executable semantics are in the PIRC-17 modules for direct linear fitting,
 causal rollout, metric registry, block inference and evidence-card generation.
 An absence of raw private data from this paper is a publication boundary, not
@@ -4067,8 +4087,8 @@ original input rows below, rather than inferring them from solver success.
 The route-free saved-fit projection is
 \path{paper/pirc17/fit-diagnostics-v1.json}. It preserves source hashes but
 exports no fitted coefficient matrices, trajectory identifiers or private
-paths. These diagnostics do not replace the pending saved-forecast audit
-or authorize a final terrain-effect claim.
+paths. These development-fit diagnostics are separate from the completed
+saved-forecast audit and do not authorize a final terrain-effect claim.
 
 \paragraph{Original input design, masks and regularization.}
 We read the original 404 training and 81 validation origin rows from 397
@@ -4220,8 +4240,10 @@ projection is \path{paper/pirc17/method-seed-stability-v1.json}.
 \label{sec:bootstrap-table-detail}
 The following unchanged table and its caption describe the earlier snapshot.
 The current completed mechanism-analysis status is disclosed in
-Section~\ref{sec:saved-analysis-status}; independent saved-output replay is
-still pending. The historical caption does not describe today's mechanism status.
+Section~\ref{sec:saved-analysis-status}; independent saved-output and fixed-budget
+aggregate replay are complete. The historical caption describes its captured
+stage, not today's mechanism or audit status. Second-stream endpoints and
+sampling indices absent from the historical projection are not fabricated.
 \begin{longtable}{lrrrl}
 \caption{Existing tail diagnostics for all 21 method contrasts; values reconcile with the stage effect table. Mechanisms unevaluated and saved-output audit pending. Shift is maximum simultaneous-endpoint change between streams in metres; T means finite intervals and shift within one quarter of the practical margin.}\label{tab:bootstrap-diagnostics}\\
 \toprule

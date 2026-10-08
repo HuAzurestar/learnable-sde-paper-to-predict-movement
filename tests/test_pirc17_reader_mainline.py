@@ -219,6 +219,20 @@ def test_detailed_development_section_is_verbatim_except_noise_moved_to_model(la
     # this known trailing layout command changes no diagnostic content.
     if language == "zh":
         detailed = detailed.removesuffix("\\clearpage\n")
+    # The old layout guard must not freeze an obsolete pending-audit claim.
+    # Permit only this exact reviewed status sentence; every other diagnostic
+    # byte below remains compared verbatim, and current-review tests separately
+    # preserve every scientific environment, label and bibliography in order.
+    old_note, current_note = ((
+        "paths. These diagnostics do not replace the pending saved-forecast audit\n"
+        "or authorize a final terrain-effect claim.",
+        "paths. These development-fit diagnostics are separate from the completed\n"
+        "saved-forecast audit and do not authorize a final terrain-effect claim.")
+        if language == "en" else (
+        "不导出拟合系数矩阵、轨迹标识或私有路径。这些诊断不替代尚待完成的保存预测审计，",
+        "不导出拟合系数矩阵、轨迹标识或私有路径。这些开发拟合诊断与已完成的保存预测审计分开，"))
+    assert expected.count(old_note) == detailed.count(current_note) == 1
+    expected = expected.replace(old_note, current_note, 1)
     assert detailed == expected
     assert text.index(r"\label{sec:saved-fit-diagnostics}") > text.index(r"\appendix")
     summary = subsection(text, "sec:development-fit-summary")
