@@ -34,6 +34,10 @@
   "response_does_not_replace_original_full_goal": true,
   "evidence_files": [
     {
+      "path": "paper/pirc17/runtime-interruption-census-v1.json",
+      "sha256": "ba0725440ee723507c65ae9b56441d694bb4bf73b5ece3537ba5f01d43b2edf7"
+    },
+    {
       "path": "paper/pirc17/runtime-interruption-disclosure-v1.json",
       "sha256": "27cf48830386bf67b6fcf9e78e72b8ab53b8b7533562e6e33d8d497868de721d"
     },
@@ -187,11 +191,11 @@
     },
     {
       "path": "paper/pirc17/en/main.tex",
-      "sha256": "eb91a9f293706c59dcbbafe923c309f74ee3ef31908277dba1bb8b7a1999c69c"
+      "sha256": "92e7a8fcc9d223118d0d31c3d990528023121963f7586ef24160108d0bbba72a"
     },
     {
       "path": "paper/pirc17/zh/main.tex",
-      "sha256": "f43b43ad40d31e074143b3bd3c11774881132df191b1c1dd47e8113641f7e930"
+      "sha256": "5b961d06348cea1d0e9d2ed946400aee3e6631dabe591eac28f2d6f8dd1ff447"
     },
     {
       "path": "paper/pirc17/en/main.pdf",
@@ -1015,11 +1019,12 @@
         "sec:runtime-environment"
       ],
       "evidence": [
+        "paper/pirc17/runtime-interruption-census-v1.json",
         "paper/pirc17/runtime-interruption-disclosure-v1.json",
         "paper/pirc17/preliminary-reader-presentation-v1.json",
         "paper/pirc17/claim-ledger.json"
       ],
-      "response": "已明确五条普通耗时均为单次例子，不是p50/p95；给CPU环境与计时边界，区分库线程、两lane墙钟、provider冷与OS冷，GPU不适用。 本轮据原计时源码明确p50/p95是成功试验总毫秒延迟，按实际目标时长归一化的是另一个均值；OS缓存不重置也未经核实，不能以协议的warm字样认证温缓存。CPU清单移至附录，失败分母、预热排除、嵌套耗时及RSS/生命周期峰值限制保持。原计时记录不重标或重测，阶段测算不作论文实测成本。 本轮将已确认主机休眠影响写入双语正文：原loo-surface冷启动重复0保存2315.9963217000004秒、实际目标1801秒，主机休眠/恢复事件相隔1843秒（30分43秒）。后续时钟配对映射确认重叠，不冒称原保存UTC端点。匿名标量投影绑定原材料摘要；原值、成本、五次分母全部保留，不扣时、不排除、不重跑。该项及受影响汇总不可认证无中断延迟、加速或嵌套地图查询独立成本，不据此认证其他试验无中断，也不改变保存预测评分。",
+      "response": "已明确五条普通耗时均为单次例子，不是p50/p95；给CPU环境与计时边界，区分库线程、两lane墙钟、provider冷与OS冷，GPU不适用。 本轮据原计时源码明确p50/p95是成功试验总毫秒延迟，按实际目标时长归一化的是另一个均值；OS缓存不重置也未经核实，不能以协议的warm字样认证温缓存。CPU清单移至附录，失败分母、预热排除、嵌套耗时及RSS/生命周期峰值限制保持。原计时记录不重标或重测，阶段测算不作论文实测成本。 本轮将已确认主机休眠影响写入双语正文：原loo-surface冷启动重复0保存2315.9963217000004秒、实际目标1801秒，主机休眠/恢复事件相隔1843秒（30分43秒）。后续时钟配对映射确认重叠，不冒称原保存UTC端点。匿名标量投影绑定原材料摘要；原值、成本、五次分母全部保留，不扣时、不排除、不重跑。该项及受影响汇总不可认证无中断延迟、加速或嵌套地图查询独立成本，不据此认证其他试验无中断，也不改变保存预测评分。 后续既有计时标量清点绑定153/165原记录，另标记all-terrain冷启动重复3的3000.4638613秒；两项及受影响成本汇总均保留中断限制。检查到主机时钟变更，后续计数器映射不认证原UTC来源，未标记记录也不认证连续运行；该部分清点不取代完整165项资格或独立保存输出审计。",
       "remaining": "原75cold/15warmup/75warm计时及离线评分/内存/墙钟成本汇总仍待；五次重复p95只能描述，不作总体尾延迟结论。受影响的原计时汇总须持续标明中断暴露，不能仅凭队列完成或校验通过认证无中断延迟；其他计时区间完整核对仍待，任何替代试验须另提最小方案，不能自动重跑。本项保留awaiting_original_results，不以披露限制替代最终成本资格或审查人验收。",
       "final_review_accepted": false
     },

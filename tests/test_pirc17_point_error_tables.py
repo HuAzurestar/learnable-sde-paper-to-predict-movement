@@ -75,13 +75,17 @@ def test_new_ledger_pins_exact_files_and_retains_every_previous_root_and_review_
     review=json.loads((PAPER/"review-response-v1.json").read_text(encoding="utf-8"))
     assert review["accepted_items"]==0 and not review["all_review_items_or_paper_complete"]
     assert review["status_counts"]=={"draft_checked":20,"partial":14,"awaiting_original_results":7,"permission_unverified":1}
-    # The original 81 evidence paths remain; the one new timing disclosure is additive.
+    # Original81 paths remain; both individually bound timing disclosures are additive.
     original=[row for row in review["evidence_files"]
-              if row["path"]!="paper/pirc17/runtime-interruption-disclosure-v1.json"]
+              if row["path"] not in {"paper/pirc17/runtime-interruption-disclosure-v1.json",
+                                     "paper/pirc17/runtime-interruption-census-v1.json"}]
     assert len(original)==81
-    assert len(review["evidence_files"])==82
+    assert len(review["evidence_files"])==83
     added=[row for row in review["evidence_files"] if row not in original]
     assert added==[{
+        "path":"paper/pirc17/runtime-interruption-census-v1.json",
+        "sha256":"ba0725440ee723507c65ae9b56441d694bb4bf73b5ece3537ba5f01d43b2edf7",
+    },{
         "path":"paper/pirc17/runtime-interruption-disclosure-v1.json",
         "sha256":"27cf48830386bf67b6fcf9e78e72b8ab53b8b7533562e6e33d8d497868de721d",
     }]

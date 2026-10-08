@@ -3266,6 +3266,14 @@ not thereby been certified free of interruption, and complete runtime
 qualification remains pending. This timing disclosure alone neither
 recomputes nor independently validates the saved predictive scores.
 
+The same later-clock mapping additionally flags \texttt{all-terrain} cold
+repetition~3 (3000.464~s, actual target 1801~s) in a partial 153-of-165
+saved-record census. Host clock-change records also exist, so these mappings
+are not independent UTC provenance certification. Both flagged subjects
+require the interruption caveat in affected cost summaries; absence of a
+flag does not certify uninterrupted execution. Only saved scalar metadata
+was read, without recomputing scores or loading prediction arrays.
+
 
 \section{Discussion and limitations}
 \subsection{A lower distributional score is not a point-error guarantee}
