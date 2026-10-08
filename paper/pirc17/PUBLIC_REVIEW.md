@@ -36,6 +36,10 @@ The original map-dependent tests remain visible for reviewer context and
 cannot pass without their withheld local inputs; do not interpret that as
 loss of local experiment results or weaken the tests to manufacture a pass.
 
+CI installs `requirements-test.txt` for the existing numerical, PDF and image
+test imports. The complete original pytest command remains unchanged; missing
+local route inputs remain explicit failures, not exclusions or acceptance.
+
 Public pre-existing aggregate statistics and non-route diagrams are retained.
 No raw GPX, positions, fitted checkpoints, private maps or unpublished
 route illustrations are uploaded. No new fit, forecast, scoring or map
