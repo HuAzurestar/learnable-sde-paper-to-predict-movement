@@ -1,30 +1,30 @@
 {
   "schema_version": "pirc17-review-build-v1",
-  "repository_head": "5949ae788d7adc7abc194d0cd334fe13e70c93be",
+  "repository_head": "afd0083fc36e4cc634a82c30a63c264888064d0b",
   "working_tree_dirty_at_start": false,
-  "claim_ledger_sha256": "a31d70595019cc02470edf427286027508a0bdee2c9d229e987eb94bd2ba97c8",
+  "claim_ledger_sha256": "0e42ea2c3b9eaa7dfe16542eaf3d3fac1322bc65e0bdcc0f3e8b4dbdfadf48fc",
   "manuscripts": [
     {
       "language": "en",
       "engine": "-pdf",
       "source": "paper/pirc17/en/main.tex",
-      "source_sha256": "2d4fcf30a24cc376810948bc291686d27c24973b9444505e506aa9d0ff280ae9",
+      "source_sha256": "457b2d81d00757617f6e3e426d21d9e583f75a353e61d2f40e8057feb0d2f80c",
       "pdf": "en/main.pdf",
-      "pdf_sha256": "409cdfa1a0b590dc0e53769caa9c0c54451043735ed4d61dadb63825c83acfc4",
+      "pdf_sha256": "e346fd785108e9a17ba391d77a6a9a41a739f2bda2883614281c77b8f92bab38",
       "log": "en/main.log",
-      "log_sha256": "accc2266c5034b70688f3d75c863c074c0ad29fd7d34fac82b097a35ccfb86c7",
-      "tex_banner": "This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.3.1)  8 OCT 2026 10:38"
+      "log_sha256": "029b64404b95247868f2d845e31d441f657470124a69e53ea5afbc51aa35d8f6",
+      "tex_banner": "This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.3.1)  8 OCT 2026 15:19"
     },
     {
       "language": "zh",
       "engine": "-xelatex",
       "source": "paper/pirc17/zh/main.tex",
-      "source_sha256": "c897642399a319f0b7115ea8355d90211ecc5370a0858fc2a0edf9392bbc6d61",
+      "source_sha256": "0f0fcf2d1a744addf56c24555f68b0f25328b041e5bedca03fd42df40e227c82",
       "pdf": "zh/main.pdf",
-      "pdf_sha256": "7475705536fb1d0ffb86b2f8d0847c811bce12eee6eeecd4dfb976366eaef7ab",
+      "pdf_sha256": "1cd46133c0b03bedc3d4acfb6fb107ced18983923e25c03b802a7442ca5d352d",
       "log": "zh/main.log",
-      "log_sha256": "570d4969d6ed30317a6d8e1bce7770f8b60820711cd0579511cf8fa7262a57aa",
-      "tex_banner": "This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.1)  8 OCT 2026 10:39"
+      "log_sha256": "c47a6f005dd93210b1d3212012ccf2713b77c919550c640f742074000be2ee32",
+      "tex_banner": "This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.1)  8 OCT 2026 15:19"
     }
   ],
   "compilation_verified": true,
@@ -42,12 +42,16 @@
   "original_local_review_bindings_requalified": false,
   "reviewed_pages": {
     "en": [
-      1,
-      51
+      49,
+      50
     ],
     "zh": [
-      1,
-      48
+      46,
+      47
     ]
+  },
+  "page_counts": {
+    "en": 79,
+    "zh": 75
   }
 }
