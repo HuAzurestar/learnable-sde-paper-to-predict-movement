@@ -2122,5 +2122,32 @@
     "full_manuscript_reader_or_human_acceptance_obtained": false,
     "publication_permissions_verified": false,
     "final_paper_or_all_review_items_complete": false
+  },
+  "inertial_primary_manuscript_revision": {
+    "source_base_commit": "cc74e5d0639df849f60044e991b702689d8f01fd",
+    "review_items": [
+      "P1-17"
+    ],
+    "projection": "paper/pirc17/inertial-primary-description-v1.json",
+    "projection_sha256": "80725a94a86bcd58d1bc71f8698221eee5c17e0276e14109425ecdac69f9eb82",
+    "reader": "scripts/describe_pirc17_inertial.py",
+    "reader_sha256": "2254509e2d14c34583c7081345a3946f94563c73800fa808fa7d340680f68cbc",
+    "renderer": "scripts/render_pirc17_inertial_tables.py",
+    "renderer_sha256": "6a96dbb4a0a440cafb11d98e21cfd54cac8251585aa75becff7f4d301fb5e29f",
+    "original_inertial_tasks_completed": 58,
+    "primary_recording_hash_blocks": 46,
+    "primary_reference_paths": 46,
+    "primary_full_forecasts": 230,
+    "bilingual_tex_sha256": {
+      "en": "8b68a8e599b65fa80c7f0fc012756afb09576403f94299810e70c75a00574700",
+      "zh": "075d3418d939d868baa488c8ac5d618869ab8aabb481c47e56edba1c90e2d6b2"
+    },
+    "scope": "New descriptive primary reference tables from already-scored complete original pairs; not final empirical integration or independently audited superiority. Average five Full forecast seeds within each recording-hash block, then equal-weight46 blocks. Deterministic reference is never replicated. Original30s target tolerance and validation-based delta retained. All previous scientific values and blocks remain unchanged.",
+    "new_fits_forecasts_scores_resampling_or_map_queries": 0,
+    "independent_saved_output_audit_completed": false,
+    "final_cards_or_scientific_qualification_completed": false,
+    "full_manuscript_reader_or_human_acceptance_obtained": false,
+    "publication_permissions_verified": false,
+    "final_paper_or_all_review_items_complete": false
   }
 }

@@ -1,23 +1,22 @@
 # Public PIRC-17 review projection — not the complete local manuscript
 
-Read the public copies: [English (78 pages)](en/public-review.pdf) and
-[中文（75页）](zh/public-review.pdf). Both passed the existing strict bilingual
-build checks. `public-review-build.json` binds the build-source revision,
+Read the public copies: [English](en/public-review.pdf) and
+[中文](zh/public-review.pdf). `public-review-build.json` binds the strict build-source revision,
 source hashes and exact published PDF hashes. Its original relative build
 paths are mapped to published filenames in `published_pdf_files`.
-Four actual pages were inspected: English 1/51 and Chinese 1/48.
-No route-map input appears in the TeX recorder inputs. This is compilation
+The manifest records the actual inspected pages and route-input check. This is compilation
 and public-copy checking, not full manuscript/scientific acceptance.
 
 Local source and full evidence revision:
-`378d5088a9a19e23458a54fe7ed66e9b89eb847a`.
-Existing complete local PDFs were delivered at
+`bd0a4ad57c16f6ca920e24947c350667a52e86e0`.
+Previous complete local PDFs were delivered at
 `42906141d41174ecb0ba43d3c47e31e6b65777b4` (English 85 pages,
 Chinese 82 pages). Those PDFs are **not** uploaded because they embed
 local-only real-route illustrations.
 
 This branch is a public-base-parent snapshot, not an upload of private
-implementation history. The local science/paper branches are unchanged.
+implementation history. The running science branch and experimental parameters
+are unchanged. The paper branch includes the saved-score comparison below.
 The original 42-item HTML review has SHA-256
 `457688e8ba81c88b6c9f71f22da8f457fa2245809e1b1368c5e0aef5b824b65d`.
 `review-response-v1.json` and `claim-ledger.json` describe the **original
@@ -47,13 +46,29 @@ query is run for this projection.
 
 ## Pending experiment delivery
 
-At 2026-10-08 10:22 Hong Kong time: original science 11,015 successful,
+At 2026-10-08 15:11 Hong Kong time: original science 11,015 successful,
 5 failed and 0 runnable out of 11,020; common scores 11,368 rows/58 groups;
-original auxiliary work 169/261 successful, 92 remaining. These are workload
+original auxiliary work 207/261 successful, 54 remaining. These are workload
 dispositions, not 11,020 independent participants or final accepted effects.
 The single independent saved-output audit, final aggregate export, original
 16 tables/16 figure groups and final numeric manuscript integration remain
 pending. Audited aggregate results will be added to this PR when available.
+
+## New saved-score manuscript comparison
+
+Both manuscripts now include two tables comparing the original deterministic
+inertial reference with Full on all 46 prespecified primary blocks. The 46
+reference paths are not replicated: five Full seeds are averaged within each
+block before equal-weight averaging across blocks (230 Full forecasts).
+The aggregate projection and read-only rendering scripts are included.
+
+Weighted ES is 824.73 m for inertial and 477.85 m for Full; lower is better.
+Inertial has lower mean ES at 1 and 5 minutes; Full has lower mean ES at 15 and
+30 minutes. The text distinguishes distributional ES from mean-path ADE/FDE.
+These are existing-score descriptive means, not a new confidence interval,
+significance test, independently audited superiority claim or evidence against
+unexecuted external models. Original target tolerance and validation-based
+delta remain unchanged. No new experiment was run.
 
 Opening this review does not authorize merge, paper release, route publication,
 new large experiments or scientific acceptance. The historical release

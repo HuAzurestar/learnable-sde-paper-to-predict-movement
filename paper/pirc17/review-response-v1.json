@@ -34,6 +34,26 @@
   "response_does_not_replace_original_full_goal": true,
   "evidence_files": [
     {
+      "path": "paper/pirc17/inertial-primary-description-v1.json",
+      "sha256": "80725a94a86bcd58d1bc71f8698221eee5c17e0276e14109425ecdac69f9eb82"
+    },
+    {
+      "path": "scripts/describe_pirc17_inertial.py",
+      "sha256": "2254509e2d14c34583c7081345a3946f94563c73800fa808fa7d340680f68cbc"
+    },
+    {
+      "path": "scripts/render_pirc17_inertial_tables.py",
+      "sha256": "6a96dbb4a0a440cafb11d98e21cfd54cac8251585aa75becff7f4d301fb5e29f"
+    },
+    {
+      "path": "paper/pirc17/en/inertial-primary-comparison.tex",
+      "sha256": "8b68a8e599b65fa80c7f0fc012756afb09576403f94299810e70c75a00574700"
+    },
+    {
+      "path": "paper/pirc17/zh/inertial-primary-comparison.tex",
+      "sha256": "075d3418d939d868baa488c8ac5d618869ab8aabb481c47e56edba1c90e2d6b2"
+    },
+    {
       "path": "paper/pirc17/final-cohort-duration-description-v1.json",
       "sha256": "152eb502a0d1ae80e43ba30bc32f341826a327ae3a2ed2413b8bc9d848202f3b"
     },
@@ -59,7 +79,7 @@
     },
     {
       "path": "paper/pirc17/claim-ledger.json",
-      "sha256": "274e7eee29548a5b416412f5d17bd1925653b875bbb2c513c3e6ef6000c38ce3"
+      "sha256": "75bc20703c83e6006d2496b76b5b8f6891249fad25cc04d7031cd9cbb43b0f4d"
     },
     {
       "path": "paper/pirc17/partition-description-v1.json",
@@ -135,11 +155,11 @@
     },
     {
       "path": "paper/pirc17/en/main.tex",
-      "sha256": "bf68391f2800e8359e46a1ee66bfbd7b59263e0af83038ffba7760f196b42851"
+      "sha256": "d45fd92a180aac587be56398f4591813afd4a5d739539132c45802001739fa08"
     },
     {
       "path": "paper/pirc17/zh/main.tex",
-      "sha256": "22687475ef4ac05f3c3f186338f87315a3e304ad93de6c3d6720f57282b8f047"
+      "sha256": "bae398b70600253c1d3a04dc6f7dd8d216bae71918eb60fffdf999537255cb07"
     },
     {
       "path": "paper/pirc17/en/main.pdf",
@@ -759,14 +779,22 @@
       "status": "awaiting_original_results",
       "manuscript_anchors": [
         "tab:forecast-counts",
-        "sec:execution-reconstruction"
+        "sec:execution-reconstruction",
+        "sec:inertial-primary",
+        "tab:inertial-primary",
+        "tab:inertial-horizons"
       ],
       "evidence": [
         "paper/pirc17/claim-ledger.json",
-        "paper/pirc17/method-algorithm-description-v1.json"
+        "paper/pirc17/method-algorithm-description-v1.json",
+        "paper/pirc17/inertial-primary-description-v1.json",
+        "scripts/describe_pirc17_inertial.py",
+        "scripts/render_pirc17_inertial_tables.py",
+        "paper/pirc17/en/inertial-primary-comparison.tex",
+        "paper/pirc17/zh/inertial-primary-comparison.tex"
       ],
-      "response": "已说明原58条惯性路径与290同网格参考的不同职责，未以验证惯性ES替代最终同队列对照。",
-      "remaining": "完成原已登记58惯性辅助项，并在相同主46块和实际时刻报告绝对/配对诊断；不另加大模型或实验族。",
+      "response": "已说明原58条惯性路径与290同网格参考的不同职责，未以验证惯性ES替代最终同队列对照。 本轮原58条惯性路径已有评分；按预先规定的完整46主记录块，比较46条确定性参考与230份Full预测（每块先平均五种子，再等权平均46块），不把参考重复五次。双语新增绝对ES/ADE/FDE及四时域ES表，Full均值与原稿逐项相同、46块目标时刻向量与既有描述精确对应。平均加权ES为824.73/477.85米，ADE824.73/636.11米，FDE2095.78/1326.09米（惯性/Full）；1、5分钟惯性ES更低，15、30分钟Full更低，34/46块Full加权ES严格更低。仅为事后保存评分描述，不新增预测、拟合、评分、地图查询、bootstrap或显著性检验；±30秒目标规则及验证设定δ41.100259米不变。原独立保存输出核验与最终卡片仍待，未宣称优于外部模型或部署有效。",
+      "remaining": "原58惯性辅助项与当前主46块绝对/配对描述已接入；原一次独立保存输出核验、最终统一卡片/资格字段、整稿及人工验收仍待。不把描述均值或34/46计数当显著性，不用最终惯性ES改变事前δ，不另加模型或实验族。",
       "final_review_accepted": false
     },
     {

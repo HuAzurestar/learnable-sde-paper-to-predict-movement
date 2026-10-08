@@ -36,11 +36,13 @@ def test_positioning_not_external_benchmark_or_optimality(language):
     phrases = {
         'en': ['not evidence that linear models', 'are optimal',
                'saved fit parameters', 'not executed baselines',
-               'inertial reference remains pending',
+               'descriptive same-population comparison',
+               'not an independently audited', 'superiority claim',
                'not its likelihood or coefficient formulas',
                'not a new neural architecture'],
         'zh': ['不是线性模型最优的证据', '保存的拟合参数',
-               '没有作为本次执行基线', '简单惯性参考也尚未完成',
+               '没有作为本次执行基线', '简单惯性参考已有同人群描述性对比',
+               '不是独立核验后的优越性结论',
                '不使用其似然或系数公式', '不是提出新的神经网络架构'],
     }
     for phrase in phrases[language]:

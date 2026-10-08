@@ -53,7 +53,8 @@ def test_all_referenced_existing_evidence_bytes_match_reviewed_revision():
         assert path.startswith("paper/pirc17/") or path in {
             "scripts/describe_pirc17_target_times.py", "scripts/describe_pirc17_final_cohort.py",
             "scripts/plot_pirc17_calibration_blocks.py", "scripts/describe_pirc17_seed_stability.py",
-            "scripts/plot_pirc17_method_horizons.py", "scripts/plot_pirc17_method_regions.py"}
+            "scripts/plot_pirc17_method_horizons.py", "scripts/plot_pirc17_method_regions.py",
+            "scripts/describe_pirc17_inertial.py", "scripts/render_pirc17_inertial_tables.py"}
         assert hashlib.sha256(resolved.read_bytes()).hexdigest() == expected, path
     for row in registry["items"]:
         assert set(row["evidence"]).issubset(files), row["id"]
@@ -65,7 +66,8 @@ def test_each_response_anchor_exists_in_bilingual_reviewed_manuscript(language):
     inputs = re.findall(r"\\input\{([^}]+)\}", text)
     assert set(inputs) == {"all-method-absolute.tex", "method-seed-stability.tex",
                            "method-horizon-overview.tex", "method-horizon-tables.tex",
-                           "method-region-overview.tex", "method-region-tables.tex"}
+                           "method-region-overview.tex", "method-region-tables.tex",
+                           "inertial-primary-comparison.tex"}
     for filename in inputs:
         text += (PAPER / language / filename).read_text(encoding="utf-8")
     labels = Counter(re.findall(r"\\label\{([^}]+)\}", text))

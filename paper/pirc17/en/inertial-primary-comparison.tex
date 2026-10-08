@@ -1,0 +1,25 @@
+\FloatBarrier
+\subsection{A completed constant-velocity reference}
+\label{sec:inertial-primary}
+The registered inertial reference extrapolates the saved causal initial velocity: $\widehat x^{\mathrm{I}}(t)=x_0+t\widehat v_0$. It is a deterministic path, not a fitted SDE or five repeated particle forecasts. All 58 registered reference paths have saved scores; Tables~\ref{tab:inertial-primary} and~\ref{tab:inertial-horizons} use the entire prespecified 46-block primary population, not the 12 secondary origins. Each reference is paired with Full at the same origin, target identity and actual target times. Average the five Full forecast seeds within each block first, then weight all 46 recording-hash blocks equally; the reference is never counted five times.
+
+\begin{table}[htbp]\centering\small
+\caption{Same primary origins and saved target slots. All errors are in metres and lower is better. ES evaluates the predictive distribution; ADE/FDE evaluate its mean path. Inertial is a point mass, so its ES equals displacement error. Counts are saved forecasts, not independent people or fitted models. Descriptive means only; no new confidence interval, significance test or qualification.}\label{tab:inertial-primary}
+\begin{tabular}{@{}lrrrrr@{}}\toprule
+Model & Forecasts & Blocks & Weighted ES & ADE & FDE\\\midrule
+Inertial & 46 & 46 & 824.73 & 824.73 & 2095.78\\
+Full & 230 & 46 & 477.85 & 636.11 & 1326.09\\
+\bottomrule\end{tabular}\end{table}
+
+\begin{table}[htbp]\centering\small
+\caption{Mean marginal ES in metres at the four nominal target slots; lower is better. Actual retained-clock targets are 49--67, 294--305, 889--910 and 1785--1814 seconds under the unchanged original 30-second tolerance. Neither target interpolation nor a new simulation is used.}\label{tab:inertial-horizons}
+\begin{tabular}{@{}lrrrr@{}}\toprule
+Model & 1 min & 5 min & 15 min & 30 min\\\midrule
+Inertial & 31.17 & 237.93 & 934.03 & 2095.78\\
+Full & 50.57 & 243.23 & 609.27 & 1008.35\\
+\bottomrule\end{tabular}\end{table}
+
+Full-minus-inertial mean differences are -346.87 m for weighted ES, -188.62 m for ADE and -769.69 m for FDE. Full has strictly lower weighted ES in 34 of 46 blocks. However, the inertial reference has lower mean ES at 1 and 5 minutes, whereas Full has lower mean ES at 15 and 30 minutes. Thus the aggregate benefit is not uniform across horizons.
+
+These are post-outcome descriptive comparisons of existing scores, not a registered component contrast or an independently audited superiority claim. No inference is made from the 34/46 count; recording hashes do not certify independent participants. The original validation-based $\delta=41.100259$ m is not recalibrated from this final-evaluation reference. Original output verification, final cards and human review remain pending; no superiority over the cited external models or deployment calibration follows.
+\FloatBarrier

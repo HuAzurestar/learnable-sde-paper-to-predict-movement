@@ -203,8 +203,9 @@ single-Gaussian path law. The present contribution is the controlled study
 of method components and environmental inputs in one visible-prefix GPX
 task, including their limitations; it is not a new neural architecture.
 The cited external models are not executed baselines. The registered simple
-inertial reference remains pending, so the current within-family results
-do not establish superiority over history extrapolation or these models.
+inertial reference now has a descriptive same-population comparison in
+Section~\ref{sec:inertial-primary}. This is not an independently audited
+superiority claim, and no superiority over the cited external models follows.
 
 \subsection{Distributional evaluation and finite-computation evidence}
 A predictor must be assessed as a distribution, not only by the distance
@@ -3164,6 +3165,8 @@ is a lower bound, and a process-lifetime peak is not a per-trial peak.
 Nested map-query time is already included in rollout time and must not be
 added again. GPU timing and GPU memory do not apply to this CPU experiment.
 
+
+\input{inertial-primary-comparison.tex}
 
 \section{Discussion and limitations}
 \subsection{A lower distributional score is not a point-error guarantee}
