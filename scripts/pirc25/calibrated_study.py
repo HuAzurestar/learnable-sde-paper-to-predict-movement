@@ -31,6 +31,14 @@ def require(condition, detail):
         raise ValueError("invalid complete calibration evidence: " + detail)
 
 
+def require_original_event_order(events):
+    require(type(events) is list and bool(events) and all(type(e) is dict for e in events), "original event array")
+    sequences = [e["sequence"] for e in events]
+    require(all(type(s) is int and s > 0 for s in sequences)
+        and all(left < right for left, right in zip(sequences, sequences[1:])),
+        "strict original append order without duplicated events")
+
+
 def table_values(spec):
     axes = spec["propagation_design"]["axis_manifest"]
     table = axes["calibrations"]
@@ -131,6 +139,7 @@ def table_values(spec):
 def source_values(record, spec, exported_at):
     bounded(record, 8*1024*1024, nodes=100000, depth_limit=32, string_limit=16384)
     sealed(record, "record_hash")
+    require_original_event_order(record["events"])
     validate_lineage(record, spec, exported_at)
     require(record["schema_version"] == "calibration-source-export-record-v1"
         and record["scientific_qualification"] is False and record["method_qualification"] is False,
