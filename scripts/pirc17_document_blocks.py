@@ -1,8 +1,9 @@
-"""Pure guard: named verbatim relocations and two verified later additions."""
+"""Pure guard: named verbatim relocations and separately tested additions."""
 HISTORY_TABLES = ("tab:history-spans", "tab:development-history-spans")
 POPULATION_TABLES = ("tab:final-cohort-durations", "tab:final-cohort-speeds", "tab:final-cohort-geography")
 POPULATION_EQUATIONS = ("eq:cohort-window-speed",)
-LATER_TABLES = ("tab:source-sequence-screen", "tab:terminal-score-inventory")
+LATER_TABLES = ("tab:source-sequence-screen", "tab:terminal-score-inventory",
+                "tab:saved-analysis-states")  # Exact rows: test_pirc17_analysis_stage_summary.
 
 
 def assert_preserved_blocks(before, after, kind):

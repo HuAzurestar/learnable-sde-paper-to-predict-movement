@@ -30,6 +30,8 @@ Method Components and Terrain Information}
 Reported: complete primary-method saved-score arithmetic, development-fit
 diagnostics and horizon-specific coverage. Real-route illustrations and
 case-level diagnostics are retained only in the owner's local manuscript.
+The registered paired/mechanism analysis has also completed once from saved
+outputs; its recorded states are disclosed below, pending independent replay.
 Terminal execution: all 11020 registered scientific forecasts have a success
 or failure disposition (11015 successful, five failed); common scoring has
 closed 11368 slots across 58 blocks. These are execution and score-inventory
@@ -2366,7 +2368,8 @@ unique/additive/causal attribution; history is a baseline diagnostic.
 The five retained failures already make both primary terrain families
 unavailable (Table~\ref{tab:failure-family-dispositions}). Method tail flags
 and planning rows are not final qualification: whole saved-output verification
-and original mechanism evidence remain pending. Final rows must carry availability,
+remains pending. The original mechanism analysis has completed, but its saved
+states do not replace independent verification. Final rows must carry availability,
 mechanisms, planning reason, numerical applicability, raw/qualified states and
 tail diagnostics separately. This description does not complete those tasks.
 
@@ -2560,8 +2563,8 @@ recording blocks. The estimates come from the fixed 6 October scoring
 snapshot; its exact capture time and reconciliation with the later execution
 census are documented in Appendix~\ref{sec:score-execution-snapshots}.
 
-These are preliminary saved-score estimates: independent output replay,
-mechanism checks and numerical qualification remain incomplete, as summarized
+These are preliminary saved-score estimates: independent output replay and
+global numerical qualification remain incomplete, as summarized
 in the opening evidence-status box. Final component verdicts are therefore
 not assigned here. All 21 prespecified
 method contrasts are retained in Table~\ref{tab:preliminary-method-effects}.
@@ -2575,6 +2578,61 @@ replications. The original practical margin remains $\delta\approx41.10$ m,
 using the unrounded registered value for all calculations. The integration
 and CRN rows retain extra digits solely to show numerical diagnostic scale,
 not centimetre-level predictive accuracy or practical improvement.
+
+\paragraph{Recorded analysis states, before independent replay.}
+\label{sec:saved-analysis-status}
+The original registered analysis has now completed once on all 58 closed
+score blocks. Its anonymous scalar projection is
+\path{paper/pirc17/analysis-stage-summary-v1.json}; no fits, forecasts or
+new bootstrap draws were added by this projection. The 21 primary contrasts
+retain exactly the estimates, intervals and Holm values already shown below.
+The saved decision procedure records 14 practical-equivalence states and
+seven inconclusive states, with no practically beneficial or harmful state
+(Table~\ref{tab:saved-analysis-states}). These are algorithm-recorded states,
+not independently verified or finally accepted findings. All three origin
+modes and four whole unavailable comparison families remain in the analysis;
+the two six-block secondary modes do not acquire hypothesis tests.
+
+Equivalence here requires strict simultaneous-interval containment in the
+prespecified $[-41.100259,41.100259]$ m band and the applicable planning,
+tail and mechanism conditions; it is not inferred from a nonsignificant
+zero-effect test. For example, GMM's saved interval $[-21.22,16.33]$ m is
+inside this band, although it crosses zero. Conversely, dt300's interval
+$[-48.27,-2.47]$ m excludes zero but crosses the practical boundary.
+The two d2 aliases remain inconclusive despite identical predictions and
+zero intervals: zero development SD is not planning-power evidence.
+dt600 retains insufficient planning power. These states do not establish
+exact algorithm identity, calibrated uncertainty or a general best model.
+
+The original mechanism consumer records all 28 required gates in each of
+the three modes as computed and passed. This includes weak diagnostic gates:
+the Euler/EM condition is merely error $\geq0$, not an accuracy ceiling.
+The primary same-grid split diagnostic is $2.19\times10^{-5}$ m against its
+2 m ceiling; the maximum closed-versus-Monte-Carlo relative discrepancy is
+0.1937 against 0.2, using the registered finite scoring-only draws.
+Passing these particular checks is not a global $N$/step convergence bound.
+Every primary method comparison still records resolution-invariant inference
+as inconclusive, and whole-output audit remains pending.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Saved primary method decision states, pending independent replay.
+All 21 contrasts are retained; equivalence is within the fixed practical
+band, not exact equality. No family has a beneficial or harmful state.}
+\label{tab:saved-analysis-states}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Registered family & Equivalent & Inconclusive\\
+\midrule
+Model structure & 1 & 3\\
+Observation interval & 2 & 2\\
+Fitting and score route & 3 & 2\\
+Training and adaptation & 4 & 0\\
+Numerical propagation & 4 & 0\\
+Total & 14 & 7\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \begingroup
 \small
@@ -4011,6 +4069,10 @@ projection is \path{paper/pirc17/method-seed-stability-v1.json}.
 \clearpage
 \subsection{Saved resampling tail diagnostics}
 \label{sec:bootstrap-table-detail}
+The following unchanged table and its caption describe the earlier snapshot.
+The current completed mechanism-analysis status is disclosed in
+Section~\ref{sec:saved-analysis-status}; independent saved-output replay is
+still pending. The historical caption does not describe today's mechanism status.
 \begin{longtable}{lrrrl}
 \caption{Existing tail diagnostics for all 21 method contrasts; values reconcile with the stage effect table. Mechanisms unevaluated and saved-output audit pending. Shift is maximum simultaneous-endpoint change between streams in metres; T means finite intervals and shift within one quarter of the practical margin.}\label{tab:bootstrap-diagnostics}\\
 \toprule
@@ -4426,8 +4488,9 @@ Common-score total & 11368 & 11363 & 5\\
 \bottomrule\end{tabular}\end{table}
 
 Common scoring has already closed all 11368 rows and 58 blocks; auxiliary
-runtime and replay trials remain in progress. The remaining pipeline performs paired analysis,
-one independent recomputation from saved raw forecast outputs, public export
+runtime and replay trials remain in progress. The original registered paired
+and mechanism analysis has completed once and is retained for reuse. The remaining
+pipeline performs one independent recomputation from saved raw forecast outputs, public export
 and evidence-card construction. The public consumer produces sixteen tables
 and sixteen figures in PNG and PDF, retaining the original estimates,
 intervals, missingness and units. Registered aggregate exports omit private trajectories,
