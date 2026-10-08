@@ -5,22 +5,25 @@ turns preparation into method qualification or independent observations.
 """
 
 from itertools import product
+from math import ceil
 
 if __package__:
     from .analytic_qualification import artifact, bounded, encoded, event, finite, fingerprint, sealed, timestamp
     from .probability_calibration import geometry, policy_values, same, validate_saved_calibration
     from .costs import validate_cost
+    from .calibration_lineage import validate_lineage
 else:
     from analytic_qualification import artifact, bounded, encoded, event, finite, fingerprint, sealed, timestamp
     from probability_calibration import geometry, policy_values, same, validate_saved_calibration
     from costs import validate_cost
+    from calibration_lineage import validate_lineage
 
 
 ENTRY_FIELDS = {"schema_version", "functional_id", "model_family_id", "model_package_hash", "horizon",
     "input_case_id", "model_configuration_id", "status", "reason", "geometry", "source_pointer",
     "source_evidence_hash", "consumer_study_id", "geometry_hash", "binding_hash"}
 FAILURES = {"FAILED", "INTERRUPTED", "TIMEOUT", "BUDGET_EXHAUSTED", "PREFLIGHT_FAILED", "CANCELLED"}
-KINDS = {"RESERVE", "WORKER_STARTED", "WORKER_TREE_STOPPED", "SETTLE", "ADMISSION", "ATTEMPT"}
+KINDS = {"RESERVE", "WORKER_STARTED", "WORKER_TREE_STOPPED", "WORKER_STOP_CONFIRMED", "SETTLE", "ADMISSION", "ATTEMPT"}
 
 
 def require(condition, detail):
@@ -128,6 +131,7 @@ def table_values(spec):
 def source_values(record, spec, exported_at):
     bounded(record, 8*1024*1024, nodes=100000, depth_limit=32, string_limit=16384)
     sealed(record, "record_hash")
+    validate_lineage(record, spec, exported_at)
     require(record["schema_version"] == "calibration-source-export-record-v1"
         and record["scientific_qualification"] is False and record["method_qualification"] is False,
         "source record is preparation, not method qualification")
@@ -178,9 +182,23 @@ def source_values(record, spec, exported_at):
             "owned original source event")
         event(saved_event, saved_event["event_kind"])
     for saved_attempt in history:
+        registrations = [e for e in record["events"] if e["event_kind"] == "ATTEMPT"
+            and e["payload"]["attempt_id"] == saved_attempt["attempt_id"] and e["payload"]["state"] == "REGISTERED"]
         completions = [e for e in record["events"] if e["event_kind"] == "ATTEMPT" and same(e["payload"], saved_attempt)]
-        require(len(completions) == 1 and timestamp(completions[0]["created_at"]) <= timestamp(exported_at),
+        require(len(registrations) == len(completions) == 1
+            and registrations[0]["sequence"] <= completions[0]["sequence"]
+            and same(registrations[0]["payload"]["parent_attempt_id"], saved_attempt["parent_attempt_id"])
+            and same(registrations[0]["payload"]["reason"], saved_attempt["reason"])
+            and timestamp(completions[0]["created_at"]) <= timestamp(exported_at),
             "every original attempt retains its authoritative latest disposition")
+        parent = saved_attempt["parent_attempt_id"]
+        require(parent is None or parent in attempts and attempts[parent]["state"] in FAILURES
+            and type(saved_attempt["reason"]) is str and bool(saved_attempt["reason"]), "explicit original failed retry parent")
+        if parent is not None:
+            parent_done = next(e for e in record["events"] if e["event_kind"] == "ATTEMPT" and same(e["payload"], attempts[parent]))
+            require(parent_done["sequence"] < registrations[0]["sequence"], "original retry sequence")
+    require(len(history) <= 3 and sum(a["parent_attempt_id"] is None for a in history) == 1,
+        "one original source and at most two explicit retries")
     row = {"attempt_id": attempt["attempt_id"], "history": history, "run_id": run["run_id"],
         "arm_id": cell["arm_id"], "cost": record["cost"]}
     validate_cost(row, {"study_id": source["study_id"]}, set())
@@ -195,6 +213,22 @@ def source_values(record, spec, exported_at):
         value = saved_event["payload"]
         require(value["reservation_id"] == fingerprint([source["runtime_binding"]["store_id"], value["attempt_id"]]),
             "original store/attempt reservation identity")
+        owned = [e for e in record["events"] if e["payload"].get("attempt_id") == value["attempt_id"]]
+        reserves = [e for e in owned if e["event_kind"] == "RESERVE"]
+        workers = [e for e in owned if e["event_kind"] == "WORKER_STARTED"]
+        stops = [e for e in owned if e["event_kind"] == "WORKER_TREE_STOPPED"]
+        require(len(reserves) == 1 and value["reserved_ms"] == reserves[0]["payload"]["reserved_ms"]
+            == ceil(pointer["policy"]["maximum_job_seconds"]*1000)
+            and reserves[0]["sequence"] <= saved_event["sequence"], "original frozen reservation cap")
+        if workers and value["settled"]:
+            require(len(workers) == 1 and reserves[0]["sequence"] < workers[0]["sequence"], "one funded original worker")
+            if value["monotonic_elapsed_ms"] is not None:
+                require(len(stops) == 1 and workers[0]["sequence"] < stops[0]["sequence"] < saved_event["sequence"]
+                    and stops[0]["payload"]["observed_elapsed_ms"] == value["monotonic_elapsed_ms"],
+                    "all-attempt charge equals native whole-tree stop measurement")
+            else:
+                require(any(e["event_kind"] == "WORKER_STOP_CONFIRMED" and workers[0]["sequence"] < e["sequence"] < saved_event["sequence"]
+                    for e in owned), "unknown cost retains original stop attestation and full reservation charge")
     proof = record["proof"]
     if proof is not None:
         validate_saved_calibration(proof, pointer, consumer_study_id=spec["study_id"])
@@ -269,7 +303,7 @@ def _validate(bundle):
     expected_refs = {slot["pointer_hash"] for slot in expected_slots if slot["pointer_hash"] is not None}
     require(len(records) == len(header["sources"]) and records.keys() == expected_refs, "exact original source set")
     for record in header["sources"]:
-        source_values(record, spec, bundle["exported_at"])
+        source_values(record, spec, bundle["recorded_at"])
     for entry in table:
         if entry["source_pointer"] is None:
             continue
@@ -282,6 +316,9 @@ def _validate(bundle):
             require(entry["source_evidence_hash"] == proof["evidence_hash"]
                 and entry["geometry_hash"] == proof["geometry_hash"] and same(entry["geometry"], proof["geometry"]), "actual successful owner table binding")
     require(same(header["cost"], cost_values(header["sources"])), "deduplicated all-attempt calibration cost")
+    from_visibility = {record["visibility"] for record in header["sources"]}
+    require(("restricted" not in from_visibility or bundle["visibility"] == "restricted")
+        and ("public" not in from_visibility or bundle["visibility"] in {"public", "restricted"}), "bundle cannot narrow source visibility")
     rows = {row["cell_hash"]: row for row in bundle["cells"]}
     require(len(rows) == len(spec["cells"]) and rows.keys() == {fingerprint(c) for c in spec["cells"]}, "complete matrix retains every target")
     for cell in spec["cells"]:
