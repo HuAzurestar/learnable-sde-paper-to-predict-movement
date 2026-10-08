@@ -124,6 +124,47 @@ def test_recorded_runtime_summary_is_only_formatted_not_reestimated():
     assert rows==before
 
 
+@pytest.mark.parametrize('language', module.LANGUAGES)
+def test_runtime_caption_does_not_certify_uninterrupted_or_cache_isolated_latency(cards, language):
+    before = deepcopy(cards)
+    files, counts, rows = module.fragments(cards, software_fixture=True)
+    text = files[language+'/isolated-runtime.tex'].decode('utf-8')
+    if language == 'en':
+        assert 'Original isolated cold/warm measurements' not in text
+        for phrase in ('provider-cold/resident-warm elapsed times',
+                       'not a verified reset of OS or interpreter caches',
+                       'host-interruption and clock limitations',
+                       'nor unflagged trials certify uninterrupted isolated',
+                       'without sleep subtraction, trial exclusion or replacement measurement'):
+            assert phrase in text
+    else:
+        assert '原隔离冷／热计时' not in text
+        for phrase in ('提供器冷启动／驻留热启动墙钟耗时', '不认证操作系统或解释器缓存已重置',
+                       '主机中断与时钟限制', '未标记试次均不认证',
+                       '不扣除休眠时间、排除试次或补做测量'):
+            assert phrase in text
+    assert counts[language+'/isolated-runtime.tex'] == 30
+    assert cards == before
+    assert rows['runtime_conditions'] == source.project(before)['runtime_conditions']
+
+
+@pytest.mark.parametrize('language', module.LANGUAGES)
+def test_interruption_exposed_subject_values_and_counts_are_not_repaired(language):
+    rows = [dict(matrix='terrain', subject=subject, condition='runtime_cold',
+                 status='computed', counts_by_status={'success': 5},
+                 summary={'total_latency_p50_ms': elapsed, 'total_latency_p95_ms': elapsed * 2})
+            for subject, elapsed in (('all-terrain', 3000463.8613),
+                                     ('loo-surface', 2315996.3217))]
+    before = deepcopy(rows)
+    text = module.runtime_fragment(rows, language)
+    for row in before:
+        assert module.tex_text(row['subject']) in text
+        assert module.number(row['summary']['total_latency_p50_ms']) in text
+        assert module.number(row['summary']['total_latency_p95_ms']) in text
+    assert text.count('success: 5') == 2
+    assert rows == before
+
+
 def test_pinned_missing_only_generation_and_exact_manifest(cards,tmp_path):
     path=tmp_path/'cards.json';sha=write_cards(path,cards)
     result=module.generate(path,sha,tmp_path/'out',software_fixture=True)

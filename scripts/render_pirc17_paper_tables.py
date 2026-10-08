@@ -159,12 +159,22 @@ def status_counts(counts):
 
 def runtime_fragment(rows, language):
     caption = translated((
-        'Original isolated cold/warm measurements: five trials per condition. '
-        'Warmup is excluded. p50/p95 are original successful-trial summaries, '
-        'not population tail guarantees; failures and unavailable summaries '
-        'remain visible. No quantiles are recomputed by this renderer.',
-        '原隔离冷／热计时：每个条件五次，预热不计入。p50/p95保留原成功试次汇总，'
-        '不是总体尾延迟保证；失败与不可用汇总均显示。本造表程序不重算分位数。'), language)
+        'Original recorded provider-cold/resident-warm elapsed times: five trials '
+        'per condition. Warmup is excluded. Cold creates a new provider, not a '
+        'verified reset of OS or interpreter caches. Read these summaries with '
+        'the manuscript host-interruption and clock limitations; neither '
+        'affected summaries nor unflagged trials certify uninterrupted isolated '
+        'latency or speedup. Original values and trial denominators are retained '
+        'without sleep subtraction, trial exclusion or replacement measurement. '
+        'p50/p95 are original successful-trial summaries, not population tail '
+        'guarantees; failures and unavailable summaries remain visible. '
+        'No quantiles are recomputed by this renderer.',
+        '原保存特征提供器冷启动／驻留热启动墙钟耗时：每个条件五次，预热不计入。'
+        '冷启动仅创建新提供器，不认证操作系统或解释器缓存已重置。'
+        '本汇总须结合正文的主机中断与时钟限制阅读；受影响汇总及未标记试次均不认证'
+        '无中断隔离延迟或加速。保留原值与试次分母，不扣除休眠时间、排除试次或补做测量。'
+        'p50/p95保留原成功试次汇总，不是总体尾延迟保证；失败与不可用汇总均显示。'
+        '本造表程序不重算分位数。'), language)
     headers = translated((['Matrix / subject', 'Condition / status', 'p50 (ms)',
         'p95 (ms)', 'All trial statuses'], ['矩阵／配置', '条件／状态', 'p50（毫秒）',
         'p95（毫秒）', '全部试次状态']), language)
