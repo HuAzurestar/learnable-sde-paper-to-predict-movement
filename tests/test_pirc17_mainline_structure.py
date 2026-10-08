@@ -48,7 +48,9 @@ def test_scientific_guides_and_paired_estimates_remain_in_main_text(language):
     assert r"\ref{sec:forecast-inventory}" in intro
     assert r"\ref{sec:execution-coverage}" in intro
     assert "10514" not in section and "501" not in section
-    assert ("pending output verification" if language == "en" else "仍待输出复核") in intro
+    assert ("completed independent output audit" if language == "en" else "独立输出审计及固定预算汇总复算核对") in intro
+    assert ("interruption limits" if language == "en" else "中断限制") in intro
+    assert ("pending output verification" if language == "en" else "仍待输出复核") not in intro
 
 
 @pytest.mark.parametrize("language", ["en", "zh"])

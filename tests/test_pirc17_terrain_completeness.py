@@ -83,7 +83,9 @@ def test_current_main_terrain_explanation_does_not_repeat_historical_missingness
     assert ("none missing" if language == "en" else "0 缺项") in terrain
     assert ("dated snapshot" if language == "en" else "历史快照") in terrain
     assert ("do not establish" if language == "en" else "不能确立") in terrain
-    assert ("pending audit" if language == "en" else "尚待执行的审计") in terrain
+    assert ("completed auxiliary trials" if language == "en" else "现已完成的辅助试验或保存输出审计") in terrain
+    assert ("do not replace failed forecasts or restore these comparisons" if language == "en" else "不会替换失败预测或恢复这些比较") in terrain
+    assert ("pending audit" if language == "en" else "尚待执行的审计") not in terrain
     assert "has 160 missing" not in terrain and "缺评分索引 160" not in terrain
     # The historical execution table remains available and unchanged.
     assert ("1380 & 1219 & 160 & 1" in text and "1150 & 1017 & 131 & 2" in text)
