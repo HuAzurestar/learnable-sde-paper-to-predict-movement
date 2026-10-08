@@ -122,7 +122,7 @@ def test_delivered_current_pdf_and_source_match_the_actual_new_build(language):
     public_manifest = PAPER / "public-review-build.json"
     is_public = public_manifest.exists()
     manifest_path = public_manifest if is_public else (
-        PAPER / "runtime-interruption-review-build-v1.json")
+        PAPER / "runtime-interruption-census-review-build-v1.json")
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     row = next(row for row in manifest["manuscripts"] if row["language"] == language)
     root = PAPER.parents[1]

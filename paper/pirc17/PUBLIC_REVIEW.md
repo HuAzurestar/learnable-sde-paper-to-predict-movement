@@ -8,13 +8,16 @@ The manifest records the actual inspected pages and route-input check. This is c
 and public-copy checking, not full manuscript/scientific acceptance.
 
 Local manuscript source revision:
-`eeea580fa7bafa078532b3bb78402e7fa7ae646d`.
+`54d8a08b9adbdf8f125dd4857ad9e295e64291eb`.
 Current complete local PDFs were delivered at
-`fb859f81c50bd2b60c492740285571af6b1a8829` (English 88 pages,
+`9440f746b4e90e5b9a3cb976732f26ee7a0102d7` (English 88 pages,
 Chinese 85 pages); the public copies are English 81 / Chinese 78 pages.
 The previous analysis-stage delivery `090de63459a95ffb966701f597cf2b0cb5de9767`
 is historical; its public build proof is retained separately in
 `public-review-analysis-stage-build-v1.json`.
+The preceding host-interruption delivery `fb859f81c50bd2b60c492740285571af6b1a8829`
+is also historical; its public proof remains in
+`public-review-runtime-interruption-build-v1.json`.
 The earlier `42906141d41174ecb0ba43d3c47e31e6b65777b4` delivery
 (English 85 / Chinese 82 pages) is historical, not the current revision.
 The complete local PDFs are **not** uploaded because they embed
@@ -29,6 +32,16 @@ not maps, raw routes, a replacement trial or a speedup/accuracy certification.
 The affected trial and summaries cannot establish uninterrupted latency;
 other trials are not thereby certified interruption-free. This update does
 not perform a new fit, forecast, score, resampling or map query.
+
+The additional bound partial census `runtime-interruption-census-v1.json`
+covers153 of the original165 timing records, with all153 source digests and
+15 subject/condition denominators retained. It additionally flags the
+original all-terrain cold repetition3 record (3000.4638613s) under the same
+later-clock mapping. Host clock-change events exist, so mappings do not
+certify original endpoint UTC or unflagged trials. Both affected cold
+subjects and cost summaries retain this caveat; no record is subtracted,
+excluded or replaced. Only scalar metadata was read; predictions/maps were
+not loaded. This partial census is not the complete final runtime audit.
 
 This branch is a public-base-parent snapshot, not an upload of private
 implementation history. The running science branch and experimental parameters
