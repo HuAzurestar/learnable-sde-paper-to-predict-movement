@@ -19,6 +19,7 @@ if __package__:
     from .mixture_qualification import validate_mixture_qualification
     from .path_qualification import validate_path_qualification
     from .cubature_qualification import validate_cubature_qualification
+    from .probability_calibration import validate_calibrated_admission
 else:
     from dimensions import comparison_dimensions, canonical
     from upstream import validate_upstream
@@ -28,6 +29,7 @@ else:
     from mixture_qualification import validate_mixture_qualification
     from path_qualification import validate_path_qualification
     from cubature_qualification import validate_cubature_qualification
+    from probability_calibration import validate_calibrated_admission
 
 
 def fingerprint(value):
@@ -193,6 +195,9 @@ def validate_admission(bundle, row):
             require(read["preregistration_hash"] == fingerprint(prereg) and read["history_hash"] == fingerprint(history)
                     and read["test_mode"] == "blind" and read["frozen_sequence"] == frozen["sequence"] < event["sequence"], "test freeze preceded exposure")
         qualification(package, prereg, docs["qualification"], docs["qualification_evidence"], grant)
+        # Region preparation never replaces the independent method contract.
+        # An unexpected embedded proof must not become an opaque generic pass.
+        validate_calibrated_admission(receipt, row)
         # An analytic package pointer or a propagation adapter must never
         # silently fall back to the older generic operator pass contract.
         if ("managed_cubature_qualification" in package["payload"]
