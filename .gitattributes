@@ -1,0 +1,2 @@
+# Immutable experiment exports are byte-bound; never translate line endings.
+paper/pirc17/final-results-v1/** -text
