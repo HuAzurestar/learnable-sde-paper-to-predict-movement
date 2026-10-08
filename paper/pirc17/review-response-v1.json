@@ -34,6 +34,26 @@
   "response_does_not_replace_original_full_goal": true,
   "evidence_files": [
     {
+      "path": "paper/pirc17/point-error-horizon-description-v1.json",
+      "sha256": "73e5eff2550fb1572a8a449500adf3f17c88be219932eb5c343d927be258176c"
+    },
+    {
+      "path": "scripts/describe_pirc17_point_errors.py",
+      "sha256": "78ed0260c31cd91a201c28d28d754be46078cd5bc2a9e44d6be2fe1c9734c355"
+    },
+    {
+      "path": "scripts/render_pirc17_point_error_tables.py",
+      "sha256": "3583381b5ea1246fbb63bd88195af4076731cdade9c673a8413821b9c8ddadf9"
+    },
+    {
+      "path": "paper/pirc17/en/point-error-horizons.tex",
+      "sha256": "1cd4e747a1b720cb6c0389481bb7360ce7c5c5a32031fbdae10436e386a5ca95"
+    },
+    {
+      "path": "paper/pirc17/zh/point-error-horizons.tex",
+      "sha256": "994f0151504b4c4a5ca2548c6dafac0db5e8068ae292f5422c8e9259f0ad7224"
+    },
+    {
       "path": "paper/pirc17/inertial-primary-description-v1.json",
       "sha256": "80725a94a86bcd58d1bc71f8698221eee5c17e0276e14109425ecdac69f9eb82"
     },
@@ -79,7 +99,7 @@
     },
     {
       "path": "paper/pirc17/claim-ledger.json",
-      "sha256": "45fc91d533a761c92386e21edb4fc99dfea70ae21d4cef01e996a7d99e9c26f5"
+      "sha256": "a25b532564d54908522916cbdbed5da74bf10ba039d56afcab090d9fb9f70385"
     },
     {
       "path": "paper/pirc17/partition-description-v1.json",
@@ -155,11 +175,11 @@
     },
     {
       "path": "paper/pirc17/en/main.tex",
-      "sha256": "eb09de631dcda62338e7dacac2b28fabd461ee7b21ac6f4c41c430986aee7e4c"
+      "sha256": "6708532b017dfca8bc92db67d042df26b5620e3b66c943d0854c3ae7d9a5f2a7"
     },
     {
       "path": "paper/pirc17/zh/main.tex",
-      "sha256": "0d481f74ecec072559c8f66790cb7787060b31b86e52b8e201f4ff948703749d"
+      "sha256": "75941a03ae01cbf206a8faadb4ad619e62e8a78917171723ac507f3afa57f088"
     },
     {
       "path": "paper/pirc17/en/main.pdf",
@@ -786,7 +806,10 @@
         "sec:execution-reconstruction",
         "sec:inertial-primary",
         "tab:inertial-primary",
-        "tab:inertial-horizons"
+        "tab:inertial-horizons",
+        "sec:point-error-horizons",
+        "tab:point-error-horizons",
+        "eq:point-error-horizon-mean"
       ],
       "evidence": [
         "paper/pirc17/claim-ledger.json",
@@ -795,9 +818,14 @@
         "scripts/describe_pirc17_inertial.py",
         "scripts/render_pirc17_inertial_tables.py",
         "paper/pirc17/en/inertial-primary-comparison.tex",
-        "paper/pirc17/zh/inertial-primary-comparison.tex"
+        "paper/pirc17/zh/inertial-primary-comparison.tex",
+        "paper/pirc17/point-error-horizon-description-v1.json",
+        "scripts/describe_pirc17_point_errors.py",
+        "scripts/render_pirc17_point_error_tables.py",
+        "paper/pirc17/en/point-error-horizons.tex",
+        "paper/pirc17/zh/point-error-horizons.tex"
       ],
-      "response": "已说明原58条惯性路径与290同网格参考的不同职责，未以验证惯性ES替代最终同队列对照。 本轮原58条惯性路径已有评分；按预先规定的完整46主记录块，比较46条确定性参考与230份Full预测（每块先平均五种子，再等权平均46块），不把参考重复五次。双语新增绝对ES/ADE/FDE及四时域ES表，Full均值与原稿逐项相同、46块目标时刻向量与既有描述精确对应。平均加权ES为824.73/477.85米，ADE824.73/636.11米，FDE2095.78/1326.09米（惯性/Full）；1、5分钟惯性ES更低，15、30分钟Full更低，34/46块Full加权ES严格更低。仅为事后保存评分描述，不新增预测、拟合、评分、地图查询、bootstrap或显著性检验；±30秒目标规则及验证设定δ41.100259米不变。原独立保存输出核验与最终卡片仍待，未宣称优于外部模型或部署有效。",
+      "response": "已说明原58条惯性路径与290同网格参考的不同职责，未以验证惯性ES替代最终同队列对照。 本轮原58条惯性路径已有评分；按预先规定的完整46主记录块，比较46条确定性参考与230份Full预测（每块先平均五种子，再等权平均46块），不把参考重复五次。双语新增绝对ES/ADE/FDE及四时域ES表，Full均值与原稿逐项相同、46块目标时刻向量与既有描述精确对应。平均加权ES为824.73/477.85米，ADE824.73/636.11米，FDE2095.78/1326.09米（惯性/Full）；1、5分钟惯性ES更低，15、30分钟Full更低，34/46块Full加权ES严格更低。仅为事后保存评分描述，不新增预测、拟合、评分、地图查询、bootstrap或显著性检验；±30秒目标规则及验证设定δ41.100259米不变。原独立保存输出核验与最终卡片仍待，未宣称优于外部模型或部署有效。 本轮仅利用既有评分中心与原绑定目标，在相同起点局部评分坐标系对完整Full/GMM/dt300五种子及惯性参考作欧氏距离描述（690概率预测+46参考、同一184目标），新增1/5/15/30分钟点误差表及块内种子平均公式。逐份复现原ADE/FDE，最大差异9.095e-13米。Full点误差73.77/332.31/812.26/1326.09米，惯性31.17/237.93/934.03/2095.78米；GMM描述性点误差略低、dt300虽ES较低却四时域点误差较大。仅新增保存值的距离算术，不打开粒子数组、原GPX或模型，不新增预测、粒子ES、bootstrap或地图查询；未将描述解释升级为统计优越性或独立审计。",
       "remaining": "原58惯性辅助项与当前主46块绝对/配对描述已接入；原一次独立保存输出核验、最终统一卡片/资格字段、整稿及人工验收仍待。不把描述均值或34/46计数当显著性，不用最终惯性ES改变事前δ，不另加模型或实验族。",
       "final_review_accepted": false
     },

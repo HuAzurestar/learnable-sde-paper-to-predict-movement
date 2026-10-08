@@ -293,7 +293,7 @@ def test_all_scientific_cross_references_have_manuscript_or_appendix_anchors(lan
     assert set(inputs) == {"all-method-absolute.tex", "method-seed-stability.tex",
                            "method-horizon-overview.tex", "method-horizon-tables.tex",
                            "method-region-overview.tex", "method-region-tables.tex",
-                           "inertial-primary-comparison.tex"}
+                           "inertial-primary-comparison.tex", "point-error-horizons.tex"}
     for filename in inputs:
         tex += (PAPER / language / filename).read_text(encoding="utf-8")
     labels = set(re.findall(r"\\label\{([^}]+)\}", tex))

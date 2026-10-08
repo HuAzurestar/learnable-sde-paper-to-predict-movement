@@ -8,7 +8,7 @@ The manifest records the actual inspected pages and route-input check. This is c
 and public-copy checking, not full manuscript/scientific acceptance.
 
 Local manuscript source revision:
-`33e2ce7289f954b60dd86d10f512b9e8b30efa17`.
+`d2dd7d04833f230e15c91250a9daa1947582e33c`.
 Previous complete local PDFs were delivered at
 `42906141d41174ecb0ba43d3c47e31e6b65777b4` (English 85 pages,
 Chinese 82 pages). Those PDFs are **not** uploaded because they embed
@@ -41,14 +41,15 @@ local route inputs remain explicit failures, not exclusions or acceptance.
 
 Public pre-existing aggregate statistics and non-route diagrams are retained.
 No raw GPX, positions, fitted checkpoints, private maps or unpublished
-route illustrations are uploaded. No new fit, forecast, scoring or map
-query is run for this projection.
+route illustrations are uploaded. No new fit, forecast, particle scoring or map
+query is run for this projection. Saved-center/target distance arithmetic is
+explicitly identified below; it is not another particle-score computation.
 
 ## Pending experiment delivery
 
-At 2026-10-08 15:48 Hong Kong time: original science 11,015 successful,
+At 2026-10-08 16:37 Hong Kong time: original science 11,015 successful,
 5 failed and 0 runnable out of 11,020; common scores 11,368 rows/58 groups;
-original auxiliary work 212/261 successful, 49 remaining. These are workload
+original auxiliary work 217/261 successful, 44 remaining. These are workload
 dispositions, not 11,020 independent participants or final accepted effects.
 The single independent saved-output audit, final aggregate export, original
 16 tables/16 figure groups and final numeric manuscript integration remain
@@ -82,3 +83,22 @@ delta remain unchanged. No new experiment was run.
 Opening this review does not authorize merge, paper release, route publication,
 new large experiments or scientific acceptance. The historical release
 entrypoints are intentionally unchanged; they are not this manuscript.
+
+## Saved mean-position error at each target slot
+
+A new table distinguishes distributional ES from the mean-position error at
+the four original target slots. It uses all 690 existing Full/GMM/dt300
+primary forecasts and 46 deterministic reference paths on the same 184 saved
+target positions. Every row reproduces original ADE/FDE within roundoff.
+The published description contains anonymous aggregate values and hash
+bindings, not targets, centers, coordinates, clocks, raw routes or paths.
+The reader opens only closed saved-score JSON and the original bound input
+context, never particle arrays, fitted models, raw GPX or maps.
+
+Full's mean-position errors are 73.77/332.31/812.26/1326.09 m at the nominal
+1/5/15/30-minute slots; inertial errors are 31.17/237.93/934.03/2095.78 m.
+The short/long-horizon reversal is retained. GMM's descriptive point errors
+are slightly lower than Full's; dt300's are higher at every slot despite
+its lower aggregate ES. These are not new per-horizon significance tests,
+a ranking of all28 methods, independent output audit or deployment claims.
+Original saved scores, target tolerance, parameters and failures are unchanged.

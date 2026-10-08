@@ -2173,5 +2173,33 @@
     "full_manuscript_reader_or_human_acceptance_obtained": false,
     "publication_permissions_verified": false,
     "final_paper_or_all_review_items_complete": false
+  },
+  "point_error_horizon_manuscript_revision": {
+    "source_base_commit": "ef6ce4fcb584f45a5659f4252874e69f78c12562",
+    "review_items": ["P1-17"],
+    "projection": "paper/pirc17/point-error-horizon-description-v1.json",
+    "projection_sha256": "73e5eff2550fb1572a8a449500adf3f17c88be219932eb5c343d927be258176c",
+    "reader": "scripts/describe_pirc17_point_errors.py",
+    "reader_sha256": "78ed0260c31cd91a201c28d28d754be46078cd5bc2a9e44d6be2fe1c9734c355",
+    "renderer": "scripts/render_pirc17_point_error_tables.py",
+    "renderer_sha256": "3583381b5ea1246fbb63bd88195af4076731cdade9c673a8413821b9c8ddadf9",
+    "shared_closed_score_reader": "scripts/describe_pirc17_inertial.py",
+    "shared_closed_score_reader_sha256": "2254509e2d14c34583c7081345a3946f94563c73800fa808fa7d340680f68cbc",
+    "bilingual_tex_sha256": {
+      "en": "1cd4e747a1b720cb6c0389481bb7360ce7c5c5a32031fbdae10436e386a5ca95",
+      "zh": "994f0151504b4c4a5ca2548c6dafac0db5e8068ae292f5422c8e9259f0ad7224"
+    },
+    "original_primary_recording_hash_blocks": 46,
+    "existing_probabilistic_forecasts_used": 690,
+    "existing_inertial_reference_paths_used": 46,
+    "existing_target_positions_used": 184,
+    "new_descriptive_distance_arithmetic_values": 2944,
+    "scope": "Post-outcome Euclidean arithmetic between saved scoring-region centers and original hash-bound target positions in the same scoring frame. Complete Full/GMM/dt300 five-seed primary grid and deterministic reference; seed means within each block then equal-weight46 blocks. Every row reproduces original ADE/FDE within roundoff; no forecast arrays, model loads, raw trajectories, map queries, new particle ES or bootstrap. Not a ranking of all28 methods, final inference/cards or the original independent saved-output audit. Earlier scientific values, parameters and failure dispositions unchanged.",
+    "new_fits_forecasts_particle_scores_resampling_or_map_queries": 0,
+    "independent_saved_output_audit_completed": false,
+    "final_statistics_or_cards_complete": false,
+    "full_manuscript_reader_or_human_acceptance_obtained": false,
+    "publication_permissions_verified": false,
+    "final_paper_or_all_review_items_complete": false
   }
 }
