@@ -25,11 +25,13 @@ if __package__:
     from .dimensions import comparison_dimensions
     from .costs import validate_cost, summarize_cost
     from .output_eligibility import comparison_eligible, path_output_counts
+    from .calibrated_study import validate_calibration_table
 else:
     from admission import validate_admission
     from dimensions import comparison_dimensions
     from costs import validate_cost, summarize_cost
     from output_eligibility import comparison_eligible, path_output_counts
+    from calibrated_study import validate_calibration_table
 
 
 def canonical(value):
@@ -46,6 +48,7 @@ def validate_bundle(bundle, *, formal=False):
         raise ValueError("bundle schema/hash mismatch")
     if bundle.get("independent_unit") != "block_id":
         raise ValueError("seed is not an independent sampling unit")
+    validate_calibration_table(bundle)
     if formal:
         plan = bundle.get("comparison_plan") or {}
         if (not plan.get("reference_arm_id") or not plan.get("candidate_arm_ids")
@@ -156,6 +159,10 @@ def aggregate(bundle, *, formal=False, descriptive_intervals=True):
               "path_output_dispositions": path_output_counts(rows.values()),
               "cell_dispositions": list(rows.values()), "disclosure_scope": bundle["disclosure_scope"],
               "visibility": bundle.get("visibility", "restricted")}
+    if bundle.get("probability_calibration") is not None:
+        result["calibration_cost"] = bundle["probability_calibration"]["cost"]
+        result["calibration_evidence_hash"] = bundle["probability_calibration"]["evidence_hash"]
+        result["calibration_status_counts"] = dict(Counter(slot["status"] for slot in bundle["probability_calibration"]["slots"]))
     return {**result, "aggregate_hash": fingerprint(result)}
 
 
