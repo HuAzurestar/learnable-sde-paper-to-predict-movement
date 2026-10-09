@@ -106,6 +106,16 @@ def export():
             # Appendix subsections are promoted to independently numbered
             # supplement/audit sections; numeric facts and labels are retained.
             content = "\n".join(chunks)
+            # New presentation assets have their own bindings. Never overwrite
+            # an old figure/manifest whose hash belongs to a historical audit.
+            for name in ("method-horizon-overview", "method-region-overview"):
+                original = folder / (name+".tex")
+                revised = original.read_text(encoding="utf-8").replace(
+                    "../figures/"+name+".pdf", "../figures/revision46-corrections-v1/"+name+".pdf")
+                (folder / ("revision46-"+name+".tex")).write_text(revised, encoding="utf-8")
+                content = content.replace(r"\input{"+name+".tex}", r"\input{revision46-"+name+".tex}")
+            content = content.replace("../figures/preliminary-full-horizons.pdf",
+                                      "../figures/revision46-corrections-v1/preliminary-full-horizons.pdf")
             if destination == "supplement":
                 content += "\n\\section{" + ("Complete saved method tables" if lang == "en" else "完整保存方法表") + "}\n"
                 content += "\n".join(r"\input{"+name+"}" for name in sorted(scientific_tables))+"\n"

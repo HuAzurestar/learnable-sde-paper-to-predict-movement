@@ -77,15 +77,18 @@ def assemble(private, output):
     def compile_one(language):
         destination = output / "pdfs" / language
         destination.mkdir(parents=True)
-        result = subprocess.run(["latexmk", "-pdf" if language == "en" else "-xelatex",
-            "-interaction=nonstopmode", "-halt-on-error", "-file-line-error",
-            "-outdir="+destination.as_posix(), "main.tex"], cwd=source / language,
-            stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-        (destination / "command.txt").write_bytes(result.stdout)
-        if result.returncode:
-            raise RuntimeError("Local "+language+" build failed; isolated log retained")
-        check_log((destination / "main.log").read_text(encoding="utf-8", errors="replace"))
-        return {"language": language, "pdf_sha256": digest(destination / "main.pdf")}
+        pdf_records = []
+        for entry in ("main", "supplement", "audit-notes"):
+            result = subprocess.run(["latexmk", "-pdf" if language == "en" else "-xelatex",
+                "-interaction=nonstopmode", "-halt-on-error", "-file-line-error",
+                "-outdir="+destination.as_posix(), entry+".tex"], cwd=source / language,
+                stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+            (destination / (entry+"-command.txt")).write_bytes(result.stdout)
+            if result.returncode:
+                raise RuntimeError("Local "+language+"/"+entry+" build failed; isolated log retained")
+            check_log((destination / (entry+".log")).read_text(encoding="utf-8", errors="replace"))
+            pdf_records.append({"entry": entry, "pdf_sha256": digest(destination / (entry+".pdf"))})
+        return {"language": language, "documents": pdf_records}
     with ThreadPoolExecutor(max_workers=2) as pool:
         pdfs = list(pool.map(compile_one, ("en", "zh")))
     manifest = {"schema_version": "pirc17-local-revised-case-manuscript-v1",
@@ -101,5 +104,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--private-manuscript", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
-    value = assemble(**{"private": parser.parse_args().private_manuscript, "output": parser.parse_args().output_dir})
-    print("Two revised local manuscripts built; six original maps each; not uploaded or accepted.")
+    args = parser.parse_args()
+    value = assemble(args.private_manuscript, args.output_dir)
+    print("Six local documents built; six original maps in each body; not uploaded or accepted.")

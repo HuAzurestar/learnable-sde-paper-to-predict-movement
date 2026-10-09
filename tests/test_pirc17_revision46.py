@@ -52,6 +52,34 @@ def test_figure_sources_are_original_canonical_bytes_and_no_experiment():
             assert hashlib.sha256((PAPER / "figures/revision46-v1" / file["name"]).read_bytes()).hexdigest() == file["sha256"]
 
 
+def test_presentation_corrections_are_versioned_and_used_by_current_supplements():
+    manifest = read("figures/revision46-corrections-v1/manifest.json")
+    assert manifest["new_fits_forecasts_scores_or_resampling"] == 0
+    assert manifest["old_figures_or_historical_hashes_overwritten"] is False
+    assert len(manifest["figures"]) == 3
+    for row in manifest["figures"]:
+        assert hashlib.sha256((ROOT / "scripts" / row["renderer"]).read_bytes()).hexdigest() == row["renderer_sha256"]
+        for name, sha in row["files_sha256"].items():
+            assert hashlib.sha256((PAPER / "figures/revision46-corrections-v1" / name).read_bytes()).hexdigest() == sha
+    for language in ("en", "zh"):
+        retained = (PAPER / language / "revision46-supplement-retained.tex").read_text(encoding="utf-8")
+        assert "revision46-corrections-v1/preliminary-full-horizons.pdf" in retained
+        for name in ("method-horizon-overview", "method-region-overview"):
+            assert r"\input{revision46-"+name+".tex}" in retained
+            child = (PAPER / language / ("revision46-"+name+".tex")).read_text(encoding="utf-8")
+            assert "revision46-corrections-v1/"+name+".pdf" in child
+
+
+@pytest.mark.parametrize("language", ["en", "zh"])
+def test_five_follow_up_designs_are_not_silently_executed(language):
+    source = (PAPER / language / "supplement.tex").read_text(encoding="utf-8")
+    assert all(source.count(f"N{n:02d}:") == 1 if language == "en" else source.count(f"N{n:02d}：") == 1
+               for n in range(1,6))
+    assert ("None is executed" if language == "en" else "未执行这些实验") in source
+    assert "$z=(x_e,x_n,v_e,v_n)$" in source
+    assert ("training data only" if language == "en" else "仅用训练数据") in source
+
+
 def test_paired_effects_and_seed_values_retain_every_named_control():
     from scripts.plot_pirc17_revision46 import forest, seed_blocks, tradeoff
     from matplotlib import pyplot as plt
