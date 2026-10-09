@@ -1,0 +1,1317 @@
+{
+  "schema_version": "pirc17-revision46-source-migration-v1",
+  "source_commit": "8cbcb1140d804b25b553ab4e7cda0be3a0d34b1b",
+  "new_fits_forecasts_or_resampling": 0,
+  "languages": {
+    "en": {
+      "frozen_source_sha256": "124a6f350ddbe7c8bc898be89019feb0d56fc855eebc1dae00e778d3f5aa5e9d",
+      "units": [
+        {
+          "title": "Introduction",
+          "labels": [
+            "sec:introduction",
+            "sec:research-questions"
+          ],
+          "destination": "historical-source",
+          "original_text_sha256": "86d9457cbfa77a9bfdf4ad98d83408f8b7cb703a9cc00a7f3cb98fbd468d67bb",
+          "start_line": 88
+        },
+        {
+          "title": "Related work and scope",
+          "labels": [
+            "sec:related-work"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "24d79f54010e668f31ce088a8959fd9cd0c72f5e6b18d9406a4e744d2bc6ccd0",
+          "start_line": 158
+        },
+        {
+          "title": "Continuous-time motion and switching dynamics",
+          "labels": [],
+          "destination": "supplement",
+          "original_text_sha256": "3bdd3dc6f1cd7667c63cf7e1af3a9250512b8c745f1d06be3dcc743a5ddebffd",
+          "start_line": 159
+        },
+        {
+          "title": "Environment-conditioned and learned dynamics",
+          "labels": [],
+          "destination": "supplement",
+          "original_text_sha256": "de28b635db02afab2b221f69173ac9fc83462fa9c15da85ee3fc0d693167b4ce",
+          "start_line": 181
+        },
+        {
+          "title": "Distributional evaluation and finite-computation evidence",
+          "labels": [],
+          "destination": "supplement",
+          "original_text_sha256": "7e727b199801ea95e24301619225807a91b670b2bba58ea86c982867146ea46e",
+          "start_line": 223
+        },
+        {
+          "title": "Forecast models and terrain ownership",
+          "labels": [
+            "sec:models",
+            "fig:model-data-flow"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "ea35e9d226d452fe74c739672c8af948111c0b792d48db0b328e05827c7c0572",
+          "start_line": 244
+        },
+        {
+          "title": "Causal terrain dynamics",
+          "labels": [
+            "eq:terrain-sde",
+            "eq:drift-components",
+            "eq:baseline-fit",
+            "eq:conditioner-fit",
+            "eq:diffusion",
+            "eq:terrain-rate-Q",
+            "eq:terrain-update",
+            "eq:terrain-history"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "f700c0cdbd23a00cdf0e14f92107f12942d3536a09d9f1250661fd50a298585f",
+          "start_line": 328
+        },
+        {
+          "title": "Observed and simulated history are different inputs",
+          "labels": [
+            "sec:history-feedback",
+            "eq:secant-local-noise",
+            "eq:secant-overlap"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "4be1dd3b3de40251aaef4a79240f77333e5f96ae0e8f80b0314dc44e8ac7da71",
+          "start_line": 488
+        },
+        {
+          "title": "Frozen terrain-feature encoding",
+          "labels": [
+            "sec:feature-encoding",
+            "eq:distance-encoding",
+            "eq:cover-indicators",
+            "eq:surface-geometry",
+            "eq:feature-compositions",
+            "eq:feature-masks"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "d86a94409bebf5a3a035e9449a2a1b6e0e27ddef39a27fc428d741669e9d4003",
+          "start_line": 545
+        },
+        {
+          "title": "Method dynamics and registered alternatives",
+          "labels": [
+            "sec:method-model",
+            "eq:method-sde",
+            "eq:method-history",
+            "tab:method-families",
+            "sec:method-base-fit",
+            "eq:method-base-ridge",
+            "eq:method-base-covariance",
+            "sec:residual-mixture-fit",
+            "eq:gmm-residual-partition",
+            "eq:segment-rank-mode",
+            "tab:mode-rank-cardinality",
+            "eq:meta-inner",
+            "eq:meta-outer",
+            "eq:target-blend",
+            "sec:estimator-calibration",
+            "eq:estimator-drift-grid",
+            "eq:estimator-validation-surrogates",
+            "eq:estimator-objectives",
+            "tab:estimator-calibration",
+            "eq:method-kernels",
+            "eq:method-affine-exact",
+            "eq:method-joint-propagation",
+            "eq:saved-method-noise"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "3dbb4cb93580f553a1a594077f61b622d1c8b70265216b55a550f77380dc87c9",
+          "start_line": 650
+        },
+        {
+          "title": "Ten terrain configurations",
+          "labels": [
+            "tab:terrain-factors",
+            "tab:terrain-design",
+            "tab:terrain-sign-roles"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "9ef8316be156e593d9b83080517b9e032d7a87193111db573d34f26b1c76ea9a",
+          "start_line": 1195
+        },
+        {
+          "title": "Experimental setup",
+          "labels": [
+            "sec:protocol"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "ad31416083a20455055c5fc9b9672a2c6cbe7dc2ada105b58a4b0713104a02d8",
+          "start_line": 1320
+        },
+        {
+          "title": "Cohort and development population",
+          "labels": [
+            "tab:release-partition-identities",
+            "sec:source-sequence-screen",
+            "tab:source-sequence-screen",
+            "tab:cohort-denominators",
+            "sec:final-cohort-funnel",
+            "tab:final-cohort-funnel",
+            "sec:population-support-summary"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "6d5fb3c47f6c26dd3fcc61aba9320a84bef5772a19c99b9b998d9679fcf6cc01",
+          "start_line": 1322
+        },
+        {
+          "title": "Development data and fitting checks",
+          "labels": [
+            "sec:development-fit-summary"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "efcdcef105a04228b575daa77daf82a8b9e6283ac5573029b5bdfa623abed287",
+          "start_line": 1550
+        },
+        {
+          "title": "Observed history support and model-clock mismatch",
+          "labels": [
+            "sec:empirical-history-timings",
+            "tab:history-spans",
+            "tab:development-history-spans"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "47a66290344c319e4aa9c9667a1af4cc0aa0b078a24ef51ebbbaf17a72a0a15a",
+          "start_line": 1572
+        },
+        {
+          "title": "Missing-input extrapolation and retained query counts",
+          "labels": [
+            "sec:missing-input-scope",
+            "eq:missing-drift-change"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "22f821451d365905aa8a79108fce97779d617773f5b0eaffcda0b47edd763f64",
+          "start_line": 1642
+        },
+        {
+          "title": "Geographic reporting and real case-study availability",
+          "labels": [
+            "tab:geographic-blocks"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "0e9f47063ea5aa95baf1f2a9da347deb53419a89f861165026f0011a5730fe34",
+          "start_line": 1687
+        },
+        {
+          "title": "Environment coverage at the forecast origin",
+          "labels": [
+            "sec:origin-environment",
+            "tab:origin-environment-range"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "59e88db7efb28249efba245cb41d83accc1c90362c479b339d785d1d56b1a67b",
+          "start_line": 1745
+        },
+        {
+          "title": "Clock provenance and case-map sources",
+          "labels": [
+            "sec:clock-and-map-provenance",
+            "tab:clock-use",
+            "eq:solar-condition"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "d49aae6d671faa7aceecbc77a190c30f3ff30b94d726f8e72bb88de92826c3cc",
+          "start_line": 1783
+        },
+        {
+          "title": "Model map support and query rules",
+          "labels": [
+            "sec:model-map-support",
+            "tab:model-map-catalog",
+            "sec:data-reference-roles"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "c1faa3e667c82948a5189e2a75d8467646802e416ccb2553c1cdf4dd9e1c8333",
+          "start_line": 1874
+        },
+        {
+          "title": "Three origin modes",
+          "labels": [],
+          "destination": "supplement",
+          "original_text_sha256": "c41bc9e8584230f228fbfe50ae705b33fc869b4ba1788e120e9ba40af1796368",
+          "start_line": 1937
+        },
+        {
+          "title": "Horizon, observations and experiment size",
+          "labels": [
+            "sec:inventory",
+            "sec:target-times",
+            "tab:actual-target-times",
+            "sec:forecast-inventory",
+            "tab:forecast-counts",
+            "sec:inference"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "a068ed7c8823a04377a65fac6eba5a93ce553f0230bbf3a5196bfdc6dd34c3e1",
+          "start_line": 1954
+        },
+        {
+          "title": "Distributional quality and diagnostics",
+          "labels": [
+            "eq:population-es",
+            "eq:es-propriety",
+            "eq:ensemble-es"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "6ac11cd8fbd39af63df91fe68ac6afece1e259fc8500c29df195a3b3e93a53b8",
+          "start_line": 2040
+        },
+        {
+          "title": "Block aggregation and multiplicity",
+          "labels": [
+            "eq:paired-estimand"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "75bef65aa0ad6ed7b3ecb2520fd9b90d9918e5e3539e28ecf0b1da3268d7ef27",
+          "start_line": 2116
+        },
+        {
+          "title": "Practical margin and comparison-specific planning",
+          "labels": [
+            "sec:planning-qualification",
+            "eq:planning-power",
+            "tab:planning-sensitivity"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "a49664c0ae6fb59ccacdee1254cd42da863c1621d3f13934825077a860f1a5d8",
+          "start_line": 2171
+        },
+        {
+          "title": "Finite bootstrap resolution and saved diagnostics",
+          "labels": [
+            "sec:bootstrap-resolution"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "b349fe7e8f134e31a51c71a7adeb9e288dbbfd1a1a8fddd5ac146da8aa223668",
+          "start_line": 2249
+        },
+        {
+          "title": "Executable comparison states and terrain decisions",
+          "labels": [
+            "sec:decision-conditions",
+            "eq:decision-roundoff",
+            "tab:comparison-conditions",
+            "tab:loo-lio-states"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "270723aa180b69615a7d34bf5374b697ac9bb708e094d57c4c5244229e3d5440",
+          "start_line": 2288
+        },
+        {
+          "title": "Method ablation results",
+          "labels": [
+            "sec:method-results"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "9af49f2232156bc025c9b435180fb1f4bb44767330ee2dd9c63b3c817d6a0bbd",
+          "start_line": 2384
+        },
+        {
+          "title": "How to read the method experiments",
+          "labels": [
+            "sec:method-reader",
+            "tab:method-reader",
+            "eq:primary-aggregation",
+            "tab:metric-reader"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "77c0f89b33d944c7dcbb3ec875b64ebebce8bfe1a021de5c624d3d6df25e8477",
+          "start_line": 2401
+        },
+        {
+          "title": "Structure, observation interval and fitting strategy",
+          "labels": [
+            "sec:method-findings"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "83ee1e7ee2e961eddb806efeb30e649933e6237d2daee16369d895e1ff851055",
+          "start_line": 2500
+        },
+        {
+          "title": "Sensitivity to the five simulation seeds",
+          "labels": [
+            "sec:method-seed-stability"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "47c96cfb0163cfad44ba6ecdb509c137376a5ea9accfc7af59ed92d36f621e89",
+          "start_line": 2543
+        },
+        {
+          "title": "Complete primary method results under the fixed simulation budget",
+          "labels": [
+            "sec:preliminary-methods",
+            "sec:saved-analysis-status",
+            "tab:saved-analysis-states",
+            "tab:preliminary-method-effects",
+            "fig:preliminary-method-effects",
+            "fig:preliminary-method-absolute"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "c386cc82a11931a3746885ff35c09989df53a86aab23745d7752b1960a49657c",
+          "start_line": 2567
+        },
+        {
+          "title": "Horizon-dependent error and empirical coverage",
+          "labels": [
+            "tab:preliminary-coverage",
+            "tab:full-calibration-area",
+            "tab:model-region-size",
+            "fig:calibration-area",
+            "sec:block-calibration",
+            "eq:block-calibration-summary",
+            "tab:block-calibration",
+            "fig:block-calibration",
+            "fig:preliminary-full-horizons"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "dd69acef945a88e202bfcf247014b77fa6d9793c0eed7ff8fc31598c5081e12f",
+          "start_line": 2729
+        },
+        {
+          "title": "Descriptive method results by origin cover",
+          "labels": [
+            "sec:origin-cover-results",
+            "tab:origin-cover-methods"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "bd5f3cf9491b30f5b7baec9f85cc2aab3179b58d87ca25d9b577eae163f63632",
+          "start_line": 3012
+        },
+        {
+          "title": "Marginal CRPS and within-forecast endpoint error quantiles",
+          "labels": [
+            "sec:secondary-score-diagnostics"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "d45a88a7738b560bcbeaab0b7a7d3cf2462472f4f25db48556f9ca327bb25467",
+          "start_line": 3055
+        },
+        {
+          "title": "Terrain ablation results",
+          "labels": [
+            "sec:terrain-results",
+            "sec:terminal-failures",
+            "tab:retained-failures",
+            "tab:failure-family-dispositions"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "28460a05e024700a7dabbb3e737b1db51e6005d3c7a195746bd7f8858dacf777",
+          "start_line": 3094
+        },
+        {
+          "title": "Local route illustrations withheld from public review",
+          "labels": [
+            "sec:case-horizons"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "1f7a14c061a0c6122ad6b8fa37cc91d58b820712297e3bb1130716aa27c57b9b",
+          "start_line": 3229
+        },
+        {
+          "title": "Computational cost",
+          "labels": [],
+          "destination": "audit-notes",
+          "original_text_sha256": "0ce2680eb5274a7bca520b1b5f495d9e94990687a9926ac863f01bca0c554ded",
+          "start_line": 3240
+        },
+        {
+          "title": "Recorded environment and ordinary prediction-time examples",
+          "labels": [
+            "sec:preliminary-cost",
+            "tab:preliminary-cost"
+          ],
+          "destination": "audit-notes",
+          "original_text_sha256": "ed5f1c88d4c86d1e6514f616e37ddf1f4025af587cc93039a6a65da6f09079f9",
+          "start_line": 3248
+        },
+        {
+          "title": "Execution environment and timing boundary",
+          "labels": [
+            "sec:runtime-environment"
+          ],
+          "destination": "audit-notes",
+          "original_text_sha256": "f2878537e00ab6c0d5fd6628a1cb2dd203fe8af050a5823d57fa521eefb2a057",
+          "start_line": 3288
+        },
+        {
+          "title": "Completed saved-output replay and current review results",
+          "labels": [
+            "sec:audited-review-update",
+            "tab:audited-review-delivery",
+            "fig:audited-method-comparisons"
+          ],
+          "destination": "audit-notes",
+          "original_text_sha256": "21e5fa291706a3f6fe82a05f24f30728265b76ff67392d7303e5358011cfbe38",
+          "start_line": 3347
+        },
+        {
+          "title": "Discussion and limitations",
+          "labels": [],
+          "destination": "historical-source",
+          "original_text_sha256": "bff1a227d67b64154a16f62919726e3830b63f132028c8c353dc57e01359c263",
+          "start_line": 3415
+        },
+        {
+          "title": "A lower distributional score is not a point-error guarantee",
+          "labels": [
+            "sec:discussion-score",
+            "eq:mean-error-bound"
+          ],
+          "destination": "historical-source",
+          "original_text_sha256": "db9889ce2546e2f5e07481f080b78f42fd4b601f9519c2aadb130b3e073f6a26",
+          "start_line": 3416
+        },
+        {
+          "title": "Calibration must be reported by horizon",
+          "labels": [
+            "sec:discussion-calibration"
+          ],
+          "destination": "historical-source",
+          "original_text_sha256": "8e1c1e36f3504d45122476a29c68b60d5a00cb56e29e0acd3f89ad27e50019fb",
+          "start_line": 3457
+        },
+        {
+          "title": "Scope of attribution and unavailable evidence",
+          "labels": [
+            "sec:discussion-scope"
+          ],
+          "destination": "historical-source",
+          "original_text_sha256": "69dec15601a938ce57f00d7edf1275425d1b0a8e84a7e66d28d94fc5b28768e2",
+          "start_line": 3492
+        },
+        {
+          "title": "Conclusion",
+          "labels": [],
+          "destination": "historical-source",
+          "original_text_sha256": "f7891bc34bac7a09cfebdef444098f66ee8cfe3119cfd0625c07c666d9144282",
+          "start_line": 3547
+        },
+        {
+          "title": "Version and evidence binding",
+          "labels": [],
+          "destination": "audit-notes",
+          "original_text_sha256": "0d8a9688faea9c84f4d034cd0b5f85f056cf7fc04bdb6dc0678e9af3d9753059",
+          "start_line": 3591
+        },
+        {
+          "title": "Release and source-reconciliation details",
+          "labels": [
+            "sec:source-reconciliation-details"
+          ],
+          "destination": "audit-notes",
+          "original_text_sha256": "97b61ccdf74fbb706e9ad30e52b4ca0504fed5fcdb65433541aeaaa3b7f57ad7",
+          "start_line": 3609
+        },
+        {
+          "title": "Construction of the saved population descriptions",
+          "labels": [
+            "sec:population-description-construction",
+            "sec:final-cohort-durations",
+            "tab:final-cohort-durations",
+            "sec:final-cohort-speeds",
+            "eq:cohort-window-speed",
+            "tab:final-cohort-speeds",
+            "sec:final-cohort-geography",
+            "tab:final-cohort-geography"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "31d76eac0b3995341ea4b1c3e57cc4347eb335ad7e9190c2031379ce0e49ac23",
+          "start_line": 3734
+        },
+        {
+          "title": "Scientific names and implementation inventory",
+          "labels": [
+            "sec:method-implementation-map",
+            "tab:method-inventory"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "bab84a37ae34f1b229bd7e6b3c626f5ca8be997d9e09c650428464f908f1713a",
+          "start_line": 3936
+        },
+        {
+          "title": "Saved fitting population and development diagnostics",
+          "labels": [
+            "sec:saved-fit-diagnostics",
+            "tab:fit-transition-counts",
+            "tab:terrain-fit-diagnostics",
+            "tab:raw-terrain-design",
+            "eq:constant-mask-penalty"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "c6bd7feb25f3bd6a563aed266ea6007d159113a65a89550f6c2dcd41b629b8dd",
+          "start_line": 4001
+        },
+        {
+          "title": "Scoring and execution capture times",
+          "labels": [
+            "sec:score-execution-snapshots",
+            "tab:capture-count-difference"
+          ],
+          "destination": "audit-notes",
+          "original_text_sha256": "1ee3d1918f282d6fc0ed96804b81d4e372f72ab4843ab0d13aa00573921769fc",
+          "start_line": 4166
+        },
+        {
+          "title": "Complete saved five-seed differences",
+          "labels": [
+            "sec:method-seed-table"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "edda0a6a0034721eec81aab59f951213faa0724e1148d2dc6830f6b63ff621ef",
+          "start_line": 4227
+        },
+        {
+          "title": "Saved resampling tail diagnostics",
+          "labels": [
+            "sec:bootstrap-table-detail",
+            "tab:bootstrap-diagnostics"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "6a5dda0f457004acf84d7c6e53f47238c0dcab8a3e6ba339f9bcc6326367cbfa",
+          "start_line": 4239
+        },
+        {
+          "title": "Saved method probability and diffusion parameters",
+          "labels": [
+            "sec:method-noise-parameters",
+            "tab:method-noise-parameters"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "842be9fdad9eaf9f7bdcff2300da53e1bf9a1ca329624ef581ca328da7137ce7",
+          "start_line": 4280
+        },
+        {
+          "title": "Original Reptile task accounting",
+          "labels": [
+            "sec:reptile-task-accounting",
+            "tab:reptile-task-accounting"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "a1ad5fb9713f294a94a91cdde58a0130eddc0fd11c37048cfd619fd836f1215f",
+          "start_line": 4325
+        },
+        {
+          "title": "Original terrain fitting intervals",
+          "labels": [
+            "sec:terrain-fit-intervals",
+            "tab:terrain-fit-intervals"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "e90cf476a41bea0463bfbbc085d47e72740a40e79204bba02f07b3ea422eaf53",
+          "start_line": 4418
+        },
+        {
+          "title": "Map coordinate, sampling and validity details",
+          "labels": [
+            "sec:map-query-details",
+            "eq:map-frames",
+            "eq:dem-metric-spacing",
+            "eq:dem-stencil"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "26b84f3307b02f159b5071a1f8d5cdcb106ccc673ba4e27cbcb31bbfb7e1abd6",
+          "start_line": 4453
+        },
+        {
+          "title": "Captured forecast and family completeness",
+          "labels": [
+            "sec:execution-coverage",
+            "tab:execution-coverage",
+            "tab:family-coverage"
+          ],
+          "destination": "audit-notes",
+          "original_text_sha256": "d7b3ba2dd6eb4b4718f107d9e76f0ccded08af8dfd2a5c2e7f39ea2dab3f51b2",
+          "start_line": 4520
+        },
+        {
+          "title": "Detailed CPU environment records",
+          "labels": [
+            "sec:runtime-record-details"
+          ],
+          "destination": "audit-notes",
+          "original_text_sha256": "70cb26fb9d03966d8b158a9c6bdfd5d24ad133b1b1cdeac98ac3ca9fe82a6a67",
+          "start_line": 4606
+        },
+        {
+          "title": "Execution records and reconstruction",
+          "labels": [
+            "sec:execution-reconstruction",
+            "tab:terminal-score-inventory"
+          ],
+          "destination": "audit-notes",
+          "original_text_sha256": "01d0ec37a05d1a97d911b2cc1d7841317bb68e763a037c1c8989963ff2be2f4f",
+          "start_line": 4628
+        }
+      ],
+      "original_bibliography_sha256": "937cd0da0655d65d9ce67278552540c7d74e8b5ac8b91d7402d8b579033c54ff",
+      "all_units_assigned": true,
+      "scientific_inputs_moved_from_execution_unit_to_supplement": [
+        "all-method-absolute.tex",
+        "method-horizon-tables.tex",
+        "method-region-tables.tex"
+      ]
+    },
+    "zh": {
+      "frozen_source_sha256": "a1507029f451cc3b991c65e7c304b5decf152aa0e266e9514377c82d07b5742b",
+      "units": [
+        {
+          "title": "引言",
+          "labels": [
+            "sec:research-questions"
+          ],
+          "destination": "historical-source",
+          "original_text_sha256": "c5da9e5e81cc0724cab1c80edc9c1f24938d34015f1c5f12d56d9189a326592d",
+          "start_line": 63
+        },
+        {
+          "title": "相关工作与研究范围",
+          "labels": [
+            "sec:related-work"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "e4d54c2edfa386a9324d10465b07952cd3db76cb74b18d15b87debc5623b2012",
+          "start_line": 103
+        },
+        {
+          "title": "连续时间运动与切换动力学",
+          "labels": [],
+          "destination": "supplement",
+          "original_text_sha256": "9b500f6c04e27fba414365bf0e98b3fe4d7e7b10f43c30badd59361044281b7c",
+          "start_line": 104
+        },
+        {
+          "title": "环境条件与可学习动力学",
+          "labels": [],
+          "destination": "supplement",
+          "original_text_sha256": "aa60736255ee9e52267083d2c0d1a2e7b32326597333c4bf14657174f3ded124",
+          "start_line": 119
+        },
+        {
+          "title": "分布评价与有限计算证据",
+          "labels": [],
+          "destination": "supplement",
+          "original_text_sha256": "42818564e84c3a38fdfa275ed612c93c221d128fc26936db9d5778bc1072f9c2",
+          "start_line": 144
+        },
+        {
+          "title": "预测模型与地形归属",
+          "labels": [
+            "fig:model-data-flow"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "95e53dfda80ca50b00bae5f79bcd68912bbca79b48504a9f72fe7aec32e52deb",
+          "start_line": 157
+        },
+        {
+          "title": "因果地形动力学",
+          "labels": [
+            "eq:terrain-sde",
+            "eq:drift-components",
+            "eq:baseline-fit",
+            "eq:conditioner-fit",
+            "eq:diffusion",
+            "eq:terrain-rate-Q",
+            "eq:terrain-update",
+            "eq:terrain-history"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "c2ce28bf9918d05424fcfed1a5bd02593bef9a8b6a96008c51fc8d232c1b6406",
+          "start_line": 230
+        },
+        {
+          "title": "观测历史与模拟历史不是同一种输入",
+          "labels": [
+            "sec:history-feedback",
+            "eq:secant-local-noise",
+            "eq:secant-overlap"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "292633c5d0beb2ba2e5298df264dd291291c63564da181c661bad9cec72a07aa",
+          "start_line": 341
+        },
+        {
+          "title": "冻结地形特征编码",
+          "labels": [
+            "sec:feature-encoding",
+            "eq:distance-encoding",
+            "eq:cover-indicators",
+            "eq:surface-geometry",
+            "eq:feature-compositions",
+            "eq:feature-masks"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "f441cedfb13c5890b8aeee6bbdae644ddcbb2ad35772dcc0ea0cd7923b3719de",
+          "start_line": 384
+        },
+        {
+          "title": "方法动力学与登记备选模型",
+          "labels": [
+            "sec:method-model",
+            "eq:method-sde",
+            "eq:method-history",
+            "tab:method-families",
+            "sec:method-base-fit",
+            "eq:method-base-ridge",
+            "eq:method-base-covariance",
+            "sec:residual-mixture-fit",
+            "eq:gmm-residual-partition",
+            "eq:segment-rank-mode",
+            "tab:mode-rank-cardinality",
+            "eq:meta-inner",
+            "eq:meta-outer",
+            "eq:target-blend",
+            "sec:estimator-calibration",
+            "eq:estimator-drift-grid",
+            "eq:estimator-validation-surrogates",
+            "eq:estimator-objectives",
+            "tab:estimator-calibration",
+            "eq:method-kernels",
+            "eq:method-affine-exact",
+            "eq:method-joint-propagation",
+            "eq:saved-method-noise"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "0dcbcecc4af412df279bb8be76358ff37503761b1186adfd2c9738372a45f5ed",
+          "start_line": 464
+        },
+        {
+          "title": "十个地形配置",
+          "labels": [
+            "tab:terrain-factors",
+            "tab:terrain-design",
+            "tab:terrain-sign-roles"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "94944cbb96ce1ca0a6160d920256e89d39ebe044377f2993106e3d06995a4e35",
+          "start_line": 868
+        },
+        {
+          "title": "实验设置",
+          "labels": [],
+          "destination": "supplement",
+          "original_text_sha256": "27ac73465cf96a4fdc665b1d494fe33e0b0049f08c63f0febdb6ed1dbb77c721",
+          "start_line": 977
+        },
+        {
+          "title": "队列和开发样本",
+          "labels": [
+            "tab:release-partition-identities",
+            "sec:source-sequence-screen",
+            "tab:source-sequence-screen",
+            "tab:cohort-denominators",
+            "sec:final-cohort-funnel",
+            "tab:final-cohort-funnel",
+            "sec:population-support-summary"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "87794b0ae06e51f7226277a76679160399e260a4a10416b330d760c2ac613a93",
+          "start_line": 978
+        },
+        {
+          "title": "开发数据与拟合检查",
+          "labels": [
+            "sec:development-fit-summary"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "bb95236622dc8ee25135b918c3253a52f1089f1fa01bab5e78a2de8a42b0ed0e",
+          "start_line": 1148
+        },
+        {
+          "title": "观测历史支持与模型时钟差异",
+          "labels": [
+            "sec:empirical-history-timings",
+            "tab:history-spans",
+            "tab:development-history-spans"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "6bed390798a3d217ce6996447cbbc861df4ca2877006ad54f45b31331ace44ac",
+          "start_line": 1164
+        },
+        {
+          "title": "缺失输入外推与保存的查询计数",
+          "labels": [
+            "sec:missing-input-scope",
+            "eq:missing-drift-change"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "f4275d77131336da7c6a1a1c4ed78299c01ed6ca9abf1788eb0250379864ed31",
+          "start_line": 1221
+        },
+        {
+          "title": "入选数据的地理来源与真实案例",
+          "labels": [
+            "tab:geographic-blocks"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "31d5ea51ca9bcd0264b26df0072a403a05bb14d634b5b716bda4e642325eb7f2",
+          "start_line": 1251
+        },
+        {
+          "title": "预测起点的环境覆盖",
+          "labels": [
+            "sec:origin-environment",
+            "tab:origin-environment-range"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "9c9c2c4fa3d0ad4b263814977752a2ca7ecadc9a91092a8f00577ea5ce71100a",
+          "start_line": 1293
+        },
+        {
+          "title": "时钟来源与案例地图来源",
+          "labels": [
+            "sec:clock-and-map-provenance",
+            "tab:clock-use",
+            "eq:solar-condition"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "89f090ebebf04e97ab251bc5863153a3760e46d61fd17741aec9f60cc702ca6d",
+          "start_line": 1322
+        },
+        {
+          "title": "模型地图支持与查询规则",
+          "labels": [
+            "sec:model-map-support",
+            "tab:model-map-catalog",
+            "sec:data-reference-roles"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "0ad757943b6be240ac2e53c3b4e8870f486dc18dcc73b564019a8ad4c236922b",
+          "start_line": 1388
+        },
+        {
+          "title": "三种起点模式",
+          "labels": [],
+          "destination": "supplement",
+          "original_text_sha256": "196aa1492a36b156826bc611a5878d3cba45882c7a087029b105c1c07d8db4c4",
+          "start_line": 1435
+        },
+        {
+          "title": "时域、观测与规模",
+          "labels": [
+            "sec:target-times",
+            "tab:actual-target-times",
+            "sec:forecast-inventory",
+            "tab:forecast-counts"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "2ee30e2bf576df10337779c105f0f75cdc0c98947a5ba81db0fba27c2e68d7b2",
+          "start_line": 1445
+        },
+        {
+          "title": "分布质量与诊断",
+          "labels": [
+            "eq:population-es",
+            "eq:es-propriety",
+            "eq:ensemble-es"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "3d9a937de7ef6a34c1dc3838edc431a2e90255ca120d91c179fd4d854a8bf71b",
+          "start_line": 1510
+        },
+        {
+          "title": "记录块聚合与多重比较",
+          "labels": [
+            "eq:paired-estimand"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "9c0672ff97999c5e724f4df14c2c0dfbf548d4d1de64c7dcb921231bc727dd06",
+          "start_line": 1565
+        },
+        {
+          "title": "实际意义界与逐比较功效规划",
+          "labels": [
+            "sec:planning-qualification",
+            "eq:planning-power",
+            "tab:planning-sensitivity"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "3021475d4dcd07cb69f14c5a9a1ce6e996b31f9d50e64065c6cdc2fb465c9afc",
+          "start_line": 1606
+        },
+        {
+          "title": "有限重采样分辨率与保存诊断",
+          "labels": [
+            "sec:bootstrap-resolution"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "709aca833f5e25a34589d70c747da1e05d7711520e964ce97f72288ceb7f681a",
+          "start_line": 1678
+        },
+        {
+          "title": "可执行的比较状态与地形裁定",
+          "labels": [
+            "sec:decision-conditions",
+            "eq:decision-roundoff",
+            "tab:comparison-conditions",
+            "tab:loo-lio-states"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "04c3c89078cb2732bc08b41d68c6921e4e45f4707ff08872b7834fb140b44ca4",
+          "start_line": 1709
+        },
+        {
+          "title": "方法消融结果",
+          "labels": [
+            "sec:method-results"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "82b4c810cdb393d50658e6a9ff6c358ebfc4591e137abf6a325ca969d029d51e",
+          "start_line": 1788
+        },
+        {
+          "title": "如何读方法实验",
+          "labels": [
+            "sec:method-reader",
+            "tab:method-reader",
+            "eq:primary-aggregation",
+            "tab:metric-reader"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "55cf504e4011226b2c5fb6dac12477fcce9520438416af1470f56a98f5743fa4",
+          "start_line": 1799
+        },
+        {
+          "title": "结构、观测间隔及拟合策略",
+          "labels": [
+            "sec:method-findings"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "c822d7aa766119155223b19763710005a8cccbc45ff33e4e8e2185e8ea1fb91e",
+          "start_line": 1875
+        },
+        {
+          "title": "五个模拟种子的敏感性",
+          "labels": [
+            "sec:method-seed-stability"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "5d869096fd53326618daa8b8af5d707a65129679215c679444a355b8c7bc3314",
+          "start_line": 1906
+        },
+        {
+          "title": "固定模拟预算下的完整方法主组结果",
+          "labels": [
+            "sec:preliminary-methods",
+            "sec:saved-analysis-status",
+            "tab:saved-analysis-states",
+            "tab:preliminary-method-effects",
+            "fig:preliminary-method-effects",
+            "fig:preliminary-method-absolute"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "b3c61827b7693c86b188f2fe3611c45d462ca02814a53ff951522e4feb213c03",
+          "start_line": 1923
+        },
+        {
+          "title": "时域误差与经验覆盖率",
+          "labels": [
+            "tab:preliminary-coverage",
+            "tab:full-calibration-area",
+            "tab:model-region-size",
+            "fig:calibration-area",
+            "sec:block-calibration",
+            "eq:block-calibration-summary",
+            "tab:block-calibration",
+            "fig:block-calibration",
+            "fig:preliminary-full-horizons"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "87334147861223f10f94b4f998f1fe9ea03d738a05a0c259abb18bb98d60438d",
+          "start_line": 2056
+        },
+        {
+          "title": "按起点覆盖类别的描述性方法结果",
+          "labels": [
+            "sec:origin-cover-results",
+            "tab:origin-cover-methods"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "1c61b155a6080932afb6c1aa5d89c375dbc70e1ebaef8fc0e0c33e28ba9950ab",
+          "start_line": 2277
+        },
+        {
+          "title": "边缘CRPS与单次预测内粒子终点误差分位数",
+          "labels": [
+            "sec:secondary-score-diagnostics"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "4c6b55dce794c6975158008efc1cb45048a5629a3f9506d7b052a353ccb99697",
+          "start_line": 2308
+        },
+        {
+          "title": "地形消融结果",
+          "labels": [
+            "sec:terrain-results",
+            "sec:terminal-failures",
+            "tab:retained-failures",
+            "tab:failure-family-dispositions"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "50412b39038d3a212cb4bd859d21f8a7240f8d3688e74e74688a3314e9ebc7a4",
+          "start_line": 2333
+        },
+        {
+          "title": "公开审查版暂不包含本地路线案例",
+          "labels": [
+            "sec:case-horizons"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "7440627f85aa07f998e01b9b830fedfeed770c02a5a4f46c2e40dfc3d1d3f398",
+          "start_line": 2432
+        },
+        {
+          "title": "计算成本",
+          "labels": [],
+          "destination": "audit-notes",
+          "original_text_sha256": "6360cd5346e2d813a8670c64f63aeac277c011ca930e0f4fe665445802efd4fb",
+          "start_line": 2440
+        },
+        {
+          "title": "已记录环境与普通预测耗时例子",
+          "labels": [
+            "sec:preliminary-cost",
+            "tab:preliminary-cost"
+          ],
+          "destination": "audit-notes",
+          "original_text_sha256": "7227313e770ea3ee10a74ac7da20786ef7bc2a024893281a8cda5cfa678324f2",
+          "start_line": 2445
+        },
+        {
+          "title": "执行环境与计时边界",
+          "labels": [
+            "sec:runtime-environment"
+          ],
+          "destination": "audit-notes",
+          "original_text_sha256": "12fd6501d46179841c5b61044fbb625f0a88aa180a8df8668348c672f0887499",
+          "start_line": 2478
+        },
+        {
+          "title": "已完成的保存输出复算与当前审阅结果",
+          "labels": [
+            "sec:audited-review-update",
+            "tab:audited-review-delivery",
+            "fig:audited-method-comparisons"
+          ],
+          "destination": "audit-notes",
+          "original_text_sha256": "4f50ca406961381318e88e1f430a967076192c832c01ffcd1c0d120a696322d0",
+          "start_line": 2518
+        },
+        {
+          "title": "讨论与局限",
+          "labels": [],
+          "destination": "historical-source",
+          "original_text_sha256": "96d313fd0904ab17c4ad7a26e6714f10885818f2f95f90f89b65c1880ade5504",
+          "start_line": 2571
+        },
+        {
+          "title": "分布评分降低不保证位置误差降低",
+          "labels": [
+            "sec:discussion-score",
+            "eq:mean-error-bound"
+          ],
+          "destination": "historical-source",
+          "original_text_sha256": "f1ea568ee6f620f3c81f8d15ae5067ff93f838f27d289a6539e91c2ce2370f1b",
+          "start_line": 2572
+        },
+        {
+          "title": "校准须按预测时域报告",
+          "labels": [
+            "sec:discussion-calibration"
+          ],
+          "destination": "historical-source",
+          "original_text_sha256": "8c5964e906abf5f94373edb5b125fb893a89a69294ba3d00ac91876667c999b3",
+          "start_line": 2603
+        },
+        {
+          "title": "归属范围与不可用证据",
+          "labels": [
+            "sec:discussion-scope"
+          ],
+          "destination": "historical-source",
+          "original_text_sha256": "3f494ba4656d1c068dcc3a27092bbb050e5f2add10f9757cee74dff4c05f4db8",
+          "start_line": 2628
+        },
+        {
+          "title": "结论",
+          "labels": [],
+          "destination": "historical-source",
+          "original_text_sha256": "4ef3f23df30a3e3f9aa3dda366a811192880a9d5add3302bfc2d9b212face1f3",
+          "start_line": 2662
+        },
+        {
+          "title": "版本与证据绑定",
+          "labels": [],
+          "destination": "audit-notes",
+          "original_text_sha256": "0dfd736d56f1a96de3c1c78839dd7aa2d62c0537ccaedb68ae39566aef71b31d",
+          "start_line": 2694
+        },
+        {
+          "title": "发布与来源对账细节",
+          "labels": [
+            "sec:source-reconciliation-details"
+          ],
+          "destination": "audit-notes",
+          "original_text_sha256": "ca55a1a5b6f4d84fc839ae109d2e62b826fba22161bc12fc602ffbb5d5a4b370",
+          "start_line": 2709
+        },
+        {
+          "title": "保存人群描述的构造方法",
+          "labels": [
+            "sec:population-description-construction",
+            "sec:final-cohort-durations",
+            "tab:final-cohort-durations",
+            "sec:final-cohort-speeds",
+            "eq:cohort-window-speed",
+            "tab:final-cohort-speeds",
+            "sec:final-cohort-geography",
+            "tab:final-cohort-geography"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "25754800a7dcf61eda3a1a43ca05d670866a45787b502792077a968eac6e29cc",
+          "start_line": 2794
+        },
+        {
+          "title": "科学名称与实现配置映射",
+          "labels": [
+            "sec:method-implementation-map",
+            "tab:method-inventory"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "9d7f1e00a63d68f197102a3a2fdcbc9006a9e1ab022c506446943b86844f23d5",
+          "start_line": 2959
+        },
+        {
+          "title": "保存的拟合数据量与开发诊断",
+          "labels": [
+            "sec:saved-fit-diagnostics",
+            "tab:fit-transition-counts",
+            "tab:terrain-fit-diagnostics",
+            "tab:raw-terrain-design",
+            "eq:constant-mask-penalty"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "377b50274a5f360b6f25d689813033d0c958bb75cff28a3c016976d59a59e9a9",
+          "start_line": 3017
+        },
+        {
+          "title": "评分与执行捕获时刻",
+          "labels": [
+            "sec:score-execution-snapshots",
+            "tab:capture-count-difference"
+          ],
+          "destination": "audit-notes",
+          "original_text_sha256": "ea198854aafd7f13478b4406e189aaeb0b2f17f3ab8de3f340ce7a98ffcf306f",
+          "start_line": 3144
+        },
+        {
+          "title": "完整的保存五种子差值",
+          "labels": [
+            "sec:method-seed-table"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "d3e0b4f43a04db992be08ba5afb66d38a30d0d36d85fe786e8fda708ce85da3a",
+          "start_line": 3195
+        },
+        {
+          "title": "保存的重采样尾部诊断",
+          "labels": [
+            "sec:bootstrap-table-detail",
+            "tab:bootstrap-diagnostics"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "bd25b19f3ac7d76dae6473e87bd19e2343b7cf85bce4c1a63eafa640c6703d08",
+          "start_line": 3204
+        },
+        {
+          "title": "保存的方法模式概率与扩散参数",
+          "labels": [
+            "sec:method-noise-parameters",
+            "tab:method-noise-parameters"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "b73a09ddbce17aeb2158fdff4e56c3c86483a200f7e407f9e751962cf7b9912f",
+          "start_line": 3243
+        },
+        {
+          "title": "原始 Reptile 任务清点",
+          "labels": [
+            "sec:reptile-task-accounting",
+            "tab:reptile-task-accounting"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "1d874ac29ab3711fa70be7585cab1aa3287790105f75cd054ad28347dba6b68a",
+          "start_line": 3281
+        },
+        {
+          "title": "原始地形拟合转移间隔",
+          "labels": [
+            "sec:terrain-fit-intervals",
+            "tab:terrain-fit-intervals"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "26c0c9c098be79307d2d47982445c38d465ac3b0506171e0e87d095067cd4344",
+          "start_line": 3365
+        },
+        {
+          "title": "地图坐标、采样与有效性细节",
+          "labels": [
+            "sec:map-query-details",
+            "eq:map-frames",
+            "eq:dem-metric-spacing",
+            "eq:dem-stencil"
+          ],
+          "destination": "supplement",
+          "original_text_sha256": "311ed17727ed97081db4df58228a50af5f0babd428727492056a286709aa1b98",
+          "start_line": 3394
+        },
+        {
+          "title": "捕获时预测与比较族完整性",
+          "labels": [
+            "sec:execution-coverage",
+            "tab:execution-coverage",
+            "tab:family-coverage"
+          ],
+          "destination": "audit-notes",
+          "original_text_sha256": "8b30acfeea6413a006f4438e66ad719a2540263f337c979ac6c1d38f79443f8c",
+          "start_line": 3440
+        },
+        {
+          "title": "CPU 环境详细记录",
+          "labels": [
+            "sec:runtime-record-details"
+          ],
+          "destination": "audit-notes",
+          "original_text_sha256": "ab63a8b486eece4f94061fa3cff66632244100fa3ecd0f291c6f778c4abec385",
+          "start_line": 3511
+        },
+        {
+          "title": "执行记录与重建",
+          "labels": [
+            "sec:execution-reconstruction",
+            "tab:terminal-score-inventory"
+          ],
+          "destination": "audit-notes",
+          "original_text_sha256": "ffcef9a1bdab31e5f6f79ec4a3b7c6b33eaa73538da3dbe4913e9610bb5ec04b",
+          "start_line": 3526
+        }
+      ],
+      "original_bibliography_sha256": "937cd0da0655d65d9ce67278552540c7d74e8b5ac8b91d7402d8b579033c54ff",
+      "all_units_assigned": true,
+      "scientific_inputs_moved_from_execution_unit_to_supplement": [
+        "all-method-absolute.tex",
+        "method-horizon-tables.tex",
+        "method-region-tables.tex"
+      ]
+    }
+  }
+}

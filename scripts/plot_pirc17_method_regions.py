@@ -193,18 +193,18 @@ def render(output):
     import matplotlib
     matplotlib.use("Agg")
     from matplotlib import pyplot as plt
-    from matplotlib.colors import LogNorm, Normalize
+    from matplotlib.colors import LogNorm, TwoSlopeNorm
     import numpy as np
     output.mkdir(parents=True, exist_ok=True)
     plt.rcParams.update({"font.family":"DejaVu Sans", "font.size":11})
     areas = np.array([[h["levels"][2]["mean_disk_area_km2"] for h in p["horizons"]] for p in rows])
     coverage = 100*np.array([[h["levels"][2]["empirical_coverage"] for h in p["horizons"]] for p in rows])
     fig, axes = plt.subplots(1, 2, figsize=(8.4, 9.2), sharey=True)
-    norms = [LogNorm(vmin=.005, vmax=20), Normalize(vmin=0, vmax=100)]
+    norms = [LogNorm(vmin=.005, vmax=20), TwoSlopeNorm(vmin=0, vcenter=90, vmax=100)]
     titles = ["Mean 90% disk area (km²)\nLog colour scale; ordinary labels",
               "90% disk coverage (%)\nNominal reference: 90%, not 100%"]
     for j, (ax, values, norm, title) in enumerate(zip(axes, (areas, coverage), norms, titles)):
-        cmap = plt.get_cmap("Blues" if j == 0 else "viridis")
+        cmap = plt.get_cmap("Blues" if j == 0 else "RdBu_r")
         im = ax.imshow(values, cmap=cmap, norm=norm, aspect="auto", interpolation="nearest")
         for row in range(28):
             for col in range(4):

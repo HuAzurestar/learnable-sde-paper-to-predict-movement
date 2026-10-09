@@ -1,0 +1,116 @@
+\input{revision46-preamble.tex}
+\title{Scientific Supplement: Fitted Predictors, Complete Comparisons\\and Reproducibility Specifications}
+\begin{document}\maketitle
+\noindent This is an independent scientific reading document, not the main
+paper's appended execution log. The new visual explanations below use
+unchanged public aggregates. Detailed retained specifications and full
+tables follow. Historical saved-score captions refer to their capture
+version; current qualification is the main paper's 14 equivalent/seven
+inconclusive finite-algorithm states, with resolution-invariant states all
+inconclusive. Retained failures and scientific gaps are not repaired by
+reorganising the document. The \href{audit-notes.pdf}{audit record} preserves
+versions, execution history and review responses.
+
+\section{Terrain geometry and the ten configurations}
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{../figures/revision46-v1/revision46-geometry.pdf}
+\caption{Schematic, not a real route. Left: nearest road/river point, distance
+and direction toward that point, not a tangent or river flow. Centre: signed
+history $h$, uphill $a$ and contour $q$, with distinct dot products and slope
+magnitude. Right: cover membership and retained-road distance combine;
+invalid queries are not the valid ``other'' cover class. The excluded road
+classes are listed in the main paper.}\label{fig:terrain-geometry}\hypertarget{fig:terrain-geometry}{}
+\end{figure}
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{../figures/revision46-v1/revision46-design-matrix.pdf}
+\caption{Ten independently fitted configurations. Road--cover interactions
+require both parents; surface--history remains in LIO-surface. $K$ counts
+numeric features, not total design columns. For LOO the machine candidate
+is all-terrain and control is all-minus-group; a factor benefit expressed
+as removal loss reverses the sign and interval endpoints. LIO compares
+history-plus-group to base. The families and nonadditive interactions are
+not redefined by this drawing.}\label{fig:terrain-matrix}\end{figure}
+\FloatBarrier
+
+\section{Complementary error and uncertainty views}
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{../figures/revision46-v1/revision46-score-error-tradeoff.pdf}
+\caption{All 21 candidate-minus-named-control contrasts: weighted ES versus
+mean-position FDE (m). Negative is favourable on each axis. Facets retain
+original comparison families; named Full controls are not pooled. These
+are descriptive paired means, not a new joint test or Pareto ranking.}
+\label{fig:tradeoff}\end{figure}
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{../figures/revision46-v1/revision46-seeds-and-blocks.pdf}
+\caption{Five saved seed effects versus original record-block simultaneous
+intervals (m). All comparisons are retained, including the examples with
+unanimous seed signs and block intervals crossing zero. Seeds vary Monte
+Carlo simulation, not fitted training samples or independent participants.}
+\label{fig:seed-blocks}\end{figure}
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{../figures/revision46-v1/revision46-identity-diagnostics.pdf}
+\caption{Tiny implementation-consistency effects at their own explicitly
+labelled scale, supplementing the main paper's practical-effect forest.
+Original point estimates and intervals are unchanged; exact or near-zero
+effects do not supply an independent power proof.}\label{fig:micro-effects}\end{figure}
+\FloatBarrier
+
+\section{Fit diagnostics, runtime and the complete method overview}
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{../figures/revision46-v1/revision46-development-fit.pdf}
+\caption{Ten development configurations: training/validation displacement-rate
+MSE (m$^2$/s$^2$), original columns and raw rank. Fit error is not forecast
+ES. Raw rank deficiency, augmented-ridge full rank and out-of-sample
+performance are distinct. Rows and regularisation remain unchanged.}
+\label{fig:fit-diagnostics}\end{figure}
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{../figures/revision46-v1/revision46-recorded-runtime.pdf}
+\caption{Completed original provider-cold/provider-warm latency p50/p95
+(ms) and failure counts for all 15 subjects. Each condition uses five trials;
+15 prewarm runs are excluded from quantiles, not the recorded exposed trials.
+Provider-cold is not OS-cache-cold. Query costs are inclusive in rollout;
+five observations do not estimate a stable operational tail.}\label{fig:runtime}\end{figure}
+\FloatBarrier
+\begin{figure}[p]\centering
+\includegraphics[width=\linewidth,height=.83\textheight,keepaspectratio]{../figures/revision46-v1/revision46-metric-overview.pdf}
+\caption{All 28 saved method identities and four horizons: ES (m), mean 90\%
+disk area (km$^2$), and coverage minus nominal 90\% (percentage points).
+The shared diverging coverage scale is centred at zero, with both
+overcoverage and undercoverage visible. Complete all-level tables remain
+below; no configuration is selected as a winner.}\label{fig:method-overview}\hypertarget{fig:method-overview}{}
+\end{figure}\FloatBarrier
+
+\section{Family availability, not a terrain benefit ranking}
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{../figures/revision46-v1/revision46-family-availability.pdf}
+\caption{Original seven families by three origin modes. A required failure
+invalidates its whole registered family; individual successful pairs are
+not a replacement family. Complete does not mean accepted, practically
+beneficial, mechanism-qualified or resolution-invariant. The original
+comparison tables retain each qualification reason.}\label{fig:availability}\hypertarget{fig:availability}{}
+\end{figure}\FloatBarrier
+
+\section{Missing-input and history-feedback limits}
+Invalid online numeric features are zero-filled with a validity mask.
+Within a frozen conditioner, the induced drift change is
+$\Delta b=\theta_{\rm num}\Delta f+\theta_{\rm mask}\Delta m$, not necessarily zero.
+The 404/81 valid development origins do not span these missing-input states.
+Feature-file counts, cached query counts, absence of an element, invalid
+geometry and a failed forecast have different denominators. Full early/late
+speed and drift traces and per-feature missingness across every forecast
+were not retained; the four position snapshots cannot reconstruct them.
+A one-half overlap correlation for constant-noise 10 s secants is a local
+calculation, not evidence for the full nonlinear feedback process or a
+measured observation-noise model. No long simulations are rerun here.
+
+\section{Retained detailed scientific specifications and tables}
+The following mechanically migrated units retain the original formulas,
+tables and source identities. Their unit-level hashes and old-label
+destinations are recorded in \path{revision46-source-migration.json};
+the verbatim pre-revision files remain separately named historical sources.
+Only reading structure, cross-document links and counting-unit clarification
+are changed. The main paper, not an older snapshot's pending wording,
+determines the current review state.
+\input{revision46-supplement-retained.tex}
+\input{revision46-bibliography.tex}
+\end{document}

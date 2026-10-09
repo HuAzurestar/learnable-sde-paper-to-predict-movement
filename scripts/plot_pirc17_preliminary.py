@@ -217,9 +217,10 @@ def render(output):
 
     full = next(r for r in rows if r["configuration"] == "arm-01/full")
     times = [1, 5, 15, 30]
-    fig, axes = plt.subplots(1, 2, figsize=(8, 3.1))
+    fig, axes = plt.subplots(1, 2, figsize=(8.4, 3.5), layout="constrained")
     axes[0].plot(times, full["es_by_time_m"], "o-", color="#2166ac")
-    axes[0].set_ylabel("Marginal energy score (m); lower is better")
+    axes[0].set_ylabel("Energy score (m)")
+    axes[0].set_title("Lower ES is better", fontsize=10)
     axes[1].plot(times, [100*x for x in full["coverage_90_by_time"]], "o-", color="#2166ac")
     axes[1].axhline(90, color="#b35806", linestyle="--", label="Nominal 90%")
     axes[1].set_ylim(0, 103)
@@ -230,7 +231,6 @@ def render(output):
         ax.set_xlabel("Nominal prediction horizon (min)")
         ax.grid(alpha=.2)
     fig.suptitle("Full01: four original targets; 46 blocks x 5 simulated ensembles", fontsize=10)
-    fig.tight_layout()
     save("preliminary-full-horizons", fig)
     manifest = dict(schema_version="pirc17-preliminary-presentation-figures-v2",
                     snapshot_sha256=SNAPSHOT_SHA256, captured_utc=data["captured_utc"],

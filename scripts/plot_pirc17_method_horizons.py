@@ -142,7 +142,7 @@ def render(output):
     import matplotlib
     matplotlib.use("Agg")
     from matplotlib import pyplot as plt
-    from matplotlib.colors import Normalize
+    from matplotlib.colors import Normalize, TwoSlopeNorm
     import numpy as np
     output.mkdir(parents=True, exist_ok=True)
     rows = description["configs"]
@@ -152,8 +152,9 @@ def render(output):
                 100*np.array([r["coverage_90_by_time"] for r in rows])]
     titles = ["Marginal ES (m)\nLower is better", "90% disk coverage (%)\nNominal reference: 90%, not 100%"]
     for j, (ax, values, title) in enumerate(zip(axes, matrices, titles)):
-        cmap = plt.get_cmap("Blues" if j == 0 else "viridis")
-        norm = Normalize(vmin=0, vmax=math.ceil(float(values.max())/100)*100 if j == 0 else 100)
+        cmap = plt.get_cmap("Blues" if j == 0 else "RdBu_r")
+        norm = (Normalize(vmin=0, vmax=math.ceil(float(values.max())/100)*100) if j == 0
+                else TwoSlopeNorm(vmin=0, vcenter=90, vmax=100))
         im = ax.imshow(values, cmap=cmap, norm=norm, aspect="auto", interpolation="nearest")
         for row in range(28):
             for col in range(4):
