@@ -1,3 +1,6 @@
+# Historical presentation fixture: exact public release 8cbcb114.
+# Old monolithic positions are not current six-document acceptance.
+# Current source graph, values and layouts: test_pirc17_revision46.py.
 """Verify history model/data separation without weakening scientific content."""
 from pathlib import Path
 import json
@@ -26,7 +29,7 @@ def subsection(tex, anchor):
 @pytest.mark.parametrize("language",["en","zh"])
 def test_complete_observed_history_statistics_move_verbatim_to_experimental_setup(language):
     before=previous(language)
-    after=(PAPER/language/"main.tex").read_text(encoding="utf-8")
+    after=(PAPER/language/"historical-main-v1.tex").read_text(encoding="utf-8")
     old=subsection(before,"sec:history-feedback")
     end=old.index("There is also a noise-distribution change." if language=="en" else r"\begin{samepage}")
     moved=old[:end].strip()
@@ -45,7 +48,7 @@ def test_complete_observed_history_statistics_move_verbatim_to_experimental_setu
 @pytest.mark.parametrize("language",["en","zh"])
 def test_rules_and_complete_original_noise_argument_stay_in_shorter_model_passage(language):
     before=previous(language)
-    after=(PAPER/language/"main.tex").read_text(encoding="utf-8")
+    after=(PAPER/language/"historical-main-v1.tex").read_text(encoding="utf-8")
     old=subsection(before,"sec:history-feedback")
     model=subsection(after,"sec:history-feedback")
     at=old.index("There is also a noise-distribution change." if language=="en" else r"\begin{samepage}")
@@ -65,7 +68,7 @@ def test_rules_and_complete_original_noise_argument_stay_in_shorter_model_passag
 @pytest.mark.parametrize("language",["en","zh"])
 def test_every_scientific_block_is_exact_with_only_the_two_named_table_moves(language):
     before=previous(language)
-    after=(PAPER/language/"main.tex").read_text(encoding="utf-8")
+    after=(PAPER/language/"historical-main-v1.tex").read_text(encoding="utf-8")
     for kind in ("table","longtable","figure","equation"):
         pattern=r"\\begin\{"+kind+r"\}.*?\\end\{"+kind+r"\}"
         assert_preserved_blocks(re.findall(pattern,before,re.S),re.findall(pattern,after,re.S),kind)

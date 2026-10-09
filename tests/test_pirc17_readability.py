@@ -1,3 +1,6 @@
+# Historical presentation fixture: exact public release 8cbcb114.
+# Old monolithic positions are not current six-document acceptance.
+# Current source graph, values and layouts: test_pirc17_revision46.py.
 """Pure manuscript/source checks; no simulations, scoring or inference."""
 import hashlib
 import json
@@ -11,7 +14,7 @@ PAPER = Path(__file__).resolve().parents[1] / "paper/pirc17"
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_names_and_original_identities_are_defined_not_relabelled(language):
-    tex = (PAPER / language / "main.tex").read_text(encoding="utf-8")
+    tex = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
     model = tex.split(r"\section{Forecast models and terrain ownership}" if language == "en"
                       else r"\section{预测模型与地形归属}", 1)[1]
     definitions = model.split(r"\begin{figure}", 1)[0]
@@ -34,7 +37,7 @@ def test_display_precision_preserves_bound_original_timings_and_delta(language):
     ledger = json.loads((PAPER / "claim-ledger.json").read_text(encoding="utf-8"))
     revision = ledger["terminology_and_display_revision"]
     assert hashlib.sha256(source.read_bytes()).hexdigest() == revision["timing_source_sha256"]
-    tex = (PAPER / language / "main.tex").read_text(encoding="utf-8")
+    tex = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
     table = tex.split(r"\label{tab:preliminary-cost}", 1)[1].split(r"\end{tabular}", 1)[0]
     names = {"arm-01/full": "Full01", "arm-04/gmm_kernel": "GMM kernel",
              "arm-06/dt300": "dt300", "arm-19/em": "EM", "arm-21/mc": "MC"}
@@ -53,7 +56,7 @@ def test_display_precision_preserves_bound_original_timings_and_delta(language):
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_all_five_method_questions_and_numerical_diagnostic_scope(language):
-    tex = (PAPER / language / "main.tex").read_text(encoding="utf-8")
+    tex = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
     section = tex.split(r"\section{Method ablation results}" if language == "en"
                         else r"\section{方法消融结果}", 1)[1]
     introduction = section.split(r"\subsection", 1)[0]
@@ -74,7 +77,7 @@ def test_all_five_method_questions_and_numerical_diagnostic_scope(language):
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_longtable_continuations_restate_table_and_columns(language):
-    tex = (PAPER / language / "main.tex").read_text(encoding="utf-8")
+    tex = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
     ledger = json.loads((PAPER / "claim-ledger.json").read_text(encoding="utf-8"))
     revision = ledger["table_layout_revision"]
     tables = re.findall(r"\\begin\{longtable\}.*?\\end\{longtable\}", tex, re.S)
@@ -99,7 +102,7 @@ def test_longtable_continuations_restate_table_and_columns(language):
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_layout_revision_preserves_pinned_stage_table_data(language):
-    tex = (PAPER / language / "main.tex").read_text(encoding="utf-8")
+    tex = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
     ledger = json.loads((PAPER / "claim-ledger.json").read_text(encoding="utf-8"))
     revision = ledger["table_layout_revision"]
     tables = re.findall(r"\\begin\{longtable\}.*?\\end\{longtable\}", tex, re.S)
@@ -123,7 +126,7 @@ def test_layout_revision_preserves_pinned_stage_table_data(language):
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_float_only_page_spacing_is_scoped_without_shrinking_text(language):
-    tex = (PAPER / language / "main.tex").read_text(encoding="utf-8")
+    tex = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
     preamble, body = tex.split(r"\begin{document}", 1)
     style = ("\\makeatletter\n\\setlength{\\@fptop}{0pt}\n"
              "\\setlength{\\@fpsep}{16pt}\n"
@@ -138,7 +141,7 @@ def test_float_only_page_spacing_is_scoped_without_shrinking_text(language):
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_cost_reading_keeps_timing_units_and_moves_only_environment_details(language):
-    tex = (PAPER / language / "main.tex").read_text(encoding="utf-8")
+    tex = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
     body, appendix = tex.split(r"\appendix", 1)
     heading = r"\section{Computational cost}" if language == "en" else r"\section{计算成本}"
     cost = body.split(heading, 1)[1].split(r"\section{", 1)[0]

@@ -1,3 +1,6 @@
+# Historical presentation fixture: exact public release 8cbcb114.
+# Old monolithic positions are not current six-document acceptance.
+# Current source graph, values and layouts: test_pirc17_revision46.py.
 """Reader-facing order and exact saved-display preservation, not acceptance."""
 import json
 import re
@@ -23,7 +26,7 @@ def sources(language):
     old = subprocess.check_output(
         ["git", "show", f"{BASE}:paper/pirc17/{language}/main.tex"], cwd=ROOT
     ).decode("utf-8").replace("\r\n", "\n")
-    new = (PAPER / language / "main.tex").read_text(encoding="utf-8")
+    new = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
     return old, new
 
 

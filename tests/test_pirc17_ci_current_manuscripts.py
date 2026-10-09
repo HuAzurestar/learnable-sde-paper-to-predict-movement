@@ -83,7 +83,15 @@ def test_current_manuscript_build_and_strict_log_check_are_required(language, en
         f"          path: paper/pirc17/{language}/main.pdf\n"
         "          retention-days: 7"
     )
-    assert start + 4 == len(actual)
+    assert start + 7 == len(actual)
+    companion = actual[start + 4]
+    assert f"Compile PIRC-17 {label} companion documents" in companion
+    assert "supplement.tex\n            audit-notes.tex" in companion
+    assert f"working_directory: paper/pirc17/{language}" in companion
+    assert f"args: {engine} -interaction=nonstopmode -halt-on-error -file-line-error" in companion
+    assert "check_log" in actual[start + 5] and "('supplement','audit-notes')" in actual[start + 5]
+    assert f"paper/pirc17/{language}/supplement.pdf" in actual[start + 6]
+    assert f"paper/pirc17/{language}/audit-notes.pdf" in actual[start + 6]
     assert "continue-on-error:" not in job("tex-" + language)
 
 

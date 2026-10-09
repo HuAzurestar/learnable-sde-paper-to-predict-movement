@@ -10,10 +10,12 @@
     "fit-diagnostics-v1.json": "b3d8b6e440399779f5fbac999aba13b23ab0749144441a4b767e746ae3123e3d",
     "feature-design-description-v1.json": "536e6747efac51ba17b54de06f428e7a1063d03fdf7b07fcfa243f08f7a0cd6a",
     "final-results-v1/tables/runtime_conditions.csv": "021ab93ddd0025557f2da576d739b7daaa1c79f722dd42adf555822a4fe555c1",
+    "final-results-v1/tables/runtime_trials.csv": "d63438f3fd0dff3a6a8cde05b4dbd2934edc8bf07b32b49eab806d195e29fa16",
     "all-method-region-description-v1.json": "43247e7bbec10dc5f087b412c2b1b223f89b9adb33c64f97ba5ce1187a9092d8",
-    "final-results-v1/tables/comparisons.csv": "82de6ffc6582899f704e759ef99afc0893068a0a77379c912811279d438697e7"
+    "final-results-v1/tables/comparisons.csv": "82de6ffc6582899f704e759ef99afc0893068a0a77379c912811279d438697e7",
+    "final-results-v1/tables/mechanisms.csv": "356b11dabb26fdc674a0499e47ea17776c8f3e950fafa202e47c40fe8ea6af44"
   },
-  "renderer_sha256": "faabeeb078b5a461182f15a6347bc93afc6fa168ebf474148f58911c74283290",
+  "renderer_sha256": "3d2a833226bdb243d743734c76daf5f67a0b22e7d529d04381383264df8098d6",
   "new_fits_forecasts_particle_scores_resampling_or_map_queries": 0,
   "figures": [
     {
@@ -22,7 +24,7 @@
       "files": {
         "pdf": {
           "name": "revision46-geometry.pdf",
-          "sha256": "8a71d8738e0ebe0b742496e4b4637b0293f7ff35c803dc43ea76a72ccea707a6"
+          "sha256": "c86bbbf0272f956a17ade4c2c249c91c2550fe978e4fbc82305042472028a0a6"
         },
         "png": {
           "name": "revision46-geometry.png",
@@ -30,7 +32,7 @@
         },
         "svg": {
           "name": "revision46-geometry.svg",
-          "sha256": "aee62b1214ff48ce2400e15b062a44aac5457d1afe688a3dac25ea38d93b4ab0"
+          "sha256": "cfb940c7acffb3b26b01b421a77c98e687e9142b0b5132d03d9e50a3df3204ab"
         }
       },
       "values": null,
@@ -42,15 +44,15 @@
       "files": {
         "pdf": {
           "name": "revision46-design-matrix.pdf",
-          "sha256": "1a1361dee93cbf974324c42e4265af132f35fb4781c608f0be6ea95d134cf078"
+          "sha256": "69e78f043fcbf71b6ebc03fa5941b8a63109e00c555a65b683307769f61a8116"
         },
         "png": {
           "name": "revision46-design-matrix.png",
-          "sha256": "37adba377acc9b07be61b418d95befa8eb1d38bada8acf443c4207ded5edb582"
+          "sha256": "51b0e7ed4a6c04142e75633a1ef49dd9aa0258e9e79d188d783ddf53cdacddd8"
         },
         "svg": {
           "name": "revision46-design-matrix.svg",
-          "sha256": "3bb223efe35c4ec8e4c206638de3e2368ae8115b594211a781404c367bb2f4ea"
+          "sha256": "b4425e0ea48b7475bfa5ad00322e4a3f6cbbdf498e1f4e9969b5d86582fee2f8"
         }
       },
       "values": {
@@ -61,7 +63,9 @@
           "cover",
           "surface",
           "road × cover",
-          "surface × history"
+          "surface × history",
+          "road d × u",
+          "river d × u"
         ],
         "retained": [
           [
@@ -71,9 +75,13 @@
             0,
             0,
             0,
+            0,
+            0,
             0
           ],
           [
+            1,
+            1,
             1,
             1,
             1,
@@ -89,22 +97,6 @@
             1,
             1,
             0,
-            1
-          ],
-          [
-            1,
-            1,
-            0,
-            1,
-            1,
-            1,
-            1
-          ],
-          [
-            1,
-            1,
-            1,
-            0,
             1,
             0,
             1
@@ -112,11 +104,35 @@
           [
             1,
             1,
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0
+          ],
+          [
+            1,
             1,
             1,
             0,
             1,
-            0
+            0,
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            1,
+            1
           ],
           [
             1,
@@ -125,6 +141,8 @@
             0,
             0,
             0,
+            0,
+            1,
             0
           ],
           [
@@ -134,25 +152,31 @@
             0,
             0,
             0,
-            0
-          ],
-          [
-            1,
             0,
-            0,
-            1,
-            0,
-            0,
-            0
-          ],
-          [
-            1,
-            0,
-            0,
-            0,
-            1,
             0,
             1
+          ],
+          [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0
           ]
         ],
         "K": [
@@ -176,7 +200,7 @@
       "files": {
         "pdf": {
           "name": "revision46-population.pdf",
-          "sha256": "b12858262d1031e54f28666760bb8fee13185566ce30f87cc2170c51bf5e42a7"
+          "sha256": "cd0042e573ce857e2f45f7c32620ebab708fef85f9bb88e6c389e610e8e5ab23"
         },
         "png": {
           "name": "revision46-population.png",
@@ -184,7 +208,7 @@
         },
         "svg": {
           "name": "revision46-population.svg",
-          "sha256": "03e184ab45a35a3cd81998fcbd1ff26e36f64fde1b4d9391cb69bb67945d7523"
+          "sha256": "aadbaf048bc35973ea9dfa948333ff7143911286a9ab899945887723b0317db9"
         }
       },
       "values": {
@@ -233,7 +257,7 @@
       "files": {
         "pdf": {
           "name": "revision46-inertial-horizons.pdf",
-          "sha256": "2e26586aca1456822e400446fcbd46ecd2c346712a0e9f7b0582f45d4aace44e"
+          "sha256": "16a5e5694a785f59dc4d8d463453d72d09107d6ec75ca8bcae02f5f7d62a70cd"
         },
         "png": {
           "name": "revision46-inertial-horizons.png",
@@ -241,7 +265,7 @@
         },
         "svg": {
           "name": "revision46-inertial-horizons.svg",
-          "sha256": "0913b6d38cd6c1671e9912bf853ab11464e8d1355ca32841f7a829447ad5e743"
+          "sha256": "c1d7c488c124f82cce1efd6f7eec9da540682c5db77ae298590f281edb872332"
         }
       },
       "values": {
@@ -272,15 +296,15 @@
       "files": {
         "pdf": {
           "name": "revision46-score-error-tradeoff.pdf",
-          "sha256": "5f6eadb4a74532387709a3247a17ddda65a24aea0518b78f26ccbc47fe5561d0"
+          "sha256": "671b989001fa0a8fda267a659313ecde8cd02f92cb737098497fe064d04b2d09"
         },
         "png": {
           "name": "revision46-score-error-tradeoff.png",
-          "sha256": "f8ae018d23581916155abc8709e56629f31cae12b4540300f8c6725067f3bef0"
+          "sha256": "31e7753ed053c76477fe4c7d74177859cee43335391bc904e2cb39cb29d5dd88"
         },
         "svg": {
           "name": "revision46-score-error-tradeoff.svg",
-          "sha256": "3ce2bf57e274cdf8926d0b42eac1762852d12f3ab0ccdeada716b4548ea757de"
+          "sha256": "6d93ab53fff9024e2d2609fa05ef83b1c9c3447752231f01fb9dc066826ac0c3"
         }
       },
       "values": [
@@ -440,7 +464,7 @@
       "files": {
         "pdf": {
           "name": "revision46-seeds-and-blocks.pdf",
-          "sha256": "dd798f384688d43353ae65f228f1becc0ff119b0b8abdf283f3a1cfca87781df"
+          "sha256": "4e8252ac87d65a984c2af646015dd8324114939ec3fdb509e6fa374b0981ce8e"
         },
         "png": {
           "name": "revision46-seeds-and-blocks.png",
@@ -448,7 +472,7 @@
         },
         "svg": {
           "name": "revision46-seeds-and-blocks.svg",
-          "sha256": "4f9f1a7bbba11a0180e4ffb9fcd4b7b54f2dbb15434e09f3932a82dd00aa7823"
+          "sha256": "a2e8017dca347effc1bd68fd0ad7de3a8ee59bf50d522c4013d90fc433af2cf1"
         }
       },
       "values": [
@@ -818,15 +842,15 @@
       "files": {
         "pdf": {
           "name": "revision46-history-timeline.pdf",
-          "sha256": "05b7a2a54b25034f96bce1a98f5b7016850447c87048cd65ead7e94fbe621b52"
+          "sha256": "9bc0701021167441b921c8fc80c2e308d018bd84d98c2b53271168d7d77c8be4"
         },
         "png": {
           "name": "revision46-history-timeline.png",
-          "sha256": "fd0edc4a2c6c7ca0dc18949efad1932845fdba9f564991d23f3dc264d58d94e0"
+          "sha256": "984e4d149eafabf7eddf87b7a1f0002f1fc82d309e10c28097d47236c69e236c"
         },
         "svg": {
           "name": "revision46-history-timeline.svg",
-          "sha256": "dd6caf2cc8ebadf7001f66b21cafd7a8f483e1ce3500247441236a1b3407d472"
+          "sha256": "9a5f80b656e7050afe898e9737d116ee93d23fcc0b03fb488334a29675363894"
         }
       },
       "values": null,
@@ -838,7 +862,7 @@
       "files": {
         "pdf": {
           "name": "revision46-development-fit.pdf",
-          "sha256": "b77b1b174cdee94801b02b8ceed4e421d8c48aa10e9f0bcfcae6a8b91ffa81e6"
+          "sha256": "c1536733bbdb093f0e892220777c44a3f29e88d95257be5210ae6c29530d6562"
         },
         "png": {
           "name": "revision46-development-fit.png",
@@ -846,7 +870,7 @@
         },
         "svg": {
           "name": "revision46-development-fit.svg",
-          "sha256": "73e46d46acd375aa37cc9e549d5c123db0f19d6da1f80213a33be4227aebe842"
+          "sha256": "6ccb3d649186f4eaeff7f28e856fece84bd0aa16b7940114c2584a05c4dc536a"
         }
       },
       "values": {
@@ -907,15 +931,15 @@
       "files": {
         "pdf": {
           "name": "revision46-recorded-runtime.pdf",
-          "sha256": "f69f2adf194e81409542f780ba537d04f22f2a7c9ca85de112a01b222e3ec620"
+          "sha256": "ffdb03adc422da3905d431a3e437415c6535a805919d9517b7f4acee87834ea9"
         },
         "png": {
           "name": "revision46-recorded-runtime.png",
-          "sha256": "7d1816ddd418db667c1e89181cef05b4a08ff1075e6c5855145c19d9a0ab425b"
+          "sha256": "2ee6a9e639cd8d809398774e07ee92ee2146101f36b61a5ae093b4e11087ea02"
         },
         "svg": {
           "name": "revision46-recorded-runtime.svg",
-          "sha256": "b6889295885423423de2df88f2daa5251a6aa92799bc60d5d281dcd8c59f8d05"
+          "sha256": "8853d2bc18026b5f099a5778bd40ada3a7dba828cbfda7652d243f43240c3f94"
         }
       },
       "values": [
@@ -932,7 +956,8 @@
             "total_latency_p50_ms": 633.7389,
             "total_latency_p95_ms": 646.10484,
             "trial_count": 5
-          }
+          },
+          "inclusive_terrain_query_median_ms": 0.0
         },
         {
           "matrix": "NEX326-methods",
@@ -947,7 +972,8 @@
             "total_latency_p50_ms": 643.2974,
             "total_latency_p95_ms": 695.57478,
             "trial_count": 5
-          }
+          },
+          "inclusive_terrain_query_median_ms": 0.0
         },
         {
           "matrix": "NEX326-methods",
@@ -962,7 +988,8 @@
             "total_latency_p50_ms": 808.8658,
             "total_latency_p95_ms": 878.5444200000001,
             "trial_count": 5
-          }
+          },
+          "inclusive_terrain_query_median_ms": 0.0
         },
         {
           "matrix": "NEX326-methods",
@@ -977,7 +1004,8 @@
             "total_latency_p50_ms": 530.884,
             "total_latency_p95_ms": 615.5868399999999,
             "trial_count": 5
-          }
+          },
+          "inclusive_terrain_query_median_ms": 0.0
         },
         {
           "matrix": "NEX326-methods",
@@ -992,7 +1020,8 @@
             "total_latency_p50_ms": 524.0362,
             "total_latency_p95_ms": 547.33168,
             "trial_count": 5
-          }
+          },
+          "inclusive_terrain_query_median_ms": 0.0
         },
         {
           "matrix": "terrain",
@@ -1007,7 +1036,8 @@
             "total_latency_p50_ms": 544280.3561,
             "total_latency_p95_ms": 2516814.0229399996,
             "trial_count": 5
-          }
+          },
+          "inclusive_terrain_query_median_ms": 510773.7220999996
         },
         {
           "matrix": "terrain",
@@ -1022,7 +1052,8 @@
             "total_latency_p50_ms": 3220.8707,
             "total_latency_p95_ms": 3791.3351999999995,
             "trial_count": 5
-          }
+          },
+          "inclusive_terrain_query_median_ms": 0.0
         },
         {
           "matrix": "terrain",
@@ -1037,7 +1068,8 @@
             "total_latency_p50_ms": 389814.3822,
             "total_latency_p95_ms": 622399.74648,
             "trial_count": 5
-          }
+          },
+          "inclusive_terrain_query_median_ms": 382407.02640000015
         },
         {
           "matrix": "terrain",
@@ -1052,7 +1084,8 @@
             "total_latency_p50_ms": 428697.7722,
             "total_latency_p95_ms": 510211.89519999997,
             "trial_count": 5
-          }
+          },
+          "inclusive_terrain_query_median_ms": 420673.4026999999
         },
         {
           "matrix": "terrain",
@@ -1067,7 +1100,8 @@
             "total_latency_p50_ms": 416777.0479,
             "total_latency_p95_ms": 548378.07296,
             "trial_count": 5
-          }
+          },
+          "inclusive_terrain_query_median_ms": 405151.2081000001
         },
         {
           "matrix": "terrain",
@@ -1082,7 +1116,8 @@
             "total_latency_p50_ms": 525180.315,
             "total_latency_p95_ms": 568101.59208,
             "trial_count": 5
-          }
+          },
+          "inclusive_terrain_query_median_ms": 515756.7738999998
         },
         {
           "matrix": "terrain",
@@ -1097,7 +1132,8 @@
             "total_latency_p50_ms": 650146.1273,
             "total_latency_p95_ms": 754421.9854799999,
             "trial_count": 5
-          }
+          },
+          "inclusive_terrain_query_median_ms": 620323.8924000001
         },
         {
           "matrix": "terrain",
@@ -1112,7 +1148,8 @@
             "total_latency_p50_ms": 590770.2116,
             "total_latency_p95_ms": 738658.6791,
             "trial_count": 5
-          }
+          },
+          "inclusive_terrain_query_median_ms": 564701.9219000002
         },
         {
           "matrix": "terrain",
@@ -1127,7 +1164,8 @@
             "total_latency_p50_ms": 424371.7022,
             "total_latency_p95_ms": 1938214.5833799997,
             "trial_count": 5
-          }
+          },
+          "inclusive_terrain_query_median_ms": 407561.5406000004
         },
         {
           "matrix": "terrain",
@@ -1142,7 +1180,8 @@
             "total_latency_p50_ms": 512210.797,
             "total_latency_p95_ms": 572374.5391800001,
             "trial_count": 5
-          }
+          },
+          "inclusive_terrain_query_median_ms": 487386.0706000001
         },
         {
           "matrix": "NEX326-methods",
@@ -1157,7 +1196,8 @@
             "total_latency_p50_ms": 634.5753,
             "total_latency_p95_ms": 670.97208,
             "trial_count": 5
-          }
+          },
+          "inclusive_terrain_query_median_ms": 0.0
         },
         {
           "matrix": "NEX326-methods",
@@ -1172,7 +1212,8 @@
             "total_latency_p50_ms": 647.4836,
             "total_latency_p95_ms": 690.84884,
             "trial_count": 5
-          }
+          },
+          "inclusive_terrain_query_median_ms": 0.0
         },
         {
           "matrix": "NEX326-methods",
@@ -1187,7 +1228,8 @@
             "total_latency_p50_ms": 784.9253,
             "total_latency_p95_ms": 822.44184,
             "trial_count": 5
-          }
+          },
+          "inclusive_terrain_query_median_ms": 0.0
         },
         {
           "matrix": "NEX326-methods",
@@ -1202,7 +1244,8 @@
             "total_latency_p50_ms": 538.2094,
             "total_latency_p95_ms": 545.61206,
             "trial_count": 5
-          }
+          },
+          "inclusive_terrain_query_median_ms": 0.0
         },
         {
           "matrix": "NEX326-methods",
@@ -1217,7 +1260,8 @@
             "total_latency_p50_ms": 551.4022,
             "total_latency_p95_ms": 569.88386,
             "trial_count": 5
-          }
+          },
+          "inclusive_terrain_query_median_ms": 0.0
         },
         {
           "matrix": "terrain",
@@ -1232,7 +1276,8 @@
             "total_latency_p50_ms": 363794.1419,
             "total_latency_p95_ms": 460482.09742,
             "trial_count": 5
-          }
+          },
+          "inclusive_terrain_query_median_ms": 343838.7529999999
         },
         {
           "matrix": "terrain",
@@ -1247,7 +1292,8 @@
             "total_latency_p50_ms": 1952.8114,
             "total_latency_p95_ms": 2020.20378,
             "trial_count": 5
-          }
+          },
+          "inclusive_terrain_query_median_ms": 0.0
         },
         {
           "matrix": "terrain",
@@ -1262,7 +1308,8 @@
             "total_latency_p50_ms": 487411.9193,
             "total_latency_p95_ms": 499711.17692,
             "trial_count": 5
-          }
+          },
+          "inclusive_terrain_query_median_ms": 478032.96230000013
         },
         {
           "matrix": "terrain",
@@ -1277,7 +1324,8 @@
             "total_latency_p50_ms": 306361.174,
             "total_latency_p95_ms": 307783.04552,
             "trial_count": 5
-          }
+          },
+          "inclusive_terrain_query_median_ms": 299655.5136999999
         },
         {
           "matrix": "terrain",
@@ -1292,7 +1340,8 @@
             "total_latency_p50_ms": 499078.103,
             "total_latency_p95_ms": 533342.93674,
             "trial_count": 5
-          }
+          },
+          "inclusive_terrain_query_median_ms": 483752.3539999997
         },
         {
           "matrix": "terrain",
@@ -1307,7 +1356,8 @@
             "total_latency_p50_ms": 444974.108,
             "total_latency_p95_ms": 496369.67224,
             "trial_count": 5
-          }
+          },
+          "inclusive_terrain_query_median_ms": 437356.3969999997
         },
         {
           "matrix": "terrain",
@@ -1322,7 +1372,8 @@
             "total_latency_p50_ms": 536506.6248,
             "total_latency_p95_ms": 600983.42178,
             "trial_count": 5
-          }
+          },
+          "inclusive_terrain_query_median_ms": 511182.80220000027
         },
         {
           "matrix": "terrain",
@@ -1337,7 +1388,8 @@
             "total_latency_p50_ms": 459157.5968,
             "total_latency_p95_ms": 532950.97438,
             "trial_count": 5
-          }
+          },
+          "inclusive_terrain_query_median_ms": 436815.4881999998
         },
         {
           "matrix": "terrain",
@@ -1352,7 +1404,8 @@
             "total_latency_p50_ms": 336230.7375,
             "total_latency_p95_ms": 346403.6428,
             "trial_count": 5
-          }
+          },
+          "inclusive_terrain_query_median_ms": 319942.66350000014
         },
         {
           "matrix": "terrain",
@@ -1367,7 +1420,8 @@
             "total_latency_p50_ms": 371740.618,
             "total_latency_p95_ms": 414041.22982,
             "trial_count": 5
-          }
+          },
+          "inclusive_terrain_query_median_ms": 350958.30169999995
         }
       ],
       "schematic": false
@@ -1378,15 +1432,15 @@
       "files": {
         "pdf": {
           "name": "revision46-metric-overview.pdf",
-          "sha256": "0a6ea80be65125925ea837e64c351d68885acf72c84efc34cfa11a8915796521"
+          "sha256": "363e44d1a1ad3e68af3bff1591a1e2d24ee383d78a2069ad9f3dc2c82ff51c4b"
         },
         "png": {
           "name": "revision46-metric-overview.png",
-          "sha256": "c6ea615ac139e138c90936e6feb4f7b50edf567afe5a8250795123ec91a0581d"
+          "sha256": "8650c98d6bc93b69566e595e271ee67f04d1d9e0e6aa64cca72a14bb3f103b6b"
         },
         "svg": {
           "name": "revision46-metric-overview.svg",
-          "sha256": "b14b41456048a60124d0c440f6c7a31f551be7122807cb9df92827c32171f26d"
+          "sha256": "77c75fbe06606e9f5cc6adad1373f9e77c3247907d78c74f3a841e359549408f"
         }
       },
       "values": {
@@ -1934,20 +1988,144 @@
       "schematic": false
     },
     {
+      "task": "G10",
+      "figure": "selected-metric-overview",
+      "files": {
+        "pdf": {
+          "name": "revision46-selected-metric-overview.pdf",
+          "sha256": "73b1a239c7ac034c2342ac3e8401d5d09f7d0166d6a32951a87f8198501ef88a"
+        },
+        "png": {
+          "name": "revision46-selected-metric-overview.png",
+          "sha256": "3dbf7d8406ce1b3ce8dee0fde90f7e8b24906e60991ec4221342a0428d48fead"
+        },
+        "svg": {
+          "name": "revision46-selected-metric-overview.svg",
+          "sha256": "7017915889e189935095c8bcb0126c081cccc4bf3e559ee58311502fcdcf83e8"
+        }
+      },
+      "values": {
+        "configurations": [
+          "arm-01/full",
+          "arm-04/gmm_kernel",
+          "arm-05/explicit_decomp",
+          "arm-06/dt300",
+          "arm-06/dt600"
+        ],
+        "ES_m": [
+          [
+            50.569749444899905,
+            243.228509869058,
+            609.2671942332843,
+            1008.349225203131
+          ],
+          [
+            50.35216084765841,
+            228.87097461928965,
+            598.6958584447951,
+            1022.1902966049104
+          ],
+          [
+            48.21045107937236,
+            239.20373005692514,
+            658.2145291419657,
+            1197.6152619441532
+          ],
+          [
+            56.58492129508211,
+            229.2760072871681,
+            574.5322859342516,
+            957.4030425382354
+          ],
+          [
+            63.78395573327536,
+            234.31854144507835,
+            572.6531665668824,
+            941.8934482293058
+          ]
+        ],
+        "area_km2": [
+          [
+            0.04361582915665533,
+            0.2942421552486306,
+            1.4153122536889504,
+            4.534038789235507
+          ],
+          [
+            0.07156823336155227,
+            0.39973097835145993,
+            1.3208791622409228,
+            3.0791633501970357
+          ],
+          [
+            0.039969057504467824,
+            0.20070000266760968,
+            0.6106131515311388,
+            1.2473550618072378
+          ],
+          [
+            0.1550277243382631,
+            0.8786603348455776,
+            3.3946235455258265,
+            9.108883426654614
+          ],
+          [
+            0.2519779318456204,
+            1.3947288420997823,
+            5.057954876412795,
+            12.608550310041096
+          ]
+        ],
+        "coverage_deviation_pp": [
+          [
+            5.6521739130434785,
+            -52.17391304347827,
+            -54.78260869565217,
+            -43.47826086956522
+          ],
+          [
+            6.956521739130428,
+            -23.478260869565215,
+            -55.21739130434783,
+            -44.78260869565218
+          ],
+          [
+            1.304347826086949,
+            -57.826086956521735,
+            -76.52173913043478,
+            -68.26086956521739
+          ],
+          [
+            9.999999999999998,
+            6.521739130434778,
+            -18.260869565217398,
+            -25.652173913043484
+          ],
+          [
+            9.999999999999998,
+            9.130434782608699,
+            2.608695652173909,
+            -10.869565217391308
+          ]
+        ]
+      },
+      "schematic": false
+    },
+    {
       "task": "G11",
       "figure": "practical-effects",
       "files": {
         "pdf": {
           "name": "revision46-practical-effects.pdf",
-          "sha256": "f30a07792d8986f54f91cf7b6ef02283def5660c54ef44a10d5d0955fff691fa"
+          "sha256": "fd3946f8b9de4ed73212dfec653651aa473cb2e3449d3deca59a307e393326af"
         },
         "png": {
           "name": "revision46-practical-effects.png",
-          "sha256": "30bf51e625552070c4baf33bcfb56ed6e6fd93abbdb7f3a7d37b80acbf5ffcf8"
+          "sha256": "95013ae0db77c04db2a18a70772ae89dbeb8ac1316a029a060aceb84a059a081"
         },
         "svg": {
           "name": "revision46-practical-effects.svg",
-          "sha256": "47e260416ab5c8c7497e683b020f6c317df3d824aa16a282af368dbfadc137f6"
+          "sha256": "84645b9ccfda1247b1116d2d626adf93d9b96a3fadc8690312dce0367e59b986"
         }
       },
       "values": {
@@ -1967,8 +2145,6 @@
           "arm-14/reptile",
           "arm-15/drift_only",
           "arm-15/two_step",
-          "arm-19/em",
-          "arm-19/euler",
           "arm-21/mc"
         ],
         "micro_scale": false
@@ -1981,24 +2157,37 @@
       "files": {
         "pdf": {
           "name": "revision46-identity-diagnostics.pdf",
-          "sha256": "e5ba9411d248aff68250baeb78867b21376cefd92779f98c308fc901d07b488d"
+          "sha256": "022da8b8b72cde356f3233dfe40dff0e4740f0feee0ddd1e28aee0d22d157ad0"
         },
         "png": {
           "name": "revision46-identity-diagnostics.png",
-          "sha256": "f5f2dea08ea51042318826a0657643bc8b4646f6b662105473564abfdff400d4"
+          "sha256": "e3d2db733c60bfd3dc8903eca89e069864b778e19df6bf7413bec4b12d82885e"
         },
         "svg": {
           "name": "revision46-identity-diagnostics.svg",
-          "sha256": "7217f6e6e63b362b1d9631e5e76b9e24b701d049a1541e959c891ce3c7bcb483"
+          "sha256": "44792ce67528c3bbaa7eda4e200d5c93adc390dbfa0918e61e499f766a526f1f"
         }
       },
       "values": {
         "comparisons": [
           "arm-10/d2_mc",
           "arm-10/d2_closed",
+          "arm-19/em",
+          "arm-19/euler",
           "arm-21/crn"
         ],
-        "micro_scale": true
+        "micro_scale": true,
+        "independent_display_partitions": [
+          [
+            "arm-19/em",
+            "arm-19/euler"
+          ],
+          [
+            "arm-10/d2_mc",
+            "arm-10/d2_closed",
+            "arm-21/crn"
+          ]
+        ]
       },
       "schematic": false
     },
@@ -2008,15 +2197,15 @@
       "files": {
         "pdf": {
           "name": "revision46-family-availability.pdf",
-          "sha256": "c191a91f06a09acdbea01d24f79277a82775d47618ff322029a47bd00e08fa6f"
+          "sha256": "df71f8bf3e56c07791e606101298d06b5466836b3d3962492920d51eef906f3f"
         },
         "png": {
           "name": "revision46-family-availability.png",
-          "sha256": "f3413ea42d45ca2d7923ee1cdea27d61d4b117bca4d448fdb5a634524d7441b2"
+          "sha256": "a1638a95cd06cbec02fc7fd9997bf4535c152808e499146dab45c9c8028a6b8d"
         },
         "svg": {
           "name": "revision46-family-availability.svg",
-          "sha256": "f9da03f87d06bfe92ee31fd6bdc0e2f0be59e0a8b8a773d47335dee9513acf6c"
+          "sha256": "ce58123d764cb2db2e9b24f5afeec3e0ff3bb86a88d583216bc81faa6dd0cb88"
         }
       },
       "values": {
@@ -2197,7 +2386,13 @@
                 "planning_reason": "registered_1x_SD_planning_requirement_met",
                 "precision_invariant_verdict": "inconclusive"
               }
-            ]
+            ],
+            "mechanism_status_counts": {
+              "computed": 5
+            },
+            "planning_pass_count": 4,
+            "tail_pass_count": 4,
+            "required_failure_tag": null
           },
           {
             "family": "method-model-structure",
@@ -2323,7 +2518,11 @@
                 "planning_reason": "secondary_origin_descriptive_only",
                 "precision_invariant_verdict": "unavailable"
               }
-            ]
+            ],
+            "mechanism_status_counts": {},
+            "planning_pass_count": 0,
+            "tail_pass_count": 0,
+            "required_failure_tag": "F02"
           },
           {
             "family": "method-model-structure",
@@ -2449,7 +2648,13 @@
                 "planning_reason": "secondary_origin_descriptive_only",
                 "precision_invariant_verdict": "inconclusive"
               }
-            ]
+            ],
+            "mechanism_status_counts": {
+              "computed": 5
+            },
+            "planning_pass_count": 0,
+            "tail_pass_count": 0,
+            "required_failure_tag": null
           },
           {
             "family": "method-numerical-propagation",
@@ -2575,7 +2780,13 @@
                 "planning_reason": "registered_1x_SD_planning_requirement_met",
                 "precision_invariant_verdict": "inconclusive"
               }
-            ]
+            ],
+            "mechanism_status_counts": {
+              "computed": 6
+            },
+            "planning_pass_count": 4,
+            "tail_pass_count": 4,
+            "required_failure_tag": null
           },
           {
             "family": "method-numerical-propagation",
@@ -2701,7 +2912,13 @@
                 "planning_reason": "secondary_origin_descriptive_only",
                 "precision_invariant_verdict": "inconclusive"
               }
-            ]
+            ],
+            "mechanism_status_counts": {
+              "computed": 6
+            },
+            "planning_pass_count": 0,
+            "tail_pass_count": 0,
+            "required_failure_tag": null
           },
           {
             "family": "method-numerical-propagation",
@@ -2827,7 +3044,13 @@
                 "planning_reason": "secondary_origin_descriptive_only",
                 "precision_invariant_verdict": "inconclusive"
               }
-            ]
+            ],
+            "mechanism_status_counts": {
+              "computed": 6
+            },
+            "planning_pass_count": 0,
+            "tail_pass_count": 0,
+            "required_failure_tag": null
           },
           {
             "family": "method-objective-and-score",
@@ -2983,7 +3206,13 @@
                 "planning_reason": "zero_development_SD_is_not_power_evidence",
                 "precision_invariant_verdict": "inconclusive"
               }
-            ]
+            ],
+            "mechanism_status_counts": {
+              "computed": 6
+            },
+            "planning_pass_count": 3,
+            "tail_pass_count": 5,
+            "required_failure_tag": null
           },
           {
             "family": "method-objective-and-score",
@@ -3138,7 +3367,13 @@
                 "planning_reason": "secondary_origin_descriptive_only",
                 "precision_invariant_verdict": "inconclusive"
               }
-            ]
+            ],
+            "mechanism_status_counts": {
+              "computed": 6
+            },
+            "planning_pass_count": 0,
+            "tail_pass_count": 0,
+            "required_failure_tag": null
           },
           {
             "family": "method-objective-and-score",
@@ -3293,7 +3528,13 @@
                 "planning_reason": "secondary_origin_descriptive_only",
                 "precision_invariant_verdict": "inconclusive"
               }
-            ]
+            ],
+            "mechanism_status_counts": {
+              "computed": 6
+            },
+            "planning_pass_count": 0,
+            "tail_pass_count": 0,
+            "required_failure_tag": null
           },
           {
             "family": "method-observation-interval",
@@ -3420,7 +3661,13 @@
                 "planning_reason": "planning_power_below_target",
                 "precision_invariant_verdict": "inconclusive"
               }
-            ]
+            ],
+            "mechanism_status_counts": {
+              "computed": 5
+            },
+            "planning_pass_count": 3,
+            "tail_pass_count": 4,
+            "required_failure_tag": null
           },
           {
             "family": "method-observation-interval",
@@ -3546,7 +3793,11 @@
                 "planning_reason": "secondary_origin_descriptive_only",
                 "precision_invariant_verdict": "unavailable"
               }
-            ]
+            ],
+            "mechanism_status_counts": {},
+            "planning_pass_count": 0,
+            "tail_pass_count": 0,
+            "required_failure_tag": "F01"
           },
           {
             "family": "method-observation-interval",
@@ -3672,7 +3923,13 @@
                 "planning_reason": "secondary_origin_descriptive_only",
                 "precision_invariant_verdict": "inconclusive"
               }
-            ]
+            ],
+            "mechanism_status_counts": {
+              "computed": 5
+            },
+            "planning_pass_count": 0,
+            "tail_pass_count": 0,
+            "required_failure_tag": null
           },
           {
             "family": "method-transfer-adaptation",
@@ -3798,7 +4055,13 @@
                 "planning_reason": "registered_1x_SD_planning_requirement_met",
                 "precision_invariant_verdict": "inconclusive"
               }
-            ]
+            ],
+            "mechanism_status_counts": {
+              "computed": 5
+            },
+            "planning_pass_count": 4,
+            "tail_pass_count": 4,
+            "required_failure_tag": null
           },
           {
             "family": "method-transfer-adaptation",
@@ -3924,7 +4187,13 @@
                 "planning_reason": "secondary_origin_descriptive_only",
                 "precision_invariant_verdict": "inconclusive"
               }
-            ]
+            ],
+            "mechanism_status_counts": {
+              "computed": 5
+            },
+            "planning_pass_count": 0,
+            "tail_pass_count": 0,
+            "required_failure_tag": null
           },
           {
             "family": "method-transfer-adaptation",
@@ -4050,7 +4319,13 @@
                 "planning_reason": "secondary_origin_descriptive_only",
                 "precision_invariant_verdict": "inconclusive"
               }
-            ]
+            ],
+            "mechanism_status_counts": {
+              "computed": 5
+            },
+            "planning_pass_count": 0,
+            "tail_pass_count": 0,
+            "required_failure_tag": null
           },
           {
             "family": "weighted-es-lio",
@@ -4176,7 +4451,11 @@
                 "planning_reason": "no_comparison_specific_development_SD",
                 "precision_invariant_verdict": "unavailable"
               }
-            ]
+            ],
+            "mechanism_status_counts": {},
+            "planning_pass_count": 0,
+            "tail_pass_count": 0,
+            "required_failure_tag": "F03/F05"
           },
           {
             "family": "weighted-es-lio",
@@ -4302,7 +4581,11 @@
                 "planning_reason": "secondary_origin_descriptive_only",
                 "precision_invariant_verdict": "inconclusive"
               }
-            ]
+            ],
+            "mechanism_status_counts": {},
+            "planning_pass_count": 0,
+            "tail_pass_count": 0,
+            "required_failure_tag": null
           },
           {
             "family": "weighted-es-lio",
@@ -4428,7 +4711,11 @@
                 "planning_reason": "secondary_origin_descriptive_only",
                 "precision_invariant_verdict": "inconclusive"
               }
-            ]
+            ],
+            "mechanism_status_counts": {},
+            "planning_pass_count": 0,
+            "tail_pass_count": 0,
+            "required_failure_tag": null
           },
           {
             "family": "weighted-es-primary",
@@ -4583,7 +4870,11 @@
                 "planning_reason": "registered_1x_SD_planning_requirement_met",
                 "precision_invariant_verdict": "unavailable"
               }
-            ]
+            ],
+            "mechanism_status_counts": {},
+            "planning_pass_count": 5,
+            "tail_pass_count": 0,
+            "required_failure_tag": "F04"
           },
           {
             "family": "weighted-es-primary",
@@ -4738,7 +5029,11 @@
                 "planning_reason": "secondary_origin_descriptive_only",
                 "precision_invariant_verdict": "inconclusive"
               }
-            ]
+            ],
+            "mechanism_status_counts": {},
+            "planning_pass_count": 0,
+            "tail_pass_count": 0,
+            "required_failure_tag": null
           },
           {
             "family": "weighted-es-primary",
@@ -4893,7 +5188,11 @@
                 "planning_reason": "secondary_origin_descriptive_only",
                 "precision_invariant_verdict": "inconclusive"
               }
-            ]
+            ],
+            "mechanism_status_counts": {},
+            "planning_pass_count": 0,
+            "tail_pass_count": 0,
+            "required_failure_tag": null
           }
         ]
       },

@@ -1,3 +1,6 @@
+# Historical presentation fixture: exact public release 8cbcb114.
+# Old monolithic positions are not current six-document acceptance.
+# Current source graph, values and layouts: test_pirc17_revision46.py.
 """Pure manuscript reorganization checks; not scientific or reader acceptance."""
 import json
 from pathlib import Path
@@ -21,7 +24,7 @@ def previous(language):
 
 
 def current(language):
-    return (PAPER/language/"main.tex").read_text(encoding="utf-8")
+    return (PAPER/language/"historical-main-v1.tex").read_text(encoding="utf-8")
 
 
 @pytest.mark.parametrize("language", ["en", "zh"])

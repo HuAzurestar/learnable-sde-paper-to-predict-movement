@@ -1,3 +1,6 @@
+# Historical presentation fixture: exact public release 8cbcb114.
+# Old monolithic positions are not current six-document acceptance.
+# Current source graph, values and layouts: test_pirc17_revision46.py.
 """Retained clock-statistic checks; not history sensitivity or paper acceptance."""
 import hashlib
 import json
@@ -53,7 +56,7 @@ def test_first_tick_is_buffer_arithmetic_not_first_future_fitting_interval(role,
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_bilingual_table_rows_and_complete_scope_are_explicit(language):
-    tex = (PAPER / language / "main.tex").read_text(encoding="utf-8")
+    tex = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
     assert tex.count(r"\label{tab:development-history-spans}") == 1
     history = tex.split(r"\label{sec:history-feedback}", 1)[1].split(r"\subsection{", 1)[0]
     timings = tex.split(r"\label{sec:empirical-history-timings}", 1)[1].split(r"\subsection{", 1)[0]

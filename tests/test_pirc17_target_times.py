@@ -1,3 +1,6 @@
+# Historical presentation fixture: exact public release 8cbcb114.
+# Old monolithic positions are not current six-document acceptance.
+# Current source graph, values and layouts: test_pirc17_revision46.py.
 """Synthetic JSON arithmetic only; no rollout, fitting or scoring."""
 from copy import deepcopy
 import importlib.util
@@ -109,7 +112,7 @@ def test_saved_projection_is_complete_bound_and_not_a_time_array_audit():
 def test_bilingual_time_table_matches_saved_46_block_summary(language):
     paper = ROOT / "paper/pirc17"
     value = reader.read_json(paper / "target-time-description-v1.json")
-    tex = (paper / language / "main.tex").read_text(encoding="utf-8")
+    tex = (paper / language / "historical-main-v1.tex").read_text(encoding="utf-8")
     assert tex.count(r"\label{sec:target-times}") == 1
     assert tex.count(r"\label{tab:actual-target-times}") == 1
     table = tex.split(r"\label{tab:actual-target-times}", 1)[1].split(r"\end{tabular}", 1)[0]

@@ -1,3 +1,6 @@
+# Historical presentation fixture: exact public release 8cbcb114.
+# Old monolithic positions are not current six-document acceptance.
+# Current source graph, values and layouts: test_pirc17_revision46.py.
 """Saved metadata and manuscript checks only; never fit or execute a rollout."""
 import hashlib
 import json
@@ -46,7 +49,7 @@ def test_actual_saved_reptile_and_default_hyperparameters():
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_bilingual_formula_and_evidence_links(language):
-    tex = (ROOT / language / "main.tex").read_text(encoding="utf-8")
+    tex = (ROOT / language / "historical-main-v1.tex").read_text(encoding="utf-8")
     labels = json.loads((ROOT / "claim-ledger.json").read_text(encoding="utf-8"))["saved_method_algorithm_description"]["equation_labels"]
     for label in labels:
         assert tex.count("\\label{" + label + "}") == 1
@@ -60,7 +63,7 @@ def test_bilingual_formula_and_evidence_links(language):
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_base_regression_covariance_and_gmm_rules_are_explicit(language):
-    tex=(ROOT/language/"main.tex").read_text(encoding="utf-8")
+    tex=(ROOT/language/"historical-main-v1.tex").read_text(encoding="utf-8")
     for label in ("sec:method-base-fit", "sec:residual-mixture-fit",
                   "eq:method-base-ridge", "eq:method-base-covariance",
                   "eq:gmm-residual-partition"):
@@ -93,7 +96,7 @@ def test_base_fit_addition_preserves_all_previous_scientific_blocks(language):
     before=subprocess.check_output(["git", "show",
         f"0095cff5dcc58f9c72b3b1443c8854ce0c750ef7:paper/pirc17/{language}/main.tex"],
         cwd=repository).decode("utf-8").replace("\r\n", "\n")
-    after=(ROOT/language/"main.tex").read_text(encoding="utf-8")
+    after=(ROOT/language/"historical-main-v1.tex").read_text(encoding="utf-8")
     for kind in ("table", "longtable", "figure", "equation"):
         pattern=r"\\begin\{"+kind+r"\}.*?\\end\{"+kind+r"\}"
         assert_preserved_blocks(re.findall(pattern,before,re.S),re.findall(pattern,after,re.S),kind)

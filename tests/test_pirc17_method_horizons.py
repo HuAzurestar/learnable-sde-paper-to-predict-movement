@@ -1,3 +1,6 @@
+# Historical presentation fixture: exact public release 8cbcb114.
+# Old monolithic positions are not current six-document acceptance.
+# Current source graph, values and layouts: test_pirc17_revision46.py.
 """Saved per-time means and display completeness, not new empirical inference."""
 from copy import deepcopy
 import hashlib
@@ -86,7 +89,7 @@ def test_full_table_and_overview_are_exact_generated_includes(language):
     description = project(source())
     assert (PAPER/language/"method-horizon-tables.tex").read_text(encoding="utf-8") == table_tex(description,language)
     assert (PAPER/language/"method-horizon-overview.tex").read_text(encoding="utf-8") == figure_tex(language)
-    tex = (PAPER/language/"main.tex").read_text(encoding="utf-8")
+    tex = (PAPER/language/"historical-main-v1.tex").read_text(encoding="utf-8")
     assert tex.index(r"\input{method-horizon-overview.tex}") < tex.index(r"\appendix")
     assert tex.index(r"\input{method-horizon-tables.tex}") > tex.index(r"\appendix")
     assert r"\usepackage{needspace}" in tex

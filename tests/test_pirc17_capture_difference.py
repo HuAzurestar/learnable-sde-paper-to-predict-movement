@@ -1,3 +1,6 @@
+# Historical presentation fixture: exact public release 8cbcb114.
+# Old monolithic positions are not current six-document acceptance.
+# Current source graph, values and layouts: test_pirc17_revision46.py.
 """Saved-count reconciliation regressions; not individual output auditing."""
 import copy
 import hashlib
@@ -70,7 +73,7 @@ def test_incomplete_or_misaligned_saved_counts_fail_whole_reconciliation(bad):
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_bilingual_count_table_and_membership_limitation_remain_in_appendix(language):
-    text = (PAPER / language / "main.tex").read_text(encoding="utf-8")
+    text = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
     at = text.index(r"\label{tab:capture-count-difference}")
     assert at > text.index(r"\appendix")
     end = text.index(r"\end{tabular}", at)

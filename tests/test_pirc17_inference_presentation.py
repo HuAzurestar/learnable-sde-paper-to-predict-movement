@@ -1,3 +1,6 @@
+# Historical presentation fixture: exact public release 8cbcb114.
+# Old monolithic positions are not current six-document acceptance.
+# Current source graph, values and layouts: test_pirc17_revision46.py.
 """Existing-record, arithmetic and document checks; no draws or forecasts."""
 import hashlib
 import json
@@ -86,7 +89,7 @@ def test_all_stage_comparisons_reconcile_and_missing_streams_not_fabricated():
 
 @pytest.mark.parametrize('language', ['en','zh'])
 def test_bilingual_planning_diagnostics_and_decision_conditions(language):
-    tex = (ROOT/language/'main.tex').read_text(encoding='utf-8')
+    tex = (ROOT/language/"historical-main-v1.tex").read_text(encoding='utf-8')
     for label in ('sec:planning-qualification','eq:planning-power','tab:planning-sensitivity',
                   'sec:bootstrap-resolution','tab:bootstrap-diagnostics','sec:decision-conditions',
                   'eq:decision-roundoff','tab:comparison-conditions','tab:loo-lio-states'):

@@ -1,3 +1,6 @@
+# Historical presentation fixture: exact public release 8cbcb114.
+# Old monolithic positions are not current six-document acceptance.
+# Current source graph, values and layouts: test_pirc17_revision46.py.
 """Saved aggregate arithmetic/presentation only, not empirical qualification."""
 from copy import deepcopy
 import hashlib
@@ -83,7 +86,7 @@ def test_display_does_not_round_small_nonzero_effects_to_zero():
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_generated_table_is_bilingual_complete_and_in_appendix(language):
     result = summarize(*inputs())
-    tex = (PAPER/language/"main.tex").read_text(encoding="utf-8")
+    tex = (PAPER/language/"historical-main-v1.tex").read_text(encoding="utf-8")
     table = table_tex(result, language)
     assert (PAPER/language/"method-seed-stability.tex").read_text(encoding="utf-8") == table
     assert table.count(" & Full") == 21

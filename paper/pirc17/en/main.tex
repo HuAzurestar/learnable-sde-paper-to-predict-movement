@@ -80,12 +80,15 @@ Full uses three fitted modes and the position dynamics
  \quad \psi=(1,X_e,X_n,S)^{\top},\quad L_mL_m^{\top}=Q_m=\tau R_m.
 \end{equation}
 Here $\Theta_m$ gives drift in m/s, $S$ is the solar/calendar input computed
-from the retained absolute tick, and $R_m$ is a fitted rate-residual covariance
+from the retained absolute tick~\cite{noaa}, and $R_m$ is a fitted rate-residual covariance
 in m$^2$/s$^2$. Its conversion to $Q_m$ uses the model observation interval
 $\tau$, not the integration step $h$. The physical interpretation of seconds
 and daylight remains conditional on clock provenance (Section~\ref{sec:data}).
 Saved mixing weights $\pi_m$ come from fitting/adaptation, not a posterior
 update from a new visible prefix.
+Each particle draws a mode from saved $\pi$ at the origin. Segment-fixed
+Full retains that draw; only the switching routes redraw at their $\tau$
+events, not at every integration substep or scoring output.
 
 \begin{table}[htbp]\centering
 \caption{Actual prefix information. A buffer being updated is not proof that
@@ -212,6 +215,16 @@ separate the signed history, uphill and contour directions; slope does not
 multiply their directional dot products. Geometry and the ten-configuration
 matrix are in the \supp{fig:terrain-geometry}.
 
+Saved model-source declarations identify WorldCover 2021 v200~\cite{worldcover2021},
+Overture 2026-08-19.0 transportation~\cite{overture202608,overtureattribution},
+HydroRIVERS v1.0~\cite{hydrorivers2013,hydroriverslicense}, and the retained
+DEM product/fallback rules for Mapzen Skadi and Copernicus GLO-30
+\cite{mapzenterrain,mapzenattribution,copernicusdem2021}.
+Skadi is a mixed-source distribution, not certified pure NASA SRTM for
+every tile. Model sampling and case-display sources have separate records;
+product documentation does not certify tile acquisition epochs, map/track
+contemporaneity or route-publication permission.
+
 Training/validation selected masks are all one, while future simulated
 queries can be invalid. The code zero-fills invalid numerical features and
 adds masks; robustness to such out-of-training-distribution inputs has not
@@ -286,8 +299,9 @@ is the equally weighted average over the four targets. Mean-position error
 is $e_j=\|\bar x_j-y_j\|$, with
 $\mathrm{ADE}=\tfrac14\sum_{j=1}^4 e_j$ and $\mathrm{FDE}=e_4$.
 ADE is not a dense-path integral; FDE is neither best-particle error nor
-mean particle error. Marginal particle-centred quantile disks are evaluated
-for coverage and area at each horizon, not as joint path regions. Average
+mean particle error. Marginal disks are centred on the ensemble mean,
+with radii from particle-distance quantiles. Coverage and area are evaluated
+at each horizon, not as joint path regions. Average
 area is $\mathrm{E}[\pi r^2]$, not $\pi\mathrm{E}[r]^2$.
 
 The completed inventory is $28\times58\times5=8120$ method forecasts,
@@ -357,6 +371,14 @@ the four targets. At one minute, the 50\% disk covers 33.04\% while the
 90\% disk covers 95.65\%; at thirty minutes even the 95\% disk covers only
 52.17\%. Thus a single demonstrated radius rescaling is not the explanation.
 Across all 28 identities, thirty-minute 90\% coverage is 21.74--79.13\%.
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{../figures/revision46-v1/revision46-selected-metric-overview.pdf}
+\caption{Role-selected overview: reference, residual mixture, explicit
+representation and long observation intervals. Rows are fixed by scientific
+role, not performance rank. ES and area use the full 28-identity ranges;
+coverage deviation is observed minus 90\% in percentage points, with signed
+numbers retaining its direction independently of colour.}\label{fig:selected-overview}
+\end{figure}
 The full ES/area/coverage-deviation overview is in the
 \supp{fig:method-overview}; its diverging colour scale is centred on nominal
 coverage, so overcoverage is not visually rewarded as ``better''.

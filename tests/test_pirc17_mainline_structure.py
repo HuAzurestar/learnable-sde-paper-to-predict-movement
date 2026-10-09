@@ -1,3 +1,6 @@
+# Historical presentation fixture: exact public release 8cbcb114.
+# Old monolithic positions are not current six-document acceptance.
+# Current source graph, values and layouts: test_pirc17_revision46.py.
 """Pure presentation placement checks; not experiment or peer-review acceptance."""
 import hashlib
 import json
@@ -16,7 +19,7 @@ def revision():
 @pytest.mark.parametrize("language", ["en", "zh"])
 @pytest.mark.parametrize("table", ["execution-coverage", "family-coverage", "forecast-counts"])
 def test_scale_and_execution_table_bodies_are_preserved_at_intended_locations(language, table):
-    tex = (PAPER / language / "main.tex").read_text(encoding="utf-8")
+    tex = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
     label = r"\label{tab:" + table + "}"
     assert tex.count(label) == 1
     start = tex.index(label)
@@ -38,7 +41,7 @@ def test_scale_and_execution_table_bodies_are_preserved_at_intended_locations(la
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_scientific_guides_and_paired_estimates_remain_in_main_text(language):
-    tex = (PAPER / language / "main.tex").read_text(encoding="utf-8")
+    tex = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
     main = tex.split(r"\appendix", 1)[0]
     for label in revision()["preserved_main_labels"]:
         assert main.count(r"\label{" + label + "}") == 1
@@ -55,7 +58,7 @@ def test_scientific_guides_and_paired_estimates_remain_in_main_text(language):
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_appendix_does_not_drop_failures_or_scheduled_auxiliary_scope(language):
-    tex = (PAPER / language / "main.tex").read_text(encoding="utf-8")
+    tex = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
     appendix = tex.split(r"\appendix", 1)[1]
     for number in ("11020", "10514", "501", "261", "58", "38", "75", "15", "290"):
         assert number in appendix
@@ -100,7 +103,7 @@ def test_five_method_families_match_seven_panel_controls_and_layout_ledger():
     labels = ["Model structure / Full01", "Observation interval / Full01",
               "Objective and score / Full07", "Training and adaptation / Full11",
               "Numerical propagation / Full18, Full20"]
-    en = (PAPER / "en/main.tex").read_text(encoding="utf-8")
+    en = (PAPER / "en/historical-main-v1.tex").read_text(encoding="utf-8")
     assert all(en.count(label) == 1 for label in labels)
     intro = en.split(r"\label{sec:method-results}", 1)[1].split(r"\subsection", 1)[0]
     assert "observation interval" in intro and "training/adaptation" in intro
@@ -109,7 +112,7 @@ def test_five_method_families_match_seven_panel_controls_and_layout_ledger():
     assert "Training and adaptation & 1150 & 1150" in en
     assert "Full anchor: training and adaptation" in en
     assert "Full anchor: transfer and adaptation" not in en
-    zh = (PAPER / "zh/main.tex").read_text(encoding="utf-8")
+    zh = (PAPER / "zh/historical-main-v1.tex").read_text(encoding="utf-8")
     assert "Full 锚点：训练及适应" in zh
     assert "迁移与适应" not in zh
     value = revision()

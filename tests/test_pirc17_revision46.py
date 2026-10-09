@@ -70,6 +70,63 @@ def test_presentation_corrections_are_versioned_and_used_by_current_supplements(
             assert "revision46-corrections-v1/"+name+".pdf" in child
 
 
+def test_every_pre_revision_scientific_json_is_exact_canonical_git_bytes():
+    names = subprocess.check_output(["git", "ls-tree", "-r", "--name-only", "8cbcb114", "paper/pirc17"], cwd=ROOT, text=True).splitlines()
+    count = 0
+    for name in names:
+        if not name.endswith(".json"):
+            continue
+        original = subprocess.check_output(["git", "show", "8cbcb114:"+name], cwd=ROOT)
+        assert (ROOT / name).read_bytes() == original, name
+        count += 1
+    assert count == 66
+
+
+def test_historical_test_migration_does_not_change_a_scientific_assertion():
+    import ast
+    value = read("revision46-test-migration.json")
+    assert value["scientific_assertions_changed"] == 0 and not value["skip_exclude_or_deselect_added"]
+    for row in value["tests"]:
+        path = ROOT / row["path"]
+        original = subprocess.check_output(["git", "show", "8cbcb114:"+row["path"]], cwd=ROOT)
+        assert hashlib.sha256(original).hexdigest() == row["original_test_sha256"]
+        asserts = lambda data: [ast.dump(n, include_attributes=False) for n in ast.walk(ast.parse(data)) if isinstance(n, ast.Assert)]
+        assert asserts(original.decode("utf-8")) == asserts(path.read_text(encoding="utf-8"))
+        assert row["assertions_changed"] == 0
+
+
+@pytest.mark.parametrize("language", ["en", "zh"])
+def test_current_six_document_structure_and_bounded_claims(language):
+    main = (PAPER / language / "main.tex").read_text(encoding="utf-8")
+    for label in ("eq:ordinary-full", "eq:terrain-summary", "eq:constant-penalty", "eq:finite-es", "tab:inputs", "tab:actual-changes", "tab:point-errors"):
+        assert main.count(r"\label{"+label+"}") == 1
+    numbers = (PAPER / "revision46-numbers.tex").read_text(encoding="utf-8")
+    for token in ("512", "110/109/109", "26/25/25", "27/27/27", "404", "81", "0.0404", "41.100259", "46.52", "37.83", "35.22", "33.04", "95.65", "52.17", "21.74", "79.13", "1379/1380", "1148/1150", "F01", "F02", "F03", "F04", "F05", "165", "150", "15", "90"):
+        assert token in main, (language, token)
+    assert all(chr(92)+macro in main for macro in ("FullES", "InertialES", "InertialDelta", "PointRowFull", "PointRowGMM", "PointRowdtThreeHundred", "PointRowInertial"))
+    assert "477.85" in numbers and "824.73" in numbers and "-346.87" in numbers
+    assert main.index("fig:inertial") < main.index("fig:practical-effects")
+    assert "bridleway" in main and "footway" in main and "path" in main and "steps" in main
+    assert "N(N-1)" in main and r"2N^2" in main
+    assert r"\appendix" not in main
+    assert r"\input{revision46-supplement-retained.tex}" in (PAPER / language / "supplement.tex").read_text(encoding="utf-8")
+    assert r"\input{revision46-audit-notes-retained.tex}" in (PAPER / language / "audit-notes.tex").read_text(encoding="utf-8")
+    assert ("not a fresh blinded holdout" if language == "en" else "不是全新盲测留出集") in main
+    assert ("not a positive or null terrain" if language == "en" else "不是地形正效应或零效应") in main
+
+
+def test_current_bilingual_bibliography_and_all23_citation_roles():
+    entries = []
+    for language in ("en", "zh"):
+        bib = (PAPER / language / "revision46-bibliography.tex").read_text(encoding="utf-8")
+        labels = re.findall(r"\\bibitem\{([^}]+)\}", bib)
+        main = (PAPER / language / "main.tex").read_text(encoding="utf-8")
+        cited = {key for group in re.findall(r"\\cite\{([^}]+)\}", main) for key in group.split(",")}
+        assert len(labels) == len(set(labels)) == 23 and cited == set(labels)
+        entries.append(" ".join(bib.split()))
+    assert entries[0] == entries[1]
+
+
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_five_follow_up_designs_are_not_silently_executed(language):
     source = (PAPER / language / "supplement.tex").read_text(encoding="utf-8")
@@ -109,10 +166,33 @@ def test_selection_horizons_fit_and_masks_use_fixed_inputs():
     plt.close(fig)
     fig, value = design_matrix()
     assert len(value["retained"]) == 10
+    assert value["K"] == [2,28,19,23,20,20,7,7,6,10]
+    assert all(row[0] == 1 for row in value["retained"])
+    assert value["retained"][2][5] == value["retained"][4][5] == 0
+    assert value["retained"][6][5] == value["retained"][8][5] == 0
+    assert value["retained"][9][6] == 1
+    assert all(row[7] == row[1] and row[8] == row[2] for row in value["retained"])
     plt.close(fig)
     fig, value = fit_diagnostics(Inputs())
     assert len(value["raw_rank"]) == len(value["raw_columns"]) == 10
     plt.close(fig)
+
+
+@pytest.mark.parametrize("candidate,control,interval,seeds", [
+    (100,160,(-80,-50),[-60]*5), (160,100,(50,80),[60]*5),
+    (100,100,(-10,10),[0]*5), (100,105,(-30,20),[-5]*5)])
+def test_factor_benefit_is_only_a_sign_reexpression(candidate,control,interval,seeds):
+    delta = candidate-control
+    benefit, benefit_interval = -delta, (-interval[1],-interval[0])
+    assert benefit == control-candidate
+    assert benefit_interval[0] <= benefit_interval[1]
+    assert (-benefit_interval[1],-benefit_interval[0]) == interval
+    assert [s < 0 for s in seeds] == [-s > 0 for s in seeds]
+    # Practical-side/inside/crossing-zero geometry is invariant under the
+    # reexpression, not a new qualification or statistical decision.
+    assert (interval[1] < -41.100259) == (benefit_interval[0] > 41.100259)
+    assert (interval[0] > 41.100259) == (benefit_interval[1] < -41.100259)
+    assert (interval[0] <= 0 <= interval[1]) == (benefit_interval[0] <= 0 <= benefit_interval[1])
 
 
 @pytest.mark.parametrize("language", ["en", "zh"])

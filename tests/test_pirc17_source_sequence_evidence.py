@@ -1,3 +1,6 @@
+# Historical presentation fixture: exact public release 8cbcb114.
+# Old monolithic positions are not current six-document acceptance.
+# Current source graph, values and layouts: test_pirc17_revision46.py.
 """Saved aggregate evidence only; not participant or route independence proof."""
 import hashlib
 import json
@@ -87,7 +90,7 @@ def test_exact_complete_sequences_are_not_near_route_or_physical_clock_qualifica
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_actual_source_denominators_and_limits_are_in_bilingual_experiments(language):
-    tex = (ROOT / "paper/pirc17" / language / "main.tex").read_text(encoding="utf-8")
+    tex = (ROOT / "paper/pirc17" / language / "historical-main-v1.tex").read_text(encoding="utf-8")
     for label in ("sec:source-sequence-screen", "tab:source-sequence-screen"):
         assert tex.count(r"\label{" + label + "}") == 1
     start = tex.index(r"\label{sec:source-sequence-screen}")
@@ -119,7 +122,7 @@ def test_new_source_table_preserves_every_previous_scientific_environment(langua
     before = subprocess.check_output(["git", "show",
         f"7258b83ecb2025eb299e1797ca901c7272516904:paper/pirc17/{language}/main.tex"],
         cwd=ROOT).decode("utf-8").replace("\r\n", "\n")
-    after = (ROOT / "paper/pirc17" / language / "main.tex").read_text(encoding="utf-8")
+    after = (ROOT / "paper/pirc17" / language / "historical-main-v1.tex").read_text(encoding="utf-8")
     for kind in ("table", "longtable", "figure", "equation", "align"):
         pattern = r"\\begin\{" + kind + r"\}.*?\\end\{" + kind + r"\}"
         old, new = re.findall(pattern,before,re.S), re.findall(pattern,after,re.S)

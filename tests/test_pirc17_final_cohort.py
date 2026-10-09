@@ -1,3 +1,6 @@
+# Historical presentation fixture: exact public release 8cbcb114.
+# Old monolithic positions are not current six-document acceptance.
+# Current source graph, values and layouts: test_pirc17_revision46.py.
 """Saved metadata and synthetic JSON only; no raw qualification or forecasts."""
 from copy import deepcopy
 import hashlib
@@ -96,7 +99,7 @@ def test_original_funnel_bindings_arithmetic_and_remaining_limits():
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_bilingual_final_funnel_uses_saved_counts_not_development_or_forecast_counts(language):
-    tex = (PAPER / language / "main.tex").read_text(encoding="utf-8")
+    tex = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
     assert tex.count(r"\label{sec:final-cohort-funnel}") == 1
     table = tex.split(r"\label{tab:final-cohort-funnel}", 1)[1].split(r"\end{tabular}", 1)[0]
     for numbers in ("12,370 & 1,094", "127 & 89", "106 & 73", "46 & 46"):

@@ -1,3 +1,6 @@
+# Historical presentation fixture: exact public release 8cbcb114.
+# Old monolithic positions are not current six-document acceptance.
+# Current source graph, values and layouts: test_pirc17_revision46.py.
 """Saved arithmetic and public display checks, not calibration qualification."""
 import copy
 import hashlib
@@ -22,7 +25,7 @@ def test_whole_saved_scope_and_unchanged_original_aggregates():
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_all_twelve_complete_table_rows_and_seed_count_explanation(language):
-    text = (ROOT / "paper/pirc17" / language / "main.tex").read_text(encoding="utf-8")
+    text = (ROOT / "paper/pirc17" / language / "historical-main-v1.tex").read_text(encoding="utf-8")
     assert all(row + r"\\" in text for row in table_rows(load_snapshot()))
     for label in ("sec:block-calibration", "eq:block-calibration-summary",
                   "tab:block-calibration", "fig:block-calibration"):

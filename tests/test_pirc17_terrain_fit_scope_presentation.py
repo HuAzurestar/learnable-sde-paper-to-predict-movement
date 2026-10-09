@@ -1,3 +1,6 @@
+# Historical presentation fixture: exact public release 8cbcb114.
+# Old monolithic positions are not current six-document acceptance.
+# Current source graph, values and layouts: test_pirc17_revision46.py.
 """Saved-data arithmetic and bilingual presentation, not new experiments."""
 import hashlib
 import json
@@ -62,7 +65,7 @@ def test_ten_Q_spectra_and_absolute_negative_roundoff_rule_are_not_rescaled():
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_two_row_appendix_table_matches_original_clock_summary(language):
-    tex = (PAPER / language / "main.tex").read_text(encoding="utf-8")
+    tex = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
     label = r"\label{tab:terrain-fit-intervals}"
     assert tex.count(label) == 1 and tex.index(label) > tex.index(r"\appendix")
     start = tex.index(label)
@@ -79,7 +82,7 @@ def test_two_row_appendix_table_matches_original_clock_summary(language):
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_rate_Q_and_non_unbiased_boundary_are_explicit_in_mainline(language):
-    main = (PAPER / language / "main.tex").read_text(encoding="utf-8").split(r"\appendix", 1)[0]
+    main = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8").split(r"\appendix", 1)[0]
     assert main.count(r"\label{eq:terrain-rate-Q}") == 1
     assert r"\sum_{i=1}^n\Delta t_i\zeta_i\zeta_i^\top" in main
     assert r"\zeta_i=\Delta x_i/\Delta t_i-\widehat b_i" in main

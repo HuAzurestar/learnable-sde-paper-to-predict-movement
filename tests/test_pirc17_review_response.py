@@ -1,3 +1,6 @@
+# Historical presentation fixture: exact public release 8cbcb114.
+# Old monolithic positions are not current six-document acceptance.
+# Current source graph, values and layouts: test_pirc17_revision46.py.
 """Pure saved-artifact checks; registry coverage is not review acceptance."""
 from collections import Counter
 import hashlib
@@ -63,7 +66,7 @@ def test_all_referenced_existing_evidence_bytes_match_reviewed_revision():
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_each_response_anchor_exists_in_bilingual_reviewed_manuscript(language):
-    text = (PAPER / language / "main.tex").read_text(encoding="utf-8")
+    text = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
     inputs = re.findall(r"\\input\{([^}]+)\}", text)
     assert set(inputs) == {"all-method-absolute.tex", "method-seed-stability.tex",
                            "method-horizon-overview.tex", "method-horizon-tables.tex",

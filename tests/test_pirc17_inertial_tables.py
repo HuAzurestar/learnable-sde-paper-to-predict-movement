@@ -1,3 +1,6 @@
+# Historical presentation fixture: exact public release 8cbcb114.
+# Old monolithic positions are not current six-document acceptance.
+# Current source graph, values and layouts: test_pirc17_revision46.py.
 """Bound saved-score rendering checks; no fit, forecast or statistical test."""
 from copy import deepcopy
 from pathlib import Path
@@ -23,7 +26,7 @@ def test_exact_bilingual_saved_score_tables_and_manuscript_input(language):
     assert "237.93" in text and "243.23" in text
     assert "934.03" in text and "609.27" in text
     assert "2095.78" in text and "1008.35" in text
-    main = (PAPER / language / "main.tex").read_text(encoding="utf-8")
+    main = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
     assert main.count(r"\input{inertial-primary-comparison.tex}") == 1
     section = "Method ablation results" if language == "en" else "方法消融结果"
     next_section = "Terrain ablation results" if language == "en" else "地形消融结果"

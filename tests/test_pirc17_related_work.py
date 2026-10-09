@@ -1,3 +1,6 @@
+# Historical presentation fixture: exact public release 8cbcb114.
+# Old monolithic positions are not current six-document acceptance.
+# Current source graph, values and layouts: test_pirc17_revision46.py.
 """Document checks only; these do not certify literature claims or run models."""
 import json
 import re
@@ -10,7 +13,7 @@ LEDGER = json.loads((ROOT / 'claim-ledger.json').read_text(encoding='utf-8'))
 
 
 def related(language):
-    tex = (ROOT / language / 'main.tex').read_text(encoding='utf-8')
+    tex = (ROOT / language / "historical-main-v1.tex").read_text(encoding='utf-8')
     section = tex.split(r'\label{sec:related-work}', 1)[1].split(r'\section{', 1)[0]
     return tex, section
 

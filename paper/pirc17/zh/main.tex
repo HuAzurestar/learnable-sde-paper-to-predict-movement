@@ -56,10 +56,12 @@ RQ2保留设计和明确的不可用结果，而不是地形正效应或零效�
  dX_t=\Theta_{m_t}^{\top}\psi(X_t,t)\,dt+L_{m_t}\,dW_t,
  \quad\psi=(1,X_e,X_n,S)^\top,\quad L_mL_m^\top=Q_m=\tau R_m.
 \end{equation}
-$\Theta_m$给出米/秒漂移，$S$为由保留绝对tick计算的太阳／日历输入，
+$\Theta_m$给出米/秒漂移，$S$为由保留绝对tick计算的太阳／日历输入\cite{noaa}，
 $R_m$为位移率残差协方差（米$^2$/秒$^2$）。转换为$Q_m$使用模型观测间隔
 $\tau$，不是积分步长$h$。秒与日光的物理解释仍取决于时钟来源（第\ref{sec:data}节）。
 保存混合概率$\pi_m$来自拟合与适应混合，不是新前缀下更新的模式后验。
+各粒子在起点按保存$\pi$初抽模式。段固定Full保持该初抽；只有切换路线在各自$\tau$
+事件重抽，不在每个积分子步或评分输出重抽。
 
 \begin{table}[htbp]\centering
 \caption{预测器真正使用的前缀信息。更新了缓冲区不等于漂移读取该信息；三条路线不能互换。}
@@ -146,6 +148,13 @@ $\lambda=10^{-4}$，正规方程惩罚$404\lambda=0.0404$，不是联合优化�
 不能解释为完整步行通行网络。坡面特征区分带符号历史、上坡与等高线方向，
 方向点积不再乘坡度。几何图与十配置矩阵见\supp{fig:terrain-geometry}。
 
+保存模型来源声明包括WorldCover 2021 v200\cite{worldcover2021}、
+Overture 2026-08-19.0交通层\cite{overture202608,overtureattribution}、
+HydroRIVERS v1.0\cite{hydrorivers2013,hydroriverslicense}，以及Mapzen Skadi与
+Copernicus GLO-30的保留DEM产品／回退规则\cite{mapzenterrain,mapzenattribution,copernicusdem2021}。
+Skadi是混合来源分发，不能认证每块瓦片均为纯NASA SRTM。
+模型采样与案例显示各有来源记录；产品文档不认证逐瓦片采集年代、地图与轨迹的同期性或路线公开许可。
+
 选中训练／验证掩码全为一，未来模拟查询却可能无效。代码对无效数值零填并附掩码，
 不能据此声称已学习缺失鲁棒性。受惩罚截距与$K$个常数一掩码的最小常数子空间惩罚为
 \begin{equation}\label{eq:constant-penalty}
@@ -198,7 +207,8 @@ R1程序重建的相对时间与预测condition tick是不同对象。
 均值位置误差$e_j=\|\bar x_j-y_j\|$，
 $\mathrm{ADE}=\tfrac14\sum_{j=1}^4e_j$，$\mathrm{FDE}=e_4$。
 ADE不是密集路径积分；FDE不是最佳粒子或平均粒子误差。
-各时域粒子中心分位圆分别评价覆盖和面积，不是联合路径区域。
+边际预测圆以粒子均值为圆心、粒子到均值距离的分位数为半径；
+各时域分别评价覆盖和面积，不是联合路径区域。
 平均面积是$\mathrm E[\pi r^2]$，不是$\pi\mathrm E[r]^2$。
 
 终态清单为方法$28\times58\times5=8120$、地形$10\times58\times5=2900$、
@@ -250,6 +260,12 @@ Full的四时域90\%覆盖分别为95.65\%、37.83\%、35.22\%、46.52\%。
 1分钟50\%圆覆盖33.04\%，90\%圆却覆盖95.65\%；
 30分钟即使95\%圆也只覆盖52.17\%。不能归结为已经证明的统一半径缩放问题。
 28身份的30分钟90\%覆盖范围为21.74--79.13\%。
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{../figures/revision46-v1/revision46-selected-metric-overview.pdf}
+\caption{按角色选择的概览：参考、残差混合、显式表示及长观测间隔。
+行按科学角色固定，不按已见性能排名。ES与面积使用全28身份的范围；
+覆盖偏差为观测减90\%的百分点，带符号数值使方向不依赖配色。}\label{fig:selected-overview}
+\end{figure}
 完整ES／面积／覆盖偏差概览见\supp{fig:method-overview}，发散配色以名义覆盖为中心，
 不会将过覆盖视觉奖励为更好。
 

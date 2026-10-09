@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-10-09T22:03:06.533057</dc:date>
+    <dc:date>2026-10-09T23:27:05.906005</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -32,16 +32,16 @@ z
    <g id="line2d_1">
     <path d="M 242.999856 203.158582 
 L 242.999856 22.318125 
-" clip-path="url(#p00abf74ee7)" style="fill: none; stroke: #000000; stroke-linecap: square"/>
+" clip-path="url(#p529a84918e)" style="fill: none; stroke: #000000; stroke-linecap: square"/>
    </g>
    <g id="line2d_2">
     <path d="M 7.2 149.728447 
 L 793.19952 149.728447 
-" clip-path="url(#p00abf74ee7)" style="fill: none; stroke: #777777; stroke-linecap: square"/>
+" clip-path="url(#p529a84918e)" style="fill: none; stroke: #777777; stroke-linecap: square"/>
    </g>
    <g id="line2d_3">
     <defs>
-     <path id="mbd2969f54c" d="M 0 3 
+     <path id="m3592e429a1" d="M 0 3 
 C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
 C 2.683901 1.55874 3 0.795609 3 0 
 C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
@@ -53,27 +53,27 @@ C -1.55874 2.683901 -0.795609 3 0 3
 z
 " style="stroke: #326a9b"/>
     </defs>
-    <g clip-path="url(#p00abf74ee7)">
-     <use xlink:href="#mbd2969f54c" x="54.359971" y="149.728447" style="fill: #326a9b; stroke: #326a9b"/>
-     <use xlink:href="#mbd2969f54c" x="117.239933" y="149.728447" style="fill: #326a9b; stroke: #326a9b"/>
-     <use xlink:href="#mbd2969f54c" x="180.119894" y="149.728447" style="fill: #326a9b; stroke: #326a9b"/>
-     <use xlink:href="#mbd2969f54c" x="242.999856" y="149.728447" style="fill: #326a9b; stroke: #326a9b"/>
+    <g clip-path="url(#p529a84918e)">
+     <use xlink:href="#m3592e429a1" x="54.359971" y="149.728447" style="fill: #326a9b; stroke: #326a9b"/>
+     <use xlink:href="#m3592e429a1" x="117.239933" y="149.728447" style="fill: #326a9b; stroke: #326a9b"/>
+     <use xlink:href="#m3592e429a1" x="180.119894" y="149.728447" style="fill: #326a9b; stroke: #326a9b"/>
+     <use xlink:href="#m3592e429a1" x="242.999856" y="149.728447" style="fill: #326a9b; stroke: #326a9b"/>
     </g>
    </g>
    <g id="line2d_4">
     <defs>
-     <path id="m464ee14283" d="M -3 3 
+     <path id="m1c5b4d08f7" d="M -3 3 
 L 3 3 
 L 3 -3 
 L -3 -3 
 z
 " style="stroke: #bd5c34; stroke-linejoin: miter"/>
     </defs>
-    <g clip-path="url(#p00abf74ee7)">
-     <use xlink:href="#m464ee14283" x="321.599808" y="149.728447" style="fill: #bd5c34; stroke: #bd5c34; stroke-linejoin: miter"/>
-     <use xlink:href="#m464ee14283" x="447.359731" y="149.728447" style="fill: #bd5c34; stroke: #bd5c34; stroke-linejoin: miter"/>
-     <use xlink:href="#m464ee14283" x="573.119654" y="149.728447" style="fill: #bd5c34; stroke: #bd5c34; stroke-linejoin: miter"/>
-     <use xlink:href="#m464ee14283" x="714.599568" y="149.728447" style="fill: #bd5c34; stroke: #bd5c34; stroke-linejoin: miter"/>
+    <g clip-path="url(#p529a84918e)">
+     <use xlink:href="#m1c5b4d08f7" x="321.599808" y="149.728447" style="fill: #bd5c34; stroke: #bd5c34; stroke-linejoin: miter"/>
+     <use xlink:href="#m1c5b4d08f7" x="447.359731" y="149.728447" style="fill: #bd5c34; stroke: #bd5c34; stroke-linejoin: miter"/>
+     <use xlink:href="#m1c5b4d08f7" x="573.119654" y="149.728447" style="fill: #bd5c34; stroke: #bd5c34; stroke-linejoin: miter"/>
+     <use xlink:href="#m1c5b4d08f7" x="714.599568" y="149.728447" style="fill: #bd5c34; stroke: #bd5c34; stroke-linejoin: miter"/>
     </g>
    </g>
    <g id="patch_2">
@@ -144,7 +144,7 @@ L 58.289969 303.1961
 L 58.289969 270.644818 
 L 18.989993 270.644818 
 z
-" clip-path="url(#p504839d5f5)" style="fill: #326a9b"/>
+" clip-path="url(#p91c44b4392)" style="fill: #326a9b"/>
    </g>
    <g id="patch_7">
     <path d="M 66.149964 303.1961 
@@ -152,7 +152,7 @@ L 105.44994 303.1961
 L 105.44994 270.644818 
 L 66.149964 270.644818 
 z
-" clip-path="url(#p504839d5f5)" style="fill: #326a9b"/>
+" clip-path="url(#p91c44b4392)" style="fill: #326a9b"/>
    </g>
    <g id="patch_8">
     <path d="M 113.309935 303.1961 
@@ -160,7 +160,7 @@ L 152.609911 303.1961
 L 152.609911 270.644818 
 L 113.309935 270.644818 
 z
-" clip-path="url(#p504839d5f5)" style="fill: #326a9b"/>
+" clip-path="url(#p91c44b4392)" style="fill: #326a9b"/>
    </g>
    <g id="patch_9">
     <path d="M 215.489873 303.1961 
@@ -168,7 +168,7 @@ L 254.789849 303.1961
 L 254.789849 270.644818 
 L 215.489873 270.644818 
 z
-" clip-path="url(#p504839d5f5)" style="fill: #326a9b"/>
+" clip-path="url(#p91c44b4392)" style="fill: #326a9b"/>
    </g>
    <g id="patch_10">
     <path d="M 262.649844 303.1961 
@@ -176,7 +176,7 @@ L 301.94982 303.1961
 L 301.94982 270.644818 
 L 262.649844 270.644818 
 z
-" clip-path="url(#p504839d5f5)" style="fill: #326a9b"/>
+" clip-path="url(#p91c44b4392)" style="fill: #326a9b"/>
    </g>
    <g id="patch_11">
     <path d="M 309.809815 303.1961 
@@ -184,7 +184,7 @@ L 349.109791 303.1961
 L 349.109791 270.644818 
 L 309.809815 270.644818 
 z
-" clip-path="url(#p504839d5f5)" style="fill: #bd5c34"/>
+" clip-path="url(#p91c44b4392)" style="fill: #bd5c34"/>
    </g>
    <g id="patch_12">
     <path d="M 411.989753 303.1961 
@@ -192,7 +192,7 @@ L 451.289729 303.1961
 L 451.289729 270.644818 
 L 411.989753 270.644818 
 z
-" clip-path="url(#p504839d5f5)" style="fill: #326a9b"/>
+" clip-path="url(#p91c44b4392)" style="fill: #326a9b"/>
    </g>
    <g id="patch_13">
     <path d="M 459.149724 303.1961 
@@ -200,7 +200,7 @@ L 498.4497 303.1961
 L 498.4497 270.644818 
 L 459.149724 270.644818 
 z
-" clip-path="url(#p504839d5f5)" style="fill: #bd5c34"/>
+" clip-path="url(#p91c44b4392)" style="fill: #bd5c34"/>
    </g>
    <g id="patch_14">
     <path d="M 506.309695 303.1961 
@@ -208,7 +208,7 @@ L 545.609671 303.1961
 L 545.609671 270.644818 
 L 506.309695 270.644818 
 z
-" clip-path="url(#p504839d5f5)" style="fill: #bd5c34"/>
+" clip-path="url(#p91c44b4392)" style="fill: #bd5c34"/>
    </g>
    <g id="patch_15">
     <path d="M 608.489633 303.1961 
@@ -216,7 +216,7 @@ L 647.789609 303.1961
 L 647.789609 270.644818 
 L 608.489633 270.644818 
 z
-" clip-path="url(#p504839d5f5)" style="fill: #bd5c34"/>
+" clip-path="url(#p91c44b4392)" style="fill: #bd5c34"/>
    </g>
    <g id="patch_16">
     <path d="M 655.649604 303.1961 
@@ -224,7 +224,7 @@ L 694.94958 303.1961
 L 694.94958 270.644818 
 L 655.649604 270.644818 
 z
-" clip-path="url(#p504839d5f5)" style="fill: #bd5c34"/>
+" clip-path="url(#p91c44b4392)" style="fill: #bd5c34"/>
    </g>
    <g id="patch_17">
     <path d="M 702.809575 303.1961 
@@ -232,7 +232,7 @@ L 742.109551 303.1961
 L 742.109551 270.644818 
 L 702.809575 270.644818 
 z
-" clip-path="url(#p504839d5f5)" style="fill: #bd5c34"/>
+" clip-path="url(#p91c44b4392)" style="fill: #bd5c34"/>
    </g>
    <g id="text_9">
     <text style="font: 8px 'DejaVu Sans'" transform="translate(62.143077 316.022478)">observation</text>
@@ -285,16 +285,17 @@ L 597.440874 288.920459
     <text style="font: 10px 'DejaVu Sans'; text-anchor: start" x="22.91999" y="225.434704" transform="rotate(-0 22.91999 225.434704)">(b) Three-position buffer: observations replaced by simulated positions</text>
    </g>
    <g id="text_14">
-    <text style="font: 9px 'DejaVu Sans'" transform="translate(22.91999 374.496275)">Terrain: updates every 5 s; first secant d+5 s, stable span 10 s.</text>
-    <text style="font: 9px 'DejaVu Sans'" transform="translate(22.91999 384.574306)">Ordinary method: adjacent τ resampling cadence (Full τ=60 s); scoring events are not history updates.</text>
+    <text style="font: 9px 'DejaVu Sans'" transform="translate(22.91999 364.418244)">Terrain: updates every 5 s; first secant d+5 s, stable span 10 s.</text>
+    <text style="font: 9px 'DejaVu Sans'" transform="translate(22.91999 374.496275)">Ordinary history: adjacent τ cadence (Full τ=60 s); scoring events do not update history.</text>
+    <text style="font: 9px 'DejaVu Sans'" transform="translate(22.91999 384.574306)">Segment-fixed Full retains its initial mode; only switching routes redraw at τ events.</text>
    </g>
   </g>
  </g>
  <defs>
-  <clipPath id="p00abf74ee7">
+  <clipPath id="p529a84918e">
    <rect x="7.2" y="22.318125" width="785.99952" height="180.840458"/>
   </clipPath>
-  <clipPath id="p504839d5f5">
+  <clipPath id="p91c44b4392">
    <rect x="7.2" y="209.159062" width="785.99952" height="180.840457"/>
   </clipPath>
  </defs>

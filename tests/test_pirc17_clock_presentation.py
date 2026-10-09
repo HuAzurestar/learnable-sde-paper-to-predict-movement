@@ -1,3 +1,6 @@
+# Historical presentation fixture: exact public release 8cbcb114.
+# Old monolithic positions are not current six-document acceptance.
+# Current source graph, values and layouts: test_pirc17_revision46.py.
 """Clock evidence and document checks only; no fitting or forecasting."""
 import hashlib
 import json
@@ -53,7 +56,7 @@ def test_reported_release_reconciliation_is_not_fresh_selected_target_audit():
 
 @pytest.mark.parametrize('language', ['en', 'zh'])
 def test_bilingual_clock_table_formula_and_reconciliation(language):
-    tex = (ROOT / language / 'main.tex').read_text(encoding='utf-8')
+    tex = (ROOT / language / "historical-main-v1.tex").read_text(encoding='utf-8')
     assert tex.count(r'\label{tab:clock-use}') == 1
     assert tex.count(r'\label{eq:solar-condition}') == 1
     assert 'clock-description-v1.json' in tex

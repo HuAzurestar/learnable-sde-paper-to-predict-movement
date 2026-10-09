@@ -1,3 +1,6 @@
+# Historical presentation fixture: exact public release 8cbcb114.
+# Old monolithic positions are not current six-document acceptance.
+# Current source graph, values and layouts: test_pirc17_revision46.py.
 """Pure arithmetic/layout bindings; not model fitting or scientific acceptance."""
 import hashlib
 import json
@@ -55,7 +58,7 @@ def test_all_modes_normalized_finite_noise_embedding_and_no_extra_scale():
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_exact_sixteen_row_appendix_parameter_table(language):
-    tex = (PAPER / language / "main.tex").read_text(encoding="utf-8")
+    tex = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
     label = r"\label{tab:method-noise-parameters}"
     assert tex.count(label) == 1
     assert tex.index(label) > tex.index(r"\appendix")
@@ -73,7 +76,7 @@ def test_exact_sixteen_row_appendix_parameter_table(language):
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_mainline_equation_and_full_spectra_are_bound_to_saved_numbers(language):
-    tex = (PAPER / language / "main.tex").read_text(encoding="utf-8")
+    tex = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
     main = tex.split(r"\appendix", 1)[0]
     assert main.count(r"\label{eq:saved-method-noise}") == 1
     assert r"R_m=s^2\widetilde R_m" in main

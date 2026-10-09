@@ -404,7 +404,7 @@
             "tab:retained-failures",
             "tab:failure-family-dispositions"
           ],
-          "destination": "supplement",
+          "destination": "audit-notes",
           "original_text_sha256": "28460a05e024700a7dabbb3e737b1db51e6005d3c7a195746bd7f8858dacf777",
           "start_line": 3094
         },
@@ -1056,7 +1056,7 @@
             "tab:retained-failures",
             "tab:failure-family-dispositions"
           ],
-          "destination": "supplement",
+          "destination": "audit-notes",
           "original_text_sha256": "50412b39038d3a212cb4bd859d21f8a7240f8d3688e74e74688a3314e9ebc7a4",
           "start_line": 2333
         },

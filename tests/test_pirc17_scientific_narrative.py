@@ -1,3 +1,6 @@
+# Historical presentation fixture: exact public release 8cbcb114.
+# Old monolithic positions are not current six-document acceptance.
+# Current source graph, values and layouts: test_pirc17_revision46.py.
 """Check document claims against existing stage projections; no new analyses."""
 import json
 from pathlib import Path
@@ -11,7 +14,7 @@ LEDGER = json.loads((ROOT/'claim-ledger.json').read_text(encoding='utf-8'))
 
 @pytest.mark.parametrize('language', ['en','zh'])
 def test_scientific_questions_and_temporal_not_effect_causality(language):
-    tex = (ROOT/language/'main.tex').read_text(encoding='utf-8')
+    tex = (ROOT/language/"historical-main-v1.tex").read_text(encoding='utf-8')
     title = tex.split(r'\title{',1)[1].split(r'\author',1)[0]
     assert 'Causal Stochastic' not in title and '因果初始化' not in title
     assert tex.count(r'\label{sec:research-questions}') == 1
@@ -25,7 +28,7 @@ def test_scientific_questions_and_temporal_not_effect_causality(language):
 
 @pytest.mark.parametrize('language', ['en','zh'])
 def test_current_conclusion_uses_existing_results_not_future_todo(language):
-    tex = (ROOT/language/'main.tex').read_text(encoding='utf-8')
+    tex = (ROOT/language/"historical-main-v1.tex").read_text(encoding='utf-8')
     conclusion = tex.split(r'\section{Conclusion}' if language == 'en' else r'\section{结论}',1)[1].split(r'\appendix',1)[0]
     configs = {r['configuration']: r for r in STAGE['configs']}
     full, dt = configs['arm-01/full'], configs['arm-06/dt300']
@@ -47,7 +50,7 @@ def test_current_conclusion_uses_existing_results_not_future_todo(language):
 
 @pytest.mark.parametrize('language', ['en','zh'])
 def test_unavailable_not_merely_waiting_and_execution_details_in_appendix(language):
-    tex = (ROOT/language/'main.tex').read_text(encoding='utf-8')
+    tex = (ROOT/language/"historical-main-v1.tex").read_text(encoding='utf-8')
     opening = tex.split(r'\begin{quote}',1)[1].split(r'\end{quote}',1)[0]
     assert ('Reported:' if language == 'en' else '已报告：') in opening
     assert ('Unavailable under' if language == 'en' else '不可用：') in opening
@@ -105,7 +108,7 @@ def test_opening_closing_revision_changes_only_summary_prose(language):
 
 @pytest.mark.parametrize('language', ['en', 'zh'])
 def test_three_conclusion_topics_do_not_hide_unavailable_or_qualification_scope(language):
-    tex = (ROOT/language/'main.tex').read_text(encoding='utf-8')
+    tex = (ROOT/language/"historical-main-v1.tex").read_text(encoding='utf-8')
     heading = r'\section{Conclusion}' if language == 'en' else r'\section{结论}'
     conclusion = tex.split(heading, 1)[1].split(r'\appendix', 1)[0]
     assert conclusion.count(r'\paragraph{') == 3
@@ -150,7 +153,7 @@ def test_saved_all28_horizon_limits_reach_abstract_discussion_and_conclusion(lan
     full = configs['arm-01/full']['es_by_time_m']
     mixture = configs['arm-04/gmm_kernel']['es_by_time_m']
     assert mixture[1] < full[1] and mixture[2] < full[2] and mixture[3] > full[3]
-    tex = (ROOT/language/'main.tex').read_text(encoding='utf-8')
+    tex = (ROOT/language/"historical-main-v1.tex").read_text(encoding='utf-8')
     abstract = tex.split(r'\begin{abstract}', 1)[1].split(r'\end{abstract}', 1)[0]
     discussion_heading = r'\section{Discussion and limitations}' if language == 'en' else r'\section{讨论与局限}'
     conclusion_heading = r'\section{Conclusion}' if language == 'en' else r'\section{结论}'

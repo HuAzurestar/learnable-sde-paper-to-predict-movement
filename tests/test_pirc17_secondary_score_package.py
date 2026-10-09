@@ -1,3 +1,6 @@
+# Historical presentation fixture: exact public release 8cbcb114.
+# Old monolithic positions are not current six-document acceptance.
+# Current source graph, values and layouts: test_pirc17_revision46.py.
 """Bind the actual descriptive package to the original audited result export."""
 import csv
 import hashlib
@@ -86,7 +89,7 @@ def test_real_bilingual_fragment_is_generated_exactly_and_inserted_in_main(langu
     expected = p.manuscript_fragment(actual(), language)
     assert (PACKAGE / language / 'secondary-score-diagnostics.tex').read_bytes() == expected
     assert (ROOT / 'paper/pirc17' / language / 'secondary-score-diagnostics.tex').read_bytes() == expected
-    text = (ROOT / 'paper/pirc17' / language / 'main.tex').read_text(encoding='utf-8')
+    text = (ROOT / 'paper/pirc17' / language / "historical-main-v1.tex").read_text(encoding='utf-8')
     assert text.count(r'\label{sec:secondary-score-diagnostics}') == 1
     assert text.count(r'\input{secondary-score-diagnostics.tex}') == 1
     section = text.split(r'\label{sec:secondary-score-diagnostics}', 1)[1].split(r'\section{', 1)[0]

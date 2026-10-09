@@ -1,3 +1,6 @@
+# Historical presentation fixture: exact public release 8cbcb114.
+# Old monolithic positions are not current six-document acceptance.
+# Current source graph, values and layouts: test_pirc17_revision46.py.
 """Metadata and text bindings only; no map sampling or forecast runs."""
 import hashlib
 import json
@@ -45,7 +48,7 @@ def test_receipt_specs_remain_declarations_not_extra_parent_or_measured_use(fami
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_main_table_reports_each_admitted_family_once_not_case_or_use_counts(language):
-    main = (PAPER / language / "main.tex").read_text(encoding="utf-8").split(r"\appendix", 1)[0]
+    main = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8").split(r"\appendix", 1)[0]
     label = r"\label{tab:model-map-catalog}"
     assert main.count(label) == 1
     start = main.index(label)
@@ -62,7 +65,7 @@ def test_main_table_reports_each_admitted_family_once_not_case_or_use_counts(lan
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_source_bound_math_and_non_global_query_scope_are_in_appendix(language):
-    tex = (PAPER / language / "main.tex").read_text(encoding="utf-8")
+    tex = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
     appendix = tex.split(r"\appendix", 1)[1]
     for label in ("eq:map-frames", "eq:dem-metric-spacing", "eq:dem-stencil"):
         assert appendix.count(r"\label{"+label+"}") == 1

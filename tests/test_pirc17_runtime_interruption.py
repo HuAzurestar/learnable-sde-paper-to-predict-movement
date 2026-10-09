@@ -1,3 +1,6 @@
+# Historical presentation fixture: exact public release 8cbcb114.
+# Old monolithic positions are not current six-document acceptance.
+# Current source graph, values and layouts: test_pirc17_revision46.py.
 """One retained original timing interruption; no correction or science gate."""
 from collections import Counter
 import hashlib
@@ -77,7 +80,7 @@ def test_anonymous_projection_does_not_export_routes_or_start_experiments():
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_main_manuscripts_make_affected_cost_claims_explicit(language):
-    text = (PAPER / language / "main.tex").read_text(encoding="utf-8")
+    text = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
     section = text.split(r"\label{sec:runtime-environment}", 1)[1].split(r"\section{", 1)[0]
     for token in ("loo-surface", "2315.996", "1801", r"perf\_counter\_ns"):
         assert token in section

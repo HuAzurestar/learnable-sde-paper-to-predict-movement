@@ -1,3 +1,6 @@
+# Historical presentation fixture: exact public release 8cbcb114.
+# Old monolithic positions are not current six-document acceptance.
+# Current source graph, values and layouts: test_pirc17_revision46.py.
 """Saved metadata and static arithmetic only; no fitting, score replay or rollout."""
 import hashlib
 import json
@@ -86,7 +89,7 @@ def test_static_gaussian_rate_and_mixed_normalization_arithmetic():
 
 @pytest.mark.parametrize('language', ['en', 'zh'])
 def test_bilingual_actual_objectives_and_interpretation(language):
-    tex = (ROOT / language / 'main.tex').read_text(encoding='utf-8')
+    tex = (ROOT / language / "historical-main-v1.tex").read_text(encoding='utf-8')
     for label in ['sec:estimator-calibration', 'eq:estimator-drift-grid',
                   'eq:estimator-validation-surrogates', 'eq:estimator-objectives',
                   'tab:estimator-calibration']:

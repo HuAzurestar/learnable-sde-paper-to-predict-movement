@@ -1,3 +1,6 @@
+# Historical presentation fixture: exact public release 8cbcb114.
+# Old monolithic positions are not current six-document acceptance.
+# Current source graph, values and layouts: test_pirc17_revision46.py.
 """Existing-cohort label counts, not new geographic performance estimates."""
 import hashlib
 import json
@@ -57,7 +60,7 @@ def test_missing_harvest_area_is_counted_not_excluded_or_imputed():
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_bilingual_display_matches_each_original_metadata_cell(language):
-    tex = (PAPER / language / "main.tex").read_text(encoding="utf-8")
+    tex = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
     for label in ("sec:final-cohort-geography", "tab:final-cohort-geography"):
         assert tex.count(r"\label{" + label + "}") == 1
     table = tex.split(r"\label{tab:final-cohort-geography}", 1)[1].split(r"\end{tabular}", 1)[0]

@@ -1,3 +1,6 @@
+# Historical presentation fixture: exact public release 8cbcb114.
+# Old monolithic positions are not current six-document acceptance.
+# Current source graph, values and layouts: test_pirc17_revision46.py.
 """Partial existing runtime scalars, not a repaired benchmark or new experiment."""
 import hashlib
 import json
@@ -107,7 +110,7 @@ def test_no_routes_arrays_new_work_or_qualification_are_invented():
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_two_flagged_conditions_are_visible_in_the_actual_main_manuscript(language):
-    text = (PAPER / language / "main.tex").read_text(encoding="utf-8")
+    text = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
     section = text.split(r"\label{sec:runtime-environment}", 1)[1].split(r"\section{", 1)[0]
     for token in ("loo-surface", "all-terrain", "2315.996", "3000.464", "1801", "153"):
         assert token in section

@@ -1422,7 +1422,7 @@ support at predicted positions. Also, full-terrain training rate MSE is
 versus 0.077077 (\(\mathrm{m}^2/\mathrm{s}^2\)). Better training fit is therefore
 not itself evidence of better forecasts. The position-distribution results
 are evaluated separately in Sections~\ref{sec:method-results}
-and~\ref{sec:terrain-results}.
+and~\href{audit-notes.pdf\#sec:terrain-results}{audit record}.
 
 
 \section{Observed history support and model-clock mismatch}
@@ -2241,7 +2241,7 @@ compatible with standalone LIO information. Joint interactions do not acquire
 unique/additive/causal attribution; history is a baseline diagnostic.
 
 The five retained failures already make both primary terrain families
-unavailable (Table~\ref{tab:failure-family-dispositions}). Method tail flags
+unavailable (Table~\href{audit-notes.pdf\#tab:failure-family-dispositions}{audit record}). Method tail flags
 and planning rows alone are not final qualification. The independent saved-output
 audit and fixed-budget aggregate replay have completed; their evidence bindings
 and the 112-card inventory are given in Section~\href{audit-notes.pdf\#sec:audited-review-update}{audit record}.
@@ -2966,142 +2966,6 @@ projection binds source export \texttt{29cb892f}, audit \texttt{8ff917ad} and
 analysis \texttt{d1d67a3b}; actual recorded target-time ranges are retained,
 without certifying physical UTC or independent participants.
 \input{secondary-score-diagnostics.tex}
-
-
-\section{Terrain ablation results}
-\label{sec:terrain-results}\hypertarget{sec:terrain-results}{}
-The registered complete-family disposition is unavailable, not waiting for
-remaining forecasts: retained required failures prevent overall/LOO and LIO
-inference under the unchanged rule. This is not a zero-effect or equivalence
-result. The overall comparison links to \texttt{terrain:all-vs-base}.
-Four group summaries link to \texttt{terrain:road}, \texttt{terrain:river},
-\texttt{terrain:worldcover} and \texttt{terrain:surface}. Their evidence covers
-the primary full-model removal, its baseline addition, input dimensions,
-coverage and missingness, paired effect and uncertainty, stability, evidence
-qualification, verdict, cost and limitation.
-
-The all-terrain comparison answers whether the registered combination improves
-on the history baseline. Leave-one-out comparisons answer whether each group
-adds incremental predictive information in that combination. Leave-one-in
-comparisons answer whether a group informs the baseline on its own. These
-answers will be reported together, without selecting a more favourable
-comparison after observing results. Six-block secondary summaries will
-describe origin-mode sensitivity without assigning secondary factor verdicts.
-
-The closed score inventory in Table~\href{audit-notes.pdf\#tab:terminal-score-inventory}{audit record}
-contains every planned terrain slot. For the 46 primary recording-hash
-blocks and five fixed forecast seeds, the six configurations required by
-the overall/leave-one-out family contribute 1380 rows: 1379 successful,
-one failed and none missing. The five configurations in the supporting
-leave-one-in family contribute 1150 rows: 1148 successful, two failed and
-none missing. These families share all 230 baseline rows; their union is
-2300 distinct primary terrain forecasts, with 2297 successes and three
-retained failures, not 2530 independent forecasts or observations.
-The count-only projection is \texttt{terrain-family-completeness-v1.json};
-it uses the same closed score index and original comparison membership.
-The earlier 160/131 missing-row counts in
-Section~\href{audit-notes.pdf\#sec:execution-coverage}{audit record} are retained as a dated snapshot,
-not the current unfinished forecast count.
-
-Despite terminal execution, both entire primary-mode terrain families
-remain unavailable under the registered complete-pair rule: the
-all-terrain failure affects the overall and all four leave-one-out
-contrasts; the leave-one-in failures affect the supporting family.
-No terrain effect or interval is estimated from their successful
-intersections. Consequently, these results do not establish that roads,
-rivers, land cover or surface features improve, harm or are equivalent to
-the history baseline. The completed auxiliary trials and saved-output audit
-do not replace failed forecasts or restore these comparisons.
-The closed counts are a saved-status description, not an independent
-raw-output audit or final evidence-card acceptance.
-
-\paragraph{Terminal execution and available inference.}
-\label{sec:terminal-failures}\hypertarget{sec:terminal-failures}{}
-Under the current no-automatic-retry policy, all original scientific
-forecasts are terminal and recorded failures are retained. A registered comparison
-family containing any required failed row remains unavailable even when
-every planned task has a terminal disposition. Completion of execution and
-availability of paired inference are therefore different conditions. We do
-not fill failures with zeros, delete failed rows or redefine a registered
-family to manufacture a result. An unavailable comparison is neither a zero
-effect nor evidence of equivalence.
-
-\paragraph{What the five failures actually establish.}
-Table~\ref{tab:retained-failures} identifies the retained configurations and
-forecast seeds. The original checkpoint contains three generic controller
-interruptions and two in-flight reservations without a completion reply.
-Neither checked checkpoint root contains an item reply for these five jobs.
-This is an observation of those two roots, not a claim that every possible
-historical log has been searched. The last serial request identifies
-\texttt{lio-river}; its closure receipt records zero active owned processes.
-The two later jobs are bound to distinct predecessor workers and retained
-180~s reservations. Reserved seconds are conservative accounting entries,
-not measured prediction times or evidence of a 180~s timeout.
-
-\begin{table}[htbp]
-\centering\small
-\caption{Five retained execution interruptions. Labels are local to this
-description; no failed output is replaced by a successful subset.}
-\label{tab:retained-failures}\hypertarget{tab:retained-failures}{}
-\begin{tabular}{llll}
-\toprule
-Label & Configuration & Origin mode & Forecast seed\\
-\midrule
-F01 & \texttt{arm-06/dt30} & \texttt{known\_velocity} & 20260814\\
-F02 & \texttt{arm-03/single\_gaussian} & \texttt{known\_velocity} & 20260817\\
-F03 & \texttt{lio-river} & \texttt{causal\_prefix} & 20260817\\
-F04 & \texttt{all-terrain} & \texttt{causal\_prefix} & 20260815\\
-F05 & \texttt{lio-road} & \texttt{causal\_prefix} & 20260814\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-During the method phase, a contemporaneous run summary records a Windows
-failure to replace a shared request file; it does not supply a separate
-exception trace for each of F01 and F02. Another summary associates the
-river interruption with the old supervisor's machine-wide available-memory threshold. The
-latter summary explicitly distinguishes the threshold stop from an actual
-allocation failure. These are run-summary observations, not recovered
-item-level exception traces; the generic saved reason alone cannot decide
-between interruption, deadline and error. The two unacknowledged worker jobs
-were discovered after the reported host power loss, but their receipts do
-not independently diagnose the physical outage. None of these records
-establishes numerical divergence, a specific invalid simulated path or an
-intrinsic model failure rate. The saved wording and costs remain unchanged.
-\path{paper/pirc17/failure-description-v1.json} binds the failure-map snapshot,
-predecessor metadata, supporting summaries and frozen comparison sources;
-this description opens no forecast arrays and performs no retry or output audit.
-
-\begin{table}[htbp]
-\centering\small
-\caption{Consequences of the five retained failures under the frozen
-complete-family rule, even after all runnable jobs finish.}
-\label{tab:failure-family-dispositions}\hypertarget{tab:failure-family-dispositions}{}
-\begin{tabular}{llll}
-\toprule
-Registered family & Origin mode & Failed labels & Unavailable contrasts\\
-\midrule
-Terrain primary/LOO & \texttt{causal\_prefix} & F04 & All five\\
-Terrain supporting LIO & \texttt{causal\_prefix} & F03, F05 & All four\\
-Method structure & \texttt{known\_velocity} & F02 & All four\\
-Method interval & \texttt{known\_velocity} & F01 & All four\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-This is a family-level disposition, not merely the removal of one contrast:
-\texttt{all-terrain} belongs to every primary terrain comparison, and the
-LIO family also requires its full registered grid. Consequently, the current
-run cannot support the registered overall-terrain or individual-factor
-verdicts. Even unfailed LIO pairs are not silently promoted to a new family.
-The five primary-mode method families contain none of these failures;
-their already complete 6440-row grid remains eligible for the planned
-independent replay and qualification, not automatically a final accepted
-claim. Other secondary families are not invalidated by these five jobs,
-but retain their own completeness and descriptive-only conditions.
-Real-map terrain examples remain illustrations, not substitutes for the
-unavailable population comparisons. We report this evidence limit without
-adding seeds, refitting, retrying failures or claiming terrain benefit.
 
 
 \section{Local route illustrations withheld from public review}

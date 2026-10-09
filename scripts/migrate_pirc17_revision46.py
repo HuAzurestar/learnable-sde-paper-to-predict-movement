@@ -16,7 +16,7 @@ PAPER = ROOT / "paper/pirc17"
 AUDIT = {
     "sec:audited-review-update", "sec:preliminary-cost", "sec:runtime-environment",
     "sec:source-reconciliation-details", "sec:score-execution-snapshots",
-    "sec:execution-coverage", "sec:runtime-record-details", "sec:execution-reconstruction",
+    "sec:execution-coverage", "sec:runtime-record-details", "sec:execution-reconstruction", "sec:terminal-failures",
 }
 ARCHIVE_TITLES = {
     "Introduction", "引言", "Discussion and limitations", "讨论与局限",

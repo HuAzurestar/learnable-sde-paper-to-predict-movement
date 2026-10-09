@@ -113,7 +113,7 @@ def geometry():
 def design_matrix():
     # Selected groups and dependent interactions; all rows retain history.
     cols = ["history", "road", "river", "cover", "surface",
-            "road × cover", "surface × history"]
+            "road × cover", "surface × history", "road d × u", "river d × u"]
     rows = []
     for name in TERRAIN_ORDER:
         groups = {"history"}
@@ -126,16 +126,17 @@ def design_matrix():
             added = {"worldcover": "cover", "surface": "surface"}.get(name[4:], name[4:])
             groups.add(added)
         rows.append([int(col in groups) for col in cols[:5]] +
-                    [int({"road", "cover"} <= groups), int("surface" in groups)])
+                    [int({"road", "cover"} <= groups), int("surface" in groups),
+                     int("road" in groups), int("river" in groups)])
     fig, (ax, note) = plt.subplots(1, 2, figsize=(12, 5.1),
                                    gridspec_kw={"width_ratios": [4, 2]}, layout="constrained")
     ax.imshow(rows, cmap=ListedColormap(["#eeeeee", "#326a9b"]), vmin=0, vmax=1, aspect="auto")
-    ax.set_xticks(range(7), cols, rotation=35, ha="right")
-    ax.set_yticks(range(10), [f"{name}   K={k}" for name, k in zip(TERRAIN_ORDER, K_COUNTS)])
-    ax.set_xticks(np.arange(-.5, 7, 1), minor=True)
+    ax.set_xticks(range(len(cols)), cols, rotation=35, ha="right")
+    ax.set_yticks(range(10), [f"{name}   {k} / {2*k} / {2*k+1}" for name, k in zip(TERRAIN_ORDER, K_COUNTS)])
+    ax.set_xticks(np.arange(-.5, len(cols), 1), minor=True)
     ax.set_yticks(np.arange(-.5, 10, 1), minor=True)
     ax.grid(which="minor", color="white", linewidth=2); ax.tick_params(which="minor", length=0)
-    ax.set_title("Retained groups and dependent interactions")
+    ax.set_title("Retained groups; row counts: K / 2K / (2K+1)")
     note.axis("off")
     note.text(0, .97, "Named machine contrasts\n\nOverall: A − B\nLOO: A − (A minus group)\nLIO: (B plus group) − B\n\nΔ < 0: candidate better\nFactor benefit D = −Δ\nCI [l,u] becomes [−u,−l]\n\nAll rows retain history.\nShared fitted base B0;\ncorrection and Q refitted.\n\nK numeric; 2K inputs;\n2K+1 raw regression columns.\nNot a pure information ablation.",
               va="top", fontsize=10, linespacing=1.45)
@@ -213,8 +214,15 @@ def tradeoff(stats):
             x = row["delta_estimate_m"]
             y = configs[row["candidate"]]["fde_m"] - configs[row["control"]]["fde_m"]
             ax.scatter(x, y, s=32, color="#326a9b")
-            ax.annotate(short(row["candidate"]), (x, y), xytext=(4, 4),
-                        textcoords="offset points", fontsize=7)
+            # Move labels, not scientific coordinates, for exact/near aliases.
+            offsets = {"arm-10/d2_mc": (-58, 18), "arm-10/d2_closed": (8, -23),
+                       "arm-19/em": (-40, 27), "arm-19/euler": (8, 18),
+                       "arm-21/crn": (-45, -24)}
+            offset = offsets.get(row["candidate"], (4, 4))
+            ax.annotate(short(row["candidate"]), (x, y), xytext=offset,
+                        textcoords="offset points", fontsize=7,
+                        arrowprops={"arrowstyle": "-", "color": "#777777", "lw": .6}
+                        if row["candidate"] in offsets else None)
             points.append({"family": family, "candidate": row["candidate"],
                            "control": row["control"], "delta_ES_m": x, "delta_FDE_m": y})
         ax.axhline(0, color="#666666", linewidth=.8); ax.axvline(0, color="#666666", linewidth=.8)
@@ -274,7 +282,7 @@ def history_timeline():
         if index < 3:
             ax.annotate("", xy=(x+.26, .57), xytext=(x+.205, .57), arrowprops={"arrowstyle": "->"})
     ax.text(.02, .91, "(b) Three-position buffer: observations replaced by simulated positions", fontsize=10)
-    ax.text(.02, .03, "Terrain: updates every 5 s; first secant d+5 s, stable span 10 s.\nOrdinary method: adjacent τ resampling cadence (Full τ=60 s); scoring events are not history updates.", fontsize=9)
+    ax.text(.02, .03, "Terrain: updates every 5 s; first secant d+5 s, stable span 10 s.\nOrdinary history: adjacent τ cadence (Full τ=60 s); scoring events do not update history.\nSegment-fixed Full retains its initial mode; only switching routes redraw at τ events.", fontsize=9)
     return fig
 
 
@@ -301,9 +309,15 @@ def fit_diagnostics(inputs):
     return fig, {**values, "raw_columns": width, "raw_rank": rank}
 
 
-def overview(inputs, stats):
+def overview(inputs, stats, selected=False):
     configs = {c["configuration"]: c for c in stats["configs"]}
     profiles = inputs.read("all-method-region-description-v1.json")["profiles"]
+    all_profiles = profiles
+    if selected:
+        # Selection is fixed by roles (reference, residual/explicit structure,
+        # longer observation intervals), never by ranking observed performance.
+        identities = ["arm-01/full", "arm-04/gmm_kernel", "arm-05/explicit_decomp", "arm-06/dt300", "arm-06/dt600"]
+        profiles = [next(p for p in profiles if p["configuration"] == name) for name in identities]
     names = [p["configuration"] for p in profiles]
     es = np.array([configs[n]["es_by_time_m"] for n in names])
     area, coverage = [], []
@@ -312,22 +326,52 @@ def overview(inputs, stats):
                   for h in profile["horizons"]]
         area.append([level["mean_disk_area_km2"] for level in levels])
         coverage.append([100*(level["empirical_coverage"]-.9) for level in levels])
-    fig, axes = plt.subplots(1, 3, figsize=(11.8, 10.4), layout="constrained")
+    fig, axes = plt.subplots(1, 3, figsize=(8.4, 2.9) if selected else (11.8,10.4), layout="constrained")
+    # The selected view uses the full overview's absolute metric ranges.
+    es_max = max(max(configs[p["configuration"]]["es_by_time_m"]) for p in all_profiles)
+    area_max = max(level["mean_disk_area_km2"] for p in all_profiles for h in p["horizons"]
+                   for level in h["levels"] if level["nominal_level"] == .9)
     for ax, matrix, title, cmap, norm in zip(axes, (es, area, coverage),
                                             ("ES (m)", "90% mean disk area (km²)", "Coverage − 90% (pp)"),
                                             ("viridis", "viridis", "RdBu_r"),
-                                            (None, None, TwoSlopeNorm(vmin=-90, vcenter=0, vmax=90))):
+                                            (plt.Normalize(0, es_max), plt.Normalize(0, area_max), TwoSlopeNorm(vmin=-90, vcenter=0, vmax=90))):
         plotted = ax.imshow(matrix, aspect="auto", cmap=cmap, norm=norm)
         ax.set_title(title); ax.set_xticks(range(4), ["1", "5", "15", "30"])
         ax.set_xlabel("Nominal minutes")
-        ax.set_yticks(range(len(names)), [short(n) for n in names] if ax is axes[0] else [])
-        fig.colorbar(plotted, ax=ax, shrink=.6, pad=.02)
+        display_names = {"arm-04/gmm_kernel":"GMM", "arm-05/explicit_decomp":"Explicit"}
+        ax.set_yticks(range(len(names)), [display_names.get(n,short(n)) if selected else short(n) for n in names] if ax is axes[0] else [])
+        if selected:
+            for i in range(len(names)):
+                for j in range(4):
+                    value = matrix[i][j]
+                    ax.text(j, i, f"{value:+.1f}" if ax is axes[2] else (f"{value:.0f}" if ax is axes[0] else f"{value:.2g}"),
+                            ha="center", va="center", fontsize=9,
+                            color="white" if ax is not axes[2] and value/norm.vmax < .35 else "black")
+        fig.colorbar(plotted, ax=ax, shrink=.8 if selected else .6, pad=.03 if selected else .02,
+                     orientation="horizontal" if selected else "vertical")
     return fig, {"configurations": names, "ES_m": es.tolist(), "area_km2": area, "coverage_deviation_pp": coverage}
 
 
 def forest(stats, micro=False):
     rows = [r for r in stats["comparisons"]
-            if (max(abs(r["delta_estimate_m"]), *map(abs, r["simultaneous_interval_m"])) <= .01) == micro]
+            if (max(abs(r["delta_estimate_m"]), *map(abs, r["simultaneous_interval_m"])) <= .1) == micro]
+    if micro:
+        fig, axes = plt.subplots(2, 1, figsize=(10, 5.0), layout="constrained")
+        partitions = [[r for r in rows if max(abs(r["delta_estimate_m"]), *map(abs, r["simultaneous_interval_m"])) > .01],
+                      [r for r in rows if max(abs(r["delta_estimate_m"]), *map(abs, r["simultaneous_interval_m"])) <= .01]]
+        for ax, group, title in zip(axes, partitions,
+                ("Centimetre-scale update aliases", "Sub-millimetre / zero identity diagnostics")):
+            for index, row in enumerate(group):
+                lo, hi = row["simultaneous_interval_m"]
+                ax.plot([lo, hi], [index, index], color="#326a9b", linewidth=2)
+                ax.scatter(row["delta_estimate_m"], index, color="#326a9b", s=28)
+            ax.set_yticks(range(len(group)), [short(r["candidate"])+" − "+short(r["control"]) for r in group], fontsize=9)
+            ax.invert_yaxis(); ax.axvline(0, color="#555555", linewidth=.7)
+            ax.ticklabel_format(axis="x", style="sci", scilimits=(-3,3))
+            ax.set_title(title); ax.set_xlabel("Δ ES (m); original simultaneous intervals; independent display scale")
+            axes_style(ax)
+        return fig, {"comparisons": [r["candidate"] for r in rows], "micro_scale": True,
+                     "independent_display_partitions": [[r["candidate"] for r in group] for group in partitions]}
     fig, ax = plt.subplots(figsize=(10, max(3.0, .35*len(rows)+1.1)), layout="constrained")
     if not micro:
         ax.axvspan(-DELTA, DELTA, color="#c7dcc1", alpha=.4, label="registered practical band")
@@ -347,28 +391,44 @@ def forest(stats, micro=False):
 
 def runtime(inputs):
     rows = inputs.read("final-results-v1/tables/runtime_conditions.csv")
+    trials = inputs.read("final-results-v1/tables/runtime_trials.csv")
     subjects = list(dict.fromkeys((r["matrix"], r["subject"]) for r in rows))
-    fig, axes = plt.subplots(1, 3, figsize=(12, 7), layout="constrained")
+    fig, axes = plt.subplots(1, 4, figsize=(13, 7), layout="constrained")
     payload = []
     for offset, condition, color in ((-.15, "runtime_cold", "#326a9b"), (.15, "runtime_warm", "#bd5c34")):
         for index, key in enumerate(subjects):
             row = next(r for r in rows if (r["matrix"], r["subject"]) == key and r["condition"] == condition)
             summary = json.loads(row["summary"])
             payload.append({"matrix": key[0], "subject": key[1], "condition": condition, "summary": summary})
-            for ax, field in zip(axes, ("total_latency_p50_ms", "total_latency_p95_ms", "failure_count")):
+            for ax, field in zip(axes[:3], ("total_latency_p50_ms", "total_latency_p95_ms", "failure_count")):
                 value = summary[field]
                 if value is not None:
                     ax.barh(index+offset, value, .28, color=color, label=condition if index == 0 else None)
-    for ax, title in zip(axes, ("p50 latency (ms)", "p95 latency (ms), five trials", "Failures / five trials")):
+                    if field == "failure_count":
+                        ax.text(.02 if value == 0 else value, index+offset, str(value),
+                                va="center", ha="left", fontsize=7, color=color)
+            selected = [t for t in trials if (t["matrix"],t["subject"]) == key
+                        and t["kind"] == condition and t["status"] == "success"]
+            query = [float(json.loads(t["inclusive_stage_ms"])["terrain_io_and_query"]) for t in selected]
+            value = float(np.median(query)) if query else None
+            payload[-1]["inclusive_terrain_query_median_ms"] = value
+            if value is not None:
+                axes[3].barh(index+offset,value,.28,color=color)
+                if value == 0:
+                    axes[3].text(.02,index+offset,"0",va="center",fontsize=7,color=color)
+    for ax, title in zip(axes, ("p50 latency (ms)", "p95 latency (ms), five trials", "Failures / five trials", "Inclusive query p50 (ms)")):
         ax.set_yticks(range(len(subjects)), [short(s[1]) for s in subjects] if ax is axes[0] else [])
         ax.invert_yaxis(); ax.set_title(title); axes_style(ax)
     for ax in axes[:2]:
         ax.set_xscale("log"); ax.legend(frameon=False, fontsize=8)
+    axes[2].set_xlim(0, 5); axes[2].set_xticks(range(6))
+    axes[3].set_xscale("symlog",linthresh=1)
     return fig, payload
 
 
 def availability(inputs):
     rows = inputs.read("final-results-v1/tables/comparisons.csv")
+    mechanisms = inputs.read("final-results-v1/tables/mechanisms.csv")
     modes = ["causal_prefix", "known_velocity", "point_only"]
     families = list(dict.fromkeys(r["family_id"] for r in rows))
     matrix, labels, qualification = [], [], []
@@ -381,11 +441,29 @@ def availability(inputs):
             unavailable = any(r["verdict"] == "unavailable" or int(r["failed_rows"]) > 0 or int(r["missing_rows"]) > 0 for r in subset)
             values.append(0 if unavailable else 1)
             counts = dict(Counter(r["verdict"] for r in subset))
-            notes.append("unavailable" if unavailable else "complete grid\n"+" / ".join(f"{n} {state}" for state,n in counts.items()))
+            failed_tags = {("method-model-structure","known_velocity"):"F02",
+                           ("method-observation-interval","known_velocity"):"F01",
+                           ("weighted-es-primary","causal_prefix"):"F04",
+                           ("weighted-es-lio","causal_prefix"):"F03/F05"}
+            identity = {r["candidate"] for r in subset} | {r["control"] for r in subset}
+            checks = [r for r in mechanisms if r["origin_mode"] == mode and r["slot_id"] in identity]
+            states = dict(Counter(r["status"] for r in checks))
+            planning = sum(r["planning_qualified"] == "True" for r in subset)
+            tails = sum(r["tail_check_passed"] == "True" for r in subset)
+            label = "unavailable; required failure" if unavailable else "complete grid\n"+" / ".join(f"{n} {state}" for state,n in counts.items())
+            if unavailable:
+                label += "\n"+failed_tags.get((family,mode), "retained failure")+"; no family inference"
+            else:
+                label += (f"\nplan {planning}/{len(subset)}; tail {tails}/{len(subset)}" if mode == "causal_prefix"
+                          else "\nsecondary description; no plan/tail gates")
+                label += "\nchecks: "+("; ".join(f"{v} {k}" for k,v in states.items()) if states else "not provided")
+            notes.append(label)
             qualification.append({"family": family, "mode": mode, "whole_family_unavailable": unavailable,
                                   "verdict_counts": counts, "original_comparison_qualification": subset})
+            qualification[-1].update(mechanism_status_counts=states, planning_pass_count=planning,
+                                     tail_pass_count=tails, required_failure_tag=failed_tags.get((family,mode)))
         matrix.append(values); labels.append(notes)
-    fig, ax = plt.subplots(figsize=(10, 4.7), layout="constrained")
+    fig, ax = plt.subplots(figsize=(12, 7), layout="constrained")
     ax.imshow(matrix, cmap=ListedColormap(["#c57a56", "#d2dfce"]), vmin=0, vmax=1, aspect="auto")
     ax.set_yticks(range(len(families)), families, fontsize=9)
     ax.set_xticks(range(3), modes)
@@ -393,6 +471,7 @@ def availability(inputs):
         for j, text in enumerate(row):
             ax.text(j, i, text, ha="center", va="center", fontsize=7.5)
     ax.set_title("Whole registered family availability; complete grid is not scientific acceptance")
+    ax.set_xlabel("Saved numeric checks are not proof of a distinct component; final human acceptance remains separate")
     return fig, {"families": families, "modes": modes, "complete_grid": matrix, "qualification": qualification}
 
 
@@ -417,6 +496,7 @@ def render(output: Path, inputs: Inputs | None = None):
         ("G08", "development-fit", lambda: fit_diagnostics(inputs)),
         ("G09", "recorded-runtime", lambda: runtime(inputs)),
         ("G10", "metric-overview", lambda: overview(inputs, stats)),
+        ("G10", "selected-metric-overview", lambda: overview(inputs, stats, selected=True)),
         ("G11", "practical-effects", lambda: forest(stats)),
         ("G11", "identity-diagnostics", lambda: forest(stats, micro=True)),
         ("G13", "family-availability", lambda: availability(inputs)),
