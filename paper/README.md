@@ -1,4 +1,60 @@
-# Paper source draft
+# Paper sources and review manuscripts
+
+## Current PIRC-17 manuscript revision
+
+Start with the actual revised manuscript, not the historical monolithic PDFs:
+
+| Language | Main paper | Scientific supplement | Audit record |
+| --- | --- | --- | --- |
+| English | [13-page paper](pirc17/revision46-review-v1/en/main.pdf) | [79-page supplement](pirc17/revision46-review-v1/en/supplement.pdf) | [16-page record](pirc17/revision46-review-v1/en/audit-notes.pdf) |
+| Chinese | [12-page paper](pirc17/revision46-review-v1/zh/main.pdf) | [77-page supplement](pirc17/revision46-review-v1/zh/supplement.pdf) | [15-page record](pirc17/revision46-review-v1/zh/audit-notes.pdf) |
+
+The six documents are a single review package: keep the three PDF files of
+each language together so companion named-destination links resolve.
+Current sources are `pirc17/{en,zh}/{main,supplement,audit-notes}.tex`.
+The versioned [build manifest](pirc17/revision46-review-v1/build-manifest.json)
+records actual source-file hashes, PDF hashes, strict logs and page counts.
+The build began with uncommitted changes: its recorded HEAD alone is not a
+claim that the PDFs were built from that clean commit.
+
+This revision implements G01–G13, O01–O08, R01–R17 and X01–X08 without new
+fitting, forecasts or resampling. G12 is delivered in a separate local
+map-containing manuscript, not these public PDFs. Authorship, independent
+reader feedback, route publication permission and final human acceptance
+remain unconfirmed. Document-level corrections do not remove missing mode
+snapshots, unknown physical clock provenance, ablation confounding or failed
+terrain comparisons. Five follow-up designs are explicitly not new results.
+
+Rebuild and verify from the repository root, using a fresh external directory:
+
+```text
+python scripts/build_pirc17_revision46.py --output-dir <fresh-external-directory>
+python scripts/check_pirc17_revision46_links.py --build-dir <fresh-external-directory>
+```
+
+For local-only route illustrations, use the explicit `--private-manuscript` and
+`--output-dir` options of `scripts/build_pirc17_revision46_local.py`. The
+private-manuscript argument names the original `paper/pirc17` directory,
+containing the language and figure folders. The script requires existing
+original private figures and never generates new
+forecasts. Do not upload its output or its case-level input.
+
+The full regression is not green: the isolated original public snapshot has
+25 failures and two private-input collection errors. The revision preserves
+these checks and compares their actual identities rather than excluding
+them. CI does not waive these failures. The new structure guards separately
+check current manuscripts; archived-layout guards target the exact preserved
+`historical-main-v1.tex`, without deleting their scientific assertions.
+
+The [46-card implementation response](pirc17/revision46-response-v2.json)
+retains all 305 criteria and the original 42-item mapping. It distinguishes
+editor review, unresolved scientific provenance and pending real author /
+independent-reader confirmation; it is not an acceptance certificate.
+
+Everything below describes earlier handoffs. Older `public-review.pdf`,
+review bindings and snapshots are historical, not the current review entry.
+
+## Historical handoff
 
 This handoff contains parallel English and Chinese LaTeX sources for the
 proposed paper repository.  The two files have matching section structure so

@@ -198,7 +198,11 @@ def test_factor_benefit_is_only_a_sign_reexpression(candidate,control,interval,s
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_reader_body_has_independent_companions_and_public_boundary(language):
     text = (PAPER / language / "main.tex").read_text(encoding="utf-8")
-    assert len(text.splitlines()) < 500
+    # Source wrapping is not a reading-length measure. The editorial contract
+    # is a 12--16 page body in the retained 11pt, one-inch-margin template.
+    import fitz
+    with fitz.open(PAPER / "revision46-review-v1" / language / "main.pdf") as document:
+        assert 12 <= len(document) <= 16
     assert r"\appendix" not in text
     assert "inertial-horizons.pdf" in text and "practical-effects.pdf" in text
     assert "512" in text and "41.100259" in text

@@ -1,0 +1,4040 @@
+{
+  "schema_version": "pirc17-revision46-response-v2",
+  "source_base_commit": "8cbcb1140d804b25b553ab4e7cda0be3a0d34b1b",
+  "plan_source_sha256": {
+    "20261008-paper-revision-figures.md": "3c0ab7f49f020b6698d0ed87386e6353db75b69a06ec5d18fe21d6cf609d178b",
+    "20261008-paper-revision-structure.md": "2f8cf6eb656c19a1b5fcd52d96e9e097e88d12b503c7ec58b6a4f6218b7e02bc",
+    "20261008-paper-revision-science.md": "4529566fcf5fa3e99bab7eb8bdffc8c293b419ff134adf65227ef05ac173478b"
+  },
+  "tasks": [
+    {
+      "id": "G01",
+      "title": "地形特征几何示意图",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "`u` 从查询点指向最近点；最近点选择用局部投影，保存距离使用其规定的球面规则，示意图不混称精确平面距离。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-geometry.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "对数表达式包含无量纲比值 `log(1+d/(1 m))`，零距离处有限；重合点的方向无效。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-geometry.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "`a=-(sin α,cos α)` 为上坡，`q=(-a_n,a_e)` 是固定正向旋转 90°，反向 q 的投影符号会变。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-geometry.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "坡面投影为 `hᵀa` 与 `hᵀq`，没有额外乘坡度；平地或历史无效时显示正确的无效处置。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-geometry.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "四覆盖组按冻结编码说明，nodata 不画作有效“其他”。有效未识别代码与缺失分开。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-geometry.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "题注明确几何示意、非真实案例、非新增预测；中英公式和向量命名相同。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-geometry.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/figures/revision46-v1/revision46-geometry.pdf",
+        "scripts/plot_pirc17_revision46.py",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "G02",
+      "title": "十配置消融设计矩阵",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "所有行保留历史，并共享已保存的基础漂移 B0；条件器和扩散仍分别拟合。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-design-matrix.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "K 按原顺序为 2、28、19、23、20、20、7、7、6、10。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-design-matrix.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "道路与覆盖交互在 loo-road、loo-worldcover 中均删除，在 lio-road、lio-worldcover 中均不存在。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-design-matrix.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "lio-surface 保留坡面与历史组合；组内距离与方向乘积不遗漏。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-design-matrix.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "机器角色是整体 A 对 B、LOO A 对 A−g、LIO B+g 对 B；不是默认以删除模型为 LOO 候选。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-design-matrix.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "若正数表示因素有益，使用 D=−Δ，区间 `[l,u]` 同时转为 `[-u,-l]`；图例不与现有森林图负数有益约定混用。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-design-matrix.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "以 ℓ(A)=100、ℓ(A−g)=160 验证机器Δ=−60、因素有益D=+60；检查有害、等价、跨零、区间端点交换与五种子方向的展示/裁定测试，不只看一个例子。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-design-matrix.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "维度不标成原始秩、参数自由度或算法数量。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-design-matrix.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/figures/revision46-v1/revision46-design-matrix.pdf",
+        "scripts/plot_pirc17_revision46.py",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "G03",
+      "title": "样本筛选与人群变化图",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "12,243 是时间条件排除窗口，21 是时间合格后再排除窗口；多个无效标记的总数不可相加。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-population.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "仅后续时长至少 1800 秒的 130 个窗口不等于通过全部时间条件的 127 个窗口。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-population.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "从 73 合格块选 46 块的规则写清；27 块和 60 个合格窗口未选中不叫预测失败。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-population.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "嵌套各阶段的块可能重叠，排除块数不能与保留块数简单相加。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-population.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "时长为后续时长，不误用可见历史时长或整窗口时长；保存时钟限制可见。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-population.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "速率统计是先每窗口取保存标量中位数，再对窗口等权汇总；不是合并所有点、历时加权或参与者加权。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-population.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "对数轴若使用，零和缺失处置明确；不使近 70 秒与 2323 秒的差异被线性压缩而不可读。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-population.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "入选 12 个来源国家、GB/BE/LU 33/46 可在题注说明；国家标签不证明位置核验或主体独立。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-population.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/figures/revision46-v1/revision46-population.pdf",
+        "scripts/plot_pirc17_revision46.py",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "G04",
+      "title": "Full 与惯性参考分时域图",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "使用原精度 JSON 绘图，在展示层舍入；Full 减惯性加权 ES 使用原差值 -346.8742416 米，不以显示数相减重写。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-inertial-horizons.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "名义时刻与实际目标界 49–67、294–305、889–910、1785–1814 秒分开；不同间隔的横轴距离如实表示。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-inertial-horizons.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "每块 Full 先跨五种子平均，再等权 46 块；惯性 46 条，Full 230 份，二者目标配对。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-inertial-horizons.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "点预测惯性的 ES 等于该点误差；Full 的 ES 与 ADE/FDE 分开。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-inertial-horizons.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "34/46 只作描述计数，不产生二项检验或优越性认证。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-inertial-horizons.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "引导线仅提示趋势，没有中间时刻结果；配色在灰度或色觉差异情况下仍可辨认。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-inertial-horizons.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/figures/revision46-v1/revision46-inertial-horizons.pdf",
+        "scripts/plot_pirc17_revision46.py",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "G05",
+      "title": "ES 与终点误差取舍图",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "按原 comparisons 的 candidate/control 连接 configs，原 ES 差值与相同聚合的均值相减在容差内一致。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-score-error-tradeoff.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "Full01、Full07、Full11、Full18、Full20 的各自对照不平均或合并。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-score-error-tradeoff.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "原数据没有 ΔFDE 不确定性时只画点，题注明确描述均值。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-score-error-tradeoff.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "dt300 位于 ES 改善、FDE 增加象限；dt600 同样核对原精度值。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-score-error-tradeoff.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "不通过截断、挑选或放大制造视觉上的大收益；不同分面尺度若不同必须标明。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-score-error-tradeoff.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "别名、评分路线与独立拟合的配置在图例中区分，原全量值仍保留。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-score-error-tradeoff.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/figures/revision46-v1/revision46-score-error-tradeoff.pdf",
+        "scripts/plot_pirc17_revision46.py",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "G06",
+      "title": "五种子变化与记录块不确定性图",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "种子顺序 20260814–20260818 与原表对应；相同整数种子不自动意味着不同槽共享随机流。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-seeds-and-blocks.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "参数固定、模拟重复、真实目标复用的关系写清。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-seeds-and-blocks.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "区间是原族内同时区间，不是全 21 项统一 95% 区间，也不是种子分位数。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-seeds-and-blocks.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "负号有利于候选；五点、区间、图例均沿用同一个 candidate/control。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-seeds-and-blocks.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "GMM 五点均负而区间跨零；Single Gaussian 五点均正而区间跨零；dt600 五点均负而区间跨零。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-seeds-and-blocks.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "显示值舍入不改变原种子精确正、负、零计数。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-seeds-and-blocks.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/figures/revision46-v1/revision46-seeds-and-blocks.pdf",
+        "scripts/plot_pirc17_revision46.py",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "G07",
+      "title": "观测与模拟历史时间轴",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "地形首节拍跨度 d+5 秒，第二次及稳态跨度 10 秒；最初实际观测间隔不是一律 5 秒。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-history-timeline.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "普通方法历史采用相邻 τ 更新；模式重抽只适用于相应路线，段固定 Full 不被画成每步重抽。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-history-timeline.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "h 为最大 5 秒，事件和目标可使子步更短；停止推进至最后实际目标而非硬截名义 1800 秒。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-history-timeline.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "中间输出不加入历史；未来观测只到评分及独立的选择链，没有到预测回调。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-history-timeline.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "普通 Full 直接输入位置、太阳条件与保存模式参数；显式和地形路线的历史依赖另标。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-history-timeline.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "起点模式对应信息范围不同；仅位置先验不偷带隐藏前缀。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-history-timeline.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "`Cov(v̂)=Q/T` 只在常系数说明框内，重叠割线相关性不被当作整个反馈模型的方差公式。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-history-timeline.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/figures/revision46-v1/revision46-history-timeline.pdf",
+        "scripts/plot_pirc17_revision46.py",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "G08",
+      "title": "训练与验证拟合对照图",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "数值来自原 fit-diagnostics 和 feature-design 的同一拟合、同一来源版本。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-development-fit.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "单位为 m²/s²；404 训练行与 81 验证行是原起点首未来转移，不是全部方法转移。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-development-fit.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "base 训练/验证 0.145796/0.077077，all-terrain 0.136666/0.079117；约 -6.3%/+2.6% 从原值核对。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-development-fit.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "数值 K、条件器 2K、含截距设计 2K+1 和原始秩四种量不混用。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-development-fit.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "原始条件数缺秩时不标有限值；κ+ 只指非零谱。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-development-fit.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "原输入未标准化且掩码为常数一的事实随图保留。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-development-fit.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/figures/revision46-v1/revision46-development-fit.pdf",
+        "scripts/plot_pirc17_revision46.py",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "G09",
+      "title": "计算成本图",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "原计划为 15 主体各五 cold、一次排除预热、五 warm，即 75/15/75；参考与回放不混入延迟分母。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-recorded-runtime.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "成功试验用于分位数，失败仍进入原五次试验的故障率分母；无成功时保留 null 和原因。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-recorded-runtime.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "五次试验的 p95 只作样本描述，不能宣称稳定总体尾延迟。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-recorded-runtime.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "输入、拟合准备、评分、写盘、导出和释放等排除项写清；累计工作耗时与两路墙钟分别报告。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-recorded-runtime.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "OS 缓存未清空或验证；warm 的复用对象和预热步骤有记录。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-recorded-runtime.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "内存采样 RSS 为下界，进程生命周期峰值不叫单次峰值；查询计数缓存命中定义一致。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-recorded-runtime.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "速度与精度取舍若联合展示，配置、任务和硬件边界一致，不从不同实验单位拼出排行榜。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-recorded-runtime.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/figures/revision46-v1/revision46-recorded-runtime.pdf",
+        "scripts/plot_pirc17_revision46.py",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "G10",
+      "title": "合并重复的全配置热图",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "ES 与面积颜色各自量纲明确；覆盖偏差为观测减名义的百分点，零为名义吻合。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-metric-overview.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "三面板相同行顺序、相同时域、相同来源和配置身份。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-metric-overview.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "面积保持原平均圆面积，不以平均半径平方替代。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-metric-overview.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "长时域 ES 较大不自动遮蔽短时差异；需要尺度辅助时明确为额外展示，保留绝对值。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-metric-overview.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "缺失、失败与不可用使用独立符号，不填成零或最佳颜色。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-metric-overview.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "正文概览可在最终印刷尺寸阅读；全量表能检索每个原配置。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-metric-overview.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/figures/revision46-v1/revision46-metric-overview.pdf",
+        "scripts/plot_pirc17_revision46.py",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "G11",
+      "title": "调整森林图的视觉权重",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "原同时区间、具名对照、点估计与符号保持不变。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-practical-effects.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "±41.10 米与零线能同时看见；裁定计算仍使用 41.100259 而非显示值。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-practical-effects.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "不同轴尺度明确标注，附图精度和科学单位正确。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-practical-effects.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "别名零 SD 不被解释为有功效的等价性证据。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-practical-effects.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "区间跨零、跨实际界和位于等价带内三种状态分别解释；最终资格未到时不贴通过标签。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-practical-effects.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/figures/revision46-v1/revision46-practical-effects.pdf",
+        "scripts/plot_pirc17_revision46.py",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "G12",
+      "title": "改善已有真实地图案例的跨时域阅读",
+      "editing": "implemented_local_only",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "原选例顺序、首个登记种子、三个案例和六份预测身份保持一致。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "scripts/build_pirc17_revision46_local.py",
+            "scripts/check_pirc17_revision46_local_cases.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "同一时刻的 base 与 all-terrain 采用可比坐标范围；跨时域若改变尺度显式说明，不裁掉观测或主要分布。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "scripts/build_pirc17_revision46_local.py",
+            "scripts/check_pirc17_revision46_local_cases.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "可见观测、真实未来、均值引导线、粒子和预测圆各有图例；四个实际目标不偷换为精确名义时刻。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "scripts/build_pirc17_revision46_local.py",
+            "scripts/check_pirc17_revision46_local_cases.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "24 个均值误差对应粒子均值到目标，不是最佳粒子、平均粒子误差或 ES。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "scripts/build_pirc17_revision46_local.py",
+            "scripts/check_pirc17_revision46_local_cases.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "地图有效性和缺图层保留；背景年代不称轨迹同期地形。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "scripts/build_pirc17_revision46_local.py",
+            "scripts/check_pirc17_revision46_local_cases.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "地图和路线授权未解决时，公开构建不加载任何 case 图或案例级诊断文件。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "scripts/build_pirc17_revision46_local.py",
+            "scripts/check_pirc17_revision46_local_cases.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "本轮未查看的地图图像必须在实施阶段实际检查，不能用源稿和哈希替代。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "scripts/build_pirc17_revision46_local.py",
+            "scripts/check_pirc17_revision46_local_cases.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "scripts/build_pirc17_revision46_local.py",
+        "scripts/check_pirc17_revision46_local_cases.py",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "G13",
+      "title": "比较家族证据可用性矩阵",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "F04 使主地形整体/LOO 五比较不可用；F03/F05 使主地形 LIO 四比较不可用。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-family-availability.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "F02 使 known_velocity 模型结构四比较不可用；F01 使同模式观测间隔四比较不可用。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-family-availability.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "五个 causal_prefix 方法家族不因上述失败失效，仍须自己的审计和资格；不自动标已验收。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-family-availability.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "必需失败的整个家族处置优先于具体配对有无失败；LIO 不能临时拆成新完整家族。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-family-availability.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "缺机制证据、机制计算失败、统计区间跨界、资格未执行的原因不压成同一个空白格。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-family-availability.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "行共享基线的计数不相加；矩阵不增加观测样本量。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/figures/revision46-v1/revision46-family-availability.pdf",
+            "scripts/plot_pirc17_revision46.py",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/figures/revision46-v1/revision46-family-availability.pdf",
+        "scripts/plot_pirc17_revision46.py",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "O01",
+      "title": "收敛地形研究的正文承诺",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "题名中的每个关键词在摘要有可支持的任务和结果，地形不再被写成已回答的并列贡献。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:terrain-results",
+            "paper/pirc17/zh/main.tex#sec:terrain-results",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "标题中“因果”若保留，仅指前缀信息可用性而不是因果效应识别；优先改用不会混淆二者的任务表述。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:terrain-results",
+            "paper/pirc17/zh/main.tex#sec:terrain-results",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "原 RQ1/RQ2 作为登记问题仍能追踪；重新组织论文叙事不回写原协议。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:terrain-results",
+            "paper/pirc17/zh/main.tex#sec:terrain-results",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "普通 Full 与 terrain base/all-terrain 的模型、拟合、历史和对照分别定义。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:terrain-results",
+            "paper/pirc17/zh/main.tex#sec:terrain-results",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "摘要明确 46 记录块、名义时域、阶段保存评分与核验状态，不称全球、独立参与者或新留出队列。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:terrain-results",
+            "paper/pirc17/zh/main.tex#sec:terrain-results",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "地形几何和矩阵若移到补充材料，正文仍给输入类别、道路子集和惩罚混杂的必要说明。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:terrain-results",
+            "paper/pirc17/zh/main.tex#sec:terrain-results",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "结论提到不可用的地形答案，不让读者从遗漏误以为地形已被证实无用。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:terrain-results",
+            "paper/pirc17/zh/main.tex#sec:terrain-results",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/en/main.tex#sec:terrain-results",
+        "paper/pirc17/zh/main.tex#sec:terrain-results",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "O02",
+      "title": "清理重复的审查答辩和执行叙事",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "每段正文能回答一个科学问题，或提供判断该结论所需的限制。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "同一“未独立核验”状态不在每个图注和段末重复，局部特殊限制仍就地保留。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "故障根因的未知范围移到审查记录后仍明确，正文不残留“模型发散”“超时180秒”等无证据简写。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "历史 SHA、任务名、配置机器名仅在读者需要追踪时出现，通用叙述使用已定义术语。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "已终态的科学任务不以当前待运行语气出现，旧快照具捕获日期和用途。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "所有迁移段落有旧标签到新位置的对应，原事实无丢失、无两处相互矛盾。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+        "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "O03",
+      "title": "降低正文的实现粒度",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "正文读者能指出 Full 的 ψ、模式概率来源、何时重抽、Q=τR 与 h 的区别。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#sec:method-model",
+            "paper/pirc17/zh/supplement.tex#sec:method-model",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "地形读者能指出 B0 与条件器分别拟合、每窗口首未来转移、历史反馈和在线缺失处置。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#sec:method-model",
+            "paper/pirc17/zh/supplement.tex#sec:method-model",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "完整补充材料足以查到模式划分、分组并列规则、η/s 网格、jitter、归一化和拟合失败边界。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#sec:method-model",
+            "paper/pirc17/zh/supplement.tex#sec:method-model",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "初次使用的符号都有定义和单位；方程标签与双语符号一致，无重名混用。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#sec:method-model",
+            "paper/pirc17/zh/supplement.tex#sec:method-model",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "三个时钟量及两条模型路线的历史算子仍在正文或直接相邻示意图中。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#sec:method-model",
+            "paper/pirc17/zh/supplement.tex#sec:method-model",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "删除正文详细推导时，必须有唯一补充定位；没有把关键假设也一起移走。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#sec:method-model",
+            "paper/pirc17/zh/supplement.tex#sec:method-model",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "原实现所需细节在补充材料仍完整，但正文没有把实现选择表述成新理论定理。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#sec:method-model",
+            "paper/pirc17/zh/supplement.tex#sec:method-model",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/en/supplement.tex#sec:method-model",
+        "paper/pirc17/zh/supplement.tex#sec:method-model",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "O04",
+      "title": "按实质预测器组织配置",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "参数相等、预测数组相同、评分相同和随机流相同是不同列，不以其中一个替代全部。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#tab:actual-changes",
+            "paper/pirc17/zh/main.tex#tab:actual-changes",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "mixed/pure 相对 Full 的验证漂移拟合，以及显式路线从三模式到单模式的变化透明。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#tab:actual-changes",
+            "paper/pirc17/zh/main.tex#tab:actual-changes",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "two-step 只是冻结程序身份，原实现不是独立顺序优化算法。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#tab:actual-changes",
+            "paper/pirc17/zh/main.tex#tab:actual-changes",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "dt 是训练/观测间隔，伴随历史与扩散变化，积分上限仍 5 秒。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#tab:actual-changes",
+            "paper/pirc17/zh/main.tex#tab:actual-changes",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "d2 两条路线为评分角色，共用预测；别名数不计科学发现数。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#tab:actual-changes",
+            "paper/pirc17/zh/main.tex#tab:actual-changes",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "Full01/07/11/18/20 及额外参考都可追踪，不以同参数理由平均不同保存评分。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#tab:actual-changes",
+            "paper/pirc17/zh/main.tex#tab:actual-changes",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "零差异别名留作一致性检查，但不进入“没有效果”的方法叙事。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#tab:actual-changes",
+            "paper/pirc17/zh/main.tex#tab:actual-changes",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/en/main.tex#tab:actual-changes",
+        "paper/pirc17/zh/main.tex#tab:actual-changes",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "O05",
+      "title": "前置惯性参考并重排结果",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "Full 与惯性同起点、同原目标、同主 46 块，聚合顺序正确。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#fig:inertial",
+            "paper/pirc17/zh/main.tex#fig:inertial",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "表明对比为保存评分的描述性均值，独立审计状态就地可见。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#fig:inertial",
+            "paper/pirc17/zh/main.tex#fig:inertial",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "1/5 分钟与 15/30 分钟反转在结果第一段就明确。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#fig:inertial",
+            "paper/pirc17/zh/main.tex#fig:inertial",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "单个加权 ES 收益不掩盖 FDE 与覆盖问题；ADE/FDE 不等于 Full 的 ES。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#fig:inertial",
+            "paper/pirc17/zh/main.tex#fig:inertial",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "惯性对照尚无新区间时不追加“不显著”或“显著”判断。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#fig:inertial",
+            "paper/pirc17/zh/main.tex#fig:inertial",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "前移后正文引用、浮动表位置、章节标题及相关结构测试同改；原数值和身份不变。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#fig:inertial",
+            "paper/pirc17/zh/main.tex#fig:inertial",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/en/main.tex#fig:inertial",
+        "paper/pirc17/zh/main.tex#fig:inertial",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "O06",
+      "title": "正文与补充材料的完整拆分",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "每张原表、图和公式有处置：保留、移动、合并展示但全量保留，或有依据的弃用；无无声遗失。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#fig:terrain-matrix",
+            "paper/pirc17/zh/supplement.tex#fig:terrain-matrix",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "新正文至少包含必要模型方程、筛选图或表、指标定义、主要效应区间及覆盖诊断。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#fig:terrain-matrix",
+            "paper/pirc17/zh/supplement.tex#fig:terrain-matrix",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "独立补充材料有自足术语、编号和来源，审查记录有版本和日期。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#fig:terrain-matrix",
+            "paper/pirc17/zh/supplement.tex#fig:terrain-matrix",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "跨文档引用可打开到正确位置，正文没有未定义或只存在本地版的标签。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#fig:terrain-matrix",
+            "paper/pirc17/zh/supplement.tex#fig:terrain-matrix",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "同一科学数值源不在两个文件手抄成分叉版本；英文与中文输入表一致。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#fig:terrain-matrix",
+            "paper/pirc17/zh/supplement.tex#fig:terrain-matrix",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "历史段落、旧状态和旧构建元数据仍原样可查，新构建记录单独生成。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#fig:terrain-matrix",
+            "paper/pirc17/zh/supplement.tex#fig:terrain-matrix",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "页数、图表占用和读者反馈实际检查；版式变化不被称科学证据改善。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#fig:terrain-matrix",
+            "paper/pirc17/zh/supplement.tex#fig:terrain-matrix",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/en/supplement.tex#fig:terrain-matrix",
+        "paper/pirc17/zh/supplement.tex#fig:terrain-matrix",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "O07",
+      "title": "集中保留影响可信度的事实",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "压缩前后逐项检查本表，所有影响解释的事实在正文可找到。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:protocol",
+            "paper/pirc17/zh/main.tex#sec:protocol",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "每个限制紧接其实际影响，没有把许可、统计独立性和数值资格混为一类。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:protocol",
+            "paper/pirc17/zh/main.tex#sec:protocol",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "标题、摘要、讨论与结论使用同一证据强度。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:protocol",
+            "paper/pirc17/zh/main.tex#sec:protocol",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "没有“独立”“前瞻性”“全球”“物理”“有效性”“最优”等强词残留而无直接证据。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:protocol",
+            "paper/pirc17/zh/main.tex#sec:protocol",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "既往使用史的具体未知范围诚实保留，不因写一段概述就将其判完成。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:protocol",
+            "paper/pirc17/zh/main.tex#sec:protocol",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/en/main.tex#sec:protocol",
+        "paper/pirc17/zh/main.tex#sec:protocol",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "O08",
+      "title": "重写核心结果和最终研究定位",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "477.85 与 824.73 米的对比附原主 46 块及描述性范围；没有将配对均值差写成已独立验证优越性。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:introduction",
+            "paper/pirc17/zh/main.tex#sec:introduction",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "1/5 分钟惯性更好、15/30 分钟 Full 更好均保留。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:introduction",
+            "paper/pirc17/zh/main.tex#sec:introduction",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "21 项当前同时区间均未整体超过 ±δ 的事实正确，但不因此给所有组件统一“无影响”标签。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:introduction",
+            "paper/pirc17/zh/main.tex#sec:introduction",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "Full 30 分钟 90% 覆盖 46.52% 是边际预测圆诊断；95% 水平和 1 分钟不同标称可在结果支撑解释。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:introduction",
+            "paper/pirc17/zh/main.tex#sec:introduction",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "方法、地形、执行、科学核验四种完成状态分开。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:introduction",
+            "paper/pirc17/zh/main.tex#sec:introduction",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "每项贡献有正文结果或清楚的设计贡献对应；执行与审查投入不充当发现。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:introduction",
+            "paper/pirc17/zh/main.tex#sec:introduction",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "相关工作引用对象与任务匹配，不由引用 Neural SDE 原文推导本任务性能；未执行外部模型不列优于它的主张。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:introduction",
+            "paper/pirc17/zh/main.tex#sec:introduction",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "让一位非项目读者按标题、摘要、模型、结果、结论连续阅读，记录他实际无法理解的点；没获得反馈时标尚待读者检查。",
+          "status": "pending_independent_reader_feedback",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:introduction",
+            "paper/pirc17/zh/main.tex#sec:introduction",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/en/main.tex#sec:introduction",
+        "paper/pirc17/zh/main.tex#sec:introduction",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "R01",
+      "title": "研究贡献与实际意义结论",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "21 个保存同时区间没有一项整体落在 ±41.100259 米之外；全精度核对，不仅看打印表。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#fig:practical-effects",
+            "paper/pirc17/zh/main.tex#fig:practical-effects",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "区间位于等价带内与程序资格满足分开，d2 零 SD 路线仍不具备独立功效证明。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#fig:practical-effects",
+            "paper/pirc17/zh/main.tex#fig:practical-effects",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "五个主方法家族完整不等于最终已验收；两个主地形家族缺必需失败保持不可用。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#fig:practical-effects",
+            "paper/pirc17/zh/main.tex#fig:practical-effects",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "方法组件收益措辞与混合改变一致，不暗示一般元学习或地形理论结论。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#fig:practical-effects",
+            "paper/pirc17/zh/main.tex#fig:practical-effects",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "摘要、引言贡献和结论对应同一证据版本，不拿旧数字支撑新更强结论。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#fig:practical-effects",
+            "paper/pirc17/zh/main.tex#fig:practical-effects",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "稿件目前有价值的发现表述为时域取舍、指标冲突和经验欠覆盖，适用范围明确。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#fig:practical-effects",
+            "paper/pirc17/zh/main.tex#fig:practical-effects",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/en/main.tex#fig:practical-effects",
+        "paper/pirc17/zh/main.tex#fig:practical-effects",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "R02",
+      "title": "跨批次模式语义对齐",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "`atan2` 的净位移变量、向西分支切口、并列段身份规则和 `min(2,floor(3r/K))` 与冻结代码相符。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#eq:segment-rank-mode",
+            "paper/pirc17/zh/supplement.tex#eq:segment-rank-mode",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "数学分量 1/2/3 与实现标签 0/1/2 显式对应，零位移及带符号零处理不擅改。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#eq:segment-rank-mode",
+            "paper/pirc17/zh/supplement.tex#eq:segment-rank-mode",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "训练 110/109/109、适应 26/25/25、验证 27/27/27 只表示段数，不是转移数或 π。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#eq:segment-rank-mode",
+            "paper/pirc17/zh/supplement.tex#eq:segment-rank-mode",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "Reptile 任务在各自批次重新排序；84 标签组、30 合格任务、258 段和未入任务循环的小组在相应范围说明。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#eq:segment-rank-mode",
+            "paper/pirc17/zh/supplement.tex#eq:segment-rank-mode",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "`_blend_models`、外更新及验证漂移混合均按编号，当前没有匹配步骤；源稿不写成已匹配行为模式迁移。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#eq:segment-rank-mode",
+            "paper/pirc17/zh/supplement.tex#eq:segment-rank-mode",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "真正缺失的逐模式标签、方向支持和 pre-meta/target-blend 中间快照列明，不以新描述台账认定已补齐。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#eq:segment-rank-mode",
+            "paper/pirc17/zh/supplement.tex#eq:segment-rank-mode",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "当前结论用“该排序参数插值程序”范围；机制假说不定量归因收益或损失。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#eq:segment-rank-mode",
+            "paper/pirc17/zh/supplement.tex#eq:segment-rank-mode",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [
+        "Original scientific unknowns retained; see named sources and N01-N05. No new experiment or provenance certification."
+      ],
+      "evidence": [
+        "paper/pirc17/en/supplement.tex#eq:segment-rank-mode",
+        "paper/pirc17/zh/supplement.tex#eq:segment-rank-mode",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "R03",
+      "title": "普通 Full 实际使用的前缀信息",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "固定位置、坐标框架、时钟、条件、参数和随机流后改变初速度，普通路线预测不变的范围完整。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#tab:inputs",
+            "paper/pirc17/zh/main.tex#tab:inputs",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "改可见前缀可能改变坐标锚点和数值位置；起点身份也可能改变随机流，不能用实际两条记录直接替代控制检查。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#tab:inputs",
+            "paper/pirc17/zh/main.tex#tab:inputs",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "π 来自保存拟合与适应混合，不是新前缀下的模式后验。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#tab:inputs",
+            "paper/pirc17/zh/main.tex#tab:inputs",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "显式路线仅速率对速度敏感，反向但同范数速度不因该特征改变；径向零点规则明确。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#tab:inputs",
+            "paper/pirc17/zh/main.tex#tab:inputs",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "known_velocity 和 point_only 的坐标及信息边界在对照解释中保留。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#tab:inputs",
+            "paper/pirc17/zh/main.tex#tab:inputs",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "合成输入敏感性契约测试只证明函数依赖，不宣称真实前缀已被充分使用。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#tab:inputs",
+            "paper/pirc17/zh/main.tex#tab:inputs",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/en/main.tex#tab:inputs",
+        "paper/pirc17/zh/main.tex#tab:inputs",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "R04",
+      "title": "非隔离消融与相同预测器",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "Full/QMLE、mixed/pure 的 Θ、R、π 三组相等记录均匹配；相同参数不自动意味着相同随机输出。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#tab:actual-changes",
+            "paper/pirc17/zh/main.tex#tab:actual-changes",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "QMLE 分支是保留适应后参数并记录代理 NLL，没有另做似然优化。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#tab:actual-changes",
+            "paper/pirc17/zh/main.tex#tab:actual-changes",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "mixed/pure 额外验证漂移拟合和最大候选 η=0.5 写明，不称全局最优或端到端训练。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#tab:actual-changes",
+            "paper/pirc17/zh/main.tex#tab:actual-changes",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "d2 路线共用预测和共同评分，但这不验证其原生评分估计器。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#tab:actual-changes",
+            "paper/pirc17/zh/main.tex#tab:actual-changes",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "EM/Euler 是更新别名，EM 不指拟合 GMM 的 expectation-maximization。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#tab:actual-changes",
+            "paper/pirc17/zh/main.tex#tab:actual-changes",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "dt 路线同时改变拟合数据、R、Q=τR、历史/模式节拍，h 不变。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#tab:actual-changes",
+            "paper/pirc17/zh/main.tex#tab:actual-changes",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "程序整体差异仍可报告；归因和总体算法结论没有越界。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#tab:actual-changes",
+            "paper/pirc17/zh/main.tex#tab:actual-changes",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/en/main.tex#tab:actual-changes",
+        "paper/pirc17/zh/main.tex#tab:actual-changes",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "R05",
+      "title": "校准代理与 GMM 标签错配",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "`_base_fit` 先 pooled ridge，再按 `argmax(r_e,r_n,-r_e-r_n)` 一次分组、分组重拟合；不是似然 EM 或 pooled 共同漂移加残差中心。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:models",
+            "paper/pirc17/zh/main.tex#sec:models",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "验证 `_one_step_residuals` 采用验证 `mode_labels`，GMM 没有重新求残差组或 posterior responsibility。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:models",
+            "paper/pirc17/zh/main.tex#sec:models",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "代理协方差为 `M⁻¹ ΣR_m`，没有 π 权重；s² 缩放和额外 jitter 的位置正确。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:models",
+            "paper/pirc17/zh/main.tex#sec:models",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "Full η=0、s 网格；mixed/pure η/s 联合有限网格；QMLE不优化；选择后验证目标是样本内值。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:models",
+            "paper/pirc17/zh/main.tex#sec:models",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "Full 90% 圆 5/15/30 分钟为 37.83%/35.22%/46.52%；1 分钟 50% 与90%为33.04%/95.65%。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:models",
+            "paper/pirc17/zh/main.tex#sec:models",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "多档不匹配不被简化为已经确定的统一半径缩放问题。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:models",
+            "paper/pirc17/zh/main.tex#sec:models",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "区域是保存边际预测圆，不是密度等高线、椭圆、联合路径区域或经验证的条件校准。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:models",
+            "paper/pirc17/zh/main.tex#sec:models",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "后续真实分布校准使用开发数据并独立评价，原当前结果不被追溯性改写。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:models",
+            "paper/pirc17/zh/main.tex#sec:models",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/en/main.tex#sec:models",
+        "paper/pirc17/zh/main.tex#sec:models",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "R06",
+      "title": "地形信息与正则化混杂",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "全模型训练与验证所选 28 组掩码均为常数一，不误写所有未来模拟查询也都有效。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#eq:constant-penalty",
+            "paper/pirc17/zh/main.tex#eq:constant-penalty",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "常数子空间 `min Σa_j²=c²/(K+1)`，修正项为 `λc²/[2(K+1)]`。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#eq:constant-penalty",
+            "paper/pirc17/zh/main.tex#eq:constant-penalty",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "base K=2、all-terrain K=28，分母3/29；全模型该子空间惩罚更弱，原意见中的约9.7倍不反向表达。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#eq:constant-penalty",
+            "paper/pirc17/zh/main.tex#eq:constant-penalty",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "原始设计缺秩与增广 ridge 满秩分开；不能由求解成功排除冗余或尺度问题。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#eq:constant-penalty",
+            "paper/pirc17/zh/main.tex#eq:constant-penalty",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "B0 未归一化 ridge 与条件器平均损失使用不同缩放，不能比较两个 λ 数字断言等强度。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#eq:constant-penalty",
+            "paper/pirc17/zh/main.tex#eq:constant-penalty",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "交互共同归属、历史基线已含信息、独立重拟合和扩散变化都进入归因边界。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#eq:constant-penalty",
+            "paper/pirc17/zh/main.tex#eq:constant-penalty",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "未来匹配惩罚或保持表示的对照标为新实验；解释原结果不等于修复其识别设计。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#eq:constant-penalty",
+            "paper/pirc17/zh/main.tex#eq:constant-penalty",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/en/main.tex#eq:constant-penalty",
+        "paper/pirc17/zh/main.tex#eq:constant-penalty",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "R07",
+      "title": "道路集合与方向的实际定义",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "排除 bridleway、cycleway、footway、path、pedestrian、steps、track 七类。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:models",
+            "paper/pirc17/zh/main.tex#sec:models",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "明确筛选字段、空值处置及实际保留规则；若只有“排除七类”的依据，不猜测全部剩余类别已被覆盖。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:models",
+            "paper/pirc17/zh/main.tex#sec:models",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "最近点由实际保留线集合确定；指向最近点与沿线方向、通行方向、河流流向分别定义。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:models",
+            "paper/pirc17/zh/main.tex#sec:models",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "距离和方向有效性可能不同，重合点无方向不等于无道路。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:models",
+            "paper/pirc17/zh/main.tex#sec:models",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "道路集合定义影响几何示意、题注、摘要和结论中的“道路信息”范围。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:models",
+            "paper/pirc17/zh/main.tex#sec:models",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "拓展步道、方向或网络拓扑另作新表示实验，不回写当前模型。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:models",
+            "paper/pirc17/zh/main.tex#sec:models",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/en/main.tex#sec:models",
+        "paper/pirc17/zh/main.tex#sec:models",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "R08",
+      "title": "时钟来源与名义时域",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "相对 tick 差是否来自物理采集、重建或其他变换，核查到实际来源记录；不能只核代码预期。",
+          "status": "source_provenance_unresolved_nominal_clock_fallback_applied",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:protocol",
+            "paper/pirc17/zh/main.tex#sec:protocol",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "condition 到来源点索引的对应与 R1 时间用途分别说明。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:protocol",
+            "paper/pirc17/zh/main.tex#sec:protocol",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "三文件页脚范围、全队列未核验范围及当前代码绑定范围明确。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:protocol",
+            "paper/pirc17/zh/main.tex#sec:protocol",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "绝对偏移影响太阳解释；相对尺度影响速度、Q单位和名义时域，两种影响不混淆。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:protocol",
+            "paper/pirc17/zh/main.tex#sec:protocol",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "普通方法 Q=τR 与地形 Q 的“秒”均相对于保留时间坐标。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:protocol",
+            "paper/pirc17/zh/main.tex#sec:protocol",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "不能认证时采用原已允许的“保存时钟下名义时域”表达，不以缺证明卡住文稿级整改。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:protocol",
+            "paper/pirc17/zh/main.tex#sec:protocol",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "日历代理未证实物理日光因子效用；当前没有对应替代条件实验。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:protocol",
+            "paper/pirc17/zh/main.tex#sec:protocol",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "时钟核验发现错误时单独登记影响范围，不未经方案修改原预测、目标或结果。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:protocol",
+            "paper/pirc17/zh/main.tex#sec:protocol",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [
+        "Original scientific unknowns retained; see named sources and N01-N05. No new experiment or provenance certification."
+      ],
+      "evidence": [
+        "paper/pirc17/en/main.tex#sec:protocol",
+        "paper/pirc17/zh/main.tex#sec:protocol",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "R09",
+      "title": "未来路线选择与记录块独立性",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "未来特征有效性只用于资格，预测查询在模拟位置、回调不持目标路线；若源码或来源反证则另登记。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#fig:population",
+            "paper/pirc17/zh/main.tex#fig:population",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "入选条件部署时不可仅凭前缀判定，摘要和数据部分明确受限人群。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#fig:population",
+            "paper/pirc17/zh/main.tex#fig:population",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "12,370到46选择规则、73合格块及46块排序选择未按预测效果调整。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#fig:population",
+            "paper/pirc17/zh/main.tex#fig:population",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "记录哈希基于保存字符串，不识别同人、格式改变、局部重叠或近似路线。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#fig:population",
+            "paper/pirc17/zh/main.tex#fig:population",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "六组完整源序列精确检查的零跨角色相等只回答精确重复，不扩成所有路线独立。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#fig:population",
+            "paper/pirc17/zh/main.tex#fig:population",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "33/46来自GB/BE/LU、12国家、27来源标签的不同分母清楚，不称全球代表样本。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#fig:population",
+            "paper/pirc17/zh/main.tex#fig:population",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "拟合、适应、验证、当前评估及历史评估接触按日期/用途记录，不声称新盲测。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#fig:population",
+            "paper/pirc17/zh/main.tex#fig:population",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "来源聚类或近似路线敏感性若新增，只作预先说明的诊断分支，原46块登记结果继续保留。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#fig:population",
+            "paper/pirc17/zh/main.tex#fig:population",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [
+        "Original scientific unknowns retained; see named sources and N01-N05. No new experiment or provenance certification."
+      ],
+      "evidence": [
+        "paper/pirc17/en/main.tex#fig:population",
+        "paper/pirc17/zh/main.tex#fig:population",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "R10",
+      "title": "外部概率基线与分时域位置误差",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "概率基线的前缀、初始化速度与不确定性、过程噪声、地图信息范围、开发划分和预测时域明确定义。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#tab:point-errors",
+            "paper/pirc17/zh/main.tex#tab:point-errors",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "参数和校准只在开发数据选择；当前评估曾使用的事实保持，新比较标探索性或使用真正新评价数据。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#tab:point-errors",
+            "paper/pirc17/zh/main.tex#tab:point-errors",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "同样采用原目标匹配、评分单位与块聚合，模拟资源差异和解析计算能力公平说明。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#tab:point-errors",
+            "paper/pirc17/zh/main.tex#tab:point-errors",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "已有原逐时域误差则核验来源后展示；只有原预测数组时可列为原审计中的追加诊断，不启动新预测补数据。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#tab:point-errors",
+            "paper/pirc17/zh/main.tex#tab:point-errors",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "ADE 是四个原目标均值误差的等权平均，不是全时刻积分误差；FDE 是最后实际目标。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#tab:point-errors",
+            "paper/pirc17/zh/main.tex#tab:point-errors",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "Neural SDE与地图轨迹网络的引用用于任务定位，未执行就不声称优于这些模型。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#tab:point-errors",
+            "paper/pirc17/zh/main.tex#tab:point-errors",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "简单概率基线、自身更强前缀条件化和地图增量是不同对照问题，不混成一个实验。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#tab:point-errors",
+            "paper/pirc17/zh/main.tex#tab:point-errors",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/en/main.tex#tab:point-errors",
+        "paper/pirc17/zh/main.tex#tab:point-errors",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "R11",
+      "title": "统计程序的条件性与有限精度",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "δ=验证惯性ES的5%，无搜救效用认证；展示41.10与计算41.100259分开。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#sec:decision-conditions",
+            "paper/pirc17/zh/supplement.tex#sec:decision-conditions",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "开发SD仅三个块，假定改善2δ，目标0.8；1x/2x SD是规划敏感性，不是SD置信界。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#sec:decision-conditions",
+            "paper/pirc17/zh/supplement.tex#sec:decision-conditions",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "每流R=2000，五比较族单尾0.005约10抽样、四比较族0.00625约12.5抽样。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#sec:decision-conditions",
+            "paper/pirc17/zh/supplement.tex#sec:decision-conditions",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "块内先平均种子，族内共享块索引；种子不是拟合或训练样本重复。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#sec:decision-conditions",
+            "paper/pirc17/zh/supplement.tex#sec:decision-conditions",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "CI按候选减对照，bootstrap-t与Holm零检验不同职责；p网格加一原始步长1/2001，调整后值不拿来重解释物理大小。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#sec:decision-conditions",
+            "paper/pirc17/zh/supplement.tex#sec:decision-conditions",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "zero SD、有限/无界端点、边界舍入、防舍入g与资格优先级保留。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#sec:decision-conditions",
+            "paper/pirc17/zh/supplement.tex#sec:decision-conditions",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "beneficial/harmful需CI整体跨实际界、零检验及种子方向；equivalent不以未拒零替代且仍需资格。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#sec:decision-conditions",
+            "paper/pirc17/zh/supplement.tex#sec:decision-conditions",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "dt600低规划功效、d2零SD、LIO缺逐比较SD具体列明，不把这些原因合成“效应为零”。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#sec:decision-conditions",
+            "paper/pirc17/zh/supplement.tex#sec:decision-conditions",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "两流最大端点移动量已存但第二流完整端点/抽样索引/pivot未存，不编造误差条或声称全复算已可公开。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#sec:decision-conditions",
+            "paper/pirc17/zh/supplement.tex#sec:decision-conditions",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "区间条件于当前拟合、人群、算法与块假设，不涵盖训练不确定性和人群迁移。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#sec:decision-conditions",
+            "paper/pirc17/zh/supplement.tex#sec:decision-conditions",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [
+        "Original scientific unknowns retained; see named sources and N01-N05. No new experiment or provenance certification."
+      ],
+      "evidence": [
+        "paper/pirc17/en/supplement.tex#sec:decision-conditions",
+        "paper/pirc17/zh/supplement.tex#sec:decision-conditions",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "R12",
+      "title": "统一记录块与案例计数",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "`46+6+6=58`的复用关系准确，程序58组与记录身份46组分开。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:protocol",
+            "paper/pirc17/zh/main.tex#sec:protocol",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "`28×58×5=8120`、`10×58×5=2900`、`58×5=290`、惯性58，对应合计11368。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:protocol",
+            "paper/pirc17/zh/main.tex#sec:protocol",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "科学11020含5失败；总评分11368含相同5失败，成功11363。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:protocol",
+            "paper/pirc17/zh/main.tex#sec:protocol",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "旧字段 `closed_blocks/primary_blocks/support_blocks` 作为历史程序命名说明；若新schema用cases/groups，新增版本和映射检查。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:protocol",
+            "paper/pirc17/zh/main.tex#sec:protocol",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "所有双语“block/块/独立/组/案例/预测”进行上下文核对，不做盲目字符串替换。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:protocol",
+            "paper/pirc17/zh/main.tex#sec:protocol",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/en/main.tex#sec:protocol",
+        "paper/pirc17/zh/main.tex#sec:protocol",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "R13",
+      "title": "更新地形结果中的旧快照",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "当前事实来源是终态清点，历史事实来源是 `execution-coverage-20261006-v1.json`等各自捕获版本。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:terminal-failures",
+            "paper/pirc17/zh/audit-notes.tex#sec:terminal-failures",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "“等待结果”拆为等待独立核验和按当前规则不可用两种状态。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:terminal-failures",
+            "paper/pirc17/zh/audit-notes.tex#sec:terminal-failures",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "共享基线和缺项重叠说明在历史记录保留，不重复加总。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:terminal-failures",
+            "paper/pirc17/zh/audit-notes.tex#sec:terminal-failures",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "F01–F05及两主地形/两次要方法家族影响与原规则一致。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:terminal-failures",
+            "paper/pirc17/zh/audit-notes.tex#sec:terminal-failures",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "每失败的原异常与可访问日志链接明确；缺堆栈、退出原因或资源记录就写根因未知，不用180秒门槛或矩阵秩推断根因。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:terminal-failures",
+            "paper/pirc17/zh/audit-notes.tex#sec:terminal-failures",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "恢复协议说明哪些原任务允许继续、哪些失败保留；任何算法修复或新运行另立新身份，本次不执行恢复/重跑操作。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:terminal-failures",
+            "paper/pirc17/zh/audit-notes.tex#sec:terminal-failures",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "未核验结果仍未核验，程序终态不升级模型主张或人工验收。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:terminal-failures",
+            "paper/pirc17/zh/audit-notes.tex#sec:terminal-failures",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/en/audit-notes.tex#sec:terminal-failures",
+        "paper/pirc17/zh/audit-notes.tex#sec:terminal-failures",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "R14",
+      "title": "公开版地图交叉引用",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "公开版 `sec:case-horizons` 仅指保留说明，不承诺实际图表存在。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:case-horizons",
+            "paper/pirc17/zh/main.tex#sec:case-horizons",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "图表编号、正文引用、台账锚点与当前版本实际内容相符。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:case-horizons",
+            "paper/pirc17/zh/main.tex#sec:case-horizons",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "公开源码没有 `../figures/case-` 载入，case-level JSON和完整本地PDF不在公开清单。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:case-horizons",
+            "paper/pirc17/zh/main.tex#sec:case-horizons",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "公开源稿中本地来源绑定的范围注明；不能由保留原台账认证未提供地图。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:case-horizons",
+            "paper/pirc17/zh/main.tex#sec:case-horizons",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "中英文的同一段版本解释一致，相关公开边界测试继续成立。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:case-horizons",
+            "paper/pirc17/zh/main.tex#sec:case-horizons",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/en/main.tex#sec:case-horizons",
+        "paper/pirc17/zh/main.tex#sec:case-horizons",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "R15",
+      "title": "图8纵轴标题裁切",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "标签内容保留指标名、单位、方向含义；中文题注与英文图内文字一致。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#fig:preliminary-full-horizons",
+            "paper/pirc17/zh/supplement.tex#fig:preliminary-full-horizons",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "PNG、单图PDF、嵌入论文PDF分别查看，轴标签和刻度在媒体边界内。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#fig:preliminary-full-horizons",
+            "paper/pirc17/zh/supplement.tex#fig:preliminary-full-horizons",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "曲线数据、名义时刻和90%水平线完全不变。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#fig:preliminary-full-horizons",
+            "paper/pirc17/zh/supplement.tex#fig:preliminary-full-horizons",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "图源与新manifest绑定，旧图及旧构建记录不被当作修后截图。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#fig:preliminary-full-horizons",
+            "paper/pirc17/zh/supplement.tex#fig:preliminary-full-horizons",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/en/supplement.tex#fig:preliminary-full-horizons",
+        "paper/pirc17/zh/supplement.tex#fig:preliminary-full-horizons",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "R16",
+      "title": "覆盖率偏差配色",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "偏差单位为百分点，90%层的100%为+10、46.52%为−43.48，而非百分比相对增长。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#fig:method-overview",
+            "paper/pirc17/zh/supplement.tex#fig:method-overview",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "50/80/90/95%若共同展示，各以自己的名义值为中心。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#fig:method-overview",
+            "paper/pirc17/zh/supplement.tex#fig:method-overview",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "色域和饱和含义明确，同一图的零、正、负颜色一致；缺失另编码。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#fig:method-overview",
+            "paper/pirc17/zh/supplement.tex#fig:method-overview",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "原覆盖数值、名义层、配置和时域身份保留；不从PNG像素反推数字。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#fig:method-overview",
+            "paper/pirc17/zh/supplement.tex#fig:method-overview",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "黑白打印和色觉差异情况下依靠数值及符号仍可判断偏差方向。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#fig:method-overview",
+            "paper/pirc17/zh/supplement.tex#fig:method-overview",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/en/supplement.tex#fig:method-overview",
+        "paper/pirc17/zh/supplement.tex#fig:method-overview",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "R17",
+      "title": "执行与审查内容集中迁移",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "每段迁移前后有对应，保留日期、捕获对象及未知范围。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "正文所有失败影响、既往使用、选择与时钟限制仍能找到。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "旧审查接受标准与原回应完整保存；新证据只支持新状态。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "文稿、构建、科学审计、人类验收各有独立状态。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "完整稿读者不需要理解控制器和项目号才能读完研究论证。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+        "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "X01",
+      "title": "在线缺失输入与历史反馈外推",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "原训练404/验证81起点、397特征文件、3观测点历史跨度与模拟10秒跨度分别说明。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#sec:follow-up-designs",
+            "paper/pirc17/zh/supplement.tex#sec:follow-up-designs",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "`Δb=θ_numΔf+θ_maskΔm` 等缺失变化在冻结模型范围解释，不假设缺失效应为零。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#sec:follow-up-designs",
+            "paper/pirc17/zh/supplement.tex#sec:follow-up-designs",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "查询失败、要素不存在、状态无效和运行失败区分；总查询数的分母与缓存规则一致。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#sec:follow-up-designs",
+            "paper/pirc17/zh/supplement.tex#sec:follow-up-designs",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "稳态重叠割线相关1/2仅常系数、10秒割线例子；观测误差Robs未拟合。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#sec:follow-up-designs",
+            "paper/pirc17/zh/supplement.tex#sec:follow-up-designs",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "早晚速度/漂移序列若未保存，不声称已经观察其完整分布或异常速度率。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#sec:follow-up-designs",
+            "paper/pirc17/zh/supplement.tex#sec:follow-up-designs",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "追加诊断先确认原输出是否包含所需量，不能从四保存位置恢复完整过程。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#sec:follow-up-designs",
+            "paper/pirc17/zh/supplement.tex#sec:follow-up-designs",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [
+        "Original scientific unknowns retained; see named sources and N01-N05. No new experiment or provenance certification."
+      ],
+      "evidence": [
+        "paper/pirc17/en/supplement.tex#sec:follow-up-designs",
+        "paper/pirc17/zh/supplement.tex#sec:follow-up-designs",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "X02",
+      "title": "拟合目标与协方差规格",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "B0未归一化平方和ρ=10^-6；修正平均损失λ=10^-4，n404时正规方程惩罚0.0404。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#eq:terrain-rate-Q",
+            "paper/pirc17/zh/supplement.tex#eq:terrain-rate-Q",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "地形每窗口一个首未来转移、位移率行等权，不按dt/逆噪声/块权重；首未来间隔不是τ或h。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#eq:terrain-rate-Q",
+            "paper/pirc17/zh/supplement.tex#eq:terrain-rate-Q",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "地形Q=(1/n)Σdt·ζζᵀ，不中心化、不作自由度校正；单位相对于保存秒为m²/s。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#eq:terrain-rate-Q",
+            "paper/pirc17/zh/supplement.tex#eq:terrain-rate-Q",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "普通R用中心化n_m−1样本协方差及10^-8I，缩放后Q=τR；GMM原s=1.7已平方计入时不重复缩放。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#eq:terrain-rate-Q",
+            "paper/pirc17/zh/supplement.tex#eq:terrain-rate-Q",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "方法PSD相对规则与地形绝对容差区分；严重负值拒绝，容差内修正次数与原保存谱核对。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#eq:terrain-rate-Q",
+            "paper/pirc17/zh/supplement.tex#eq:terrain-rate-Q",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "基础ridge平均损失等效ρ/n_m，Reptile内目标ρ，不能以符号相同认定正则化相同。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#eq:terrain-rate-Q",
+            "paper/pirc17/zh/supplement.tex#eq:terrain-rate-Q",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "求解成功、正定、平稳性和验证拟合分别报告，不当预测可靠性证明。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/supplement.tex#eq:terrain-rate-Q",
+            "paper/pirc17/zh/supplement.tex#eq:terrain-rate-Q",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/en/supplement.tex#eq:terrain-rate-Q",
+        "paper/pirc17/zh/supplement.tex#eq:terrain-rate-Q",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "X03",
+      "title": "传播与有限数值证据",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "普通FP在条件均值计算非线性条件，MC在个体路径计算，比较整体范围明确。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:models",
+            "paper/pirc17/zh/main.tex#sec:models",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "四目标来自共同持续带噪路径及联合时序协方差，不是四独立高斯边际样本。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:models",
+            "paper/pirc17/zh/main.tex#sec:models",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "同grid/pair/origin/seed才能保证相应索引抽样关系；改步长不自动保证Brownian一致性。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:models",
+            "paper/pirc17/zh/main.tex#sec:models",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "N512、最大h5秒及停止到实际末目标等设置与保存输出绑定。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:models",
+            "paper/pirc17/zh/main.tex#sec:models",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "有限主地形数值预检不覆盖所有方法、LIO、次要模式或所有块；相应资格不能继承。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:models",
+            "paper/pirc17/zh/main.tex#sec:models",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "机制证据能否证明实际宣称的组件变化，别名和共享参数部分不给虚假机制通过。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:models",
+            "paper/pirc17/zh/main.tex#sec:models",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "数值收敛、样本功效、尾部稳定、原输出审计和统计分类分别检查。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:models",
+            "paper/pirc17/zh/main.tex#sec:models",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [
+        "Original scientific unknowns retained; see named sources and N01-N05. No new experiment or provenance certification."
+      ],
+      "evidence": [
+        "paper/pirc17/en/main.tex#sec:models",
+        "paper/pirc17/zh/main.tex#sec:models",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "X04",
+      "title": "地图产品与文献来源",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "1354收据资产与51仅父资产的目录、时空支持、元数据缺口分别说明；目录计数不当实际访问证明。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:introduction",
+            "paper/pirc17/zh/main.tex#sec:introduction",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "模型采样与案例底图来源不同，WorldCover、Skadi、Copernicus、Overture、HydroRIVERS逐项定位。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:introduction",
+            "paper/pirc17/zh/main.tex#sec:introduction",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "最近线投影、球面距离、DEM双线性和坡面九次邻域有效性等规则与源码相符。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:introduction",
+            "paper/pirc17/zh/main.tex#sec:introduction",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "地图年代未逐路线匹配，名义分辨率不认证实际栅格误差。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:introduction",
+            "paper/pirc17/zh/main.tex#sec:introduction",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "每条文内引用有唯一条目，中英文条目一致；数学模型、原算法、产品与许可各自承担正确角色。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:introduction",
+            "paper/pirc17/zh/main.tex#sec:introduction",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "Neural SDE论文任务与本文任务区分；查摘要不称通读全文，23条对应检查不称全部全文审查。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:introduction",
+            "paper/pirc17/zh/main.tex#sec:introduction",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "相关工作每段都有研究进展、局限和本文位置的综合判断，不只罗列引用或反复声明本文没做什么。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:introduction",
+            "paper/pirc17/zh/main.tex#sec:introduction",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "作者、版本、DOI/URL、访问日等仅填核验值，未定投稿格式标未定。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:introduction",
+            "paper/pirc17/zh/main.tex#sec:introduction",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [
+        "Original scientific unknowns retained; see named sources and N01-N05. No new experiment or provenance certification."
+      ],
+      "evidence": [
+        "paper/pirc17/en/main.tex#sec:introduction",
+        "paper/pirc17/zh/main.tex#sec:introduction",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "X05",
+      "title": "科学复现与独立保存输出审计",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "审计的输入版本、输出清单、命令、失败处置和逐结论证据可读；不是只有协议hash。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "至少6440方法主预测的身份与完整性有覆盖证据；全11368槽位的清点不是同范围数组核验。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "有限ES公式是否使用原N²约定、对角项与目标一致；不能静默换成N(N−1)估计器。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "ADE/FDE使用ensemble mean，不是best-of-N或mean particle error；四目标权重0.25。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "圆面积是先πr²后平均，半径、覆盖与单位变换分别核对。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "实际预测保存时刻、目标身份和共同评分框架对应；已核对三展示模型不冒称全28。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "原比较、原区间和已存推断诊断精确传到新展示；未存第二流端点不编造。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "原审计允许的复算及精确validated reuse与“新增分析”分开记录；成功任务不重复运行。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "公开重绘入口有可访问输入和环境；私密原输出复核途径及范围明确，不把私密数据上传作便利。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [
+        "Original scientific unknowns retained; see named sources and N01-N05. No new experiment or provenance certification."
+      ],
+      "evidence": [
+        "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+        "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "X06",
+      "title": "数据公开范围与真实署名",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "原始GPX、坐标、预测数组、checkpoint、私有地图、机器路径和case-level标识不进入公开新增文件。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "路线与地图图层分别有授权判断；WorldCover、道路、HydroRIVERS等不套同一种许可。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "每个公开附件有来源与公开范围，完整本地PDF不被默认上传。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "作者姓名、贡献、利益冲突与数据可得性需要真实信息，未定则明确待确认。",
+          "status": "pending_true_author_confirmation",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "公开边界扫描在TeX加载文件前执行；独立补充材料与审查记录同样扫描。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "公开版的审阅、编辑完成和最终发表决定分开，不由完成计划自动授予发表授权。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+        "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "X07",
+      "title": "版式双语与显示精度",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "conditioner/provider/ensemble/verdict、Full/base/all-terrain、dt/τ/h、EM与two_step等术语首定义一致。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:models",
+            "paper/pirc17/zh/main.tex#sec:models",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "指标m、速度m/s、协方差m²/s或m²/s²、面积km²、成本ms在图表中明确。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:models",
+            "paper/pirc17/zh/main.tex#sec:models",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "中英文关键数值、配置角色、五家族、四时域、失败和证据限制一致。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:models",
+            "paper/pirc17/zh/main.tex#sec:models",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "表续页带编号和列头，图与题注不拆义，长URL/机器身份不挤占正文。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:models",
+            "paper/pirc17/zh/main.tex#sec:models",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "原精度保留在机器汇总，普通数值展示适度；极小诊断用科学计数并标数值用途。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:models",
+            "paper/pirc17/zh/main.tex#sec:models",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "新正文、补充材料、审查记录均无未解析引用、缺字、溢出和失效链接。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:models",
+            "paper/pirc17/zh/main.tex#sec:models",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "实际阅读尺寸下看所有新图和改动页；正文与附录接缝、孤立标题和空白页逐项记录。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/main.tex#sec:models",
+            "paper/pirc17/zh/main.tex#sec:models",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/en/main.tex#sec:models",
+        "paper/pirc17/zh/main.tex#sec:models",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    },
+    {
+      "id": "X08",
+      "title": "原42项回应与修订版本治理",
+      "editing": "implemented",
+      "verification": "editor_reviewed_with_disclosed_limits",
+      "human_accepted": false,
+      "checklist": [
+        {
+          "criterion": "原P0六项、P1二十六项、P2十项，共42项，每项有至少一个本计划任务映射。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "旧remaining中尚称执行未终态、惯性未完成的内容在新记录按事实更新，原历史不篡改。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "新回应证据锚点指向新正文或独立补充材料，公开与本地材料可得性分开。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "位置/字符/字节保留类测试识别其历史对象；新修订保留数值、符号、来源和范围验证，按新结构新增明确的定位预期。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "原公开缺地图输入失败保持实情，不exclude、skip、伪造或弱化验证；无关仓库失败不混称修订通过。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "新证据引用旧来源时验证身份，来源变更和新审计有新版本，不能覆盖旧证据。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        },
+        {
+          "criterion": "修改计划完成、论文编辑完成、科学审计完成、发表与人工接受各有独立状态。",
+          "status": "editor_reviewed_document_scope",
+          "evidence": [
+            "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+            "paper/pirc17/revision46-source-migration.json",
+            "tests/test_pirc17_revision46.py"
+          ]
+        }
+      ],
+      "remaining_scientific_gaps": [],
+      "evidence": [
+        "paper/pirc17/en/audit-notes.tex#sec:audited-review-update",
+        "paper/pirc17/zh/audit-notes.tex#sec:audited-review-update",
+        "paper/pirc17/revision46-source-migration.json",
+        "tests/test_pirc17_revision46.py"
+      ]
+    }
+  ],
+  "original42_mapping": {
+    "P0-01": [
+      "R03",
+      "G07"
+    ],
+    "P0-02": [
+      "G02",
+      "G05",
+      "X05"
+    ],
+    "P0-03": [
+      "R09",
+      "O07"
+    ],
+    "P0-04": [
+      "R08"
+    ],
+    "P0-05": [
+      "R01",
+      "R13",
+      "G13"
+    ],
+    "P0-06": [
+      "X05"
+    ],
+    "P1-01": [
+      "O01",
+      "O08",
+      "R01"
+    ],
+    "P1-02": [
+      "R02",
+      "R03",
+      "X02"
+    ],
+    "P1-03": [
+      "R06",
+      "X02"
+    ],
+    "P1-04": [
+      "X01",
+      "R06"
+    ],
+    "P1-05": [
+      "G07",
+      "X01"
+    ],
+    "P1-06": [
+      "G08",
+      "R06",
+      "X02"
+    ],
+    "P1-07": [
+      "R04",
+      "O04"
+    ],
+    "P1-08": [
+      "R02",
+      "X02"
+    ],
+    "P1-09": [
+      "R05",
+      "R04"
+    ],
+    "P1-10": [
+      "X03"
+    ],
+    "P1-11": [
+      "G04",
+      "G07",
+      "X05"
+    ],
+    "P1-12": [
+      "G03",
+      "R09"
+    ],
+    "P1-13": [
+      "R07",
+      "X01",
+      "X04"
+    ],
+    "P1-14": [
+      "R11"
+    ],
+    "P1-15": [
+      "R11",
+      "X05"
+    ],
+    "P1-16": [
+      "R11",
+      "G13",
+      "X08"
+    ],
+    "P1-17": [
+      "R10",
+      "G04",
+      "O05"
+    ],
+    "P1-18": [
+      "R13",
+      "X08"
+    ],
+    "P1-19": [
+      "R01",
+      "X05",
+      "G05",
+      "G06"
+    ],
+    "P1-20": [
+      "R05",
+      "G10",
+      "X05"
+    ],
+    "P1-21": [
+      "R09",
+      "G12"
+    ],
+    "P1-22": [
+      "R13",
+      "G13",
+      "X08"
+    ],
+    "P1-23": [
+      "G09"
+    ],
+    "P1-24": [
+      "X05"
+    ],
+    "P1-25": [
+      "X06",
+      "G12",
+      "R14"
+    ],
+    "P1-26": [
+      "R10",
+      "O08",
+      "X04"
+    ],
+    "P2-01": [
+      "O01",
+      "R03"
+    ],
+    "P2-02": [
+      "O02",
+      "O03",
+      "O06",
+      "O07",
+      "O08"
+    ],
+    "P2-03": [
+      "O08",
+      "X04"
+    ],
+    "P2-04": [
+      "O04",
+      "X07"
+    ],
+    "P2-05": [
+      "G11",
+      "X07"
+    ],
+    "P2-06": [
+      "G05",
+      "G11"
+    ],
+    "P2-07": [
+      "X07"
+    ],
+    "P2-08": [
+      "O04",
+      "G10",
+      "R12"
+    ],
+    "P2-09": [
+      "O08",
+      "R01",
+      "R13"
+    ],
+    "P2-10": [
+      "X04",
+      "X06"
+    ]
+  },
+  "original42_accepted": 0,
+  "editing_complete": true,
+  "verification_complete": false,
+  "scientific_gaps_solved_by_prose": false,
+  "human_accepted": false,
+  "new_experiments": 0,
+  "authorship": "awaiting_true_author_or_explicit_anonymous_review_confirmation",
+  "public_case_permission": "unverified; no private case input in public build",
+  "paper_pr_delivered": false,
+  "MPA_master_merged": false,
+  "pending_criteria": [
+    {
+      "task": "O08",
+      "criterion": "让一位非项目读者按标题、摘要、模型、结果、结论连续阅读，记录他实际无法理解的点；没获得反馈时标尚待读者检查。",
+      "status": "pending_independent_reader_feedback"
+    },
+    {
+      "task": "X06",
+      "criterion": "作者姓名、贡献、利益冲突与数据可得性需要真实信息，未定则明确待确认。",
+      "status": "pending_true_author_confirmation"
+    }
+  ],
+  "verification_definition": "Editor reviewed source, numeric guards, strict PDFs and layout; not independent reader, author, scientific or human acceptance.",
+  "public_build_manifest": "paper/pirc17/revision46-review-v1/build-manifest.json",
+  "local_build_manifest_sha256": "2028abd5d29eba90aa290c68da087b723fb16800e1cc00afd946a7246427f1d0",
+  "public_pages": {
+    "en/main": 13,
+    "en/supplement": 79,
+    "en/audit-notes": 16,
+    "zh/main": 12,
+    "zh/supplement": 77,
+    "zh/audit-notes": 15
+  },
+  "layout_review": {
+    "all_212_pages_contact_sheet_reviewed": true,
+    "text_outside_page": 0,
+    "reading_size_spot_checks": "main overview, tradeoff and corrected axis; all new figure source panels inspected",
+    "retained_layout_limits": [
+      "Separate supplement float pages; section openings may follow a figure-only page.",
+      "A historical longtable starts with one row then continues with repeated headings.",
+      "English main final page contains one reference; font and margins were not reduced."
+    ],
+    "no_claim_all_pages_full_text_independently_reviewed": true
+  }
+}
