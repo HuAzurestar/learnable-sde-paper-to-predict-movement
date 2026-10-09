@@ -1,0 +1,219 @@
+{
+  "schema_version": "pirc17-revision46-reference-check-v1",
+  "checked_date": "2026-10-09",
+  "bibliography_sha256": "7854d9e29db8f0d6c9a69ae675856cd23442dec845e317975146905bc1764141",
+  "entries": [
+    {
+      "key": "johnson2008",
+      "entry_sha256": "9ec63732c5917544970f895035be1b2543d7bb9704ec061d61bf3749b47058b7",
+      "role": "continuous-time movement and irregular observations",
+      "primary_check_url": "https://onlinelibrary.wiley.com/doi/10.1890/07-1032.1",
+      "actual_scope": "publisher metadata and abstract",
+      "full_text_read_this_revision": false,
+      "executed_performance_baseline": false
+    },
+    {
+      "key": "ghahramani2000",
+      "entry_sha256": "092e72a2d1a252d245afd6c9918f5eebfc49d8c86d2dd08f88b7c2b494f2ce98",
+      "role": "latent switching regimes;not the implemented GMM fit",
+      "primary_check_url": "https://www.cs.toronto.edu/~hinton/absps/switch.pdf",
+      "actual_scope": "author manuscript title,abstract and introductory model definitions",
+      "full_text_read_this_revision": false,
+      "executed_performance_baseline": false
+    },
+    {
+      "key": "avgar2016",
+      "entry_sha256": "30ed760b6a3895b41270a0ee026d6a7e4dc49dc20f19d918aa7e855146927e49",
+      "role": "joint environmental selection and movement context",
+      "primary_check_url": "https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.12528",
+      "actual_scope": "publisher metadata and abstract; later direct fetch intermittent",
+      "full_text_read_this_revision": false,
+      "executed_performance_baseline": false
+    },
+    {
+      "key": "avgar2017correction",
+      "entry_sha256": "3751cc9c56bf0856cfdaa3807425fddcf046c13ed30ba030ec117e04230f601d",
+      "role": "correction accompanies the step-selection source",
+      "primary_check_url": "https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.12725",
+      "actual_scope": "publisher-indexed correction metadata and correction text",
+      "full_text_read_this_revision": false,
+      "executed_performance_baseline": false
+    },
+    {
+      "key": "gupta2018",
+      "entry_sha256": "c170562a170dd6b9922f4d7279d67ebe67c7a48b560cedc20227452fe76e7ce0",
+      "role": "trajectory forecasting context;not an executed comparator",
+      "primary_check_url": "https://arxiv.org/abs/1803.10892",
+      "actual_scope": "author preprint metadata and abstract; CVF direct access failed",
+      "full_text_read_this_revision": false,
+      "executed_performance_baseline": false
+    },
+    {
+      "key": "salzmann2020",
+      "entry_sha256": "3db9d404433397007d5b95a9eed76241207d617f24b1b7bf8532c3688b9b0e86",
+      "role": "dynamically feasible,map-aware forecasting context",
+      "primary_check_url": "https://arxiv.org/abs/2001.03093",
+      "actual_scope": "author preprint metadata and abstract; ECCV2020 relation stated there",
+      "full_text_read_this_revision": false,
+      "executed_performance_baseline": false
+    },
+    {
+      "key": "kidger2021",
+      "entry_sha256": "98e4ccbecca401296d77b58da5e35d4b8b783d727ccc7df398ef70de248a2fe9",
+      "role": "SDE path generation/GAN context;not performance on this task",
+      "primary_check_url": "https://proceedings.mlr.press/v139/kidger21b.html",
+      "actual_scope": "official proceedings metadata and abstract",
+      "full_text_read_this_revision": false,
+      "executed_performance_baseline": false
+    },
+    {
+      "key": "gao2024",
+      "entry_sha256": "eff14d1a8ad0ed258dfc20470181d3e7f19a4ba593eb0f8c55ad43fba879a595",
+      "role": "interpretable stochastic dynamics identification context",
+      "primary_check_url": "https://www.nature.com/articles/s41467-024-50378-x",
+      "actual_scope": "publisher-indexed metadata; direct body fetch failed/intermittent",
+      "full_text_read_this_revision": false,
+      "executed_performance_baseline": false
+    },
+    {
+      "key": "gneiting2007",
+      "entry_sha256": "374d184714e7332ca8cc8a418e693cc2133d006a2478bfde90b7274c6052e5fd",
+      "role": "proper scoring and energy-score theory;not calibration certification",
+      "primary_check_url": "https://sites.stat.washington.edu/raftery/Research/PDF/Gneiting2007jasa.pdf",
+      "actual_scope": "author-hosted published PDF title and abstract",
+      "full_text_read_this_revision": false,
+      "executed_performance_baseline": false
+    },
+    {
+      "key": "gneiting2008",
+      "entry_sha256": "57786840c7aec13cffcb9538f712608c07fe77dba547125554552cb44c042bbe",
+      "role": "multivariate probabilistic/ensemble forecast evaluation",
+      "primary_check_url": "https://link.springer.com/article/10.1007/s11749-008-0114-x",
+      "actual_scope": "publisher metadata and abstract",
+      "full_text_read_this_revision": false,
+      "executed_performance_baseline": false
+    },
+    {
+      "key": "kloeden1992",
+      "entry_sha256": "10af503fd6f4a537edbbc05162081aadb85e802fd44ca4af2be0519528680ceb",
+      "role": "numerical SDE background;not proof of global exactness here",
+      "primary_check_url": "https://link.springer.com/book/10.1007/978-3-662-12616-5",
+      "actual_scope": "publisher authors,edition/copyright,DOI,description and contents",
+      "full_text_read_this_revision": false,
+      "executed_performance_baseline": false
+    },
+    {
+      "key": "nichol2018",
+      "entry_sha256": "4c95ba7a3da43b38e92a1db837f43d7596fc6cbca1efff617c40da5ba5ccb889",
+      "role": "first-order Reptile algorithm context;not semantic mode matching",
+      "primary_check_url": "https://arxiv.org/abs/1803.02999v3",
+      "actual_scope": "author preprint metadata and abstract;v3 retained",
+      "full_text_read_this_revision": false,
+      "executed_performance_baseline": false
+    },
+    {
+      "key": "holm1979",
+      "entry_sha256": "12248633500472d83856308ed0bfd427fdcaf9d005576c8176038e9c0754e98f",
+      "role": "multiple zero-hypothesis tests,not practical margins",
+      "primary_check_url": "https://www.jstor.org/stable/4615733",
+      "actual_scope": "stable publisher title only; numerical bibliography retained from original,not freshly full-text verified",
+      "full_text_read_this_revision": false,
+      "executed_performance_baseline": false
+    },
+    {
+      "key": "davison1997",
+      "entry_sha256": "7d457490f42c8e9fbb18146cf87d09501b282a0820dd02da0e12d2f73dab1fad",
+      "role": "bootstrap background;not a guarantee for this small cohort",
+      "primary_check_url": "https://www.cambridge.org/core/books/bootstrap-methods-and-their-application/ED2FD043579F27952363566DC09CBD6A",
+      "actual_scope": "publisher page accessible; bibliographic identity retained,not full book read",
+      "full_text_read_this_revision": false,
+      "executed_performance_baseline": false
+    },
+    {
+      "key": "noaa",
+      "entry_sha256": "c519bc7986a0bb556c77bd63ab791a5afb443adeb3ea65a42540dc7e4cfd7eaa",
+      "role": "solar calculation formulas,not physical-clock provenance",
+      "primary_check_url": "https://gml.noaa.gov/grad/solcalc/solareqns.PDF",
+      "actual_scope": "official two-page equation document",
+      "full_text_read_this_revision": false,
+      "executed_performance_baseline": false
+    },
+    {
+      "key": "worldcover2021",
+      "entry_sha256": "74447a576eb7fe7471c3687340736a46f16c33eb3fe6f8e2ae97dfcfaff97cdb",
+      "role": "2021v200 product identification,not per-route contemporary truth",
+      "primary_check_url": "https://esa-worldcover.org/en/data-access",
+      "actual_scope": "official citation section confirms 2022,Zanaga et al.,v200 and DOI7254221; Zenodo fetch failed",
+      "full_text_read_this_revision": false,
+      "executed_performance_baseline": false
+    },
+    {
+      "key": "overtureattribution",
+      "entry_sha256": "1be3ddd6e65d29819cd3677ac72fa424e45d1ce5309dbc6638d94637e3b48943",
+      "role": "source-specific attribution documentation,not route permission",
+      "primary_check_url": "https://docs.overturemaps.org/attribution/",
+      "actual_scope": "official attribution page;does not certify all redistribution requirements",
+      "full_text_read_this_revision": false,
+      "executed_performance_baseline": false
+    },
+    {
+      "key": "hydrorivers2013",
+      "entry_sha256": "b845094d462104fdff340ef135a6a6084dad0a6f96df7dfdac8cc046bfe2a174",
+      "role": "HydroRIVERS hydrography methodology",
+      "primary_check_url": "https://onlinelibrary.wiley.com/doi/10.1002/hyp.9740",
+      "actual_scope": "publisher metadata and official product citation match 27(15),2171-2186",
+      "full_text_read_this_revision": false,
+      "executed_performance_baseline": false
+    },
+    {
+      "key": "hydroriverslicense",
+      "entry_sha256": "2dba4b214f3949309527bad30ca5959616d9d2b46d8a8d1dea5011c97574c642",
+      "role": "product v1 and licence pointer,not blanket map release approval",
+      "primary_check_url": "https://www.hydrosheds.org/products/hydrorivers",
+      "actual_scope": "official product,licence and reference sections",
+      "full_text_read_this_revision": false,
+      "executed_performance_baseline": false
+    },
+    {
+      "key": "mapzenterrain",
+      "entry_sha256": "998902e2403e0a703f63025eab2045f7c006ee9174c3152c29b4c2553c4a73e9",
+      "role": "Skadi mixed-source format/distribution,not pure NASA provenance",
+      "primary_check_url": "https://github.com/tilezen/joerd/blob/e3d4351ee3e5be333e23f47cb500e9a7c310656a/docs/formats.md",
+      "actual_scope": "pinned provider format documentation and AWS registry",
+      "full_text_read_this_revision": false,
+      "executed_performance_baseline": false
+    },
+    {
+      "key": "mapzenattribution",
+      "entry_sha256": "239a94fa1740b547e03a33cf734751417015595a7215aa38a4342b589bcc2bec",
+      "role": "provider-specific upstream attribution",
+      "primary_check_url": "https://github.com/tilezen/joerd/blob/d8f587b73d26e0a0c42cdccd9ae8c55de4197763/docs/attribution.md",
+      "actual_scope": "pinned provider documentation;not all tile permissions certified",
+      "full_text_read_this_revision": false,
+      "executed_performance_baseline": false
+    },
+    {
+      "key": "copernicusdem2021",
+      "entry_sha256": "22c6232bea616f9bab6f502b7ccc8a2d5e0c785d40e0c0f9f92547cfefa944d0",
+      "role": "GLO-30 Public distribution and 2021 release",
+      "primary_check_url": "https://registry.opendata.aws/copernicus-dem/",
+      "actual_scope": "official distribution registry product,release and licence pointer",
+      "full_text_read_this_revision": false,
+      "executed_performance_baseline": false
+    },
+    {
+      "key": "overture202608",
+      "entry_sha256": "ba332d03bb7d170edafd44aeaa16e2fcea8ced70312990eb6599250d62d2b0bc",
+      "role": "saved transportation release2026-08-19.0",
+      "primary_check_url": "https://docs.overturemaps.org/blog/2026/08/19/release-notes/",
+      "actual_scope": "official dated release header and version;not replaced with newer release",
+      "full_text_read_this_revision": false,
+      "executed_performance_baseline": false
+    }
+  ],
+  "all23_unique_and_cited_in_each_current_body": true,
+  "all23_full_text_read": false,
+  "journal_specific_style_finalized": false,
+  "route_publication_authorized": false,
+  "original_bibliography_access_dates_preserved": true
+}

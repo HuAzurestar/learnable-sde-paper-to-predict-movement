@@ -1,0 +1,43 @@
+% Public-card rendering only; manuscript integration and acceptance remain pending.
+\begingroup
+\small
+\setlength{\tabcolsep}{3pt}
+\setlength{\LTcapwidth}{\linewidth}
+\begin{longtable}{@{}p{0.19\linewidth}p{0.18\linewidth}p{0.16\linewidth}p{0.29\linewidth}p{0.1\linewidth}@{}}
+\caption{保存配对比较：可见前缀主要任务。差值为候选减对照的能量分数（米）；负值有利于候选，不自动表示地形因素有益。区间是原比较族内同时区间，次要任务仅作描述。缺失值为--，不是零。块数表示登记记录哈希组，不认证独立参与者。尾部、规划与分辨率不变裁定分别保留原状态；本表不授予科学或人工验收。}\label{tab:public-card-methods-causal-prefix}\\
+\toprule
+比较族／比较 & 候选／对照 & $\Delta$及同时区间（米） & 保存资格状态／原因 & 块；计划／缺失／失败行\\
+\midrule
+\endfirsthead
+\multicolumn{5}{@{}l}{\tablename~\thetable\ (续表)}\\
+\toprule
+比较族／比较 & 候选／对照 & $\Delta$及同时区间（米） & 保存资格状态／原因 & 块；计划／缺失／失败行\\
+\midrule
+\endhead
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+模型结构\newline arm-02/\allowbreak{}pointwise & arm-02/\allowbreak{}pointwise\newline / arm-01/\allowbreak{}full & 32.95\newline [22.99, 43.37] & inconclusive\newline interval\_\allowbreak{}overlaps\_\allowbreak{}practical\_\allowbreak{}boundary\_\allowbreak{}or\_\allowbreak{}not\_\allowbreak{}significant\newline 尾部：通过; 规划：通过\newline 分辨率：inconclusive & 46\newline 1150 / 0 / 0\\
+模型结构\newline arm-03/\allowbreak{}single\_\allowbreak{}gaussian & arm-03/\allowbreak{}single\_\allowbreak{}gaussian\newline / arm-01/\allowbreak{}full & 22.01\newline [-14.19, 60.81] & inconclusive\newline interval\_\allowbreak{}overlaps\_\allowbreak{}practical\_\allowbreak{}boundary\_\allowbreak{}or\_\allowbreak{}not\_\allowbreak{}significant\newline 尾部：通过; 规划：通过\newline 分辨率：inconclusive & 46\newline 1150 / 0 / 0\\
+模型结构\newline arm-04/\allowbreak{}gmm\_\allowbreak{}kernel & arm-04/\allowbreak{}gmm\_\allowbreak{}kernel\newline / arm-01/\allowbreak{}full & -2.826\newline [-21.22, 16.33] & equivalent\newline simultaneous\_\allowbreak{}interval\_\allowbreak{}strictly\_\allowbreak{}inside\_\allowbreak{}practical\_\allowbreak{}band\newline 尾部：通过; 规划：通过\newline 分辨率：inconclusive & 46\newline 1150 / 0 / 0\\
+模型结构\newline arm-05/\allowbreak{}explicit\_\allowbreak{}decomp & arm-05/\allowbreak{}explicit\_\allowbreak{}decomp\newline / arm-01/\allowbreak{}full & 57.96\newline [-3.035, 117.1] & inconclusive\newline interval\_\allowbreak{}overlaps\_\allowbreak{}practical\_\allowbreak{}boundary\_\allowbreak{}or\_\allowbreak{}not\_\allowbreak{}significant\newline 尾部：通过; 规划：通过\newline 分辨率：inconclusive & 46\newline 1150 / 0 / 0\\
+数值传播\newline arm-19/\allowbreak{}em & arm-19/\allowbreak{}em\newline / arm-18/\allowbreak{}full & 0.02545\newline [0.007741, 0.05092] & equivalent\newline simultaneous\_\allowbreak{}interval\_\allowbreak{}strictly\_\allowbreak{}inside\_\allowbreak{}practical\_\allowbreak{}band\newline 尾部：通过; 规划：通过\newline 分辨率：inconclusive & 46\newline 1380 / 0 / 0\\
+数值传播\newline arm-19/\allowbreak{}euler & arm-19/\allowbreak{}euler\newline / arm-18/\allowbreak{}full & 0.02545\newline [0.007741, 0.05092] & equivalent\newline simultaneous\_\allowbreak{}interval\_\allowbreak{}strictly\_\allowbreak{}inside\_\allowbreak{}practical\_\allowbreak{}band\newline 尾部：通过; 规划：通过\newline 分辨率：inconclusive & 46\newline 1380 / 0 / 0\\
+数值传播\newline arm-21/\allowbreak{}crn & arm-21/\allowbreak{}crn\newline / arm-20/\allowbreak{}full & -5.635e-05\newline [-0.0001528, 1.484e-05] & equivalent\newline simultaneous\_\allowbreak{}interval\_\allowbreak{}strictly\_\allowbreak{}inside\_\allowbreak{}practical\_\allowbreak{}band\newline 尾部：通过; 规划：通过\newline 分辨率：inconclusive & 46\newline 1380 / 0 / 0\\
+数值传播\newline arm-21/\allowbreak{}mc & arm-21/\allowbreak{}mc\newline / arm-20/\allowbreak{}full & -0.7793\newline [-2.948, 1.494] & equivalent\newline simultaneous\_\allowbreak{}interval\_\allowbreak{}strictly\_\allowbreak{}inside\_\allowbreak{}practical\_\allowbreak{}band\newline 尾部：通过; 规划：通过\newline 分辨率：inconclusive & 46\newline 1380 / 0 / 0\\
+拟合与评分路线\newline arm-08/\allowbreak{}qmle & arm-08/\allowbreak{}qmle\newline / arm-07/\allowbreak{}full & 0.2756\newline [-1.917, 2.704] & equivalent\newline simultaneous\_\allowbreak{}interval\_\allowbreak{}strictly\_\allowbreak{}inside\_\allowbreak{}practical\_\allowbreak{}band\newline 尾部：通过; 规划：通过\newline 分辨率：inconclusive & 46\newline 1380 / 0 / 0\\
+拟合与评分路线\newline arm-09/\allowbreak{}mixed & arm-09/\allowbreak{}mixed\newline / arm-07/\allowbreak{}full & -6.55\newline [-16.86, 3.18] & equivalent\newline simultaneous\_\allowbreak{}interval\_\allowbreak{}strictly\_\allowbreak{}inside\_\allowbreak{}practical\_\allowbreak{}band\newline 尾部：通过; 规划：通过\newline 分辨率：inconclusive & 46\newline 1380 / 0 / 0\\
+拟合与评分路线\newline arm-09/\allowbreak{}pure\_\allowbreak{}es & arm-09/\allowbreak{}pure\_\allowbreak{}es\newline / arm-07/\allowbreak{}full & -5.314\newline [-15.98, 5.26] & equivalent\newline simultaneous\_\allowbreak{}interval\_\allowbreak{}strictly\_\allowbreak{}inside\_\allowbreak{}practical\_\allowbreak{}band\newline 尾部：通过; 规划：通过\newline 分辨率：inconclusive & 46\newline 1380 / 0 / 0\\
+拟合与评分路线\newline arm-10/\allowbreak{}d2\_\allowbreak{}closed & arm-10/\allowbreak{}d2\_\allowbreak{}closed\newline / arm-07/\allowbreak{}full & 0\newline [0, 0] & inconclusive\newline zero\_\allowbreak{}development\_\allowbreak{}SD\_\allowbreak{}is\_\allowbreak{}not\_\allowbreak{}power\_\allowbreak{}evidence\newline 尾部：通过; 规划：未通过\newline 分辨率：inconclusive & 46\newline 1380 / 0 / 0\\
+拟合与评分路线\newline arm-10/\allowbreak{}d2\_\allowbreak{}mc & arm-10/\allowbreak{}d2\_\allowbreak{}mc\newline / arm-07/\allowbreak{}full & 0\newline [0, 0] & inconclusive\newline zero\_\allowbreak{}development\_\allowbreak{}SD\_\allowbreak{}is\_\allowbreak{}not\_\allowbreak{}power\_\allowbreak{}evidence\newline 尾部：通过; 规划：未通过\newline 分辨率：inconclusive & 46\newline 1380 / 0 / 0\\
+观测间隔\newline arm-06/\allowbreak{}dt120 & arm-06/\allowbreak{}dt120\newline / arm-01/\allowbreak{}full & -11.56\newline [-20.37, -3.042] & equivalent\newline simultaneous\_\allowbreak{}interval\_\allowbreak{}strictly\_\allowbreak{}inside\_\allowbreak{}practical\_\allowbreak{}band\newline 尾部：通过; 规划：通过\newline 分辨率：inconclusive & 46\newline 1150 / 0 / 0\\
+观测间隔\newline arm-06/\allowbreak{}dt30 & arm-06/\allowbreak{}dt30\newline / arm-01/\allowbreak{}full & 8.562\newline [3.733, 13.76] & equivalent\newline simultaneous\_\allowbreak{}interval\_\allowbreak{}strictly\_\allowbreak{}inside\_\allowbreak{}practical\_\allowbreak{}band\newline 尾部：通过; 规划：通过\newline 分辨率：inconclusive & 46\newline 1150 / 0 / 0\\
+观测间隔\newline arm-06/\allowbreak{}dt300 & arm-06/\allowbreak{}dt300\newline / arm-01/\allowbreak{}full & -23.4\newline [-48.27, -2.467] & inconclusive\newline interval\_\allowbreak{}overlaps\_\allowbreak{}practical\_\allowbreak{}boundary\_\allowbreak{}or\_\allowbreak{}not\_\allowbreak{}significant\newline 尾部：通过; 规划：通过\newline 分辨率：inconclusive & 46\newline 1150 / 0 / 0\\
+观测间隔\newline arm-06/\allowbreak{}dt600 & arm-06/\allowbreak{}dt600\newline / arm-01/\allowbreak{}full & -24.69\newline [-67.65, 9.077] & inconclusive\newline planning\_\allowbreak{}power\_\allowbreak{}below\_\allowbreak{}target\newline 尾部：通过; 规划：未通过\newline 分辨率：inconclusive & 46\newline 1150 / 0 / 0\\
+训练与适应\newline arm-12/\allowbreak{}scratch & arm-12/\allowbreak{}scratch\newline / arm-11/\allowbreak{}full & 2.604\newline [-4.734, 10.02] & equivalent\newline simultaneous\_\allowbreak{}interval\_\allowbreak{}strictly\_\allowbreak{}inside\_\allowbreak{}practical\_\allowbreak{}band\newline 尾部：通过; 规划：通过\newline 分辨率：inconclusive & 46\newline 1150 / 0 / 0\\
+训练与适应\newline arm-14/\allowbreak{}reptile & arm-14/\allowbreak{}reptile\newline / arm-11/\allowbreak{}full & 2.195\newline [-11.95, 12.91] & equivalent\newline simultaneous\_\allowbreak{}interval\_\allowbreak{}strictly\_\allowbreak{}inside\_\allowbreak{}practical\_\allowbreak{}band\newline 尾部：通过; 规划：通过\newline 分辨率：inconclusive & 46\newline 1150 / 0 / 0\\
+训练与适应\newline arm-15/\allowbreak{}drift\_\allowbreak{}only & arm-15/\allowbreak{}drift\_\allowbreak{}only\newline / arm-11/\allowbreak{}full & 0.5048\newline [-1.522, 2.487] & equivalent\newline simultaneous\_\allowbreak{}interval\_\allowbreak{}strictly\_\allowbreak{}inside\_\allowbreak{}practical\_\allowbreak{}band\newline 尾部：通过; 规划：通过\newline 分辨率：inconclusive & 46\newline 1150 / 0 / 0\\
+训练与适应\newline arm-15/\allowbreak{}two\_\allowbreak{}step & arm-15/\allowbreak{}two\_\allowbreak{}step\newline / arm-11/\allowbreak{}full & -0.03591\newline [-2.598, 1.813] & equivalent\newline simultaneous\_\allowbreak{}interval\_\allowbreak{}strictly\_\allowbreak{}inside\_\allowbreak{}practical\_\allowbreak{}band\newline 尾部：通过; 规划：通过\newline 分辨率：inconclusive & 46\newline 1150 / 0 / 0\\
+\end{longtable}
+\endgroup

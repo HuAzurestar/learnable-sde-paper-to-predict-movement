@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import re
 import subprocess
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -31,6 +32,18 @@ def main() -> int:
     for path in candidate_files():
         relative = path.relative_to(ROOT)
         if relative == Path("scripts/check_public_release.py"):
+            continue
+        if path.suffix.lower() == ".gz":
+            if relative != Path("paper/pirc17/replay-input-v1/export.json.gz"):
+                problems.append(f"unapproved compressed artifact: {relative}")
+                continue
+            # Inspect the contents, not just an opaque compressed file extension.
+            sys.path.insert(0, str(ROOT / 'scripts'))
+            from pirc17_replay_input import read_package
+            try:
+                read_package(path.parent)
+            except (ValueError, OSError, KeyError, TypeError) as exc:
+                problems.append(f"invalid anonymous replay input: {relative}: {exc}")
             continue
         if path.suffix.lower() in FORBIDDEN_SUFFIXES:
             problems.append(f"forbidden artifact: {relative}")

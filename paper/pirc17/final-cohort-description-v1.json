@@ -1,0 +1,80 @@
+{
+  "bindings": {
+    "eligibility_content_sha256": "d9600487e5e7b2ad7fcca5c955b59b0c255fc51d4a9e729508b987452da0ffc5",
+    "eligibility_file_sha256": "7ce338a1a2a67ef0642b484497960916004d872686d036ec25facd6a9df44718",
+    "eligibility_rule_sha256": "35426b655f9032106ce7537ad153b984389501d1c51b9c0ebc3ea1e97791038d",
+    "execution_sha256": "c3e44393f6bc5544aaa21bb273c94eaecb9d0becb4e0590771355c4c0be9b6c2",
+    "partition_description_sha256": "e767f97c0cf856cd9559edcc11207147d211617ff3214ce3c9692cfb73cdd9e0",
+    "population_content_sha256": "7061f44ef8647f7bee55822ca7e494e53d3c058e5973d6198e997893c70bb020",
+    "population_file_sha256": "5748b8903198a462f6145ed6d9d3676d793d90227a1a725bffd2720adad7e53b",
+    "protocol_sha256": "2267ab84fa77ff4039234a61e8f44be1c3713317d8ad2d1bb4ced9af0c5b293a"
+  },
+  "eligible_blocks_not_selected": 27,
+  "eligible_windows_not_selected_as_origins": 60,
+  "eligible_windows_per_block_histogram": {
+    "1": 53,
+    "2": 15,
+    "3": 4,
+    "11": 1
+  },
+  "first_recorded_reason_counts": {
+    "followup-shorter-than-1800s": 12137,
+    "invalid-road-coverage-origin-through-target-end": 21,
+    "nonpositive-observation-gap": 106
+  },
+  "mutually_exclusive_exclusions": {
+    "coverage_after_temporal": 21,
+    "temporal": 12243
+  },
+  "overlapping_reason_counts": {
+    "followup-shorter-than-1800s": 12240,
+    "invalid-history-coverage-origin-through-target-end": 16,
+    "invalid-river-coverage-origin-through-target-end": 58,
+    "invalid-road-coverage-origin-through-target-end": 1497,
+    "invalid-surface-coverage-origin-through-target-end": 41,
+    "missing-distinct-original-score-targets": 12232,
+    "nonpositive-observation-gap": 106
+  },
+  "schema_version": "pirc17-saved-final-cohort-description-v1",
+  "scope": {
+    "included_excluded_geographic_speed_duration_distributions_available": false,
+    "independent_saved_output_audit_completed": false,
+    "new_fits_forecasts_particle_scores_or_map_queries": 0,
+    "original_eligibility_recomputed_from_raw_points": false,
+    "participant_or_near_route_independence_established": false,
+    "private_sample_segment_block_ids_or_coordinates_exported": false
+  },
+  "secondary_blocks_reused_per_mode": 6,
+  "selected_block_eligible_windows": 69,
+  "selection_sha256": "5fcc3ddde79ed4e41c52776c8a1dce70bcd4c442dd9ad39df775b95b0cd1df4f",
+  "stages": {
+    "joint_feature_validity": {
+      "recording_hash_blocks": 73,
+      "windows": 106
+    },
+    "metadata_complete": {
+      "recording_hash_blocks": 1094,
+      "windows": 12370
+    },
+    "released": {
+      "recording_hash_blocks": 1094,
+      "windows": 12370
+    },
+    "selected_primary": {
+      "recording_hash_blocks": 46,
+      "windows": 46
+    },
+    "temporal_support": {
+      "recording_hash_blocks": 89,
+      "windows": 127
+    }
+  },
+  "source_code_sha256": {
+    "PSDE-SDE/experiments/pirc17/formal_eligibility.py": "98ff979567ee3f547515e785f8c44ac4c05e2a269c142cb6245a2b56ba008692",
+    "PSDE-SDE/experiments/pirc17/final_eval_guard.py": "11aee0fb783347d83bc520de520d5696a40110c85cb3f2fe797070d9ab244234",
+    "PSDE-SDE/experiments/pirc17/delivery_policy.py": "b4e5648d8b0b21b676e32ae9b63d70ecd24743e5ab93bffdbb3aee77c57f0b1d"
+  },
+  "reader": "scripts/describe_pirc17_final_cohort.py",
+  "reader_sha256": "ba68fc4a1d34b8b0d8940dc2940c8710fb19e9b21754ff5f590f1bea35909fe0",
+  "description": "Original saved pre-performance dispositions only. Nested report categories prioritize metadata, then temporal conditions, then feature validity; overlapping flags must not be summed. First recorded reason is a descriptive partition, not proof of unique physical cause. No raw eligibility recomputation or new selection/forecasts. One lexicographically minimal sample per block, blocks ordered by digest(['pirc17-final-block-order-v1', block]); primary first46 and secondary first6 unchanged."
+}

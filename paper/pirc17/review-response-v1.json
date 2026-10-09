@@ -1,0 +1,1282 @@
+{
+  "schema_version": "pirc17-review-response-v1",
+  "scope": "Evidence-linked author response and bounded draft triage of all42 original HTML items; not independent peer review or final experimental acceptance",
+  "review_source": {
+    "name": "PIRC17_review.html",
+    "sha256": "457688e8ba81c88b6c9f71f22da8f457fa2245809e1b1368c5e0aef5b824b65d",
+    "original_reviewed_pdf_sha256": "2feba237d2b3e6aaf3dc2e8c9679e84d2ffa7ff513f252f9e454f92ea4bd9a6a",
+    "issues_by_priority": {
+      "P0": 6,
+      "P1": 26,
+      "P2": 10
+    }
+  },
+  "original_response_base_manuscript_commit": "dc5b05eabe12fff7294e30e50a82c78c9350a0eb",
+  "revision_base_commit": "b3147461244c8adcde756b8458f645599a8fe337",
+  "revision_identity": "Exact current local manuscript evidence is identified by the SHA256 values below. revision_base_commit is the clean source used by audited-review-build-v1.json for the EN92/ZH90 PDFs and current42 author responses, not the future commit containing this response. Original42 statuses are historical triage, not promotion to final acceptance; review-current-v2.md records current author responses separately. Public projections retain original-local bindings, not certification of withheld cases or replacement public PDFs. Source/PDF hash synchronization is not review acceptance.",
+  "status_definitions": {
+    "draft_checked": "已核对当前工作稿中的针对性文稿修复；不是审查人验收，不表示最终实证资格或论文完成。",
+    "partial": "已有修改，但原验收仍有证据、诊断或文稿缺口；如实披露限制不等于已经补齐。",
+    "awaiting_original_results": "已补规则或阶段说明，但对应最终证据依赖原已授权实验/辅助项/独立复算/导出；不另立实验。",
+    "permission_unverified": "发表权限或伦理/隐私仍未真实核实；本地案例不自动获得公开许可。"
+  },
+  "status_counts": {
+    "draft_checked": 20,
+    "partial": 14,
+    "awaiting_original_results": 7,
+    "permission_unverified": 1
+  },
+  "accepted_items": 0,
+  "all_review_items_or_paper_complete": false,
+  "independent_saved_output_audit_completed": false,
+  "new_fits_forecasts_scores_resampling_or_map_queries": 0,
+  "additional_experiments_authorized_by_this_response": false,
+  "response_does_not_replace_original_full_goal": true,
+  "evidence_files": [
+    {
+      "path": "paper/pirc17/runtime-interruption-census-v1.json",
+      "sha256": "ba0725440ee723507c65ae9b56441d694bb4bf73b5ece3537ba5f01d43b2edf7"
+    },
+    {
+      "path": "paper/pirc17/runtime-interruption-disclosure-v1.json",
+      "sha256": "27cf48830386bf67b6fcf9e78e72b8ab53b8b7533562e6e33d8d497868de721d"
+    },
+    {
+      "path": "paper/pirc17/analysis-stage-summary-v1.json",
+      "sha256": "366599a19af1208ec539c45cf667bf2d63de7e9cff30ead00a8135dc90492039"
+    },
+    {
+      "path": "paper/pirc17/terrain-family-completeness-v1.json",
+      "sha256": "6d2a580bcec9db8d00b593a2aa5446b65713453f18a7dbc8532c6ae0fa332c0c"
+    },
+    {
+      "path": "paper/pirc17/point-error-horizon-description-v1.json",
+      "sha256": "73e5eff2550fb1572a8a449500adf3f17c88be219932eb5c343d927be258176c"
+    },
+    {
+      "path": "scripts/describe_pirc17_point_errors.py",
+      "sha256": "78ed0260c31cd91a201c28d28d754be46078cd5bc2a9e44d6be2fe1c9734c355"
+    },
+    {
+      "path": "scripts/render_pirc17_point_error_tables.py",
+      "sha256": "3583381b5ea1246fbb63bd88195af4076731cdade9c673a8413821b9c8ddadf9"
+    },
+    {
+      "path": "paper/pirc17/en/point-error-horizons.tex",
+      "sha256": "1cd4e747a1b720cb6c0389481bb7360ce7c5c5a32031fbdae10436e386a5ca95"
+    },
+    {
+      "path": "paper/pirc17/zh/point-error-horizons.tex",
+      "sha256": "994f0151504b4c4a5ca2548c6dafac0db5e8068ae292f5422c8e9259f0ad7224"
+    },
+    {
+      "path": "paper/pirc17/inertial-primary-description-v1.json",
+      "sha256": "80725a94a86bcd58d1bc71f8698221eee5c17e0276e14109425ecdac69f9eb82"
+    },
+    {
+      "path": "scripts/describe_pirc17_inertial.py",
+      "sha256": "2254509e2d14c34583c7081345a3946f94563c73800fa808fa7d340680f68cbc"
+    },
+    {
+      "path": "scripts/render_pirc17_inertial_tables.py",
+      "sha256": "6a96dbb4a0a440cafb11d98e21cfd54cac8251585aa75becff7f4d301fb5e29f"
+    },
+    {
+      "path": "paper/pirc17/en/inertial-primary-comparison.tex",
+      "sha256": "8b68a8e599b65fa80c7f0fc012756afb09576403f94299810e70c75a00574700"
+    },
+    {
+      "path": "paper/pirc17/zh/inertial-primary-comparison.tex",
+      "sha256": "075d3418d939d868baa488c8ac5d618869ab8aabb481c47e56edba1c90e2d6b2"
+    },
+    {
+      "path": "paper/pirc17/final-cohort-duration-description-v1.json",
+      "sha256": "152eb502a0d1ae80e43ba30bc32f341826a327ae3a2ed2413b8bc9d848202f3b"
+    },
+    {
+      "path": "paper/pirc17/final-cohort-geography-description-v1.json",
+      "sha256": "453ae33ebe86937a845844968a5a4c21a5e28efafd40a0b96d97dc45914b116f"
+    },
+    {
+      "path": "paper/pirc17/mode-partition-description-v1.json",
+      "sha256": "3ea7aafaf4751691dd8afa044a37d7edc0dade36124addd5500ba3296a48b55c"
+    },
+    {
+      "path": "paper/pirc17/development-history-description-v1.json",
+      "sha256": "68dbf4604b8bc891c43d6dd45b761693016b50ef07f39b6afe1fbe982c2f1ceb"
+    },
+    {
+      "path": "paper/pirc17/data-reference-description-v1.json",
+      "sha256": "cff851b4489d495f94cd66c0bbb9dc20e3e02e3cbcac5af117c1a82f2185dd98"
+    },
+    {
+      "path": "paper/pirc17/capture-count-reconciliation-v1.json",
+      "sha256": "cb4fd99c3a1d3acff76da3b07ad58bd62778dab1d1fa792b38d115cc198f9a9c"
+    },
+    {
+      "path": "paper/pirc17/claim-ledger.json",
+      "sha256": "a25b532564d54908522916cbdbed5da74bf10ba039d56afcab090d9fb9f70385"
+    },
+    {
+      "path": "paper/pirc17/partition-description-v1.json",
+      "sha256": "e767f97c0cf856cd9559edcc11207147d211617ff3214ce3c9692cfb73cdd9e0"
+    },
+    {
+      "path": "paper/pirc17/clock-description-v1.json",
+      "sha256": "6831839d7df9cee4a9a4aae932cc831ae92fc7dbfe2e684a67032add1105bfb3"
+    },
+    {
+      "path": "paper/pirc17/failure-description-v1.json",
+      "sha256": "3d9167511b546c1496b8bc4b644264f920b78120bc49678ec7ab9953151a8d26"
+    },
+    {
+      "path": "paper/pirc17/history-missingness-description-v1.json",
+      "sha256": "36752fb1ee92575213e242631a16148dce06b26b3677234876df9c31fefe5087"
+    },
+    {
+      "path": "paper/pirc17/feature-design-description-v1.json",
+      "sha256": "536e6747efac51ba17b54de06f428e7a1063d03fdf7b07fcfa243f08f7a0cd6a"
+    },
+    {
+      "path": "paper/pirc17/fit-diagnostics-v1.json",
+      "sha256": "b3d8b6e440399779f5fbac999aba13b23ab0749144441a4b767e746ae3123e3d"
+    },
+    {
+      "path": "paper/pirc17/method-algorithm-description-v1.json",
+      "sha256": "8bd86bb00cd9f7ef0785c34dd7383771b59140ffbf51c277a4251e56e208b741"
+    },
+    {
+      "path": "paper/pirc17/estimator-calibration-description-v1.json",
+      "sha256": "3485aaea261a9a3a4e3887652c7c92cfed5e882f98593a7161b967e998f7498e"
+    },
+    {
+      "path": "paper/pirc17/inference-description-v1.json",
+      "sha256": "10e56e792fff20aa2f96df9df4f55b5929f2d4ab5d81d05ef54629f151b11253"
+    },
+    {
+      "path": "paper/pirc17/calibration-description-v1.json",
+      "sha256": "3d79b46f7cf368547c4e9773c4f843fce4646044eaaec27032994bb982c062f3"
+    },
+    {
+      "path": "paper/pirc17/execution-coverage-20261006-v1.json",
+      "sha256": "e736ea70f79f147e00e460b827a2f214368fc68da77a32c0086227df225557b2"
+    },
+    {
+      "path": "paper/pirc17/preliminary-method-statistics-v1.json",
+      "sha256": "8900f3dee68d5fc9cafd5ced2e2394503432d2493251601c0ba9cb771cbefba1"
+    },
+    {
+      "path": "paper/pirc17/preliminary-reader-presentation-v1.json",
+      "sha256": "6512fd87f68b4d73a67c99da8d03e9a56a9d821523af498346a089ff029bacfb"
+    },
+    {
+      "path": "paper/pirc17/preliminary-origin-environment-v1.json",
+      "sha256": "0fe984e8c9422ffa93e5b033098b0e387878ce69731c2f6363c6381ffdf3e52c"
+    },
+    {
+      "path": "paper/pirc17/map-source-acknowledgements-v1.json",
+      "sha256": "e4590547ada23209f2efd27d9cc127e9efacfc22910bf6346810049719502b1c"
+    },
+    {
+      "path": "paper/pirc17/preliminary-geography-v1.json",
+      "sha256": "90acfb5e2eb57778a25fcb79b3066c7e8c7815beb462a1748b914c9d2f4ebe3e"
+    },
+    {
+      "path": "paper/pirc17/figures/case-horizons.json",
+      "sha256": "bb95e19698632bae6b17c24f5c423e493f599039d14a9982c2a0a82edb0c37c6"
+    },
+    {
+      "path": "paper/pirc17/figures/preliminary-figure-manifest.json",
+      "sha256": "c2cab2dfa041a963466908b327fbf62802c4c255b8ba0ec88435a2a1ca03bf36"
+    },
+    {
+      "path": "paper/pirc17/en/main.tex",
+      "sha256": "eb57ca22b02f2bb08102ca0b096b6262cb750bcce16d7c46af407f946b6a0213"
+    },
+    {
+      "path": "paper/pirc17/zh/main.tex",
+      "sha256": "eefdc674db669c101fd9cc62f5dc6637368b596c2698475aa4648ebfe266a683"
+    },
+    {
+      "path": "paper/pirc17/en/main.pdf",
+      "sha256": "c31ee366d1c6a0fea5ca056230ccc4610b8d040c4930a9fac84cc4a39d44c7a1"
+    },
+    {
+      "path": "paper/pirc17/zh/main.pdf",
+      "sha256": "a5794d3ab721babb61608fcc383f4ab6aca37c054e220bc323c7f1a3c55f9595"
+    },
+    {
+      "path": "paper/pirc17/en/all-method-absolute.tex",
+      "sha256": "cadac642548bf4cf8fcc28ca5abd702d9668a5865460ee87560eb9f1c4ac49d9"
+    },
+    {
+      "path": "paper/pirc17/zh/all-method-absolute.tex",
+      "sha256": "d4189243fc531782f14ccf280afcb8733ead0ac8d6826e7844fbe9b1a8ef61a0"
+    },
+    {
+      "path": "paper/pirc17/target-time-description-v1.json",
+      "sha256": "aaac7c227220eb38605f8b995b1c5d993ff40608201eab89813a3a06bf43d4bf"
+    },
+    {
+      "path": "scripts/describe_pirc17_target_times.py",
+      "sha256": "22f692fd595b32c851c20e8ce9aee2367294067a43e5c4de791725c06d297607"
+    },
+    {
+      "path": "paper/pirc17/final-cohort-description-v1.json",
+      "sha256": "bb48e9fa6b09807f6ad8ebfb4036d286e2506d9b1abccf08398438df6422bf05"
+    },
+    {
+      "path": "scripts/describe_pirc17_final_cohort.py",
+      "sha256": "ba68fc4a1d34b8b0d8940dc2940c8710fb19e9b21754ff5f590f1bea35909fe0"
+    },
+    {
+      "path": "paper/pirc17/calibration-block-description-v1.json",
+      "sha256": "4c844db56c697bb84b9657e90cb4993ba9dffae62588cc2f29cab8b04f005420"
+    },
+    {
+      "path": "scripts/plot_pirc17_calibration_blocks.py",
+      "sha256": "db7844ea5251407e7d59e0bc83be344af177ac6af5d57973aa9e7529bc35c3f6"
+    },
+    {
+      "path": "paper/pirc17/figures/calibration-block-figure-manifest.json",
+      "sha256": "5a847651961a87fab1b76e4cf23025588b5eb92b2c6aa95f0bfece2954bbc934"
+    },
+    {
+      "path": "paper/pirc17/figures/preliminary-calibration-blocks.pdf",
+      "sha256": "f9b9b619ed8169692dd439fd6103084d221a2ae6835a4f3aa4bf5185a35cc6ed"
+    },
+    {
+      "path": "paper/pirc17/figures/preliminary-calibration-blocks.png",
+      "sha256": "8fc00c8167558709568bc879cda35ea5b9ed488f214d391556dcfa1a5614df6a"
+    },
+    {
+      "path": "paper/pirc17/method-noise-description-v1.json",
+      "sha256": "5f5979c3fa274e992a39650aeab3047c4f7740c3ccc71c1e905b940ab26e29da"
+    },
+    {
+      "path": "paper/pirc17/terrain-fit-scope-description-v1.json",
+      "sha256": "640577afde5ca2155dc7bbc9fece2cc1b997b834da11fa588f41f5299555a58d"
+    },
+    {
+      "path": "paper/pirc17/map-provider-description-v1.json",
+      "sha256": "7b5ebb90c52304fcdbb2b8e2a45934e41ed95a9ad1ef490807c9d2894c7d1b97"
+    },
+    {
+      "path": "paper/pirc17/final-cohort-speed-description-v1.json",
+      "sha256": "55d1983efc4dbfdda5c617ccb12cb5bf0524823375217438f1fd774abe94216c"
+    },
+    {
+      "path": "paper/pirc17/reptile-task-description-v1.json",
+      "sha256": "fbc6d5c4af6f0b224067d199150422cad38a0d8b4c9a1a393909b22fd821b3bc"
+    },
+    {
+      "path": "paper/pirc17/method-seed-stability-v1.json",
+      "sha256": "0725fc3ec043cd4fd686454f094609b299afa2fb5416da40556d74f929dd6fac"
+    },
+    {
+      "path": "scripts/describe_pirc17_seed_stability.py",
+      "sha256": "9a722d5b926d014571f46e96adc74615172cfdb0ebf2b46d27d7b369e383e6bc"
+    },
+    {
+      "path": "paper/pirc17/en/method-seed-stability.tex",
+      "sha256": "3508c256df6af6b412a6a7b21a44ccbf6b26b3dae47cbe937495689cd387e537"
+    },
+    {
+      "path": "paper/pirc17/zh/method-seed-stability.tex",
+      "sha256": "981e59dc73ea3ddf5f3aec6276fc922fc60ce7386c258606073819fce22c972e"
+    },
+    {
+      "path": "scripts/plot_pirc17_method_horizons.py",
+      "sha256": "1f0dce27dd72c279e27dbae373461517d16caf2851458c0df1b9f8a32dcaa5f6"
+    },
+    {
+      "path": "paper/pirc17/method-horizon-description-v1.json",
+      "sha256": "196167ed0aaeb1e7c5a1dfb8858068ea339294eb0eaf49aac212ad8f76195106"
+    },
+    {
+      "path": "paper/pirc17/figures/method-horizon-overview.pdf",
+      "sha256": "43d8062bfd4ea78c60a38c387a6b78ea76bd453fe9e082342e28f47ca5977c30"
+    },
+    {
+      "path": "paper/pirc17/figures/method-horizon-overview.png",
+      "sha256": "d3f934222e0974093ac049c8a923d7002378c54d52c541e57d2e6d3a45c82eb9"
+    },
+    {
+      "path": "paper/pirc17/figures/method-horizon-manifest-v1.json",
+      "sha256": "7c926d5c9d30fe3570cc5885284fa1de3de53453a4f400e5b45cd831fd73b256"
+    },
+    {
+      "path": "paper/pirc17/en/method-horizon-overview.tex",
+      "sha256": "3527c0358cc4c7da9f784451defb1de1e19a7432aa6d7f1c15d2ca2366b23ab7"
+    },
+    {
+      "path": "paper/pirc17/zh/method-horizon-overview.tex",
+      "sha256": "f6f5f9f49fe58b16153432f87312fbef456ede6744e2b6586de06e8803dbafdf"
+    },
+    {
+      "path": "paper/pirc17/en/method-horizon-tables.tex",
+      "sha256": "0811a525795b68a628b0552a4594670e5dbfa8b1b6479c751d9504c6c23e07d9"
+    },
+    {
+      "path": "paper/pirc17/zh/method-horizon-tables.tex",
+      "sha256": "cdcc5d3320cee1ae4c4b3c26b96b520746f393ae36bc849852e6e21f060bee26"
+    },
+    {
+      "path": "paper/pirc17/all-method-region-description-v1.json",
+      "sha256": "43247e7bbec10dc5f087b412c2b1b223f89b9adb33c64f97ba5ce1187a9092d8"
+    },
+    {
+      "path": "scripts/plot_pirc17_method_regions.py",
+      "sha256": "f663fb538d1807d311b1ee604f7857e38b8933d89e68de0cb581ed09a02b6ccf"
+    },
+    {
+      "path": "paper/pirc17/figures/method-region-manifest-v1.json",
+      "sha256": "f8d5cca2e2623bbebe51100623ae6a776f90c8ecec7c7c3e2812dab0f3a75d5f"
+    },
+    {
+      "path": "paper/pirc17/figures/method-region-overview.pdf",
+      "sha256": "a11c1c886c7316cb1abc888137d0253ef8294bac7823d5dc28fd7fd34b59336a"
+    },
+    {
+      "path": "paper/pirc17/figures/method-region-overview.png",
+      "sha256": "201bfc4d96eb0826b01b9b9320047eb1cf52fdffdb66df29846a13e9b53b7fcb"
+    },
+    {
+      "path": "paper/pirc17/en/method-region-overview.tex",
+      "sha256": "f172f6110152b148d4a49cec4aa610ea137da4134dca8528cf484aacec848d01"
+    },
+    {
+      "path": "paper/pirc17/zh/method-region-overview.tex",
+      "sha256": "ec6754737303393f590bdf0f3c7902f4b6e193d2e76a9ed21e6ce730f04c2f30"
+    },
+    {
+      "path": "paper/pirc17/en/method-region-tables.tex",
+      "sha256": "6b0b4ed5690970080bbc6795f71007f63057e18a1b7e8c236aae431a2227cb97"
+    },
+    {
+      "path": "paper/pirc17/zh/method-region-tables.tex",
+      "sha256": "820d8ebe42102d30d6e03685d73925447bc579be1e6e80e82d46f635f1ee2b51"
+    },
+    {
+      "path": "paper/pirc17/source-sequence-description-v1.json",
+      "sha256": "3c6e119511cdfc09244511cc4b5b839a7dd86585a9c7e76adbb2ae4fe82443b9"
+    },
+    {
+      "path": "paper/pirc17/terminal-score-inventory-v1.json",
+      "sha256": "2ff1d123d79cb440ee8683ca1c1684ec4c8c8c0129db332b60ff3c6b38a62795"
+    }
+  ],
+  "items": [
+    {
+      "id": "P0-01",
+      "original_title": "普通 Full 的历史输入作用链未闭合",
+      "original_acceptance": "公式、实现和测试一致；明确哪些模型对哪种初始化敏感。不能只补一句“使用了历史”。",
+      "status": "draft_checked",
+      "manuscript_anchors": [
+        "fig:model-data-flow",
+        "sec:method-model",
+        "eq:method-history"
+      ],
+      "evidence": [
+        "paper/pirc17/claim-ledger.json",
+        "paper/pirc17/method-algorithm-description-v1.json"
+      ],
+      "response": "已明确普通 Full 的模式概率来自保存拟合参数，不是新前缀的后验；固定坐标、位置、时钟、参数和随机流时，普通路线不利用给定速度。显式路线使用速率，地形路线另有历史反馈。已有合成契约测试核对相反方向与速率变化，不作新的真实预测。",
+      "remaining": "最终模型与输出来源一致性仍归原独立审计；本项文稿检查不授予实证资格。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P0-02",
+      "original_title": "LOO 正负号转换缺少具名对照，可能反转裁定",
+      "original_acceptance": "至少以 ℓ(A)=100、ℓ(A−g)=160 的例子验证因素有益；并覆盖有害、等价、跨零、端点交换和种子方向的单元测试。",
+      "status": "draft_checked",
+      "manuscript_anchors": [
+        "tab:terrain-sign-roles",
+        "tab:loo-lio-states"
+      ],
+      "evidence": [
+        "paper/pirc17/claim-ledger.json",
+        "paper/pirc17/inference-description-v1.json"
+      ],
+      "response": "已按实际登记源码列出 candidate/control：LOO 为 all-terrain 对 loo-group；机器差为候选减对照。以100/160例说明正收益60、机器差−60，并给区间端点反转与种子方向契约测试。",
+      "remaining": "最终卡片仍需原审计验证输出绑定；未发现可据文稿直接认定的实现反号错误。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P0-03",
+      "original_title": "独立块、划分隔离及既往评估使用史缺乏可核验定义",
+      "original_acceptance": "评估块独立性与各划分隔离都有审计摘要；未能证明的层级不得继续使用更强的“独立/未见”措辞。",
+      "status": "partial",
+      "manuscript_anchors": [
+        "tab:release-partition-identities",
+        "tab:cohort-denominators",
+        "sec:source-sequence-screen",
+        "tab:source-sequence-screen"
+      ],
+      "evidence": [
+        "paper/pirc17/partition-description-v1.json",
+        "paper/pirc17/source-sequence-description-v1.json"
+      ],
+      "response": "已核对7618份分配与72046个窗口身份，明确记录哈希块及跨发布划分零身份交集；披露此前评估使用，撤去独立参与者和首次未见验证的强表述。 新增基于原所选531窗口所用443完整源记录的精确序列检查及双语表：训练266文件/1407171源行、适应65/388784、验证66/360616、最终评估46/342836。对完整有序float64经纬度以及坐标加保留纳秒时钟分别比较，六组跨角色文件对分母17290/17556/12236/4290/2990/3036，完全相等对均零；角色内相等对9/4/4/0（5/2/4/0组）全部已在同一原记录哈希块，无新增不同块匹配。不舍入、容差匹配、排序、反转、平移、删点或重采样；不删除文件、不修改拟合权重或参数。源行包含重复文件和未使用范围，不是拟合转移、唯一观测或独立人员。完整序列精确相等检查不检测近似路线、局部重叠、重复访问或参与者，也不认证物理UTC/坐标来源；P0-03仍partial。",
+      "remaining": "没有参与者标识；近似重复路线、物理时间重叠与主体独立性尚未证明，不能用零哈希交集替代。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P0-04",
+      "original_title": "真实时间与太阳时钟解释仍存在来源资格缺口",
+      "original_acceptance": "能解释 t 的生成与保存链；否则将受影响结果限定为记录时钟下的模型任务，暂停真实时域及太阳物理效应主张。",
+      "status": "draft_checked",
+      "manuscript_anchors": [
+        "sec:clock-and-map-provenance",
+        "tab:clock-use",
+        "eq:solar-condition",
+        "sec:method-model"
+      ],
+      "evidence": [
+        "paper/pirc17/clock-description-v1.json",
+        "paper/pirc17/claim-ledger.json"
+      ],
+      "response": "已列保存纳秒时钟、相对秒与太阳日历输入链；原三个页脚没有时区标注。结果限定于保存记录时钟，太阳仅为其诱导的几何日历条件，不主张真实日光效应。 本轮核对原 HTML 的条件式验收：原验收允许无法证明时钟来源时，采用“记录时钟下的模型任务”并暂停真实时域及太阳物理效应主张。方法章节原“明确 UTC 时钟”和“物理增量协方差”已与该边界统一，改为保留时间坐标及模型 UTC 解释，并明确交叉引用来源未认证的时钟章节。纳秒 t 的保存/对齐、相对时间、目标、割线、太阳日历输入链及全部原参数、公式、结果均未改变；原三份页脚及五源文件绑定仍保留。不以无需补造的 UTC 来源证明继续阻塞这条原已允许的工作稿降格路线，故本项记为 draft_checked，而不是来源认证或审查人验收。",
+      "remaining": "原采集/传感器时钟、真实 UTC 来源、历史太阳生成器一致性与物理日光效应仍未获认证；原三页脚检查不能外推全部记录，也不应用猜测时区修正。工作稿级整改采用原验收的明确降格分支，不授予真实30分钟部署、来源认证、最终输出审计或审查人验收；相关最终资格、整稿与真实人类验收仍待。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P0-05",
+      "original_title": "现有失败使地形研究不是“补跑完成即可出结论”",
+      "original_acceptance": "每个研究问题都有终局状态和依据；不可用不是零效应或等价，协议变更和新结果版本可追踪。",
+      "status": "partial",
+      "manuscript_anchors": [
+        "sec:terminal-failures",
+        "tab:failure-family-dispositions"
+      ],
+      "evidence": [
+        "paper/pirc17/failure-description-v1.json"
+      ],
+      "response": "已明确采用保留原协议、不重试的处置；全部待运行项完成也不会消除五项失败。主地形/LOO、支持LIO及两种已知速度方法家族不可用，不删除失败、不以成功交集估计。",
+      "remaining": "终结执行清单及原独立审计仍待完成；逐项异常栈缺失，不能编造完整根因，也不能以不可用解释零效应。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P0-06",
+      "original_title": "阶段评分还没有完成独立保存输出复算",
+      "original_acceptance": "至少6440项方法主预测的完整性与评分链通过审计；每项最终主张链接具体结果版本，而不只链接协议hash。",
+      "status": "awaiting_original_results",
+      "manuscript_anchors": [
+        "sec:preliminary-methods",
+        "sec:execution-reconstruction"
+      ],
+      "evidence": [
+        "paper/pirc17/preliminary-method-statistics-v1.json",
+        "paper/pirc17/claim-ledger.json"
+      ],
+      "response": "已把保存评分阶段算术与独立预测输出复算区分；6440项完整主方法网格仅具备进入审计的条件，尚未宣称验收。",
+      "remaining": "完成原一次独立保存输出复算，核对逐时刻评分、块配对、随机流、别名与最终展示绑定；不新增预测。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P1-01",
+      "original_title": "研究缺口与科学贡献仍被执行流程代替",
+      "original_acceptance": "引言末尾能用不依赖项目编号的语言写出研究问题、方法和本稿实际贡献。",
+      "status": "draft_checked",
+      "manuscript_anchors": [
+        "sec:research-questions",
+        "sec:related-work"
+      ],
+      "evidence": [
+        "paper/pirc17/claim-ledger.json"
+      ],
+      "response": "已按两个研究问题重写贡献：有限方法配置差异与地形信息增量，区分继承算法、有限实现和经验诊断；不把登记或哈希当模型创新。",
+      "remaining": "最终结论须在原审计后按实际终局更新；当前贡献仍是有边界的阶段工作。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P1-02",
+      "original_title": "普通方法模型的关键定义不足以独立重现",
+      "original_acceptance": "读者不依赖私有项目知识即可实现同样的模型和变体。",
+      "status": "partial",
+      "manuscript_anchors": [
+        "sec:method-model",
+        "eq:meta-inner",
+        "tab:fit-transition-counts",
+        "eq:saved-method-noise",
+        "sec:method-noise-parameters",
+        "tab:method-noise-parameters",
+        "eq:segment-rank-mode",
+        "tab:mode-rank-cardinality",
+        "sec:reptile-task-accounting",
+        "tab:reptile-task-accounting",
+        "sec:method-base-fit",
+        "sec:residual-mixture-fit",
+        "eq:method-base-ridge",
+        "eq:method-base-covariance",
+        "eq:gmm-residual-partition"
+      ],
+      "evidence": [
+        "paper/pirc17/method-algorithm-description-v1.json",
+        "paper/pirc17/fit-diagnostics-v1.json",
+        "paper/pirc17/method-noise-description-v1.json",
+        "paper/pirc17/mode-partition-description-v1.json",
+        "paper/pirc17/reptile-task-description-v1.json"
+      ],
+      "response": "已补模式排序/并列规则、坐标原点、径向零点分支、太阳单位、各dt拟合转移数及参数流，区分方向标签与行为状态。新增十六个原始拟合的最终模式概率与扩散谱表，区分混合后概率、基础拟合频率和每角色频数。普通适应和Reptile会插值概率，因此明确禁止最终概率乘总暴露数补造逐模式计数；保存记录未保留这些计数。 另核对16份原准备角色记账共用485段身份，给出精确方向排序变量、弧度[-pi,pi]分支的向西切口、math.atan2带符号零及未做圆周解缠/零位移过滤；实现标签0/1/2与数学混合分量1/2/3明确对应。按段方向及身份排序后标签min(2,floor(3r/K))，完整训练/适应/验证批次的段级组数为110/109/109、26/25/25、27/27/27。这些是基于原段数及确定规则的基数，不是逐模式转移频数、最终概率、GMM残差组或Reptile地区任务数；不重建原方向或标签、不拟合、不重采样。 另从原发布身份和file_id/city/region三列恢复原Reptile任务清点：适配器去掉city首尾空白，空或不区分大小写的nan才使用未去空白的region/unknown；按精确字符串分组，不带国家键、不统一大小写。全部328训练段使用city分支，266份所用记录内来源标签恒定；标签不是已核实城市、行政区或独立参与者。84组中30个合格任务包含258段、每轮20,029转移；另54小组含70段、5,980转移，仍参与全局初始化但不参与元任务访问。附录完整匿名列出T01–T30，任务内方向排序段级基数合计94/86/78，不是转移频数、最终概率或跨任务行为匹配。仅读取来源标签与原记账，无新拟合、残差重建或预测。 本轮依据冻结源码补齐普通基础拟合：未归一化ridge目标、含截距惩罚ρ=10^-6、各模式线性求解与中心化n_m−1残差协方差加10^-8I；不足两转移即失败，无回退。GMM先用pooled ridge残差按first argmax(east,north,−east−north)一次分组，再按组重拟合漂移/协方差；数学标签加1，零残差归第1组。不是似然EM，不保留pooled共享漂移；每个基础训练/适应批次独立分组。验证却用段方向标签，不用残差组或后验责任；明确该标签差异与缺少模式物理对应，不能由最终概率反推原频数。",
+      "remaining": "完整角色批次与Reptile任务的段级基数、原分组键、访问次序和暴露数已补；仍缺原多模式逐转移标签及训练/适应/验证逐模式转移频数、GMM残差分组及频数。不能用最终混合概率反推频数；段数均衡不证明转移数均衡、任务独立或模式跨批次的物理对应。元更新前/目标混合前的中间参数仍未保存，不重拟合或重采样补造。完整复现规格终审与原独立输出审计仍待，P1-02保留partial。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P1-03",
+      "original_title": "基线与conditioner的历史/截距重复及重拟合边界不清",
+      "original_acceptance": "基线和增量研究的变化边界可核验，不将两阶段回归误称联合最优解。",
+      "status": "draft_checked",
+      "manuscript_anchors": [
+        "eq:baseline-fit",
+        "eq:conditioner-fit",
+        "tab:terrain-fit-diagnostics"
+      ],
+      "evidence": [
+        "paper/pirc17/fit-diagnostics-v1.json",
+        "paper/pirc17/feature-design-description-v1.json"
+      ],
+      "response": "已给两阶段预测函数、未归一化B0与残差条件器目标，核对十个地形拟合的B0相同；指出历史/截距重复及宽度相关的有效惩罚，不称联合最优。",
+      "remaining": "保留该两阶段模型与正则化混杂的解释边界，不重拟合或变更编码。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P1-04",
+      "original_title": "训练有效性筛选与在线缺失处理之间存在未验证外推",
+      "original_acceptance": "用实际矩阵证实或排除常数列问题，并给出缺失输入下的可解释处置与诊断。",
+      "status": "partial",
+      "manuscript_anchors": [
+        "tab:raw-terrain-design",
+        "sec:missing-input-scope",
+        "eq:missing-drift-change"
+      ],
+      "evidence": [
+        "paper/pirc17/feature-design-description-v1.json",
+        "paper/pirc17/history-missingness-description-v1.json"
+      ],
+      "response": "已用实际保存矩阵报告训练/验证常数有效性列、秩和列尺度；给固定其他输入的缺失漂移变化式。六份地图案例保留查询计数，缺失情形明确为训练外外推。",
+      "remaining": "全11020预测的逐列有效率与完整无效查询响应并未保存于当前投影；六份案例不能证明总体缺失鲁棒性。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P1-05",
+      "original_title": "观测历史与预测历史的时间尺度和噪声分布不同",
+      "original_acceptance": "历史算子、初始化和事件顺序明确，并有越界/异常速度及敏感性证据。",
+      "status": "partial",
+      "manuscript_anchors": [
+        "sec:history-feedback",
+        "tab:history-spans",
+        "tab:development-history-spans",
+        "eq:secant-local-noise",
+        "eq:secant-overlap"
+      ],
+      "evidence": [
+        "paper/pirc17/history-missingness-description-v1.json",
+        "paper/pirc17/development-history-description-v1.json"
+      ],
+      "response": "已补初始、首节拍与稳定10秒割线跨度，说明局部固定漂移近似Var(vhat)=Q/T及重叠噪声相关，明确不是完整反馈方差。 另从同397个原绑定特征文件仅读取开发段的身份/时钟列，补全404训练与81验证前缀；均为三个观测点。训练跨度2–62秒，中位6、四分位2–12；验证2–61秒，中位4、四分位2–11。训练短于/等于/长于10秒计254/13/137，验证54/3/24。新表区分观测起点跨度、按缓冲规则推导的首节拍跨度、首未来拟合间隔及稳定10秒割线。只描述原地形开发组，既有46最终前缀投影保持原样；不重读位置、不模拟、不重拟合。",
+      "remaining": "地形训练/验证前缀跨度已补，但完整早晚期速度、方向/漂移分布、越界或异常速度率与改变历史节拍的敏感性仍缺保存证据。时钟支持不同不证明欠覆盖的因果来源或训练/预测分布等价；本统计不冒称普通方法重采样历史的完整分布，也不认证原时钟物理UTC。原独立输出复算与最终资格仍待，不追加长时域模拟来伪闭合；P1-05保留partial。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P1-06",
+      "original_title": "正则化、特征尺度与扩散估计的诊断缺失",
+      "original_acceptance": "λ定义与代码归一化一致；异常负特征值不靠截断悄悄掩盖，数值诊断可核查。",
+      "status": "draft_checked",
+      "manuscript_anchors": [
+        "eq:baseline-fit",
+        "eq:conditioner-fit",
+        "eq:diffusion",
+        "tab:raw-terrain-design",
+        "eq:saved-method-noise",
+        "tab:method-noise-parameters",
+        "eq:terrain-rate-Q",
+        "sec:terrain-fit-intervals",
+        "tab:terrain-fit-intervals",
+        "sec:method-base-fit",
+        "eq:method-base-ridge",
+        "eq:method-base-covariance"
+      ],
+      "evidence": [
+        "paper/pirc17/fit-diagnostics-v1.json",
+        "paper/pirc17/feature-design-description-v1.json",
+        "paper/pirc17/method-noise-description-v1.json",
+        "paper/pirc17/terrain-fit-scope-description-v1.json",
+        "paper/pirc17/method-algorithm-description-v1.json"
+      ],
+      "response": "已核对两层ridge归一化、λ、样本量、原始列尺度与秩/条件诊断，明确常数掩码的惩罚混杂；扩散为拟合残差二阶矩，不声称无偏。另补方法分支16拟合/44模式的已缩放R与Q=τR特征值、量纲、逐模式正定性与负舍入容差；GMM倍率1.7的平方2.89已计入R，不二次缩放。44组保存协方差无负舍入修正；训练10^-8I与预测仅置零微小负舍入不同。谱不是混合预测协方差或校准证据。原26拟合汇总数据完全不变。 另从同397个原绑定特征文件的所选开发段读取时钟/身份列，核对404/81个原首未来转移：训练中位数3秒、1–38秒，验证中位数2秒、1–31秒；不是τ或积分h。漂移对位移率行等权，无dt/逆噪声/块/参与者权重；Q=(1/n)Σdt·ζζᵀ，不再中心化或作自由度校正，不声称联合MLE或无偏。地形加载器拒绝λmin<−10^-10平方米/秒或非对称误差>10^-12平方米/秒，仅容差内负舍入用于L置零，无正值floor/jitter；10保存Q均对称严格正定，零截断，原谱与记录绑定逐项相同。至此本条所列归一化、样本权重/数量、原列尺度/条件和Q修正规格均在工作稿可核查。 本轮补充普通方法与地形估计的区别：普通基础ridge使用未归一化平方损失，等价均值损失惩罚为ρ/n_m，而Reptile内步使用均值损失ρ，两者并非相同有效正则化。普通R是中心化样本残差协方差，分母n_m−1，随后加10^-8I；不作回归自由度修正，不称SDE无偏估计。地形Q仍为原未中心化dt加权二阶矩，未更改任何估计量或保存参数。",
+      "remaining": "本条仅工作稿整改核对，不是审查人验收或预测可靠性证明。没有重估原始残差；原一次保存预测复算仍按P0-06/P1-11完成，正定与求解器诊断不替代最终科学资格。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P1-07",
+      "original_title": "执行槽不等于独立算法，部分对比同时改变多个因素",
+      "original_acceptance": "不事后更换比较族；主要论文不把别名零差异当发现，科学问题与实际干预一致。",
+      "status": "draft_checked",
+      "manuscript_anchors": [
+        "tab:method-reader",
+        "tab:method-inventory",
+        "tab:estimator-calibration"
+      ],
+      "evidence": [
+        "paper/pirc17/method-algorithm-description-v1.json",
+        "paper/pirc17/estimator-calibration-description-v1.json"
+      ],
+      "response": "已保留冻结槽及比较族，分开预测配置、评分路线、别名/replay与豁免；解释显式/GMM/dt/校准同时变化的内容，仅称配置差异。",
+      "remaining": "最终结果仍须继承同一身份和比较族；不把别名零差异当新发现。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P1-08",
+      "original_title": "Reptile与迁移适应的实际实现需完整描述",
+      "original_acceptance": "原始Reptile思想与有限线性实现边界一致，不以这个局部结果裁定整个元学习方法族。",
+      "status": "partial",
+      "manuscript_anchors": [
+        "eq:meta-inner",
+        "eq:meta-outer",
+        "eq:target-blend",
+        "sec:reptile-task-accounting",
+        "tab:reptile-task-accounting"
+      ],
+      "evidence": [
+        "paper/pirc17/method-algorithm-description-v1.json",
+        "paper/pirc17/reptile-task-description-v1.json"
+      ],
+      "response": "已补4个外循环、5个内步、步长与任务访问顺序，区分有限Reptile更新、目标混合与后续校准。保存参数观察只限当前有限线性实现。 已补全部30个原合格任务的段数、每次访问转移数及任务内方向排序段级基数；任务由适配器的精确来源标签分组，而非已认证地区/参与者，city去空白与region不去空白的分支、无国家键/大小写规范化均明确。84训练标签组中54小组只跳过元任务访问，不从全局初始化删除。每任务至少三段，30任务按标签字典序每epoch各访问一次，四epoch共120访问，不随机抽任务；任务访问次数与外步相同不表示转移数加权或净影响相同。任务大小3–75段、177–5,324转移，十任务仅三段。原计数精确对账26,009+4×20,029+5,762=111,887；计数每次任务访问的一遍转移集，不枚举五内步/验证全部访问，也不是不同样本数或完整计算成本。120次访问与重复残差诊断不是120个独立留出研究。",
+      "remaining": "任务定义、规模、访问/更新次序及保存训练计数已从原记录补齐；pre-meta/目标混合前参数快照与原逐模式/GMM转移标签仍未保存，不能声称已直接验证初始化影响的全部路径。仅读来源标签/记账，不用新增拟合或概率反算补造中间参数，不以本有限线性实现否定整个元学习族。原独立输出复算与最终资格仍待，P1-08保留partial。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P1-09",
+      "original_title": "学习目标比较实际混合了拟合数据与有限校准策略",
+      "original_acceptance": "所有开发数据用途透明，结果称“有限校准策略对比”，不夸大为端到端ES训练。",
+      "status": "draft_checked",
+      "manuscript_anchors": [
+        "sec:estimator-calibration",
+        "eq:estimator-validation-surrogates",
+        "tab:estimator-calibration",
+        "sec:residual-mixture-fit",
+        "eq:gmm-residual-partition"
+      ],
+      "evidence": [
+        "paper/pirc17/estimator-calibration-description-v1.json",
+        "paper/pirc17/method-algorithm-description-v1.json"
+      ],
+      "response": "已列四路线的数据量、有限s/η网格、归一化基准、代理高斯NLL/ES和所选值；核对Full/QMLE、mixed/pure保存动态参数分别完全相同。明确验证拟合与选择不是无偏外测。 本轮补充验证残差的确切标签来源：单模式用第1分量，三模式使用段方向排序标签ℓ_i=m_s(i)+1；GMM验证亦沿用该方向标签，而非基础拟合残差分组g_i。验证不重新分组、不用后验责任，不是匹配分量的混合似然校准。此实现差异只作透明披露，不把它断言为欠覆盖的因果机制，未重新校准或变更已有预测。",
+      "remaining": "保留有限校准策略名称，不称端到端ES训练或损失单因素因果效应。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P1-10",
+      "original_title": "split、条件高斯传播与联合轨迹生成公式不完整",
+      "original_acceptance": "能够独立复现边际与路径指标；共享索引不冒充方差降低证明，局部精确不冒充全程精确。",
+      "status": "draft_checked",
+      "manuscript_anchors": [
+        "eq:method-kernels",
+        "eq:method-affine-exact",
+        "eq:method-joint-propagation"
+      ],
+      "evidence": [
+        "paper/pirc17/method-algorithm-description-v1.json"
+      ],
+      "response": "已给split次序、仿射均值/协方差、联合时序协方差、四时刻共同路径与事件/随机流索引，区分局部冻结近似和全程精确性。",
+      "remaining": "同网格CRN配对不证明方差减少或改步长后的布朗一致性；最终数值诊断另待原计划。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P1-11",
+      "original_title": "名义时域、实际目标时刻与推进上限需闭合",
+      "original_acceptance": "末端目标均有对应预测且不偷换时间；图表标“名义”，不将±30秒当作1分钟的微小偏差。",
+      "status": "partial",
+      "manuscript_anchors": [
+        "sec:target-times",
+        "tab:actual-target-times",
+        "sec:method-model",
+        "sec:clock-and-map-provenance",
+        "sec:case-horizons"
+      ],
+      "evidence": [
+        "paper/pirc17/claim-ledger.json",
+        "paper/pirc17/figures/case-horizons.json",
+        "paper/pirc17/method-algorithm-description-v1.json",
+        "paper/pirc17/target-time-description-v1.json",
+        "scripts/describe_pirc17_target_times.py"
+      ],
+      "response": "已读取原绑定690项Full01/GMM/dt300评分记录，核对三配置和五种子间目标身份及时间一致；46块每块只计一次，共184目标槽。四名义时域实际范围49–67、294–305、889–910、1785–1814秒；13块末目标超过1800秒。新增双语目标时刻表及停止链说明，明确实际目标向量推进、dt30训练线性插值/短尾处理不是评估真值；1分钟最大偏差11秒约18.3%，不称微小。",
+      "remaining": "原一次独立保存输出复算仍需核对实际预测数组覆盖目标时间与来源绑定；保存评分汇总和停止链源码不替代该审计，也不认证原采集时钟的物理UTC来源。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P1-12",
+      "original_title": "样本筛选和任务人群需要更完整的最终评估漏斗",
+      "original_acceptance": "能知道结论针对谁、排除了谁，以及选择规则是否冻结于结果查看之前。",
+      "status": "partial",
+      "manuscript_anchors": [
+        "sec:final-cohort-funnel",
+        "tab:final-cohort-funnel",
+        "tab:cohort-denominators",
+        "tab:release-partition-identities",
+        "sec:final-cohort-geography",
+        "tab:final-cohort-geography",
+        "sec:final-cohort-durations",
+        "tab:final-cohort-durations",
+        "sec:final-cohort-speeds",
+        "tab:final-cohort-speeds",
+        "eq:cohort-window-speed"
+      ],
+      "evidence": [
+        "paper/pirc17/partition-description-v1.json",
+        "paper/pirc17/claim-ledger.json",
+        "paper/pirc17/final-cohort-description-v1.json",
+        "scripts/describe_pirc17_final_cohort.py",
+        "paper/pirc17/final-cohort-geography-description-v1.json",
+        "paper/pirc17/final-cohort-duration-description-v1.json",
+        "paper/pirc17/final-cohort-speed-description-v1.json"
+      ],
+      "response": "已从原保存资格处置完整汇总最终12370窗口/1094记录块→时间合格127/89→共同特征合格106/73→主要起点46/46。时间排除12243，之后道路有效性再排除21；首记录原因互斥计数与重叠标记分开。明确每块字典序最小合格样本、固定域哈希块排序、前46块及次要前6块，统计核对与原冻结选择完全一致。未选27合格块及60合格窗口是设计选择，不是预测失败；开发漏斗与最终漏斗分表。 另将全部12370项原处置连接同一采集国家标签，补已发布/时间合格/共同有效/选中分布，国家标签覆盖63/21/14/12；窗口与块分别计数，GB/BE/LU选中33/46而已发布块493/1094。完整63码保留；465项缺采集区域名称但国家码存在，全部保留，不删缺标签窗口。HT1731窗口仅两块、NI265窗口八块的排除例子说明多窗口不等于多独立样本。未来观测路线有效性只用于事后限定评估人群，不是预测器输入或仅历史可知的部署资格；未重做资格、不改选择、地理投影不读位置/速度/预测误差，不新增实验。 另从同1125个原绑定文件仅读身份/时钟列，补齐全部12370窗口的保存时长：总体后续观测中位69.753s（表显69.8），选中46起点中位2323s；130窗口后续至少1800s，原时间资格仅127，三个长窗口仍排除。时间排除/地图排除/合格未选/最终入选四组保持原处置，不重新筛选、删除或裁剪无效时钟。区分保存后续观测支持、实际四目标预测时域及保留两/三点历史缓冲，不认证物理UTC。限定30分钟结论针对长且地图支持的子集。 另按原对齐表的父轨迹序号连接同一原绑定源表，仅解码身份、源相对时间与保存speed列；先取每个完整观测窗口的保存区间速率中位数，再窗口等权汇总。全部12370窗口完整对应、统计失败0；总体中位1.6205555555555553m/s、选中46起点1.4855555555555555m/s（展示1.621/1.486），保留时间排除12243、地图排除21、合格未选60。父点数与顺序守卫不替代物理来源认证；保留源末点填充，不用vx/vy模长替换，不裁剪或重生成速度、拟合、预测、重采样或改选择。m/s按当前保留构建脚本解释，两份脚本另固定身份但不冒称原发布已认证。未来观测仅作事后人群描述，不输入预测器；不是在线割线/模拟速度分布、校准或因果解释。",
+      "remaining": "已补完整分母、互斥筛选、入选/排除来源国家标签、保存时钟时长与保存区间速率分布；区间标量不等于在线割线或模拟速度，物理速度及历史预处理来源未获独立认证，当前构建脚本不在原发布认证绑定中。标签元数据未获原发布认证，时钟相对差不认证物理采集时长或UTC。记录哈希块不证明主体、近似路线或物理时间独立；未来路径有效性定义事后受限任务人群，不可泛化部署资格或63国代表性。原独立保存输出审计与终审仍待，P1-12保留partial。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P1-13",
+      "original_title": "地图数据的时空支持与provider细节不足",
+      "original_acceptance": "图层出处、计算方法和适用域可追踪；不把地形因素效果与地图可用性、年代错配混为一谈。",
+      "status": "partial",
+      "manuscript_anchors": [
+        "sec:feature-encoding",
+        "sec:clock-and-map-provenance",
+        "sec:missing-input-scope",
+        "sec:model-map-support",
+        "tab:model-map-catalog",
+        "sec:map-query-details",
+        "eq:map-frames",
+        "eq:dem-metric-spacing",
+        "eq:dem-stencil"
+      ],
+      "evidence": [
+        "paper/pirc17/map-source-acknowledgements-v1.json",
+        "paper/pirc17/history-missingness-description-v1.json",
+        "paper/pirc17/map-provider-description-v1.json"
+      ],
+      "response": "已区分模型保留目录与三份案例背景，从五份原绑定获取收据和快照父资产核对1354+51=1405文件目录，列SRTM/Skadi、Copernicus DEM、WorldCover、Overture和HydroRIVERS的收据产品/名义分辨率/年代。补预测起点与3度单元中心的不同坐标框架、栅格选择顺序、GeoTIFF像素中心及SRTM网格、双线性高程、米制差分和九点共同有效性、WorldCover所在像素、道路过滤与500公里候选截断、缺测编码。明确选中DEM无效不跨产品回退、缺失单元不保证全局最近线、目录准入不是实际访问或地图独立的性能证据。仅读取收据/目录和原源码，不查询地图、不解码像素、不新增预测。",
+      "remaining": "已补保留目录的收据规格及原实现的投影/插值/差分规则；仍缺全预测逐因素无效率和实际访问图层/像素几何记录，51个仅父资产的完整产品元数据未在收据中保留，地图年代没有逐路线匹配。收据名义分辨率不认证全部实际栅格精度或覆盖，源码规则不证明缺失鲁棒性；不通过重查全地图或重跑预测伪闭合。数据与真实案例发表权限仍未核实，原独立输出复算和最终科学资格待完成。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P1-14",
+      "original_title": "功效与实际意义界的依据和适用范围需要展开",
+      "original_acceptance": "不以“不显著”代替功效或等价证据，不用事后效应反向重定δ或样本数。",
+      "status": "draft_checked",
+      "manuscript_anchors": [
+        "eq:planning-power",
+        "tab:planning-sensitivity",
+        "sec:decision-conditions"
+      ],
+      "evidence": [
+        "paper/pirc17/inference-description-v1.json"
+      ],
+      "response": "已给三个开发块方差、真实改善2δ、家族目标0.8和SD倍增敏感性，列逐比较缺SD/低功效/零SD限制，分开方法与地形规则。",
+      "remaining": "δ只是冻结工程/统计界，不是搜救效用；不按已见效应反向改界、改样本或扩实验。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P1-15",
+      "original_title": "bootstrap尾部和退化情形需可复算证据",
+      "original_acceptance": "每行区间和p可重算；不把近似同时95%措辞写成有限样本严格覆盖证明。",
+      "status": "partial",
+      "manuscript_anchors": [
+        "sec:bootstrap-resolution",
+        "tab:bootstrap-diagnostics"
+      ],
+      "evidence": [
+        "paper/pirc17/inference-description-v1.json"
+      ],
+      "response": "已补两流种子、R2000、尾部10/12.5样本、inverted_cdf、sd分母、退化分支及p分辨率，并展示21条已保存稳定/移动诊断。",
+      "remaining": "第二流完整端点、抽样索引及pivot未保存；当前最大移动量/布尔标记不能替代逐端点证据。原一次审计仍待，禁止为显著性新增重采样。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P1-16",
+      "original_title": "裁定程序的条件与缺证据状态还不够可执行",
+      "original_acceptance": "另一复核者用相同证据得到相同状态，不能只靠人工“判定合规”。",
+      "status": "awaiting_original_results",
+      "manuscript_anchors": [
+        "tab:comparison-conditions",
+        "tab:loo-lio-states",
+        "sec:terrain-results"
+      ],
+      "evidence": [
+        "paper/pirc17/inference-description-v1.json",
+        "paper/pirc17/claim-ledger.json",
+        "paper/pirc17/terrain-family-completeness-v1.json"
+      ],
+      "response": "已给布尔裁定条件、缺失/失败优先级与LOO/LIO方向冲突表；种子一致性仅解释为算法流稳定性，方法不套地形归属规则。 已从原闭合11368行/58组评分索引清点两个完整主要地形家族：整体/LOO为1380必需行、1379成功/1失败/0缺项，LIO为1150必需行、1148成功/2失败/0缺项。原登记成员及整族失败优先策略未变；共享230基线行，并集2300行、2297成功/3失败，不将2530家族行当独立预测或观测。正文已把160/131旧缺项数明确隔离为历史快照，说明当前整族不可用源于保留失败而非预测仍未完成。无成功子集效应或区间，也不将不可用当作地形无效或等效。辅助完成及审计本身不能恢复失败比较；仅统计既有状态，无新拟合/预测/评分/重采样/地图查询，不替代原独立输出复算或最终卡片。P1-16仍待原最终结果，未改动验收状态。 原登记分析已完成一次，匿名投影 analysis-stage-summary-v1.json 绑定完整原结果：三模式21比较族、主要方法21比较（14实际等价/7证据不足）、每模式28机制检查。全部既有估计、区间和Holm值未改变；独立复算、最终卡片与人工验收仍未完成。新增正文说明区间包含于事前实际意义带才支持保存等价状态，弱机制条件不认证全局N/步长精度。",
+      "remaining": "最终卡片与逐结果资格字段仍待原审计及分析接入；表中的规则不是已执行的最终资格结论。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P1-17",
+      "original_title": "缺少同一最终队列上的简单预测基线",
+      "original_acceptance": "主要模型与简单基线的比较来自同一评价人群与时刻；新比较若未登记只能注明探索性。",
+      "status": "awaiting_original_results",
+      "manuscript_anchors": [
+        "tab:forecast-counts",
+        "sec:execution-reconstruction",
+        "sec:inertial-primary",
+        "tab:inertial-primary",
+        "tab:inertial-horizons",
+        "sec:point-error-horizons",
+        "tab:point-error-horizons",
+        "eq:point-error-horizon-mean"
+      ],
+      "evidence": [
+        "paper/pirc17/claim-ledger.json",
+        "paper/pirc17/method-algorithm-description-v1.json",
+        "paper/pirc17/inertial-primary-description-v1.json",
+        "scripts/describe_pirc17_inertial.py",
+        "scripts/render_pirc17_inertial_tables.py",
+        "paper/pirc17/en/inertial-primary-comparison.tex",
+        "paper/pirc17/zh/inertial-primary-comparison.tex",
+        "paper/pirc17/point-error-horizon-description-v1.json",
+        "scripts/describe_pirc17_point_errors.py",
+        "scripts/render_pirc17_point_error_tables.py",
+        "paper/pirc17/en/point-error-horizons.tex",
+        "paper/pirc17/zh/point-error-horizons.tex"
+      ],
+      "response": "已说明原58条惯性路径与290同网格参考的不同职责，未以验证惯性ES替代最终同队列对照。 本轮原58条惯性路径已有评分；按预先规定的完整46主记录块，比较46条确定性参考与230份Full预测（每块先平均五种子，再等权平均46块），不把参考重复五次。双语新增绝对ES/ADE/FDE及四时域ES表，Full均值与原稿逐项相同、46块目标时刻向量与既有描述精确对应。平均加权ES为824.73/477.85米，ADE824.73/636.11米，FDE2095.78/1326.09米（惯性/Full）；1、5分钟惯性ES更低，15、30分钟Full更低，34/46块Full加权ES严格更低。仅为事后保存评分描述，不新增预测、拟合、评分、地图查询、bootstrap或显著性检验；±30秒目标规则及验证设定δ41.100259米不变。原独立保存输出核验与最终卡片仍待，未宣称优于外部模型或部署有效。 本轮仅利用既有评分中心与原绑定目标，在相同起点局部评分坐标系对完整Full/GMM/dt300五种子及惯性参考作欧氏距离描述（690概率预测+46参考、同一184目标），新增1/5/15/30分钟点误差表及块内种子平均公式。逐份复现原ADE/FDE，最大差异9.095e-13米。Full点误差73.77/332.31/812.26/1326.09米，惯性31.17/237.93/934.03/2095.78米；GMM描述性点误差略低、dt300虽ES较低却四时域点误差较大。仅新增保存值的距离算术，不打开粒子数组、原GPX或模型，不新增预测、粒子ES、bootstrap或地图查询；未将描述解释升级为统计优越性或独立审计。 原登记分析已完成一次，匿名投影 analysis-stage-summary-v1.json 绑定完整原结果：三模式21比较族、主要方法21比较（14实际等价/7证据不足）、每模式28机制检查。全部既有估计、区间和Holm值未改变；独立复算、最终卡片与人工验收仍未完成。新增正文说明区间包含于事前实际意义带才支持保存等价状态，弱机制条件不认证全局N/步长精度。",
+      "remaining": "原58惯性辅助项与当前主46块绝对/配对描述已接入；原一次独立保存输出核验、最终统一卡片/资格字段、整稿及人工验收仍待。不把描述均值或34/46计数当显著性，不用最终惯性ES改变事前δ，不另加模型或实验族。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P1-18",
+      "original_title": "执行快照与评分快照版本未明确分开",
+      "original_acceptance": "读者能判定两组数能否同时成立，表8/9/13与摘要可追溯到相应输入版本。",
+      "status": "partial",
+      "manuscript_anchors": [
+        "sec:execution-coverage",
+        "sec:preliminary-methods",
+        "sec:score-execution-snapshots",
+        "tab:capture-count-difference",
+        "tab:terminal-score-inventory"
+      ],
+      "evidence": [
+        "paper/pirc17/execution-coverage-20261006-v1.json",
+        "paper/pirc17/preliminary-method-statistics-v1.json",
+        "paper/pirc17/claim-ledger.json",
+        "paper/pirc17/capture-count-reconciliation-v1.json",
+        "paper/pirc17/terminal-score-inventory-v1.json"
+      ],
+      "response": "已分别绑定执行10514与评分10384的精确时刻、索引哈希和原汇总文件；新增114单元的双语执行／评分计数对账表。22个变化单元全部属于地形：历史前缀57、已知速度8、仅位置65，合计130；各单元失败数不变、成功净增等于缺项减量，84个方法单元计数不变。6440行方法结果及摘要继续绑定较早评分输入，完整性表绑定较晚执行输入，两份原快照和所有效应数字不覆写。 另核对2026年10月8日全部58个哈希校验闭合评分块和原任务终态：方法8118成功／2失败、地形2897成功／3失败，科学预测11020项均终止；另290项同网格参考、58条惯性路径，共11368个评分槽位（11363成功、5失败）。双语清点表说明分母，首页不再称科学预测尚待完成；最终独立输出核验、推断及卡片仍待完成。这次终态计数一致不补造历史130项逐身份差集。",
+      "remaining": "原汇总未保存逐任务工作标识集合；已解释130项分组计数差，但不能核验130个新增身份或排除单元内成员替换，不把净计数差当逐项差集。原一次保存输出独立复算与最终结果版本绑定仍待完成，P1-18保留partial。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P1-19",
+      "original_title": "结果表尚未承接已声明的诊断与资格字段",
+      "original_acceptance": "每个主要结论与证据字段一一对应，缺项明确null及原因，不临时选最好看的指标。",
+      "status": "awaiting_original_results",
+      "manuscript_anchors": [
+        "tab:bootstrap-diagnostics",
+        "tab:all-method-absolute",
+        "tab:metric-reader",
+        "sec:method-seed-stability",
+        "sec:method-seed-table",
+        "tab:method-seed-stability",
+        "fig:all-method-horizons",
+        "sec:all-method-horizons",
+        "tab:all-method-horizons",
+        "fig:all-method-regions",
+        "sec:all-method-regions",
+        "tab:all-method-regions",
+        "sec:all-level-coverage",
+        "tab:all-level-coverage"
+      ],
+      "evidence": [
+        "paper/pirc17/inference-description-v1.json",
+        "paper/pirc17/preliminary-method-statistics-v1.json",
+        "paper/pirc17/claim-ledger.json",
+        "paper/pirc17/method-seed-stability-v1.json",
+        "paper/pirc17/en/method-seed-stability.tex",
+        "paper/pirc17/zh/method-seed-stability.tex",
+        "scripts/plot_pirc17_method_horizons.py",
+        "paper/pirc17/method-horizon-description-v1.json",
+        "paper/pirc17/figures/method-horizon-overview.pdf",
+        "paper/pirc17/figures/method-horizon-overview.png",
+        "paper/pirc17/figures/method-horizon-manifest-v1.json",
+        "paper/pirc17/en/method-horizon-overview.tex",
+        "paper/pirc17/zh/method-horizon-overview.tex",
+        "paper/pirc17/en/method-horizon-tables.tex",
+        "paper/pirc17/zh/method-horizon-tables.tex",
+        "paper/pirc17/all-method-region-description-v1.json",
+        "scripts/plot_pirc17_method_regions.py",
+        "paper/pirc17/figures/method-region-manifest-v1.json",
+        "paper/pirc17/figures/method-region-overview.pdf",
+        "paper/pirc17/figures/method-region-overview.png",
+        "paper/pirc17/en/method-region-overview.tex",
+        "paper/pirc17/zh/method-region-overview.tex",
+        "paper/pirc17/en/method-region-tables.tex",
+        "paper/pirc17/zh/method-region-tables.tex"
+      ],
+      "response": "已补28槽绝对指标表、保存尾部诊断、四时域覆盖、身份解释与阶段结论限制，避免只陈列p值。 已直接整理原21个方法主比较的五种子差值及未舍入符号计数，完整表按五族给出具名Full对照和20260814--20260818顺序。每项是同46记录块的加权ES候选减对照均值；六行全正、七行全负、六行改变符号、两个评分路线精确零，不计作21种独立算法。正文用残差混合五种子全改善而块区间跨零、显式特征全劣化而块区间跨零解释模拟种子一致不等于跨记录证据。保留EM/Euler别名、CRN微小非零值和原全部区间；五种子不是五次拟合或独立留出研究，不宣称蒙特卡洛收敛。仅投影两个已有不含路线的汇总，未打开预测数组或新增评分、重采样、拟合、预测。 本轮由原完整6440项主方法评分汇总投影全部28配置、46记录块和五种子的四名义时域边际ES及90%圆盘覆盖率，新增完整28行双语表和两面板概览图；每行230评分不是230独立目标。顺序遵循五原比较族，六额外Full/replay角色、EM/Euler别名及仅评分路线分别保留，不合并相近均值或按表现排序。30分钟边际ES均值范围941.89–1197.62米；残差混合5/15分钟较Full01低而30分钟较高，说明加权平均掩盖时域取舍。时域ES不是均值位置误差；未添加逐时域显著性、区间、重采样或全局最优模型检验。原目标时钟绑定只覆盖此前三配置，不扩写为全部28粒子数组时钟认证。最终EN75/ZH73构建成功，16相关页面已查看；原主评分及21比较效应值保持不变。 本轮从原六份地图案例诊断直接列出三个固定案例、base/全地形、四时刻的全部24个保存均值位置误差，均为地图面板上原值，未重开预测数组、评分或查询地图。三个首目标全地形误差都更高而末目标更低；Boechout/Bakewell在前三目标更差，Zagan从第二目标起更近。明确这些单种子局部时域取舍不能推断总体频率、原因或地形效应。全方法保存汇总仅有四时刻ES及ADE/末端FDE，后两者与ES不能反推完整逐时刻均值位置误差，因此不把案例表冒作全28方法准确性曲线。原旧表图/公式与案例选择和诊断不变；最新EN77/ZH74构建成功，14个相关实际页面已检查；在时域准确性小节前清空前置比较图浮动，使新增说明完整留在同一页，不再被两张整页图打断。P1-19仍待原最终资格与独立输出复算，不扩大实验或宣称已验收。 本轮进一步从全部6440份已有主方法评分提取28配置、46块、五种子的完整四概率/四时域半径、面积及覆盖率均值；与原28配置覆盖汇总和此前三模型完整区域描述一致。新增28行双语半径/面积/覆盖表及四时域面积—覆盖概览，按原族排序，保留所有对照、回放和别名。平均各圆面积，不以平均半径反算面积；面积色标为对数，标注仍为普通面积。30分钟面积范围1.247–12.609平方公里，覆盖均低于90%；dt600面积约Full01的2.78倍且终点误差稍高，不证明纯积分步长效应、全局最优或校准。残差混合5分钟面积更大而30分钟更小，说明取舍随时域改变。当前EN80/ZH78构建成功，9个相关实际页面已检查；原全部科学表图/公式保持不变。仅描述已有评分，不打开预测数组、不新增拟合/预测/评分/重采样/地图查询，不替代独立输出复算或最终资格。 本轮用已绑定四概率/四时域、全部28配置的保存区域均值新增16行覆盖—面积范围及低于/等于/高于名义概率计数表；不跨配置求平均，保留别名和Full对照，不把28身份当独立算法重复。1分钟50%档24低于/4高于，90%档1低于/27高于；30分钟80%、90%、95%档均28低于，95%观察覆盖26.52–87.39%。50%档27低于/1浮点相等，单档相等不认证校准；仅以10^-12防浮点舍入，不引入统计校准界。范围是配置均值最小—最大，不是置信区间或总体不确定性；表中并列面积范围，原90%完整表逐字保留。结果与双语结论同步，新增小节孤立标题已修正，最终EN81/ZH80构建成功并检查8个实际相关页面。只使用已有统计，没有新拟合、预测、评分、重采样、地图查询或概率修正，不替代原一次独立输出复算、最终证据卡片、整稿/人类验收。",
+      "remaining": "全部28配置四时域边际ES/90%覆盖及90%圆半径/面积完整表图已交付，四概率区域均值保留于保存汇总；仍缺最终逐时域资格字段/证据卡片、完整机制和数值资格及独立原输出复算。逐块联合诊断仍限原三模型，不能把描述时域表、五种子一致或成功编译代替记录块不确定性、蒙特卡洛收敛或最终组件裁定；未重评分、插值目标、重采样或补跑失败家族。P1-19继续awaiting_original_results，原最终统计/辅助项/卡片及验收范围不变。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P1-20",
+      "original_title": "长期经验欠覆盖是核心性能问题，需更完整地描述",
+      "original_acceptance": "同时呈现覆盖和区域大小，不声称已经达到90%校准或可部署可靠性。",
+      "status": "draft_checked",
+      "manuscript_anchors": [
+        "tab:full-calibration-area",
+        "tab:model-region-size",
+        "fig:calibration-area",
+        "sec:case-horizons",
+        "sec:block-calibration",
+        "eq:block-calibration-summary",
+        "tab:block-calibration",
+        "fig:block-calibration",
+        "fig:all-method-horizons",
+        "sec:all-method-horizons",
+        "tab:all-method-horizons",
+        "fig:all-method-regions",
+        "sec:all-method-regions",
+        "tab:all-method-regions",
+        "sec:all-level-coverage",
+        "tab:all-level-coverage"
+      ],
+      "evidence": [
+        "paper/pirc17/calibration-description-v1.json",
+        "paper/pirc17/figures/case-horizons.json",
+        "paper/pirc17/calibration-block-description-v1.json",
+        "scripts/plot_pirc17_calibration_blocks.py",
+        "paper/pirc17/figures/calibration-block-figure-manifest.json",
+        "paper/pirc17/figures/preliminary-calibration-blocks.pdf",
+        "paper/pirc17/figures/preliminary-calibration-blocks.png",
+        "scripts/plot_pirc17_method_horizons.py",
+        "paper/pirc17/method-horizon-description-v1.json",
+        "paper/pirc17/figures/method-horizon-overview.pdf",
+        "paper/pirc17/figures/method-horizon-overview.png",
+        "paper/pirc17/figures/method-horizon-manifest-v1.json",
+        "paper/pirc17/en/method-horizon-overview.tex",
+        "paper/pirc17/zh/method-horizon-overview.tex",
+        "paper/pirc17/en/method-horizon-tables.tex",
+        "paper/pirc17/zh/method-horizon-tables.tex",
+        "paper/pirc17/preliminary-method-statistics-v1.json",
+        "paper/pirc17/all-method-region-description-v1.json",
+        "scripts/plot_pirc17_method_regions.py",
+        "paper/pirc17/figures/method-region-manifest-v1.json",
+        "paper/pirc17/figures/method-region-overview.pdf",
+        "paper/pirc17/figures/method-region-overview.png",
+        "paper/pirc17/en/method-region-overview.tex",
+        "paper/pirc17/zh/method-region-overview.tex",
+        "paper/pirc17/en/method-region-tables.tex",
+        "paper/pirc17/zh/method-region-tables.tex"
+      ],
+      "response": "在原690项Full/GMM/dt300同目标评分上补全46块、每块五种子的逐块覆盖/面积/半径描述，保留四档概率和四时域；原总体值完全不变。新增12行中位数/四分位表及12面板90%圆盘面积—覆盖图。Full30分钟23块为0/5、20块为5/5，面积中位4.022平方公里；dt300仍16块为0/5且面积中位8.518。匿名B13给出同目标三配置覆盖与面积，明确事后示例而非优越性推断；无路线、坐标或目标公开。补定义、分位数插值、种子不等于独立目标及不是条件校准估计的限制，欠覆盖仍为核心发现。 新增全28主配置的四时域90%圆盘经验覆盖率概览和完整数值表；30分钟全部配置低于90%，范围21.74–79.13%。参考是名义90%而非越接近100%越好；概览不含面积，因此仍与此前三模型四概率/逐块面积和覆盖图联读，不把较高覆盖单独称为更好的校准。所有值来自原完整主方法评分汇总，未重缩放预测、改概率、重评分、增加模拟或调参。 本轮进一步从全部6440份已有主方法评分提取28配置、46块、五种子的完整四概率/四时域半径、面积及覆盖率均值；与原28配置覆盖汇总和此前三模型完整区域描述一致。新增28行双语半径/面积/覆盖表及四时域面积—覆盖概览，按原族排序，保留所有对照、回放和别名。平均各圆面积，不以平均半径反算面积；面积色标为对数，标注仍为普通面积。30分钟面积范围1.247–12.609平方公里，覆盖均低于90%；dt600面积约Full01的2.78倍且终点误差稍高，不证明纯积分步长效应、全局最优或校准。残差混合5分钟面积更大而30分钟更小，说明取舍随时域改变。当前EN80/ZH78构建成功，9个相关实际页面已检查；原全部科学表图/公式保持不变。仅描述已有评分，不打开预测数组、不新增拟合/预测/评分/重采样/地图查询，不替代独立输出复算或最终资格。 本轮用已绑定四概率/四时域、全部28配置的保存区域均值新增16行覆盖—面积范围及低于/等于/高于名义概率计数表；不跨配置求平均，保留别名和Full对照，不把28身份当独立算法重复。1分钟50%档24低于/4高于，90%档1低于/27高于；30分钟80%、90%、95%档均28低于，95%观察覆盖26.52–87.39%。50%档27低于/1浮点相等，单档相等不认证校准；仅以10^-12防浮点舍入，不引入统计校准界。范围是配置均值最小—最大，不是置信区间或总体不确定性；表中并列面积范围，原90%完整表逐字保留。结果与双语结论同步，新增小节孤立标题已修正，最终EN81/ZH80构建成功并检查8个实际相关页面。只使用已有统计，没有新拟合、预测、评分、重采样、地图查询或概率修正，不替代原一次独立输出复算、最终证据卡片、整稿/人类验收。",
+      "remaining": "本项达到当前文稿级检查标准，不是最终输出审计或审查人验收。全28配置四概率/四时域区域大小与覆盖均值已有完整保存汇总，90%半径/面积/覆盖完整表图已交付；逐块联合诊断仍限此前Full/GMM/dt300三模型。不能冒称90%条件校准、部署可靠性或全28预测数组目标时钟认证；真实UTC和地图公开许可仍未核实。原审计后最终结果更新须保持未重缩放、未调参和无成功子集原则。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P1-21",
+      "original_title": "事后环境分组与示例模型选择应说明目的",
+      "original_acceptance": "保持原46块的主推断，不将示例表变成因素效应或跨环境泛化证据。",
+      "status": "draft_checked",
+      "manuscript_anchors": [
+        "sec:origin-cover-results",
+        "tab:origin-cover-methods"
+      ],
+      "evidence": [
+        "paper/pirc17/preliminary-origin-environment-v1.json",
+        "paper/pirc17/calibration-description-v1.json"
+      ],
+      "response": "已明确Full/GMM/dt300仅是此前示例的事后指标排序说明，不是全模型排行；起点类别不是全路线环境，3耕地块不支持稳定优越性。",
+      "remaining": "不增加分组推断或因素裁定；全46块主分析与既有选择身份保持不变。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P1-22",
+      "original_title": "失败根因与恢复协议缺乏科学可解释性",
+      "original_acceptance": "失败不是一个无解释的计数，也不靠多次抽随机种子直到成功来处理。",
+      "status": "partial",
+      "manuscript_anchors": [
+        "tab:retained-failures",
+        "tab:failure-family-dispositions"
+      ],
+      "evidence": [
+        "paper/pirc17/failure-description-v1.json"
+      ],
+      "response": "已逐项列F01–F05、配置、模式、种子及保存中断类别/成本，关联同期Windows I/O、旧监管内存阈值与断电说明，同时区分保留180秒和实际耗时。",
+      "remaining": "逐项异常栈/完成回复缺失，不能证实发散、OOM、超时或物理断电根因；匿名工作来源见保存投影，不通过重试补造故障结果。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P1-23",
+      "original_title": "计时范围过窄且示例不足以支持成本结论",
+      "original_acceptance": "不以0.97秒单次值宣称稳定低延迟，不把provider-cold当OS冷缓存或部署冷启动。",
+      "status": "awaiting_original_results",
+      "manuscript_anchors": [
+        "sec:preliminary-cost",
+        "sec:runtime-environment"
+      ],
+      "evidence": [
+        "paper/pirc17/runtime-interruption-census-v1.json",
+        "paper/pirc17/runtime-interruption-disclosure-v1.json",
+        "paper/pirc17/preliminary-reader-presentation-v1.json",
+        "paper/pirc17/claim-ledger.json"
+      ],
+      "response": "已明确五条普通耗时均为单次例子，不是p50/p95；给CPU环境与计时边界，区分库线程、两lane墙钟、provider冷与OS冷，GPU不适用。 本轮据原计时源码明确p50/p95是成功试验总毫秒延迟，按实际目标时长归一化的是另一个均值；OS缓存不重置也未经核实，不能以协议的warm字样认证温缓存。CPU清单移至附录，失败分母、预热排除、嵌套耗时及RSS/生命周期峰值限制保持。原计时记录不重标或重测，阶段测算不作论文实测成本。 本轮将已确认主机休眠影响写入双语正文：原loo-surface冷启动重复0保存2315.9963217000004秒、实际目标1801秒，主机休眠/恢复事件相隔1843秒（30分43秒）。后续时钟配对映射确认重叠，不冒称原保存UTC端点。匿名标量投影绑定原材料摘要；原值、成本、五次分母全部保留，不扣时、不排除、不重跑。该项及受影响汇总不可认证无中断延迟、加速或嵌套地图查询独立成本，不据此认证其他试验无中断，也不改变保存预测评分。 后续既有计时标量清点绑定153/165原记录，另标记all-terrain冷启动重复3的3000.4638613秒；两项及受影响成本汇总均保留中断限制。检查到主机时钟变更，后续计数器映射不认证原UTC来源，未标记记录也不认证连续运行；该部分清点不取代完整165项资格或独立保存输出审计。",
+      "remaining": "原75cold/15warmup/75warm计时及离线评分/内存/墙钟成本汇总仍待；五次重复p95只能描述，不作总体尾延迟结论。受影响的原计时汇总须持续标明中断暴露，不能仅凭队列完成或校验通过认证无中断延迟；其他计时区间完整核对仍待，任何替代试验须另提最小方案，不能自动重跑。本项保留awaiting_original_results，不以披露限制替代最终成本资格或审查人验收。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P1-24",
+      "original_title": "哈希与表图重建尚不等于科学可复现",
+      "original_acceptance": "读者知道能重建到哪一级；图表、统计和私密数据复核分别给出入口与限制。",
+      "status": "awaiting_original_results",
+      "manuscript_anchors": [
+        "sec:execution-reconstruction"
+      ],
+      "evidence": [
+        "paper/pirc17/claim-ledger.json"
+      ],
+      "response": "已区分稿件重建、公共表图重建、统计重算及私有数据复核，明确哈希只是身份绑定，不证明正确或可取得。",
+      "remaining": "最终可公开代码/环境/脱敏逐块统计输入与命令、权限内复核途径仍待原审计/导出交付；本地工作分支不是已发布材料。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P1-25",
+      "original_title": "数据与案例发表许可仍未形成明确处置",
+      "original_acceptance": "数据使用依据与可公开范围有记录；不以本审查代替法律或伦理审核。",
+      "status": "permission_unverified",
+      "manuscript_anchors": [
+        "sec:clock-and-map-provenance",
+        "sec:case-horizons"
+      ],
+      "evidence": [
+        "paper/pirc17/map-source-acknowledgements-v1.json",
+        "paper/pirc17/figures/case-horizons.json",
+        "paper/pirc17/claim-ledger.json"
+      ],
+      "response": "已区分图层署名/下载与路线研究和公开发表权限；真实路线图只供本地工作稿，不宣称已获再分发授权。",
+      "remaining": "路线隐私、伦理、使用与案例发表许可及HydroRIVERS声明需真实审核；未确认前不得将本地地图案例当正式公开附件。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P1-26",
+      "original_title": "相关工作未充分支撑实际任务的比较位置",
+      "original_acceptance": "读者能理解为什么采用当前模型、哪些是继承方法、哪个问题是本稿实际新增。",
+      "status": "draft_checked",
+      "manuscript_anchors": [
+        "sec:related-work",
+        "sec:research-questions"
+      ],
+      "evidence": [
+        "paper/pirc17/claim-ledger.json"
+      ],
+      "response": "已加入连续时间相关随机游走、切换线性状态模型与环境选择研究，将神经SDE/轨迹网络作为任务范围对照，说明继承关系而非强行追加大模型。 本轮从PMLR与Nature出版页面明确Kidger的布朗驱动Wasserstein-GAN路径生成与Gao的LaGNA耦合网络方程发现是不同任务；本稿评价单记录位置预测，不识别主体交互或以已知真实方程核验动力学。外部模型仍不是执行基线，未添加期刊分区主张。",
+      "remaining": "公平惯性实证基线仍由P1-17的原辅助项完成；相关工作文字不替代该对照。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P2-01",
+      "original_title": "标题“因果”容易与因果效应估计混淆",
+      "original_acceptance": "标题承诺不超出方法输入与实际证据。",
+      "status": "draft_checked",
+      "manuscript_anchors": [
+        "sec:research-questions",
+        "sec:discussion-scope"
+      ],
+      "evidence": [
+        "paper/pirc17/claim-ledger.json"
+      ],
+      "response": "标题已改为可见轨迹前缀的概率运动预测，明确时间因果输入而非地形因果效应识别；未核实主体不冒称特定人群。",
+      "remaining": "当前标题不承诺总体、全球或物理因果结论。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P2-02",
+      "original_title": "项目内术语和审计措辞过多，主线阅读成本高",
+      "original_acceptance": "非项目成员能连续理解方法→实验→发现，而不需要先懂项目管理系统。",
+      "status": "partial",
+      "manuscript_anchors": [
+        "sec:forecast-inventory",
+        "tab:forecast-counts",
+        "sec:method-reader",
+        "eq:primary-aggregation",
+        "sec:execution-coverage",
+        "sec:execution-reconstruction",
+        "sec:development-fit-summary",
+        "sec:method-implementation-map",
+        "sec:saved-fit-diagnostics",
+        "sec:score-execution-snapshots",
+        "sec:bootstrap-table-detail",
+        "sec:method-findings",
+        "sec:discussion-scope",
+        "sec:empirical-history-timings",
+        "sec:source-reconciliation-details",
+        "sec:population-support-summary"
+      ],
+      "evidence": [
+        "paper/pirc17/claim-ledger.json"
+      ],
+      "response": "正文继续保留一张主要实验规模表，明确11020预测与46记录块/五种子的关系；完整配置清单、逐配置开发诊断、评分与执行快照对账及21行尾部诊断表集中到附录。正文不再要求读者理解PIRC/NEX或lane名称，五族导读改用模型变体及对应Full参考，内部编号首次映射于附录。方法方程、两层拟合、位移率Q与方法噪声定义、特征表、指标方向、块/种子平均公式、全部主要配对结果及地图案例仍在正文。新增开发摘要直接指出常数掩码/秩与惩罚混杂及训练MSE下降但验证MSE上升，避免用源码核对叙述替代科学解释。结果开篇收短重复资格说明并指向统一证据状态框。双语实际正文到结论均缩短4页；详细记录不删除，完整表体和科学数值保持不变，仅导读表把内部arm编号映射成科学名称。已检查21个相关页面，修正新增中文章节引用、路径跨页和尾表首行孤立问题；最终PDF来源与构建清单精确匹配。 本轮进一步把现有逐配置结果解释原文前移到完整21比较表和两张整页图之前；方法与指标导读由局部浮动边界保持在解释之前，不改原表图、效应数字或字号。讨论按模型内归因、人群与保留时钟、数值与推断支持、不可用比较四类整理，使用具名筛选/地理链接，避免把未编号段落都显示为4.1。最终版另检查16个相关实际页面并修正浮动次序及英文导读表之间的大块留白。 本轮再将计算成本正文中的详细硬件清单、库版本和线程记录移入具名附录；正文保留实测例表、计时包含/排除范围、冷/热定义及单位解释。中英文76/73页构建通过，实际检查14个相关页面；原全部表图与数字保持，仍未获得整稿读者验收。 本轮将完整候选总体的时长、保存区间速率与来源国家标签统计中的字段读取、父点序对应、文件绑定和描述文件路径集中到具名附录；正文仍保留全部12370窗口、统计公式、单位与末点填充、零统计失败、未按成功子集筛选、未来描述不输入预测器、物理时钟/速度来源未认证和来源标签非参与者等科学边界。原全部表格、图片块与公式块逐项相同；中文附录的跨页路径已修复。最新中英文仍76/73页，实际检查11个相关页面；这是局部正文阅读路径整改，不宣称整稿大幅缩短或整稿读者验收。 本轮进一步整理Reptile方法说明：把city/region/nan/unknown的精确字段规则和算法来源文件对应移到既有任务附录，正文保留精确字符串分组、不含国家键、不统一大小写、任务规模、小组仍参与全局初始化、全部更新公式、训练诊断非留出性能及未保存中间参数限制。原全部表图/公式保持逐块一致；方法小节源字符EN26058→25837、ZH12236→12109，仅为局部顺序与阅读改进，不是整稿大幅压缩。新EN77/ZH74构建成功，9个相关实际页面已查看；没有新增预测、拟合、评分、地图查询或科学资格。P2-02仍为partial，仍需整稿与非项目读者的实际验收。 本轮将两张已存在的历史跨度表及全部46主前缀、404训练/81验证前缀、397源文件、跨度和计数描述原文移到实验设置4.3；方法3.2保留三位置缓冲、首节拍d+5/后续10秒规则、Q/T及重叠割线协方差推导、观测误差示例和所有局部适用限制，并引用实测时序节。模型小节源文本EN5438→3124/ZH2533→1378；这是模型与实测材料分开，不是删除证据或整稿页数压缩。当前EN80/ZH79构建成功，8个实际模型/实验相邻页面已查看；原两表全文及全部其它表图公式字节不变，仅两张具名历史表顺序改变。检查同时拒绝移动表的修改/缺失/重复、其它科学块的改写或乱序，没有放宽为全局无序匹配。全部实验、来源、统计、预测、失败及原审计范围均不变，未新增实验或推断；P2-02仍partial，整稿非项目读者和人工验收未取得。 本轮把九段来源／记账细节原文移到新增附录A.1：发布身份核对、midpoint及训练角色索引规则、旧评估使用史、保存速率端点构造、三个文件的时钟页脚、原发布异常总数、案例地图署名许可、模型目录对账、产品与逐瓦片上游来源。正文保留328/76/81及259/62/62分母、划分原则、全部科学表图与公式、时钟/太阳解释限制、地图查询支持与许可未核实；明确不删窗口、不以成功子集替代。九段分别在附录原文保留一次，既有table/longtable/figure/equation/align及无编号display、参考文献与标签顺序完全不变，无新增模型或统计。实验设置源字符EN69517→65223、ZH32415→30691，这是正文约6%/5%的局部缩短，不是整稿页数减少。新EN84/ZH82实际构建成功并检查12个相关页面；所有旧数字和证据范围保留。整稿／非项目读者／人工验收没有取得，P2-02仍partial。 本轮将双语摘要改为问题、设计、主要发现及证据限制四层主线，英文307词缩至255词，中文706字符缩至598字符；结论以方法取舍、长期欠覆盖、地形推断不可用三个具名段落组织。只改摘要和结论原文，正文模型、实验规则、科学表图公式及附录逐字不变。保留原数值、记录时钟边界、区间跨零非等价、dt非纯积分步长及不可用非零效应的解释。严格构建EN84/ZH82，检查10个实际开篇、讨论结尾、结论与附录衔接页，无裁切或孤立标题；不是整稿或非项目读者验收，P2-02仍partial。 本轮把三张完整候选总体的后续时长、保存区间速率及来源国家表，连同原解释和保存速率公式，逐字保留一次并移到既有附录A.2；正文以一个具名摘要保留12370→46的受限人群、时长/速率/地理关键数值和直接表格引用。原参数、表格单元、公式、全部其它科学块与来源绑定均未改变；不删除窗口或改用成功子集。实验设置源字符EN65223→58217、ZH30691→27201，分别约缩短10.74%和11.37%，不是全文页数压缩。严格双语构建EN85/ZH82，实际查看正文与附录相关12页，未见裁切或孤立标题。只调整阅读顺序，没有新拟合、预测、评分、重采样、地图查询或科学资格；非项目读者整稿验收仍未取得，P2-02保留partial。",
+      "remaining": "正文结果导读、来源记账分离及总体支持摘要已改善，完整详情保留于附录；但尚未取得非项目读者的实际整稿可读性验收，12个相关实际页面检查不代替全稿阅读。原最终统计、摘要/结论更新、一次独立保存输出复算、真实作者/许可/人工验收仍待完成。P2-02保留partial，不用局部字符缩短、表格移动或软件检查宣称整篇闭合。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P2-03",
+      "original_title": "相关工作以防误读声明组织，缺少综合判断",
+      "original_acceptance": "每段有研究进展/局限/本文位置，不只是排除自己没有做的内容。",
+      "status": "draft_checked",
+      "manuscript_anchors": [
+        "sec:related-work"
+      ],
+      "evidence": [
+        "paper/pirc17/claim-ledger.json"
+      ],
+      "response": "相关工作已改为连续时间/切换动力学、环境可学习条件、分布评价与有限计算三主题，说明研究位置而非连续排除未做算法。",
+      "remaining": "保留针对实际任务的范围，不新增无关文献或神经网络实验。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P2-04",
+      "original_title": "中英术语和遗留标签需统一",
+      "original_acceptance": "机器身份不变，读者不会把标签当成未执行的算法。",
+      "status": "draft_checked",
+      "manuscript_anchors": [
+        "sec:method-model",
+        "tab:method-reader"
+      ],
+      "evidence": [
+        "paper/pirc17/claim-ledger.json"
+      ],
+      "response": "已首定义条件器、特征提供器、模拟集合与裁定；区分普通Full/terrain base/all-terrain，dt为观测间隔，EM/Euler与two_step等保留实际身份。",
+      "remaining": "未来最终卡片与论文必须继续沿用机器身份映射，不静默改标签。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P2-05",
+      "original_title": "显示精度与科学分辨率不匹配",
+      "original_acceptance": "主表易比较且不损失可复算原值。",
+      "status": "draft_checked",
+      "manuscript_anchors": [
+        "tab:preliminary-cost",
+        "tab:preliminary-method-effects"
+      ],
+      "evidence": [
+        "paper/pirc17/preliminary-reader-presentation-v1.json",
+        "paper/pirc17/inference-description-v1.json",
+        "paper/pirc17/claim-ledger.json"
+      ],
+      "response": "已将普通耗时展示为三位小数、δ普通叙述约41.10m，完整登记值仍留精确算术；EM/CRN微小差及放大面板明确为数值诊断，不冒充测量精度。",
+      "remaining": "所有底层值和阈值保持不变；最终表更新时须维持显示/计算精度的区别。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P2-06",
+      "original_title": "图2–3阅读效率偏低",
+      "original_acceptance": "印刷比例下可读，坐标/区间/实际界清楚，别名不伪装成额外发现。",
+      "status": "draft_checked",
+      "manuscript_anchors": [
+        "fig:preliminary-method-effects",
+        "fig:preliminary-method-absolute",
+        "tab:all-method-absolute"
+      ],
+      "evidence": [
+        "paper/pirc17/figures/preliminary-figure-manifest.json",
+        "paper/pirc17/preliminary-reader-presentation-v1.json"
+      ],
+      "response": "已把21对比分成7个具名独立尺度面板，清楚标对照、零线和实际界；22点绝对指标图标数值，dt递增，额外6个Full/replay保留于完整28行附表。",
+      "remaining": "诊断放大不赋予实际重要性，附表与图身份保持一致；不是新全局最佳者检验。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P2-07",
+      "original_title": "表格续页、题注与留白需整理",
+      "original_acceptance": "没有断开的表义、过小字或不必要的大片空白。",
+      "status": "draft_checked",
+      "manuscript_anchors": [
+        "tab:terrain-factors",
+        "tab:preliminary-coverage",
+        "tab:method-inventory"
+      ],
+      "evidence": [
+        "paper/pirc17/claim-ledger.json"
+      ],
+      "response": "五张主长表已加续表编号并重复列头，评分题注置上，仅纯浮动页顶部对齐/16pt间距；116纯检查及16实际页面检查保留数据与字号，最新双语PDF已交付。",
+      "remaining": "当前为既有article模板；目标期刊未选定，不能声称目标期刊样式合规或全稿全部页已人工验收。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P2-08",
+      "original_title": "方法家族描述与重复统计表需要精简统一",
+      "original_acceptance": "正文族数、表1/10/13及图2命名一致。",
+      "status": "draft_checked",
+      "manuscript_anchors": [
+        "tab:method-families",
+        "tab:method-inventory",
+        "tab:method-reader",
+        "tab:forecast-counts",
+        "fig:preliminary-method-effects",
+        "tab:execution-coverage",
+        "tab:family-coverage"
+      ],
+      "evidence": [
+        "paper/pirc17/claim-ledger.json"
+      ],
+      "response": "正文、设计清单、导读及完整性表统一模型结构、观测间隔、目标/评分、训练/适应、数值传播五族；训练/适应命名在原Full11锚点同步修正，不改槽或对照。图2说明七个面板仅对应五族，后三个是积分别名、MC及CRN数值诊断轴；21条对比和实际Full对照核对一致。正文只保留一张主规模表，执行清点及族完整性归附录，各自解释任务数/样本数及共享行，数字与失败处置不变。",
+      "remaining": "本项达到当前文稿级检查标准，不是最终审查人验收；后续最终结果更新仍须保持五族名称、原槽/对照身份及主规模与执行清点的职责区分，不宣称全部论文完成。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P2-09",
+      "original_title": "结论仍是待办，需区分工作稿状态与最终科学结论",
+      "original_acceptance": "读者知道哪些已完成、哪些未完成、哪些按现协议已不能推断。",
+      "status": "awaiting_original_results",
+      "manuscript_anchors": [
+        "sec:research-questions",
+        "sec:discussion-calibration",
+        "sec:terminal-failures",
+        "sec:discussion-score",
+        "sec:all-method-horizons",
+        "tab:all-method-horizons",
+        "sec:all-level-coverage",
+        "tab:all-level-coverage"
+      ],
+      "evidence": [
+        "paper/pirc17/claim-ledger.json",
+        "paper/pirc17/preliminary-method-statistics-v1.json",
+        "paper/pirc17/method-horizon-description-v1.json",
+        "paper/pirc17/all-method-region-description-v1.json",
+        "scripts/plot_pirc17_method_regions.py",
+        "paper/pirc17/figures/method-region-manifest-v1.json",
+        "paper/pirc17/en/method-region-tables.tex",
+        "paper/pirc17/zh/method-region-tables.tex"
+      ],
+      "response": "当前结论已给有限RQ1答案、欠覆盖及RQ2不可用，不再仅写待办；统一开篇状态说明区分阶段与最终证据。 本轮把已保存全28方法配置的四时域结果直接纳入双语摘要、讨论与结论：30分钟名义90%覆盖率全部低于90%，观察均值21.74–79.13%；残差混合5/15分钟较Full01的较低ES到30分钟反转，不能仅按加权均值宣称全面更优。讨论区分配置均值范围与人群区间、模拟种子与记录不确定性，明确面积/逐块联合诊断仍仅是三个原示例模型。原RQ2不可用、常数掩码正则化混杂、真实时钟和最终独立输出复算限制保留，不把已保存评分或成功编译写成最终验收。当前EN76/ZH73构建成功、14相关页面已检查；没有新增评分、预测、拟合、重采样、调参或实验。 本轮用已绑定四概率/四时域、全部28配置的保存区域均值新增16行覆盖—面积范围及低于/等于/高于名义概率计数表；不跨配置求平均，保留别名和Full对照，不把28身份当独立算法重复。1分钟50%档24低于/4高于，90%档1低于/27高于；30分钟80%、90%、95%档均28低于，95%观察覆盖26.52–87.39%。50%档27低于/1浮点相等，单档相等不认证校准；仅以10^-12防浮点舍入，不引入统计校准界。范围是配置均值最小—最大，不是置信区间或总体不确定性；表中并列面积范围，原90%完整表逐字保留。结果与双语结论同步，新增小节孤立标题已修正，最终EN81/ZH80构建成功并检查8个实际相关页面。只使用已有统计，没有新拟合、预测、评分、重采样、地图查询或概率修正，不替代原一次独立输出复算、最终证据卡片、整稿/人类验收。 此前文段的‘面积仍仅三个模型’描述对应当时版本；当前全28配置已有总体区域均值及四档范围表，仍仅三模型具有保存逐块联合诊断。 本轮仅重组双语摘要与结论的科学叙事，保留Full477.85/1326.09、逐点混合+32.95、GMM−2.83跨零、dt300减ES23.40而FDE1335.73、30分钟全28配置90%覆盖21.74–79.13%和地形RQ2不可用。三段结论明确方法收益依赖时域、覆盖率与面积共同阅读、失败不等于零效应；正文及原评分数值不变，没有新增推断或实验。原最终统计、独立保存输出复算与真实验收仍待完成，本项继续awaiting_original_results。 原登记分析已完成一次，匿名投影 analysis-stage-summary-v1.json 绑定完整原结果：三模式21比较族、主要方法21比较（14实际等价/7证据不足）、每模式28机制检查。全部既有估计、区间和Holm值未改变；独立复算、最终卡片与人工验收仍未完成。新增正文说明区间包含于事前实际意义带才支持保存等价状态，弱机制条件不认证全局N/步长精度。",
+      "remaining": "本轮工作稿已有与完整主方法保存结果对应的科学答案，摘要、讨论与结论同步；尚待原完整执行终结、最终统计及一次独立保存输出复算后再更新为最终结论。保留失败仍使受影响地形/次要方法家族不可用；不以成功子集补效应，不重新评分/调参/新增大规模实验。原证据卡片、最终图表、论文审阅及实际人类验收仍未完成，本项继续awaiting_original_results。",
+      "final_review_accepted": false
+    },
+    {
+      "id": "P2-10",
+      "original_title": "参考文献格式与数据来源条目需要逐条规范",
+      "original_acceptance": "全部文内编号可追踪，实际数据产品有明确引用，不要求为完整性堆砌无关文献。",
+      "status": "partial",
+      "manuscript_anchors": [
+        "sec:related-work",
+        "sec:clock-and-map-provenance",
+        "sec:data-reference-roles",
+        "sec:model-map-support"
+      ],
+      "evidence": [
+        "paper/pirc17/map-source-acknowledgements-v1.json",
+        "paper/pirc17/claim-ledger.json",
+        "paper/pirc17/data-reference-description-v1.json",
+        "paper/pirc17/map-provider-description-v1.json"
+      ],
+      "response": "已统一中英文全部23条参考文献，逐文内键与编号对应；Reptile固定arXiv v3，bootstrap书籍补DOI，方法论文、模型输入产品/分发渠道、许可文档与案例背景分开。补Mapzen AWS Skadi与固定格式文档版本、Copernicus GLO-30 Public 2021分发、Overture 2026-08-19.0发布引用。模型输入不再只有背景或许可引文；明确Skadi汇集SRTM及其他来源，GL1收据标签/2000区间不认证全部瓦片纯NASA来源，文档commit与访问日不冒充冻结数据发布或下载日。原目录、收据、科学结果均不改。 本轮核对四篇原始出版页面；按Wiley官方题名将勘误写为Corrigendum，另括注所更正论文，不补造作者；Neural SDE条目补完整ICML38会议名，保留PMLR139页码。Trajectron++与Gao的原卷页/文章号确认不改，23键双语一致；这是出版信息与任务描述核对，不是全23篇全文审读或期刊格式终审。",
+      "remaining": "缺逐瓦片上游产品身份/年代认证，不能按HGT格式补造纯NASA产品DOI或统一公有领域许可；51份仅父资产的完整元数据仍缺。目标期刊格式终审及真实署名/隐私/发表许可待确认；23篇条目对应检查不表示本轮通读全部全文。原最终输出独立复算与整稿验收仍待，P2-10保留partial。",
+      "final_review_accepted": false
+    }
+  ]
+}

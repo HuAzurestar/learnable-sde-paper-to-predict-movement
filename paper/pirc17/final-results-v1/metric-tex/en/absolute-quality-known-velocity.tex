@@ -1,0 +1,62 @@
+% Public-card metric formatting only; not manuscript integration or acceptance.
+\begingroup
+\small
+\setlength{\tabcolsep}{3pt}
+\setlength{\LTcapwidth}{\linewidth}
+\begin{longtable}{@{}p{0.31\linewidth}p{0.11\linewidth}p{0.11\linewidth}p{0.13\linewidth}p{0.11\linewidth}p{0.12\linewidth}@{}}
+\caption{Absolute recorded prediction metrics: Known-velocity secondary task. All five metrics are distances in metres; lower is better for the defined metric, not a statistical superiority claim. Distributional ES is distinct from mean-position ADE/FDE and weighted displacement error. Path ES uses the original trajectory estimator, not a best-particle path. All planned, available, missing and failed row statuses are retained; unavailable metrics are --, never successful-subset means or zero errors. Recording-hash groups and forecast seeds are not independent participants.}\label{tab:public-card-absolute-quality-known-velocity}\\
+\toprule
+Matrix / configuration; disposition & Weighted ES & Grid ADE & Weighted position error & FDE & Path ES\\
+\midrule
+\endfirsthead
+\multicolumn{6}{@{}l}{\tablename~\thetable\ (continued)}\\
+\toprule
+Matrix / configuration; disposition & Weighted ES & Grid ADE & Weighted position error & FDE & Path ES\\
+\midrule
+\endhead
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+NEX326-diagnostic\newline diagnostic/\allowbreak{}full-exact-kernel\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 431 & 608.6 & 608.6 & 1194 & 534.5\\
+NEX326-methods\newline arm-01/\allowbreak{}full\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 431.9 & 609.9 & 609.9 & 1195 & 535.8\\
+NEX326-methods\newline arm-02/\allowbreak{}pointwise\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 480.2 & 609.8 & 609.8 & 1195 & 599\\
+NEX326-methods\newline arm-03/\allowbreak{}single\_\allowbreak{}gaussian\newline unavailable\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline failed: 1\newline success: 29 & -- & -- & -- & -- & --\\
+NEX326-methods\newline arm-04/\allowbreak{}gmm\_\allowbreak{}kernel\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 444.4 & 604.2 & 604.2 & 1185 & 554.8\\
+NEX326-methods\newline arm-05/\allowbreak{}explicit\_\allowbreak{}decomp\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 586.2 & 703.2 & 703.2 & 1573 & 766.4\\
+NEX326-methods\newline arm-06/\allowbreak{}dt120\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 420.9 & 610.9 & 610.9 & 1203 & 524.7\\
+NEX326-methods\newline arm-06/\allowbreak{}dt30\newline unavailable\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline failed: 1\newline success: 29 & -- & -- & -- & -- & --\\
+NEX326-methods\newline arm-06/\allowbreak{}dt300\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 411.2 & 614 & 614 & 1203 & 512.6\\
+NEX326-methods\newline arm-06/\allowbreak{}dt60\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 431.9 & 609.9 & 609.9 & 1195 & 535.8\\
+NEX326-methods\newline arm-06/\allowbreak{}dt600\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 400.7 & 600.6 & 600.6 & 1177 & 499.3\\
+NEX326-methods\newline arm-07/\allowbreak{}full\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 435.2 & 613.7 & 613.7 & 1204 & 539.2\\
+NEX326-methods\newline arm-08/\allowbreak{}qmle\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 432.6 & 610.5 & 610.5 & 1197 & 536\\
+NEX326-methods\newline arm-09/\allowbreak{}mixed\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 440.9 & 613.6 & 613.6 & 1204 & 547.4\\
+NEX326-methods\newline arm-09/\allowbreak{}pure\_\allowbreak{}es\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 439.3 & 611.7 & 611.7 & 1201 & 545.6\\
+NEX326-methods\newline arm-10/\allowbreak{}d2\_\allowbreak{}closed\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 435.2 & 613.7 & 613.7 & 1204 & 539.2\\
+NEX326-methods\newline arm-10/\allowbreak{}d2\_\allowbreak{}mc\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 435.2 & 613.7 & 613.7 & 1204 & 539.2\\
+NEX326-methods\newline arm-11/\allowbreak{}full\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 436 & 614.2 & 614.2 & 1206 & 540.4\\
+NEX326-methods\newline arm-12/\allowbreak{}scratch\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 440.1 & 623.2 & 623.2 & 1233 & 547.7\\
+NEX326-methods\newline arm-14/\allowbreak{}reptile\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 444.6 & 619.4 & 619.4 & 1221 & 551.2\\
+NEX326-methods\newline arm-15/\allowbreak{}drift\_\allowbreak{}only\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 438.3 & 616 & 616 & 1211 & 543.4\\
+NEX326-methods\newline arm-15/\allowbreak{}two\_\allowbreak{}step\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 433.7 & 611.5 & 611.5 & 1199 & 537.7\\
+NEX326-methods\newline arm-16/\allowbreak{}full\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 433.1 & 611.1 & 611.1 & 1198 & 537.2\\
+NEX326-methods\newline arm-18/\allowbreak{}full\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 431 & 608.6 & 608.6 & 1194 & 534.5\\
+NEX326-methods\newline arm-19/\allowbreak{}em\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 431.1 & 608.6 & 608.6 & 1194 & 534.5\\
+NEX326-methods\newline arm-19/\allowbreak{}euler\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 431.1 & 608.6 & 608.6 & 1194 & 534.5\\
+NEX326-methods\newline arm-20/\allowbreak{}full\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 433.8 & 611.2 & 611.2 & 1200 & 538.1\\
+NEX326-methods\newline arm-21/\allowbreak{}crn\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 433.8 & 611.2 & 611.2 & 1200 & 538.1\\
+NEX326-methods\newline arm-21/\allowbreak{}mc\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 433.6 & 610.7 & 610.7 & 1197 & 537.4\\
+inertial\newline all\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 6 /\allowbreak{} 6 /\allowbreak{} 0\newline success: 6 & 574.9 & 574.9 & 574.9 & 1599 & 851.2\\
+terrain\newline all-terrain\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 355.2 & 500 & 500 & 1122 & 467\\
+terrain\newline base\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 408.7 & 574.3 & 574.3 & 1309 & 549.5\\
+terrain\newline lio-river\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 362.9 & 508 & 508 & 1173 & 486.3\\
+terrain\newline lio-road\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 439.5 & 604.8 & 604.8 & 1349 & 583.5\\
+terrain\newline lio-surface\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 363.1 & 521.2 & 521.2 & 1151 & 485.9\\
+terrain\newline lio-worldcover\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 412.8 & 577.3 & 577.3 & 1316 & 553.9\\
+terrain\newline loo-river\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 414.1 & 571.6 & 571.6 & 1274 & 550.5\\
+terrain\newline loo-road\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 341.6 & 483.5 & 483.5 & 1059 & 449.7\\
+terrain\newline loo-surface\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 398 & 552.8 & 552.8 & 1256 & 526.3\\
+terrain\newline loo-worldcover\newline computed\newline expected /\allowbreak{} available /\allowbreak{} missing: 30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 361.6 & 501.6 & 501.6 & 1134 & 482.4\\
+\end{longtable}
+\endgroup

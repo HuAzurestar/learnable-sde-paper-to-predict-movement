@@ -1,0 +1,121 @@
+{
+  "profiles": [
+    {
+      "model": "Full",
+      "configuration": "arm-01/full",
+      "recording_hash_blocks": 46,
+      "forecast_rows": 230,
+      "point_error_by_time_m": [
+        73.76649430371748,
+        332.31451067280557,
+        812.2606873591319,
+        1326.0918029570767
+      ],
+      "ade_m": 636.1083738231829,
+      "fde_m": 1326.0918029570767
+    },
+    {
+      "model": "GMM",
+      "configuration": "arm-04/gmm_kernel",
+      "recording_hash_blocks": 46,
+      "forecast_rows": 230,
+      "point_error_by_time_m": [
+        71.92443867325723,
+        323.7899550906587,
+        792.9860432147626,
+        1299.1056539175968
+      ],
+      "ade_m": 621.9515227240688,
+      "fde_m": 1299.1056539175968
+    },
+    {
+      "model": "dt300",
+      "configuration": "arm-06/dt300",
+      "recording_hash_blocks": 46,
+      "forecast_rows": 230,
+      "point_error_by_time_m": [
+        75.8832154669875,
+        340.10005127821876,
+        825.7627488896999,
+        1335.7318898865935
+      ],
+      "ade_m": 644.3694763803749,
+      "fde_m": 1335.7318898865935
+    },
+    {
+      "model": "Inertial",
+      "configuration": null,
+      "recording_hash_blocks": 46,
+      "forecast_rows": 46,
+      "point_error_by_time_m": [
+        31.172460629641936,
+        237.92713645422214,
+        934.0285580844753,
+        2095.7834901174965
+      ],
+      "ade_m": 824.727911321459,
+      "fde_m": 2095.7834901174965
+    }
+  ],
+  "recording_hash_blocks": 46,
+  "probabilistic_forecasts": 690,
+  "deterministic_reference_paths": 46,
+  "saved_forecast_rows_used": 736,
+  "distinct_target_positions": 184,
+  "nominal_horizon_seconds": [
+    60,
+    300,
+    900,
+    1800
+  ],
+  "nominal_target_tolerance_seconds": 30,
+  "actual_target_bounds_seconds": [
+    [
+      49.0,
+      67.0
+    ],
+    [
+      294.0,
+      305.0
+    ],
+    [
+      889.0,
+      910.0
+    ],
+    [
+      1785.0,
+      1814.0
+    ]
+  ],
+  "target_time_vectors_sha256": "2b68fe0273e4e20ad96a0a81ae6b35a4caf1a4a441c70a0fc525af00ec4751c8",
+  "maximum_original_ade_fde_consistency_gap_m": 9.094947017729282e-13,
+  "aggregation": "Average five forecast seeds within each original recording-hash block, then equal-weight46 blocks; the deterministic reference is not replicated.",
+  "schema_version": "pirc17-saved-center-point-error-description-v1",
+  "source_scope": {
+    "protocol_sha256": "2267ab84fa77ff4039234a61e8f44be1c3713317d8ad2d1bb4ced9af0c5b293a",
+    "execution_sha256": "c3e44393f6bc5544aaa21bb273c94eaecb9d0becb4e0590771355c4c0be9b6c2",
+    "matrix_sha256": "3fcfc6c7858ee346b20040ef6e7728153b188bd4d2ada58839f39e769d44de13",
+    "population_sha256": "7061f44ef8647f7bee55822ca7e494e53d3c058e5973d6198e997893c70bb020",
+    "scoring_inputs_sha256": "07da73c55cc7aca5b8a9dee4759be73edac508cd52a12490ebb408460534a5f2"
+  },
+  "source_score_index_sha256": "fc7c9c4492b962763ecd0f13959a43bf00e2141e74d92273c45cf6ca98e7332f",
+  "source_cache_sha256": "892bb89b1d39d376c69d5a41570ad1655e50fe6950be6442db7f2b2f492c2878",
+  "source_input_context_sha256": "61354e87858d8dc54e2759e3b11f2501000e27ca9b2898115d72018b2f051f4f",
+  "source_input_context_file_sha256": "7876e24357b1434d9b60fec72dc0b3d66095c816c196f4b3bbb1ab4bc652aff6",
+  "point_error_formula": "Euclidean distance between original saved region.center_m and original target.positions_m in the same origin-local scoring frame.",
+  "new_fits": 0,
+  "new_forecasts": 0,
+  "new_particle_scores": 0,
+  "new_bootstrap_or_tests": 0,
+  "particle_arrays_opened": false,
+  "raw_trajectories_opened": false,
+  "map_queries": 0,
+  "original_saved_scores_changed": false,
+  "independent_saved_output_audit_completed": false,
+  "scientific_claim_authorized": false,
+  "participant_independence_established": false,
+  "physical_clock_or_utc_certified": false,
+  "original_final_figure_inventory_replaced": false,
+  "private_coordinates_clocks_recording_ids_or_paths_exported": false,
+  "scope": "Post-outcome descriptive saved-center/target arithmetic for the already-bound Full/GMM/dt300 primary comparison and inertial reference, not all28 method configurations or terrain configurations. No confidence intervals, per-horizon significance tests or independent raw-output audit; not the original final analysis/cards or a replacement for the full study."
+}

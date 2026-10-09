@@ -1,0 +1,174 @@
+{
+  "schema_version": "pirc17-preliminary-presentation-figures-v2",
+  "snapshot_sha256": "8900f3dee68d5fc9cafd5ced2e2394503432d2493251601c0ba9cb771cbefba1",
+  "captured_utc": "2026-10-06T00:54:18.683579+00:00",
+  "renderer_sha256": "6e3edf54c7858aa0c068a9479afae10243248148c80d1d602cf483ed079381c8",
+  "matplotlib_version": "3.9.0",
+  "figures": {
+    "preliminary-method-effects": {
+      "pdf": "f11f4aca6bc45f88fe7bde36fb01dfaac1d7521573c69bff589543e50757110d",
+      "png": "9e9539f42b6ce3aa3dcedac684baa006fe5617571f0a25670c5a387d57fa98f2"
+    },
+    "preliminary-method-absolute": {
+      "pdf": "373f4ae3576190b694413a45e41b53af3bf6565d1495fd6c86c9790c74fdd59e",
+      "png": "7b631ee17226a5f3049a4f85d03209d51cd3d6cf657c355fe98e20d3c11eb72f"
+    },
+    "preliminary-full-horizons": {
+      "pdf": "bf2bfc051567d5c8c71b2b397ff78f240b390861e943d122103609f7ab69815a",
+      "png": "e35f3e72ab26f800a0a1ba92471f3dd30326f957a5b05a2f3e7c8eccaf54c77c"
+    }
+  },
+  "new_forecasts": 0,
+  "new_fits": 0,
+  "new_scores": 0,
+  "new_statistical_inference": 0,
+  "final_audit_completed": false,
+  "scientific_claim_authorized": false,
+  "original_final_sixteen_figure_inventory_replaced": false,
+  "raw_locations_or_trajectory_examples": false,
+  "effects_panels": [
+    {
+      "title": "Model structure",
+      "control": "arm-01/full",
+      "diagnostic_zoom": false,
+      "x_limits_m": [
+        -37.81567398868891,
+        133.67344566056002
+      ],
+      "practical_bounds_visible": [
+        41.100259
+      ],
+      "candidates": [
+        "arm-02/pointwise",
+        "arm-03/single_gaussian",
+        "arm-04/gmm_kernel",
+        "arm-05/explicit_decomp"
+      ]
+    },
+    {
+      "title": "Observation interval",
+      "control": "arm-01/full",
+      "diagnostic_zoom": false,
+      "x_limits_m": [
+        -77.42106959720404,
+        23.531182599945723
+      ],
+      "practical_bounds_visible": [
+        -41.100259
+      ],
+      "candidates": [
+        "arm-06/dt30",
+        "arm-06/dt120",
+        "arm-06/dt300",
+        "arm-06/dt600"
+      ]
+    },
+    {
+      "title": "Objective / score",
+      "control": "arm-07/full",
+      "diagnostic_zoom": false,
+      "x_limits_m": [
+        -19.516420340102048,
+        7.9143466691058
+      ],
+      "practical_bounds_visible": [],
+      "candidates": [
+        "arm-08/qmle",
+        "arm-09/mixed",
+        "arm-09/pure_es",
+        "arm-10/d2_mc",
+        "arm-10/d2_closed"
+      ]
+    },
+    {
+      "title": "Training / adaptation",
+      "control": "arm-11/full",
+      "diagnostic_zoom": false,
+      "x_limits_m": [
+        -14.929226885898027,
+        15.892187778383597
+      ],
+      "practical_bounds_visible": [],
+      "candidates": [
+        "arm-12/scratch",
+        "arm-14/reptile",
+        "arm-15/drift_only",
+        "arm-15/two_step"
+      ]
+    },
+    {
+      "title": "Integration aliases",
+      "control": "arm-18/full",
+      "diagnostic_zoom": true,
+      "x_limits_m": [
+        -0.00611097576209619,
+        0.057035773779564446
+      ],
+      "practical_bounds_visible": [],
+      "candidates": [
+        "arm-19/em",
+        "arm-19/euler"
+      ]
+    },
+    {
+      "title": "MC propagation",
+      "control": "arm-20/full",
+      "diagnostic_zoom": true,
+      "x_limits_m": [
+        -3.480658379943801,
+        2.0268933802672326
+      ],
+      "practical_bounds_visible": [],
+      "candidates": [
+        "arm-21/mc"
+      ]
+    },
+    {
+      "title": "CRN propagation",
+      "control": "arm-20/full",
+      "diagnostic_zoom": true,
+      "x_limits_m": [
+        -0.00017294331940610242,
+        3.495478024401881e-05
+      ],
+      "practical_bounds_visible": [],
+      "candidates": [
+        "arm-21/crn"
+      ]
+    }
+  ],
+  "absolute_display_slots": [
+    "arm-01/full",
+    "arm-02/pointwise",
+    "arm-03/single_gaussian",
+    "arm-04/gmm_kernel",
+    "arm-05/explicit_decomp",
+    "arm-06/dt30",
+    "arm-06/dt120",
+    "arm-06/dt300",
+    "arm-06/dt600",
+    "arm-08/qmle",
+    "arm-09/mixed",
+    "arm-09/pure_es",
+    "arm-10/d2_mc",
+    "arm-10/d2_closed",
+    "arm-12/scratch",
+    "arm-14/reptile",
+    "arm-15/drift_only",
+    "arm-15/two_step",
+    "arm-19/em",
+    "arm-19/euler",
+    "arm-21/mc",
+    "arm-21/crn"
+  ],
+  "absolute_unplotted_slots": [
+    "arm-06/dt60",
+    "arm-07/full",
+    "arm-11/full",
+    "arm-16/full",
+    "arm-18/full",
+    "arm-20/full"
+  ],
+  "repeated_control_metrics_averaged": false,
+  "full_twenty_eight_rows_retained_in_source_and_manuscript_table": true
+}

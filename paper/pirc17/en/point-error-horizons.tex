@@ -1,0 +1,26 @@
+\FloatBarrier
+\subsection{Point error at each saved target time}
+\label{sec:point-error-horizons}
+ES evaluates an entire predictive distribution and is not the distance between its mean and the observed position. Table~\ref{tab:point-error-horizons} makes that distance explicit for the already-described Full/GMM/dt300 comparison and the inertial reference; it is not a new ranking of all 28 configurations. Use the original saved scoring-disk center $c_{m,b,s,k}$ (the 512-particle mean, or the deterministic reference position) and the same saved target $y_{b,k}$ in the same origin-local scoring frame. No forecast arrays, new particle scores, target interpolation or simulation are needed.
+
+For model $m$, average errors over its $S_m$ original seeds within each recording-hash block, then equal-weight all 46 blocks. Here $S_m=5$ for the three probabilistic configurations and $S_m=1$ for the reference; a reference is not counted five times:
+\begin{equation}
+\bar e_{m,k}=\frac{1}{46}\sum_{b=1}^{46}
+\frac{1}{S_m}\sum_{s=1}^{S_m}\lVert c_{m,b,s,k}-y_{b,k}\rVert_2.
+\label{eq:point-error-horizon-mean}
+\end{equation}
+
+\begin{table}[htbp]\centering\small
+\caption{Mean saved-center displacement error in metres; lower is better. The four columns use the original nominal 1/5/15/30-minute target slots, with actual retained-clock ranges 49--67, 294--305, 889--910 and 1785--1814 s and unchanged 30-second tolerance. Rows are saved forecasts, not independent targets or people. Descriptive values only; no per-horizon inference.}\label{tab:point-error-horizons}
+\begin{tabular}{@{}lrrrrr@{}}\toprule
+Model & Rows & 1 min & 5 min & 15 min & 30 min\\\midrule
+Full & 230 & 73.77 & 332.31 & 812.26 & 1326.09\\
+GMM & 230 & 71.92 & 323.79 & 792.99 & 1299.11\\
+dt300 & 230 & 75.88 & 340.10 & 825.76 & 1335.73\\
+Inertial & 46 & 31.17 & 237.93 & 934.03 & 2095.78\\
+\bottomrule\end{tabular}\end{table}
+
+All 736 selected saved rows match the same 184 target positions. For every row, the arithmetic mean of these four errors and its last error reproduce the original saved ADE and FDE within floating-point roundoff; the maximum discrepancy is below $10^{-12}$ m. Averaging at each target before taking the Euclidean norm would be a different estimator and is not used.
+
+The inertial reference has lower mean point error at 1 and 5 minutes; Full has lower mean point error at 15 and 30 minutes. GMM has slightly lower descriptive mean errors than Full at all four slots. Conversely, dt300 has larger mean-position errors than Full at every slot despite its lower saved aggregate ES. Thus a distribution-score improvement is not automatically an improvement in mean-path location. Here dt300 denotes the training observation interval, not the integration step. No statistical superiority, independent-participant generalization or deployment accuracy follows from these post-outcome means; original final inference, output audit and review remain pending.
+\FloatBarrier

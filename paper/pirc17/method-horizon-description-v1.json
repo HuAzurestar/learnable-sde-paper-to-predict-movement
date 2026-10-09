@@ -1,0 +1,588 @@
+{
+  "schema_version": "pirc17-existing-all-method-horizons-v1",
+  "original_stage_sha256": "8900f3dee68d5fc9cafd5ced2e2394503432d2493251601c0ba9cb771cbefba1",
+  "source_capture_utc": "2026-10-06T00:54:18.683579+00:00",
+  "recording_hash_blocks": 46,
+  "forecast_seed_ids": [
+    20260814,
+    20260815,
+    20260816,
+    20260817,
+    20260818
+  ],
+  "primary_saved_score_rows": 6440,
+  "nominal_horizon_minutes": [
+    1,
+    5,
+    15,
+    30
+  ],
+  "target_scope": "original nearest observed target slots under registered tolerance, not interpolated exact nominal clocks; previously saved detailed target projection binds three configurations, not all 28 prediction arrays",
+  "averaging_scope": "each cell is the saved equal-block/equal-five-seed mean, not 230 independent observed targets",
+  "groups": [
+    {
+      "title": "Model structure / Full01",
+      "title_zh": "\u6a21\u578b\u7ed3\u6784\uff0fFull01",
+      "configurations": [
+        "arm-01/full",
+        "arm-02/pointwise",
+        "arm-03/single_gaussian",
+        "arm-04/gmm_kernel",
+        "arm-05/explicit_decomp"
+      ]
+    },
+    {
+      "title": "Observation interval / Full01",
+      "title_zh": "\u89c2\u6d4b\u95f4\u9694\uff0fFull01",
+      "configurations": [
+        "arm-06/dt30",
+        "arm-06/dt60",
+        "arm-06/dt120",
+        "arm-06/dt300",
+        "arm-06/dt600"
+      ]
+    },
+    {
+      "title": "Objective / score / Full07",
+      "title_zh": "\u76ee\u6807\u4e0e\u8bc4\u5206\uff0fFull07",
+      "configurations": [
+        "arm-07/full",
+        "arm-08/qmle",
+        "arm-09/mixed",
+        "arm-09/pure_es",
+        "arm-10/d2_mc",
+        "arm-10/d2_closed"
+      ]
+    },
+    {
+      "title": "Training / adaptation / Full11",
+      "title_zh": "\u8bad\u7ec3\u4e0e\u9002\u5e94\uff0fFull11",
+      "configurations": [
+        "arm-11/full",
+        "arm-12/scratch",
+        "arm-14/reptile",
+        "arm-15/drift_only",
+        "arm-15/two_step"
+      ]
+    },
+    {
+      "title": "Numerical / Full18, Full20",
+      "title_zh": "\u6570\u503c\u4f20\u64ad\uff0fFull18\u3001Full20",
+      "configurations": [
+        "arm-18/full",
+        "arm-19/em",
+        "arm-19/euler",
+        "arm-20/full",
+        "arm-21/mc",
+        "arm-21/crn"
+      ]
+    },
+    {
+      "title": "Additional reference (not a family)",
+      "title_zh": "\u989d\u5916\u53c2\u8003\uff08\u4e0d\u662f\u53e6\u4e00\u6bd4\u8f83\u65cf\uff09",
+      "configurations": [
+        "arm-16/full"
+      ]
+    }
+  ],
+  "configs": [
+    {
+      "configuration": "arm-01/full",
+      "display_label": "Full01",
+      "saved_score_rows": 230,
+      "es_by_time_m": [
+        50.569749444899905,
+        243.228509869058,
+        609.2671942332843,
+        1008.349225203131
+      ],
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3782608695652174,
+        0.3521739130434783,
+        0.4652173913043478
+      ]
+    },
+    {
+      "configuration": "arm-02/pointwise",
+      "display_label": "Pointwise mixture",
+      "saved_score_rows": 230,
+      "es_by_time_m": [
+        50.36579314052639,
+        249.10392563593732,
+        652.0912113814785,
+        1091.666180844744
+      ],
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.24782608695652175,
+        0.10869565217391304,
+        0.21739130434782608
+      ]
+    },
+    {
+      "configuration": "arm-03/single_gaussian",
+      "display_label": "Single Gaussian",
+      "saved_score_rows": 230,
+      "es_by_time_m": [
+        48.60710507972834,
+        237.81055947109988,
+        627.2290050690282,
+        1085.8229664829328
+      ],
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3173913043478261,
+        0.1782608695652174,
+        0.32608695652173914
+      ]
+    },
+    {
+      "configuration": "arm-04/gmm_kernel",
+      "display_label": "Residual mixture",
+      "saved_score_rows": 230,
+      "es_by_time_m": [
+        50.35216084765841,
+        228.87097461928965,
+        598.6958584447951,
+        1022.1902966049104
+      ],
+      "coverage_90_by_time": [
+        0.9695652173913043,
+        0.6652173913043479,
+        0.34782608695652173,
+        0.45217391304347826
+      ]
+    },
+    {
+      "configuration": "arm-05/explicit_decomp",
+      "display_label": "Explicit features",
+      "saved_score_rows": 230,
+      "es_by_time_m": [
+        48.21045107937236,
+        239.20373005692514,
+        658.2145291419657,
+        1197.6152619441532
+      ],
+      "coverage_90_by_time": [
+        0.9130434782608695,
+        0.3217391304347826,
+        0.13478260869565217,
+        0.21739130434782608
+      ]
+    },
+    {
+      "configuration": "arm-06/dt30",
+      "display_label": "30 s observations",
+      "saved_score_rows": 230,
+      "es_by_time_m": [
+        51.36254358952337,
+        251.36089358296405,
+        621.7691604400674,
+        1021.1718929317618
+      ],
+      "coverage_90_by_time": [
+        0.7260869565217392,
+        0.23043478260869565,
+        0.24347826086956523,
+        0.3826086956521739
+      ]
+    },
+    {
+      "configuration": "arm-06/dt60",
+      "display_label": "60 s (Full01 replay)",
+      "saved_score_rows": 230,
+      "es_by_time_m": [
+        50.569749444899905,
+        243.228509869058,
+        609.2671942332843,
+        1008.349225203131
+      ],
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3782608695652174,
+        0.3521739130434783,
+        0.4652173913043478
+      ]
+    },
+    {
+      "configuration": "arm-06/dt120",
+      "display_label": "120 s observations",
+      "saved_score_rows": 230,
+      "es_by_time_m": [
+        51.52948009188197,
+        233.9834762080013,
+        592.5491633325585,
+        987.1236305544448
+      ],
+      "coverage_90_by_time": [
+        0.9826086956521739,
+        0.7086956521739131,
+        0.5478260869565217,
+        0.5695652173913044
+      ]
+    },
+    {
+      "configuration": "arm-06/dt300",
+      "display_label": "300 s observations",
+      "saved_score_rows": 230,
+      "es_by_time_m": [
+        56.58492129508211,
+        229.2760072871681,
+        574.5322859342516,
+        957.4030425382354
+      ],
+      "coverage_90_by_time": [
+        1,
+        0.9652173913043478,
+        0.717391304347826,
+        0.6434782608695652
+      ]
+    },
+    {
+      "configuration": "arm-06/dt600",
+      "display_label": "600 s observations",
+      "saved_score_rows": 230,
+      "es_by_time_m": [
+        63.78395573327536,
+        234.31854144507835,
+        572.6531665668824,
+        941.8934482293058
+      ],
+      "coverage_90_by_time": [
+        1,
+        0.991304347826087,
+        0.9260869565217391,
+        0.7913043478260869
+      ]
+    },
+    {
+      "configuration": "arm-07/full",
+      "display_label": "Full07",
+      "saved_score_rows": 230,
+      "es_by_time_m": [
+        50.52368791059413,
+        242.2754444644496,
+        608.7570097663494,
+        1005.146533179528
+      ],
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3782608695652174,
+        0.3347826086956522,
+        0.45652173913043476
+      ]
+    },
+    {
+      "configuration": "arm-08/qmle",
+      "display_label": "QMLE",
+      "saved_score_rows": 230,
+      "es_by_time_m": [
+        50.33318363960502,
+        242.13533223618862,
+        608.8536821521124,
+        1006.4826865805067
+      ],
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3869565217391304,
+        0.34347826086956523,
+        0.4652173913043478
+      ]
+    },
+    {
+      "configuration": "arm-09/mixed",
+      "display_label": "Mixed calibration",
+      "saved_score_rows": 230,
+      "es_by_time_m": [
+        50.162857030837955,
+        238.69227602787734,
+        600.3572236373427,
+        991.2901494469041
+      ],
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.4043478260869565,
+        0.34782608695652173,
+        0.4652173913043478
+      ]
+    },
+    {
+      "configuration": "arm-09/pure_es",
+      "display_label": "Pure ES calibration",
+      "saved_score_rows": 230,
+      "es_by_time_m": [
+        50.094003093284364,
+        238.94300973900724,
+        601.7417129868414,
+        994.6695728437473
+      ],
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.391304347826087,
+        0.3521739130434783,
+        0.45652173913043476
+      ]
+    },
+    {
+      "configuration": "arm-10/d2_mc",
+      "display_label": "d2 MC score route",
+      "saved_score_rows": 230,
+      "es_by_time_m": [
+        50.52368791059413,
+        242.2754444644496,
+        608.7570097663494,
+        1005.146533179528
+      ],
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3782608695652174,
+        0.3347826086956522,
+        0.45652173913043476
+      ]
+    },
+    {
+      "configuration": "arm-10/d2_closed",
+      "display_label": "d2 closed score route",
+      "saved_score_rows": 230,
+      "es_by_time_m": [
+        50.52368791059413,
+        242.2754444644496,
+        608.7570097663494,
+        1005.146533179528
+      ],
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3782608695652174,
+        0.3347826086956522,
+        0.45652173913043476
+      ]
+    },
+    {
+      "configuration": "arm-11/full",
+      "display_label": "Full11",
+      "saved_score_rows": 230,
+      "es_by_time_m": [
+        50.36623802787099,
+        242.16667155025317,
+        607.7282006871316,
+        1003.6800668324009
+      ],
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3869565217391304,
+        0.34782608695652173,
+        0.4652173913043478
+      ]
+    },
+    {
+      "configuration": "arm-12/scratch",
+      "display_label": "Scratch",
+      "saved_score_rows": 230,
+      "es_by_time_m": [
+        50.646580343450914,
+        242.9696901075238,
+        607.7936546224631,
+        1012.9461196592762
+      ],
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.4043478260869565,
+        0.3782608695652174,
+        0.4652173913043478
+      ]
+    },
+    {
+      "configuration": "arm-14/reptile",
+      "display_label": "Reptile",
+      "saved_score_rows": 230,
+      "es_by_time_m": [
+        50.15117789752277,
+        239.458002528538,
+        602.7162323009919,
+        1020.394662258245
+      ],
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3739130434782609,
+        0.33043478260869563,
+        0.41739130434782606
+      ]
+    },
+    {
+      "configuration": "arm-15/drift_only",
+      "display_label": "Drift-only",
+      "saved_score_rows": 230,
+      "es_by_time_m": [
+        50.570217430446704,
+        242.57721902277092,
+        608.6966355471387,
+        1004.1164568915138
+      ],
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.39565217391304347,
+        0.34347826086956523,
+        0.46956521739130436
+      ]
+    },
+    {
+      "configuration": "arm-15/two_step",
+      "display_label": "Two-step",
+      "saved_score_rows": 230,
+      "es_by_time_m": [
+        50.39226990313778,
+        241.93406461109313,
+        606.7563712045275,
+        1004.7148117306942
+      ],
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3782608695652174,
+        0.3565217391304348,
+        0.46956521739130436
+      ]
+    },
+    {
+      "configuration": "arm-18/full",
+      "display_label": "Full18",
+      "saved_score_rows": 230,
+      "es_by_time_m": [
+        50.475750271447836,
+        242.5447275720755,
+        608.2991174231471,
+        1007.5706073515735
+      ],
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3826086956521739,
+        0.32608695652173914,
+        0.45652173913043476
+      ]
+    },
+    {
+      "configuration": "arm-19/em",
+      "display_label": "EM (Full18 control)",
+      "saved_score_rows": 230,
+      "es_by_time_m": [
+        50.47740255726934,
+        242.5633753768498,
+        608.3449466006512,
+        1007.6062892918404
+      ],
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3826086956521739,
+        0.32608695652173914,
+        0.45652173913043476
+      ]
+    },
+    {
+      "configuration": "arm-19/euler",
+      "display_label": "Euler (EM alias)",
+      "saved_score_rows": 230,
+      "es_by_time_m": [
+        50.47740255726934,
+        242.5633753768498,
+        608.3449466006512,
+        1007.6062892918404
+      ],
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3826086956521739,
+        0.32608695652173914,
+        0.45652173913043476
+      ]
+    },
+    {
+      "configuration": "arm-20/full",
+      "display_label": "Full20",
+      "saved_score_rows": 230,
+      "es_by_time_m": [
+        50.45933432316314,
+        242.3887589832247,
+        607.8524903642121,
+        1004.443640115258
+      ],
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3782608695652174,
+        0.3347826086956522,
+        0.46956521739130436
+      ]
+    },
+    {
+      "configuration": "arm-21/mc",
+      "display_label": "MC (Full20 control)",
+      "saved_score_rows": 230,
+      "es_by_time_m": [
+        50.48077617625286,
+        242.04652024799984,
+        607.0405716314184,
+        1002.4591009484125
+      ],
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3652173913043478,
+        0.34347826086956523,
+        0.4608695652173913
+      ]
+    },
+    {
+      "configuration": "arm-21/crn",
+      "display_label": "CRN (Full20 control)",
+      "saved_score_rows": 230,
+      "es_by_time_m": [
+        50.45933384231456,
+        242.38874285227314,
+        607.852402988848,
+        1004.4435186977792
+      ],
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3782608695652174,
+        0.3347826086956522,
+        0.46956521739130436
+      ]
+    },
+    {
+      "configuration": "arm-16/full",
+      "display_label": "Full16 (extra reference)",
+      "saved_score_rows": 230,
+      "es_by_time_m": [
+        50.29328577210857,
+        242.05909195272775,
+        607.0956427667184,
+        1004.1685120738201
+      ],
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3782608695652174,
+        0.3347826086956522,
+        0.45652173913043476
+      ]
+    }
+  ],
+  "es_units": "m; lower is better, not mean position error",
+  "coverage_units": "fraction; nominal disk probability .90, not higher-is-always-better",
+  "thirty_minute_es_range_m": [
+    941.8934482293058,
+    1197.6152619441532
+  ],
+  "thirty_minute_coverage_range": [
+    0.21739130434782608,
+    0.7913043478260869
+  ],
+  "all_thirty_minute_coverages_below_nominal": true,
+  "ranges_are_confidence_intervals": false,
+  "configs_are_independent_algorithms": false,
+  "new_fits": 0,
+  "new_forecasts": 0,
+  "new_scores": 0,
+  "new_resampling": 0,
+  "new_per_horizon_inference": 0,
+  "forecast_arrays_opened": false,
+  "independent_saved_output_audit_completed": false,
+  "scientific_claim_authorized": false,
+  "original_final_sixteen_figure_inventory_replaced": false
+}

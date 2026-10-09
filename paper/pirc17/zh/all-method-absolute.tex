@@ -1,0 +1,59 @@
+\subsection{完整方法绝对值}
+\label{sec:all-method-absolute}
+表~\ref{tab:all-method-absolute} 保留同一固定阶段快照的全部 28 个执行身份。
+图~\ref{fig:preliminary-method-absolute} 只在显示中省略六个额外 Full／replay 角色，
+不从来源删除预测，也不将它们平均或假定有限评分相等。
+每行完整使用 46 个记录块和五个预测种子，即 230 项预测，不是 230 个独立目标。
+均值仅在显示时四舍五入，完整精度保留在
+\path{paper/pirc17/preliminary-method-statistics-v1.json}。
+每列均为越低越好，但 ES、ADE、FDE 是不同量。这里没有绝对评分置信区间或全局
+最佳模型检验；保存参数相等与不同随机流的解释仍适用（表~\ref{tab:estimator-calibration}）。
+\begingroup\small
+\begin{longtable}{lrrr}
+\caption{全部 28 个主要方法的绝对阶段均值，单位米；没有新增预测或统计推断。}
+\label{tab:all-method-absolute}\\
+\toprule
+执行身份 & 加权 ES & ADE & FDE\\
+\midrule
+\endfirsthead
+\multicolumn{4}{l}{表 \thetable\ （续表）}\\
+\toprule
+执行身份 & 加权 ES & ADE & FDE\\
+\midrule
+\endhead
+\midrule\multicolumn{4}{r}{续下页}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\texttt{arm-01/full} & 477.9 & 636.1 & 1326.1\\
+\texttt{arm-02/pointwise} & 510.8 & 635.2 & 1324.2\\
+\texttt{arm-03/single\_gaussian} & 499.9 & 622.9 & 1316.4\\
+\texttt{arm-04/gmm\_kernel} & 475.0 & 622.0 & 1299.1\\
+\texttt{arm-05/explicit\_decomp} & 535.8 & 647.6 & 1403.1\\
+\texttt{arm-06/dt30} & 486.4 & 631.8 & 1317.6\\
+\texttt{arm-06/dt120} & 466.3 & 638.7 & 1329.8\\
+\texttt{arm-06/dt300} & 454.4 & 644.4 & 1335.7\\
+\texttt{arm-06/dt600} & 453.2 & 651.5 & 1340.9\\
+\texttt{arm-08/qmle} & 477.0 & 635.6 & 1325.1\\
+\texttt{arm-09/mixed} & 470.1 & 630.3 & 1315.7\\
+\texttt{arm-09/pure\_es} & 471.4 & 631.4 & 1318.5\\
+\texttt{arm-10/d2\_mc} & 476.7 & 634.8 & 1322.1\\
+\texttt{arm-10/d2\_closed} & 476.7 & 634.8 & 1322.1\\
+\texttt{arm-12/scratch} & 478.6 & 640.1 & 1339.0\\
+\texttt{arm-14/reptile} & 478.2 & 630.0 & 1320.8\\
+\texttt{arm-15/drift\_only} & 476.5 & 634.4 & 1320.6\\
+\texttt{arm-15/two\_step} & 475.9 & 634.3 & 1322.4\\
+\texttt{arm-19/em} & 477.2 & 635.2 & 1325.0\\
+\texttt{arm-19/euler} & 477.2 & 635.2 & 1325.0\\
+\texttt{arm-21/mc} & 475.5 & 633.7 & 1320.0\\
+\texttt{arm-21/crn} & 476.3 & 634.2 & 1320.9\\
+\midrule
+\multicolumn{4}{l}{额外 Full／replay 身份，仅在点图中省略}\\
+\texttt{arm-06/dt60} & 477.9 & 636.1 & 1326.1\\
+\texttt{arm-07/full} & 476.7 & 634.8 & 1322.1\\
+\texttt{arm-11/full} & 476.0 & 634.0 & 1320.7\\
+\texttt{arm-16/full} & 475.9 & 633.9 & 1321.2\\
+\texttt{arm-18/full} & 477.2 & 635.2 & 1325.0\\
+\texttt{arm-20/full} & 476.3 & 634.2 & 1320.9\\
+\end{longtable}
+\endgroup

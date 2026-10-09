@@ -1,0 +1,1177 @@
+{
+  "schema_version": "pirc17-public-safe-preliminary-method-arithmetic-v1",
+  "captured_utc": "2026-10-06T00:54:18.683579+00:00",
+  "cache_sha256": "892bb89b1d39d376c69d5a41570ad1655e50fe6950be6442db7f2b2f492c2878",
+  "settings_id": "37b7744c96b3a3663d902e3189b1fc9bbff480ced87a1f3e1476455c2840a8a9",
+  "score_index_sha256": "7d062d749d3591f0faacb806893cc0f5014a5f3600a0b1b15bb93ab2b2037b2e",
+  "captured_rows_sha256": "d339731e52bdaa387208db909d507131ac154eec350cd11c2ba500c78ab5efc2",
+  "scientific_expected": 11020,
+  "captured_scientific_rows": 10389,
+  "row_status_counts": {
+    "success": 10384,
+    "failed": 5
+  },
+  "new_forecasts": 0,
+  "new_fits": 0,
+  "new_particle_scores": 0,
+  "independent_raw_output_audit_completed": false,
+  "scientific_claim_authorized": false,
+  "private_derivative_file_sha256": "c4a8f38f264de511f5fc71de614dfc0b55bd8e77b6d563a39ae7b21a73ef76e5",
+  "input_projection": "Aggregate primary saved-score arithmetic only; no raw origin, target, model, work ID or local path. Not final audited public export/cards.",
+  "primary_method_rows": 6440,
+  "independent_blocks": 46,
+  "forecast_seeds": [
+    20260814,
+    20260815,
+    20260816,
+    20260817,
+    20260818
+  ],
+  "configs": [
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-01/full",
+      "expected": 230,
+      "counts": {
+        "success": 230
+      },
+      "missing": 0,
+      "status": "computed",
+      "weighted_es_m": 477.8536696875933,
+      "es_by_time_m": [
+        50.569749444899905,
+        243.228509869058,
+        609.2671942332843,
+        1008.349225203131
+      ],
+      "ade_m": 636.1083738231829,
+      "fde_m": 1326.0918029570767,
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3782608695652174,
+        0.3521739130434783,
+        0.4652173913043478
+      ]
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-02/pointwise",
+      "expected": 230,
+      "counts": {
+        "success": 230
+      },
+      "missing": 0,
+      "status": "computed",
+      "weighted_es_m": 510.8067777506716,
+      "es_by_time_m": [
+        50.36579314052639,
+        249.10392563593732,
+        652.0912113814785,
+        1091.666180844744
+      ],
+      "ade_m": 635.2343103377297,
+      "fde_m": 1324.1769399266336,
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.24782608695652175,
+        0.10869565217391304,
+        0.21739130434782608
+      ]
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-03/single_gaussian",
+      "expected": 230,
+      "counts": {
+        "success": 230
+      },
+      "missing": 0,
+      "status": "computed",
+      "weighted_es_m": 499.86740902569727,
+      "es_by_time_m": [
+        48.60710507972834,
+        237.81055947109988,
+        627.2290050690282,
+        1085.8229664829328
+      ],
+      "ade_m": 622.8875200868647,
+      "fde_m": 1316.447202985561,
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3173913043478261,
+        0.1782608695652174,
+        0.32608695652173914
+      ]
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-04/gmm_kernel",
+      "expected": 230,
+      "counts": {
+        "success": 230
+      },
+      "missing": 0,
+      "status": "computed",
+      "weighted_es_m": 475.0273226291634,
+      "es_by_time_m": [
+        50.35216084765841,
+        228.87097461928965,
+        598.6958584447951,
+        1022.1902966049104
+      ],
+      "ade_m": 621.9515227240688,
+      "fde_m": 1299.1056539175968,
+      "coverage_90_by_time": [
+        0.9695652173913043,
+        0.6652173913043479,
+        0.34782608695652173,
+        0.45217391304347826
+      ]
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-05/explicit_decomp",
+      "expected": 230,
+      "counts": {
+        "success": 230
+      },
+      "missing": 0,
+      "status": "computed",
+      "weighted_es_m": 535.8109930556041,
+      "es_by_time_m": [
+        48.21045107937236,
+        239.20373005692514,
+        658.2145291419657,
+        1197.6152619441532
+      ],
+      "ade_m": 647.644782066602,
+      "fde_m": 1403.0847230677907,
+      "coverage_90_by_time": [
+        0.9130434782608695,
+        0.3217391304347826,
+        0.13478260869565217,
+        0.21739130434782608
+      ]
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-06/dt120",
+      "expected": 230,
+      "counts": {
+        "success": 230
+      },
+      "missing": 0,
+      "status": "computed",
+      "weighted_es_m": 466.2964375467216,
+      "es_by_time_m": [
+        51.52948009188197,
+        233.9834762080013,
+        592.5491633325585,
+        987.1236305544448
+      ],
+      "ade_m": 638.7286102607595,
+      "fde_m": 1329.8141035646568,
+      "coverage_90_by_time": [
+        0.9826086956521739,
+        0.7086956521739131,
+        0.5478260869565217,
+        0.5695652173913044
+      ]
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-06/dt30",
+      "expected": 230,
+      "counts": {
+        "success": 230
+      },
+      "missing": 0,
+      "status": "computed",
+      "weighted_es_m": 486.41612263607914,
+      "es_by_time_m": [
+        51.36254358952337,
+        251.36089358296405,
+        621.7691604400674,
+        1021.1718929317618
+      ],
+      "ade_m": 631.812404011334,
+      "fde_m": 1317.553774464761,
+      "coverage_90_by_time": [
+        0.7260869565217392,
+        0.23043478260869565,
+        0.24347826086956523,
+        0.3826086956521739
+      ]
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-06/dt300",
+      "expected": 230,
+      "counts": {
+        "success": 230
+      },
+      "missing": 0,
+      "status": "computed",
+      "weighted_es_m": 454.4490642636843,
+      "es_by_time_m": [
+        56.58492129508211,
+        229.2760072871681,
+        574.5322859342516,
+        957.4030425382354
+      ],
+      "ade_m": 644.3694763803749,
+      "fde_m": 1335.7318898865935,
+      "coverage_90_by_time": [
+        1,
+        0.9652173913043478,
+        0.717391304347826,
+        0.6434782608695652
+      ]
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-06/dt60",
+      "expected": 230,
+      "counts": {
+        "success": 230
+      },
+      "missing": 0,
+      "status": "computed",
+      "weighted_es_m": 477.8536696875933,
+      "es_by_time_m": [
+        50.569749444899905,
+        243.228509869058,
+        609.2671942332843,
+        1008.349225203131
+      ],
+      "ade_m": 636.1083738231829,
+      "fde_m": 1326.0918029570767,
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3782608695652174,
+        0.3521739130434783,
+        0.4652173913043478
+      ]
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-06/dt600",
+      "expected": 230,
+      "counts": {
+        "success": 230
+      },
+      "missing": 0,
+      "status": "computed",
+      "weighted_es_m": 453.1622779936355,
+      "es_by_time_m": [
+        63.78395573327536,
+        234.31854144507835,
+        572.6531665668824,
+        941.8934482293058
+      ],
+      "ade_m": 651.4628519374805,
+      "fde_m": 1340.9389117738315,
+      "coverage_90_by_time": [
+        1,
+        0.991304347826087,
+        0.9260869565217391,
+        0.7913043478260869
+      ]
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-07/full",
+      "expected": 230,
+      "counts": {
+        "success": 230
+      },
+      "missing": 0,
+      "status": "computed",
+      "weighted_es_m": 476.6756688302303,
+      "es_by_time_m": [
+        50.52368791059413,
+        242.2754444644496,
+        608.7570097663494,
+        1005.146533179528
+      ],
+      "ade_m": 634.7514657921654,
+      "fde_m": 1322.134840737624,
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3782608695652174,
+        0.3347826086956522,
+        0.45652173913043476
+      ]
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-08/qmle",
+      "expected": 230,
+      "counts": {
+        "success": 230
+      },
+      "missing": 0,
+      "status": "computed",
+      "weighted_es_m": 476.95122115210313,
+      "es_by_time_m": [
+        50.33318363960502,
+        242.13533223618862,
+        608.8536821521124,
+        1006.4826865805067
+      ],
+      "ade_m": 635.5554443634582,
+      "fde_m": 1325.1450509971933,
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3869565217391304,
+        0.34347826086956523,
+        0.4652173913043478
+      ]
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-09/mixed",
+      "expected": 230,
+      "counts": {
+        "success": 230
+      },
+      "missing": 0,
+      "status": "computed",
+      "weighted_es_m": 470.12562653574054,
+      "es_by_time_m": [
+        50.162857030837955,
+        238.69227602787734,
+        600.3572236373427,
+        991.2901494469041
+      ],
+      "ade_m": 630.324565530197,
+      "fde_m": 1315.6538075414367,
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.4043478260869565,
+        0.34782608695652173,
+        0.4652173913043478
+      ]
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-09/pure_es",
+      "expected": 230,
+      "counts": {
+        "success": 230
+      },
+      "missing": 0,
+      "status": "computed",
+      "weighted_es_m": 471.3620746657201,
+      "es_by_time_m": [
+        50.094003093284364,
+        238.94300973900724,
+        601.7417129868414,
+        994.6695728437473
+      ],
+      "ade_m": 631.3623409957304,
+      "fde_m": 1318.4823368931259,
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.391304347826087,
+        0.3521739130434783,
+        0.45652173913043476
+      ]
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-10/d2_closed",
+      "expected": 230,
+      "counts": {
+        "success": 230
+      },
+      "missing": 0,
+      "status": "computed",
+      "weighted_es_m": 476.6756688302303,
+      "es_by_time_m": [
+        50.52368791059413,
+        242.2754444644496,
+        608.7570097663494,
+        1005.146533179528
+      ],
+      "ade_m": 634.7514657921654,
+      "fde_m": 1322.134840737624,
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3782608695652174,
+        0.3347826086956522,
+        0.45652173913043476
+      ]
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-10/d2_mc",
+      "expected": 230,
+      "counts": {
+        "success": 230
+      },
+      "missing": 0,
+      "status": "computed",
+      "weighted_es_m": 476.6756688302303,
+      "es_by_time_m": [
+        50.52368791059413,
+        242.2754444644496,
+        608.7570097663494,
+        1005.146533179528
+      ],
+      "ade_m": 634.7514657921654,
+      "fde_m": 1322.134840737624,
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3782608695652174,
+        0.3347826086956522,
+        0.45652173913043476
+      ]
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-11/full",
+      "expected": 230,
+      "counts": {
+        "success": 230
+      },
+      "missing": 0,
+      "status": "computed",
+      "weighted_es_m": 475.9852942744142,
+      "es_by_time_m": [
+        50.36623802787099,
+        242.16667155025317,
+        607.7282006871316,
+        1003.6800668324009
+      ],
+      "ade_m": 633.999013658545,
+      "fde_m": 1320.70063390923,
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3869565217391304,
+        0.34782608695652173,
+        0.4652173913043478
+      ]
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-12/scratch",
+      "expected": 230,
+      "counts": {
+        "success": 230
+      },
+      "missing": 0,
+      "status": "computed",
+      "weighted_es_m": 478.5890111831785,
+      "es_by_time_m": [
+        50.646580343450914,
+        242.9696901075238,
+        607.7936546224631,
+        1012.9461196592762
+      ],
+      "ade_m": 640.1174600270223,
+      "fde_m": 1338.9568615089088,
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.4043478260869565,
+        0.3782608695652174,
+        0.4652173913043478
+      ]
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-14/reptile",
+      "expected": 230,
+      "counts": {
+        "success": 230
+      },
+      "missing": 0,
+      "status": "computed",
+      "weighted_es_m": 478.18001874632444,
+      "es_by_time_m": [
+        50.15117789752277,
+        239.458002528538,
+        602.7162323009919,
+        1020.394662258245
+      ],
+      "ade_m": 629.961153733461,
+      "fde_m": 1320.8083482395912,
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3739130434782609,
+        0.33043478260869563,
+        0.41739130434782606
+      ]
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-15/drift_only",
+      "expected": 230,
+      "counts": {
+        "success": 230
+      },
+      "missing": 0,
+      "status": "computed",
+      "weighted_es_m": 476.49013222296753,
+      "es_by_time_m": [
+        50.570217430446704,
+        242.57721902277092,
+        608.6966355471387,
+        1004.1164568915138
+      ],
+      "ade_m": 634.356285911806,
+      "fde_m": 1320.6176379976541,
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.39565217391304347,
+        0.34347826086956523,
+        0.46956521739130436
+      ]
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-15/two_step",
+      "expected": 230,
+      "counts": {
+        "success": 230
+      },
+      "missing": 0,
+      "status": "computed",
+      "weighted_es_m": 475.9493793623632,
+      "es_by_time_m": [
+        50.39226990313778,
+        241.93406461109313,
+        606.7563712045275,
+        1004.7148117306942
+      ],
+      "ade_m": 634.3103503229655,
+      "fde_m": 1322.3994323463949,
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3782608695652174,
+        0.3565217391304348,
+        0.46956521739130436
+      ]
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-16/full",
+      "expected": 230,
+      "counts": {
+        "success": 230
+      },
+      "missing": 0,
+      "status": "computed",
+      "weighted_es_m": 475.9041331413437,
+      "es_by_time_m": [
+        50.29328577210857,
+        242.05909195272775,
+        607.0956427667184,
+        1004.1685120738201
+      ],
+      "ade_m": 633.8773371153627,
+      "fde_m": 1321.242691312827,
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3782608695652174,
+        0.3347826086956522,
+        0.45652173913043476
+      ]
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-18/full",
+      "expected": 230,
+      "counts": {
+        "success": 230
+      },
+      "missing": 0,
+      "status": "computed",
+      "weighted_es_m": 477.22255065456096,
+      "es_by_time_m": [
+        50.475750271447836,
+        242.5447275720755,
+        608.2991174231471,
+        1007.5706073515735
+      ],
+      "ade_m": 635.2263797534794,
+      "fde_m": 1324.9746862167058,
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3826086956521739,
+        0.32608695652173914,
+        0.45652173913043476
+      ]
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-19/em",
+      "expected": 230,
+      "counts": {
+        "success": 230
+      },
+      "missing": 0,
+      "status": "computed",
+      "weighted_es_m": 477.24800345665267,
+      "es_by_time_m": [
+        50.47740255726934,
+        242.5633753768498,
+        608.3449466006512,
+        1007.6062892918404
+      ],
+      "ade_m": 635.2363292232188,
+      "fde_m": 1324.9892338924058,
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3826086956521739,
+        0.32608695652173914,
+        0.45652173913043476
+      ]
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-19/euler",
+      "expected": 230,
+      "counts": {
+        "success": 230
+      },
+      "missing": 0,
+      "status": "computed",
+      "weighted_es_m": 477.24800345665267,
+      "es_by_time_m": [
+        50.47740255726934,
+        242.5633753768498,
+        608.3449466006512,
+        1007.6062892918404
+      ],
+      "ade_m": 635.2363292232188,
+      "fde_m": 1324.9892338924058,
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3826086956521739,
+        0.32608695652173914,
+        0.45652173913043476
+      ]
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-20/full",
+      "expected": 230,
+      "counts": {
+        "success": 230
+      },
+      "missing": 0,
+      "status": "computed",
+      "weighted_es_m": 476.2860559464645,
+      "es_by_time_m": [
+        50.45933432316314,
+        242.3887589832247,
+        607.8524903642121,
+        1004.443640115258
+      ],
+      "ade_m": 634.2135120851032,
+      "fde_m": 1320.937314972707,
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3782608695652174,
+        0.3347826086956522,
+        0.46956521739130436
+      ]
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-21/crn",
+      "expected": 230,
+      "counts": {
+        "success": 230
+      },
+      "missing": 0,
+      "status": "computed",
+      "weighted_es_m": 476.28599959530374,
+      "es_by_time_m": [
+        50.45933384231456,
+        242.38874285227314,
+        607.852402988848,
+        1004.4435186977792
+      ],
+      "ade_m": 634.2135095563646,
+      "fde_m": 1320.9373071965456,
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3782608695652174,
+        0.3347826086956522,
+        0.46956521739130436
+      ]
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-21/mc",
+      "expected": 230,
+      "counts": {
+        "success": 230
+      },
+      "missing": 0,
+      "status": "computed",
+      "weighted_es_m": 475.5067422510209,
+      "es_by_time_m": [
+        50.48077617625286,
+        242.04652024799984,
+        607.0405716314184,
+        1002.4591009484125
+      ],
+      "ade_m": 633.6972195942313,
+      "fde_m": 1319.9739896089752,
+      "coverage_90_by_time": [
+        0.9565217391304348,
+        0.3652173913043478,
+        0.34347826086956523,
+        0.4608695652173913
+      ]
+    }
+  ],
+  "comparisons": [
+    {
+      "family_id": "method-model-structure",
+      "candidate": "arm-02/pointwise",
+      "control": "arm-01/full",
+      "delta_estimate_m": 32.9531080630783,
+      "simultaneous_interval_m": [
+        22.98749987202486,
+        43.36902971139333
+      ],
+      "holm_adjusted_p_zero": 0.001999000499750125,
+      "seed_delta_m": [
+        32.601070852842994,
+        29.69597511911838,
+        33.88527718689666,
+        33.833997537917114,
+        34.74921961861633
+      ],
+      "tail_check_passed": true
+    },
+    {
+      "family_id": "method-model-structure",
+      "candidate": "arm-03/single_gaussian",
+      "control": "arm-01/full",
+      "delta_estimate_m": 22.013739338104006,
+      "simultaneous_interval_m": [
+        -14.190401879136918,
+        60.81038580814564
+      ],
+      "holm_adjusted_p_zero": 0.3278360819590205,
+      "seed_delta_m": [
+        21.65456603092125,
+        19.019817790128844,
+        21.724251075147027,
+        23.025388236536095,
+        24.644673557786785
+      ],
+      "tail_check_passed": true
+    },
+    {
+      "family_id": "method-model-structure",
+      "candidate": "arm-04/gmm_kernel",
+      "control": "arm-01/full",
+      "delta_estimate_m": -2.8263470584298918,
+      "simultaneous_interval_m": [
+        -21.219952732309977,
+        16.333573171362854
+      ],
+      "holm_adjusted_p_zero": 0.711144427786107,
+      "seed_delta_m": [
+        -4.999764832066935,
+        -4.272034919877216,
+        -1.0751347765885182,
+        -2.397970510507719,
+        -1.3868302531090733
+      ],
+      "tail_check_passed": true
+    },
+    {
+      "family_id": "method-model-structure",
+      "candidate": "arm-05/explicit_decomp",
+      "control": "arm-01/full",
+      "delta_estimate_m": 57.95732336801082,
+      "simultaneous_interval_m": [
+        -3.0348386483066676,
+        117.07772440418108
+      ],
+      "holm_adjusted_p_zero": 0.05397301349325337,
+      "seed_delta_m": [
+        57.28091092765321,
+        56.48588550714627,
+        58.296768289465135,
+        58.592576986374304,
+        59.13047512941512
+      ],
+      "tail_check_passed": true
+    },
+    {
+      "family_id": "method-observation-interval",
+      "candidate": "arm-06/dt30",
+      "control": "arm-01/full",
+      "delta_estimate_m": 8.562452948485857,
+      "simultaneous_interval_m": [
+        3.733112028381705,
+        13.761609806673167
+      ],
+      "holm_adjusted_p_zero": 0.001999000499750125,
+      "seed_delta_m": [
+        8.38651309020865,
+        6.927125725064813,
+        7.238594487675265,
+        8.723008130447775,
+        11.537023309032792
+      ],
+      "tail_check_passed": true
+    },
+    {
+      "family_id": "method-observation-interval",
+      "candidate": "arm-06/dt120",
+      "control": "arm-01/full",
+      "delta_estimate_m": -11.557232140871653,
+      "simultaneous_interval_m": [
+        -20.370297340706486,
+        -3.04202751836584
+      ],
+      "holm_adjusted_p_zero": 0.0029985007496251873,
+      "seed_delta_m": [
+        -10.757821119521763,
+        -14.89033579880113,
+        -10.323152841732155,
+        -11.071605596561856,
+        -10.74324534774136
+      ],
+      "tail_check_passed": true
+    },
+    {
+      "family_id": "method-observation-interval",
+      "candidate": "arm-06/dt300",
+      "control": "arm-01/full",
+      "delta_estimate_m": -23.404605423908972,
+      "simultaneous_interval_m": [
+        -48.26887354826701,
+        -2.467493424090268
+      ],
+      "holm_adjusted_p_zero": 0.022988505747126436,
+      "seed_delta_m": [
+        -22.477277720588923,
+        -25.66401573500061,
+        -25.48289451261822,
+        -20.083448920888415,
+        -23.315390230448724
+      ],
+      "tail_check_passed": true
+    },
+    {
+      "family_id": "method-observation-interval",
+      "candidate": "arm-06/dt600",
+      "control": "arm-01/full",
+      "delta_estimate_m": -24.691391693957772,
+      "simultaneous_interval_m": [
+        -67.65149680393148,
+        9.077053061204392
+      ],
+      "holm_adjusted_p_zero": 0.11594202898550725,
+      "seed_delta_m": [
+        -22.603185608843848,
+        -24.918199696449015,
+        -21.92475087959391,
+        -28.957495070783327,
+        -25.05332721411878
+      ],
+      "tail_check_passed": true
+    },
+    {
+      "family_id": "method-objective-and-score",
+      "candidate": "arm-08/qmle",
+      "control": "arm-07/full",
+      "delta_estimate_m": 0.2755523218728847,
+      "simultaneous_interval_m": [
+        -1.9167750469376164,
+        2.704417142102034
+      ],
+      "holm_adjusted_p_zero": 1,
+      "seed_delta_m": [
+        1.898120589312472,
+        -0.41222849064553513,
+        1.6601411342529246,
+        0.5771509529335784,
+        -2.345422576489017
+      ],
+      "tail_check_passed": true
+    },
+    {
+      "family_id": "method-objective-and-score",
+      "candidate": "arm-09/mixed",
+      "control": "arm-07/full",
+      "delta_estimate_m": -6.550042294489723,
+      "simultaneous_interval_m": [
+        -16.861829984372257,
+        3.1796829073886403
+      ],
+      "holm_adjusted_p_zero": 0.5497251374312844,
+      "seed_delta_m": [
+        -4.130051626019354,
+        -9.303196957948032,
+        -4.583169695553592,
+        -3.958720368485493,
+        -10.775072824442145
+      ],
+      "tail_check_passed": true
+    },
+    {
+      "family_id": "method-objective-and-score",
+      "candidate": "arm-09/pure_es",
+      "control": "arm-07/full",
+      "delta_estimate_m": -5.313594164510165,
+      "simultaneous_interval_m": [
+        -15.975849427704414,
+        5.259756313376008
+      ],
+      "holm_adjusted_p_zero": 0.8395802098950524,
+      "seed_delta_m": [
+        -4.399069885120756,
+        -6.126190366770271,
+        -4.995997035284206,
+        -1.5563983782499387,
+        -9.490315157125648
+      ],
+      "tail_check_passed": true
+    },
+    {
+      "family_id": "method-objective-and-score",
+      "candidate": "arm-10/d2_mc",
+      "control": "arm-07/full",
+      "delta_estimate_m": 0,
+      "simultaneous_interval_m": [
+        0,
+        0
+      ],
+      "holm_adjusted_p_zero": 1,
+      "seed_delta_m": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "tail_check_passed": true
+    },
+    {
+      "family_id": "method-objective-and-score",
+      "candidate": "arm-10/d2_closed",
+      "control": "arm-07/full",
+      "delta_estimate_m": 0,
+      "simultaneous_interval_m": [
+        0,
+        0
+      ],
+      "holm_adjusted_p_zero": 1,
+      "seed_delta_m": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "tail_check_passed": true
+    },
+    {
+      "family_id": "method-transfer-adaptation",
+      "candidate": "arm-12/scratch",
+      "control": "arm-11/full",
+      "delta_estimate_m": 2.6037169087643175,
+      "simultaneous_interval_m": [
+        -4.733928913009776,
+        10.023147100100026
+      ],
+      "holm_adjusted_p_zero": 1,
+      "seed_delta_m": [
+        2.33498811329242,
+        -0.4340849468600242,
+        3.19797421854895,
+        5.584893254420685,
+        2.334813904419561
+      ],
+      "tail_check_passed": true
+    },
+    {
+      "family_id": "method-transfer-adaptation",
+      "candidate": "arm-14/reptile",
+      "control": "arm-11/full",
+      "delta_estimate_m": 2.194724471910266,
+      "simultaneous_interval_m": [
+        -11.946509337741741,
+        12.909470230227312
+      ],
+      "holm_adjusted_p_zero": 1,
+      "seed_delta_m": [
+        2.522471202771407,
+        -1.3914273823059662,
+        2.6068654358209358,
+        3.879551814012706,
+        3.3561612892522383
+      ],
+      "tail_check_passed": true
+    },
+    {
+      "family_id": "method-transfer-adaptation",
+      "candidate": "arm-15/drift_only",
+      "control": "arm-11/full",
+      "delta_estimate_m": 0.5048379485533587,
+      "simultaneous_interval_m": [
+        -1.5215829928028777,
+        2.4869736201694357
+      ],
+      "holm_adjusted_p_zero": 1,
+      "seed_delta_m": [
+        0.4959570382666981,
+        -1.1206622557565016,
+        -0.8084198886271207,
+        3.842653716483429,
+        0.11466113240028836
+      ],
+      "tail_check_passed": true
+    },
+    {
+      "family_id": "method-transfer-adaptation",
+      "candidate": "arm-15/two_step",
+      "control": "arm-11/full",
+      "delta_estimate_m": -0.035914912051011445,
+      "simultaneous_interval_m": [
+        -2.597689383094756,
+        1.8134643993895787
+      ],
+      "holm_adjusted_p_zero": 1,
+      "seed_delta_m": [
+        -1.057220800394591,
+        -1.8961310905897397,
+        -1.8181146426525576,
+        1.4008965786554786,
+        3.1909953947263516
+      ],
+      "tail_check_passed": true
+    },
+    {
+      "family_id": "method-numerical-propagation",
+      "candidate": "arm-19/em",
+      "control": "arm-18/full",
+      "delta_estimate_m": 0.025452802091722654,
+      "simultaneous_interval_m": [
+        0.00774080813916601,
+        0.050924798017468256
+      ],
+      "holm_adjusted_p_zero": 0.02798600699650175,
+      "seed_delta_m": [
+        0.025422765991702016,
+        0.02502644285903081,
+        0.02542099417352725,
+        0.026205582075461295,
+        0.02518822535889196
+      ],
+      "tail_check_passed": true
+    },
+    {
+      "family_id": "method-numerical-propagation",
+      "candidate": "arm-19/euler",
+      "control": "arm-18/full",
+      "delta_estimate_m": 0.025452802091722654,
+      "simultaneous_interval_m": [
+        0.00774080813916601,
+        0.050924798017468256
+      ],
+      "holm_adjusted_p_zero": 0.02798600699650175,
+      "seed_delta_m": [
+        0.025422765991702016,
+        0.02502644285903081,
+        0.02542099417352725,
+        0.026205582075461295,
+        0.02518822535889196
+      ],
+      "tail_check_passed": true
+    },
+    {
+      "family_id": "method-numerical-propagation",
+      "candidate": "arm-21/mc",
+      "control": "arm-20/full",
+      "delta_estimate_m": -0.7793136954436097,
+      "simultaneous_interval_m": [
+        -2.9476694999233786,
+        1.49390450024681
+      ],
+      "holm_adjusted_p_zero": 0.36531734132933535,
+      "seed_delta_m": [
+        -0.18592433909956965,
+        -1.766536561093532,
+        2.0340495246578363,
+        -0.9333378351426759,
+        -3.044819266540107
+      ],
+      "tail_check_passed": true
+    },
+    {
+      "family_id": "method-numerical-propagation",
+      "candidate": "arm-21/crn",
+      "control": "arm-20/full",
+      "delta_estimate_m": -0.00005635116077952339,
+      "simultaneous_interval_m": [
+        -0.00015282414847221973,
+        0.000014835609310136108
+      ],
+      "holm_adjusted_p_zero": 0.16691654172913542,
+      "seed_delta_m": [
+        -0.00005056924027505137,
+        -0.00006804160947598595,
+        -0.00006101608558788771,
+        -0.0000647354348145605,
+        -0.00003739343374413149
+      ],
+      "tail_check_passed": true
+    }
+  ],
+  "incomplete_primary_terrain_families": [
+    {
+      "family_id": "weighted-es-primary",
+      "status": "statistical_failure",
+      "expected_rows": 1380,
+      "missing_rows": 190,
+      "failed_rows": 1
+    },
+    {
+      "family_id": "weighted-es-lio",
+      "status": "statistical_failure",
+      "expected_rows": 1150,
+      "missing_rows": 163,
+      "failed_rows": 2
+    }
+  ]
+}

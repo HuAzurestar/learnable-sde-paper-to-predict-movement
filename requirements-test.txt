@@ -1,0 +1,6 @@
+# Existing software checks and rendering imports; not scientific qualification.
+pytest>=7.4
+numpy>=1.24
+matplotlib>=3.7
+Pillow>=9.5
+PyMuPDF>=1.23

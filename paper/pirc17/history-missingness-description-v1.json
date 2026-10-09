@@ -1,0 +1,169 @@
+{
+  "schema_version": "pirc17-history-missingness-description-v1",
+  "scope": "46 original saved final causal-prefix timing records, six already illustrated original case forecast metadata receipts, ten previously projected saved diffusion fits; no new trajectories, raw GPX reads or queries",
+  "protocol_sha256": "2267ab84fa77ff4039234a61e8f44be1c3713317d8ad2d1bb4ced9af0c5b293a",
+  "execution_sha256": "c3e44393f6bc5544aaa21bb273c94eaecb9d0becb4e0590771355c4c0be9b6c2",
+  "matrix_sha256": "3fcfc6c7858ee346b20040ef6e7728153b188bd4d2ada58839f39e769d44de13",
+  "context_sha256": "61354e87858d8dc54e2759e3b11f2501000e27ca9b2898115d72018b2f051f4f",
+  "source_sha256": {
+    "PSDE-SDE/experiments/pirc17/origins.py": "e06c6165277e994af943c4b5108f978abb58cc39a005e326c15de6d1f26a6c26",
+    "PSDE-SDE/experiments/pirc17/rollout.py": "b8fda002d6c771e86edf799f7708f3f1ad70fe9bc352b1a571bdbfe0aac2e45a",
+    "PSDE-SDE/experiments/pirc17/features.py": "7ce422a2a83add8ad8484d52f8a83a4669c05a259d3fcb8c55ab5e06de4cc26c",
+    "PSDE-SDE/experiments/pirc17/direct_linear.py": "0c80ec0f01089d056f5652ff81c623c533d7e2080aed5942018b516d5c59181e",
+    "PSDE-SDE/experiments/pirc17/formal_inputs.py": "eba1178c00c0230ba96ba503cf7630413a9088baed6513434d0f4be9face7ba4"
+  },
+  "case_manifest_file_sha256": "5a20f1cc6c0a9a6ad1f561154830152fb4ff8fe268e976016c34b47ac4555f42",
+  "fit_projection_sha256": "b3d8b6e440399779f5fbac999aba13b23ab0749144441a4b767e746ae3123e3d",
+  "prefix_span_summary": {
+    "origin_span_seconds": {
+      "count": 46,
+      "minimum": 2,
+      "median": 7,
+      "maximum": 61,
+      "mean": 13.195652173913043
+    },
+    "last_gap_seconds": {
+      "count": 46,
+      "minimum": 1,
+      "median": 3,
+      "maximum": 31,
+      "mean": 6.478260869565218
+    },
+    "first_tick_span_seconds": {
+      "count": 46,
+      "minimum": 6,
+      "median": 8,
+      "maximum": 36,
+      "mean": 11.478260869565217
+    },
+    "original_spans_different_from_stable_10s": 46
+  },
+  "terrain_history_tick_seconds": 5,
+  "stable_terrain_secant_span_seconds": 10,
+  "stable_secant_adjacent_correlation_in_constant_drift_model": 0.5,
+  "case_query_counts": [
+    {
+      "case_rank": 0,
+      "configuration": "base",
+      "record_sha256": "ec09c8a5cb9efcf82da4e8db16794c81cb8f46ba13ccb4ba33fc34832afebddc",
+      "leaf_record_sha256": "ec09c8a5cb9efcf82da4e8db16794c81cb8f46ba13ccb4ba33fc34832afebddc",
+      "invalid_encoded_rows": 0,
+      "encoded_query_rows": 185856,
+      "raw_map_query_rows": 0
+    },
+    {
+      "case_rank": 0,
+      "configuration": "all-terrain",
+      "record_sha256": "3f0debf9841224a8187a020302ba820f478e98f385ab9d9c3b5924e423958911",
+      "leaf_record_sha256": "3f0debf9841224a8187a020302ba820f478e98f385ab9d9c3b5924e423958911",
+      "invalid_encoded_rows": 0,
+      "encoded_query_rows": 185856,
+      "raw_map_query_rows": 185856
+    },
+    {
+      "case_rank": 3,
+      "configuration": "base",
+      "record_sha256": "d2ec7dd6b2d10f1abc3db5177818139cd7dbd4841de5d3f243d56ad11e7cdbc8",
+      "leaf_record_sha256": "d2ec7dd6b2d10f1abc3db5177818139cd7dbd4841de5d3f243d56ad11e7cdbc8",
+      "invalid_encoded_rows": 0,
+      "encoded_query_rows": 186368,
+      "raw_map_query_rows": 0
+    },
+    {
+      "case_rank": 3,
+      "configuration": "all-terrain",
+      "record_sha256": "0ddb2efd108111415f4b09e324754d3b6c5f328547d611db58b92ef972e89884",
+      "leaf_record_sha256": "0ddb2efd108111415f4b09e324754d3b6c5f328547d611db58b92ef972e89884",
+      "invalid_encoded_rows": 0,
+      "encoded_query_rows": 186368,
+      "raw_map_query_rows": 186368
+    },
+    {
+      "case_rank": 4,
+      "configuration": "base",
+      "record_sha256": "893c8fcb6162380f00d181f38be81962608f02271f0fb0265b3c22fa2372b01f",
+      "leaf_record_sha256": "893c8fcb6162380f00d181f38be81962608f02271f0fb0265b3c22fa2372b01f",
+      "invalid_encoded_rows": 0,
+      "encoded_query_rows": 186368,
+      "raw_map_query_rows": 0
+    },
+    {
+      "case_rank": 4,
+      "configuration": "all-terrain",
+      "record_sha256": "369e72c1cac3fb6580821342eec3fe51a3b69aebe2faf2e2613a6cc2fbc99e88",
+      "leaf_record_sha256": "369e72c1cac3fb6580821342eec3fe51a3b69aebe2faf2e2613a6cc2fbc99e88",
+      "invalid_encoded_rows": 0,
+      "encoded_query_rows": 186368,
+      "raw_map_query_rows": 186368
+    }
+  ],
+  "local_diffusion_noise_scales": [
+    {
+      "configuration": "all-terrain",
+      "original_record_sha256": "68c190e875fc0ed39eb0aeae58cdf9252b165242c9d2baa5eba4f730970e5768",
+      "diffusion_trace_m2_per_s": 2.5077138290216805,
+      "local_secant_rms_10s_mps": 0.5007707887868141
+    },
+    {
+      "configuration": "base",
+      "original_record_sha256": "04c608d54ca669146cdc6fcd4de70b0f7bc517983e77361cd691ba061604f4f0",
+      "diffusion_trace_m2_per_s": 2.738696777106645,
+      "local_secant_rms_10s_mps": 0.5233255943584878
+    },
+    {
+      "configuration": "lio-river",
+      "original_record_sha256": "896df1794b520c47c2e8bbde6084b8d6d50e6daa62f3bf07b3c933ad76beed89",
+      "diffusion_trace_m2_per_s": 2.6535181804479144,
+      "local_secant_rms_10s_mps": 0.5151231096007939
+    },
+    {
+      "configuration": "lio-road",
+      "original_record_sha256": "197ed3df37fdcd590b7cab812d36618882e1de7ea6591f8bb05b24d3383a212c",
+      "diffusion_trace_m2_per_s": 2.660366291242247,
+      "local_secant_rms_10s_mps": 0.5157873875195328
+    },
+    {
+      "configuration": "lio-surface",
+      "original_record_sha256": "9a289e5e3f25122a2c7023393cb95ebfe110991e49dfa0eedc99da89ed1b392e",
+      "diffusion_trace_m2_per_s": 2.6723677219798776,
+      "local_secant_rms_10s_mps": 0.5169494870855253
+    },
+    {
+      "configuration": "lio-worldcover",
+      "original_record_sha256": "4862ca7c3e739ba2e7cf57d4e46ffb68efb8aa0a4c308655d1c6c6496f4c9c4c",
+      "diffusion_trace_m2_per_s": 2.725120015777712,
+      "local_secant_rms_10s_mps": 0.5220268207456119
+    },
+    {
+      "configuration": "loo-river",
+      "original_record_sha256": "6a3134dd4439db7a7f7e2050b8636fdd8b1692e429e2db846747d24e6d91d655",
+      "diffusion_trace_m2_per_s": 2.579299066272506,
+      "local_secant_rms_10s_mps": 0.5078680011846095
+    },
+    {
+      "configuration": "loo-road",
+      "original_record_sha256": "873db2953a77f4b14739fbaa98f0f196f7e9481862f28d7c92309ccfa8aad8c9",
+      "diffusion_trace_m2_per_s": 2.57397352080079,
+      "local_secant_rms_10s_mps": 0.5073434261721335
+    },
+    {
+      "configuration": "loo-surface",
+      "original_record_sha256": "7181ba81d9b7e742a48e368ea3c3196918d3493e63712bdf3269c3bcdeb4822c",
+      "diffusion_trace_m2_per_s": 2.5834177936813694,
+      "local_secant_rms_10s_mps": 0.5082733313564041
+    },
+    {
+      "configuration": "loo-worldcover",
+      "original_record_sha256": "2dfbcc3f0903f36912bdd588d6fe95cf3e8f1239dc85be0a345a80fedc3d3080",
+      "diffusion_trace_m2_per_s": 2.5174443400610835,
+      "local_secant_rms_10s_mps": 0.5017414015268307
+    }
+  ],
+  "training_prefix_span_distribution_retained_in_this_projection": false,
+  "full_forecast_per_column_mask_rates_available": false,
+  "full_early_and_late_velocity_drift_distributions_available": false,
+  "local_frozen_drift_calculation_not_actual_feedback_variance": true,
+  "missing_input_robustness_established": false,
+  "independent_saved_output_audit_completed": false,
+  "new_forecasts_fits_map_queries_or_particle_scores": 0
+}

@@ -1,0 +1,90 @@
+{
+  "profiles": [
+    {
+      "model": "inertial",
+      "forecast_rows": 46,
+      "recording_hash_blocks": 46,
+      "weighted_es_m": 824.7279113214589,
+      "ade_m": 824.7279113214589,
+      "fde_m": 2095.783490117496,
+      "es_by_time_m": [
+        31.172460629641936,
+        237.92713645422214,
+        934.0285580844753,
+        2095.783490117496
+      ]
+    },
+    {
+      "model": "Full",
+      "forecast_rows": 230,
+      "recording_hash_blocks": 46,
+      "weighted_es_m": 477.8536696875933,
+      "ade_m": 636.1083738231829,
+      "fde_m": 1326.0918029570767,
+      "es_by_time_m": [
+        50.569749444899905,
+        243.228509869058,
+        609.2671942332843,
+        1008.349225203131
+      ]
+    }
+  ],
+  "full_minus_inertial_m": {
+    "weighted_es_m": -346.87424163386567,
+    "ade_m": -188.61953749827603,
+    "fde_m": -769.6916871604196
+  },
+  "paired_blocks": 46,
+  "nominal_horizon_seconds": [
+    60,
+    300,
+    900,
+    1800
+  ],
+  "nominal_target_tolerance_seconds": 30,
+  "actual_target_bounds_seconds": [
+    [
+      49.0,
+      67.0
+    ],
+    [
+      294.0,
+      305.0
+    ],
+    [
+      889.0,
+      910.0
+    ],
+    [
+      1785.0,
+      1814.0
+    ]
+  ],
+  "target_time_vectors_sha256": "2b68fe0273e4e20ad96a0a81ae6b35a4caf1a4a441c70a0fc525af00ec4751c8",
+  "strictly_lower_full_weighted_es_blocks": 34,
+  "aggregation": "Average five Full forecast seeds within each block, then equal-weight all46 blocks; inertial is never replicated.",
+  "schema_version": "pirc17-saved-inertial-primary-description-v1",
+  "source_score_index_sha256": "fc7c9c4492b962763ecd0f13959a43bf00e2141e74d92273c45cf6ca98e7332f",
+  "source_cache_sha256": "892bb89b1d39d376c69d5a41570ad1655e50fe6950be6442db7f2b2f492c2878",
+  "source_scope": {
+    "protocol_sha256": "2267ab84fa77ff4039234a61e8f44be1c3713317d8ad2d1bb4ced9af0c5b293a",
+    "execution_sha256": "c3e44393f6bc5544aaa21bb273c94eaecb9d0becb4e0590771355c4c0be9b6c2",
+    "matrix_sha256": "3fcfc6c7858ee346b20040ef6e7728153b188bd4d2ada58839f39e769d44de13",
+    "population_sha256": "7061f44ef8647f7bee55822ca7e494e53d3c058e5973d6198e997893c70bb020",
+    "scoring_inputs_sha256": "07da73c55cc7aca5b8a9dee4759be73edac508cd52a12490ebb408460534a5f2"
+  },
+  "auxiliary_inertial_paths_total": 58,
+  "primary_inertial_paths_used": 46,
+  "primary_full_forecasts_used": 230,
+  "excluded_support_origins": 12,
+  "new_fits": 0,
+  "new_forecasts": 0,
+  "new_particle_scores": 0,
+  "new_bootstrap_or_tests": 0,
+  "independent_saved_output_audit_completed": false,
+  "scientific_claim_authorized": false,
+  "external_model_superiority_established": false,
+  "physical_utc_certified": false,
+  "participant_independence_established": false,
+  "interpretation": "Post-outcome descriptive saved-score comparison only; lower is better for each reported metric. No confidence interval or significance test. Degenerate point-mass ES equals point error; probabilistic Full ES need not equal ensemble-mean ADE/FDE. Not final audit/cards or a replacement for the original full study."
+}
