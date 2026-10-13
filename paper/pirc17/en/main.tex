@@ -63,7 +63,20 @@ into a positive finding.
 
 \section{Data and predictive procedures}\label{sec:data}\hypertarget{sec:protocol}{}
 \subsection{Evaluation population and clock}
-The released collection contains 12,370 windows from 1,094 recording-hash
+The task is single-recording position forecasting from a visible trajectory
+prefix. The retained data pipeline identifies its source as a historical
+OpenStreetMap GPX harvest, not the separate GeoLife cohort used in earlier
+work. User identities, transport-mode labels and original GPX segment
+boundaries are not preserved; these records cannot be treated as verified
+pedestrian participants. R1-derived segments supply midpoint history/target
+windows. The frozen recording-hash assignment separates development and
+evaluation: qualified development contains 404 outer-training windows
+(328 training and 76 adaptation) and 81 validation windows. Terrain fitting
+uses one first-future transition per outer-training window. Exact identity
+intersections across splits are zero, which does not establish participant
+or near-route independence. The \supp{sec:protocol} details this assignment.
+
+The released final-evaluation split contains 12,370 windows from 1,094 recording-hash
 blocks. Temporal eligibility retains 127 windows/89 blocks, joint feature
 validity retains 106/73, and the fixed primary-origin rule selects 46/46
 (Figure~\ref{fig:population}). A block identifies a saved recording, not
@@ -95,7 +108,8 @@ also affects rates, diffusion units and the physical interpretation of
 the horizons. All minute labels below refer to the saved clock.
 
 \subsection{Reference stochastic predictor and comparators}\label{sec:models}\hypertarget{sec:models}{}
-Full denotes the ordinary three-mode fitted reference, not the all-terrain
+In the descriptive reference comparisons, Full denotes Full01, the ordinary
+three-mode fitted reference, not the all-terrain
 configuration. In saved local east/north coordinates $X=(X_e,X_n)^\top$
 (metres), it uses
 \begin{equation}\label{eq:ordinary-full}
@@ -110,8 +124,14 @@ its conversion uses observation interval $\tau$, not integration step $h$.
 Each particle draws a mode from saved weights $\pi$ at the origin and
 segment-fixed Full retains that mode. Given frame, position, clock and
 random stream, ordinary Full does not read initial speed or recent heading.
-The deterministic inertial reference instead extrapolates constant speed
-and heading from the permitted initial state.
+For the 46 primary origins, the visible input retains the last three
+observed positions and their strictly increasing saved times. The origin
+is the last point. Inertia extrapolates
+$\widehat x^{\rm I}(u)=x_0+u\widehat v_0$, where $\widehat v_0$ is the secant
+from the first to last of those three points, divided by their saved elapsed
+time; no future position or future speed is used. These spans range from
+2 to 61 saved seconds (median 7). Ordinary Full and inertia thus receive
+the same permitted prefix but use its movement information differently.
 
 Drift is fitted by ridge regression. Full selects a finite covariance-scale
 grid with drift blending fixed at zero. The selection proxy is a one-step
@@ -205,7 +225,9 @@ below are not new superiority or calibration hypothesis tests.
 \section{Results}\label{sec:method-results}\hypertarget{sec:method-results}{}
 \subsection{Average score conceals a horizon reversal}
 Full's weighted ES is \FullES\ m versus \InertialES\ m for inertia; the saved
-difference is \InertialDelta\ m, computed before rounding. Yet inertia has
+difference is \InertialDelta\ m, computed before rounding. At 1 minute,
+Full/inertia ES is 50.57/31.17 m; at 5 minutes it is 243.23/237.93 m.
+Thus inertia has
 lower ES at 1 and 5 minutes and Full at 15 and 30 minutes
 (Figure~\ref{fig:inertial}). The same figure separates ES from mean-position
 error. Four discrete targets do not identify an exact crossover time.
@@ -231,7 +253,7 @@ The deterministic reference is a valid point-mass distribution for ES. It
 does not establish that Full's stochastic complexity is necessary relative
 to a simple probabilistic constant-velocity or correlated-random-walk model.
 
-\input{reader-v2-tradeoff.tex}
+\input{reader-v3-tradeoff.tex}
 
 \subsection{Long-horizon disks substantially undercover}
 Full's nominal 90\% disk coverage is 95.65\%, 37.83\%, 35.22\% and 46.52\%
@@ -240,7 +262,7 @@ while at thirty minutes even the nominal 95\% disk covers only 52.17\%.
 The departure therefore depends on horizon and probability level; no
 radius rescaling has been tested. Across all 28 identities, thirty-minute
 90\% coverage ranges from 21.74\% to 79.13\%.
-\input{reader-v2-calibration.tex}
+\input{reader-v3-calibration.tex}
 The 600 s procedure also has a larger thirty-minute mean area
 (12.609 km$^2$) and higher coverage (79.13\%) than Full, but its FDE is
 1340.94 m. This is another descriptive size--coverage trade-off, not
@@ -256,10 +278,12 @@ states qualify the implemented finite procedures, not general algorithms.
 For example, all five GMM seed effects are negative but its block interval
 is $[-21.22,16.33]$ m. Seed-direction agreement does not resolve uncertainty
 across recording blocks. Complete effects, seeds and qualification reasons
-are retained in the scientific supplement.
+are retained in Supplement Table~\href{supplement.pdf\#tab:preliminary-method-effects}{25}
+and the accompanying qualification discussion.
 
 Three required primary terrain forecasts failed: all-terrain once and
-LIO-river/LIO-road once each. The overall/LOO grid has 1379/1380 successes
+LIO-river/LIO-road once each. LOO means leave-one-group-out and LIO means
+leave-one-group-in. The overall/LOO grid has 1379/1380 successes
 and LIO has 1148/1150, with no pending forecasts; the grids share baselines
 and are not additive. Under the original complete-family rule, both whole
 families are unavailable. Successful subsets or individual map cases cannot
@@ -296,14 +320,6 @@ limit component attribution. The missing matched probabilistic baseline
 precludes a claim that complex stochastic structure is necessary. None of
 these limitations is removed by reproducing saved numerical summaries.
 
-\subsection{Real-route illustrations and public boundary}\label{sec:case-horizons}\hypertarget{sec:case-horizons}{}
-Three existing paired base/all-terrain cases are retained only in the
-owner's local review appendix. They illustrate how a closer predictive
-mean can still fall short of reliable target inclusion, not terrain
-efficacy or a population failure rate. Route and map-layer publication
-permissions are unconfirmed; no case map or route-level diagnostic is
-included in this public manuscript.
-
 Future work should compare a task-matched probabilistic motion baseline,
 align mode labels before transfer and calibration, and evaluate calibration
 of the actual multi-step distribution. Terrain comparisons require complete
@@ -324,6 +340,10 @@ The accompanying scientific supplement contains full specifications and all
 50 tables; the separate audit record contains execution and revision history.
 The public repository provides saved aggregate evidence and reproduction
 code; private trajectories and local case maps are not redistributed.
+The public argument does not rely on those private case illustrations.
+Trajectory research-use permissions and the applicable ethics-review /
+consent basis require author verification; public availability of a source
+or map product is not taken as evidence of that authorization.
 This manuscript revision changes no fit, forecast, score or inference rule.
 Author identities, affiliations and contribution/conflict declarations
 require owner confirmation before submission and are not inferred from

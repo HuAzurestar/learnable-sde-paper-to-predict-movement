@@ -12,7 +12,7 @@ PAPER = ROOT / "paper/pirc17"
 def test_current_body_keeps_core_evidence_and_four_existing_figures(language):
     body = (PAPER / language / "main.tex").read_text(encoding="utf-8")
     expanded = body
-    for stem in ("reader-v2-tradeoff", "reader-v2-calibration"):
+    for stem in ("reader-v3-tradeoff", "reader-v3-calibration"):
         expanded = expanded.replace(r"\input{"+stem+".tex}", (PAPER / language / (stem+".tex")).read_text(encoding="utf-8"))
     figures = re.findall(r"\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}", expanded)
     assert len(figures) == 4
@@ -30,7 +30,10 @@ def test_current_body_keeps_core_evidence_and_four_existing_figures(language):
     for macro in ("FullES", "InertialES", "InertialDelta", "PointRowFull", "PointRowGMM", "PointRowdtThreeHundred", "PointRowInertial"):
         assert "\\"+macro in body
     assert r"\frac1{2N(N-1)}\sum_{i\ne j}" in body
-    assert body.index(r"\input{reader-v2-tradeoff.tex}") < body.index(r"\input{reader-v2-calibration.tex}")
+    assert body.index(r"\input{reader-v3-tradeoff.tex}") < body.index(r"\input{reader-v3-calibration.tex}")
+    assert all(value in body for value in ("328", "76", "404", "81", "Full01", "50.57", "31.17", "243.23", "237.93"))
+    assert "OpenStreetMap GPX" in body
+    assert ("ethics-review" if language == "en" else "伦理审查") in body
     assert ("not a fresh blinded holdout" if language == "en" else "不是全新盲测留出集") in body
     assert ("not a positive or null terrain" if language == "en" else "不是地形正效应或零效应") in body
     assert ("not 230" if language == "en" else "不是230") in body
@@ -48,4 +51,5 @@ def test_no_existing_scientific_or_image_asset_changes():
             # binaries remain byte-exact and manifest content is unchanged.
             if name.endswith(".json"):
                 current = current.replace(b"\r\n", b"\n")
+                original = original.replace(b"\r\n", b"\n")
             assert current == original, name

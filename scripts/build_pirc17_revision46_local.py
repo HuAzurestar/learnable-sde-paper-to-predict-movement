@@ -79,11 +79,8 @@ def assemble(private, output, case_figures=None):
             "\\paragraph{跨时域阅读顺序。}先读四列均值误差，再查对应地图。三例全地形首目标均值都更远，末目标都更近；Boechout、Bakewell的中间目标也更差，第三例则在首目标后反转。这是六份固定种子预测，不估计总体频率或地形收益。先在同目标时刻比较base与全地形，再关注跨时域放大尺度；均值及四份边际位置云都不是保存的连续预测路线。\n")
         (source / language / "local-case-reading.tex").write_text(guide+case_chapter, encoding="utf-8")
         main = (source / language / "main.tex").read_text(encoding="utf-8")
-        start = main.index(r"\subsection{Real-route illustrations" if language == "en" else r"\subsection{真实路线案例")
-        stop = main.index("Future work should" if language == "en" else "后续应以", start)
         # Keep the diagnostic argument uninterrupted. Existing private maps
         # form a local appendix; no new map or case is generated or published.
-        main = main[:start]+main[stop:]
         appendix_title = "Local illustrative cases (not for redistribution)" if language == "en" else "本地解释性案例（不得再分发）"
         appendix = "\n\\clearpage\n\\appendix\n\\section{"+appendix_title+"}\n\\input{local-case-reading.tex}\n"
         main = main.replace(r"\input{revision46-bibliography.tex}", r"\input{revision46-bibliography.tex}"+appendix)
