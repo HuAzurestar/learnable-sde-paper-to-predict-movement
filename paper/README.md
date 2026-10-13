@@ -2,77 +2,83 @@
 
 ## Current PIRC-17 manuscript revision
 
-Start with the actual revised manuscript, not the historical monolithic PDFs:
+The converged manuscript centres on horizon reversal, conflicting error
+metrics and marginal undercoverage. It uses four existing figures and two
+core tables; all 50 supplementary tables and historical figure/PDF versions
+are retained. No new figure, fit, forecast, research score or bootstrap was
+produced in this editorial round.
 
 | Language | Main paper | Scientific supplement | Audit record |
 | --- | --- | --- | --- |
-| English | [18-page paper](pirc17/revision46-review-v2/en/main.pdf) | [80-page supplement](pirc17/revision46-review-v2/en/supplement.pdf) | [16-page record](pirc17/revision46-review-v2/en/audit-notes.pdf) |
-| Chinese | [17-page paper](pirc17/revision46-review-v2/zh/main.pdf) | [78-page supplement](pirc17/revision46-review-v2/zh/supplement.pdf) | [15-page record](pirc17/revision46-review-v2/zh/audit-notes.pdf) |
+| English | [11-page paper](pirc17/revision46-review-v3/en/main.pdf) | [80-page supplement](pirc17/revision46-review-v3/en/supplement.pdf) | [16-page record](pirc17/revision46-review-v3/en/audit-notes.pdf) |
+| Chinese | [11-page paper](pirc17/revision46-review-v3/zh/main.pdf) | [78-page supplement](pirc17/revision46-review-v3/zh/supplement.pdf) | [15-page record](pirc17/revision46-review-v3/zh/audit-notes.pdf) |
 
-The six documents are a single review package: keep the three PDF files of
-each language together so companion named-destination links resolve.
+Keep the three PDFs of each language together for companion links.
 Current sources are `pirc17/{en,zh}/{main,supplement,audit-notes}.tex`.
-The versioned [build manifest](pirc17/revision46-review-v2/build-manifest.json)
-records actual source-file hashes, PDF hashes, strict logs and page counts.
-The manifest distinguishes the source checkpoint from the later commit that
-adds the review PDFs. Historical v1 PDFs, including the 77-page Chinese
-supplement, and their source bindings remain unchanged.
+The [build manifest](pirc17/revision46-review-v3/build-manifest.json) binds
+all six PDFs to clean source checkpoint4269233 and exact input hashes;
+the later PDF-delivery commit is a different revision. V1 and V2 review
+packages, including the original77-page Chinese supplement, remain unchanged.
 
-The 13 October review correction binds ES to the scorer used by the execution:
-the ordered-pair U statistic has denominator `2N(N-1)`, with a separate
-direct-distance branch for the deterministic inertial reference. The old main
-equation and its checklist sentence were wrong; no original scores are rerun.
-The expanded body explains input geometry, the ten-configuration design,
-all 21 ES/FDE contrasts, coverage versus disk size, and seed versus block
-uncertainty. Versioned pale heatmaps use black text and symmetric signed
-coverage deviation. Historical table status is dated rather than erased.
+The four figures explain cohort selection, Full/inertia horizons, the21
+named-control ES/FDE contrasts, and coverage versus region area. Geometry,
+configuration detail, full heatmaps, seed uncertainty and execution history
+remain in the companions. The body now defines the retained GPX task,
+development/evaluation roles, last-three-point inertial secant and Full01,
+and reports short-horizon ES values directly. Terrain RQ2 remains unavailable
+under the original failed-family rule, not a positive or null terrain result.
+The execution-bound ES U-statistic retains denominator `2N(N-1)`;
+all original scientific outputs and prior corrections are preserved.
 
-This revision implements G01–G13, O01–O08, R01–R17 and X01–X08 without new
-fitting, forecasts or resampling. G12 is delivered in a separate local
-map-containing manuscript, not these public PDFs. Authorship, independent
-reader feedback, route publication permission and final human acceptance
-remain unconfirmed. Document-level corrections do not remove missing mode
-snapshots, unknown physical clock provenance, ablation confounding or failed
-terrain comparisons. Five follow-up designs are explicitly not new results.
+Two fresh read-only **gpt-6-astra / high / ACP** reviews used bounded contexts
+(18 and8 focused tool calls). Runtime configuration and saved turn contexts
+confirmed the actual model/effort/sandbox. The reviewer supported the
+three-part diagnostic argument and existing-figure selection; editorial
+findings were addressed, including task definition, self-contained public
+evidence and exact supplement navigation. The last remaining Chinese setup
+anchor was then repaired and all55 public companion links verified.
+[Editorial and review receipt](pirc17/reader-v3-editorial-record.json)
+separates review scope, host verification and unconfirmed author matters.
 
-Rebuild and verify from the repository root, using a fresh external directory:
+This is a complete bounded manuscript body, not certification of immediate
+submission readiness. Real author identities/affiliations/contributions,
+conflict declarations, applicable ethics/consent basis and trajectory
+research-use permissions still require author confirmation. Missing
+probabilistic baselines, uncertain physical clocks/recording independence,
+prior evaluation exposure, label/calibration mismatch and terrain
+confounding remain disclosed scientific limitations. No permission or
+human acceptance is inferred from compilation or an agent review.
+
+Rebuild from the repository root using a fresh external directory:
 
 ```text
 python scripts/build_pirc17_revision46.py --output-dir <fresh-external-directory>
 python scripts/check_pirc17_revision46_links.py --build-dir <fresh-external-directory>
 ```
 
-For local-only route illustrations, use the explicit `--private-manuscript` and
-`--output-dir` options of `scripts/build_pirc17_revision46_local.py`. The
-private-manuscript argument names the original `paper/pirc17` directory,
-containing the language and figure folders. Pass `--case-figures` for the
-separately re-laid-out, hash-bound private maps. The local body is 25 pages in
-each language and retains all six maps; 24 error/radius/coverage annotations
-match the originals, and checked embedded map labels are at least 8.16 pt.
-`scripts/check_pirc17_reader_v2_local.py` verifies those annotations and links.
-The rendering command rereads the original display layers and saved arrays;
-it performs no new fitting, forecasting or scoring. Do not upload its output
-or its case-level input.
+The separate local build uses explicit `--private-manuscript`,
+`--case-figures` and `--output-dir` arguments to
+`scripts/build_pirc17_revision46_local.py`. Both local papers are19 pages:
+the same core argument plus an appendix with the existing six maps/two case
+tables. Hashes and24 error/radius/coverage annotations match their original
+receipts; checked embedded map labels remain at least8.16pt. The builder
+copies existing maps without rendering, querying layers or reading particle
+arrays. Local PDFs, maps and case-level inputs must not be uploaded.
 
-The full regression is not green: the isolated original public snapshot has
-25 failures and two private-input collection errors. The revision preserves
-these checks and compares their actual identities rather than excluding
-them. The [current full-run comparison](pirc17/reader-v2-regression-check.json)
-records 994 passed, 25 failed and two collection errors, with no newly
-introduced failures or errors. CI does not waive these failures. The new structure guards separately
-check current manuscripts; archived-layout guards target the exact preserved
-`historical-main-v1.tex`, without deleting their scientific assertions.
+The original public regression baseline has25 failures and two private-input
+collection errors. The [current full-run comparison](pirc17/reader-v3-regression-check.json)
+reports actual failure identities without skips or private-data stand-ins;
+it is not a claim of green CI. The current body has separate guards, while
+the former V2 layout contract is checked against its exact historical Git
+source, with all scientific assertions preserved.
 
-The [46-card implementation response](pirc17/revision46-response-v3.json)
-retains all 305 criteria and the original 42-item mapping. It distinguishes
-editor review, unresolved scientific provenance and pending real author /
-independent-reader confirmation; it is not an acceptance certificate. The
-incorrect historical ES criterion is explicitly superseded. R05, R06 and
-R10 now list their specific remaining gaps and N03/N04/N01 follow-up designs,
-not empty gap lists or claims that the experiments have been completed.
+The [46-card response](pirc17/revision46-response-v3.json) is retained as the
+earlier correction record, including305 criteria, the42-item mapping,
+the superseded ES criterion and unresolved R05/R06/R10 scientific gaps.
+Reader-v3's separate editorial receipt does not relabel those criteria as
+independently accepted. Five follow-up designs remain unexecuted.
 
-Everything below describes earlier handoffs. Older `public-review.pdf`,
-review bindings and snapshots are historical, not the current review entry.
+Everything below describes earlier handoffs, not the current entrypoint.
 
 ## Historical handoff
 
