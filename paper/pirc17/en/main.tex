@@ -83,7 +83,7 @@ validity retains 106/73, and the fixed primary-origin rule selects 46/46
 a verified independent participant. The selected cohort spans 12 countries
 and 27 source labels; 33/46 blocks are from Great Britain, Belgium or
 Luxembourg. It is not a representative population sample.
-\begin{figure}[htbp]\centering
+\begin{figure}[!htbp]\centering
 \includegraphics[width=\linewidth]{../figures/revision46-v1/revision46-population.pdf}
 \caption{Evaluation selection and population descriptors. Counts distinguish
 windows from recording blocks; duration and speed panels show saved
@@ -231,7 +231,7 @@ Thus inertia has
 lower ES at 1 and 5 minutes and Full at 15 and 30 minutes
 (Figure~\ref{fig:inertial}). The same figure separates ES from mean-position
 error. Four discrete targets do not identify an exact crossover time.
-\begin{figure}[htbp]\centering
+\begin{figure}[!htbp]\centering
 \includegraphics[width=\linewidth]{../figures/revision46-v1/revision46-inertial-horizons.pdf}
 \caption{Full versus deterministic inertia at four nominal saved-clock
 horizons: ES (left) and predictive-mean error (right). Each point averages
@@ -239,7 +239,7 @@ five seeds within each of 46 primary blocks, then weights blocks equally;
 inertia is deterministic. Lower is better. Connecting lines guide reading,
 not interpolation or evidence for a precise crossover.}
 \label{fig:inertial}\end{figure}
-\begin{table}[htbp]\centering
+\begin{table}[!htbp]\centering
 \caption{Saved predictive-mean errors (m), using the original matched
 targets. These are not ES or mean particle errors.}\label{tab:point-errors}
 \begin{tabular}{lrrrr}\toprule
@@ -335,11 +335,12 @@ targets. Joint horizon-wise reporting exposes these differences. RQ1
 supports bounded finite-procedure comparisons, while RQ2 remains unavailable;
 neither establishes general algorithm superiority or terrain efficacy.
 
-\paragraph{Data and reproducibility.}
+\paragraph{Data and reproducibility.}\label{sec:case-horizons}\hypertarget{sec:case-horizons}{}
 The accompanying scientific supplement contains full specifications and all
 50 tables; the separate audit record contains execution and revision history.
 The public repository provides saved aggregate evidence and reproduction
 code; private trajectories and local case maps are not redistributed.
+Repository: \url{https://github.com/HuAzurestar/learnable-sde-paper-to-predict-movement}.
 The public argument does not rely on those private case illustrations.
 Trajectory research-use permissions and the applicable ethics-review /
 consent basis require author verification; public availability of a source

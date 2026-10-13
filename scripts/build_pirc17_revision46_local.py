@@ -81,6 +81,8 @@ def assemble(private, output, case_figures=None):
         main = (source / language / "main.tex").read_text(encoding="utf-8")
         # Keep the diagnostic argument uninterrupted. Existing private maps
         # form a local appendix; no new map or case is generated or published.
+        # The public privacy anchor moves to the actual local case chapter.
+        main = main.replace(r"\label{sec:case-horizons}\hypertarget{sec:case-horizons}{}", "", 1)
         appendix_title = "Local illustrative cases (not for redistribution)" if language == "en" else "本地解释性案例（不得再分发）"
         appendix = "\n\\clearpage\n\\appendix\n\\section{"+appendix_title+"}\n\\input{local-case-reading.tex}\n"
         main = main.replace(r"\input{revision46-bibliography.tex}", r"\input{revision46-bibliography.tex}"+appendix)

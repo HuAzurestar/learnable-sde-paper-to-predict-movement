@@ -34,6 +34,10 @@ def test_current_body_keeps_core_evidence_and_four_existing_figures(language):
     assert all(value in body for value in ("328", "76", "404", "81", "Full01", "50.57", "31.17", "243.23", "237.93"))
     assert "OpenStreetMap GPX" in body
     assert ("ethics-review" if language == "en" else "伦理审查") in body
+    retained = (PAPER / language / "revision46-supplement-retained.tex").read_text(encoding="utf-8")
+    for destination in ("sec:models", "sec:protocol"):
+        assert retained.count(r"\hypertarget{"+destination+"}{}") == 1
+        assert r"\hypertarget{"+destination+"}{}" not in (PAPER / language / "supplement.tex").read_text(encoding="utf-8")
     assert ("not a fresh blinded holdout" if language == "en" else "不是全新盲测留出集") in body
     assert ("not a positive or null terrain" if language == "en" else "不是地形正效应或零效应") in body
     assert ("not 230" if language == "en" else "不是230") in body

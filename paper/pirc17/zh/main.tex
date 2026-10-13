@@ -56,7 +56,7 @@ R1派生清理段提供中点历史／目标窗口；冻结记录哈希划分将
 （图\ref{fig:population}）。块标识保存记录，不代表已经验证的独立参与者。
 选中队列跨12个国家、27个来源标签，英国、比利时和卢森堡占33/46块，
 不是代表性人群样本。
-\begin{figure}[htbp]\centering
+\begin{figure}[!htbp]\centering
 \includegraphics[width=\linewidth]{../figures/revision46-v1/revision46-population.pdf}
 \caption{评估筛选与队列描述。计数区分窗口和记录块；时长与速率面板给出保存中位数和四分位区间。
 资格包含未来真实路线的地图有效性，部署时不能只凭前缀判定。筛选排除不是预测失败。}
@@ -168,13 +168,13 @@ Full加权ES为\FullES\ 米，惯性为\InertialES\ 米；保存差值为\Inerti
 因此1和5分钟惯性ES更低，15和30分钟Full更低
 （图\ref{fig:inertial}）。同图将ES与均值位置误差分开展示。
 四个离散目标不能确定精确交叉时刻。
-\begin{figure}[htbp]\centering
+\begin{figure}[!htbp]\centering
 \includegraphics[width=\linewidth]{../figures/revision46-v1/revision46-inertial-horizons.pdf}
 \caption{Full与确定性惯性四个名义保存时域的ES（左）及预测均值误差（右）。
 各点先在46个主块内平均五种子，再等权平均块；惯性为确定性预测。
 越低越好，连线只引导阅读，不代表插值或精确交叉时刻。}
 \label{fig:inertial}\end{figure}
-\begin{table}[htbp]\centering
+\begin{table}[!htbp]\centering
 \caption{原匹配目标下保存预测均值误差（米），不是ES或平均粒子误差。}
 \label{tab:point-errors}
 \begin{tabular}{lrrrr}\toprule
@@ -251,9 +251,10 @@ dt300比较说明分布评分改善不代表代表性位置更准确；
 RQ1支持有边界的有限程序比较，RQ2仍不可用；
 两者均不建立一般算法优越性或地形有效性。
 
-\paragraph{数据与复现。}
+\paragraph{数据与复现。}\label{sec:case-horizons}\hypertarget{sec:case-horizons}{}
 科学补充材料提供完整规格与全部50表，独立审查记录保存执行和修订历史。
 公开仓库提供保存汇总证据与复现代码，不再分发私有轨迹和本地案例地图。
+仓库：\url{https://github.com/HuAzurestar/learnable-sde-paper-to-predict-movement}。
 公开论证不依赖这些私有案例。轨迹研究使用许可、适用伦理审查／同意依据仍须作者核实；
 来源或地图产品可公开访问，不被视为已经获得这些授权的证据。
 本次修稿不改变拟合、预测、评分或推断规则。
