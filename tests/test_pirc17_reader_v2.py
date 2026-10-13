@@ -69,3 +69,17 @@ def test_corrected_groups_and_plot_values_preserve_canonical_evidence():
     for f in manifest["figures"]:
         for path, sha in f["files_sha256"].items():
             assert hashlib.sha256((PAPER / "figures/reader-v2" / path).read_bytes()).hexdigest() == sha
+
+
+@pytest.mark.parametrize("lang", ["en", "zh"])
+def test_dated_status_updates_keep_historical_table_values_and_bindings(lang):
+    source = (PAPER / lang / "revision46-supplement-retained.tex").read_text(encoding="utf-8")
+    for stem in ("inertial-primary-comparison", "point-error-horizons"):
+        old = (PAPER / lang / (stem+".tex")).read_text(encoding="utf-8")
+        new = (PAPER / lang / ("reader-v2-"+stem+".tex")).read_text(encoding="utf-8")
+        for environment in ("table", "equation"):
+            pattern = r"\\begin\{"+environment+r"\}.*?\\end\{"+environment+r"\}"
+            assert re.findall(pattern, old, re.S) == re.findall(pattern, new, re.S)
+        assert r"\input{reader-v2-"+stem+".tex}" in source
+        assert ("human acceptance" if lang == "en" else "人工验收") in new
+    assert "10" in (PAPER / lang / "reader-v2-inertial-primary-comparison.tex").read_text(encoding="utf-8")
