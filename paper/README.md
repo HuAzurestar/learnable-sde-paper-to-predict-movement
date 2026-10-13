@@ -57,7 +57,9 @@ or its case-level input.
 The full regression is not green: the isolated original public snapshot has
 25 failures and two private-input collection errors. The revision preserves
 these checks and compares their actual identities rather than excluding
-them. CI does not waive these failures. The new structure guards separately
+them. The [current full-run comparison](pirc17/reader-v2-regression-check.json)
+records 994 passed, 25 failed and two collection errors, with no newly
+introduced failures or errors. CI does not waive these failures. The new structure guards separately
 check current manuscripts; archived-layout guards target the exact preserved
 `historical-main-v1.tex`, without deleting their scientific assertions.
 
