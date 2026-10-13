@@ -1,5 +1,14 @@
 {
   "schema_version": "pirc17-reader-v3-editorial-review-v1",
+  "pr_traceability": {
+    "issue": 16,
+    "pull_request": 17,
+    "source_branch": "paper/16-pirc17-review",
+    "required_title_prefix": "#16 paper(pirc17):",
+    "initial_delivery_title_failure_retained": true,
+    "title_corrected_and_local_rule_passed": true,
+    "policy_not_waived": true
+  },
   "baseline_commit": "63709534043da99686e8ac13643e5af3320e62e2",
   "final_source_checkpoint": "426923399d250d991bd2b4c5394b4967f5eeb3a9",
   "scope": "Converge the bilingual manuscript using existing evidence and figures; no new experiments or images.",

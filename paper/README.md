@@ -78,6 +78,11 @@ the superseded ES criterion and unresolved R05/R06/R10 scientific gaps.
 Reader-v3's separate editorial receipt does not relabel those criteria as
 independently accepted. Five follow-up designs remain unexecuted.
 
+PR #17 follows the repository's issue-first title rule:
+`#16 paper(pirc17): ...` matches source branch `paper/16-pirc17-review`.
+The traceability gate must pass independently of the document build;
+an inherited evidence-test failure is not grounds to waive that gate.
+
 Everything below describes earlier handoffs, not the current entrypoint.
 
 ## Historical handoff
