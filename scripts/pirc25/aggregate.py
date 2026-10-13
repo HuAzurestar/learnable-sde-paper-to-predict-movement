@@ -24,10 +24,14 @@ if __package__:
     from .admission import validate_admission
     from .dimensions import comparison_dimensions
     from .costs import validate_cost, summarize_cost
+    from .output_eligibility import comparison_eligible, path_output_counts
+    from .calibrated_study import validate_calibration_table
 else:
     from admission import validate_admission
     from dimensions import comparison_dimensions
     from costs import validate_cost, summarize_cost
+    from output_eligibility import comparison_eligible, path_output_counts
+    from calibrated_study import validate_calibration_table
 
 
 def canonical(value):
@@ -44,6 +48,7 @@ def validate_bundle(bundle, *, formal=False):
         raise ValueError("bundle schema/hash mismatch")
     if bundle.get("independent_unit") != "block_id":
         raise ValueError("seed is not an independent sampling unit")
+    validate_calibration_table(bundle)
     if formal:
         plan = bundle.get("comparison_plan") or {}
         if (not plan.get("reference_arm_id") or not plan.get("candidate_arm_ids")
@@ -150,8 +155,14 @@ def aggregate(bundle, *, formal=False, descriptive_intervals=True):
               # transformation has no supervisor/settlement proof of its own.
               "qualification": "descriptive", "arms": arms, "comparisons": comparisons,
               "expected_cell_count": len(rows), "successful_cell_count": sum(c["status"] == "SUCCEEDED" for c in rows.values()),
+              "comparison_eligible_cell_count": sum(comparison_eligible(c) for c in rows.values()),
+              "path_output_dispositions": path_output_counts(rows.values()),
               "cell_dispositions": list(rows.values()), "disclosure_scope": bundle["disclosure_scope"],
               "visibility": bundle.get("visibility", "restricted")}
+    if bundle.get("probability_calibration") is not None:
+        result["calibration_cost"] = bundle["probability_calibration"]["cost"]
+        result["calibration_evidence_hash"] = bundle["probability_calibration"]["evidence_hash"]
+        result["calibration_status_counts"] = dict(Counter(slot["status"] for slot in bundle["probability_calibration"]["slots"]))
     return {**result, "aggregate_hash": fingerprint(result)}
 
 
@@ -166,7 +177,7 @@ def aggregate_stratum(rows, baseline, candidates, *, descriptive_intervals=True)
         for cell in cells:
             blocks[cell["block_id"]].append(cell)
         complete = {block_id: values for block_id, values in blocks.items()
-                    if all(c["status"] == "SUCCEEDED" for c in values)}
+                    if all(comparison_eligible(c) for c in values)}
         block_metrics = {block_id: {metric: mean(c["metrics"][metric] for c in values)
                                    for metric in values[0]["metrics"]} for block_id, values in complete.items()}
         complete_blocks[arm_id] = block_metrics
@@ -175,6 +186,8 @@ def aggregate_stratum(rows, baseline, candidates, *, descriptive_intervals=True)
                    for metric in next(iter(block_metrics.values()), {})}
         dispositions = dict(sorted(Counter(c["status"] for c in cells).items()))
         arms.append({"arm_id": arm_id, "expected_cells": len(cells), "successful_cells": len(successful),
+                     "comparison_eligible_cells": sum(comparison_eligible(c) for c in cells),
+                     "path_output_dispositions": path_output_counts(cells),
                      "cost": summarize_cost(cells),
                      "dispositions": dispositions,
                      "status_rates": {"denominator": len(cells), "denominator_kind": "registered-cells-in-arm-stratum",
@@ -211,21 +224,50 @@ def aggregate_stratum(rows, baseline, candidates, *, descriptive_intervals=True)
     return arms, comparisons
 
 
+def calibration_summary(value):
+    """Frozen study-level preparation, distinct from every arm and claim."""
+    names = ("calibration_cost", "calibration_evidence_hash", "calibration_status_counts")
+    if not any(name in value for name in names):
+        return {}
+    if not all(name in value for name in names):
+        raise ValueError("incomplete frozen calibration summary")
+    cost, evidence, counts = (value[name] for name in names)
+    if (not isinstance(cost, dict) or not isinstance(evidence, str) or len(evidence) != 64
+            or any(c not in "0123456789abcdef" for c in evidence) or not isinstance(counts, dict)
+            or not counts or any(state not in {"CALIBRATED", "FAILED", "UNAVAILABLE"}
+                or type(count) is not int or count <= 0 for state, count in counts.items())):
+        raise ValueError("invalid frozen calibration summary")
+    return {name: value[name] for name in names}
+
+
 def csv_bytes(aggregate_value):
     stream = io.StringIO(newline="")
     writer = csv.writer(stream, lineterminator="\n")
     extra = [name for name in ("adjudication", "computation_ref") if name in aggregate_value]
-    writer.writerow(["aggregate_hash", "arm_id", "metric", "value", "unit", "independent_n", "expected_cells", "successful_cells", "status", "stratum_id", "comparison_dimensions", "charged_ms", "reserved_ms", "measured_ms", "cost_unit", "cost_scope", "status_rates", *extra])
+    calibration = calibration_summary(aggregate_value)
+    shared_columns = ["row_kind", *calibration] if calibration else []
+    arm_shared = ["method-metric", "", "", ""] if calibration else []
+    fields = ["aggregate_hash", "arm_id", "metric", "value", "unit", "independent_n", "expected_cells", "successful_cells", "status", "stratum_id", "comparison_dimensions", "charged_ms", "reserved_ms", "measured_ms", "cost_unit", "cost_scope", "status_rates", "comparison_eligible_cells", "path_output_dispositions", *shared_columns, *extra]
+    writer.writerow(fields)
     frozen = [canonical(aggregate_value[name]).decode() for name in extra]
     for arm in aggregate_value["arms"]:
         costs = [arm["cost"][key] for key in ("charged_ms", "reserved_ms", "measured_ms", "unit", "scope")]
         rates = canonical(arm.get("status_rates")).decode()
+        eligibility = [arm["comparison_eligible_cells"], canonical(arm["path_output_dispositions"]).decode()]
         if not arm["metrics"]:
             writer.writerow([aggregate_value["aggregate_hash"], arm["arm_id"], "", "", "", arm["independent_n"],
-                             arm["expected_cells"], arm["successful_cells"], arm["status"], arm["stratum_id"], canonical(arm["comparison_dimensions"]).decode(), *costs, rates, *frozen])
+                             arm["expected_cells"], arm["successful_cells"], arm["status"], arm["stratum_id"], canonical(arm["comparison_dimensions"]).decode(), *costs, rates, *eligibility, *arm_shared, *frozen])
         for metric, value in sorted(arm["metrics"].items()):
             writer.writerow([aggregate_value["aggregate_hash"], arm["arm_id"], metric, value, arm["metric_units"][metric],
-                             arm["independent_n"], arm["expected_cells"], arm["successful_cells"], arm["status"], arm["stratum_id"], canonical(arm["comparison_dimensions"]).decode(), *costs, rates, *frozen])
+                             arm["independent_n"], arm["expected_cells"], arm["successful_cells"], arm["status"], arm["stratum_id"], canonical(arm["comparison_dimensions"]).decode(), *costs, rates, *eligibility, *arm_shared, *frozen])
+    if calibration:
+        cost = calibration["calibration_cost"]
+        shared = {"aggregate_hash": aggregate_value["aggregate_hash"], "row_kind": "shared-calibration-preparation",
+            "charged_ms": cost["charged_ms"], "reserved_ms": cost["reserved_ms"],
+            "measured_ms": cost["measured_ms"], "cost_unit": cost["unit"], "cost_scope": cost["scope"],
+            **{name: canonical(item).decode() if name != "calibration_evidence_hash" else item
+               for name, item in calibration.items()}}
+        writer.writerow([shared.get(name, "") for name in fields])
     return stream.getvalue().encode()
 
 
@@ -234,6 +276,7 @@ def evidence_index(value, csv_content):
             "aggregate_hash": value["aggregate_hash"], "table_sha256": hashlib.sha256(csv_content).hexdigest(),
             "code_hash": value["code_hash"], "evidence_status": "active", "relation": None,
             "disclosure_scope": value["disclosure_scope"],
+            **calibration_summary(value),
             **{name: value[name] for name in ("adjudication", "computation_ref") if name in value}, "claims": [
                 {"claim_id": fingerprint([arm['arm_id'], arm['stratum_id'], metric]), "metric": metric, "value": number,
                  "arm_id": arm["arm_id"], "stratum_id": arm["stratum_id"], "comparison_dimensions": arm["comparison_dimensions"],

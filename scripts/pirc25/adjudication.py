@@ -17,9 +17,11 @@ from statistics import mean
 if __package__:
     from .dimensions import comparison_dimensions
     from .costs import summarize_cost
+    from .output_eligibility import comparison_eligible, path_output_counts
 else:
     from dimensions import comparison_dimensions
     from costs import summarize_cost
+    from output_eligibility import comparison_eligible, path_output_counts
 
 
 SCHEMA = "pirc25-adjudication-spec-v1"
@@ -173,6 +175,8 @@ def _counts(cells):
     return {
         "cell_counts": {"expected": count, "attempted": attempted,
                         "successful": statuses.get("SUCCEEDED", 0),
+                        "comparison_eligible": sum(comparison_eligible(c) for c in cells),
+                        "path_output_dispositions": path_output_counts(cells),
                         "failed": sum(statuses.get(s, 0) for s in FAILED), "missing": statuses.get("MISSING", 0),
                         "dispositions": statuses},
         "attempt_counts": {"complete_history": complete, "observed": sum(attempt_statuses.values()),
@@ -189,7 +193,7 @@ def _block_values(cells, metric, minimum_seeds):
         blocks[cell["block_id"]].append(cell)
     return {block: (mean(c["metrics"][metric] for c in values), frozenset(c["seed"] for c in values))
             for block, values in blocks.items() if len(values) >= minimum_seeds and
-            all(c["status"] == "SUCCEEDED" for c in values)}
+            all(comparison_eligible(c) for c in values)}
 
 
 def _prepare_record(rows, contrast, spec, family_size):
