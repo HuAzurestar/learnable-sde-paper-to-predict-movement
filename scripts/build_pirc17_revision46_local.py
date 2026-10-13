@@ -81,7 +81,12 @@ def assemble(private, output, case_figures=None):
         main = (source / language / "main.tex").read_text(encoding="utf-8")
         start = main.index(r"\subsection{Real-route illustrations" if language == "en" else r"\subsection{真实路线案例")
         stop = main.index("Future work should" if language == "en" else "后续应以", start)
-        main = main[:start]+r"\input{local-case-reading.tex}"+"\n\n"+main[stop:]
+        # Keep the diagnostic argument uninterrupted. Existing private maps
+        # form a local appendix; no new map or case is generated or published.
+        main = main[:start]+main[stop:]
+        appendix_title = "Local illustrative cases (not for redistribution)" if language == "en" else "本地解释性案例（不得再分发）"
+        appendix = "\n\\clearpage\n\\appendix\n\\section{"+appendix_title+"}\n\\input{local-case-reading.tex}\n"
+        main = main.replace(r"\input{revision46-bibliography.tex}", r"\input{revision46-bibliography.tex}"+appendix)
         (source / language / "main.tex").write_text(main, encoding="utf-8")
         preamble = source / language / "revision46-preamble.tex"
         text = preamble.read_text(encoding="utf-8")

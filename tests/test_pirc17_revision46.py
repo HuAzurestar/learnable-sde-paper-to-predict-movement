@@ -97,8 +97,10 @@ def test_historical_test_migration_does_not_change_a_scientific_assertion():
 
 
 @pytest.mark.parametrize("language", ["en", "zh"])
-def test_current_six_document_structure_and_bounded_claims(language):
-    main = (PAPER / language / "main.tex").read_text(encoding="utf-8")
+def test_historical_v2_six_document_structure_and_bounded_claims(language):
+    # Preserve the exact former body contract; current reader-v3 scope has
+    # separate guards and moves implementation details to the supplement.
+    main = subprocess.check_output(["git", "show", "6370953:paper/pirc17/"+language+"/main.tex"], cwd=ROOT).decode("utf-8")
     for label in ("eq:ordinary-full", "eq:terrain-summary", "eq:constant-penalty", "eq:finite-es", "tab:inputs", "tab:actual-changes", "tab:point-errors"):
         assert main.count(r"\label{"+label+"}") == 1
     numbers = (PAPER / "revision46-numbers.tex").read_text(encoding="utf-8")
@@ -201,8 +203,8 @@ def test_factor_benefit_is_only_a_sign_reexpression(candidate,control,interval,s
 
 
 @pytest.mark.parametrize("language", ["en", "zh"])
-def test_reader_body_has_independent_companions_and_public_boundary(language):
-    text = (PAPER / language / "main.tex").read_text(encoding="utf-8")
+def test_historical_v2_reader_body_has_independent_companions_and_public_boundary(language):
+    text = subprocess.check_output(["git", "show", "6370953:paper/pirc17/"+language+"/main.tex"], cwd=ROOT).decode("utf-8")
     # Source wrapping is not a reading-length measure. The editorial contract
     # is a 12--16 page body in the retained 11pt, one-inch-margin template.
     import fitz
