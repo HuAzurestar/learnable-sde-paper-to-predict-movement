@@ -13,16 +13,18 @@ versions, execution history and review responses.
 
 \section{Terrain geometry and the ten configurations}
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../figures/revision46-v1/revision46-geometry.pdf}
+\includegraphics[width=\linewidth]{../figures/reader-v2/geometry.pdf}
 \caption{Schematic, not a real route. Left: nearest road/river point, distance
 and direction toward that point, not a tangent or river flow. Centre: signed
-history $h$, uphill $a$ and contour $q$, with distinct dot products and slope
-magnitude. Right: cover membership and retained-road distance combine;
+history $h$, uphill $a$ and contour $q$, with distinct dot products;
+slope magnitude is a separate input and is not depicted. The cover groups
+are built, vegetation, water/wetland and valid other, with frozen code sets
+shown. Cover membership and retained-road distance combine;
 invalid queries are not the valid ``other'' cover class. The excluded road
 classes are listed in the main paper.}\label{fig:terrain-geometry}\hypertarget{fig:terrain-geometry}{}
 \end{figure}
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../figures/revision46-v1/revision46-design-matrix.pdf}
+\includegraphics[width=\linewidth]{../figures/reader-v2/design.pdf}
 \caption{Ten independently fitted configurations. Road--cover interactions
 require both parents; surface--history remains in LIO-surface. $K$ counts
 numeric features, not total design columns. For LOO the machine candidate
@@ -34,7 +36,7 @@ not redefined by this drawing.}\label{fig:terrain-matrix}\end{figure}
 
 \section{Complementary error and uncertainty views}
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../figures/revision46-v1/revision46-score-error-tradeoff.pdf}
+\includegraphics[width=\linewidth]{../figures/reader-v2/tradeoff.pdf}
 \caption{All 21 candidate-minus-named-control contrasts: weighted ES versus
 mean-position FDE (m). Negative is favourable on each axis. Facets retain
 original comparison families; named Full controls are not pooled. These
@@ -74,7 +76,7 @@ Provider-cold is not OS-cache-cold. Query costs are inclusive in rollout;
 five observations do not estimate a stable operational tail.}\label{fig:runtime}\end{figure}
 \FloatBarrier
 \begin{figure}[p]\centering
-\includegraphics[width=\linewidth,height=.83\textheight,keepaspectratio]{../figures/revision46-v1/revision46-metric-overview.pdf}
+\includegraphics[width=\linewidth,height=.83\textheight,keepaspectratio]{../figures/reader-v2/full-overview.pdf}
 \caption{All 28 saved method identities and four horizons: ES (m), mean 90\%
 disk area (km$^2$), and coverage minus nominal 90\% (percentage points).
 The shared diverging coverage scale is centred at zero, with both

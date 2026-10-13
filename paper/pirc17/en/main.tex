@@ -212,8 +212,9 @@ points towards the nearest feature point, not along its tangent or flow.
 The road filter excludes bridleway, cycleway, footway, path, pedestrian,
 steps and track; it is not the complete pedestrian network. Surface features
 separate the signed history, uphill and contour directions; slope does not
-multiply their directional dot products. Geometry and the ten-configuration
-matrix are in the \supp{fig:terrain-geometry}.
+multiply their directional dot products. Figure~\ref{fig:input-geometry}
+defines these inputs, and Figure~\ref{fig:input-design} shows which are retained.
+\input{reader-v2-inputs.tex}
 
 Saved model-source declarations identify WorldCover 2021 v200~\cite{worldcover2021},
 Overture 2026-08-19.0 transportation~\cite{overture202608,overtureattribution},
@@ -287,14 +288,18 @@ No timezone correction is guessed. Results throughout are for the saved
 clock's nominal horizons; $S$ is a calendar proxy, not a validated daylight
 mechanism. Source reconciliation is in the \audit{sec:source-reconciliation-details}.
 
-For particles $x_1,\ldots,x_N$ and target $y$ at a matched time, the original
-finite-ensemble score is
+For particles $x_1,\ldots,x_N$ and target $y$ at a matched time, the execution-bound
+finite-ensemble score is the U-statistic, for $N\geq2$:
 \begin{equation}\label{eq:finite-es}
  \ES_N=\frac1N\sum_i\|x_i-y\|
-       -\frac1{2N^2}\sum_{i,j}\|x_i-x_j\|.
+       -\frac1{2N(N-1)}\sum_{i\ne j}\|x_i-x_j\|.
 \end{equation}
-The $N^2$ denominator and diagonal convention are preserved, not silently
-replaced by $N(N-1)$. ES has units of metres; lower is better. Weighted ES
+The bound scorer sums ordered particle pairs; diagonal distances are zero.
+Its denominator is $2N(N-1)$, not the empirical-distribution $2N^2$ form
+incorrectly printed in the previous main text. This corrects the description,
+not the saved scores or decisions. For the deterministic inertial reference,
+ES is evaluated directly as $\|x-y\|$, without applying the $N\geq2$ formula
+to one particle. ES has units of metres; lower is better. Weighted ES
 is the equally weighted average over the four targets. Mean-position error
 is $e_j=\|\bar x_j-y_j\|$, with
 $\mathrm{ADE}=\tfrac14\sum_{j=1}^4 e_j$ and $\mathrm{FDE}=e_4$.
@@ -303,6 +308,11 @@ mean particle error. Marginal disks are centred on the ensemble mean,
 with radii from particle-distance quantiles. Coverage and area are evaluated
 at each horizon, not as joint path regions. Average
 area is $\mathrm{E}[\pi r^2]$, not $\pi\mathrm{E}[r]^2$.
+The radius is the $\lceil qN\rceil$-th ordered particle distance at nominal
+level $q$. Enclosing approximately 90\% of simulated particles does not
+guarantee 90\% coverage of real targets. For a multimodal cloud the mean
+may lie in a low-density gap and the disk may include inaccessible terrain;
+it is neither a highest-density region nor a route-constrained forecast.
 
 The completed inventory is $28\times58\times5=8120$ method forecasts,
 $10\times58\times5=2900$ terrain forecasts, 290 same-grid replay forecasts
@@ -365,6 +375,8 @@ does not test whether this stochastic model is necessary. A matched
 probabilistic constant-velocity state-space baseline is a separate future
 experiment, not a result presented here.
 
+\input{reader-v2-tradeoff.tex}
+
 \subsection{Long-horizon marginal disks are undercovered}
 Full's nominal 90\% coverage is 95.65\%, 37.83\%, 35.22\% and 46.52\% at
 the four targets. At one minute, the 50\% disk covers 33.04\% while the
@@ -372,12 +384,15 @@ the four targets. At one minute, the 50\% disk covers 33.04\% while the
 52.17\%. Thus a single demonstrated radius rescaling is not the explanation.
 Across all 28 identities, thirty-minute 90\% coverage is 21.74--79.13\%.
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../figures/revision46-v1/revision46-selected-metric-overview.pdf}
+\includegraphics[width=\linewidth]{../figures/reader-v2/selected-overview.pdf}
 \caption{Role-selected overview: reference, residual mixture, explicit
 representation and long observation intervals. Rows are fixed by scientific
 role, not performance rank. ES and area use the full 28-identity ranges;
-coverage deviation is observed minus 90\% in percentage points, with signed
-numbers retaining its direction independently of colour.}\label{fig:selected-overview}
+coverage deviation is observed minus 90\% in percentage points. The 60 cells
+are five roles $\times$ four horizons $\times$ three metrics, each averaging
+five seeds within each of 46 blocks, then blocks equally. All numbers are
+black on pale colours; equal positive/negative departures have equal colour
+distance from zero. Area is size, not a standalone quality score.}\label{fig:selected-overview}
 \end{figure}
 The full ES/area/coverage-deviation overview is in the
 \supp{fig:method-overview}; its diverging colour scale is centred on nominal
@@ -390,6 +405,7 @@ with FDE 1335.73 m; the 600 s procedure has 12.609 km$^2$, 79.13\% and
 1340.94 m. Larger regions cover more but do not make the ensemble mean
 more accurate or establish conditional calibration. No radius is retuned
 after inspecting this evaluation.
+\input{reader-v2-calibration.tex}
 
 \subsection{Component comparisons and conflicting metrics}
 None of the 21 original simultaneous intervals lies wholly beyond the
@@ -418,6 +434,13 @@ negative but its interval is $[-21.22,16.33]$ m; dt600's five are negative
 with $[-67.65,9.08]$ m. Seed-direction agreement does not settle population
 uncertainty. Full five-seed tables, CRPS, endpoint particle-error quantiles
 and all 120 original metric views remain available in the supplement.
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{../figures/reader-v2/seed-examples.pdf}
+\caption{Three explanatory comparisons: 15 seed effects, three overall means
+and three original block simultaneous intervals. Each seed point averages
+46 paired blocks; the interval resamples blocks after averaging seeds.
+The examples illustrate distinct uncertainty sources, without defining a
+new testing family or repeating model fitting.}\label{fig:seed-examples}\end{figure}
 
 \subsection{Terrain evidence and failure-dependent availability}\label{sec:terrain-results}\hypertarget{sec:terrain-results}{}
 The five retained failures have different family consequences. F01
@@ -444,6 +467,15 @@ development diagnostic, not a prediction benefit. The supplement plots all
 ten fit MSEs beside raw design columns/rank, separating rank deficiency from
 the successful augmented ridge solve. Model fit, positive covariance and
 numerical execution do not guarantee calibrated prediction.
+For example, the base/all-terrain training displacement-rate MSEs are
+0.145796/0.136666 m$^2$/s$^2$, whereas validation MSEs are
+0.077077/0.079117 m$^2$/s$^2$. These are 404 training and 81 validation
+transitions, not four-horizon position errors. The validation role differs
+from training, so its lower absolute MSE does not diagnose absence of
+overfitting. Nor does the slight increase identify overfitting as the cause.
+Constant masks, feature scales and refitted diffusion prevent a pure
+information-gain interpretation; Supplement Tables 40--41 retain all ten
+configurations and distinguish $2K+1$ raw columns from design rank.
 
 The original cost experiment contains 15 subjects, five provider-cold
 trials, one excluded prewarm and five provider-warm trials each: 165 trials,

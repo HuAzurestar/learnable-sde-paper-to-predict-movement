@@ -5,6 +5,7 @@ Never handles the separate local-case build or overwrites historical PDFs.
 import argparse
 import hashlib
 import json
+import re
 from pathlib import Path
 import shutil
 import sys
@@ -20,14 +21,16 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def publish(build):
+def publish(build, version="v1"):
     manifest = json.loads((build/"build-manifest.json").read_text(encoding="utf-8"))
     assert manifest["schema_version"] == "pirc17-reader-six-document-build-v1"
     assert manifest["new_fits_forecasts_or_resampling"] == 0
     assert len(manifest["manuscripts"]) == 6
     assert {(r["language"],r["entry"]) for r in manifest["manuscripts"]} == {
         (lang,entry) for lang in ("en","zh") for entry in ("main","supplement","audit-notes")}
-    destination = ROOT/"paper/pirc17/revision46-review-v1"
+    if not re.fullmatch(r"v[1-9][0-9]*", version):
+        raise ValueError("Version must be v followed by a positive integer")
+    destination = ROOT/("paper/pirc17/revision46-review-"+version)
     if destination.exists():
         raise ValueError("Versioned review already exists; use a new reviewed version,never overwrite")
     subprocess.run([sys.executable,str(ROOT/"scripts/check_public_release.py")],cwd=ROOT,check=True)
@@ -58,4 +61,6 @@ def publish(build):
 if __name__ == "__main__":
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--build-dir",type=Path,required=True)
-    publish(parser.parse_args().build_dir)
+    parser.add_argument("--version", default="v1")
+    args = parser.parse_args()
+    publish(args.build_dir, args.version)

@@ -65,9 +65,10 @@ def test_presentation_corrections_are_versioned_and_used_by_current_supplements(
         retained = (PAPER / language / "revision46-supplement-retained.tex").read_text(encoding="utf-8")
         assert "revision46-corrections-v1/preliminary-full-horizons.pdf" in retained
         for name in ("method-horizon-overview", "method-region-overview"):
-            assert r"\input{revision46-"+name+".tex}" in retained
-            child = (PAPER / language / ("revision46-"+name+".tex")).read_text(encoding="utf-8")
-            assert "revision46-corrections-v1/"+name+".pdf" in child
+            assert r"\input{reader-v2-"+name+".tex}" in retained
+            child = (PAPER / language / ("reader-v2-"+name+".tex")).read_text(encoding="utf-8")
+            assert "reader-v2/"+name+".pdf" in child
+            assert (PAPER / language / ("revision46-"+name+".tex")).exists()
 
 
 def test_every_pre_revision_scientific_json_is_exact_canonical_git_bytes():
@@ -107,7 +108,11 @@ def test_current_six_document_structure_and_bounded_claims(language):
     assert "477.85" in numbers and "824.73" in numbers and "-346.87" in numbers
     assert main.index("fig:inertial") < main.index("fig:practical-effects")
     assert "bridleway" in main and "footway" in main and "path" in main and "steps" in main
-    assert "N(N-1)" in main and r"2N^2" in main
+    # The execution-bound U statistic must be the equation, not merely a
+    # denominator mentioned elsewhere in a warning or historical erratum.
+    equation = main.split(r"\label{eq:finite-es}", 1)[1].split(r"\end{equation}", 1)[0]
+    assert r"\frac1{2N(N-1)}\sum_{i\ne j}" in equation
+    assert r"2N^2" not in equation
     assert r"\appendix" not in main
     assert r"\input{revision46-supplement-retained.tex}" in (PAPER / language / "supplement.tex").read_text(encoding="utf-8")
     assert r"\input{revision46-audit-notes-retained.tex}" in (PAPER / language / "audit-notes.tex").read_text(encoding="utf-8")

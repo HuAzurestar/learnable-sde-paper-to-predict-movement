@@ -146,7 +146,9 @@ $\lambda=10^{-4}$，正规方程惩罚$404\lambda=0.0404$，不是联合优化�
 道路／河流方向指向最近要素点，不是道路切线或流向。
 道路排除bridleway、cycleway、footway、path、pedestrian、steps、track七类，
 不能解释为完整步行通行网络。坡面特征区分带符号历史、上坡与等高线方向，
-方向点积不再乘坡度。几何图与十配置矩阵见\supp{fig:terrain-geometry}。
+方向点积不再乘坡度。图\ref{fig:input-geometry}明确输入几何，
+图\ref{fig:input-design}给出各配置保留项。
+\input{reader-v2-inputs.tex}
 
 保存模型来源声明包括WorldCover 2021 v200\cite{worldcover2021}、
 Overture 2026-08-19.0交通层\cite{overture202608,overtureattribution}、
@@ -198,18 +200,24 @@ R1程序重建的相对时间与预测condition tick是不同对象。
 本次不猜测时区修正。全文均指保存时钟下名义时域；$S$是日历代理，
 不是经验证的日光机制。来源对账见\audit{sec:source-reconciliation-details}。
 
-某目标时刻粒子$x_1,\ldots,x_N$与目标$y$的原有限集成评分为
+某目标时刻粒子$x_1,\ldots,x_N$与目标$y$的执行绑定评分为U统计量（$N\geq2$）：
 \begin{equation}\label{eq:finite-es}
  \ES_N=\frac1N\sum_i\|x_i-y\|
-       -\frac1{2N^2}\sum_{i,j}\|x_i-x_j\|.
+       -\frac1{2N(N-1)}\sum_{i\ne j}\|x_i-x_j\|.
 \end{equation}
-保留$N^2$与对角项约定，不换成$N(N-1)$。ES单位米，越低越好；加权ES为四目标等权平均。
+绑定评分器累加有序粒子对，对角距离为零，分母为$2N(N-1)$。
+上一版正文误写经验分布形式$2N^2$；本次更正文字定义，保存评分与判定不变。
+确定性惯性参考直接使用$\|x-y\|$，不把单粒子代入要求$N\geq2$的公式。
+ES单位米，越低越好；加权ES为四目标等权平均。
 均值位置误差$e_j=\|\bar x_j-y_j\|$，
 $\mathrm{ADE}=\tfrac14\sum_{j=1}^4e_j$，$\mathrm{FDE}=e_4$。
 ADE不是密集路径积分；FDE不是最佳粒子或平均粒子误差。
 边际预测圆以粒子均值为圆心、粒子到均值距离的分位数为半径；
 各时域分别评价覆盖和面积，不是联合路径区域。
 平均面积是$\mathrm E[\pi r^2]$，不是$\pi\mathrm E[r]^2$。
+名义档$q$的半径取排序后第$\lceil qN\rceil$个粒子距离。
+包含约90\%模拟粒子不保证包含90\%真实目标。多峰点云的均值可能落在低密度间隙，
+圆也可能跨越不可通行地形；它不是最高密度区域或沿道路约束的预测。
 
 终态清单为方法$28\times58\times5=8120$、地形$10\times58\times5=2900$、
 同网格回放290、惯性路径58，共11,368评分槽位。
@@ -255,16 +263,20 @@ d2零SD别名不能独立证明功效，dt600规划功效低。
 确定性参考作为点质量分布可有效比较ES，但不能检验该随机复杂结构是否必要。
 任务匹配概率恒速状态空间基线是另一个未来实验，不是本稿已执行结果。
 
+\input{reader-v2-tradeoff.tex}
+
 \subsection{长时域边际圆欠覆盖}
 Full的四时域90\%覆盖分别为95.65\%、37.83\%、35.22\%、46.52\%。
 1分钟50\%圆覆盖33.04\%，90\%圆却覆盖95.65\%；
 30分钟即使95\%圆也只覆盖52.17\%。不能归结为已经证明的统一半径缩放问题。
 28身份的30分钟90\%覆盖范围为21.74--79.13\%。
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../figures/revision46-v1/revision46-selected-metric-overview.pdf}
+\includegraphics[width=\linewidth]{../figures/reader-v2/selected-overview.pdf}
 \caption{按角色选择的概览：参考、残差混合、显式表示及长观测间隔。
 行按科学角色固定，不按已见性能排名。ES与面积使用全28身份的范围；
-覆盖偏差为观测减90\%的百分点，带符号数值使方向不依赖配色。}\label{fig:selected-overview}
+覆盖偏差为观测减90\%的百分点。60格为五角色乘四时域乘三指标，
+每格先在各块内平均五种子，再等权平均46块。统一浅色底、黑字，
+同幅度正负偏差到零的颜色距离相同。面积表示大小，不能单独判优。}\label{fig:selected-overview}
 \end{figure}
 完整ES／面积／覆盖偏差概览见\supp{fig:method-overview}，发散配色以名义覆盖为中心，
 不会将过覆盖视觉奖励为更好。
@@ -275,6 +287,7 @@ Full的30分钟90\%圆平均面积4.534平方千米、平均半径1183.6米，
 600秒程序为12.609平方千米、79.13\%、1340.94米。
 区域变大可覆盖更多，却未使粒子均值更准确，也未建立条件校准。
 本次不根据当前评估调半径。
+\input{reader-v2-calibration.tex}
 
 \subsection{组件比较与指标冲突}
 21项原同时区间没有一项整体越过登记$\pm\delta$。
@@ -295,6 +308,12 @@ $[-14.19,60.81]$米；GMM全负但区间$[-21.22,16.33]$米；
 dt600全负但区间$[-67.65,9.08]$米。
 种子方向一致不能解决人群不确定性。
 完整五种子表、CRPS、终点粒子误差分位数与原120指标视图均在补充材料保留。
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{../figures/reader-v2/seed-examples.pdf}
+\caption{三个解释性比较：15种子效应点、三个总体均值和三个原块同时区间。
+每种子点平均46配对块；区间则先平均种子再重采样块。
+这些例子区分不确定性来源，不建立新检验家族，也不重复拟合模型。}
+\label{fig:seed-examples}\end{figure}
 
 \subsection{地形证据与依赖失败的可用性}\label{sec:terrain-results}\hypertarget{sec:terrain-results}{}
 五项保留失败有不同家族后果：F01（known-velocity dt30）使该模式观测间隔族不可用；
@@ -315,6 +334,11 @@ F03/F05（主LIO-river/LIO-road）使完整LIO族不可用。
 全地形训练拟合改善而验证拟合略差，是开发诊断，不是预测收益。
 补充材料同时展示十配置MSE与原始列数／秩，区分原始缺秩与增广ridge求解成功。
 拟合、正协方差或数值执行成功均不保证预测校准。
+base／全地形训练位移率MSE分别为0.145796／0.136666 m$^2$/s$^2$，
+验证为0.077077／0.079117 m$^2$/s$^2$。它们来自404训练和81验证转移，
+不是四时域位置误差。验证与训练角色不同，验证绝对MSE较低不证明没有过拟合；
+轻微上升也不能识别过拟合原因。常数掩码、输入尺度及重新拟合扩散共同限制
+纯信息增益解释；补表40--41保留十配置，并区分$2K+1$原始列数和实际设计秩。
 
 原成本实验包含15对象，各五次provider冷、一次排除预热、五次provider热，共165试验，
 150次纳入延迟汇总。补充图用这些记录报告p50/p95与失败，不沿用旧单次计时推论。
