@@ -28,7 +28,7 @@ Initial x=y=vy=0, 65 equally spaced vx in [-1.875,1.875].
 Seeds 26091011 through 26091015; dt 0.02/0.1; paths 64/256 nested with
 common noise. Teacher is discrete Euler; affine and diffusion are fixed.
 QR fitting uses ridge=curvature=0, condition limit 1e6, maximum batch 4096.
-The full seven free basis coefficients are used. Recovery requires function
+The full seven free basis coefficients are used. Recovery requires
 relative residual-field RMSE<=0.25 AND coefficient-relative-L2<=0.5 for all 20 matched settings.
 Operator archive: `8bd1ecda3d7614e87e260bbfc67aef96c8d6a562fc427679a9e8c0217e9172a9`.
 Changing the frozen criterion or discarding failed settings is not reproduction.

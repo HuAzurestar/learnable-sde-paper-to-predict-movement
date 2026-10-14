@@ -101,6 +101,9 @@ def validate_summary(value):
     safe_tree(value)
     require(value['review_hash'] == fingerprint(value['review']), 'review hash')
     require(value['review']['source_artifact_id'] == value['source_compact_sha256'], 'review artifact')
+    require(value['review']['decision'] == 'APPROVED_SAFE_DERIVATION_ONLY', 'review decision')
+    require(value['review']['destination'] == 'HuAzurestar/learnable-sde-paper-to-predict-movement/paper/pirc26', 'review destination')
+    require(value['review']['raw_model_test_disclosure'] is False, 'no source export')
     require(value['scientific_qualification'] == 'not-established', 'no global qualification')
     require(set(value['source_catalog']) == {'M1-S', 'M1-R', 'paired', 'diagnostics', 'O2', 'routes'}, 'six exact sources')
     for src in value['source_catalog'].values():
@@ -142,6 +145,9 @@ def validate_summary(value):
     require(value['dispositions']['whole_unit_gate_n'] == 1 and value['dispositions']['global_winner'] == 'NOT_ESTABLISHED', 'formal limits')
     costs = value['cost_snapshot']
     require(len({r['attempt_id'] for r in costs}) == len(costs) and all(r['settled'] is True for r in costs), 'all-attempt unique settled costs')
+    require(all(type(r['charged_ms']) is int and r['charged_ms'] >= 0 for r in costs), 'nonnegative integer costs')
+    require(all(r['arm_id'] in {'pirc26-m0-o1', 'pirc26-m1-s-o1', 'pirc26-m1-r-o1', 'pirc26-m2-o1', 'pirc26-m2-o2'}
+                for r in costs), 'known genuine arms only')
     for arm in {r['arm_id'] for r in costs}:
         require(sum(r['charged_ms'] for r in costs if r['arm_id'] == arm) <= 86400000, 'cumulative arm budget')
     return value
