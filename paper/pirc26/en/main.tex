@@ -1,0 +1,102 @@
+\documentclass[11pt]{article}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,booktabs,graphicx,hyperref}
+\newcommand{\R}{\mathbb R}
+\newcommand{\tabfile}[1]{\begin{center}\resizebox{\textwidth}{!}{\input{../shared/#1}}\end{center}}
+\title{Constrained nonlinear kinetic SDEs:\\controlled feasibility and an inconclusive development comparison}
+\author{PIRC-26 project research record}
+\date{14 October 2026 --- technical report draft, not peer-review acceptance}
+\begin{document}
+\maketitle
+\begin{abstract}
+We investigate bounded nonlinear acceleration residuals in a kinetic stochastic differential equation (SDE), separating statistical recovery, development-set forecasting, and differentiable-objective feasibility. Two basis families complete their registered synthetic experiments but each recovers only 12 of 20 teacher-matched settings under the unchanged joint recovery criterion. A seven-candidate real-data comparison yields 63 measured cells per model out of 282 declared cells. Whole-unit eligibility remains one; the reported 6/6/5-unit horizon comparisons are exposed, coverage-conditional exploration, not a qualified superiority test. Mean Energy-score differences favor the nonlinear model on covered cells, but calibration is poor and its 60-second mean endpoint error is worse. Six authored path-objective fits and twelve paired gradient-route checks pass bounded feasibility criteria, without demonstrating optimization convergence or general speed or memory advantages. Thus the study establishes limited implementation feasibility, not a globally superior forecasting model or a qualified latent-state method.
+\end{abstract}
+
+\section{Questions and claim boundary}\label{sec:questions}
+RQ1 asks whether constrained basis residuals recover a known discrete teacher under a fixed design. RQ2 asks whether the existing nonlinear fit improves forecasting over its affine comparator on the registered development population. RQ3 asks whether a trajectory-distribution objective and alternative gradient routes can execute correctly within explicit small-case resource limits. These are different questions: neither engineering tests nor synthetic feasibility qualify a real-data ranking. The final test set is not read. This report does not make an equivalence, formal NO\_GAIN, population superiority, or deployment-readiness claim.
+
+\section{Model and objectives}\label{sec:model}
+For planar position $p$ and velocity $v$, the observed-state model is
+\begin{equation}\label{eq:model}
+ dp_t=v_t\,dt,\qquad
+ dv_t=[A v_t+B p_t+a+r_\theta(p_t,v_t,c_t)]\,dt+L\,dW_t.
+\end{equation}
+Context $c$ is absent in the authored fixtures. The position equation is fixed; the diffusion is constant and rank two in the four-dimensional state. M0 sets $r=0$. M1-S uses cubic splines; M1-R uses Gaussian radial basis functions. M2 uses a bounded neural residual with two width-16 hidden layers, spectral bounds and an amplitude bound. Real fits and their normalizer are reused, not retrained in response to evaluation. The authored neural fixtures use identity normalization, a unit spectral bound, unit amplitude and residual scale one; these fixture settings must not be mistaken for newly selected real fits.
+
+For observed increments, O1 estimates acceleration after accounting for the affine component. For constant nonsingular velocity noise and known affine terms, a synthetic one-step response has the form
+\begin{equation}\label{eq:noise}
+ Y_i=r_\theta(z_i)+L\xi_i/\sqrt{\Delta t},\qquad \xi_i\sim N(0,I).
+\end{equation}
+The zero-penalty full-rank least-squares covariance is proportional to
+$(\Phi^\top\Phi)^{-1}\otimes LL^\top/\Delta t$, with the factor ordering depending on vectorization. At fixed design, repetitions $N$ give a $1/(N\Delta t)$ scale. Smaller steps with fixed $N$ therefore do not guarantee more drift information. This analytic interpretation is post hoc, not a new empirical test, a criterion change, or a unique causal explanation of the observed recovery failures.
+
+O2 averages forecast-distribution scores over fixed training origins and horizons. For $K>1$ simulated positions $X_k$ and target $y$, the implemented unbiased pair estimator is
+\begin{equation}\label{eq:energy}
+ \widehat{\mathrm{ES}}=\frac1K\sum_k\|X_k-y\|_2
+ -\frac{1}{2K(K-1)}\sum_{k\ne l}\|X_k-X_l\|_2.
+\end{equation}
+The Energy score evaluates a predictive distribution rather than just its mean~\cite{gneiting2007}. The estimator identity does not by itself prove the paths are calibrated or the fitted model adequate. Endpoint distance here uses the ensemble-mean position, not a selected best path.
+
+\section{Data, design and frozen controls}\label{sec:design}
+The real-data freeze remains the controlled DSDE release \texttt{pirc20-r1t-nex326-midpoint-20260912-v1}, with features \texttt{pirc21-production-features-20260917-v2}. Its dataset-manifest SHA-256 is \texttt{94efafdb09a62719ffbbebec07564eff640bf1adfc8ab6b1664173dc4f71abed}. This report distributes neither that dataset nor a new public copy. It asserts no public raw-data license. All seven registered Zhejiang candidate units are retained: six convertible sources and one source rejected by the geographic conversion policy. There are 93 retained segments, three horizons per segment, plus three unavailable-source cells. No candidate substitution, additional real training, capacity search, interpolation of truth, or final-test access is performed.
+
+Real M0 and M2 use the original four-unit training fits, causal origins, native observation truth, 128 common-root paths, CPU float64 and one numerical thread. Requested horizons are 10, 30 and 60 seconds. Native knots use nominal horizon/1024 resolution with a paired two-times finer discretization for diagnostics. Common paths reduce paired simulation noise; repeated paths and segments are not independent experimental units. The frozen implementation source for the new real analysis is Git \texttt{9ce90059f3611089150928d47aaa0393b699a016}; the older M1 source epoch is separately identified in the evidence catalog. Source epochs are not silently rebound to the later engineering merge.
+
+M1 uses two known residual teachers, five fixed noise seeds, steps 0.02/0.1 seconds and 64/256 paths at 65 fixed velocity origins: 40 fits per family, 20 teacher-matched settings. Known affine dynamics and diffusion remain fixed. The design varies only one velocity feature. Cubic open spline knots and seven RBF centers, coefficients and all authored neural controls are recorded in the reproduction recipe. The oracle is the discrete Euler teacher, not the exact continuous-time SDE. Matched recovery requires both function RMSE at most 0.25 and relative coefficient $\ell_2$ error at most 0.5 in every one of the 20 matched settings. Nested path counts and common noise are not independent replications.
+
+\section{RQ1: recovery is not qualified}\label{sec:rq1}
+\tabfile{m1-recovery.tex}
+Both families complete 40 fits and 30 registered rollouts, with all registered rollout paths valid. Each has 12/20 matched recovery passes, so both retain \texttt{NOT\_PASSED}. A strongest subgroup with five successful seeds does not override the all-settings criterion. The maximum design condition numbers in the table are useful diagnostics, not proof that conditioning alone caused the failed coefficient recovery. Fit-only wall totals (about 12.59 and 9.86 seconds for M1-S/M1-R) exclude whole-job preparation, bookkeeping and waiting; they are not total research costs. The residual-off comparison is the same known-affine fallback, not a fairly separately trained real-data M0 benchmark.
+
+\section{RQ2: exposed, incomplete development comparison}\label{sec:rq2}
+Each real model has exactly 282 declared cells: 63 measured, 216 without causal native coverage and three source-unavailable, with zero numerical failures and zero unexecuted cells. Missing cells are not zero-error observations. The original whole-unit eligibility rule still has $n=1$; using partial coverage increases the conditional horizon populations to 6/6/5 units, not the qualified whole-unit sample. The unit of aggregation below is the original registered source unit; segments are averaged within units, then units equally weighted. Independence of those source units is not newly established here.
+
+\tabfile{real-energy.tex}
+Here $n$ is the number of covered original units, $C$ the number of paired measured segment cells, and $\Delta=\mathrm{M2}-\mathrm{M0}$. The interval is a 2,000-replicate paired original-unit percentile bootstrap, conditional on causal coverage and both models being measured. These exposed development intervals are not blind confirmatory intervals, are not adjusted for multiple comparisons and do not repair selection or missingness. A 30-second interval excluding zero therefore does not establish a global winner.
+
+\tabfile{fde-mc.tex}
+The nonlinear model's 60-second endpoint error is worse even where its Energy score is lower. Point SE denotes the mean of pointwise Energy-score jackknife standard errors, \emph{not} the standard error of the unit-aggregated score or its interval. Velocity errors elsewhere in the controlled diagnostics use backward-difference observed-velocity proxies, not latent velocity truth.
+
+\tabfile{real-calibration.tex}
+The $c_x,c_y$ entries are equal-unit-weighted fractions inside nominal 95\% marginal coordinate intervals over non-origin native points. They are neither joint highest-density coverage nor independent Bernoulli trials. Coverage is very poor for both models. RMS is the paired coarse/fine endpoint discrepancy in meters, not a certified error bound: coupling, small Monte Carlo SE and absence of path failures do not establish model adequacy. Requested path instances per model are 6,656/4,352/5,120 by horizon, with zero failures; these are not distinct independent experimental subjects.
+
+\section{RQ3: limited objective and gradient feasibility}\label{sec:rq3}
+\subsection{G1: direct path-objective fitting}
+Three authored seeds (26101411--26101413) each use steps 0.25/0.125 seconds, for six cells. Source O1 preparation uses 512 one-step transitions per seed and 40 actual updates. The teacher and student share the documented constrained architecture; the teacher is not fitted from real data. Each O2 fit uses eight paths, two training origins, horizons 10/30 seconds, twelve maximum updates, learning rate 0.005, gradient clipping 100 and a six-step horizon curriculum. Two additional authored challenge origins are never used for checkpoint selection. The restored checkpoint is best on the fixed independent-Brownian training monitor over all training origins and horizons, not necessarily the final iterate.
+\tabfile{o2-feasibility.tex}
+All six cells pass their predeclared small-case feasibility gate: valid paths, four central finite differences agreeing with autograd (step $10^{-5}$, absolute tolerance $10^{-5}$, relative tolerance $10^{-3}$), fit-only wall time at most 600 seconds and lifetime peak RSS at most 2 GiB. Every fit stops with \texttt{MAX\_STEPS}; this is not convergence. The 600-second/2-GiB gates qualify measurements rather than impose additional research termination caps. All 24 paired authored challenge score rows are retained in the safe summary: some improve and some worsen. Training grids are not pathwise coupled, so cross-grid differences are neither an isolated discretization experiment nor a convergence proof. O1 and O2 losses are different objectives and are not ranked against each other.
+
+\subsection{G2 and G3: matched forward problems}
+We evaluate the same fixed O1-prepared checkpoints, without model updates, at the three seeds and two grids. G2 pairs direct reversible Heun with its reversible adjoint; G3 pairs direct midpoint with a continuous-adjoint midpoint route. The routes are motivated by stochastic adjoint and reversible-solver work~\cite{li2020,kidger2021}, but qualification here concerns only the actual installed implementation and these twelve cases. Forward solvers are matched \emph{within} pairs; cross-solver differences are not isolated gradient-method effects. State-independent diffusion makes the It\^o and Stratonovich drifts coincide in these fixtures.
+
+All routes share a halfway-tree Brownian construction, fixed entropy per seed, tolerance $10^{-9}$, and explicitly checked coarse increments equal to sums of fine increments. Each pair uses three fresh sequential helpers: finite-difference verifier, direct route and candidate route. Benchmark order is balanced. All nonempty acceleration parameters enter the full-gradient comparison; zero-size context tensors do not. Four finite-difference coordinates are checked per pair. Full-gradient relative $\ell_2$ tolerances are $10^{-3}$ for G2 and 0.05 for G3, with separate coordinate, forward-agreement and resource gates in the recipe.
+\tabfile{gradient-routes.tex}
+All twelve pairs pass; paired forward differences are zero. Maximum relative gradient discrepancies are about $2.801\times10^{-14}$ (G2) and $3.323\times10^{-4}$ (G3). Every candidate is slower than its matched direct route in these small CPU cases. RSS is a fresh-process lifetime peak including imports and metadata, not phase-isolated working memory; no general memory advantage, asymptotic comparison, trained-O2 result or real-data speedup is claimed.
+
+\section{Latent and matrix-method disposition}\label{sec:latent}
+The current contract supplies observed states but no observation likelihood, noise calibration, latent initial law, recognition model or identifiability conditions. Latent-state estimation is therefore not qualified or empirically assessed, not shown universally unnecessary. With $G=[0;L]$, a valid Girsanov drift change must lie in $\mathrm{range}(G)$ and preserve $dp=v\,dt$; adding an inverse or fictitious position noise is invalid. A generic Gaussian marginal flow can violate the fixed position drift, so it cannot simply be substituted as a path-law construction. This is a counterexample to that substitution, not to every latent-flow approach~\cite{bartosh2025}.
+
+Instantaneous rank two does not imply a singular finite-time transition. For affine $F=[0,I;B,A]$ and nonsingular $L$, the controllability blocks
+\[
+ [G,FG]=\begin{bmatrix}0&L\\L&AL\end{bmatrix}
+\]
+have rank four; the positive-time covariance Gramian can be nonsingular. Exact affine joint transitions remain legitimate, unlike inversion of a singular four-dimensional Euler covariance. Latent components L1/L2 and matrix-gradient route G4 remain \texttt{NOT\_ACTIVATED} under this contract; there are no fabricated ELBO, latent-matching or G4 benchmark values. G3 requires no diffusion inverse and is not reclassified as an unrun latent experiment.
+
+\section{Costs, failures and reproducibility}\label{sec:repro}
+\tabfile{costs.tex}
+The table is a cumulative charged-slot snapshot through publication and settlement of the compact evidence artifact. Each genuine model/method arm retains its own 86,400-second hard cap; preparation, retries and orphan settlements are not reset. Shared preparation/derived analysis is charged to M0, including historical unknown-cost settlement, so these totals are not fair model-training speed comparisons. Paper construction and later verification have separate subsequent receipts, not invisibly folded into this historical snapshot. The 7,200-second job allocation is a continuation/reporting window, not the earlier erroneous 120-second hard stop.
+
+Earlier writer-contention interruptions and conservative charges remain in the ledger. Their same-policy retries recompute derived analyses, not successful forecasts. An initial authored-O2 artifact-purpose refusal occurred before numerical allocation; its later API-purpose repair changes consumption authority, not the model, numerical suffix, thresholds or seeds. Code may iterate before freezing; every actual run retains its source, protocol, specification and body hashes. These engineering histories are not scientific replications.
+
+The release contains a reviewed aggregate summary, deterministic tables, a claim/source index, explicit recipes and verification tests. Source artifacts, full paths, per-unit/segment identifiers, trajectories, row predictions, model checkpoints, credentials and private locations are not shipped. The catalog binds old M1 and new analysis source epochs separately. Public smoke reproduction rebuilds tables and the report; it does \emph{not} independently reproduce every controlled numerical run. Full scientific replication requires controlled access to the original authorized artifacts and archived operators. A technical disclosure review is not a human scientific acceptance or a grant to publish raw data/models. Engineering CI and PR merge likewise do not substitute for research acceptance.
+
+\section{Conclusion}\label{sec:conclusion}
+RQ1 fails the unchanged all-settings matched-recovery criterion. RQ2 remains inconclusive because the registered whole-unit comparison lacks population eligibility, the exposed partial comparison is coverage-conditional, and calibration is poor. RQ3 establishes six direct-objective and twelve matched-route small-case feasibility passes, not convergence, a universal adjoint advantage or a latent-state result. The defensible outcome is a bounded negative/feasibility report with explicit missingness and retained failure history, not selection of a globally superior movement predictor.
+
+\begin{thebibliography}{9}
+\bibitem{gneiting2007} T. Gneiting and A. E. Raftery. Strictly proper scoring rules, prediction, and estimation. \emph{JASA} 102(477):359--378, 2007. \href{https://doi.org/10.1198/016214506000001437}{doi:10.1198/016214506000001437}.
+\bibitem{li2020} X. Li, T.-K. L. Wong, R. T. Q. Chen, and D. Duvenaud. Scalable gradients for stochastic differential equations. \emph{AISTATS}, PMLR 108:3870--3882, 2020. \url{https://proceedings.mlr.press/v108/li20i.html}.
+\bibitem{kidger2021} P. Kidger, J. Foster, X. C. Li, and T. Lyons. Efficient and accurate gradients for neural SDEs. \emph{NeurIPS} 34, 2021. \url{https://proceedings.neurips.cc/paper/2021/hash/9ba196c7a6e89eafd0954de80fc1b224-Abstract.html}.
+\bibitem{bartosh2025} G. Bartosh, D. Vetrov, and C. A. Naesseth. Neural SDEs made easy: SDE matching. \emph{ICML}, PMLR 267:3054--3070, 2025. \url{https://proceedings.mlr.press/v267/bartosh25a.html}.
+\end{thebibliography}
+\end{document}

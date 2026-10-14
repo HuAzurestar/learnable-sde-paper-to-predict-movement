@@ -339,6 +339,8 @@ trajectory/
 checkpoints/
 outputs/
 artifacts/
+paper/pirc26/en/main.pdf
+paper/pirc26/zh/main.pdf
 *.parquet
 *.npy
 *.npz
