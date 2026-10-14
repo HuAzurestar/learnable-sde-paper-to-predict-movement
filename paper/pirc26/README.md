@@ -31,6 +31,10 @@ Build English with `pdflatex` twice from `en`, Chinese with `xelatex` twice from
 `zh`, always with `-no-shell-escape -interaction=nonstopmode -halt-on-error`.
 Reject undefined citations/references after the second pass. Both languages use
 the same generated tables. PDFs are build products, not committed research data.
+From the repository root, run
+`python scripts/pirc26_check_tex_log.py paper/pirc26/en/main.log paper/pirc26/zh/main.log`.
+This also rejects missing glyphs and boxes overflowing by more than 2 pt, so a
+successful compilation alone cannot hide clipped provenance identifiers.
 
 ## Scientific reproduction scope
 

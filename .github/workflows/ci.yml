@@ -109,7 +109,7 @@ jobs:
           root_file: main.tex
           working_directory: paper/pirc26/en
           args: -pdf -interaction=nonstopmode -halt-on-error -file-line-error
-      - run: '! grep -E "Undefined (references|citations)|Rerun to get|undefined on input line" paper/pirc26/en/main.log'
+      - run: python scripts/pirc26_check_tex_log.py paper/pirc26/en/main.log
       - uses: actions/upload-artifact@v4
         with:
           name: pirc26-en-${{ github.sha }}
@@ -126,7 +126,7 @@ jobs:
           root_file: main.tex
           working_directory: paper/pirc26/zh
           args: -xelatex -interaction=nonstopmode -halt-on-error -file-line-error
-      - run: '! grep -E "Undefined (references|citations)|Rerun to get|undefined on input line" paper/pirc26/zh/main.log'
+      - run: python scripts/pirc26_check_tex_log.py paper/pirc26/zh/main.log
       - uses: actions/upload-artifact@v4
         with:
           name: pirc26-zh-${{ github.sha }}

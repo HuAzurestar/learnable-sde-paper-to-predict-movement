@@ -1,6 +1,7 @@
 \documentclass[UTF8,11pt]{ctexart}
 \usepackage[margin=25mm]{geometry}
-\usepackage{amsmath,amssymb,booktabs,graphicx,hyperref}
+\usepackage{amsmath,amssymb,booktabs,graphicx,xurl,hyperref}
+\setlength{\emergencystretch}{3em}
 \newcommand{\tabfile}[1]{\begin{center}\resizebox{\textwidth}{!}{\input{../shared/#1}}\end{center}}
 \title{约束非线性动力学 SDE：\\受控可行性与尚无定论的开发集比较}
 \author{PIRC-26 项目研究记录}
@@ -41,9 +42,9 @@ O2 在固定训练起点及预测时域上平均分布评分。对 $K>1$ 个位�
 Energy 分数评价整个预测分布\cite{gneiting2007}，但估计式本身不证明校准或模型适用。终点距离使用样本均值位置，不选择最优路径。
 
 \section{数据、设计与冻结控制}\label{sec:design}
-真实冻结仍在 DSDE：\texttt{pirc20-r1t-nex326-midpoint-20260912-v1}，特征版本为 \texttt{pirc21-production-features-20260917-v2}。数据清单 SHA-256 为 \texttt{94efafdb09a62719ffbbebec07564eff640bf1adfc8ab6b1664173dc4f71abed}。本报告不分发该数据，不创建公开副本，不声称原始数据具有公开许可。保留全部七个浙江候选：六个可转换来源及一个被地理转换规则拒绝的来源。93 个保留片段各有三个时域，另有三个来源不可用单元格。没有替换候选、增加真实训练、搜索容量、插值真值或访问最终测试。
+真实冻结仍在 DSDE：\nolinkurl{pirc20-r1t-nex326-midpoint-20260912-v1}，特征版本为 \nolinkurl{pirc21-production-features-20260917-v2}。数据清单 SHA-256 为 \nolinkurl{94efafdb09a62719ffbbebec07564eff640bf1adfc8ab6b1664173dc4f71abed}。本报告不分发该数据，不创建公开副本，不声称原始数据具有公开许可。保留全部七个浙江候选：六个可转换来源及一个被地理转换规则拒绝的来源。93 个保留片段各有三个时域，另有三个来源不可用单元格。没有替换候选、增加真实训练、搜索容量、插值真值或访问最终测试。
 
-真实 M0/M2 使用原四训练单元拟合、因果起点、原生观测真值、128 条共同根路径、CPU float64 和一个数值线程。时域为 10/30/60 秒，原生结点采用时域/1024 名义分辨率，另以两倍细网格作配对诊断。共同路径减少配对模拟噪声，但重复路径和片段不是独立实验单位。新真实分析源码冻结于 Git \texttt{9ce90059f3611089150928d47aaa0393b699a016}；较早 M1 的源码时期在证据目录单独绑定，不重绑定为后续工程合并版本。
+真实 M0/M2 使用原四训练单元拟合、因果起点、原生观测真值、128 条共同根路径、CPU float64 和一个数值线程。时域为 10/30/60 秒，原生结点采用时域/1024 名义分辨率，另以两倍细网格作配对诊断。共同路径减少配对模拟噪声，但重复路径和片段不是独立实验单位。新真实分析源码冻结于 Git \nolinkurl{9ce90059f3611089150928d47aaa0393b699a016}；较早 M1 的源码时期在证据目录单独绑定，不重绑定为后续工程合并版本。
 
 M1 含两种已知残差教师、五个固定噪声种子、0.02/0.1 秒步长、64/256 条路径及 65 个固定速度起点：每族 40 次拟合，其中 20 个教师匹配设置。已知仿射项与扩散冻结，仅改变一个速度特征。开放三次样条结点、七个 RBF 中心、系数及神经教师控制均见复现配方。真值来自离散 Euler 教师，不是连续 SDE 精确解。资格要求全部 20 个匹配设置同时满足相对残差场 RMSE 不超过 0.25、系数相对 $\ell_2$ 误差不超过 0.5。嵌套路径数和共同噪声不构成独立重复。
 
