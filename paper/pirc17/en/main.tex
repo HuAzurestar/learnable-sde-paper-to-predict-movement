@@ -1,4 +1,4 @@
-% Reader-v3: editorial convergence; no new figures or scientific execution.
+% Reader-v4: self-contained research object, model and argument; existing evidence.
 \input{revision46-preamble.tex}
 \title{Horizon-dependent Trade-offs and Undercoverage\\in Probabilistic Movement Forecasting}
 \begin{document}
@@ -7,7 +7,8 @@
 A movement forecast can improve its distributional score without locating
 the target more accurately or providing reliable uncertainty regions. We
 examine these distinctions in an existing evaluation of fitted stochastic
-movement predictors, using 46 retrospectively selected recording-hash
+movement predictors applied to historical GPX position recordings with
+unverified carrier identities and transport modes, using 46 retrospectively selected recording-hash
 blocks, five simulation seeds and 512 particles per ensemble. At nominal
 1 and 5 minutes, deterministic constant-speed extrapolation has lower
 energy score (ES) than the reference stochastic predictor Full; at 15 and
@@ -41,8 +42,11 @@ Learned trajectory predictors~\cite{gupta2018,salzmann2020}, neural SDE
 generators~\cite{kidger2021} and interpretable stochastic system
 identification~\cite{gao2024} offer additional modelling approaches.
 These works provide context, not performance baselines executed here.
-Our subject is an existing, limited collection of fitted stochastic
-predictors, not a new SDE theory or a state-of-the-art benchmark.
+Our empirical subject is future position in selected geographic recordings;
+the modelling object is a conditional distribution over those positions.
+A stochastic position model represents uncertainty through a fitted drift,
+residual diffusion and latent components. The study evaluates an existing,
+limited collection of these fitted predictors.
 
 Proper scoring rules evaluate predictive distributions against realized
 targets~\cite{gneiting2007,gneiting2008}; they do not certify coverage of
@@ -55,13 +59,21 @@ undercoverage despite substantial region area.
 
 This focus is an interpretation of existing results, not a newly
 registered hypothesis test. The original questions remain explicit:
-RQ1 concerns method-component comparisons, and RQ2 concerns terrain
-increments beyond a history baseline. RQ1 yields conditional comparisons
-of implemented procedures; RQ2 remains unavailable under its complete-family
-rule. Neither is redefined to turn an inconclusive or unavailable result
-into a positive finding.
+RQ1 asks whether the registered changes in mode structure, observation
+interval, fitting/adaptation and numerical prediction yield a practically
+useful distribution-score change relative to their named controls. RQ2 asks
+whether selected terrain groups add predictive value beyond a fitted
+history baseline, through overall, leave-one-group-out and leave-one-group-in
+comparisons. To interpret the existing results we use three diagnostic
+questions: does the Full/inertia ordering depend on horizon; do ES and
+mean-position error agree; and do nominal prediction disks achieve their
+stated coverage? The first two research questions retain their original
+inference rules; the three diagnostics are descriptive readings, not new
+registered tests. The following sections define the observed object,
+construct the forecasts, and answer each question within those bounds.
 
 \section{Data and predictive procedures}\label{sec:data}\hypertarget{sec:protocol}{}
+\input{reader-v4-task.tex}
 \subsection{Evaluation population and clock}
 The task is single-recording position forecasting from a visible trajectory
 prefix. The retained data pipeline identifies its source as a historical
@@ -116,6 +128,7 @@ configuration. In saved local east/north coordinates $X=(X_e,X_n)^\top$
  dX_t=\Theta_{m_t}^{\top}\psi(X_t,t)\,dt+L_{m_t}\,dW_t,
  \quad \psi=(1,X_e,X_n,S)^\top,\quad L_mL_m^\top=Q_m=\tau R_m.
 \end{equation}
+\input{reader-v4-full.tex}
 The first visible position anchors the coordinate frame; forecasting starts
 at the last permitted prefix position. $S$ is a solar/calendar proxy computed
 from the retained absolute tick~\cite{noaa}, not a validated daylight
@@ -133,8 +146,7 @@ time; no future position or future speed is used. These spans range from
 2 to 61 saved seconds (median 7). Ordinary Full and inertia thus receive
 the same permitted prefix but use its movement information differently.
 
-Drift is fitted by ridge regression. Full selects a finite covariance-scale
-grid with drift blending fixed at zero. The selection proxy is a one-step
+The validation selection proxy is a one-step
 rate-residual Gaussian using the unweighted average mode covariance, whereas
 evaluation scores a multi-mode, multi-step position distribution. The GMM
 variant groups training residuals once by $\arg\max(r_e,r_n,-r_e-r_n)$ but
@@ -154,12 +166,15 @@ and dt600 mean observation intervals of 300 and 600 saved seconds, not
 integration steps. Identical-parameter aliases and multi-factor changes
 make the 28 saved identities procedures rather than 28 independent algorithms.
 All 21 registered primary contrasts retain their named Full controls.
+\input{reader-v4-propagation.tex}
 
 \subsection{Terrain branch and scope of attribution}
 The separate terrain branch augments a fitted three-position history drift
 with independently fitted residual conditioners and diffusion for ten
-configurations. It includes retained roads, rivers, land cover and surface
-orientation, with interactions. Model-source declarations identify
+configurations. Its fitted mechanism is specified below.
+\input{reader-v4-terrain.tex}
+\paragraph{Map sources and attribution limits.}
+Model-source declarations identify
 WorldCover 2021 v200~\cite{worldcover2021}, Overture transportation
 2026-08-19.0~\cite{overture202608,overtureattribution}, HydroRIVERS
 v1.0~\cite{hydrorivers2013,hydroriverslicense}, and retained Mapzen Skadi /
@@ -190,6 +205,12 @@ $\mathrm{ADE}=\tfrac14\sum_j e_j$ and $\mathrm{FDE}=e_4$.
 FDE is neither best-particle nor average-particle error, and ADE is not a
 dense-path integral. ES includes interparticle spread and cannot be
 converted into error of the predictive mean.
+The first ES term measures particle distances to the target; the second
+subtracts half the average interparticle distance. Their balance evaluates
+the distribution, rather than the distance from its centre alone.
+Consequently, changing spread or mixture geometry can change ES without
+moving the mean closer to the target. This motivates reporting both
+quantities rather than using ES as a proxy for localisation.
 
 A nominal level-$q$ disk is centred at the ensemble mean, with radius the
 $\lceil qN\rceil$-th ordered distance of particles from that mean. Coverage
@@ -200,6 +221,12 @@ horizon-wise marginal regions, not joint path regions. Enclosing about
 For multimodal clouds, the mean may lie in a low-density gap and a disk may
 include inaccessible terrain; it is not a highest-density or route-constrained
 region.
+For $\widehat P_j$'s own disk $D_{q,j}$, nominal mass concerns
+$\widehat P_j(D_{q,j})\approx q$. Empirical reliability instead concerns
+the observed frequency of $Y_j\in D_{q,j}$ across origins. The two coincide
+only under suitable calibration of the predictive distribution; the
+particle construction itself supplies no such guarantee. Area records
+how much spatial information that coverage costs.
 
 For each recording block, the five seed values are averaged first; blocks
 then receive equal weight. There are 46 targets per horizon, not 230
@@ -294,6 +321,32 @@ are in the \audit{sec:terminal-failures}; missing exception stacks prevent
 attributing a specific technical cause.
 
 \section{Discussion}\hypertarget{sec:discussion-score}{}
+\subsection{What the model description lets us interpret}
+The task definition connects the horizon result to the two reference
+constructions. Inertia extends a short observed secant as a single straight
+trajectory; it can remain accurate when that local rate persists, but any
+rate error is multiplied by elapsed time. Full instead assigns probability
+to several fitted drift/diffusion components, without updating their weights
+from the new prefix's heading. This gives different uses of recent movement
+and different uncertainty representations. The observed short/long ordering
+is consistent with a changing forecasting trade-off, but does not identify
+which mechanism causes it: the comparison changes both mean dynamics and
+distributional spread, and no task-matched probabilistic inertia control
+isolates these effects. The constant-drift covariance explanation above is
+not a fitted explanation of the observed reversal.
+
+The other two diagnostics follow from the forecast summaries. ES evaluates
+both distances to the realized target and distances within the ensemble,
+whereas FDE evaluates only the final mean. An ES decrease with FDE increase
+therefore establishes a disagreement between criteria, not a mathematical
+contradiction. A radial particle quantile describes the model's own spread;
+coverage compares that region with actual target positions. The observed
+undercoverage rejects the interpretation of Full's nominal disks as
+empirically reliable regions for this cohort, even when average ES is
+favourable. It does not identify whether drift error, insufficient spread,
+mixture geometry or selection is responsible.
+
+\subsection{Implications and remaining limits}
 The three findings address different decisions. The horizon reversal warns
 against choosing a predictor from its average score alone. The dt300
 contrast shows that a distribution-score gain does not imply a more accurate
@@ -328,12 +381,27 @@ clock-source verification are needed for broader inference. These are
 unexecuted studies, not results or editorial repairs supplied here.
 
 \section{Conclusion}
-In this retrospective cohort, a favourable average energy score hides a
-short/long-horizon reversal, a score gain can accompany worse endpoint
-location, and nominal 90\% disks can cover fewer than half of long-horizon
-targets. Joint horizon-wise reporting exposes these differences. RQ1
-supports bounded finite-procedure comparisons, while RQ2 remains unavailable;
-neither establishes general algorithm superiority or terrain efficacy.
+This study evaluates conditional future-position distributions from selected
+GPX recordings, using fixed development-fitted stochastic position models
+and a visible-prefix inertial reference. Its diagnostic questions have
+concrete answers within the 46-recording cohort: inertia has lower ES at
+1 and 5 saved minutes and Full at 15 and 30; dt300 lowers average ES by
+23.40 m while increasing final mean-position error by 9.64 m; and Full's
+nominal 90\% disk covers only 46.52\% of 30-minute targets. Thus favourable
+average distribution scores do not establish uniformly better localisation
+or reliable prediction regions.
+
+For the original questions, RQ1 yields 14 practically equivalent and seven
+inconclusive finite-procedure contrasts, with all resolution-invariant
+judgements inconclusive. RQ2 remains unavailable because required terrain
+forecasts failed under the registered complete-family rule. The learned
+terrain mechanism is specified, but its specification is not evidence of
+terrain efficacy. These results justify reporting horizon-specific ES,
+mean-position error, coverage and area together; they do not establish
+general algorithm superiority, the necessity of stochastic complexity or
+an operational search guarantee. Unverified carrier identity and clock
+provenance, retrospective selection and prior evaluation exposure bound
+the population and physical-time interpretation of this conclusion.
 
 \paragraph{Data and reproducibility.}\label{sec:case-horizons}\hypertarget{sec:case-horizons}{}
 The accompanying scientific supplement contains full specifications and all

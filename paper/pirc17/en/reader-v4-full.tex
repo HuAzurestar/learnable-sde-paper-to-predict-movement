@@ -1,0 +1,69 @@
+\paragraph{What the stochastic equation represents.}
+$X_t\in\R^2$ is position and $m_t\in\{1,2,3\}$ is an unobserved model
+component. $\Theta_m\in\R^{4\times2}$ maps the intercept, two position
+coordinates and solar proxy to an east/north drift $b_m=\Theta_m^\top\psi$.
+This drift is a conditional displacement rate, measured in metres per
+saved second. $W_t$ is a two-dimensional standard Wiener process with
+independent increments of covariance $\Delta I_2$ over duration $\Delta$;
+$L_m$ maps them to position noise. Thus $Q_m=L_mL_m^\top$ is a diffusion
+covariance in square metres per saved second, and $L_m$ has units of
+metres per square root of a saved second. The deterministic and random
+parts respectively represent a fitted average trend and residual
+variation, not a separately observed intention or velocity process.
+
+For frozen drift and diffusion, the local increment has the illustrative law
+\begin{equation}\label{eq:local-increment}
+ X_{t+\Delta}-X_t\mid(X_t,m_t=m)
+ \ \approx\ \mathcal N\!\left(b_m\Delta,Q_m\Delta\right).
+\end{equation}
+The mean displacement grows with $\Delta$, while its random standard
+deviation grows with $\sqrt\Delta$. A sampled component adds uncertainty
+about which fitted trend applies. For constant component drifts and a
+segment-fixed mode, the corresponding illustrative mixture covariance is
+$u\sum_m\pi_m Q_m+u^2\operatorname{Cov}_{\pi}(b_m)$: within-component
+diffusion and between-component drift variation need not grow at the
+same rate. Full has position- and solar-dependent drift, so this expression
+explains the ingredients rather than gives its actual multi-step variance
+or proves calibrated coverage.
+
+\paragraph{How the reference parameters are learned.}
+Development segments are resampled at the registered observation interval
+$\tau$; an incomplete terminal interval is removed from fitting, while
+scoring observations remain unchanged. At $\tau=60$ saved seconds, the
+328 training, 76 adaptation and 81 validation windows supply 26,009,
+5,762 and 6,149 complete transitions, respectively. A transition target
+is the two-dimensional displacement rate $y_i=(x_{i+1}-x_i)/\tau$.
+Within each fitting batch, segments are sorted by their net heading and
+divided into three balanced groups; all transitions from a segment inherit
+its group. The groups identify regression components, not externally
+validated walking, turning or transport states. For group $m$, with feature
+matrix $D_m$ and rate matrix $Y_m$, the base estimates are
+\begin{align}
+ \widehat\Theta_m&=\underset{\Theta}{\operatorname{argmin}}
+ \left\{\tfrac12\|D_m\Theta-Y_m\|_F^2+
+             \tfrac\rho2\|\Theta\|_F^2\right\},
+ \qquad \rho=10^{-6},\label{eq:main-full-fit}\\
+ \widehat R_m&=\frac1{n_m-1}\sum_{i\in m}
+ (e_i-\bar e_m)(e_i-\bar e_m)^\top+10^{-8}I_2,
+ \quad e_i=y_i-\widehat\Theta_m^\top\psi_i .
+ \label{eq:main-full-residual}
+\end{align}
+The Frobenius norm sums squared entries; all coefficients, including the
+intercept, are penalised. $n_m$ is the number of transitions in group $m$,
+and its base mixture weight is $n_m/\sum_k n_k$. $R_m$ measures centred
+residual variation in squared displacement-rate units. The small diagonal
+term stabilises the covariance calculation; it does not calibrate prediction
+regions. These are regression estimates, not continuous-time path-likelihood
+estimates.
+
+Full fits training and adaptation batches separately, then combines
+their coefficients, covariances and proportions with weights 0.35 and 0.65.
+Validation selects a covariance scale $s\in\{0.55,0.75,1,1.3,1.7\}$ with
+drift held fixed. The saved $R_m$ already includes this $s^2$ scaling.
+Its continuous-time embedding uses $Q_m=\tau R_m$: at a constant-coefficient
+duration $\tau$, $Q_m\tau=R_m\tau^2$ matches the displacement covariance
+implied by the rate regression. This explains the time factor; it does
+not establish equivalence to maximum-likelihood estimation of an SDE.
+The chosen parameters remain fixed across evaluation origins and seeds.
+Full's saved component probabilities are 0.3350, 0.3302 and 0.3348,
+rather than a posterior re-estimated from each new prefix.

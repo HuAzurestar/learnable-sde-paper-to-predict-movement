@@ -1,0 +1,42 @@
+\subsection{Research object and forecasting task}\label{sec:forecast-task}
+The empirical objects are timestamped geographic position recordings from
+a historical GPX collection. Each recording traces the movement of an
+unidentified recording carrier. The retained archive does not establish
+whether a carrier is walking, cycling or travelling by another means, or
+whether two recordings belong to the same person. We therefore study
+position changes in the selected recordings, rather than the behaviour of
+a defined participant population. A cleaned segment is a derived portion
+of a recording; a window splits that portion into an observed prefix and
+future targets. Multiple windows can belong to one recording-hash block.
+Only one primary origin per selected block enters the main evaluation.
+
+For an origin with saved time $t_0$, let $\mathcal H_0$ contain the last
+three allowed position/time pairs, ending at the current position $x_0$.
+The task is to predict future positions conditional on this visible
+information and on fixed development-fitted parameters $\widehat\xi$.
+The geographic prefix is converted to a local east/north frame anchored
+at its first visible position. The method also has the retained clock and
+its solar proxy; the terrain branch additionally queries fixed map fields
+at simulated positions. True future positions are reserved for selection
+and evaluation and do not update a forecast. With actual matched elapsed
+times $u_1,\ldots,u_4$, the reported predictive object is
+\begin{equation}\label{eq:forecast-object}
+ \widehat P_j=\mathcal L_{\widehat\xi}(X_{t_0+u_j}\mid\mathcal H_0),
+ \qquad
+ \widehat P_{N,j}=\frac1N\sum_{p=1}^{N}\delta_{X_j^{(p)}},
+ \quad j=1,\ldots,4 .
+\end{equation}
+Here $\delta_x$ is a point mass at $x$, and each simulated particle $p$
+has a position at all four targets. The ensemble approximates a
+model-defined distribution; it is not a sample of people. Its mean gives
+a representative location, while its radial quantiles define prediction
+disks. These summaries answer different questions about the same forecast.
+No separate measurement-error model is fitted: the saved target position
+is used as the evaluation reference, although its physical accuracy is
+not independently verified.
+
+Development windows supply parameter estimates; final-evaluation windows
+supply forecast origins and observed outcomes. The main analysis asks how
+well those fixed predictors describe these outcomes as the saved forecast
+horizon increases. It does not estimate a causal law of human movement or
+the probability of finding a person in an operational search.

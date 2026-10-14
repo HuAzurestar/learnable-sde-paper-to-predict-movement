@@ -1,0 +1,28 @@
+\paragraph{From the fitted model to a forecast.}
+Each particle starts at $x_0$ and samples a mode from $\pi$; Full keeps
+that mode throughout its path. On each event interval $\Delta\leq5$ saved
+seconds, write the locally affine drift as $\mathsf A_m x+a_n$, freezing
+the non-position feature at the conditional mean. The retained affine
+kernel and conditional-moment update are
+\begin{align}
+ F&=e^{\Delta\mathsf A_m},\quad
+ J=\int_0^\Delta e^{v\mathsf A_m}\,dv,\quad
+ \Omega=\int_0^\Delta e^{v\mathsf A_m}Q_m e^{v\mathsf A_m^\top}\,dv,
+ \label{eq:main-affine-kernel}\\
+ \mu_{n+1}&=F\mu_n+Ja_n,\qquad
+ C_{n+1}=FC_nF^\top+\Omega,\label{eq:main-moment-update}\\
+ X_{n+1}^{(p)}&=FX_n^{(p)}+Ja_n+Gz_{n,p},\quad
+ GG^\top=\Omega,\quad z_{n,p}\sim\mathcal N(0,I_2).
+ \label{eq:main-particle-update}
+\end{align}
+Initially $\mu_0=x_0$ and $C_0=0$. The same noisy path supplies its
+positions at all four actual target times. The kernel is exact for the
+frozen affine subproblem; evaluating the solar feature at the conditional
+mean is an approximation for the nonlinear full model. In particular,
+``FP'' in the saved procedure denotes conditional Gaussian moments,
+not a spatial Fokker--Planck PDE solution. Numerical variants use
+Euler--Maruyama or split kernels, and MC/CRN variants evaluate nonlinear
+conditions along individual paths. Their complete definitions are in the
+\supp{sec:method-model}. This construction produces the empirical measures
+in Equation~\eqref{eq:forecast-object}; no subsequent radius calibration
+is part of the evaluated forecast.
