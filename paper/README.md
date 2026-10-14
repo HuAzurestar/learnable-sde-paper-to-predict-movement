@@ -19,7 +19,11 @@ answers the diagnostic questions and the original RQ1/RQ2.
 
 Keep each language's three PDFs together for companion links. The
 [build manifest](pirc17/revision46-review-v4/build-manifest.json) binds the
-six documents to clean source checkpointc71d0e77 and exact input/PDF hashes.
+six documents to clean reviewed local sourcec71d0e77 and exact input/PDF hashes.
+Its [public source equivalent01907d69](pirc17/reader-v4-public-source-binding.json)
+has the identical Git tree: only unpublished commit identity metadata was
+corrected for GitHub email privacy. All66 input hashes and original PDFs
+are preserved; this does not infer manuscript authorship from Git identity.
 Sources remain `pirc17/{en,zh}/{main,supplement,audit-notes}.tex`, with the
 new `reader-v4-{task,full,propagation,terrain}.tex` body inputs. Rebuild using
 the existing `scripts/build_pirc17_revision46.py --output-dir <fresh-external-directory>`.

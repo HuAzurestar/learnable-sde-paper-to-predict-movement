@@ -1,0 +1,21 @@
+{
+  "schema_version": "pirc17-reader-v4-public-source-equivalence-v1",
+  "reason": "GitHub GH007 rejected private email metadata on this round's five unpublished commits. Only commit identity metadata was rewritten using the preceding published GitHub noreply identity; all original local commits are retained on a local archive branch.",
+  "rewritten_published_history": false,
+  "force_push_used": false,
+  "reviewed_and_compiled_local_source": "c71d0e77b5bed9012e7566f632e37b65727c0127",
+  "public_equivalent_source": "01907d6966f0f99420dd0140e5a83724b4bf6616",
+  "identical_source_git_tree": "38104f3732352dac37bc98871dd8d2141615ebab",
+  "reviewed_local_pdf_delivery": "2752e748f3da2d1e0c0ec72bee6139b8e69d3e2e",
+  "public_equivalent_pdf_delivery": "5cde6ded300dbfe9cac2dfcd6073099f87d31120",
+  "identical_delivery_git_tree": "e04998bc838486c1c347c2e2b61239b8dd390bc0",
+  "source_and_delivery_trees_verified_equal": true,
+  "all_five_rewritten_commit_trees_verified_equal": true,
+  "original_build_manifest_preserved": "revision46-review-v4/build-manifest.json",
+  "original_review_receipt_preserved": "reader-v4-editorial-record.json",
+  "unique_actual_source_input_hashes_rechecked": 66,
+  "source_input_hash_mismatches": [],
+  "six_original_pdf_bytes_preserved": true,
+  "new_science_figures_or_private_map_publication": false,
+  "manuscript_authorship_inferred_from_git_identity": false
+}

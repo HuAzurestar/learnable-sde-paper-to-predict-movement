@@ -2,6 +2,8 @@
   "schema_version": "pirc17-reader-v4-object-model-closure-v1",
   "baseline_commit": "58310956f76a05bb2f1afda3994e0910dcd3f5c1",
   "final_source_checkpoint": "c71d0e77b5bed9012e7566f632e37b65727c0127",
+  "public_equivalent_source_checkpoint": "01907d6966f0f99420dd0140e5a83724b4bf6616",
+  "public_source_binding": "reader-v4-public-source-binding.json",
   "scope": "Complete research-object/task definition, mathematical and fitted-model exposition, and question-to-conclusion closure using existing evidence; bilingual body and existing PR17 delivery.",
   "research_object": "Historical GPX geographic position recordings with unverified carrier identity and transport mode; conditional future-position distributions in the selected retrospective cohort.",
   "substantive_additions": [
