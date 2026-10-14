@@ -14,8 +14,12 @@ For an origin with saved time $t_0$, let $\mathcal H_0$ contain the last
 three allowed position/time pairs, ending at the current position $x_0$.
 The task is to predict future positions conditional on this visible
 information and on fixed development-fitted parameters $\widehat\xi$.
-The geographic prefix is converted to a local east/north frame anchored
-at its first visible position. The method also has the retained clock and
+The method's internal east/north frame is anchored at the first visible
+position. Terrain prediction and evaluation instead use a frame anchored
+at the last visible position, the forecast origin. Method outputs are
+converted through geographic coordinates into that common scoring frame;
+the distributions in Equation~\eqref{eq:forecast-object} are expressed
+there. The method also has the retained clock and
 its solar proxy; the terrain branch additionally queries fixed map fields
 at simulated positions. True future positions are reserved for selection
 and evaluation and do not update a forecast. With actual matched elapsed

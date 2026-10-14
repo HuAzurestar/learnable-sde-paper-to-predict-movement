@@ -1,5 +1,5 @@
 \paragraph{From the fitted model to a forecast.}
-Each particle starts at $x_0$ and samples a mode from $\pi$; Full keeps
+Each particle starts at its internal-frame origin position $X_0$ and samples a mode from $\pi$; Full keeps
 that mode throughout its path. On each event interval $\Delta\leq5$ saved
 seconds, write the locally affine drift as $\mathsf A_m x+a_n$, freezing
 the non-position feature at the conditional mean. $\mathsf A_m$ is the
@@ -19,7 +19,7 @@ half-drift. Its matrices and conditional-moment update are
  GG^\top=\Omega,\quad z_{n,p}\sim\mathcal N(0,I_2).
  \label{eq:main-particle-update}
 \end{align}
-Initially $\mu_0=x_0$ and $C_0=0$. The same noisy path supplies its
+Initially $\mu_0=X_0$ and $C_0=0$. The same noisy path supplies its
 positions at all four actual target times. The drift substeps are exact
 for frozen affine coefficients; the split covariance generally differs
 from the affine-exact integral
