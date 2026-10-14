@@ -1,6 +1,55 @@
 # Paper sources and review manuscripts
 
-## Current PIRC-17 manuscript revision
+## Current PIRC-17 manuscript: reader-v4
+
+The body now defines its empirical object: timestamped historical GPX
+position recordings with unverified carrier identities and transport modes.
+It states the visible-prefix forecasting task and predictive distribution,
+distinguishes windows/blocks/origins and coordinate frames, and explains
+the fitted SDE drift, diffusion, latent components, parameter estimation,
+actual Full split propagation and separate two-stage terrain model. The
+discussion connects these mechanisms to the reported diagnostics while
+keeping possible causes separate from demonstrated results. The conclusion
+answers the diagnostic questions and the original RQ1/RQ2.
+
+| Language | Main paper | Scientific supplement | Audit record |
+| --- | --- | --- | --- |
+| Chinese | [14-page paper](pirc17/revision46-review-v4/zh/main.pdf) | [78-page supplement](pirc17/revision46-review-v4/zh/supplement.pdf) | [15-page record](pirc17/revision46-review-v4/zh/audit-notes.pdf) |
+| English | [15-page paper](pirc17/revision46-review-v4/en/main.pdf) | [80-page supplement](pirc17/revision46-review-v4/en/supplement.pdf) | [16-page record](pirc17/revision46-review-v4/en/audit-notes.pdf) |
+
+Keep each language's three PDFs together for companion links. The
+[build manifest](pirc17/revision46-review-v4/build-manifest.json) binds the
+six documents to clean source checkpointc71d0e77 and exact input/PDF hashes.
+Sources remain `pirc17/{en,zh}/{main,supplement,audit-notes}.tex`, with the
+new `reader-v4-{task,full,propagation,terrain}.tex` body inputs. Rebuild using
+the existing `scripts/build_pirc17_revision46.py --output-dir <fresh-external-directory>`.
+
+Four original figures/two core tables and all50 supplementary tables remain.
+No new figure, fit, forecast, scientific score, map query or bootstrap was
+produced. The separate local build retains six unchanged maps in appendices:
+Chinese22 pages and English23 pages. Those local PDFs/maps are not published.
+Earlier v1/v2/v3 PDFs, numeric evidence and response records are preserved.
+
+Two fresh read-only gpt-6-astra/high ACP sessions completed with21 and6
+focused calls. The first found the research-object/model/argument objection
+substantively addressed, with one coordinate-description P2. After repair,
+the follow-up checked the actual final source/PDF/log hashes and confirmed
+that P2 closed without another substantive inconsistency. The
+[editorial/review receipt](pirc17/reader-v4-editorial-record.json) records
+their exact scope and configuration. Twelve strict builds and page-boundary
+checks pass,58 public companion links resolve, and six local map bytes/24
+annotations match. The [full regression comparison](pirc17/reader-v4-regression-check.json)
+reports997PASS/25FAIL/2ERROR with no new failure/error identities; all33
+current-source guards pass. This is not a green whole-suite claim.
+
+The paper's scientific conclusions remain bounded: horizon-dependent
+ordering, score/location conflict and substantial undercoverage; terrain
+inference remains unavailable under the required-failure rule. Actual
+author/affiliation/contribution/conflict and ethics/consent/research-use
+declarations still require confirmation before submission. The agent
+reviews do not provide human or journal acceptance.
+
+## Previous reader-v3 delivery (superseded)
 
 The converged manuscript centres on horizon reversal, conflicting error
 metrics and marginal undercoverage. It uses four existing figures and two
