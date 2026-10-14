@@ -137,7 +137,7 @@ its conversion uses observation interval $\tau$, not integration step $h$.
 Each particle draws a mode from saved weights $\pi$ at the origin and
 segment-fixed Full retains that mode. Given frame, position, clock and
 random stream, ordinary Full does not read initial speed or recent heading.
-For the 46 primary origins, the visible input retains the last three
+For the 46 primary origins, the origin-state buffer retains the last three
 observed positions and their strictly increasing saved times. The origin
 is the last point. Inertia extrapolates
 $\widehat x^{\rm I}(u)=x_0+u\widehat v_0$, where $\widehat v_0$ is the secant

@@ -10,12 +10,14 @@ of a recording; a window splits that portion into an observed prefix and
 future targets. Multiple windows can belong to one recording-hash block.
 Only one primary origin per selected block enters the main evaluation.
 
-For an origin with saved time $t_0$, let $\mathcal H_0$ contain the last
-three allowed position/time pairs, ending at the current position $x_0$.
+For an origin with saved time $t_0$, let $\mathcal H_0$ contain the allowed
+observed position/time prefix, ending at the current position $x_0$.
+Its last three pairs initialize the retained motion-history buffer.
 The task is to predict future positions conditional on this visible
 information and on fixed development-fitted parameters $\widehat\xi$.
 The method's internal east/north frame is anchored at the first visible
-position. Terrain prediction and evaluation instead use a frame anchored
+position of that whole prefix, which need not be the first of the last
+three buffered points. Terrain prediction and evaluation instead use a frame anchored
 at the last visible position, the forecast origin. Method outputs are
 converted through geographic coordinates into that common scoring frame;
 the distributions in Equation~\eqref{eq:forecast-object} are expressed
