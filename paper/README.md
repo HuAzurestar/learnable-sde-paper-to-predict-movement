@@ -1,6 +1,53 @@
 # Paper sources and review manuscripts
 
-## Current PIRC-17 manuscript: reader-v4
+## Current PIRC-17 manuscript: reader-v5
+
+The bilingual paper now follows one reading line: research object and task,
+model construction, evaluation criteria, horizon-dependent utility, grouped
+design choices, region reliability, and four bounded conclusions. Mechanism-
+based names replace generic prose labels: HSM-SDE is the heading-stratified
+mixture reference (registered Full01), RDM-SDE is the residual-direction
+mixture variant (registered GMM, not conventional EM), and CV is deterministic
+constant-velocity extrapolation (registered Inertial/I). Original labels in
+retained figures/tables and numbered comparison controls remain traceable.
+
+| Language | Main paper | Scientific supplement | Audit record |
+| --- | --- | --- | --- |
+| Chinese | [15-page paper](pirc17/revision46-review-v5/zh/main.pdf) | [78-page supplement](pirc17/revision46-review-v5/zh/supplement.pdf) | [15-page record](pirc17/revision46-review-v5/zh/audit-notes.pdf) |
+| English | [16-page paper](pirc17/revision46-review-v5/en/main.pdf) | [80-page supplement](pirc17/revision46-review-v5/en/supplement.pdf) | [16-page record](pirc17/revision46-review-v5/en/audit-notes.pdf) |
+
+Keep each language's three PDFs together for companion links. The
+[build manifest](pirc17/revision46-review-v5/build-manifest.json) binds the
+six PDFs to clean reviewed source cb980cd8975f473c611a32048d9b111ffde4bfdb
+and exact input/PDF hashes. Rebuild with
+`scripts/build_pirc17_revision46.py --output-dir <fresh-external-directory>`.
+The [argument record](pirc17/reader-v5-argument.json) maps sections and figures
+to four conclusions and qualifications. This is a coarse RST-inspired
+editorial check, not formal EDU annotation or an additional scientific method.
+
+The conclusions concern conditional long-horizon utility relative to CV;
+promising RDM means without confirmed superiority; larger observed interval
+effects than examined training/adaptation mean changes against their own
+controls, not a direct cross-class test; and unestablished reliable long-
+horizon disks. Component construction, observation interval, training
+initialisation and parameter adaptation are separate design categories.
+Original RQ1/RQ2 and inference rules remain unchanged; terrain inference is
+still unavailable. No new figure or scientific execution was performed.
+
+A fresh actual read-only gpt-6-astra/high ACP review completed11 focused
+calls and found no P1/P2 blockers to this editorial deliverable. The
+[review receipt](pirc17/reader-v5-editorial-record.json) records its bounded
+scope. Twelve strict public/local documents and page-boundary checks pass,
+58 companion links resolve, and six local map hashes match the earlier
+version. Local mains are ZH23/EN24 pages; those maps/PDFs are not published.
+All38 focused guards pass. The
+[full comparison](pirc17/reader-v5-regression-check.json) reports
+1002PASS/25FAIL/2ERROR with no added failure/error identities, not a passing
+whole suite. Four unchanged main figures, two tables, all50 supplement tables
+and earlier delivery versions remain. Real declarations and human acceptance
+are still required; editorial delivery is not submission certification.
+
+## Previous reader-v4 delivery (superseded)
 
 The body now defines its empirical object: timestamped historical GPX
 position recordings with unverified carrier identities and transport modes.
