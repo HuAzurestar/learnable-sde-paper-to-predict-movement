@@ -10,7 +10,7 @@ matplotlib.use("Agg")
 from matplotlib import pyplot as plt
 import pytest
 
-from scripts.pirc17_display_names import display_text, method_name, tex_display
+from scripts.pirc17_display_names import display_text, figure_text, method_name, tex_display
 from scripts.render_pirc17_reader_v9 import name_figure
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -58,6 +58,14 @@ def test_display_policy_keeps_original_roles_and_tex_anchors():
     assert method_name("11", "full") == "HSM-11"
     assert display_text("Full01 / GMM kernel / inertial") == "HSM-01 / RDM / CV"
     assert tex_display("其Full01对照和GMM残差分组") == "其HSM-01对照和RDM残差分组"
+    assert figure_text("explicit") == "Speed/radial"
+    assert figure_text("mixed") == "Mixed calibration"
+    assert figure_text("mixed − Full07") == "Mixed calibration − HSM-07"
+    assert figure_text("em") == figure_text("EM") == "Euler-M."
+    assert figure_text("Euler (EM alias)") == "Euler alias"
+    assert tex_display("EM (Full18 control) & 477.85") == "Euler-M. (HSM-18 control) & 477.85"
+    assert tex_display("EM & HSM-18 & 0.02545") == "Euler-M. & HSM-18 & 0.02545"
+    assert tex_display("not fitted by EM") == "not fitted by EM"
     assert display_text("arm-04/gmm_kernel") == "RDM"
     assert display_text("arm-04/gmm\\_kernel") == "RDM"
     assert display_text("lio-river") == "B + river"
@@ -93,6 +101,7 @@ def test_all_active_figures_have_new_names_and_unchanged_artist_data():
     for row in manifest["figures"]:
         assert row["scientific_artist_sha256_before"] == row["scientific_artist_sha256_after"]
         assert not any(re.search(r"\b(?:Full\d*|GMM|Inertial|inertial)\b", label, flags=re.ASCII) for label in row["displayed_labels"])
+        assert not any(label in {"explicit", "mixed", "em", "euler", "mc", "crn", "scratch", "reptile"} for label in row["displayed_labels"])
         assert hashlib.sha256((ROOT / row["original_pdf"]).read_bytes()).hexdigest() == row["original_pdf_sha256"]
         for file, checksum in row["files_sha256"].items():
             assert hashlib.sha256((folder / file).read_bytes()).hexdigest() == checksum
@@ -119,3 +128,11 @@ def test_actual_pdf_figure_text_has_no_legacy_model_labels():
     original = [line.split("&", 1)[1] for line in (PAPER / "revision46-numbers.tex").read_text().splitlines() if line.startswith(r"\newcommand{\PointRow")]
     current = [line.split("&", 1)[1] for line in (PAPER / "reader-v9-number-labels.tex").read_text().splitlines()]
     assert current == original
+
+
+def test_owner_only_case_assembly_applies_the_same_policy_after_source_binding():
+    source = (ROOT / "scripts/build_pirc17_revision46_local.py").read_text(encoding="utf-8")
+    assert source.index("original_chapter_sha =") < source.index("case_chapter = tex_display(case_chapter)")
+    assert '"displayed_case_chapter_sha256"' in source
+    assert '"original_private_case_chapter_sha256"' in source
+    assert tex_display("the method matrix's Full01; 2089.0 m") == "the method matrix's HSM-01; 2089.0 m"

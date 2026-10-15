@@ -16,6 +16,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from scripts.build_pirc17 import check_log, validate_output
+from scripts.pirc17_display_names import tex_display
 
 
 def digest(path):
@@ -71,6 +72,9 @@ def assemble(private, output, case_figures=None):
         if case_chapter.count(r"\includegraphics") != 6:
             raise ValueError("All original maps and captions must be retained")
         original_chapter_sha = hashlib.sha256(case_chapter.encode()).hexdigest()
+        # Apply the same current names to owner-only text, without changing
+        # source case records, map bytes, metric values or protected TeX labels.
+        case_chapter = tex_display(case_chapter)
         if map_layout is not None:
             case_chapter = revise_case_captions(case_chapter, language)
         guide = (
@@ -94,6 +98,8 @@ def assemble(private, output, case_figures=None):
         preamble.write_text(text, encoding="utf-8")
         records.append({"language": language, "current_body_sha256": digest(source / language / "main.tex"),
                         "original_private_case_chapter_sha256": original_chapter_sha,
+                        "displayed_case_chapter_sha256": hashlib.sha256(case_chapter.encode()).hexdigest(),
+                        "display_name_policy": "reader-v9; original identifiers retained in source/audit only",
                         "retained_case_figures": 6, "new_cross_horizon_reading_guide": True})
     def compile_one(language):
         destination = output / "pdfs" / language

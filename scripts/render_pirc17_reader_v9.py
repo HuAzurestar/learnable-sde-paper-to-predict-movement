@@ -21,11 +21,11 @@ import matplotlib
 matplotlib.use("Agg")
 from matplotlib.figure import Figure
 from matplotlib.patches import FancyArrowPatch
-from matplotlib.text import Text
+from matplotlib.text import Annotation, Text
 from matplotlib.ticker import Formatter
 import numpy as np
 
-from scripts.pirc17_display_names import display_text, tex_display
+from scripts.pirc17_display_names import display_text, figure_text, tex_display
 
 ROOT = Path(__file__).resolve().parents[1]
 PAPER = ROOT / "paper/pirc17"
@@ -68,7 +68,7 @@ class DisplayFormatter(Formatter):
         self.original = original
 
     def __call__(self, value, pos=None):
-        return display_text(self.original(value, pos))
+        return figure_text(self.original(value, pos))
 
     def get_offset(self):
         return self.original.get_offset()
@@ -88,11 +88,9 @@ def name_figure(fig):
     changed = {}
     for text in fig.findobj(Text):
         old = text.get_text()
-        new = display_text(old)
-        # In these numerical-variant plots EM means Euler--Maruyama, not EM fitting.
-        new = new.replace("Euler (EM alias)", "Euler alias")
-        if new == "EM":
-            new = "Euler-M."
+        new = figure_text(old)
+        if isinstance(text, Annotation) and new in {"Mixed calibration", "ES calibration"}:
+            new = new.replace(" ", "\n", 1)
         if old != new:
             changed[old] = new
             text.set_text(new)

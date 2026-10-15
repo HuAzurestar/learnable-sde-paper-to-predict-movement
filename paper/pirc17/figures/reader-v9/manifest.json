@@ -8,8 +8,8 @@
     "plot_pirc17_calibration.py": "483ee0516c7d99058521f1c8db43c58e1954c7ccd4d86a3215bdf190785be3c0",
     "plot_pirc17_calibration_blocks.py": "db7844ea5251407e7d59e0bc83be344af177ac6af5d57973aa9e7529bc35c3f6",
     "plot_pirc17_terrain.py": "28ce7feb6f5b781ba91b8125cc12c42045a05c32eb850e7707339a1ae0451ec7",
-    "render_pirc17_reader_v9.py": "77ea755149831790d535a52e483bbe871397d3d5a5a32afec6d87770fa660967",
-    "pirc17_display_names.py": "cdbffd64d074af9357ec3b505cac8913b0e4e278da0d60acbcd7ab9e2150d762"
+    "render_pirc17_reader_v9.py": "9776ad4318c7af886bbb7b056ddae02c3bd4f291984045e821ccbfe233a531e8",
+    "pirc17_display_names.py": "7dc7b26ab1c740200f4232fd5726fbcdb37e37500fcdd488182e9d721b8baef5"
   },
   "active_unique_figures": 19,
   "figures": [
@@ -100,12 +100,14 @@
       "original_pdf_sha256": "25c54bc057fecee63b43bfc2ff53ccc71ba8f2fe61574322e70974502e57115b",
       "current_pdf": "figures/reader-v9/tradeoff.pdf",
       "files_sha256": {
-        "tradeoff.pdf": "597e42d5dca0c915d093046127d313d8fd69f0657eb8f2aa4a4097a30957d89a",
-        "tradeoff.png": "b4b0d5394edd852946762304352462041f1ebf6a2e07e2a883936a331994aced"
+        "tradeoff.pdf": "60be27049e0d66867b92905dcc97dc937a4d0f91abc93a279a3f22842a9f7b19",
+        "tradeoff.png": "84f995187b7e9b72cfd3516a5df2277a9545f7967063c14cdb0ab144dc506824"
       },
       "label_changes": {
         "pointwise": "Heading/redraw",
+        "single Gaussian": "Single Gaussian",
         "GMM": "RDM",
+        "explicit": "Speed/radial",
         "model-structure\nNamed control: Full01": "model-structure\nNamed control: HSM-01",
         "dt30": "Obs 30 s",
         "dt120": "Obs 120 s",
@@ -113,13 +115,20 @@
         "dt600": "Obs 600 s",
         "observation-interval\nNamed control: Full01": "observation-interval\nNamed control: HSM-01",
         "qmle": "QMLE label",
-        "pure_es": "ES calibration",
+        "mixed": "Mixed\ncalibration",
+        "pure_es": "ES\ncalibration",
         "d2_mc": "2D MC score",
         "d2_closed": "2D closed score",
         "objective-and-score\nNamed control: Full07": "objective-and-score\nNamed control: HSM-07",
+        "scratch": "Scratch",
+        "reptile": "Reptile",
         "drift_only": "Drift-only",
         "two_step": "Two-step",
         "transfer-adaptation\nNamed control: Full11": "transfer-adaptation\nNamed control: HSM-11",
+        "em": "Euler-M.",
+        "euler": "Euler alias",
+        "mc": "MC",
+        "crn": "CRN",
         "numerical-propagation\nNamed control: Full18, Full20": "numerical-propagation\nNamed control: HSM-18, HSM-20"
       },
       "displayed_labels": [
@@ -145,30 +154,30 @@
         "60",
         "75",
         "80",
+        "CRN",
         "Candidate minus control\n\nBottom left: both improve\nTop left: ES improves,\n  FDE worsens\nBottom right: reverse\nTop right: both worsen\n\nDescriptive means only.\nNo joint test or ranking.\nAliases are not independent\nalgorithm discoveries.",
         "Drift-only",
-        "ES calibration",
+        "ES\ncalibration",
+        "Euler alias",
+        "Euler-M.",
         "Heading/redraw",
+        "MC",
+        "Mixed\ncalibration",
         "Obs 120 s",
         "Obs 30 s",
         "Obs 300 s",
         "Obs 600 s",
         "QMLE label",
         "RDM",
+        "Reptile",
+        "Scratch",
+        "Single Gaussian",
+        "Speed/radial",
         "Two-step",
-        "crn",
-        "em",
-        "euler",
-        "explicit",
-        "mc",
-        "mixed",
         "model-structure\nNamed control: HSM-01",
         "numerical-propagation\nNamed control: HSM-18, HSM-20",
         "objective-and-score\nNamed control: HSM-07",
         "observation-interval\nNamed control: HSM-01",
-        "reptile",
-        "scratch",
-        "single Gaussian",
         "transfer-adaptation\nNamed control: HSM-11",
         "\u0394 ES (m)",
         "\u0394 FDE (m)",
@@ -481,8 +490,8 @@
       "original_pdf_sha256": "4e8252ac87d65a984c2af646015dd8324114939ec3fdb509e6fa374b0981ce8e",
       "current_pdf": "figures/reader-v9/revision46-seeds-and-blocks.pdf",
       "files_sha256": {
-        "revision46-seeds-and-blocks.pdf": "43d87ae81a0310262555490bff040e7f3cef58562b4d9ea3b7be964ec9650f5f",
-        "revision46-seeds-and-blocks.png": "a59d39d58ebb8c802285abd50dec8cf1e779c9c1fac7d32f785c49285db477bb"
+        "revision46-seeds-and-blocks.pdf": "587aed216eec873d45be80348ec9fe2e86170d62085a6677b31e26d44de85e72",
+        "revision46-seeds-and-blocks.png": "d854e60e732f4b181a9baa9ab1776decf3e4ecfb1e12a6c90706dc0bd09dac7e"
       },
       "label_changes": {
         "pointwise \u2212 Full01": "Heading/redraw \u2212 HSM-01",
@@ -494,18 +503,18 @@
         "dt300 \u2212 Full01": "Obs 300 s \u2212 HSM-01",
         "dt600 \u2212 Full01": "Obs 600 s \u2212 HSM-01",
         "qmle \u2212 Full07": "QMLE label \u2212 HSM-07",
-        "mixed \u2212 Full07": "mixed \u2212 HSM-07",
+        "mixed \u2212 Full07": "Mixed calibration \u2212 HSM-07",
         "pure_es \u2212 Full07": "ES calibration \u2212 HSM-07",
         "d2_mc \u2212 Full07": "2D MC score \u2212 HSM-07",
         "d2_closed \u2212 Full07": "2D closed score \u2212 HSM-07",
-        "scratch \u2212 Full11": "scratch \u2212 HSM-11",
-        "reptile \u2212 Full11": "reptile \u2212 HSM-11",
+        "scratch \u2212 Full11": "Scratch \u2212 HSM-11",
+        "reptile \u2212 Full11": "Reptile \u2212 HSM-11",
         "drift_only \u2212 Full11": "Drift-only \u2212 HSM-11",
         "two_step \u2212 Full11": "Two-step \u2212 HSM-11",
-        "em \u2212 Full18": "em \u2212 HSM-18",
-        "euler \u2212 Full18": "euler \u2212 HSM-18",
-        "mc \u2212 Full20": "mc \u2212 HSM-20",
-        "crn \u2212 Full20": "crn \u2212 HSM-20"
+        "em \u2212 Full18": "Euler-M. \u2212 HSM-18",
+        "euler \u2212 Full18": "Euler alias \u2212 HSM-18",
+        "mc \u2212 Full20": "MC \u2212 HSM-20",
+        "crn \u2212 Full20": "CRN \u2212 HSM-20"
       },
       "displayed_labels": [
         "0",
@@ -517,26 +526,26 @@
         "2D closed score \u2212 HSM-07",
         "50",
         "75",
+        "CRN \u2212 HSM-20",
         "Consistent seed directions do not establish block-level effects",
         "Drift-only \u2212 HSM-11",
         "ES calibration \u2212 HSM-07",
+        "Euler alias \u2212 HSM-18",
+        "Euler-M. \u2212 HSM-18",
         "Heading/redraw \u2212 HSM-01",
+        "MC \u2212 HSM-20",
+        "Mixed calibration \u2212 HSM-07",
         "Obs 120 s \u2212 HSM-01",
         "Obs 30 s \u2212 HSM-01",
         "Obs 300 s \u2212 HSM-01",
         "Obs 600 s \u2212 HSM-01",
         "QMLE label \u2212 HSM-07",
         "RDM \u2212 HSM-01",
+        "Reptile \u2212 HSM-11",
+        "Scratch \u2212 HSM-11",
         "Single Gaussian \u2212 HSM-01",
         "Speed/radial \u2212 HSM-01",
         "Two-step \u2212 HSM-11",
-        "crn \u2212 HSM-20",
-        "em \u2212 HSM-18",
-        "euler \u2212 HSM-18",
-        "mc \u2212 HSM-20",
-        "mixed \u2212 HSM-07",
-        "reptile \u2212 HSM-11",
-        "scratch \u2212 HSM-11",
         "\u0394 ES (m): seed points; block simultaneous interval; mean diamond",
         "\u2212100",
         "\u221225",
@@ -551,15 +560,15 @@
       "original_pdf_sha256": "022da8b8b72cde356f3233dfe40dff0e4740f0feee0ddd1e28aee0d22d157ad0",
       "current_pdf": "figures/reader-v9/revision46-identity-diagnostics.pdf",
       "files_sha256": {
-        "revision46-identity-diagnostics.pdf": "a94a5e1c0d5e8d5ab9ead9e8584359f4e8d94994f5258867c654bee037fb8710",
-        "revision46-identity-diagnostics.png": "4a347cac0fe0ae0061758cffaf107ab004191d57423995bfe972793738aa0823"
+        "revision46-identity-diagnostics.pdf": "49f682a655e5be9a010fe199d30c51ea39761e8c0e8839816fa0490e6a79a50e",
+        "revision46-identity-diagnostics.png": "2d08441b3700a96d00b71971f0b845244ca3ab17979da5526709c6a6768ea602"
       },
       "label_changes": {
-        "em \u2212 Full18": "em \u2212 HSM-18",
-        "euler \u2212 Full18": "euler \u2212 HSM-18",
+        "em \u2212 Full18": "Euler-M. \u2212 HSM-18",
+        "euler \u2212 Full18": "Euler alias \u2212 HSM-18",
         "d2_mc \u2212 Full07": "2D MC score \u2212 HSM-07",
         "d2_closed \u2212 Full07": "2D closed score \u2212 HSM-07",
-        "crn \u2212 Full20": "crn \u2212 HSM-20"
+        "crn \u2212 Full20": "CRN \u2212 HSM-20"
       },
       "displayed_labels": [
         "0.00",
@@ -573,11 +582,11 @@
         "1e\u22124",
         "2D MC score \u2212 HSM-07",
         "2D closed score \u2212 HSM-07",
+        "CRN \u2212 HSM-20",
         "Centimetre-scale update aliases",
+        "Euler alias \u2212 HSM-18",
+        "Euler-M. \u2212 HSM-18",
         "Sub-millimetre / zero identity diagnostics",
-        "crn \u2212 HSM-20",
-        "em \u2212 HSM-18",
-        "euler \u2212 HSM-18",
         "\u0394 ES (m); original simultaneous intervals; independent display scale",
         "\u22120.01",
         "\u22120.25",
@@ -655,13 +664,15 @@
       "original_pdf_sha256": "ffdb03adc422da3905d431a3e437415c6535a805919d9517b7f4acee87834ea9",
       "current_pdf": "figures/reader-v9/revision46-recorded-runtime.pdf",
       "files_sha256": {
-        "revision46-recorded-runtime.pdf": "6cf470d4a4ec1703c49bd979ff324ae09284f33dd1dfea74cf464842a244f5bc",
-        "revision46-recorded-runtime.png": "587b2bd529c962c1818992e73e8a37064031d66983ceac5c784c5dc69f510a46"
+        "revision46-recorded-runtime.pdf": "329e3ae7bd76d56485e165fcb52f0c054229e0a4a2ce5b39098bb87800444e81",
+        "revision46-recorded-runtime.png": "88a49cf325be74bf57970799b1dc47bd914c244e6dc97da57ebe3fe847d30842"
       },
       "label_changes": {
         "Full01": "HSM-01",
         "gmm_kernel": "RDM",
         "explicit_decomp": "Speed/radial",
+        "crn": "CRN",
+        "mc": "MC",
         "all-terrain": "A (all groups)",
         "base": "B (history)",
         "lio-river": "B + river",
@@ -700,13 +711,13 @@
         "B + river",
         "B + road",
         "B + surface",
+        "CRN",
         "Failures / five trials",
         "HSM-01",
         "Inclusive query p50 (ms)",
+        "MC",
         "RDM",
         "Speed/radial",
-        "crn",
-        "mc",
         "p50 latency (ms)",
         "p95 latency (ms), five trials",
         "runtime_cold",
@@ -720,8 +731,8 @@
       "original_pdf_sha256": "6c2969ef47beca8f0b7ea02063acaeed6efc7975ca709904b2d421bb8160aaaf",
       "current_pdf": "figures/reader-v9/method-overview.pdf",
       "files_sha256": {
-        "method-overview.pdf": "f9fdf5bbbb9cacfdf0fc7d9699ebb964a2a8c61eba1e8636e02060e103b9179f",
-        "method-overview.png": "3b51e8c394f7064a46b5495ae8b46b1203ba02e77d4090f8c454ba0b1ec1b9bf"
+        "method-overview.pdf": "32361210323d6e8b0de215ff14974b6a30e259f73ecce78e0bae1a46df872c3d",
+        "method-overview.png": "76ba8111a84c1b9c10eeb558a2f89225579c2040f372cafef73a788ce0c81b10"
       },
       "label_changes": {
         "Full01": "HSM-01",
@@ -736,15 +747,22 @@
         "dt600": "Obs 600 s",
         "Full07": "HSM-07",
         "qmle": "QMLE label",
+        "mixed": "Mixed calibration",
         "pure_es": "ES calibration",
         "d2_mc": "2D MC score",
         "d2_closed": "2D closed score",
         "Full11": "HSM-11",
+        "scratch": "Scratch",
+        "reptile": "Reptile",
         "drift_only": "Drift-only",
         "two_step": "Two-step",
         "Full16": "HSM-16",
         "Full18": "HSM-18",
-        "Full20": "HSM-20"
+        "em": "Euler-M.",
+        "euler": "Euler alias",
+        "Full20": "HSM-20",
+        "mc": "MC",
+        "crn": "CRN"
       },
       "displayed_labels": [
         "0",
@@ -773,10 +791,13 @@
         "80",
         "800",
         "Area (km\u00b2): pair with coverage",
+        "CRN",
         "Coverage \u2212 90% (pp)",
         "Drift-only",
         "ES (m): lower is better",
         "ES calibration",
+        "Euler alias",
+        "Euler-M.",
         "HSM-01",
         "HSM-07",
         "HSM-11",
@@ -784,6 +805,8 @@
         "HSM-18",
         "HSM-20",
         "Heading/redraw",
+        "MC",
+        "Mixed calibration",
         "Nominal minutes",
         "Obs 120 s",
         "Obs 30 s",
@@ -792,16 +815,11 @@
         "Obs 600 s",
         "QMLE label",
         "RDM",
+        "Reptile",
+        "Scratch",
         "Single Gaussian",
         "Speed/radial",
         "Two-step",
-        "crn",
-        "em",
-        "euler",
-        "mc",
-        "mixed",
-        "reptile",
-        "scratch",
         "\u2212100",
         "\u221220",
         "\u221240",
@@ -856,16 +874,27 @@
       "original_pdf_sha256": "f11f4aca6bc45f88fe7bde36fb01dfaac1d7521573c69bff589543e50757110d",
       "current_pdf": "figures/reader-v9/preliminary-method-effects.pdf",
       "files_sha256": {
-        "preliminary-method-effects.pdf": "2bd8adbccd2755416a44b18b41505b75d64f77abaa48f8cd303cc44e949c47a1",
-        "preliminary-method-effects.png": "ccaf9313cbd93a16d508252e102fd1229b935c29ab234f62254c780e698d49a5"
+        "preliminary-method-effects.pdf": "52556e4f6919c531fd17cd4f9ea65c4365d3ec89adfd2928c3e98f1e51ec36f8",
+        "preliminary-method-effects.png": "9641611eadd763de562de36150d0c2886637c72521100a42680f4d6662174032"
       },
       "label_changes": {
         "Pointwise mixture": "Heading/redraw",
         "Residual mixture": "RDM",
         "Explicit features": "Speed/radial",
         "Model structure vs Full01": "Model structure vs HSM-01",
+        "30 s observations": "Obs 30 s",
+        "120 s observations": "Obs 120 s",
+        "300 s observations": "Obs 300 s",
+        "600 s observations": "Obs 600 s",
         "Observation interval vs Full01": "Observation interval vs HSM-01",
+        "Pure ES calibration": "ES calibration",
+        "d2 MC score route": "2D MC score",
+        "d2 closed score route": "2D closed score",
         "Objective / score vs Full07": "Objective / score vs HSM-07",
+        "Scratch adaptation": "Scratch",
+        "Reptile initialization": "Reptile",
+        "Drift-only blend": "Drift-only",
+        "Two-step label": "Two-step",
         "Training / adaptation vs Full11": "Training / adaptation vs HSM-11",
         "EM": "Euler-M.",
         "Euler (EM alias)": "Euler alias",
@@ -890,26 +919,25 @@
         "1.5",
         "12",
         "120",
-        "120 s observations",
         "16",
         "160",
         "21 saved contrasts: 46 recording blocks x 5 forecast seeds\nDifferent horizontal scales; numerical panels are diagnostic zooms\nSaved within-family 95% intervals; +/-41.10 m shown only where in range",
         "25",
+        "2D MC score",
+        "2D closed score",
         "3.0",
-        "30 s observations",
-        "300 s observations",
         "40",
         "5.0e-05",
         "6",
-        "600 s observations",
         "8",
         "80",
         "CRN propagation",
         "CRN propagation vs HSM-20; diagnostic zoom",
         "Candidate minus control ES (m): left favours candidate",
-        "Drift-only blend",
-        "EM",
-        "Euler (EM alias)",
+        "Drift-only",
+        "ES calibration",
+        "Euler alias",
+        "Euler-M.",
         "Heading/redraw",
         "Integration aliases vs HSM-18; diagnostic zoom",
         "MC propagation",
@@ -917,18 +945,19 @@
         "Mixed calibration",
         "Model structure vs HSM-01",
         "Objective / score vs HSM-07",
+        "Obs 120 s",
+        "Obs 30 s",
+        "Obs 300 s",
+        "Obs 600 s",
         "Observation interval vs HSM-01",
-        "Pure ES calibration",
         "QMLE label",
         "RDM",
-        "Reptile initialization",
-        "Scratch adaptation",
+        "Reptile",
+        "Scratch",
         "Single Gaussian",
         "Speed/radial",
         "Training / adaptation vs HSM-11",
-        "Two-step label",
-        "d2 MC score route",
-        "d2 closed score route",
+        "Two-step",
         "\u22121.5",
         "\u2212100",
         "\u221212",
@@ -952,20 +981,30 @@
       "original_pdf_sha256": "373f4ae3576190b694413a45e41b53af3bf6565d1495fd6c86c9790c74fdd59e",
       "current_pdf": "figures/reader-v9/preliminary-method-absolute.pdf",
       "files_sha256": {
-        "preliminary-method-absolute.pdf": "16da70a800526b018056f5ccd1ada98d4ca9295af97183f6528e92a9c1f6325c",
-        "preliminary-method-absolute.png": "15bf03a6a2c563108281c6ed389b53f7891bb9522d251166eb6a6cb641f308f7"
+        "preliminary-method-absolute.pdf": "d6ad1c649bb2c7880e763beb06e44bbfae21cb100e87d627afc25ebf50d8df2b",
+        "preliminary-method-absolute.png": "214b1a9e97141e8e5fb223334cb88fb62c3edf9bc41472e051927b3a899a89f1"
       },
       "label_changes": {
         "Full reference (60 s)": "HSM reference (60 s)",
         "Pointwise mixture": "Heading/redraw",
         "Residual mixture": "RDM",
         "Explicit features": "Speed/radial",
+        "30 s observations": "Obs 30 s",
+        "120 s observations": "Obs 120 s",
+        "300 s observations": "Obs 300 s",
+        "600 s observations": "Obs 600 s",
+        "Pure ES calibration": "ES calibration",
+        "d2 MC score route": "2D MC score",
+        "d2 closed score route": "2D closed score",
+        "Scratch adaptation": "Scratch",
+        "Reptile initialization": "Reptile",
+        "Drift-only blend": "Drift-only",
+        "Two-step label": "Two-step",
         "EM": "Euler-M.",
         "Euler (EM alias)": "Euler alias",
         "Full01 reference and 21 candidates: 230 forecasts each\nZoomed dot axes, labelled means; descriptive, not a global winner test\nSix extra Full/replay identities retained separately in the full table": "HSM-01 reference and 21 candidates: 230 forecasts each\nZoomed dot axes, labelled means; descriptive, not a global winner test\nSix extra HSM/replay identities retained separately in the full table"
       },
       "displayed_labels": [
-        "120 s observations",
         "1250",
         "1299.1",
         "1300",
@@ -991,8 +1030,8 @@
         "1400",
         "1403.1",
         "1450",
-        "30 s observations",
-        "300 s observations",
+        "2D MC score",
+        "2D closed score",
         "425",
         "450",
         "453.2",
@@ -1020,28 +1059,29 @@
         "535.8",
         "550",
         "575",
-        "600 s observations",
         "CRN propagation",
-        "Drift-only blend",
-        "EM",
-        "Euler (EM alias)",
+        "Drift-only",
+        "ES calibration",
+        "Euler alias",
+        "Euler-M.",
         "HSM reference (60 s)",
         "HSM-01 reference and 21 candidates: 230 forecasts each\nZoomed dot axes, labelled means; descriptive, not a global winner test\nSix extra HSM/replay identities retained separately in the full table",
         "Heading/redraw",
         "MC propagation",
         "Mean endpoint error (m)\nLower is better",
         "Mixed calibration",
-        "Pure ES calibration",
+        "Obs 120 s",
+        "Obs 30 s",
+        "Obs 300 s",
+        "Obs 600 s",
         "QMLE label",
         "RDM",
-        "Reptile initialization",
-        "Scratch adaptation",
+        "Reptile",
+        "Scratch",
         "Single Gaussian",
         "Speed/radial",
         "Time-weighted energy score (m)\nLower is better",
-        "Two-step label",
-        "d2 MC score route",
-        "d2 closed score route"
+        "Two-step"
       ],
       "scientific_artist_sha256_before": "85ff244a341693f488ad7c25c926f7db5f4e2245e27c55ce059dbfac7245aeb1",
       "scientific_artist_sha256_after": "85ff244a341693f488ad7c25c926f7db5f4e2245e27c55ce059dbfac7245aeb1"
@@ -1051,8 +1091,8 @@
       "original_pdf_sha256": "72f7571d65870964fc2604361ab805c47b0c9ce6f5e78346ef40e1f8865890f8",
       "current_pdf": "figures/reader-v9/method-horizon-overview.pdf",
       "files_sha256": {
-        "method-horizon-overview.pdf": "eb5a069456388f5eeaac9251a093717175d9f8afb537ef26145d3179bf9a452e",
-        "method-horizon-overview.png": "af8f6d855ab4271aa667d770e7ea9056b741c276df0def8e94f641c0d5075724"
+        "method-horizon-overview.pdf": "014b167c580aa30b1188d749ebfc58f862421cfd50a74fa64a61298f22364d5c",
+        "method-horizon-overview.png": "630ec1329c25b6348bcb20a901b97591866164704b3ebba111f672c1364a496c"
       },
       "label_changes": {
         "Full01": "HSM-01",
@@ -1067,15 +1107,22 @@
         "dt600": "Obs 600 s",
         "Full07": "HSM-07",
         "qmle": "QMLE label",
+        "mixed": "Mixed calibration",
         "pure_es": "ES calibration",
         "d2_mc": "2D MC score",
         "d2_closed": "2D closed score",
         "Full11": "HSM-11",
+        "scratch": "Scratch",
+        "reptile": "Reptile",
         "drift_only": "Drift-only",
         "two_step": "Two-step",
         "Full16": "HSM-16",
         "Full18": "HSM-18",
-        "Full20": "HSM-20"
+        "em": "Euler-M.",
+        "euler": "Euler alias",
+        "Full20": "HSM-20",
+        "mc": "MC",
+        "crn": "CRN"
       },
       "displayed_labels": [
         "+1.3",
@@ -1183,10 +1230,13 @@
         "987",
         "991",
         "995",
+        "CRN",
         "Coverage \u2212 90% (pp)",
         "Drift-only",
         "ES (m): lower is better",
         "ES calibration",
+        "Euler alias",
+        "Euler-M.",
         "HSM-01",
         "HSM-07",
         "HSM-11",
@@ -1194,6 +1244,8 @@
         "HSM-18",
         "HSM-20",
         "Heading/redraw",
+        "MC",
+        "Mixed calibration",
         "Nominal minutes",
         "Obs 120 s",
         "Obs 30 s",
@@ -1202,16 +1254,11 @@
         "Obs 600 s",
         "QMLE label",
         "RDM",
+        "Reptile",
+        "Scratch",
         "Single Gaussian",
         "Speed/radial",
         "Two-step",
-        "crn",
-        "em",
-        "euler",
-        "mc",
-        "mixed",
-        "reptile",
-        "scratch",
         "\u2212100",
         "\u221250"
       ],
@@ -1223,8 +1270,8 @@
       "original_pdf_sha256": "6469dc3c4ce8076d7a1e7f0c27931887a86fcdb668ce8ccf1904a79463f0f4db",
       "current_pdf": "figures/reader-v9/method-region-overview.pdf",
       "files_sha256": {
-        "method-region-overview.pdf": "14bd1653b8da088a790c3ce5aececfcb0d6132ce854b1cef424d533e5f8f363f",
-        "method-region-overview.png": "1750d19dcc196970041cd525c17dde55cbe7f74da9d32a2bf5ca7c38888b1f5d"
+        "method-region-overview.pdf": "ce36ab943d7d8d7c6d773cf938249dffc7d8a87aa14462afa9598c740e4ec75c",
+        "method-region-overview.png": "e8fc163da657adfd18f560876e7c0f8d03885ce7b587b282408fe64a63192725"
       },
       "label_changes": {
         "Full01": "HSM-01",
@@ -1239,15 +1286,22 @@
         "dt600": "Obs 600 s",
         "Full07": "HSM-07",
         "qmle": "QMLE label",
+        "mixed": "Mixed calibration",
         "pure_es": "ES calibration",
         "d2_mc": "2D MC score",
         "d2_closed": "2D closed score",
         "Full11": "HSM-11",
+        "scratch": "Scratch",
+        "reptile": "Reptile",
         "drift_only": "Drift-only",
         "two_step": "Two-step",
         "Full16": "HSM-16",
         "Full18": "HSM-18",
-        "Full20": "HSM-20"
+        "em": "Euler-M.",
+        "euler": "Euler alias",
+        "Full20": "HSM-20",
+        "mc": "MC",
+        "crn": "CRN"
       },
       "displayed_labels": [
         "+1.3",
@@ -1346,9 +1400,12 @@
         "50",
         "6",
         "9.1",
+        "CRN",
         "Coverage \u2212 90% (pp)",
         "Drift-only",
         "ES calibration",
+        "Euler alias",
+        "Euler-M.",
         "HSM-01",
         "HSM-07",
         "HSM-11",
@@ -1356,7 +1413,9 @@
         "HSM-18",
         "HSM-20",
         "Heading/redraw",
+        "MC",
         "Mean area (km\u00b2)",
+        "Mixed calibration",
         "Nominal minutes",
         "Obs 120 s",
         "Obs 30 s",
@@ -1365,16 +1424,11 @@
         "Obs 600 s",
         "QMLE label",
         "RDM",
+        "Reptile",
+        "Scratch",
         "Single Gaussian",
         "Speed/radial",
         "Two-step",
-        "crn",
-        "em",
-        "euler",
-        "mc",
-        "mixed",
-        "reptile",
-        "scratch",
         "\u2212100",
         "\u221250"
       ],
@@ -1472,7 +1526,7 @@
       "source": "paper/pirc17/en/revision46-supplement-retained.tex",
       "source_utf8_lf_sha256": "beb728186b4fa862a3c93cc6eaa4f05bdeb57feaf255ffe4466dd93581f5b394",
       "projection": "en/reader-v9/revision46-supplement-retained.tex",
-      "projection_utf8_lf_sha256": "717d5b585ecad895e63c6d4de121b80b12d7c5710cd63cc43aa05e5a3bb91d68",
+      "projection_utf8_lf_sha256": "87dc75ce16e1a28220b1dfc04e9aecbbf3836f595546b7e62fc3602185f61e28",
       "table_anchors": [
         "tab:method-families",
         "tab:mode-rank-cardinality",
@@ -1563,7 +1617,7 @@
       "source": "paper/pirc17/en/method-seed-stability.tex",
       "source_utf8_lf_sha256": "6b59dc61f0e8ac84019858a2ba1d4685cf2a6f77679c1d29293262aad70d099f",
       "projection": "en/reader-v9/method-seed-stability.tex",
-      "projection_utf8_lf_sha256": "cd0c21cb720a5c6a0e8e61c405ad549542d9a29990e6b4fa45702585e78887b5",
+      "projection_utf8_lf_sha256": "048bde443ca534600e276b2417e3615cf1947d02d4c836d9f901d4a83b3e0b03",
       "table_anchors": [
         "tab:method-seed-stability"
       ]
@@ -1581,7 +1635,7 @@
       "source": "paper/pirc17/en/method-horizon-tables.tex",
       "source_utf8_lf_sha256": "0aada8e99d801ef676ebbfa398c8e59289e6e59034c1ecb10136ceb2afc9fcdc",
       "projection": "en/reader-v9/method-horizon-tables.tex",
-      "projection_utf8_lf_sha256": "a4e6dc52ff3c5ac5bbcb9c6834378688ae79c8362d9cea6d84d28f5152077798",
+      "projection_utf8_lf_sha256": "f19c5a25b79730a8dba41789bea3fe09868999ee470b26b8bc75c5987e182416",
       "table_anchors": [
         "tab:all-method-horizons"
       ]
@@ -1590,7 +1644,7 @@
       "source": "paper/pirc17/en/method-region-tables.tex",
       "source_utf8_lf_sha256": "89700a483baf1b47216248b1074e4756e5adff3b8a313adeaed39771ca9d4998",
       "projection": "en/reader-v9/method-region-tables.tex",
-      "projection_utf8_lf_sha256": "3aba747ae5126428b88a3f51e33bfe636ef68323f3335769f2fb99b5a595440e",
+      "projection_utf8_lf_sha256": "3c280216f9fa4ca113a90de35c205e9be15fd9d41540e999ffae7dfcff2e18b2",
       "table_anchors": [
         "tab:all-method-regions",
         "tab:all-level-coverage"
@@ -1600,7 +1654,7 @@
       "source": "paper/pirc17/zh/revision46-supplement-retained.tex",
       "source_utf8_lf_sha256": "7b987d8d997cc9c90737eeb95b6cd33b18d0656f6ad35cc03231521acc615ab4",
       "projection": "zh/reader-v9/revision46-supplement-retained.tex",
-      "projection_utf8_lf_sha256": "9c06935f5326ae854858d37ceb8fe52b13fef8d56ec718bfa7d3550b65d8fd57",
+      "projection_utf8_lf_sha256": "0ee1039f30b4b75f9f0fb0f8f275c487a241888f5d2b80affbbca0090f82eb03",
       "table_anchors": [
         "tab:method-families",
         "tab:mode-rank-cardinality",
@@ -1691,7 +1745,7 @@
       "source": "paper/pirc17/zh/method-seed-stability.tex",
       "source_utf8_lf_sha256": "df108a5ed11392965156fa9273466d2a43c47026cb65c242e2aee3dce015ddf9",
       "projection": "zh/reader-v9/method-seed-stability.tex",
-      "projection_utf8_lf_sha256": "a456c19b7f107a2462a8fae5b0518feba88397b8a4bfd50bdd836ae3ffc82c3d",
+      "projection_utf8_lf_sha256": "b2d1f081ef021d4e528604badea9ad3f5af04f2db10ba3cfe160ffb2c00add84",
       "table_anchors": [
         "tab:method-seed-stability"
       ]
@@ -1709,7 +1763,7 @@
       "source": "paper/pirc17/zh/method-horizon-tables.tex",
       "source_utf8_lf_sha256": "88a8418f5c11fee791b430aae48e8c0af8e3894be73febaa061029cce60674eb",
       "projection": "zh/reader-v9/method-horizon-tables.tex",
-      "projection_utf8_lf_sha256": "45b13c3630e7c88a11373ed40ad67d33d780d5c3713b4c9a8ca4976eec955818",
+      "projection_utf8_lf_sha256": "0b481c1306716389d552ce0fb9e287b45aa43d66e8f7cf4c17877aa7afd44c4f",
       "table_anchors": [
         "tab:all-method-horizons"
       ]
@@ -1718,7 +1772,7 @@
       "source": "paper/pirc17/zh/method-region-tables.tex",
       "source_utf8_lf_sha256": "bbe0904a446c809d71b79c140bd0dc4ab27f08b1cafb3b22abffce098b18edb8",
       "projection": "zh/reader-v9/method-region-tables.tex",
-      "projection_utf8_lf_sha256": "ffd16349acd9c231d6fd8a4abc2a052fca850a271eaf19a0032b9ddd0406870b",
+      "projection_utf8_lf_sha256": "80f20a0f47a4f8e70d4374c4c3cdaa2b97cd3407f7981263cbbe65e2aafeba53",
       "table_anchors": [
         "tab:all-method-regions",
         "tab:all-level-coverage"
@@ -2025,15 +2079,15 @@
             "files": {
               "pdf": {
                 "name": "revision46-score-error-tradeoff.pdf",
-                "sha256": "b6c111d314dabdbc30ac70b1cd961d9ff7a2a4b2542c2682e95dae3c320cf3bf"
+                "sha256": "7b75fe9db10aea3e7932c6945a99c7ffe95508655ccaac54cd8a47aedf8614c8"
               },
               "png": {
                 "name": "revision46-score-error-tradeoff.png",
-                "sha256": "15a0fa3a1b02276aa7cde5fc8665fa76bf1f91f0ca32d391ce9f97894ea77c2a"
+                "sha256": "d107b2481e7c59a1c714ac5e9aaba7fa755e3b568c39ad93879c6465da7d9aab"
               },
               "svg": {
                 "name": "revision46-score-error-tradeoff.svg",
-                "sha256": "c31bc5f1dcfec840a8481f0d6143b1f8ebff4246831264cd5f7ab475e344247b"
+                "sha256": "147216f48692230bd6e58ecbe62aabd1048b7d2eb60b0c64f44c262738fe1d2d"
               }
             },
             "values": [
@@ -2193,15 +2247,15 @@
             "files": {
               "pdf": {
                 "name": "revision46-seeds-and-blocks.pdf",
-                "sha256": "43d87ae81a0310262555490bff040e7f3cef58562b4d9ea3b7be964ec9650f5f"
+                "sha256": "587aed216eec873d45be80348ec9fe2e86170d62085a6677b31e26d44de85e72"
               },
               "png": {
                 "name": "revision46-seeds-and-blocks.png",
-                "sha256": "a59d39d58ebb8c802285abd50dec8cf1e779c9c1fac7d32f785c49285db477bb"
+                "sha256": "d854e60e732f4b181a9baa9ab1776decf3e4ecfb1e12a6c90706dc0bd09dac7e"
               },
               "svg": {
                 "name": "revision46-seeds-and-blocks.svg",
-                "sha256": "a8e0d3189caaecd8f5bc64320dbda4bf7db2f125abcfd0a64076b3302ff63511"
+                "sha256": "23d5f61d883ecb7696ef013ecf71903cbdbbe6e4addd80084ec8509754be5fc0"
               }
             },
             "values": [
@@ -2660,15 +2714,15 @@
             "files": {
               "pdf": {
                 "name": "revision46-recorded-runtime.pdf",
-                "sha256": "6cf470d4a4ec1703c49bd979ff324ae09284f33dd1dfea74cf464842a244f5bc"
+                "sha256": "329e3ae7bd76d56485e165fcb52f0c054229e0a4a2ce5b39098bb87800444e81"
               },
               "png": {
                 "name": "revision46-recorded-runtime.png",
-                "sha256": "587b2bd529c962c1818992e73e8a37064031d66983ceac5c784c5dc69f510a46"
+                "sha256": "88a49cf325be74bf57970799b1dc47bd914c244e6dc97da57ebe3fe847d30842"
               },
               "svg": {
                 "name": "revision46-recorded-runtime.svg",
-                "sha256": "5404be46074a6349c02affc1b9d2bc583f2c8887b467f00364b4eff91ee16af0"
+                "sha256": "4def003e38d6e9dee6f5bfd948f4452690b20e252e3207bf04108be58abf6630"
               }
             },
             "values": [
@@ -3161,15 +3215,15 @@
             "files": {
               "pdf": {
                 "name": "revision46-metric-overview.pdf",
-                "sha256": "dd1a8add05d73bdaf9e75d8079a0ad26a320851c1dd35e1a07ee43f8bc002b81"
+                "sha256": "6ea47090f2d21913ce21530669f7e04de3cc47cf3e119e84f59d5b119e4b6d69"
               },
               "png": {
                 "name": "revision46-metric-overview.png",
-                "sha256": "5285ca3c6437f43d6b35a0139a42ad4d0e4fcbc9e472cc20ca5d89b300fe96b2"
+                "sha256": "bb5538e5e8cb03d412db13cdb9524fb7cf72d801ca2977569b6449434637e955"
               },
               "svg": {
                 "name": "revision46-metric-overview.svg",
-                "sha256": "f761228c3a7140f8cb1b8b647e5b096905f9a6eeaae057fc9b64c10c42d4fd05"
+                "sha256": "860a9f53a2e55bb575ddcff4750999d52dc265bf2c6fca2294562fad2b3879d7"
               }
             },
             "values": {
@@ -3722,15 +3776,15 @@
             "files": {
               "pdf": {
                 "name": "revision46-selected-metric-overview.pdf",
-                "sha256": "2e1ae63d66ca6a8a97c518ec362b05ad72ddedbac7e24d1ac898fc062c7dbb7a"
+                "sha256": "c7ceec44404bf487baff662fc22132df7b5ccfada280b244f7cd128012ba329d"
               },
               "png": {
                 "name": "revision46-selected-metric-overview.png",
-                "sha256": "458d9cdac8c2f9a863e8e0c2342b42d2538966e2ac330318d8f81fc1bc69a386"
+                "sha256": "77169d066dbf0760ae7d8c55c19ee3fa5791ade20e1c7da674f9fcdb0b08382e"
               },
               "svg": {
                 "name": "revision46-selected-metric-overview.svg",
-                "sha256": "13d2f5a43528d73982cd56597fdd70992a174108ceb99d41edf1cc3ad8a90977"
+                "sha256": "eda9a66c950483339462f537edfc8829924085636474a3c0540c4a126f59ca75"
               }
             },
             "values": {
@@ -3846,15 +3900,15 @@
             "files": {
               "pdf": {
                 "name": "revision46-practical-effects.pdf",
-                "sha256": "b6d6c1964a09874796514cb14d3ea15fddeb620da984242f86f3aa8e4641678e"
+                "sha256": "e30322f9850cdf49c93c456e3d57e63c369c94c9e6392ffba10c051adde5e747"
               },
               "png": {
                 "name": "revision46-practical-effects.png",
-                "sha256": "32e29d05ec22cf8604866b4bdc55b4fd651924268ca7d7973729264cb2c922cf"
+                "sha256": "ff4f4910c2bb323ba9b736b7cbeef09f753b475fb8d17d33479b7a5be832c03b"
               },
               "svg": {
                 "name": "revision46-practical-effects.svg",
-                "sha256": "a47da2b7588512fe270d420969615d2e0ed68f8e2a701592ed59a093bee8c8b5"
+                "sha256": "7b86e8a56f7bd94c6020c039b2e7b9714ea789fa9ef14dedb9e3c1738a06364f"
               }
             },
             "values": {
@@ -3886,15 +3940,15 @@
             "files": {
               "pdf": {
                 "name": "revision46-identity-diagnostics.pdf",
-                "sha256": "a94a5e1c0d5e8d5ab9ead9e8584359f4e8d94994f5258867c654bee037fb8710"
+                "sha256": "49f682a655e5be9a010fe199d30c51ea39761e8c0e8839816fa0490e6a79a50e"
               },
               "png": {
                 "name": "revision46-identity-diagnostics.png",
-                "sha256": "4a347cac0fe0ae0061758cffaf107ab004191d57423995bfe972793738aa0823"
+                "sha256": "2d08441b3700a96d00b71971f0b845244ca3ab17979da5526709c6a6768ea602"
               },
               "svg": {
                 "name": "revision46-identity-diagnostics.svg",
-                "sha256": "9c2f7341a7d1200c2bfb6e48da34d86e99e9ae491b8998010cff25c9be10409a"
+                "sha256": "2360b63690e80d6e6c5161071fc8550db2efa663c6317c0a14cd3745e3a71f02"
               }
             },
             "values": {
@@ -7118,8 +7172,8 @@
           {
             "name": "full-overview",
             "files_sha256": {
-              "full-overview.pdf": "f9fdf5bbbb9cacfdf0fc7d9699ebb964a2a8c61eba1e8636e02060e103b9179f",
-              "full-overview.png": "3b51e8c394f7064a46b5495ae8b46b1203ba02e77d4090f8c454ba0b1ec1b9bf"
+              "full-overview.pdf": "32361210323d6e8b0de215ff14974b6a30e259f73ecce78e0bae1a46df872c3d",
+              "full-overview.png": "76ba8111a84c1b9c10eeb558a2f89225579c2040f372cafef73a788ce0c81b10"
             },
             "displayed": {
               "configurations": [
@@ -7672,8 +7726,8 @@
           {
             "name": "method-horizon-overview",
             "files_sha256": {
-              "method-horizon-overview.pdf": "eb5a069456388f5eeaac9251a093717175d9f8afb537ef26145d3179bf9a452e",
-              "method-horizon-overview.png": "af8f6d855ab4271aa667d770e7ea9056b741c276df0def8e94f641c0d5075724"
+              "method-horizon-overview.pdf": "014b167c580aa30b1188d749ebfc58f862421cfd50a74fa64a61298f22364d5c",
+              "method-horizon-overview.png": "630ec1329c25b6348bcb20a901b97591866164704b3ebba111f672c1364a496c"
             },
             "displayed": {
               "configurations": [
@@ -8057,8 +8111,8 @@
           {
             "name": "method-region-overview",
             "files_sha256": {
-              "method-region-overview.pdf": "14bd1653b8da088a790c3ce5aececfcb0d6132ce854b1cef424d533e5f8f363f",
-              "method-region-overview.png": "1750d19dcc196970041cd525c17dde55cbe7f74da9d32a2bf5ca7c38888b1f5d"
+              "method-region-overview.pdf": "ce36ab943d7d8d7c6d773cf938249dffc7d8a87aa14462afa9598c740e4ec75c",
+              "method-region-overview.png": "e8fc163da657adfd18f560876e7c0f8d03885ce7b587b282408fe64a63192725"
             },
             "displayed": {
               "configurations": [
@@ -8442,8 +8496,8 @@
           {
             "name": "selected-overview",
             "files_sha256": {
-              "selected-overview.pdf": "1739407eb6bd6fbf92dcf104d6794962372fc30dc353e2db60efe67ec14c6ee5",
-              "selected-overview.png": "2bcebfeb52012a6ddc985fefe48f6e69f23005ab6167247ce8bc696640775c77"
+              "selected-overview.pdf": "2a348eec918b2688d99b116c12bbb70ad6873ccafdc5aee373fb54a2a15e0834",
+              "selected-overview.png": "f302af13223f2e64274e56895f78742ff205b50fcaaf776174236a0762f6415e"
             },
             "displayed": {
               "configurations": [
@@ -8625,8 +8679,8 @@
           {
             "name": "tradeoff",
             "files_sha256": {
-              "tradeoff.pdf": "597e42d5dca0c915d093046127d313d8fd69f0657eb8f2aa4a4097a30957d89a",
-              "tradeoff.png": "b4b0d5394edd852946762304352462041f1ebf6a2e07e2a883936a331994aced"
+              "tradeoff.pdf": "60be27049e0d66867b92905dcc97dc937a4d0f91abc93a279a3f22842a9f7b19",
+              "tradeoff.png": "84f995187b7e9b72cfd3516a5df2277a9545f7967063c14cdb0ab144dc506824"
             },
             "displayed": [
               {
@@ -8792,12 +8846,12 @@
         "matplotlib_version": "3.9.0",
         "figures": {
           "preliminary-method-effects": {
-            "pdf": "2bd8adbccd2755416a44b18b41505b75d64f77abaa48f8cd303cc44e949c47a1",
-            "png": "ccaf9313cbd93a16d508252e102fd1229b935c29ab234f62254c780e698d49a5"
+            "pdf": "52556e4f6919c531fd17cd4f9ea65c4365d3ec89adfd2928c3e98f1e51ec36f8",
+            "png": "9641611eadd763de562de36150d0c2886637c72521100a42680f4d6662174032"
           },
           "preliminary-method-absolute": {
-            "pdf": "16da70a800526b018056f5ccd1ada98d4ca9295af97183f6528e92a9c1f6325c",
-            "png": "15bf03a6a2c563108281c6ed389b53f7891bb9522d251166eb6a6cb641f308f7"
+            "pdf": "d6ad1c649bb2c7880e763beb06e44bbfae21cb100e87d627afc25ebf50d8df2b",
+            "png": "214b1a9e97141e8e5fb223334cb88fb62c3edf9bc41472e051927b3a899a89f1"
           },
           "preliminary-full-horizons": {
             "pdf": "05acd89c675559e2a9f054bc84bc1c931ced40f48cbb91e19a3ff7a0aa4c34f0",
