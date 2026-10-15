@@ -52,6 +52,9 @@ learning rate 0.005, tolerance zero, gradient clip 100, six-step curriculum,
 grid limit 256, gradient-state limit 262144. Best checkpoint is the fixed
 all-training-origin/all-horizon independent-Brownian monitor, never challenge
 selection. Training grids are not pathwise coupled.
+Each score is the two-dimensional position marginal at one selected horizon;
+the objective averages those scores, not a score of a concatenated path vector.
+Cross-time joint dependence is not separately validated by this objective.
 Four FD coordinates: affine.a[0], last.bias[0], last.weight[0,0],
 first.weight[0,0]; central epsilon=1e-5, atol=1e-5, rtol=1e-3, restore checkpoint.
 Fit wall<=600 seconds and measured lifetime RSS<=2 GiB qualify small-case
@@ -95,6 +98,18 @@ export, new fit, candidate substitution or final-test access. Native truth, no
 interpolation, causal origins, 128 common-root paths. Horizon populations and
 all absent/failed statuses remain explicit. Exposed 2,000-replicate paired-unit
 intervals are conditional, not formal global superiority intervals.
+
+For each segment/horizon, choose the earliest noninitial native observation
+whose exact h-second endpoint is also observed. Score fine-grid predictions at
+all native observations strictly after that origin through the endpoint,
+including the endpoint. Average Energy scores equally over these native times,
+then equally over segments measured by both models within each original unit,
+then equally over original units having at least one paired measured segment.
+This is Eq. (real-score) in both manuscripts. Irregular native gaps are not
+duration-weighted; internal solver knots and interpolated truth add no score
+observations. The fine grid halves each coarse interval and retains native
+knots. FDE uses the same paired segment/unit population and weighting but only
+the endpoint error of the ensemble mean. No missing cell is assigned zero.
 
 The cumulative 24-hour cap applies separately to each genuine arm, including
 preparation/retries/orphan settlements. 7,200-second allocations are soft
