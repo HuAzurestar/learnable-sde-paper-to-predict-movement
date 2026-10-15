@@ -1,0 +1,23 @@
+{
+  "schema_version": "pirc17-reader-v7-plain-claims-v1",
+  "baseline_commit": "b31d7c4e1bfc3ecd13eda080a4015216bd4c9699",
+  "unchanged_evidence": ["reader-v5-argument.json", "reader-v6-argument.json", "terrain-description-v1/summary.json"],
+  "claims": [
+    {"id":"C1","claim":"In this evaluation CV is better at1/5 saved minutes and HSM-SDE at15/30; better means lower average ES.","population":"46recording blocks","evidence":"fig:inertial"},
+    {"id":"C2","claim":"RDM-SDE has lower observed average ES and30-minute mean-position error than the main HSM-SDE model; its ES difference interval crosses zero, so a consistent ES advantage is not established.","comparator":"main HSM-SDE (experimentFull01)","evidence":["tab:point-errors","ES interval[-21.22,16.33]"]},
+    {"id":"C3a","claim":"120/300s observation configurations lower average ES relative to60s HSM-SDE;300s increases final mean-position error.","role":"observation-interval result, separate from training","evidence":"fig:reader-tradeoff"},
+    {"id":"C3b","claim":"Examined training/adaptation variants make small average ES changes relative to the original training/adaptation procedure; no additional ES decrease is confirmed.","comparator":"original training/adaptation reference (experimentFull11)","qualification":"Not a claim that training itself has no value."},
+    {"id":"C4","claim":"A nominal90% disk encloses about90% of512simulated positions; empirical coverage measures actual target inclusion. HSM-SDE30-minute inclusion is46.52%, not near90%.","explanations":["mean error: distance of centre from truth","coverage: actual inclusion frequency","area: spatial extent required","an entire-city circle may cover more but localise poorly","centre error, not only radius, can cause misses"],"evidence":["fig:reader-calibration","tab:reader-regions"]},
+    {"id":"C5.1","claim":"On the post-hoc43-block subset, current all-terrain is worse than historybase on average ES(+26.98m) and30-minute mean error(+39.00m); simply adding all terrain features did not give average benefit here."},
+    {"id":"C5.2","claim":"Adding current road features accompanies worse scores; removing them improves scores in these fitted configurations."},
+    {"id":"C5.3","claim":"River-only benefit at15minutes does not extend to30minutes; improvement at a shorter horizon does not guarantee improvement farther ahead."},
+    {"id":"C5.4","claim":"Landcover-only lowers average ES1.64m and final mean error5.96m, a small favourable observed mean."}
+  ],
+  "terrain_interpretation":{"statement":"Terrain information has not been shown to reliably help prediction in this evaluation. Current handling of terrain may have shortcomings.","status":"interpretation/hypothesis, not an established cause","basis":"nearest-feature directions are not road tangents or explicit river-crossing constraints; fitting and rollout may also matter","not_claimed":["terrain intrinsically useless","road information is pure noise","a diagnosed software or feature bug","causal factor efficacy"]},
+  "inference_qualification":{"role":"separate from empirical findings","RQ1":"14finite-procedure practical-equivalence states,7inconclusive; allresolution-invariantinconclusive","RQ2":"3required failures violate complete-family rule; cannot claim family benefit/harm/equivalence under that rule"},
+  "figures_and_numeric_evidence_changed":false,
+  "new_fits_forecasts_scores_or_tests_of_scientific_hypotheses":0,
+  "new_explanatory_metric_table":false,
+  "metric_roles_presented_as":"three description-list items, no extra table or figure",
+  "human_acceptance":false
+}

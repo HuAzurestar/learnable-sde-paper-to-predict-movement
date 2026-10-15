@@ -14,6 +14,9 @@ registered inference. Seeds are averaged within a block before blocks
 receive equal weight. All underlying scores and forecasts are unchanged.
 
 \paragraph{Overall combination: no descriptive aggregate gain.}
+The current all-terrain configuration is worse than its history base on
+both average ES and thirty-minute mean-position error. In this implementation,
+simply adding every terrain feature has not produced an average gain.
 On this common subset, all-terrain has average ES 482.06 m versus 455.08 m
 for base, a change of $+26.98$ m, and FDE 1459.37 versus 1420.37 m,
 a change of $+39.00$ m (Table~\ref{tab:terrain-description}). Its ES is
@@ -40,19 +43,24 @@ Table~\ref{tab:terrain-description}; no inferential intervals are supplied.}
 \label{fig:terrain-description}\end{figure}
 
 \paragraph{Factor configurations: context and horizon matter.}
+Adding the current road features accompanies worse scores; removing them
+improves scores in the compared configurations.
 Adding the road group alone increases average ES by 42.96 m relative to
 base; removing it from all-terrain decreases ES by 19.87 m. Both directions
 associate the current road representation with a score cost in these fitted
 configurations, not a general claim that roads cannot help prediction.
-The river-only configuration reduces 15-minute ES by 42.51 m but increases
+The river-only configuration's benefit does not carry from 15 to 30 minutes:
+improvement at a shorter horizon does not imply improvement farther ahead.
+It reduces 15-minute ES by 42.51 m but increases
 30-minute ES by 57.27 m relative to base. Its average ES change is only
 $+0.19$ m, whereas removing river from the full combination increases
 average ES by 16.22 m. A factor's standalone result therefore does not
 determine its role in the full configuration.
 
-Land-cover-only has the lowest average ES among the ten saved configuration
-means, 453.44 m, but the improvement over base is just 1.64 m; its FDE is
-5.96 m lower. Surface-only instead increases average ES by 7.58 m while
+Adding land cover alone lowers average ES by 1.64 m and final mean-position
+error by 5.96 m, showing a small favourable mean result. Its average ES is
+453.44 m, the lowest of these ten saved configuration means, not a confirmed
+general advantage. Surface-only instead increases average ES by 7.58 m while
 lowering FDE by 10.09 m. These illustrate a small favourable configuration
 and a score--location trade-off, respectively, not confirmed factor
 superiority. Fits, diffusion, interactions and effective regularisation
