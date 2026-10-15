@@ -1,0 +1,173 @@
+\documentclass[11pt]{article}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,booktabs,graphicx,xurl,hyperref}
+\setlength{\emergencystretch}{3em}
+\newcommand{\R}{\mathbb R}
+\newcommand{\reportlabel}[2]{#1}
+\newcommand{\tabfile}[1]{\begin{center}\resizebox{\textwidth}{!}{\input{../shared/#1}}\end{center}}
+\title{Constrained nonlinear acceleration\\in kinetic stochastic differential equations}
+\author{Project research record}
+\date{14 October 2026 --- technical report draft, not peer-review acceptance}
+\begin{document}
+\maketitle
+\begin{abstract}
+We test cubic spline and Gaussian radial basis acceleration residuals, compare a neural residual with an affine baseline on recorded movement data, and check differentiation through simulated forecasts. Each basis family passes 12 of 20 teacher-matched recovery settings; neither satisfies the registered requirement that all 20 pass. In the seven-source development study, each real-data model has 63 measured segment--horizon cells out of 282 declared cells. On the paired covered cells, the neural model's source-weighted, native-time-averaged Energy score is lower at 10, 30 and 60 seconds, but its 60-second mean endpoint position error is 3,315.043 meters higher. Across both models, all three horizons and both coordinates, empirical coverage of nominal 95\% marginal intervals is at most 5.56\%. Six authored fits complete twelve updates, satisfy the four-coordinate finite-difference tolerances, take at most 600 seconds each and remain below 2 GiB process peak resident memory. Twelve matched gradient comparisons satisfy their declared tolerances; every adjoint run takes longer than its paired direct differentiation run. These observations describe the specified settings. They are not evidence that the nonlinear model ranks first on the full seven-source population or that training has converged.
+\end{abstract}
+
+\section{Introduction}\label{sec:introduction}
+For planar movement, a kinetic stochastic differential equation fixes the position derivative to velocity while allowing the acceleration to depend on the state. Adding an acceleration residual changes the model class, but does not by itself establish recovery of a known residual, a reduction in forecast error or agreement between numerical derivatives. These are distinct properties and require distinct tests.
+
+We assess cubic spline and Gaussian radial basis residuals against matched discrete teachers, compare a fixed neural residual with an affine baseline on recorded movement data, and check differentiation through simulated position forecasts. The contribution is a controlled assessment of these specified models and computations, rather than a new solver or a replication of another paper's empirical population.
+
+\subsection{Study aims and scope}\label{sec:questions}
+The recovery test asks whether every one of the 20 registered teacher-matched settings in each basis family satisfies both recovery thresholds. The recorded-data comparison separately asks whether the neural residual has a lower native-time-averaged Energy score at 10, 30 and 60 seconds and a lower mean endpoint position error at 60 seconds than the affine baseline on the paired covered cells; marginal-interval coverage is checked against its nominal 95\% level. The numerical tests ask whether all six authored marginal-position score fits and all twelve solver-matched differentiation pairs satisfy their declared checks. A failed check invalidates the corresponding all-cases-pass statement. The final test set is not read, and these tests do not establish deployment qualification.
+
+The model and fitting methods are defined in Section~\ref{sec:model}. Section~\ref{sec:design} fixes the experimental populations, scores and checking protocols before Section~\ref{sec:results} reports the measurements. Section~\ref{sec:discussion} distinguishes supported conclusions from interpretations and untested extensions.
+
+\section{Related work}\label{sec:related}
+Proper scoring rules provide distribution-sensitive forecast evaluation~\cite{gneiting2007}; finite ensembles still have Monte Carlo variation. Stochastic adjoints~\cite{li2020} and reversible solvers~\cite{kidger2021} motivate gradient routes but do not guarantee an advantage on every finite CPU problem. Stochastic differential equation matching~\cite{bartosh2025} motivates examining marginal/path-law compatibility, not assuming an arbitrary flow satisfies the fixed kinetic position equation. We evaluate our registered cases rather than claim replication or contradiction of those papers' general empirical findings.
+
+\section{Model and fitting methods}\label{sec:model}
+\subsection{Constrained kinetic dynamics}
+For planar position $p$ and velocity $v$, the observed-state model is
+\begin{equation}\label{eq:model}
+ dp_t=v_t\,dt,\qquad
+ dv_t=[A v_t+B p_t+a+r_\theta(p_t,v_t,c_t)]\,dt+L\,dW_t.
+\end{equation}
+Here $A$ and $B$ are acceleration coefficients multiplying velocity and position, $a$ is the constant acceleration offset, $r_\theta$ is the acceleration residual, $L$ is the velocity-noise factor, and $W$ is two-dimensional Brownian motion. Context $c$ is absent in the authored fixtures. The position equation is fixed; the diffusion is constant and has rank two in the four-dimensional state. The affine baseline sets $r=0$. The spline residual model uses cubic splines; the radial basis residual model uses Gaussian radial basis functions. The neural model uses a bounded residual with two width-16 hidden layers, spectral bounds and an amplitude bound. Real fits and their normalizer are reused, not retrained in response to evaluation. The authored neural fixtures use identity normalization, a unit spectral bound, unit amplitude and residual scale one; these fixture settings must not be mistaken for newly selected real fits.
+
+\subsection{Increment acceleration fitting}
+For observed increments, increment-acceleration fitting estimates acceleration after accounting for the affine component. For constant nonsingular velocity noise and known affine terms, a synthetic one-step response has the form
+\begin{equation}\label{eq:noise}
+ Y_i=r_\theta(z_i)+L\xi_i/\sqrt{\Delta t},\qquad \xi_i\sim N(0,I).
+\end{equation}
+
+\subsection{Marginal position score fitting}
+Marginal-position score fitting averages forecast-distribution scores over fixed training origins and horizons. For $K>1$ simulated positions $X_k$ and target $y$, the implemented unbiased pair estimator is
+\begin{equation}\label{eq:energy}
+ \widehat{\operatorname{EnergyScore}}=\frac1K\sum_k\|X_k-y\|_2
+ -\frac{1}{2K(K-1)}\sum_{k\ne l}\|X_k-X_l\|_2.
+\end{equation}
+Here $X_k,y\in\R^2$ are positions at a single selected time. Marginal-position score fitting averages these marginal scores over its selected horizons and training origins; it does not score a concatenated path vector or separately validate dependence across times. The Energy score evaluates a predictive distribution rather than just its mean~\cite{gneiting2007}. The estimator identity does not by itself prove the paths are calibrated or the fitted model adequate. Endpoint distance here uses the ensemble-mean position, not a selected best path.
+
+\subsection{Forecast simulation and differentiation}
+Forecasts simulate the kinetic model from each fixed origin and retain the positions needed by Eq.~\eqref{eq:energy}. Increment fitting provides the initial parameters for the authored neural experiments; subsequent score fitting differentiates the average marginal score and updates the acceleration parameters. In contrast, the paired gradient experiment keeps each increment-fitted checkpoint fixed and compares direct differentiation with an adjoint for the same forward solver and Brownian increments. It does not perform an additional fitting step. This separation makes a gradient comparison a test of numerical differentiation, not a comparison of trained forecast models.
+
+\section{Experimental design}\label{sec:design}
+\subsection{Discrete teacher recovery}\label{sec:recovery-design}
+The basis-model study uses two known residual teachers, five fixed noise seeds, steps 0.02/0.1 seconds and 64/256 paths at 65 fixed velocity origins: 40 fits per family, 20 teacher-matched settings. Known affine dynamics and diffusion remain fixed. The design varies only one velocity feature. Cubic open spline knots and seven Gaussian radial basis centers, coefficients and all authored neural controls are recorded in the reproduction recipe. The oracle is the discrete Euler teacher, not the exact continuous-time stochastic differential equation. Matched recovery requires both relative residual-field root-mean-square error at most 0.25 and relative coefficient $\ell_2$ error at most 0.5 in every one of the 20 matched settings. Nested path counts and common noise are not independent replications.
+
+\subsection{Recorded movement and forecast evaluation}\label{sec:real-design}
+We retain all seven registered Zhejiang candidate sources from the frozen movement-data release identified in Appendix~\ref{sec:provenance}. There are six convertible sources and one source rejected by the geographic conversion policy. There are 93 retained segments, three horizons per segment, plus three unavailable-source cells. No candidate substitution, additional real training, capacity search, interpolation of truth, or final-test access is performed.
+
+The real-data affine baseline and neural residual model use the original four-unit training fits, causal origins, native observation truth, 128 common-root paths, CPU float64 and one numerical thread. Requested horizons are 10, 30 and 60 seconds. Native knots use nominal horizon/1024 resolution with a paired two-times finer discretization for diagnostics. Common paths reduce paired simulation noise; repeated paths and segments are not independent experimental units.
+
+For each segment and horizon $h$, the origin is the earliest noninitial native observation with an exact native endpoint $h$ seconds later. Let $T_{s,h}$ contain native times strictly after that origin through the endpoint, $S_{u,h}$ the segments measured by both models in original source $u$, and $U_h$ the sources containing at least one such segment. Model $m$ uses fine-grid position predictions at those native times:
+\begin{equation}\label{eq:real-score}
+\begin{aligned}
+ e_{m,s,h}&=\frac{1}{|T_{s,h}|}\sum_{t\in T_{s,h}}
+ \widehat{\operatorname{EnergyScore}}\bigl(\{p^{\mathrm{fine}}_{m,s,k}(t)\}_{k=1}^{128},y_s(t)\bigr),\\
+ \overline{\operatorname{EnergyScore}}_{m,h}&=\frac{1}{|U_h|}\sum_{u\in U_h}
+ \frac{1}{|S_{u,h}|}\sum_{s\in S_{u,h}} e_{m,s,h}.
+\end{aligned}
+\end{equation}
+This gives equal weights to non-origin native times within a segment, paired segments within a source, and covered sources. Irregular observation gaps receive no duration weights. Interpolated truth and internal solver knots add no score observations. The fine grid halves each coarse interval and retains all native knots. Mean endpoint position error uses the same segment/source weights, but evaluates the ensemble-mean position at the endpoint alone.
+
+The difference in each Energy-score comparison is the neural residual minus the affine baseline. Intervals use 2,000 paired-original-source percentile bootstrap replicates, conditional on native coverage and both models being measured. The pointwise Energy-score jackknife standard errors are averaged across points; they are not standard errors of the source-aggregated score or its interval. Controlled velocity diagnostics use backward-difference observed-velocity proxies, not latent velocity truth.
+
+Coordinate coverage is the source-weighted fraction of non-origin native observations within nominal 95\% marginal intervals; it is neither joint highest-density coverage nor a collection of independent Bernoulli trials. Root-mean-square paired coarse/fine endpoint discrepancies are measured in meters and are not certified solver-error bounds.
+
+\subsection{Marginal score fitting protocol}\label{sec:fit-design}
+Three authored seeds, 26101411--26101413, each use time steps 0.25 and 0.125 seconds. Initial increment fitting uses 512 one-step transitions per seed and 40 updates. Teacher and student share the documented constrained architecture; the teacher is not fitted from real data. Each subsequent marginal-position score fit uses eight paths, two training origins, horizons 10 and 30 seconds, twelve maximum updates, learning rate 0.005, gradient clipping 100 and a six-step horizon curriculum. Two authored challenge origins are excluded from checkpoint selection. The restored checkpoint minimizes the fixed independent-Brownian monitor over all training origins and horizons among the observed checkpoints.
+
+The recorded-run checks require valid paths, fit-only wall time at most 600 seconds, and process lifetime peak resident memory below 2 GiB. Each run checks four parameter coordinates by central finite differences with perturbation $10^{-5}$, using absolute tolerance $10^{-5}$ plus relative tolerance $10^{-3}$ against automatic differentiation. MiB and GiB denote $2^{20}$ and $2^{30}$ bytes. These thresholds classify measurements and do not replace the registered research termination rules.
+
+\subsection{Paired differentiation protocol}\label{sec:gradient-design}
+The three seeds and two grids use the same fixed increment-fitted checkpoints, without parameter updates. One comparison pairs direct differentiation through reversible Heun with its reversible adjoint. The other pairs direct differentiation through midpoint with the continuous midpoint adjoint. These methods are motivated by stochastic adjoint and reversible-solver work~\cite{li2020,kidger2021}; the measurements concern the installed implementation on these twelve cases. Forward solvers match within each pair. Comparing the two solvers would change both the forward problem and the differentiation method. State-independent diffusion makes the It\^o and Stratonovich drifts coincide here.
+
+All pairs use the same halfway-tree Brownian construction, fixed entropy per seed and tolerance $10^{-9}$; coarse increments are checked against sums of fine increments. Each pair uses three fresh sequential processes for finite differences, direct differentiation and adjoint differentiation. Direct-first and adjoint-first orders occur six times each. Full-gradient comparisons include every nonempty acceleration parameter. Four parameter coordinates per pair are also checked by central finite differences. Relative Euclidean-norm gradient tolerances are $10^{-3}$ for the reversible Heun adjoint and 0.05 for the continuous midpoint adjoint; coordinate, forward-agreement and resource thresholds are stated in the reproduction recipe.
+
+\section{Results}\label{sec:results}
+\subsection{Neither basis family satisfies the all settings recovery requirement}\label{sec:rq1}
+\tabfile{m1-recovery.tex}
+Each basis family completes 40 fits and 30 registered rollouts, with zero invalid rollout paths. Each passes 12 of its 20 teacher-matched recovery settings. Because the registered requirement is a conjunction over all 20 settings, neither family meets it. A five-seed subgroup in which every setting passes does not remove the eight failures elsewhere in the registered matched set. Maximum design condition numbers are 6.923 for the spline model and 30.562 for the Gaussian radial basis model; these measurements do not identify a unique cause of coefficient recovery failures. Fit-only wall totals are 12.59 and 9.86 seconds, respectively, excluding whole-job preparation, bookkeeping and waiting. The residual-off comparison uses the same known affine dynamics; it is not a separately trained real-data baseline.
+
+\subsection{Covered forecast scores and endpoint errors differ in direction}\label{sec:rq2}
+\subsubsection{Measured cells and source coverage}
+Each real-data model has 282 declared segment--horizon cells: 63 measured, 216 without causal native coverage and three source-unavailable. Numerical failures and unexecuted cells both number zero. Missing cells are not zero-error observations. One original source meets the unchanged whole-unit eligibility rule. Using partial coverage yields six, six and five covered original sources at 10, 30 and 60 seconds, respectively. These are not the sample admitted by the whole-unit rule, and independence between sources is not established here.
+
+\subsubsection{Energy scores and endpoint errors}
+\tabfile{real-energy.tex}
+On the paired covered cells, the source-weighted, native-time-averaged Energy-score differences are $-50.692$, $-1142.663$ and $-591.042$ meters at 10, 30 and 60 seconds. Thus the neural residual has a lower value of this particular score at all three measured horizons. The development results were already exposed; the intervals are not blind confirmatory intervals and do not adjust for multiple comparisons, selection or missingness. The negative 30-second interval is not a full-population superiority result.
+
+\tabfile{fde-mc.tex}
+At 60 seconds, mean endpoint position error is 27,076.126 meters for the neural residual model and 23,761.083 meters for the affine baseline, a difference of +3,315.043 meters. Hence the lower time-averaged distribution score does not imply a lower endpoint error for the same model.
+
+\subsubsection{Coordinate interval coverage}
+\tabfile{real-calibration.tex}
+Across both models, three horizons and two coordinates, every measured coverage fraction is at most 0.055556, below the nominal 0.95. Coupling, pointwise simulation standard errors and zero path failures do not establish calibration. At 10, 30 and 60 seconds each model requests 6,656, 4,352 and 5,120 path instances, respectively, with zero recorded failures. Repeated path instances are not independent experimental subjects.
+
+\subsection{All six score fits satisfy their specified checks}\label{sec:rq3}
+\tabfile{o2-feasibility.tex}
+All six runs have valid paths and all four checked coordinates per run satisfy the finite-difference tolerances in Section~\ref{sec:fit-design}. Fit-only wall times range from 92.086 to 196.089 seconds, below 600 seconds, and process peak resident memory ranges from 683.6 to 701.4 MiB, below 2 GiB. All six runs terminate at the twelve-update limit; none has a convergence-based termination record. The resource thresholds classify recorded measurements; they do not add research termination caps. Among the 24 paired authored challenge scores, 14 decrease and 10 increase after score fitting. The training grids are not pathwise coupled, so their comparison does not isolate discretization error. Increment-fitting loss and marginal-position score loss are different objectives and are not ranked against each other.
+
+\subsection{All twelve gradient pairs pass and adjoints take longer}\label{sec:gradient-results}
+\tabfile{gradient-routes.tex}
+All twelve pairs satisfy the checks in Section~\ref{sec:gradient-design}, with zero paired forward differences. Maximum relative Euclidean-norm gradient discrepancies are $2.801\times10^{-14}$ for the reversible Heun adjoint and $3.323\times10^{-4}$ for the continuous midpoint adjoint, below their respective thresholds. Every adjoint run takes longer than its paired direct differentiation run. Memory measurements are fresh-process lifetime peaks including imports and metadata, not memory isolated to the differentiation phase. These measurements are not trained-model speed comparisons or asymptotic memory bounds.
+
+\section{Discussion}\label{sec:discussion}
+\subsection{Recovery and increment noise}
+For the increment response in Eq.~\eqref{eq:noise}, let $\Phi$ be the fixed basis-design matrix. With independent one-step noise, the zero-penalty full-rank least-squares covariance is proportional to
+$(\Phi^\top\Phi)^{-1}\otimes LL^\top/\Delta t$, with the factor ordering depending on vectorization. At fixed design, repetitions $N$ give a $1/(N\Delta t)$ scale. Smaller steps with fixed $N$ therefore do not guarantee more drift information. This analytic interpretation is post hoc, not a new empirical test, a criterion change, or a unique causal explanation of the observed recovery failures.
+
+\subsection{Metric and population boundaries}
+The score and endpoint comparisons concern different properties. The Energy score includes ensemble spread and is averaged over non-origin native times, whereas mean endpoint position error evaluates the ensemble mean at one time. Their opposite directions therefore do not form a numerical contradiction. They also do not identify a causal mechanism for the difference between the models.
+
+The comparison is conditional on the cells covered by both models. A source admitted by partial coverage is not thereby admitted by the whole-unit eligibility rule. Consequently, neither a negative conditional score difference nor a bootstrap interval excluding zero determines the ranking on the complete seven-source population. Missing cells remain missing, rather than contributing zero error or being replaced by other candidates.
+
+\subsection{Derivative agreement and optimization}
+The finite-difference checks and paired gradient tolerances test the specified computations. They do not establish that the scoring objective identifies a joint path law or that the training procedure has converged. Termination at the twelve-update limit is not a convergence determination. Likewise, each adjoint taking longer in the measured CPU pairs establishes the direction of those paired times, not a universal ranking of differentiation methods. Process lifetime memory peaks are not isolated differentiation costs or asymptotic bounds.
+
+\subsection{Kinetic constraints and latent state extensions}\label{sec:latent}
+The current contract supplies observed states but no observation likelihood, noise calibration, latent initial law, recognition model or identifiability conditions. Latent-state estimation was not admitted or empirically evaluated under this contract. With $G=[0;L]$, an admissible Girsanov drift change must lie in $\mathrm{range}(G)$ and preserve $dp=v\,dt$. For a stationary standard Gaussian flow with drift $-GG^\top z/2$, the position drift is zero. At any state with nonzero velocity this flow does not satisfy the fixed position equation. It is therefore not a compatible path-law substitution for this kinetic model; the example does not exclude every constrained latent-flow method~\cite{bartosh2025}.
+
+Instantaneous rank two does not imply a singular finite-time transition. For affine $F=[0,I;B,A]$ and nonsingular $L$, the controllability blocks
+\[
+ [G,FG]=\begin{bmatrix}0&L\\L&AL\end{bmatrix}
+\]
+have rank four. Under these affine conditions the covariance Gramian is nonsingular for every positive transition time. Exact affine joint transitions remain legitimate, unlike inversion of a singular four-dimensional Euler covariance. Latent variational objectives, latent marginal-flow objectives and matrix-based differentiation were not activated under this contract; no numerical results are reported for them. The tested continuous midpoint adjoint uses no diffusion inverse and is a separate observed-state differentiation method.
+
+\section{Conclusion}\label{sec:conclusion}
+Under the registered discrete-teacher design with five noise seeds, time steps 0.02 and 0.1 seconds, and 64 or 256 paths, the cubic spline residual and Gaussian radial basis residual each pass 12 of 20 teacher-matched settings. Neither satisfies the requirement that every matched setting have relative residual-field root-mean-square error at most 0.25 and relative coefficient error at most 0.5.
+
+For the reused four-source training fits, the neural residual has a lower native-time-averaged Energy score than the affine baseline on paired covered development cells: the source-weighted differences are $-50.692$, $-1142.663$ and $-591.042$ meters at 10, 30 and 60 seconds under Eq.~\eqref{eq:real-score}. At 60 seconds its mean endpoint position error is 27,076.126 meters versus 23,761.083 meters for the affine baseline. Each model has 63 measured cells out of 282 declared cells, and one source meets the unchanged whole-unit eligibility rule. With 219 cells per model unmeasured, this is not a comparison over all 282 declared cells; the study does not determine the error ranking across all seven sources.
+
+For the three authored seeds, two time steps, eight forecast paths and two training origins, all six marginal-position score fits satisfy the four-coordinate finite-difference tolerances and the 600-second/2-GiB measurement thresholds. For the twelve solver-matched differentiation pairs, all declared gradient checks pass, and every adjoint run takes longer than direct differentiation. A failed declared check would invalidate the corresponding all-runs-pass statement; neither statement applies to untested seeds, model sizes or hardware.
+
+All six fits terminate at the twelve-update limit, without a convergence-based termination record. Latent-state objectives and matrix-based differentiation were not activated. This study therefore contains no optimization-convergence determination, latent-state experiment or general speed or memory bound.
+
+\appendix
+\section{Evidence and reproducibility}\label{sec:appendix}
+\subsection{Data and implementation provenance}\label{sec:provenance}
+The real-data freeze remains the controlled data repository release \nolinkurl{pirc20-r1t-nex326-midpoint-20260912-v1}, with features \nolinkurl{pirc21-production-features-20260917-v2}. Its dataset-manifest SHA-256 is \nolinkurl{94efafdb09a62719ffbbebec07564eff640bf1adfc8ab6b1664173dc4f71abed}. This report distributes neither that dataset nor a new public copy. It asserts no public raw-data license.
+
+The frozen implementation source for the new real analysis is Git \nolinkurl{9ce90059f3611089150928d47aaa0393b699a016}; the earlier basis-model source epoch is separately identified in the evidence catalog. Source epochs are not silently rebound to the later engineering merge.
+
+\subsection{Charged costs and recorded interruptions}\label{sec:repro}
+\tabfile{costs.tex}
+The table reports cumulative charged computation-slot seconds through publication and settlement of the compact evidence artifact. Each task retains its own 86,400-second cap; preparation, retries and orphan settlements remain counted. Shared preparation and derived analysis are charged to the affine increment-fitting task, including historical unknown-cost settlement. The task totals therefore do not compare model training under equal work or equal prediction quality. Subsequent paper construction and verification have separate receipts. The 7,200-second job allocation is a continuation/reporting window; the earlier 120-second hard stop was an implementation error.
+
+Writer-contention interruptions and their conservative charges remain recorded. Same-policy retries recomputed derived analyses rather than successful forecasts. An initial consumption-purpose refusal occurred before the authored score-fitting numerical allocation; the later interface-purpose repair changed consumption authority, not the model, numerical suffix, thresholds or seeds. Each actual run retains source, protocol, specification and body hashes.
+
+\subsection{Aggregate release and unmeasured quantities}
+The release includes aggregate measurements, seven deterministic tables, a claim/source index, reproduction recipes and verification tests. It excludes source trajectories, per-unit or segment identifiers, row predictions, model checkpoints, credentials and private locations. Older basis-model and newer real-analysis source epochs remain separately bound. Public reproduction rebuilds tables and reports from the aggregate summary; it does not rerun the original numerical experiments. Repeating those experiments requires controlled access to the authorized artifacts and archived operators. Disclosure checks, software tests and a repository merge are not human scientific acceptance or permission to publish original data or models.
+
+The shared evidence catalog identifies six terminal sources (cubic spline residual model, Gaussian radial basis residual model, paired real comparison, real diagnostics, authored marginal-position score fitting and gradient routes), including attempt, artifact, protocol, specification, source-code and body hashes. The claim index binds the recovery, covered-source comparison and differentiation propositions, and every generated table to the reviewed summary. The reproduction recipe gives exact controls and archived-operator hashes. These are input/output identities, not proof of an independent rerun. No density-based likelihood metric is reported without a valid density contract; no behavioral classification is reported without labels. Equal-quality training cost, time-to-quality, dedicated real inference throughput, latent metrics and population-level timeout estimates are not established by these heterogeneous small experiments. Whole-job ledger charges, fit-only time and route benchmark time have different scopes and must not be substituted for each other.
+
+\begin{thebibliography}{9}
+\bibitem{gneiting2007} T. Gneiting and A. E. Raftery. Strictly proper scoring rules, prediction, and estimation. \emph{JASA} 102(477):359--378, 2007. \href{https://doi.org/10.1198/016214506000001437}{doi:10.1198/016214506000001437}.
+\bibitem{li2020} X. Li, T.-K. L. Wong, R. T. Q. Chen, and D. Duvenaud. Scalable gradients for stochastic differential equations. \emph{AISTATS}, PMLR 108:3870--3882, 2020. \url{https://proceedings.mlr.press/v108/li20i.html}.
+\bibitem{kidger2021} P. Kidger, J. Foster, X. C. Li, and T. Lyons. Efficient and accurate gradients for neural SDEs. \emph{NeurIPS} 34, 2021. \url{https://proceedings.neurips.cc/paper/2021/hash/9ba196c7a6e89eafd0954de80fc1b224-Abstract.html}.
+\bibitem{bartosh2025} G. Bartosh, D. Vetrov, and C. A. Naesseth. SDE Matching: Scalable and Simulation-Free Training of Latent Stochastic Differential Equations. \emph{ICML}, PMLR 267:3054--3070, 2025. \url{https://proceedings.mlr.press/v267/bartosh25a.html}.
+\end{thebibliography}
+\end{document}

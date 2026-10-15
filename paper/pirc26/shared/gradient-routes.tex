@@ -1,0 +1,18 @@
+\begin{tabular}{r r r r r r r r}
+\toprule
+\reportlabel{\shortstack{Random\\seed}}{\shortstack{随机种子}} & \reportlabel{\shortstack{Time step\\(s)}}{\shortstack{时间步长\\（秒）}} & \reportlabel{\shortstack{Adjoint\\method}}{\shortstack{伴随求导\\方法}} & \reportlabel{\shortstack{Relative gradient\\Euclidean-norm error}}{\shortstack{梯度相对\\欧氏范数误差}} & \reportlabel{\shortstack{Direct differentiation\\time (s)}}{\shortstack{直接反向传播\\耗时（秒）}} & \reportlabel{\shortstack{Adjoint differentiation\\time (s)}}{\shortstack{伴随求导\\耗时（秒）}} & \reportlabel{\shortstack{Direct process\\peak memory (MiB)}}{\shortstack{直接反向传播\\峰值内存（MiB）}} & \reportlabel{\shortstack{Adjoint process\\peak memory (MiB)}}{\shortstack{伴随求导\\峰值内存（MiB）}} \\
+\midrule
+26101411 & 0.25 & \reportlabel{\shortstack{Reversible\\Heun adjoint}}{\shortstack{可逆Heun\\伴随求导}} & 2.801e-14 & 6.060 & 18.516 & 398.1 & 399.0 \\
+26101411 & 0.25 & \reportlabel{\shortstack{Continuous\\midpoint adjoint}}{\shortstack{中点法\\连续伴随求导}} & 1.430e-04 & 11.242 & 24.067 & 404.3 & 398.6 \\
+26101411 & 0.125 & \reportlabel{\shortstack{Reversible\\Heun adjoint}}{\shortstack{可逆Heun\\伴随求导}} & 1.424e-14 & 12.121 & 35.609 & 407.8 & 400.5 \\
+26101411 & 0.125 & \reportlabel{\shortstack{Continuous\\midpoint adjoint}}{\shortstack{中点法\\连续伴随求导}} & 1.276e-05 & 22.222 & 44.609 & 424.1 & 400.8 \\
+26101412 & 0.25 & \reportlabel{\shortstack{Reversible\\Heun adjoint}}{\shortstack{可逆Heun\\伴随求导}} & 1.750e-15 & 7.249 & 18.134 & 400.1 & 399.6 \\
+26101412 & 0.25 & \reportlabel{\shortstack{Continuous\\midpoint adjoint}}{\shortstack{中点法\\连续伴随求导}} & 5.798e-05 & 11.244 & 23.446 & 407.6 & 399.7 \\
+26101412 & 0.125 & \reportlabel{\shortstack{Reversible\\Heun adjoint}}{\shortstack{可逆Heun\\伴随求导}} & 5.766e-16 & 11.439 & 33.862 & 408.6 & 401.2 \\
+26101412 & 0.125 & \reportlabel{\shortstack{Continuous\\midpoint adjoint}}{\shortstack{中点法\\连续伴随求导}} & 9.350e-06 & 23.056 & 46.479 & 425.6 & 400.9 \\
+26101413 & 0.25 & \reportlabel{\shortstack{Reversible\\Heun adjoint}}{\shortstack{可逆Heun\\伴随求导}} & 1.786e-14 & 6.237 & 18.821 & 400.7 & 400.8 \\
+26101413 & 0.25 & \reportlabel{\shortstack{Continuous\\midpoint adjoint}}{\shortstack{中点法\\连续伴随求导}} & 3.323e-04 & 10.566 & 22.147 & 409.1 & 399.9 \\
+26101413 & 0.125 & \reportlabel{\shortstack{Reversible\\Heun adjoint}}{\shortstack{可逆Heun\\伴随求导}} & 5.527e-15 & 12.879 & 39.596 & 410.1 & 400.6 \\
+26101413 & 0.125 & \reportlabel{\shortstack{Continuous\\midpoint adjoint}}{\shortstack{中点法\\连续伴随求导}} & 3.996e-05 & 25.745 & 55.186 & 425.7 & 401.1 \\
+\bottomrule
+\end{tabular}
