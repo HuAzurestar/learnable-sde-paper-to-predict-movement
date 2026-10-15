@@ -1,6 +1,27 @@
 # Paper sources and review manuscripts
 
-## Current PIRC-17 manuscript: reader-v9 terrain factors and unified names
+## Current PIRC-17 manuscript: reader-v10 conclusions and body layout
+
+The main body uses plain numbered pages instead of repeated section running
+heads, and finishes result floats before Discussion. Figure 5 is included
+once. The sole ordered list in the main paper gives six experimental
+conclusions: horizon-dependent CV/HSM ranking, RDM comparison, observation
+interval, training/adaptation, region reliability and descriptive terrain
+findings. Inference qualifications and declarations remain outside that list.
+
+| Language | Main paper | Scientific supplement | Audit record |
+| --- | --- | --- | --- |
+| Chinese | [Current paper](pirc17/revision46-review-v10/zh/main.pdf) | [Scientific supplement](pirc17/revision46-review-v10/zh/supplement.pdf) | [Audit record](pirc17/revision46-review-v10/zh/audit-notes.pdf) |
+| English | [Current paper](pirc17/revision46-review-v10/en/main.pdf) | [Scientific supplement](pirc17/revision46-review-v10/en/supplement.pdf) | [Audit record](pirc17/revision46-review-v10/en/audit-notes.pdf) |
+
+[Build provenance](pirc17/revision46-review-v10/build-manifest.json) binds
+clean source `67912a0c0295f3d6e751cc7aec35a44403014975` and all 76 actual
+inputs. [Scoped review and verification](pirc17/reader-v10-editorial-record.md)
+records fresh actual Astra High ACP review of public/local PDFs. No new fit,
+forecast, score, graph or inference was introduced; the v9 figure assets
+and all prior versions remain unchanged.
+
+## Previous reader-v9 terrain factors and unified names (superseded)
 
 Model design, fitting and forecasting now form one subsection with three
 nested parts and the full HSM/RDM names. The separate map-factor subsection
