@@ -1,0 +1,10 @@
+\begin{table}[!htbp]\centering\small
+\caption{三个普通预测程序的训练与预测机制。分量是各自拟合的运动规则，不是经验证的行为类别；HSM与RDM的比较同时改变两列机制。}
+\label{tab:procedure-mechanisms}
+\begin{tabular}{@{}p{0.15\linewidth}p{0.39\linewidth}p{0.39\linewidth}@{}}\toprule
+程序／角色 & 训练：三套规则如何得到 & 预测：三套规则如何使用\\\midrule
+CV／确定性基准 & 无开发集拟合；用允许前缀估计速度 & 按该速度直线外推，不抽分量\\
+HSM／普通参考 & 按整段净位移方向排序分三组，各组拟合漂移与扩散 & 每粒子起点按保存权重抽一个分量，整条路径固定\\
+RDM／家族变体 & 先做全批次回归，按每次转移的残差方向分三组，再各组重拟合 & 起点抽一个分量，每$\tau$重新随机抽取，可重复原分量\\\bottomrule
+\end{tabular}
+\end{table}

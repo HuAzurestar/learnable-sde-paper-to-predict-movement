@@ -1,0 +1,34 @@
+{
+  "schema_version": "pirc17-reader-v8-code-verified-methods-v1",
+  "purpose": "Separate baselines, grouping-based fitting and forecast-time component use in the main paper",
+  "scientific_repository": "HuAzurestar/learnable-sde-for-movement-prediction",
+  "scientific_head": "b3bacdc3c4b972c58917f2767fe0c067201df7a1",
+  "code_anchors": {
+    "configuration": "plans/full-delivery-workload-v1.json:40-58,118-136",
+    "grouping_and_refitting": "experiments/nex326/model.py:105-205",
+    "training_adaptation_blend": "experiments/nex326/model.py:356-385,543-555",
+    "validation_label_limitation": "experiments/nex326/model.py:219-242",
+    "formal_forecast_call": "experiments/pirc17/formal_forecasts.py:137-149",
+    "mode_draw_and_schedule": "experiments/pirc17/method_rollout.py:274-340"
+  },
+  "procedures": {
+    "CV": {"saved_name": "Inertial/I", "role": "deterministic baseline", "development_fit": false},
+    "HSM-SDE": {"saved_name": "Full01", "model_kind": "seg_constant_mode", "components": 3, "grouping_unit": "segment", "grouping_rule": "within-batch net-heading rank tertiles", "forecast_modes": "initial categorical draw; fixed over path"},
+    "RDM-SDE": {"saved_name": "GMM", "model_kind": "gmm_kernel", "components": 3, "grouping_unit": "transition", "grouping_rule": "pooled-ridge residual argmax(re,rn,-re-rn); refit original rate targets per group", "forecast_modes": "initial categorical draw; independent redraw every reference interval; repeats allowed"}
+  },
+  "shared_default_settings": {
+    "train_adaptation_parameter_blend": [0.35, 0.65],
+    "validation": "drift fixed; shared covariance scale selected; residual labels mismatch remains disclosed",
+    "propagation": "fp",
+    "integrator": "split",
+    "reference_interval_saved_seconds": 60,
+    "maximum_integration_step_saved_seconds": 5,
+    "particles": 512,
+    "mode_probabilities": "procedure-specific final saved global weights; not a current-prefix posterior"
+  },
+  "comparison_scope": "Complete procedures differ in grouping, fitted parameters and component persistence; no isolated mechanism attribution",
+  "terrain_scope": "Full01 is not terrain base or all-terrain",
+  "new_fits_forecasts_scores_figures_or_inference": 0,
+  "numeric_evidence_changed": false,
+  "human_acceptance": false
+}

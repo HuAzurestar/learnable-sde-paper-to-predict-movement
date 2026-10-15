@@ -133,40 +133,48 @@ absolute offset affects the calendar input; a relative-scale distortion
 also affects rates, diffusion units and the physical interpretation of
 the horizons. All minute labels below refer to the saved clock.
 
-\subsection{Mechanism-based model names and construction}\label{sec:models}\hypertarget{sec:models}{}
+\subsection{Baselines and shared model structure}\label{sec:models}\hypertarget{sec:models}{}
 We call the ordinary three-mode reference the heading-stratified mixture
 SDE (HSM-SDE), because its fitting batches are divided by segment heading.
 Its registered identifier is Full01; ``Full'' in retained equations, plots
 and tables denotes this reference, not the all-terrain configuration.
 The residual-direction mixture SDE (RDM-SDE) is the registered GMM variant;
 its groups are constructed once from residual directions, not by fitting
-a conventional GMM with expectation--maximisation. Both are mixture-SDE
-procedures, so their comparison is within that family, not GMM versus SDE.
+a conventional GMM with expectation--maximisation. They share a three-component
+SDE equation template but differ in grouping-based fitting and forecast-time
+component persistence. They are two complete procedures within one model family,
+not unrelated architectures or merely two training algorithms. The names are
+paper-specific descriptive shorthand; this is not GMM versus SDE.
 The deterministic reference is constant-velocity extrapolation (CV), saved
 as Inertial/I. These explanatory names do not change any model, saved
-identity or comparison control. In saved local east/north coordinates $X=(X_e,X_n)^\top$
-(metres), it uses
-\begin{equation}\label{eq:ordinary-full}
- dX_t=\Theta_{m_t}^{\top}\psi(X_t,t)\,dt+L_{m_t}\,dW_t,
- \quad \psi=(1,X_e,X_n,S)^\top,\quad L_mL_m^\top=Q_m=\tau R_m.
-\end{equation}
-\input{reader-v4-full.tex}
-The first visible position anchors the coordinate frame; forecasting starts
-at the last permitted prefix position. $S$ is a solar/calendar proxy computed
-from the retained absolute tick~\cite{noaa}, not a validated daylight
-mechanism. $R_m$ is a centred fitted displacement-rate residual covariance;
-its conversion uses observation interval $\tau$, not integration step $h$.
-Each particle draws a mode from saved weights $\pi$ at the origin and
-segment-fixed Full retains that mode. Given frame, position, clock and
-random stream, ordinary Full does not read initial speed or recent heading.
+identity or comparison control.
+\input{reader-v8-procedures.tex}
+\paragraph{Deterministic baseline CV.}
 For the 46 primary origins, the origin-state buffer retains the last three
 observed positions and their strictly increasing saved times. The origin
 is the last point. CV extrapolates
 $\widehat x^{\rm I}(u)=x_0+u\widehat v_0$, where $\widehat v_0$ is the secant
 from the first to last of those three points, divided by their saved elapsed
 time; no future position or future speed is used. These spans range from
-2 to 61 saved seconds (median 7). HSM-SDE and CV thus receive
-the same permitted prefix but use its movement information differently.
+2 to 61 saved seconds (median 7). CV fits no development-set parameters and
+adds no random diffusion. Ordinary Full01 is the main method-family reference,
+not the separate terrain branch's base, defined with all-terrain below.
+\paragraph{Shared stochastic position model.}
+In saved local east/north coordinates $X=(X_e,X_n)^\top$ (metres), both use
+\begin{equation}\label{eq:ordinary-full}
+ dX_t=\Theta_{m_t}^{\top}\psi(X_t,t)\,dt+L_{m_t}\,dW_t,
+ \quad \psi=(1,X_e,X_n,S)^\top,\quad L_mL_m^\top=Q_m=\tau R_m.
+\end{equation}
+The first visible position anchors the coordinate frame; forecasting starts
+at the last permitted prefix position. $S$ is a solar/calendar proxy computed
+from the retained absolute tick~\cite{noaa}, not a validated daylight
+mechanism. $R_m$ is a centred fitted displacement-rate residual covariance;
+its conversion uses observation interval $\tau$, not integration step $h$.
+Given frame, position, clock and random stream, neither ordinary Full nor RDM
+uses initial speed or recent heading in its drift, diffusion or mode probabilities.
+HSM-SDE and CV thus receive the same permitted prefix but use its movement
+information differently; training heading labels are not a forecast-time heading classifier.
+\input{reader-v4-full.tex}
 
 The validation selection proxy is a one-step
 rate-residual Gaussian using the unweighted average mode covariance, whereas
@@ -177,6 +185,7 @@ aligned. Independently heading-sorted batches are also mixed by mode index
 in the transfer procedures~\cite{nichol2018}. These are implementation
 limitations, not evidence that the corresponding modelling ideas fail.
 
+\subsection{Forecasting and component updates}\label{sec:forecast-methods}
 Evaluation uses $N=512$ particles, five fixed seeds and maximum integration
 step $h=5$ saved seconds. Full uses conditional Gaussian moment propagation,
 evaluating nonlinear conditions at the conditional mean; this is not an
@@ -330,6 +339,8 @@ to a simple probabilistic constant-velocity or correlated-random-walk model.
 \subsubsection{RDM-SDE has better mean ES and final location than HSM-SDE}
 RDM-SDE's average ES and thirty-minute mean-position error are both lower
 than those of the main HSM-SDE model (experimental identifier Full01).
+This comparison changes both grouping-based fitting and forecast-time
+component persistence; it is not a grouping-only controlled comparison.
 The average ES difference is $-2.83$ m.
 Its final mean-position error is also lower: 1299.11 versus 1326.09 m
 (Table~\ref{tab:point-errors}). Its mean-position errors are lower at all

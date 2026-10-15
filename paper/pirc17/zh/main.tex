@@ -88,30 +88,35 @@ R1派生清理段提供中点历史／目标窗口；冻结记录哈希划分将
 相对尺度失真还影响速率、扩散单位与时域的物理含义。
 下文所有分钟标签均指保存时钟。
 
-\subsection{按机制命名的模型与构造}\label{sec:models}\hypertarget{sec:models}{}
-普通三模式参考命名为航向分层混合SDE（heading-stratified mixture SDE，HSM-SDE），
+\subsection{基准模型与共同模型结构}\label{sec:models}\hypertarget{sec:models}{}
+本文将普通三模式参考命名为航向分层混合SDE（heading-stratified mixture SDE，HSM-SDE），
 因为拟合批次按片段航向划分分量。其登记标识为Full01；保留方程、图表中的Full
 指该参考，不是all-terrain配置。残差方向分组混合SDE（residual-direction mixture SDE，
 RDM-SDE）对应原GMM变体；它按残差方向一次分组，不是通过EM拟合的常规GMM。
-两者都是混合SDE程序，比较发生在该家族内部，不是GMM与SDE两条路线的比较。
+两者采用相同的三分量SDE方程模板，但分组拟合方式和预测期分量保持方式不同。
+因此它们是同一模型家族的两套完整程序，不是两种互不相关的模型架构，也不只是两种训练算法。
+比较发生在该家族内部，不是GMM与SDE两条路线的比较；这些名称是本文的解释性简称。
 确定性参考称为恒速外推（constant-velocity extrapolation，CV），原标识为Inertial／I。
 这些解释性名称不改变模型、保存身份或比较对照。
+\input{reader-v8-procedures.tex}
+\paragraph{确定性基准CV。}
+46个主起点的状态缓冲保留最后三个观测位置及其严格递增的保存时间，末点为预测起点。
+CV使用$\widehat x^{\rm I}(u)=x_0+u\widehat v_0$，
+$\widehat v_0$为这三点首末位置之差除以保存经过时间的割线速度，不读取未来位置或未来速率。
+这些跨度为2--61个保存秒，中位数7秒。CV不拟合开发集参数，也不生成随机扩散。
+普通Full01是方法家族内的主要参考，而不是地形分支的base；后者与all-terrain另在下文定义。
+\paragraph{共同的随机位置模型。}
 在保存局部东西／南北坐标$X=(X_e,X_n)^\top$（米）中，
 \begin{equation}\label{eq:ordinary-full}
  dX_t=\Theta_{m_t}^{\top}\psi(X_t,t)\,dt+L_{m_t}\,dW_t,
  \quad\psi=(1,X_e,X_n,S)^\top,\quad L_mL_m^\top=Q_m=\tau R_m.
 \end{equation}
-\input{reader-v4-full.tex}
 首个可见位置锚定坐标框架，预测始于最后一个允许的前缀位置。
 $S$是由保留绝对tick计算的太阳／日历代理\cite{noaa}，不是经验证的日光机制。
 $R_m$为中心化拟合位移率残差协方差；转换使用观测间隔$\tau$，不是积分步长$h$。
-每粒子在起点按保存权重$\pi$抽取模式，段固定Full保持该模式。
-给定坐标框架、位置、时钟与随机流后，普通Full不读取初速度或近期方向；
-46个主起点的状态缓冲保留最后三个观测位置及其严格递增的保存时间，末点为预测起点。
-CV使用$\widehat x^{\rm I}(u)=x_0+u\widehat v_0$，
-$\widehat v_0$为这三点首末位置之差除以保存经过时间的割线速度，不读取未来位置或未来速率。
-这些跨度为2--61个保存秒，中位数7秒。
-HSM-SDE与CV接收相同允许前缀，但对其中运动信息的使用不同。
+给定坐标框架、位置、时钟与随机流后，普通Full和RDM的漂移、扩散及分量概率不读取初速度或近期方向。
+HSM-SDE与CV接收相同允许前缀，但对其中运动信息的使用不同；训练中的航向标签不是预测期航向识别器。
+\input{reader-v4-full.tex}
 
 验证选择代理是使用各模式协方差未加权平均的一步位移率残差高斯，
 最终评价却针对多模式、多步位置分布。
@@ -120,6 +125,7 @@ GMM按$\arg\max(r_e,r_n,-r_e-r_n)$对训练残差一次分组，
 迁移程序也直接按模式编号混合各自方向排序的批次\cite{nichol2018}。
 这些是实施限制，不证明对应建模思想无效。
 
+\subsection{预测方法与分量更新}\label{sec:forecast-methods}
 评估采用$N=512$粒子、五个固定种子、最大积分步长$h=5$个保存秒。
 Full使用条件高斯矩传播，在条件均值处评价非线性条件，
 不是全局非线性SDE的精确解\cite{kloeden1992}。
@@ -241,6 +247,7 @@ HSM-SDE、RDM-SDE与CV；这些不是ES或平均粒子误差。}
 \subsection{混合SDE内部的设计选择}\label{sec:design-choices}
 \subsubsection{RDM-SDE的平均评分和终点定位优于HSM-SDE}
 RDM-SDE的平均ES和30分钟均值位置误差均低于主要HSM-SDE模型（实验编号Full01）。
+该比较同时改变分组拟合和预测期分量保持方式，不是只替换训练分组的对照。
 平均ES低2.83米，终点均值位置误差分别为
 1299.11米对1326.09米（表\ref{tab:point-errors}）。
 它在四个保存目标的均值位置误差均更低，但这不证明每个时域的ES都更低。

@@ -26,7 +26,8 @@ same rate. Full has position- and solar-dependent drift, so this expression
 explains the ingredients rather than gives its actual multi-step variance
 or proves calibrated coverage.
 
-\paragraph{How the reference parameters are learned.}
+\subsection{Training groups, estimation and validation selection}\label{sec:training-methods}
+\paragraph{HSM: hard grouping by segment heading.}
 Development segments are resampled at the registered observation interval
 $\tau$; an incomplete terminal interval is removed from fitting, while
 scoring observations remain unchanged. At $\tau=60$ saved seconds, the
@@ -34,8 +35,10 @@ scoring observations remain unchanged. At $\tau=60$ saved seconds, the
 5,762 and 6,149 complete transitions, respectively. A transition target
 is the two-dimensional displacement rate $y_i=(x_{i+1}-x_i)/\tau$.
 Within each fitting batch, segments are sorted by their net heading and
-divided into three balanced groups; all transitions from a segment inherit
-its group. The groups identify regression components, not externally
+divided into three groups approximately balanced in segment count; all
+transitions from a segment inherit its group. This is within-batch ordering,
+not three fixed geographic angle sectors; training and adaptation batches
+are grouped separately. The groups identify regression components, not externally
 validated walking, turning or transport states. For group $m$, with feature
 matrix $D_m$ and rate matrix $Y_m$, the base estimates are
 \begin{align}
@@ -56,14 +59,40 @@ term stabilises the covariance calculation; it does not calibrate prediction
 regions. These are regression estimates, not continuous-time path-likelihood
 estimates.
 
-Full fits training and adaptation batches separately, then combines
-their coefficients, covariances and proportions with weights 0.35 and 0.65.
+\paragraph{RDM: hard grouping by transition residual direction and refitting.}
+A pooled ridge regression with the same features first estimates
+$\widehat\Theta_{\rm pool}$ from the whole batch. With residuals
+$r_i=y_i-\widehat\Theta_{\rm pool}^{\top}\psi_i$, one-time labels are
+\begin{equation}\label{eq:rdm-grouping}
+ g_i=\arg\max\{r_{i,e},\ r_{i,n},\ -r_{i,e}-r_{i,n}\}.
+\end{equation}
+The three score indices define the groups; transitions within one segment
+can enter different groups. Each group is then refitted to the original
+rate targets $y_i$ using Equations~\eqref{eq:main-full-fit}--\eqref{eq:main-full-residual},
+obtaining a complete drift regression and residual covariance. It does not
+fit a residual correction on top of the pooled drift: the pooled fit only
+produces labels and is not retained as a common drift. This is deterministic
+hard grouping, without EM iterations or soft responsibilities. Thus base fitting
+can indeed be described as dividing data into three groups and independently
+fitting one regression component per group. Features and ridge strength are
+shared, not the group-specific fitted coefficients.
+
+\paragraph{Default training/adaptation procedure shared by both.}
+Full01 and GMM fit training and adaptation batches separately, then combine
+corresponding coefficients, covariances and proportions with weights 0.35 and 0.65.
+This is neither a single fit on pooled training/adaptation data nor gradient
+fine-tuning from the training parameters.
 Validation selects a covariance scale $s\in\{0.55,0.75,1,1.3,1.7\}$ with
 drift held fixed. The saved $R_m$ already includes this $s^2$ scaling.
 Its continuous-time embedding uses $Q_m=\tau R_m$: at a constant-coefficient
 duration $\tau$, $Q_m\tau=R_m\tau^2$ matches the displacement covariance
 implied by the rate regression. This explains the time factor; it does
 not establish equivalence to maximum-likelihood estimation of an SDE.
-The chosen parameters remain fixed across evaluation origins and seeds.
+The chosen parameters remain fixed across evaluation origins and seeds;
+the final component probabilities include the training/adaptation blend.
 Full's saved component probabilities are 0.3350, 0.3302 and 0.3348,
 rather than a posterior re-estimated from each new prefix.
+HSM/RDM identify these constructions and forecast procedures. Scratch,
+Reptile, drift-only and two-step separately modify training/adaptation
+strategies or parameter-update scope; they are not training-method labels
+at the same level as the two procedure names.
