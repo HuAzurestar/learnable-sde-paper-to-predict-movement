@@ -1,6 +1,44 @@
 # Paper sources and review manuscripts
 
-## Current PIRC-17 manuscript: reader-v7 direct conclusions
+## Current PIRC-17 manuscript: reader-v8 code-verified methods
+
+The main paper now explicitly separates baselines and shared model structure,
+training groups and parameter estimation, and forecasting/component updates.
+Table 1 compares CV, HSM and RDM. HSM groups whole segments by net-heading
+rank; RDM groups individual transitions by pooled-regression residual direction
+and refits complete component regressions to the original rate targets.
+HSM retains the initially drawn component for each path; RDM independently
+redraws every 60 saved seconds, allowing repeats, not cyclic rotation or
+redrawing at each 5-second integration step. The comparison changes both
+grouping-based fitting and prediction-time persistence; it cannot isolate
+the benefit of either mechanism. HSM/RDM are paper-specific names for two
+complete procedures in one model family, not unrelated model architectures
+or simply labels for two training algorithms. Full01 is not terrain base.
+
+| Language | Main paper | Scientific supplement | Audit record |
+| --- | --- | --- | --- |
+| Chinese | [20-page paper](pirc17/revision46-review-v8/zh/main.pdf) | [78-page supplement](pirc17/revision46-review-v8/zh/supplement.pdf) | [15-page record](pirc17/revision46-review-v8/zh/audit-notes.pdf) |
+| English | [21-page paper](pirc17/revision46-review-v8/en/main.pdf) | [80-page supplement](pirc17/revision46-review-v8/en/supplement.pdf) | [16-page record](pirc17/revision46-review-v8/en/audit-notes.pdf) |
+
+Read Chinese pp4–6 or English pp4–7 for the clarified methods.
+The [method contract](pirc17/reader-v8-methods.json) records exact code anchors;
+the [build manifest](pirc17/revision46-review-v8/build-manifest.json) binds
+clean source0ce2ecbf972e402607968aef956faf04e3c9fe5d and 73 actual source inputs.
+The [review receipt](pirc17/reader-v8-editorial-record.json) records independent
+code checks and the final bounded ACP review. Rebuild using the existing
+`scripts/build_pirc17_revision46.py --output-dir <fresh-external-directory>`.
+Twelve public/local documents strict-build with no text outside page bounds;
+59 public companion links resolve. All 53 selected focused checks pass.
+The [complete regression comparison](pirc17/reader-v8-regression-check.json)
+records 1024 PASS/25 FAIL/2 ERROR with no new failure/error identities,
+not a green whole suite. Five existing figures, all numeric evidence,
+50 supplementary tables and inference rules remain unchanged. One new
+non-empirical method-comparison table brings the main table count to four.
+Local ZH28/EN29-page bodies retain the same six private map files, not published.
+No new experiments, forecasts, scores, figures or inference were performed.
+Formal declarations and human acceptance remain separate.
+
+## Previous reader-v7 direct conclusions (superseded)
 
 The active wording goal is implemented in both languages. C1 directly says
 CV is better at 1/5 saved minutes and HSM-SDE at 15/30, with better defined as
