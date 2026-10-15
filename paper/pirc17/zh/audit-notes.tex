@@ -2,6 +2,28 @@
 \title{审查记录：证据版本与执行历史}
 \begin{document}\maketitle
 \input{reader-v2-errata.tex}
+\section{当前读者名称与原保存标识}\label{sec:reader-names}
+当前正文和科学补充图表统一采用机制名称；以下原标识仅用于追溯，不代表额外算法。
+HSM全称为航向分层混合SDE，RDM全称为残差方向分组混合SDE；两者使用共同方程结构，
+分组拟合和预测分量时序的差别见正文。HSM后编号保留各参考程序原有的比较角色。
+\begin{center}\small
+\begin{tabular}{p{.22\linewidth}p{.40\linewidth}p{.30\linewidth}}\toprule
+当前读者名称 & 原保存名称 & 含义\\\midrule
+HSM-01 & Full01；arm-01/full & 普通方法主要参考\\
+HSM-07、HSM-11 & Full07、Full11 & 评分及训练组参考\\
+HSM-16、HSM-18、HSM-20 & Full16、Full18、Full20 & 额外及数值组参考\\
+RDM & GMM；arm-04/gmm\_kernel & 残差分组、按间隔重抽\\
+CV & Inertial／I & 确定性恒速外推\\
+Heading/redraw & pointwise／pointwise\_mixture & 航向分组、按间隔重抽\\
+Speed/radial & explicit\_decomp & 显式速度／径向特征\\
+Obs $\tau$ s & dt30／dt60／dt120／dt300／dt600 & 观测间隔，不是积分步长\\
+Euler-M.；Euler alias & em；euler & 数值积分及其别名\\\bottomrule
+\end{tabular}\end{center}
+地形结果的B对应base，A对应all-terrain，A减某组对应loo-group键，B加某组对应lio-group键。
+cover对应worldcover，surface指选入的坡面几何，不是绝对高程或所有地形。
+保存JSON／CSV键、旧PDF和manifest均不改写。当前绘图入口为
+\path{scripts/render_pirc17_reader_v9.py}，名称策略为\path{scripts/pirc17_display_names.py}；
+旧绘图脚本只保留为版本追溯，不作为当前读者版重绘命令。
 \section{记录的阅读范围}
 科学算术、执行终态、文稿编辑与人类验收分别判断。
 2026年10月9日修订保留原结果、协议与五项失败；逐单元迁移见

@@ -1,0 +1,59 @@
+\subsection{完整方法绝对值}
+\label{sec:all-method-absolute}
+表~\ref{tab:all-method-absolute} 保留同一固定阶段快照的全部 28 个执行身份。
+图~\ref{fig:preliminary-method-absolute} 只在显示中省略六个额外 HSM／replay 角色，
+不从来源删除预测，也不将它们平均或假定有限评分相等。
+每行完整使用 46 个记录块和五个预测种子，即 230 项预测，不是 230 个独立目标。
+均值仅在显示时四舍五入，完整精度保留在
+\path{paper/pirc17/preliminary-method-statistics-v1.json}。
+每列均为越低越好，但 ES、ADE、FDE 是不同量。这里没有绝对评分置信区间或全局
+最佳模型检验；保存参数相等与不同随机流的解释仍适用（表~\ref{tab:estimator-calibration}）。
+\begingroup\small
+\begin{longtable}{lrrr}
+\caption{全部 28 个主要方法的绝对阶段均值，单位米；没有新增预测或统计推断。}
+\label{tab:all-method-absolute}\\
+\toprule
+执行身份 & 加权 ES & ADE & FDE\\
+\midrule
+\endfirsthead
+\multicolumn{4}{l}{表 \thetable\ （续表）}\\
+\toprule
+执行身份 & 加权 ES & ADE & FDE\\
+\midrule
+\endhead
+\midrule\multicolumn{4}{r}{续下页}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\texttt{HSM-01} & 477.9 & 636.1 & 1326.1\\
+\texttt{Heading/redraw} & 510.8 & 635.2 & 1324.2\\
+\texttt{Single Gaussian} & 499.9 & 622.9 & 1316.4\\
+\texttt{RDM} & 475.0 & 622.0 & 1299.1\\
+\texttt{Speed/radial} & 535.8 & 647.6 & 1403.1\\
+\texttt{Obs 30 s} & 486.4 & 631.8 & 1317.6\\
+\texttt{Obs 120 s} & 466.3 & 638.7 & 1329.8\\
+\texttt{Obs 300 s} & 454.4 & 644.4 & 1335.7\\
+\texttt{Obs 600 s} & 453.2 & 651.5 & 1340.9\\
+\texttt{QMLE label} & 477.0 & 635.6 & 1325.1\\
+\texttt{Mixed calibration} & 470.1 & 630.3 & 1315.7\\
+\texttt{ES calibration} & 471.4 & 631.4 & 1318.5\\
+\texttt{2D MC score} & 476.7 & 634.8 & 1322.1\\
+\texttt{2D closed score} & 476.7 & 634.8 & 1322.1\\
+\texttt{Scratch} & 478.6 & 640.1 & 1339.0\\
+\texttt{Reptile} & 478.2 & 630.0 & 1320.8\\
+\texttt{Drift-only} & 476.5 & 634.4 & 1320.6\\
+\texttt{Two-step} & 475.9 & 634.3 & 1322.4\\
+\texttt{Euler-M.} & 477.2 & 635.2 & 1325.0\\
+\texttt{Euler alias} & 477.2 & 635.2 & 1325.0\\
+\texttt{MC} & 475.5 & 633.7 & 1320.0\\
+\texttt{CRN} & 476.3 & 634.2 & 1320.9\\
+\midrule
+\multicolumn{4}{l}{额外 HSM／replay 身份，仅在点图中省略}\\
+\texttt{Obs 60 s} & 477.9 & 636.1 & 1326.1\\
+\texttt{HSM-07} & 476.7 & 634.8 & 1322.1\\
+\texttt{HSM-11} & 476.0 & 634.0 & 1320.7\\
+\texttt{HSM-16} & 475.9 & 633.9 & 1321.2\\
+\texttt{HSM-18} & 477.2 & 635.2 & 1325.0\\
+\texttt{HSM-20} & 476.3 & 634.2 & 1320.9\\
+\end{longtable}
+\endgroup

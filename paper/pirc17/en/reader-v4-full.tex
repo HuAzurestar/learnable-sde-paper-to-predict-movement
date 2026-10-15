@@ -22,11 +22,11 @@ about which fitted trend applies. For constant component drifts and a
 segment-fixed mode, the corresponding illustrative mixture covariance is
 $u\sum_m\pi_m Q_m+u^2\operatorname{Cov}_{\pi}(b_m)$: within-component
 diffusion and between-component drift variation need not grow at the
-same rate. Full has position- and solar-dependent drift, so this expression
+same rate. HSM has position- and solar-dependent drift, so this expression
 explains the ingredients rather than gives its actual multi-step variance
 or proves calibrated coverage.
 
-\subsection{Training groups, estimation and validation selection}\label{sec:training-methods}
+\subsubsection{Training groups, estimation and validation selection}\label{sec:training-methods}
 \paragraph{HSM: hard grouping by segment heading.}
 Development segments are resampled at the registered observation interval
 $\tau$; an incomplete terminal interval is removed from fitting, while
@@ -78,7 +78,7 @@ fitting one regression component per group. Features and ridge strength are
 shared, not the group-specific fitted coefficients.
 
 \paragraph{Default training/adaptation procedure shared by both.}
-Full01 and GMM fit training and adaptation batches separately, then combine
+HSM-01 and RDM fit training and adaptation batches separately, then combine
 corresponding coefficients, covariances and proportions with weights 0.35 and 0.65.
 This is neither a single fit on pooled training/adaptation data nor gradient
 fine-tuning from the training parameters.
@@ -90,7 +90,7 @@ implied by the rate regression. This explains the time factor; it does
 not establish equivalence to maximum-likelihood estimation of an SDE.
 The chosen parameters remain fixed across evaluation origins and seeds;
 the final component probabilities include the training/adaptation blend.
-Full's saved component probabilities are 0.3350, 0.3302 and 0.3348,
+HSM's saved component probabilities are 0.3350, 0.3302 and 0.3348,
 rather than a posterior re-estimated from each new prefix.
 HSM/RDM identify these constructions and forecast procedures. Scratch,
 Reptile, drift-only and two-step separately modify training/adaptation

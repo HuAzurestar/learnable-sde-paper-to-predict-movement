@@ -1,5 +1,6 @@
 % Reader-v5: mechanism-based names and linear argument; unchanged evidence.
 \input{revision46-preamble.tex}
+\input{../reader-v9-number-labels.tex}
 \title{Horizon-dependent Benefits and Reliability Limits\\of Mixture-SDE Movement Forecasting}
 \begin{document}
 \maketitle
@@ -11,11 +12,10 @@ movement predictors applied to historical GPX position recordings with
 unverified carrier identities and transport modes, using 46 retrospectively selected recording-hash
 blocks, five simulation seeds and 512 particles per ensemble. At nominal
 1 and 5 minutes, deterministic constant-speed extrapolation has lower
-energy score (ES) than the heading-stratified mixture SDE (HSM-SDE,
-registered as Full01); at 15 and 30 minutes the ordering reverses.
+energy score (ES) than the heading-stratified mixture SDE (HSM-SDE); at 15 and 30 minutes the ordering reverses.
 Averaging the four targets gives ES \FullES\ m for HSM-SDE and
 \InertialES\ m for constant-velocity extrapolation (CV). A residual-direction
-mixture variant (RDM-SDE, registered as GMM) has lower average ES and final
+mixture variant (RDM-SDE) has lower average ES and final
 mean-position error, but its paired ES interval includes zero. Observation
 intervals of 120 and 300 saved seconds have lower average ES than the
 60 s reference, whereas the examined training/adaptation variants show
@@ -110,7 +110,7 @@ a verified independent participant. The selected cohort spans 12 countries
 and 27 source labels; 33/46 blocks are from Great Britain, Belgium or
 Luxembourg. It is not a representative population sample.
 \begin{figure}[!htbp]\centering
-\includegraphics[width=\linewidth]{../figures/revision46-v1/revision46-population.pdf}
+\includegraphics[width=\linewidth]{../figures/reader-v9/revision46-population.pdf}
 \caption{Evaluation selection and population descriptors. Counts distinguish
 windows from recording blocks; duration and speed panels show saved
 medians and interquartile ranges. Eligibility includes map validity along
@@ -133,31 +133,34 @@ absolute offset affects the calendar input; a relative-scale distortion
 also affects rates, diffusion units and the physical interpretation of
 the horizons. All minute labels below refer to the saved clock.
 
-\subsection{Baselines and shared model structure}\label{sec:models}\hypertarget{sec:models}{}
-We call the ordinary three-mode reference the heading-stratified mixture
-SDE (HSM-SDE), because its fitting batches are divided by segment heading.
-Its registered identifier is Full01; ``Full'' in retained equations, plots
-and tables denotes this reference, not the all-terrain configuration.
-The residual-direction mixture SDE (RDM-SDE) is the registered GMM variant;
-its groups are constructed once from residual directions, not by fitting
-a conventional GMM with expectation--maximisation. They share a three-component
+\subsection{Three-component SDEs: design, training and forecasting}\label{sec:models}\hypertarget{sec:models}{}
+\subsubsection{Baselines and shared structure}
+We study two procedures within one three-component stochastic differential
+equation (SDE) framework: the heading-stratified mixture stochastic differential
+equation (HSM-SDE), and the residual-direction mixture stochastic differential
+equation (RDM-SDE). HSM groups fitting segments by heading; RDM constructs
+transition groups once from residual directions, rather than fitting a
+mixture likelihood by expectation--maximisation. They share a three-component
 SDE equation template but differ in grouping-based fitting and forecast-time
 component persistence. They are two complete procedures within one model family,
 not unrelated architectures or merely two training algorithms. The names are
-paper-specific descriptive shorthand; this is not GMM versus SDE.
-The deterministic reference is constant-velocity extrapolation (CV), saved
-as Inertial/I. These explanatory names do not change any model, saved
-identity or comparison control.
+paper-specific descriptive shorthand, not a mixture-distribution versus SDE comparison.
+The deterministic reference is constant-velocity extrapolation (CV).
+The main paper and current figures/tables use these reader-facing names;
+numbers after HSM distinguish registered reference procedures, not new architectures.
+The audit record alone preserves the original identifier crosswalk;
+no saved identity or comparison control changes.
+% Saved identity crosswalk: Full01=HSM-01, Full11=HSM-11, GMM=RDM, Inertial/I=CV.
 \input{reader-v8-procedures.tex}
 \paragraph{Deterministic baseline CV.}
 For the 46 primary origins, the origin-state buffer retains the last three
 observed positions and their strictly increasing saved times. The origin
 is the last point. CV extrapolates
-$\widehat x^{\rm I}(u)=x_0+u\widehat v_0$, where $\widehat v_0$ is the secant
+$\widehat x^{\rm CV}(u)=x_0+u\widehat v_0$, where $\widehat v_0$ is the secant
 from the first to last of those three points, divided by their saved elapsed
 time; no future position or future speed is used. These spans range from
 2 to 61 saved seconds (median 7). CV fits no development-set parameters and
-adds no random diffusion. Ordinary Full01 is the main method-family reference,
+adds no random diffusion. Ordinary HSM-01 is the main method-family reference,
 not the separate terrain branch's base, defined with all-terrain below.
 \paragraph{Shared stochastic position model.}
 In saved local east/north coordinates $X=(X_e,X_n)^\top$ (metres), both use
@@ -170,7 +173,7 @@ at the last permitted prefix position. $S$ is a solar/calendar proxy computed
 from the retained absolute tick~\cite{noaa}, not a validated daylight
 mechanism. $R_m$ is a centred fitted displacement-rate residual covariance;
 its conversion uses observation interval $\tau$, not integration step $h$.
-Given frame, position, clock and random stream, neither ordinary Full nor RDM
+Given frame, position, clock and random stream, neither ordinary HSM nor RDM
 uses initial speed or recent heading in its drift, diffusion or mode probabilities.
 HSM-SDE and CV thus receive the same permitted prefix but use its movement
 information differently; training heading labels are not a forecast-time heading classifier.
@@ -178,16 +181,16 @@ information differently; training heading labels are not a forecast-time heading
 
 The validation selection proxy is a one-step
 rate-residual Gaussian using the unweighted average mode covariance, whereas
-evaluation scores a multi-mode, multi-step position distribution. The GMM
+evaluation scores a multi-mode, multi-step position distribution. The RDM
 variant groups training residuals once by $\arg\max(r_e,r_n,-r_e-r_n)$ but
 uses segment-heading labels for validation components: these labels are not
 aligned. Independently heading-sorted batches are also mixed by mode index
 in the transfer procedures~\cite{nichol2018}. These are implementation
 limitations, not evidence that the corresponding modelling ideas fail.
 
-\subsection{Forecasting and component updates}\label{sec:forecast-methods}
+\subsubsection{Forecasting and component updates}\label{sec:forecast-methods}
 Evaluation uses $N=512$ particles, five fixed seeds and maximum integration
-step $h=5$ saved seconds. Full uses conditional Gaussian moment propagation,
+step $h=5$ saved seconds. HSM uses conditional Gaussian moment propagation,
 evaluating nonlinear conditions at the conditional mean; this is not an
 exact solution of a globally nonlinear SDE~\cite{kloeden1992}. Four targets
 come from a continuing joint path, not independently sampled marginals.
@@ -196,13 +199,16 @@ cadence together while retaining the integration cap. In particular, dt300
 and dt600 mean observation intervals of 300 and 600 saved seconds, not
 integration steps. Identical-parameter aliases and multi-factor changes
 make the 28 saved identities procedures rather than 28 independent algorithms.
-All 21 registered primary contrasts retain their specified reference procedures and experimental identifiers.
+All 21 registered primary contrasts retain their specified reference procedures and reference codes.
 \input{reader-v4-propagation.tex}
 
-\subsection{Terrain branch and scope of attribution}
+\subsection{Map factors: roads, rivers, land cover and surface geometry}\label{sec:terrain-methods}
 The separate terrain branch augments a fitted three-position history drift
 with independently fitted residual conditioners and diffusion for ten
 configurations. Its fitted mechanism is specified below.
+The ordinary HSM/RDM variable $S$ is only the solar/calendar proxy, not
+these map factors. Here the map input is the explicitly expanded
+$\widetilde\phi_g$ below; the two conditioning inputs must not be conflated.
 \input{reader-v4-terrain.tex}
 \paragraph{Map sources and attribution limits.}
 Model-source declarations identify
@@ -219,7 +225,7 @@ refitted diffusion make effective regularisation differ among configurations.
 Thus even a complete comparison would concern configuration increments,
 not isolated terrain information. The \supp{sec:models} gives full equations,
 input geometry, excluded road classes, fitting rules and procedure-specific
-controls. The terrain research question remains separate from ordinary Full.
+controls. The terrain research question remains separate from ordinary HSM.
 
 \section{Evaluation measures and inference}
 For particles $x_1,\ldots,x_N$ and target $y$ at one matched horizon, the
@@ -228,7 +234,7 @@ execution-bound finite-ensemble energy score is
  \ES_N=\frac1N\sum_i\|x_i-y\|
        -\frac1{2N(N-1)}\sum_{i\ne j}\|x_i-x_j\|,\qquad N\geq2.
 \end{equation}
-The second sum uses ordered pairs. For the deterministic inertial reference,
+The second sum uses ordered pairs. For the deterministic CV reference,
 ES is directly $\|x-y\|$. ES is measured in metres and lower is better;
 weighted ES is the equally weighted average over the four targets.
 Mean-position error is $e_j=\|\bar x_j-y_j\|$, with
@@ -289,7 +295,7 @@ exchangeability; seeds represent simulation variation, not training or
 participant replication.
 
 Deltas are candidate minus the reference procedure specified for that comparison. The registered practical margin
-is $\delta=41.100259$ m, 5\% of validation inertial ES, not a validated
+is $\delta=41.100259$ m, 5\% of validation CV ES, not a validated
 operational utility threshold. Practical benefit/harm requires the entire
 original interval beyond $-\delta$/$+\delta$ and the original statistical,
 seed and qualification gates. Crossing zero is not equivalence. Practical
@@ -311,8 +317,8 @@ lower ES at 1 and 5 minutes and HSM-SDE at 15 and 30 minutes
 (Figure~\ref{fig:inertial}). The same figure separates ES from mean-position
 error. Four discrete targets do not identify an exact crossover time.
 \begin{figure}[!htbp]\centering
-\includegraphics[width=\linewidth]{../figures/revision46-v1/revision46-inertial-horizons.pdf}
-\caption{HSM-SDE versus CV, retained plot labels Full and Inertial, at four nominal saved-clock
+\includegraphics[width=\linewidth]{../figures/reader-v9/cv-horizons.pdf}
+\caption{HSM-SDE versus CV at four nominal saved-clock
 horizons: ES (left) and predictive-mean error (right). Each point averages
 five seeds within each of 46 primary blocks, then weights blocks equally;
 inertia is deterministic. Lower is better. Connecting lines guide reading,
@@ -320,8 +326,8 @@ not interpolation or evidence for a precise crossover.}
 \label{fig:inertial}\end{figure}
 \begin{table}[!htbp]\centering
 \caption{Saved predictive-mean errors (m), using the original matched
-targets. Original row identifiers Full, GMM and Inertial correspond to
-HSM-SDE, RDM-SDE and CV. These are not ES or mean particle errors.}\label{tab:point-errors}
+targets. Rows use the unified reader-facing procedure names.
+These are not ES or mean particle errors.}\label{tab:point-errors}
 \begin{tabular}{lrrrr}\toprule
 Model & 1 min & 5 min & 15 min & 30 min\\\midrule
 \PointRowFull
@@ -338,7 +344,7 @@ to a simple probabilistic constant-velocity or correlated-random-walk model.
 \subsection{Design choices within the mixture-SDE family}\label{sec:design-choices}
 \subsubsection{RDM-SDE has better mean ES and final location than HSM-SDE}
 RDM-SDE's average ES and thirty-minute mean-position error are both lower
-than those of the main HSM-SDE model (experimental identifier Full01).
+than those of the main HSM-SDE model (reference code HSM-01).
 This comparison changes both grouping-based fitting and forecast-time
 component persistence; it is not a grouping-only controlled comparison.
 The average ES difference is $-2.83$ m.
@@ -378,7 +384,7 @@ The scratch and Reptile variants change average ES by $+2.60$ and $+2.19$ m;
 their intervals are $[-4.73,10.02]$ and $[-11.95,12.91]$ m. The drift-only and
 two-step adaptation change ES by $+0.50$ and $-0.04$ m, with intervals
 $[-1.52,2.49]$ and $[-2.60,1.81]$ m. The original training/adaptation
-procedure is this group's reference (experimental identifier Full11),
+procedure is this group's reference (reference code HSM-11),
 not a replacement for the main model in the horizon comparison. All four
 original finite-procedure states are practically equivalent within the
 registered margin. The examined training/adaptation complexity therefore
@@ -399,11 +405,10 @@ radius rescaling has been tested. Across all 28 identities, thirty-minute
 the thirty-minute HSM-SDE disks achieve a seed-averaged inclusion rate of
 only 46.52\%, rather than the approximately 90\% expected of reliable
 90\% regions: their nominal containment promise is not met in this evaluation.
-Retained figure/table labels Full and GMM
-refer to HSM-SDE and RDM-SDE respectively.
+Figures and tables use HSM and RDM consistently.
 \input{reader-v3-calibration.tex}
 The 600 s procedure also has a larger thirty-minute mean area
-(12.609 km$^2$) and higher coverage (79.13\%) than Full, but its FDE is
+(12.609 km$^2$) and higher coverage (79.13\%) than HSM, but its FDE is
 1340.94 m. This is another descriptive size--coverage trade-off, not
 evidence of calibrated uncertainty or improved mean location. No radius
 or parameter is retuned after inspection of this cohort.
@@ -414,7 +419,7 @@ equivalent and seven inconclusive finite-algorithm states; no original
 simultaneous interval lies wholly beyond the practical-benefit or harm
 boundary. All resolution-invariant states remain inconclusive. These
 states qualify the implemented finite procedures, not general algorithms.
-For example, all five GMM seed effects are negative but its block interval
+For example, all five RDM seed effects are negative but its block interval
 is $[-21.22,16.33]$ m. Seed-direction agreement does not resolve uncertainty
 across recording blocks. Complete effects, seeds and qualification reasons
 are retained in Supplement Table~\href{supplement.pdf\#tab:preliminary-method-effects}{25}
@@ -471,7 +476,7 @@ These observations prioritise design questions, not a global algorithm
 ranking: the contrasts use their own controls, some change several factors,
 and the original practical/inference qualifications still apply.
 
-The objective-choice comparisons also require care. Full and QMLE retain
+The objective-choice comparisons also require care. HSM and QMLE retain
 identical saved drift, covariance and mixture weights; mixed-loss and
 pure-ES variants likewise retain identical saved parameters to each other.
 Differences between those paired identities' finite scores do not prove
@@ -486,7 +491,7 @@ at the stated level while retaining informative area and location.
 The coverage findings limit this capability even where average ES improves.
 
 The calibration proxy differs from the evaluated predictive distribution,
-and GMM training/validation component labels differ. Both are plausible
+and RDM training/validation component labels differ. Both are plausible
 contributors to poor uncertainty behaviour, but these results do not
 identify causes or validate a correction. Likewise, wider regions can
 increase inclusion while retaining an inaccurate centre; coverage alone

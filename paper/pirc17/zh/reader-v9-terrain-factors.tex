@@ -1,0 +1,78 @@
+\paragraph{实际选入的因子，而不是笼统的“水、路”。}
+道路组（road）来自保留的Overture道路线；该道路查询排除
+bridleway、cycleway、footway、path、pedestrian、steps、track类别，
+所以它不等于完整步行路网。河流组（river）来自HydroRIVERS河流线，
+不是所有水面、湖岸、可渡性或桥梁通行信息。地表覆盖组（cover，登记键worldcover）
+来自WorldCover像素；坡面几何组（surface）来自保留DEM规则的坡度、坡向与法向。
+绝对高程只作为计算地表几何的来源，不是本次选入的直接条件器列；
+其他路径、铁路、湖岸距离、曲率和粗糙度表示未进入这十个配置。
+
+\paragraph{距离、方向和历史量具体如何组合。}
+在当前查询位置$X$，令$d_g$为到最近登记线要素点的距离（米），
+$u_g=(u_{g,e},u_{g,n})$为从查询位置指向该点的单位向量，$g\in\{\mathrm{road},\mathrm{river}\}$。
+最近点在提供器的局部米制投影中选择，报告距离按其球面距离规则计算。
+输入既保留两个方向分量，也保留对数距离及距离--方向乘积：
+\begin{equation}\label{eq:main-map-distance}
+ \ell_g=\log(1+d_g/(1\,\mathrm m)),\qquad c_g=\ell_g u_g .
+\end{equation}
+$u_g$不是沿线切向量；对河流也不是流向。$c_g$是两个数值乘积列，
+不是道路吸引力或河流排斥力的硬编码。
+本次没有$u_{\rm river}^{\top}h$、$u_{\rm river}^{\top}v$或河流距离乘历史速度的直接输入。
+历史速度仍通过共享漂移进入预测；地图与运动还会通过生成位置的反馈间接耦合。
+
+地表覆盖向量$w$是四组指示：建成区50；植被10、20、30、40、95、100；
+水／湿地80、90；裸地／雪／其他有效有限代码。无数据不算有效“其他”。
+坡面向量为$s=(\beta,\sin\alpha,\cos\alpha,n_e,n_n,n_u)$，
+$\beta$为弧度坡度，$\alpha$从北顺时针表示下坡坡向，$n$为三维向上的单位法向。
+令上坡方向$a=-(\sin\alpha,\cos\alpha)$，选定等高线方向$q=(-a_n,a_e)$。
+四项登记交互准确为
+\begin{equation}\label{eq:main-map-compositions}
+ c_{\rm road}=\ell_{\rm road}u_{\rm road},\quad
+ c_{\rm river}=\ell_{\rm river}u_{\rm river},\quad
+ c_{\rm cover}=\ell_{\rm road}w,\quad
+ c_{\rm surface}=(h^\top a,h^\top q).
+\end{equation}
+最后一项才直接组合地形与历史方向；它不再乘坡度或速度大小，也不是六乘二的全部叉积。
+反向选择$q$会改变第二个投影的符号；平地坡向记录为零，不代表真实的垂直运动关系。
+
+\begin{table}[!htbp]\centering\small
+\caption{地形分支的具名因子与实际数值输入。维度不含有效性掩码；同一数值列另有一个有效性指示。
+基础列共18维，登记交互共10维，全部配置共28维数值。}
+\label{tab:main-terrain-factors}
+\begin{tabular}{@{}p{.17\linewidth}p{.43\linewidth}p{.32\linewidth}@{}}\toprule
+组名／来源 & 基础因子（数值维度） & 依赖该组的交互\\\midrule
+history／因果历史 & 东／北单位历史方向$h$（2） & 与surface共同组成$(h^\top a,h^\top q)$（2）\\
+road／道路 & 对数距离$\ell_{\rm road}$（1）、指向最近道路点$u_{\rm road}$（2） & $\ell_{\rm road}u_{\rm road}$（2）；与cover共同组成$\ell_{\rm road}w$（4）\\
+river／河流 & 对数距离$\ell_{\rm river}$（1）、指向最近河流点$u_{\rm river}$（2） & $\ell_{\rm river}u_{\rm river}$（2）；没有直接历史速度乘积\\
+cover／地表覆盖 & 四组WorldCover指示$w$（4） & 与road共同组成$\ell_{\rm road}w$（4）\\
+surface／坡面几何 & 坡度、下坡坡向两分量、法向三分量$s$（6） & 与history共同组成两个有符号方向投影（2）\\\bottomrule
+\end{tabular}\end{table}
+
+\paragraph{base、all、LOO与LIO不是额外因子。}
+记$B$为base历史配置，$A$为all-terrain全组配置。
+LOO（leave-one-group-out，移除一组）是$A-g$；
+LIO（leave-one-group-in，仅加入一组）是$B+g$，并非不含历史的单因素模型。
+表\ref{tab:main-terrain-configurations}连接这些操作与结果表的简写。
+所有配置保留history；删除一组时，同时删除依赖它的交互，然后重新拟合条件器和扩散。
+
+\begin{table}[!htbp]\centering\small
+\caption{十配置与实际保留因子／交互的对应。$K$为条件器数值列数，输入宽度为$2K$（数值及掩码），
+另加一个拟合截距；独立的七列历史漂移不计入$K$。结果表与图采用$B$、$A-g$、$B+g$，原执行键在审查记录保留。}
+\label{tab:main-terrain-configurations}
+\begin{tabular}{@{}p{.23\linewidth}p{.28\linewidth}p{.35\linewidth}r@{}}\toprule
+配置／操作 & 保留地图组（均有history） & 保留交互 & $K$\\\midrule
+$B$／base & 无 & 无 & 2\\
+$A$／all & road、river、cover、surface & 全部四项 & 28\\
+$A-\mathrm{road}$／LOO & river、cover、surface & 河流距离--方向；坡面--历史 & 19\\
+$A-\mathrm{river}$／LOO & road、cover、surface & 道路距离--方向；覆盖--道路；坡面--历史 & 23\\
+$A-\mathrm{cover}$／LOO & road、river、surface & 道路及河流距离--方向；坡面--历史 & 20\\
+$A-\mathrm{surface}$／LOO & road、river、cover & 道路及河流距离--方向；覆盖--道路 & 20\\
+$B+\mathrm{road}$／LIO & road & 道路距离--方向 & 7\\
+$B+\mathrm{river}$／LIO & river & 河流距离--方向 & 7\\
+$B+\mathrm{cover}$／LIO & cover & 无（不含road） & 6\\
+$B+\mathrm{surface}$／LIO & surface & 坡面--历史（history仍在） & 10\\\bottomrule
+\end{tabular}\end{table}
+覆盖--道路交互在移除road或cover时都会被移除；两个删除损失不能相加成独立因素贡献。
+仅cover配置没有道路距离，因此也没有该交互。LOO与LIO考察不同背景下重新拟合的预测配置，
+不是同一已拟合模型上把某一输入置零，也不能分别识别距离、方向或某个覆盖子类的因果效应。
+\FloatBarrier

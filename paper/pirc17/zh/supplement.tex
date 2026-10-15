@@ -9,7 +9,7 @@
 
 \section{地形几何与十配置设计}
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../figures/reader-v2/geometry.pdf}
+\includegraphics[width=\linewidth]{../figures/reader-v9/geometry.pdf}
 \caption{几何示意而非真实路线。左：道路／河流最近点、距离及指向该点的方向，不是切线或流向。
 中：带符号历史$h$、上坡$a$、等高线$q$的不同点积；坡度大小是独立输入，本图未画出。
 覆盖分组为建筑、植被、水体／湿地和有效其他，图中列明冻结代码集合。
@@ -17,7 +17,7 @@
 下文保留规格列明排除的道路类别。图内英文标签与本题注逐项对应。}
 \label{fig:terrain-geometry}\hypertarget{fig:terrain-geometry}{}\end{figure}
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../figures/reader-v2/design.pdf}
+\includegraphics[width=\linewidth]{../figures/reader-v9/design.pdf}
 \caption{十个独立拟合配置。道路--覆盖交互依赖两个父组，坡面--历史在LIO-surface仍保留。
 $K$为数值特征数，不是全部设计列数。LOO机器候选为all-terrain、对照为all-minus-group；
 若写成移除损失的因素收益，需要反转符号和区间端点。
@@ -26,36 +26,36 @@ LIO比较history-plus-group与base。图示不改变家族或非加性交互定�
 
 \section{互补误差与不确定性视图}
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../figures/reader-v2/tradeoff.pdf}
+\includegraphics[width=\linewidth]{../figures/reader-v9/tradeoff.pdf}
 \caption{全部21项候选减具名对照：加权ES与均值位置FDE（米），两轴均负差有利。
-分面保留原家族，各Full对照不合并。这是配对均值描述，不是新联合检验或Pareto排名。}
+分面保留原家族，各HSM对照不合并。这是配对均值描述，不是新联合检验或Pareto排名。}
 \label{fig:tradeoff}\end{figure}
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../figures/revision46-v1/revision46-seeds-and-blocks.pdf}
+\includegraphics[width=\linewidth]{../figures/reader-v9/revision46-seeds-and-blocks.pdf}
 \caption{五保存种子差值与原记录块同时区间（米）。保留全部比较及种子同号但块区间跨零的例子。
 种子只改变Monte Carlo模拟，不代表训练样本或独立参与者重复。}
 \label{fig:seed-blocks}\end{figure}
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../figures/revision46-v1/revision46-identity-diagnostics.pdf}
+\includegraphics[width=\linewidth]{../figures/reader-v9/revision46-identity-diagnostics.pdf}
 \caption{微小实现一致性差值用明确标注的独立尺度显示，与下文完整实际效应比较互补。
 原估计和区间不变，零／近零差不提供独立功效证明。}\label{fig:micro-effects}\end{figure}
 \FloatBarrier
 
 \section{拟合、成本与完整方法概览}
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../figures/revision46-v1/revision46-development-fit.pdf}
+\includegraphics[width=\linewidth]{../figures/reader-v9/revision46-development-fit.pdf}
 \caption{十开发配置训练／验证位移率MSE（米$^2$/秒$^2$）、原始列数与秩。
 拟合误差不是预测ES；原始缺秩、增广ridge满秩与样本外表现是不同事项。原行与正则化不变。}
 \label{fig:fit-diagnostics}\end{figure}
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../figures/revision46-v1/revision46-recorded-runtime.pdf}
+\includegraphics[width=\linewidth]{../figures/reader-v9/revision46-recorded-runtime.pdf}
 \caption{原15对象provider冷／热延迟p50/p95（毫秒）与失败数。
 第四面板从原试验记录取包含在总耗时中的地形I/O／查询中位毫秒；无地形阶段为零，不是额外成本。
 各条件五次，15次预热排除于分位数，而不是排除记录中断暴露试验。
 provider冷不是OS缓存冷；查询包含于rollout，五次不估计稳定部署尾延迟。}
 \label{fig:runtime}\end{figure}\FloatBarrier
 \begin{figure}[p]\centering
-\includegraphics[width=\linewidth,height=.83\textheight,keepaspectratio]{../figures/reader-v2/full-overview.pdf}
+\includegraphics[width=\linewidth,height=.83\textheight,keepaspectratio]{../figures/reader-v9/method-overview.pdf}
 \caption{28保存方法身份、四时域：ES（米）、90\%圆平均面积（平方千米）、实际覆盖减名义90\%
 （百分点）。统一发散覆盖色阶以零偏差为中心，过覆盖与欠覆盖均可见。
 全概率档表继续保留，不选赢家。}\label{fig:method-overview}\hypertarget{fig:method-overview}{}
@@ -63,7 +63,7 @@ provider冷不是OS缓存冷；查询包含于rollout，五次不估计稳定部
 
 \section{家族可用性而非地形收益排行榜}
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../figures/revision46-v1/revision46-family-availability.pdf}
+\includegraphics[width=\linewidth]{../figures/reader-v9/revision46-family-availability.pdf}
 \caption{原七家族与三起点模式。必需失败使完整登记家族不可用，成功配对不能替代新家族。
 完整不等于接受、实际有益、机制合格或分辨率不变；原比较全表保留具体资格原因。}
 \label{fig:availability}\hypertarget{fig:availability}{}\end{figure}\FloatBarrier
@@ -108,6 +108,6 @@ $\Delta b=\theta_{\rm num}\Delta f+\theta_{\rm mask}\Delta m$不必为零。
 改前逐字源稿另以历史名称保留。
 仅阅读结构、跨文档链接与计数单位说明改变；当前状态由论文本体说明，
 不由旧快照中的等待语气决定。
-\input{revision46-supplement-retained.tex}
+\input{reader-v9/revision46-supplement-retained.tex}
 \input{revision46-bibliography.tex}
 \end{document}

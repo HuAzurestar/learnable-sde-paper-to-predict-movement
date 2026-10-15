@@ -1,7 +1,7 @@
 \paragraph{Component schedules before position propagation.}
 Each particle starts at its internal-frame origin position $X_0$ and samples
 a component from its procedure's own final saved weights $\pi$.
-HSM (Full) keeps that component throughout its path. RDM (GMM) independently
+HSM keeps that component throughout its path. RDM independently
 redraws at the end of every reference interval $\tau=60$ saved seconds for
 the next interval, until the forecast endpoint. If $M_k$ denotes the component
 in interval $k$, then
@@ -26,7 +26,7 @@ On each event interval $\Delta\leq5$ saved
 seconds, write the locally affine drift as $\mathsf A_m x+a_n$, freezing
 the non-position feature at the conditional mean. $\mathsf A_m$ is the
 transpose of the two position rows of $\Theta_m$; $a_n$ contains the
-intercept and frozen solar term. Full and GMM both use the registered FP/split procedure:
+intercept and frozen solar term. HSM and RDM both use the registered FP/split procedure:
 an exact affine half-drift, an additive noise increment, then another
 half-drift. Its matrices and conditional-moment update are
 \begin{align}

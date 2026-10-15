@@ -1,0 +1,93 @@
+\paragraph{Selected factors, not generic ``water and roads''.}
+The road group uses retained Overture road lines. Its query excludes
+bridleway, cycleway, footway, path, pedestrian, steps and track classes;
+it is not a complete pedestrian network. The river group uses HydroRIVERS
+river lines, not all water surfaces, lake shores, fordability or bridge access.
+The cover group (saved key worldcover) uses WorldCover pixels; the surface
+group uses slope, aspect and normals from the retained DEM rules. Absolute
+elevation is a derivation source, not a selected direct conditioner column.
+Other path, rail, lake-shore distance, curvature and roughness representations
+are not selected in these ten configurations.
+
+\paragraph{Exactly which distances, vectors and history products enter.}
+At query position $X$, $d_g$ is the distance in metres to the nearest selected
+line point, and $u_g=(u_{g,e},u_{g,n})$ points from the query towards that
+point, for $g\in\{\mathrm{road},\mathrm{river}\}$. The provider chooses the
+nearest point in its local metric projection and reports its spherical
+distance. Both direction components, log-distance and their product enter:
+\begin{equation}\label{eq:main-map-distance}
+ \ell_g=\log(1+d_g/(1\,\mathrm m)),\qquad c_g=\ell_g u_g .
+\end{equation}
+The vector is not a line tangent or river-flow direction. The two product
+columns are not a hard-coded road attraction or river repulsion law.
+No direct $u_{\rm river}^{\top}h$, $u_{\rm river}^{\top}v$ or river-distance
+times historical-speed input is selected. History velocity still enters
+the shared drift; generated-position feedback also couples motion and maps
+indirectly.
+
+The four cover indicators $w$ are built (50), vegetated (10,20,30,40,95,100),
+water/wetland (80,90), and bare/snow/other finite valid codes. Missing data
+are not valid ``other''. The surface vector is
+$s=(\beta,\sin\alpha,\cos\alpha,n_e,n_n,n_u)$: slope in radians, downhill
+aspect clockwise from north, and the three-dimensional upward unit normal.
+Write $a=-(\sin\alpha,\cos\alpha)$ for uphill and $q=(-a_n,a_e)$ for the
+chosen signed contour direction. The four selected compositions are exactly
+\begin{equation}\label{eq:main-map-compositions}
+ c_{\rm road}=\ell_{\rm road}u_{\rm road},\quad
+ c_{\rm river}=\ell_{\rm river}u_{\rm river},\quad
+ c_{\rm cover}=\ell_{\rm road}w,\quad
+ c_{\rm surface}=(h^\top a,h^\top q).
+\end{equation}
+Only the last composition explicitly combines terrain with history direction;
+it includes no slope- or speed-magnitude multiplier and is not all twelve
+surface-by-history products. Reversing $q$ reverses the second projection.
+Flat-surface aspect is recorded as zero, not evidence of perpendicular travel.
+
+\begin{table}[!htbp]\centering\small
+\caption{Named factors and actual numerical inputs. Dimensions exclude masks;
+each numerical column has its own validity indicator. Eighteen base columns
+plus ten composition columns give 28 numerical columns in the all-group configuration.}
+\label{tab:main-terrain-factors}
+\begin{tabular}{@{}p{.17\linewidth}p{.43\linewidth}p{.32\linewidth}@{}}\toprule
+Group / source & Base factors (numerical dimension) & Dependent compositions\\\midrule
+history / causal buffer & East/north unit history direction $h$ (2) & With surface: $(h^\top a,h^\top q)$ (2)\\
+road / road lines & Log-distance $\ell_{\rm road}$ (1); towards-nearest-road direction $u_{\rm road}$ (2) & $\ell_{\rm road}u_{\rm road}$ (2); with cover: $\ell_{\rm road}w$ (4)\\
+river / river lines & Log-distance $\ell_{\rm river}$ (1); towards-nearest-river direction $u_{\rm river}$ (2) & $\ell_{\rm river}u_{\rm river}$ (2); no direct history-velocity product\\
+cover / land cover & Four grouped WorldCover indicators $w$ (4) & With road: $\ell_{\rm road}w$ (4)\\
+surface / DEM & Slope, two downslope-aspect components, three normal components $s$ (6) & With history: two signed directional projections (2)\\\bottomrule
+\end{tabular}\end{table}
+
+\paragraph{Base, all, LOO and LIO are configuration operations, not factors.}
+Let $B$ be the base history configuration and $A$ the all-terrain configuration.
+LOO means leave-one-group-out, $A-g$; LIO means leave-one-group-in above the
+history base, $B+g$, not a history-free single-factor model.
+Table~\ref{tab:main-terrain-configurations} links these operations to result labels.
+Every configuration retains history. Removing a group removes all dependent
+compositions, followed by refitting its conditioner and diffusion.
+
+\begin{table}[!htbp]\centering\small
+\caption{The ten configurations and retained factors/compositions. $K$ counts
+conditioner numerical columns; input width is $2K$ including masks, with one
+additional fitted intercept. The separate seven-column history drift is not
+included in $K$. Results use $B$, $A-g$, $B+g$; original keys remain in the audit record.}
+\label{tab:main-terrain-configurations}
+\begin{tabular}{@{}p{.23\linewidth}p{.28\linewidth}p{.35\linewidth}r@{}}\toprule
+Configuration / operation & Map groups (history always retained) & Retained compositions & $K$\\\midrule
+$B$ / base & None & None & 2\\
+$A$ / all & road, river, cover, surface & All four & 28\\
+$A-\mathrm{road}$ / LOO & river, cover, surface & River distance-direction; surface-history & 19\\
+$A-\mathrm{river}$ / LOO & road, cover, surface & Road distance-direction; cover-road; surface-history & 23\\
+$A-\mathrm{cover}$ / LOO & road, river, surface & Road/river distance-direction; surface-history & 20\\
+$A-\mathrm{surface}$ / LOO & road, river, cover & Road/river distance-direction; cover-road & 20\\
+$B+\mathrm{road}$ / LIO & road & Road distance-direction & 7\\
+$B+\mathrm{river}$ / LIO & river & River distance-direction & 7\\
+$B+\mathrm{cover}$ / LIO & cover & None (road absent) & 6\\
+$B+\mathrm{surface}$ / LIO & surface & Surface-history (history retained) & 10\\\bottomrule
+\end{tabular}\end{table}
+The cover-road composition is removed with either road or cover; the two
+removal losses cannot be summed as independent factor contributions.
+Cover alone has no road distance and hence no such composition. LOO and LIO
+compare refitted predictors in different feature contexts, not input-zeroing
+of one fitted model or identified causal effects of distance, direction or
+an individual cover subclass.
+\FloatBarrier

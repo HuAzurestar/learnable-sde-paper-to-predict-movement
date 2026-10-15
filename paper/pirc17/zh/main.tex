@@ -1,5 +1,6 @@
 % reader-v5：机制命名与线性论证，原有科学证据不变。
 \input{revision46-preamble.tex}
+\input{../reader-v9-number-labels.tex}
 \title{混合SDE运动预测的时域收益、设计取舍与可靠性边界}
 \begin{document}
 \maketitle
@@ -8,9 +9,9 @@
 本文以历史GPX位置记录为研究对象，其携带者身份与交通方式未核实；
 利用已有随机运动预测器评估，考察这些指标的区别：评估包含事后选择的46个记录哈希块、
 五个模拟种子及每组512个粒子。在名义1和5分钟，恒速外推参考（CV）的能量评分（ES）
-低于航向分层混合SDE（HSM-SDE，原标识Full01）；在15和30分钟，两者排序反转。
+低于航向分层混合SDE（HSM-SDE）；在15和30分钟，两者排序反转。
 四目标平均ES分别为HSM-SDE的\FullES\ 米与CV的\InertialES\ 米。
-残差方向分组混合SDE（RDM-SDE，原标识GMM）的平均ES和终点均值误差更低，
+残差方向分组混合SDE（RDM-SDE）的平均ES和终点均值误差更低，
 但其配对ES区间跨零。120和300个保存秒的观测间隔配置相对60秒参考的平均ES更低；
 所考察训练／适配变体相对原训练程序的ES变化很小，未确认额外降低ES。
 300秒变体使平均ES下降23.40米，终点均值位置误差却增加9.64米。
@@ -73,7 +74,7 @@ R1派生清理段提供中点历史／目标窗口；冻结记录哈希划分将
 选中队列跨12个国家、27个来源标签，英国、比利时和卢森堡占33/46块，
 不是代表性人群样本。
 \begin{figure}[!htbp]\centering
-\includegraphics[width=\linewidth]{../figures/revision46-v1/revision46-population.pdf}
+\includegraphics[width=\linewidth]{../figures/reader-v9/revision46-population.pdf}
 \caption{评估筛选与队列描述。计数区分窗口和记录块；时长与速率面板给出保存中位数和四分位区间。
 资格包含未来真实路线的地图有效性，部署时不能只凭前缀判定。筛选排除不是预测失败。}
 \label{fig:population}\end{figure}
@@ -88,23 +89,26 @@ R1派生清理段提供中点历史／目标窗口；冻结记录哈希划分将
 相对尺度失真还影响速率、扩散单位与时域的物理含义。
 下文所有分钟标签均指保存时钟。
 
-\subsection{基准模型与共同模型结构}\label{sec:models}\hypertarget{sec:models}{}
-本文将普通三模式参考命名为航向分层混合SDE（heading-stratified mixture SDE，HSM-SDE），
-因为拟合批次按片段航向划分分量。其登记标识为Full01；保留方程、图表中的Full
-指该参考，不是all-terrain配置。残差方向分组混合SDE（residual-direction mixture SDE，
-RDM-SDE）对应原GMM变体；它按残差方向一次分组，不是通过EM拟合的常规GMM。
+\subsection{三分量SDE：模型设计、训练与预测}\label{sec:models}\hypertarget{sec:models}{}
+\subsubsection{基准模型与共同结构}
+本文研究同一三分量随机微分方程（stochastic differential equation，SDE）框架的两套程序：
+航向分层混合随机微分方程（heading-stratified mixture stochastic differential equation，HSM-SDE），
+以及残差方向分组混合随机微分方程（residual-direction mixture stochastic differential equation，RDM-SDE）。
+HSM按轨迹片段航向划分拟合分量；RDM按转移残差方向一次分组，不是通过EM拟合的混合似然模型。
 两者采用相同的三分量SDE方程模板，但分组拟合方式和预测期分量保持方式不同。
 因此它们是同一模型家族的两套完整程序，不是两种互不相关的模型架构，也不只是两种训练算法。
-比较发生在该家族内部，不是GMM与SDE两条路线的比较；这些名称是本文的解释性简称。
-确定性参考称为恒速外推（constant-velocity extrapolation，CV），原标识为Inertial／I。
-这些解释性名称不改变模型、保存身份或比较对照。
+比较发生在该家族内部，不是混合分布与SDE两条路线的比较；这些名称是本文的解释性简称。
+确定性参考称为恒速外推（constant-velocity extrapolation，CV）。
+正文和当前图表统一使用这些名称；HSM后的编号区分登记参考程序，不代表新模型架构。
+原始实验标识的对应关系仅在审查记录中保留，不改变保存身份或比较对照。
+% Saved identity crosswalk: Full01=HSM-01, Full11=HSM-11, GMM=RDM, Inertial/I=CV.
 \input{reader-v8-procedures.tex}
 \paragraph{确定性基准CV。}
 46个主起点的状态缓冲保留最后三个观测位置及其严格递增的保存时间，末点为预测起点。
-CV使用$\widehat x^{\rm I}(u)=x_0+u\widehat v_0$，
+CV使用$\widehat x^{\rm CV}(u)=x_0+u\widehat v_0$，
 $\widehat v_0$为这三点首末位置之差除以保存经过时间的割线速度，不读取未来位置或未来速率。
 这些跨度为2--61个保存秒，中位数7秒。CV不拟合开发集参数，也不生成随机扩散。
-普通Full01是方法家族内的主要参考，而不是地形分支的base；后者与all-terrain另在下文定义。
+普通HSM-01是方法家族内的主要参考，而不是地形分支的base；后者与all-terrain另在下文定义。
 \paragraph{共同的随机位置模型。}
 在保存局部东西／南北坐标$X=(X_e,X_n)^\top$（米）中，
 \begin{equation}\label{eq:ordinary-full}
@@ -114,31 +118,33 @@ $\widehat v_0$为这三点首末位置之差除以保存经过时间的割线速
 首个可见位置锚定坐标框架，预测始于最后一个允许的前缀位置。
 $S$是由保留绝对tick计算的太阳／日历代理\cite{noaa}，不是经验证的日光机制。
 $R_m$为中心化拟合位移率残差协方差；转换使用观测间隔$\tau$，不是积分步长$h$。
-给定坐标框架、位置、时钟与随机流后，普通Full和RDM的漂移、扩散及分量概率不读取初速度或近期方向。
+给定坐标框架、位置、时钟与随机流后，普通HSM和RDM的漂移、扩散及分量概率不读取初速度或近期方向。
 HSM-SDE与CV接收相同允许前缀，但对其中运动信息的使用不同；训练中的航向标签不是预测期航向识别器。
 \input{reader-v4-full.tex}
 
 验证选择代理是使用各模式协方差未加权平均的一步位移率残差高斯，
 最终评价却针对多模式、多步位置分布。
-GMM按$\arg\max(r_e,r_n,-r_e-r_n)$对训练残差一次分组，
+RDM按$\arg\max(r_e,r_n,-r_e-r_n)$对训练残差一次分组，
 验证时却用段方向标签选分量，二者未对齐。
 迁移程序也直接按模式编号混合各自方向排序的批次\cite{nichol2018}。
 这些是实施限制，不证明对应建模思想无效。
 
-\subsection{预测方法与分量更新}\label{sec:forecast-methods}
+\subsubsection{预测方法与分量更新}\label{sec:forecast-methods}
 评估采用$N=512$粒子、五个固定种子、最大积分步长$h=5$个保存秒。
-Full使用条件高斯矩传播，在条件均值处评价非线性条件，
+HSM使用条件高斯矩传播，在条件均值处评价非线性条件，
 不是全局非线性SDE的精确解\cite{kloeden1992}。
 四目标来自共同持续随机路径，不是独立抽样边际。
 观测间隔配置同时改变拟合数据、$Q=\tau R$与更新节拍，而积分上限不变。
 dt300和dt600分别表示300和600个保存秒的观测间隔，不是积分步长。
 同参数别名和多因素改变使28个保存身份代表程序，而非28个独立算法。
-全部21项登记主比较保留各组指定参考程序及其原实验编号。
+全部21项登记主比较保留各组指定参考程序及其原参考编号。
 \input{reader-v4-propagation.tex}
 
-\subsection{地形分支与归因范围}
+\subsection{地图因素：道路、河流、地表覆盖与坡面几何}\label{sec:terrain-methods}
 独立地形分支在三位置历史漂移上增加残差条件器，
 十个配置分别拟合条件器与扩散，具体机制如下。
+普通HSM／RDM方程中的$S$仅为太阳／日历代理，不包含这些地图因素；
+本分支的地图输入是下式中明确展开的$\widetilde\phi_g$，不能将两者混为同一条件变量。
 \input{reader-v4-terrain.tex}
 \paragraph{地图来源与归因限制。}
 模型来源声明为WorldCover 2021 v200\cite{worldcover2021}、
@@ -152,7 +158,7 @@ HydroRIVERS v1.0\cite{hydrorivers2013,hydroriverslicense}，
 常数有效性掩码、受惩罚截距、未标准化特征与重拟合扩散，
 使配置间有效正则化不同。因此即使比较完整，也只能考察配置增量，不能隔离地形信息效应。
 完整方程、输入几何、排除道路类别、拟合规则与各组参考程序见\supp{sec:models}。
-地形研究问题始终与普通Full区分。
+地形研究问题始终与普通HSM区分。
 
 \section{评价指标与推断}
 某匹配时域下，粒子$x_1,\ldots,x_N$与目标$y$的执行绑定有限粒子能量评分为
@@ -160,7 +166,7 @@ HydroRIVERS v1.0\cite{hydrorivers2013,hydroriverslicense}，
  \ES_N=\frac1N\sum_i\|x_i-y\|
        -\frac1{2N(N-1)}\sum_{i\ne j}\|x_i-x_j\|,\qquad N\geq2.
 \end{equation}
-第二项累加有序粒子对。确定性惯性参考直接使用$\|x-y\|$。
+第二项累加有序粒子对。确定性恒速参考（CV）直接使用$\|x-y\|$。
 ES单位为米，越低越好；加权ES为四目标等权平均。
 均值位置误差$e_j=\|\bar x_j-y_j\|$，
 $\mathrm{ADE}=\tfrac14\sum_j e_j$，$\mathrm{FDE}=e_4$。
@@ -224,14 +230,13 @@ HSM-SDE加权ES为\FullES\ 米，CV为\InertialES\ 米；保存差值为\Inertia
 （图\ref{fig:inertial}）。同图将ES与均值位置误差分开展示。
 四个离散目标不能确定精确交叉时刻。
 \begin{figure}[!htbp]\centering
-\includegraphics[width=\linewidth]{../figures/revision46-v1/revision46-inertial-horizons.pdf}
-\caption{HSM-SDE与CV四个名义保存时域的ES（左）及预测均值误差（右），保留图内标识Full与Inertial。
+\includegraphics[width=\linewidth]{../figures/reader-v9/cv-horizons.pdf}
+\caption{HSM-SDE与CV四个名义保存时域的ES（左）及预测均值误差（右），统一采用读者可识别的程序名。
 各点先在46个主块内平均五种子，再等权平均块；惯性为确定性预测。
 越低越好，连线只引导阅读，不代表插值或精确交叉时刻。}
 \label{fig:inertial}\end{figure}
 \begin{table}[!htbp]\centering
-\caption{原匹配目标下保存预测均值误差（米）。原行标识Full、GMM与Inertial分别对应
-HSM-SDE、RDM-SDE与CV；这些不是ES或平均粒子误差。}
+\caption{原匹配目标下保存预测均值误差（米）。各行采用统一的程序名；这些不是ES或平均粒子误差。}
 \label{tab:point-errors}
 \begin{tabular}{lrrrr}\toprule
 模型 & 1分钟 & 5分钟 & 15分钟 & 30分钟\\\midrule
@@ -246,7 +251,7 @@ HSM-SDE、RDM-SDE与CV；这些不是ES或平均粒子误差。}
 
 \subsection{混合SDE内部的设计选择}\label{sec:design-choices}
 \subsubsection{RDM-SDE的平均评分和终点定位优于HSM-SDE}
-RDM-SDE的平均ES和30分钟均值位置误差均低于主要HSM-SDE模型（实验编号Full01）。
+RDM-SDE的平均ES和30分钟均值位置误差均低于主要HSM-SDE模型（参考编号HSM-01）。
 该比较同时改变分组拟合和预测期分量保持方式，不是只替换训练分组的对照。
 平均ES低2.83米，终点均值位置误差分别为
 1299.11米对1326.09米（表\ref{tab:point-errors}）。
@@ -275,7 +280,7 @@ single-Gaussian与explicit-feature变体分别变化$+22.01$和$+57.96$米，区
 $+2.60$和$+2.19$米，区间为$[-4.73,10.02]$与$[-11.95,12.91]$米；
 drift-only和two-step适配分别变化$+0.50$与$-0.04$米，
 区间为$[-1.52,2.49]$与$[-2.60,1.81]$米。
-本组比较使用原训练／适配程序作为参考（实验编号Full11），
+本组比较使用原训练／适配程序作为参考（参考编号HSM-11），
 不是用它替代时域比较中的主要模型。
 四项原有限程序判断均在登记界内实际等价。因此所考察的新增训练／适配复杂度
 未显示明确ES收益；这不意味着学习本身没有必要。
@@ -290,9 +295,9 @@ HSM-SDE四时域名义90\%预测圆的覆盖分别为95.65\%、37.83\%、35.22\%
 全部28身份的30分钟90\%覆盖范围为21.74\%至79.13\%。
 也就是说，本次评价30分钟HSM-SDE预测圆的种子平均实际包含率只有46.52\%，
 不是可靠90\%预测圆应接近的90\%，没有兑现所报区域的包含承诺。
-下列保留图表的Full与GMM分别对应HSM-SDE与RDM-SDE。
+下列图表统一使用HSM与RDM名称。
 \input{reader-v3-calibration.tex}
-600秒程序的30分钟平均面积（12.609平方千米）与覆盖（79.13\%）也高于Full，
+600秒程序的30分钟平均面积（12.609平方千米）与覆盖（79.13\%）也高于HSM，
 但FDE为1340.94米。这仍是描述性大小--覆盖取舍，不证明不确定性已校准或均值位置改善。
 本次不在检查队列后重新调节半径或参数。
 
@@ -301,7 +306,7 @@ HSM-SDE四时域名义90\%预测圆的覆盖分别为95.65\%、37.83\%、35.22\%
 没有原同时区间整体越过实际有益或有害边界。
 全部分辨率不变判断仍为证据不足。
 这些状态限定于实施的有限程序，不适用于算法的一般价值。
-例如GMM五种子差均为负，但块区间为$[-21.22,16.33]$米。
+例如RDM五种子差均为负，但块区间为$[-21.22,16.33]$米。
 种子方向一致不能解决记录块间不确定性。
 完整效应见补表\href{supplement.pdf\#tab:preliminary-method-effects}{25}，
 种子与资格理由保留在配套讨论。
@@ -343,7 +348,7 @@ ES同时评价到真实目标的距离和集合内部距离，FDE只评价最终
 这些观察可用于安排设计问题的优先级，不构成全局算法排名：各组采用其指定参考程序，
 部分程序同时改变多个因素，原实际意义与推断资格仍须保留。
 
-训练目标比较也需谨慎。Full与QMLE的保存漂移、协方差和混合权重完全相同；
+训练目标比较也需谨慎。HSM与QMLE的保存漂移、协方差和混合权重完全相同；
 mixed-loss与pure-ES两项的保存参数也彼此相同。
 这些配对身份的有限评分差不证明学到了不同预测模型，也不能据此判定某种训练损失优越。
 
@@ -352,7 +357,7 @@ mixed-loss与pure-ES两项的保存参数也彼此相同。
 但两者都不建立可靠的长时域预测区域：还需要达到标称经验覆盖，
 同时保留有信息的面积和位置。即使平均ES改善，覆盖结果仍限制这一能力。
 
-校准代理与实际评估分布不同，GMM训练／验证分量标签也不同。
+校准代理与实际评估分布不同，RDM训练／验证分量标签也不同。
 二者可能影响不确定性表现，但当前结果不能识别原因或验证修复。
 同样，更宽区域可以提高包含率，同时保留不准确的圆心；
 只看覆盖会奖励足够宽而缺乏信息的区域。

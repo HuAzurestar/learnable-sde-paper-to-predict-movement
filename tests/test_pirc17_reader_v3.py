@@ -3,6 +3,7 @@ from pathlib import Path
 import re
 import subprocess
 import pytest
+from scripts.pirc17_figure_provenance import original_figure
 
 ROOT = Path(__file__).resolve().parents[1]
 PAPER = ROOT / "paper/pirc17"
@@ -16,12 +17,14 @@ def test_current_body_keeps_core_evidence_and_four_existing_figures(language):
         expanded = expanded.replace(r"\input{"+stem+".tex}", (PAPER / language / (stem+".tex")).read_text(encoding="utf-8"))
     figures = re.findall(r"\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}", expanded)
     assert len(figures) == 4
-    assert {Path(f).name for f in figures} == {
+    # Reader-v9 authorises text-only rerendering. Resolve the exact new artifact
+    # through its data/hash binding; retain original figure identity and bytes.
+    assert {original_figure(PAPER, f).name for f in figures} == {
         "revision46-population.pdf", "revision46-inertial-horizons.pdf",
         "tradeoff.pdf", "preliminary-calibration-area.pdf"}
     assert expanded.count(r"\begin{table}") == 2
     for figure in figures:
-        path = (PAPER / language / figure).resolve()
+        path = original_figure(PAPER, figure)
         relative = path.relative_to(ROOT).as_posix()
         assert path.read_bytes() == subprocess.check_output(["git", "show", "6370953:"+relative], cwd=ROOT)
     for value in ("512", "46.52", "95.65", "37.83", "35.22", "33.04", "52.17",

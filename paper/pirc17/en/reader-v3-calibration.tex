@@ -1,7 +1,7 @@
 \begin{figure}[!htbp]\centering
-\includegraphics[width=\linewidth]{../figures/preliminary-calibration-area.pdf}
+\includegraphics[width=\linewidth]{../figures/reader-v9/preliminary-calibration-area.pdf}
 \caption{Calibration and size from the saved 46-block, five-seed summaries.
-Left: 16 Full coverage values (four probability levels at four horizons);
+Left: 16 HSM coverage values (four probability levels at four horizons);
 closeness to the diagonal, not the highest curve, is the target. Right:
 12 mean areas (three configurations at four horizons), to be read with
 coverage rather than ranked alone. Connecting lines guide reading; they
@@ -14,13 +14,13 @@ per block. Radius and area are averaged separately; the radius of the
 mean area is not the mean radius.}\label{tab:reader-regions}
 \begin{tabular}{lrrr}\toprule
 Model & Coverage (\%) & Mean area (km$^2$) & Mean radius (m)\\\midrule
-Full01 & 46.52 & 4.534 & 1183.6\\
-GMM & 45.22 & 3.079 & 989.5\\
+HSM-01 & 46.52 & 4.534 & 1183.6\\
+RDM & 45.22 & 3.079 & 989.5\\
 dt300 & 64.35 & 9.109 & 1692.8\\\bottomrule
 \end{tabular}\end{table}
-The dt300 disk is about twice Full's mean area, yet its inclusion rate
+The dt300 disk is about twice HSM's mean area, yet its inclusion rate
 remains below the nominal 90\%. A larger region can include more targets
-while its centre is less accurate. Conversely, GMM's smaller region does
+while its centre is less accurate. Conversely, RDM's smaller region does
 not by itself establish better uncertainty prediction. Coverage averages
 the same real target across five simulated disks in each block; there are
 46 targets per horizon, not 230 independent targets. At block level this

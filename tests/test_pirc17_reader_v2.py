@@ -7,6 +7,7 @@ import re
 
 import numpy as np
 import pytest
+from scripts.pirc17_figure_provenance import original_figure
 
 ROOT = Path(__file__).resolve().parents[1]
 PAPER = ROOT / "paper/pirc17"
@@ -40,13 +41,14 @@ def test_body_equation_matches_supplement_and_has_point_mass_exception(lang):
     eq = body.split(r"\label{eq:finite-es}", 1)[1].split(r"\end{equation}", 1)[0]
     assert r"\frac1{2N(N-1)}\sum_{i\ne j}" in eq
     assert "2N^2" not in eq
-    assert ("deterministic inertial" if lang == "en" else "确定性惯性") in body
+    assert ("deterministic CV" if lang == "en" else "确定性恒速参考（CV）") in body
     supplement = (PAPER / lang / "revision46-supplement-retained.tex").read_text(encoding="utf-8")
     assert "N(N-1)" in supplement
     assert all(r"\input{reader-v3-"+name+".tex}" in body for name in ("tradeoff", "calibration"))
     # Geometry/design remain in the supplement after reader-v3 convergence.
     supplement_entry = (PAPER / lang / "supplement.tex").read_text(encoding="utf-8")
-    assert all("reader-v2/"+name+".pdf" in supplement_entry for name in ("geometry", "design"))
+    figures = re.findall(r"\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}", supplement_entry)
+    assert {"geometry.pdf", "design.pdf"} <= {original_figure(PAPER, path).name for path in figures}
 
 
 def test_corrected_groups_and_plot_values_preserve_canonical_evidence():
