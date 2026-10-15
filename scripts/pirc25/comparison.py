@@ -11,10 +11,12 @@ from .figures import comparison_figures
 from .computation_plan import comparison_package_plan
 
 
-def compare_package(bundle, computation_ref, *, formal=False, max_operations=20_000_000):
-    plan = comparison_package_plan(bundle, max_operations)
+def compare_package(bundle, computation_ref, *, formal=False, max_operations=20_000_000,
+                    include_resource_summaries=False):
+    plan = comparison_package_plan(bundle, max_operations, include_resource_summaries=include_resource_summaries)
     decision = adjudicate(bundle, formal=formal, max_operations=plan["maximum_analysis_operations"])
-    descriptive = aggregate(bundle, formal=formal, descriptive_intervals=False)
+    descriptive = aggregate(bundle, formal=formal, descriptive_intervals=False,
+                            include_resource_summaries=include_resource_summaries)
     body = {key: value for key, value in descriptive.items() if key != "aggregate_hash"}
     body.update(adjudication=decision, computation_ref=computation_ref,
                 qualification="formal" if formal else "engineering-fixture")

@@ -132,6 +132,15 @@ resources or recalculate scientific scores. Legacy figure bytes stay unchanged
 without summaries. This display extension also requires the pending runtime
 summary/figure bridge before managed publication; it is not yet enabled there.
 
+The paper-side `compare_package(..., include_resource_summaries=True)` explicitly
+forwards the same opt-in through aggregate, CSV, evidence index and frozen figures.
+Its whole-package preflight includes bounded all-attempt source sorting and
+figure provenance work before statistical computation, without increasing the
+existing operation ceiling. Non-boolean flags and malformed/oversized resource
+histories are rejected. The default remains false and byte-compatible. This
+does not enable the flag in the runtime worker or grant permission to process
+real evidence outside that worker; the runtime bridge is still required.
+
 `--formal` also validates each successful cell's `pirc25-admission-v1` receipt:
 spec/cell/attempt identity, protocol and execution grant, actual input exposure
 events, frozen preregistration/history, package/upstream/command bindings, and
