@@ -1,0 +1,80 @@
+\paragraph{Question and comparable evidence.}
+The terrain branch asks whether fitted map-conditioned corrections improve
+on its history-only base, not whether ordinary HSM-SDE beats CV. All ten
+configurations were fitted and forecasts were executed. The original primary
+grid contains 2,300 distinct slots: 2,297 successful and three failed, with
+no pending or missing slots. To compare the same observations, we describe
+the intersection of 43 recording blocks for which all ten configurations
+have all five successful seed forecasts (2,150 slots). Three entire blocks
+are excluded from this post-hoc comparison; no failed result is set to zero
+or replaced. Selection uses execution status, not which model wins, but
+still conditions on successful execution. These summaries do not estimate
+performance on the original full 46-block population or replace its
+registered inference. Seeds are averaged within a block before blocks
+receive equal weight. All underlying scores and forecasts are unchanged.
+
+\paragraph{Overall combination: no descriptive aggregate gain.}
+On this common subset, all-terrain has average ES 482.06 m versus 455.08 m
+for base, a change of $+26.98$ m, and FDE 1459.37 versus 1420.37 m,
+a change of $+39.00$ m (Table~\ref{tab:terrain-description}). Its ES is
+higher at all four targets; the 30-minute difference is $+69.11$ m
+(Figure~\ref{fig:terrain-description}). Yet all-terrain has lower average
+ES in 22 of the 43 individual blocks. Thus the aggregate disadvantage
+coexists with heterogeneous local gains; selected successful case maps
+cannot establish an average terrain benefit. This is a descriptive result
+about this fitted combination on the selected subset, not a significant
+harm verdict or proof that terrain information is intrinsically unhelpful.
+
+\input{../figures/terrain-description-v1/summary-table-en.tex}
+\begin{figure}[!htbp]\centering
+\includegraphics[width=\linewidth]{../figures/terrain-description-v1/terrain-evidence.pdf}
+\caption{Existing terrain forecasts on the same post-hoc 43-block subset.
+Left: four horizon-specific ES differences from history-only base; negative
+is favourable. Middle: actual inclusion in nominal 90\% disks, with 90\%
+as the calibration target. Right: 30-minute predictive-mean error differences
+from base. All panels use identical blocks and equal five-seed/block
+weighting. LIO adds one group to base; LOO removes a group and dependent
+interactions from all-terrain. Panels compare configuration performance,
+not isolated factor effects. Missingness in the full grid is retained in
+Table~\ref{tab:terrain-description}; no inferential intervals are supplied.}
+\label{fig:terrain-description}\end{figure}
+
+\paragraph{Factor configurations: context and horizon matter.}
+Adding the road group alone increases average ES by 42.96 m relative to
+base; removing it from all-terrain decreases ES by 19.87 m. Both directions
+associate the current road representation with a score cost in these fitted
+configurations, not a general claim that roads cannot help prediction.
+The river-only configuration reduces 15-minute ES by 42.51 m but increases
+30-minute ES by 57.27 m relative to base. Its average ES change is only
+$+0.19$ m, whereas removing river from the full combination increases
+average ES by 16.22 m. A factor's standalone result therefore does not
+determine its role in the full configuration.
+
+Land-cover-only has the lowest average ES among the ten saved configuration
+means, 453.44 m, but the improvement over base is just 1.64 m; its FDE is
+5.96 m lower. Surface-only instead increases average ES by 7.58 m while
+lowering FDE by 10.09 m. These illustrate a small favourable configuration
+and a score--location trade-off, respectively, not confirmed factor
+superiority. Fits, diffusion, interactions and effective regularisation
+change across configurations, so these differences cannot be assigned to
+isolated causal terrain effects.
+
+\paragraph{Larger paired subsets and prediction-region limits.}
+As a descriptive sensitivity check, each candidate/control pair can retain
+all of its five-seed-complete blocks: 45 for comparisons involving a failed
+configuration, 46 for complete single-group/base pairs. All-terrain/base
+then changes ES by $+21.17$ m; road-only/base by $+41.18$ m; removing road
+by $-18.50$ m; and land-cover-only/base by $-3.81$ m. Those directions agree
+with the common-subset summaries. River-only/base changes from $+0.19$ to
+$-1.54$ m, showing the fragility of its near-zero average. The larger subsets
+also condition on success, use different blocks and cannot repair the
+missing full-cohort estimand or justify a global ranking.
+
+Thirty-minute nominal 90\% coverage spans only 40.47--52.09\% across the ten
+configurations on the common subset. All-terrain covers 40.47\% versus
+base's 46.05\%, despite slightly greater mean area, 5.609 versus 5.503
+km$^2$. Terrain conditioning has therefore not made the long-horizon disks
+empirically reliable in this comparison. Taken together, the saved data
+show configuration-dependent and horizon-dependent trade-offs, not a
+uniform gain from adding every terrain group. The registered full-family
+answer remains separately unavailable under the original rule below.

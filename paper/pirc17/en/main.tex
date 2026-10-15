@@ -25,7 +25,9 @@ error by 9.64 m. HSM-SDE's nominal 90\% prediction disk
 covers only 46.52\% of 30-minute targets. These are conditional descriptive
 findings: participant independence and physical clock provenance remain
 unverified, and the cohort was selected using future-route map support.
-Required forecast failures prevent terrain-family inference. The study
+Required forecast failures prevent registered terrain-family inference;
+a separate post-hoc 43-block comparison shows higher mean ES for all-terrain
+than its history-only base and horizon-dependent single-group trade-offs. The study
 identifies conditional long-horizon utility and design trade-offs, not the
 necessity of SDE complexity or a confirmed structural winner. It demonstrates
 an executable probabilistic forecasting procedure, but does not establish
@@ -81,7 +83,9 @@ of the existing evidence, not additional registered tests. We first define
 the recordings and forecast task, explain the model construction and
 evaluation criteria, then move from horizon-specific utility through design
 choices to region reliability. Terrain efficacy is reported separately as
-an unresolved question, not a demonstrated benefit of the ordinary SDE.
+an additional descriptive analysis with explicit complete-case selection;
+its unavailable registered inference is not treated as absence of results
+or as a demonstrated benefit of the ordinary SDE.
 
 \section{Data and predictive procedures}\label{sec:data}\hypertarget{sec:protocol}{}
 \input{reader-v4-task.tex}
@@ -364,7 +368,7 @@ The 600 s procedure also has a larger thirty-minute mean area
 evidence of calibrated uncertainty or improved mean location. No radius
 or parameter is retuned after inspection of this cohort.
 
-\subsection{Inference qualification and unresolved terrain efficacy}\label{sec:terrain-results}\hypertarget{sec:terrain-results}{}
+\subsection{Qualification of the registered method comparisons}
 Of the 21 registered primary method contrasts, 14 have practically
 equivalent and seven inconclusive finite-algorithm states; no original
 simultaneous interval lies wholly beyond the practical-benefit or harm
@@ -375,6 +379,9 @@ is $[-21.22,16.33]$ m. Seed-direction agreement does not resolve uncertainty
 across recording blocks. Complete effects, seeds and qualification reasons
 are retained in Supplement Table~\href{supplement.pdf\#tab:preliminary-method-effects}{25}
 and the accompanying qualification discussion.
+
+\subsection{What the saved terrain predictions show}\label{sec:terrain-results}\hypertarget{sec:terrain-results}{}
+\input{reader-v6-terrain-results.tex}
 
 Three required primary terrain forecasts failed: all-terrain once and
 LIO-river/LIO-road once each. LOO means leave-one-group-out and LIO means
@@ -455,6 +462,13 @@ limit component attribution. The missing matched probabilistic baseline
 precludes a claim that complex stochastic structure is necessary. None of
 these limitations is removed by reproducing saved numerical summaries.
 
+The descriptive terrain analysis gives a more specific development target:
+the current all-terrain combination is not uniformly helpful, road-group
+contrasts show a score cost, and river-group behaviour changes with horizon
+and configuration context. Land-cover-only shows a small favourable mean,
+not an established winner. Improving representation and matched fitting
+is therefore a more focused question than simply adding all available maps.
+
 Future work should compare a task-matched probabilistic motion baseline,
 align mode labels before transfer and calibration, and evaluate calibration
 of the actual multi-step distribution. Terrain comparisons require complete
@@ -481,10 +495,15 @@ evidence of a trustworthy prediction region.
 
 For the original questions, RQ1 yields 14 practically equivalent and seven
 inconclusive finite-procedure contrasts, with all resolution-invariant
-judgements inconclusive. RQ2 remains unavailable because required terrain
-forecasts failed under the registered complete-family rule. The learned
-terrain mechanism is specified, but its specification is not evidence of
-terrain efficacy. These results justify reporting horizon-specific ES,
+judgements inconclusive. The registered inferential answer to RQ2 remains
+unavailable because required terrain forecasts failed. A separate post-hoc
+answer is nevertheless available from existing predictions: on 43 jointly
+complete blocks, all-terrain raises average ES by 26.98 m and FDE by 39.00 m
+relative to its history base; road, river and land-cover configurations show
+different context/horizon trade-offs, and no configuration's thirty-minute
+90\% coverage exceeds 52.09\%. These are selected-subset configuration
+descriptions, not full-cohort causal factor effects or registered superiority.
+These results justify reporting horizon-specific ES,
 mean-position error, coverage and area together; they do not establish
 general algorithm superiority, the necessity of stochastic complexity or
 an operational search guarantee. Unverified carrier identity and clock
