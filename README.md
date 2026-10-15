@@ -124,6 +124,14 @@ The runtime import bridge must support these new fields before enabling them
 for managed study publication; do not run an unmetered real-data transform or
 reinterpret the existing budget charge as this pipeline timing.
 
+When an authenticated aggregate contains the opt-in summaries, the frozen
+comparison renderer copies them into each figure's source metadata and labels
+observed pipeline wall/CPU nanoseconds, maximum observed lifetime self-RSS bytes,
+partial/unknown coverage and failed/resumed attempts. It does not re-observe
+resources or recalculate scientific scores. Legacy figure bytes stay unchanged
+without summaries. This display extension also requires the pending runtime
+summary/figure bridge before managed publication; it is not yet enabled there.
+
 `--formal` also validates each successful cell's `pirc25-admission-v1` receipt:
 spec/cell/attempt identity, protocol and execution grant, actual input exposure
 events, frozen preregistration/history, package/upstream/command bindings, and

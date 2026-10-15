@@ -26,7 +26,11 @@ def comparison_figures(aggregate, *, maximum_figures=257, maximum_operations=20_
     horizons = sorted({str(arm["comparison_dimensions"]["horizon"]) for arm in arms
                        if "horizon" in arm["comparison_dimensions"]})
     selections = [None, *horizons]
-    operations = len(selections) * (256 + sum(8 + 8 * len(arm["metrics"]) for arm in arms))
+    resource_operations = sum(64 + 4 * sum(len(summary[key]) for key in
+        ("source_artifact_ids", "source_publication_event_hashes", "unavailable_attempt_ids",
+         "memory_unavailable_attempt_ids")) for arm in arms
+        if (summary := arm.get("resource_usage_summary")) is not None)
+    operations = len(selections) * (256 + resource_operations + sum(8 + 8 * len(arm["metrics"]) for arm in arms))
     if (type(maximum_figures) is not int or not 0 < maximum_figures <= 257 or
             len(selections) > maximum_figures or type(maximum_operations) is not int or
             not 0 < maximum_operations <= 20_000_000 or operations > maximum_operations or
@@ -44,7 +48,9 @@ def comparison_figures(aggregate, *, maximum_figures=257, maximum_operations=20_
             "adjudication": decision, "computation_ref": aggregate.get("computation_ref"),
             "cost_source": "resolve-computation-ref-after-settlement",
             "strata": [{"stratum_id": arm["stratum_id"], "dimensions": arm["comparison_dimensions"],
-                        "units": arm["metric_units"], "cost": arm["cost"]} for arm in selected]}
+                        "units": arm["metric_units"], "cost": arm["cost"],
+                        **({"resource_usage_summary": arm["resource_usage_summary"]}
+                           if "resource_usage_summary" in arm else {})} for arm in selected]}
         metadata_text = _encoded(metadata)
         estimated_bytes = len(escape(metadata_text).encode("utf-8")) + 512
         def require_capacity():
@@ -79,6 +85,21 @@ def comparison_figures(aggregate, *, maximum_figures=257, maximum_operations=20_
                 label(f"{metric}: {value} {unit} · cells {arm['successful_cells']}/{arm['expected_cells']}")
                 groups.setdefault((metric, unit), []).append((arm, value))
             label("Frozen cost (all attempts): " + _encoded(arm["cost"]))
+            if "resource_usage_summary" in arm:
+                summary = arm["resource_usage_summary"]
+                def observed(value, unit):
+                    return "unavailable" if value is None else f"{value} {unit}"
+                duration_status = "complete" if summary["duration_complete"] else "partial; full totals unknown"
+                memory_status = "complete" if summary["memory_complete"] else "partial"
+                label("Pipeline duration: observed wall=" + observed(summary["observed_pipeline_wall_ns"], "ns")
+                      + "; CPU=" + observed(summary["observed_pipeline_cpu_ns"], "ns") + "; " + duration_status)
+                label("Observed self-process lifetime RSS maximum="
+                      + observed(summary["maximum_observed_self_peak_bytes"], "bytes") + "; " + memory_status)
+                label("Includes imports/dependencies; not solver-only; not tree peak; not additive")
+                label(f"Resource coverage: observed attempts={summary['observed_attempt_count']}; "
+                      f"unavailable attempts={len(summary['unavailable_attempt_ids'])}; "
+                      f"unattempted cells={summary['unattempted_cell_count']}; "
+                      f"legacy-unavailable cells={summary['legacy_unavailable_cell_count']}; includes failed/resumed attempts")
         if decision:
             label(f"Adjudication: {decision['status']} · {decision['qualification']} · {decision['compare_hash']}")
             label("Full fixed comparison family; horizon selection never recalculates decisions. NO_GAIN is not equivalence.")
