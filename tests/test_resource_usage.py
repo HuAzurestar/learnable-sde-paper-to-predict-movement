@@ -77,3 +77,17 @@ def test_registered_policy_cannot_lose_history_or_invent_a_measurement(mutation)
         row["resource_usage"]["peak_resident_bytes"] = 0
     with pytest.raises(ValueError, match="resource evidence"):
         validate_resources(row, bundle)
+
+
+@pytest.mark.parametrize("mutation", ["absent-cell", "empty-cell", "stripped-policy"])
+def test_registered_source_policy_cannot_be_downgraded_by_stripping_row_fields(mutation):
+    from copy import deepcopy
+    _, spec, cell, _ = fixture()
+    row = {"cell_hash": fingerprint(cell), "history": [], "cost": {"sources": []}}
+    if mutation != "absent-cell":
+        row["registered_cell"] = {} if mutation == "empty-cell" else deepcopy(cell)
+        if mutation == "stripped-policy":
+            del row["registered_cell"]["resource_observation_policy"]
+    bundle = {"registered_spec": spec, "spec_hash": fingerprint(spec), "study_id": spec["study_id"], "code_hash": spec["code_hash"]}
+    with pytest.raises(ValueError, match="resource evidence"):
+        validate_resources(row, bundle)

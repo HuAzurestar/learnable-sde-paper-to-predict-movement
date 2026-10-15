@@ -98,11 +98,17 @@ def validate_resources(row, bundle):
 
 def _validate(row, bundle):
     cell = row.get("registered_cell", {})
-    required = "resource_observation_policy" in cell
+    spec = bundle.get("registered_spec")
+    # Row-level fields are not the authority for opting out. Otherwise removing
+    # both registered_cell and resource_usage would launder a new registered
+    # measurement obligation into the intentionally permissive legacy path.
+    source_required = type(spec) is dict and any(
+        "resource_observation_policy" in c and fingerprint(c) == row["cell_hash"]
+        for c in spec.get("cells", []))
+    required = source_required or "resource_observation_policy" in cell
     if not required:
         require("resource_usage" not in row, "unregistered observation")
         return
-    spec = bundle["registered_spec"]
     require(fingerprint(spec) == bundle["spec_hash"] and fingerprint(cell) == row["cell_hash"]
             and sum(canonical(c) == canonical(cell) for c in spec["cells"]) == 1
             and all(spec[k] == bundle[k] for k in ("study_id", "code_hash")), "registered observation source")
