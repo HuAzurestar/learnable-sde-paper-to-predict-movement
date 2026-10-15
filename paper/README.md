@@ -1,6 +1,43 @@
 # Paper sources and review manuscripts
 
-## Current PIRC-17 manuscript: reader-v6 terrain evidence
+## Current PIRC-17 manuscript: reader-v7 direct conclusions
+
+The active wording goal is implemented in both languages. C1 directly says
+CV is better at 1/5 saved minutes and HSM-SDE at 15/30, with better defined as
+lower average ES. C2 names the main HSM-SDE comparator instead of requiring a
+reader to interpret Full01. Observation interval and training/adaptation
+now have separate conclusions. C4 explains the nominal 90% circle from 512
+simulated positions, empirical actual-target coverage, centre error and area,
+including why city-sized circles and biased centres can be unhelpful.
+C5 directly states the four current-terrain results and keeps suspected
+terrain-handling problems as an unverified explanation, not a proven cause.
+Inference qualification is labelled separately from empirical findings.
+
+| Language | Main paper | Scientific supplement | Audit record |
+| --- | --- | --- | --- |
+| Chinese | [19-page paper](pirc17/revision46-review-v7/zh/main.pdf) | [78-page supplement](pirc17/revision46-review-v7/zh/supplement.pdf) | [15-page record](pirc17/revision46-review-v7/zh/audit-notes.pdf) |
+| English | [20-page paper](pirc17/revision46-review-v7/en/main.pdf) | [80-page supplement](pirc17/revision46-review-v7/en/supplement.pdf) | [16-page record](pirc17/revision46-review-v7/en/audit-notes.pdf) |
+
+See Chinese p7 for the metric explanation and p16 for the direct conclusion
+paragraphs. Keep same-language PDFs together for companion links.
+The [build manifest](pirc17/revision46-review-v7/build-manifest.json) binds
+clean reviewed source307f96286cb196a455793949161155ea184286a9 and exact inputs/PDFs.
+Rebuild with `scripts/build_pirc17_revision46.py --output-dir <fresh-external-directory>`.
+The [claim contract](pirc17/reader-v7-claims.json) records every requested
+statement and the [review receipt](pirc17/reader-v7-editorial-record.json)
+records a fresh actual gpt-6-astra/high/read-only ACP 9-call review, with no
+substantive P1/P2 omission against this wording goal. Actual EN/ZH metric,
+results and conclusion pages were checked; this was not another scalar audit.
+
+All 12 strict public/local builds and page bounds and 59 companion links pass;
+53 focused checks pass. The [regression comparison](pirc17/reader-v7-regression-check.json)
+reports 1017 PASS/25 FAIL/2 ERROR with no new failure/error identities, not a green
+whole suite. Original five figures/three tables, all 50 supplement tables,
+numeric evidence and inference rules are unchanged. Local ZH 27/EN 28-page
+bodies retain six unchanged private maps, not published. Formal declarations
+and human acceptance remain distinct from this completed wording objective.
+
+## Previous reader-v6 terrain evidence (superseded)
 
 The terrain branch now has substantive results, not only an unavailable-
 inference statement. A new ten-configuration table and three-panel figure
@@ -374,3 +411,4 @@ git push origin main
 The workflow's public-boundary check runs before either PDF build and before
 the release job. Do not use this branch to carry datasets, trajectories,
 checkpoints, logs, or private material.
+The [claim contract](pirc17/reader-v7-claims.json) records every requested
