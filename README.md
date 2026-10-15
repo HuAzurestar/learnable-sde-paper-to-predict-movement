@@ -257,6 +257,27 @@ validates qualified source admission. They are inputs to the runtime's budgeted
 managed adjudication and its settled `ComputationReceipt.json`; removing their
 proof fields cannot turn a rehashed descriptive package into formal evidence.
 
+## Saved path-pilot reports (not production admission)
+
+The Runtime opt-in `export --include-path-pilot-evidence` transports actual saved
+pilot result bytes and their native execution/cost sources in a new immutable
+bundle. Legacy scalar-only exports remain readable but cannot verify these
+reports. With the trusted owner's expected hash, run:
+
+```console
+python scripts/pirc25/validate_path_pilots.py /absolute/runtime/pilot-proof.json --expected-hash BUNDLE_HASH
+```
+
+This stdlib-only reader verifies the complete registered matrix and saved
+numerical PASSED/FAILED classifications, sufficient statistics, frozen policy,
+certificates and whole-worker stop/settlement evidence. It never imports the
+Runtime, samples paths, recomputes a matrix/CDF reference or opens a data grant.
+Failed/missing computations stay explicit. Pilot results remain fixture and
+scientifically unqualified; production-source admission still requires PASSED
+through its separate existing contract. No statistical adjudication or
+full-distribution guarantee follows from this report. Actual comparisons and
+figures still require a funded managed job. Keep authorized bundles outside Git.
+
 ## CI/CD and releases
 
 Pull requests to `main` run validation only. When one is merged, GitHub pushes
