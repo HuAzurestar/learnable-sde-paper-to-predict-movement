@@ -1,6 +1,58 @@
 # Paper sources and review manuscripts
 
-## Current PIRC-17 manuscript: reader-v8 code-verified methods
+## Current PIRC-17 manuscript: reader-v9 terrain factors and unified names
+
+Model design, fitting and forecasting now form one subsection with three
+nested parts and the full HSM/RDM names. The separate map-factor subsection
+defines selected road, river, land-cover and surface inputs, with two main
+tables: actual expressions and the ten base/all/LOO/LIO configurations.
+Road/river direction points towards the nearest feature, not along it;
+river has no selected direct history-velocity product. Surface/history
+projections and cover/road products, their dependencies, masks, dimensions
+and refitting scope are explicit. The ordinary solar proxy is not terrain.
+
+| Language | Main paper | Scientific supplement | Audit record |
+| --- | --- | --- | --- |
+| Chinese | [Current paper](pirc17/revision46-review-v9/zh/main.pdf) | [Scientific supplement](pirc17/revision46-review-v9/zh/supplement.pdf) | [Audit and identity crosswalk](pirc17/revision46-review-v9/zh/audit-notes.pdf) |
+| English | [Current paper](pirc17/revision46-review-v9/en/main.pdf) | [Scientific supplement](pirc17/revision46-review-v9/en/supplement.pdf) | [Audit and identity crosswalk](pirc17/revision46-review-v9/en/audit-notes.pdf) |
+
+The current scientific source graph uses 19 newly rendered versions of the
+same original figures, not additional experiments or figures. Main papers
+retain five figures and now have six tables (two added definition tables);
+each scientific supplement retains 17 figures and all 50 tables.
+HSM/RDM/CV and descriptive variant names are consistent across figures and
+table display projections. Original saved IDs, data keys and archived assets
+remain unchanged and are explained in the audit record, not used as current
+model names. The owner-only assembly applies the same policy to case text;
+its six original map files remain private and unchanged.
+
+Rerender from the original plotting functions and unchanged public aggregates:
+
+```console
+python -m scripts.render_pirc17_reader_v9 --output-dir <fresh-external-directory>
+```
+
+The output contains 19 PDF/PNG pairs, two terrain tables, 20 supplementary
+TeX display projections, four unchanged numeric rows with current labels,
+and a [presentation manifest](pirc17/figures/reader-v9/manifest.json).
+Repeated runs are byte-identical across all 62 outputs. Scientific line,
+scatter and heatmap artist data are hashed before/after renaming and remain
+identical; old renderers are preserved for provenance. The current
+[name policy](../scripts/pirc17_display_names.py) is shared by plotted text,
+tick formatters, table labels and owner-only case assembly. The
+[terrain contract](pirc17/reader-v9-terrain-contract.json) binds definitions
+to actual selected feature/code/configuration identities.
+
+The [build manifest](pirc17/revision46-review-v9/build-manifest.json),
+[review record](pirc17/reader-v9-editorial-record.json) and
+[complete regression comparison](pirc17/reader-v9-regression-check.json)
+record the actual checked source, PDFs, scope and outcomes. Rebuild all six
+public documents with `scripts/build_pirc17_revision46.py --output-dir
+<fresh-external-directory>`. No scientific fit, forecast, particle score,
+inference rule, map query or private publication was added. Formal declarations
+and human acceptance remain separate from this editorial revision.
+
+## Previous reader-v8 code-verified methods (superseded)
 
 The main paper now explicitly separates baselines and shared model structure,
 training groups and parameter estimation, and forecasting/component updates.
