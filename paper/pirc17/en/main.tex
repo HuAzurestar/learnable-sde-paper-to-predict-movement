@@ -3,6 +3,7 @@
 \input{../reader-v9-number-labels.tex}
 \title{Horizon-dependent Benefits and Reliability Limits\\of Mixture-SDE Movement Forecasting}
 \begin{document}
+\pagestyle{plain}
 \maketitle
 \begin{abstract}
 A movement forecast can improve its distributional score without locating
@@ -442,6 +443,7 @@ complete primary method families. Failure identities and logging limits
 are in the \audit{sec:terminal-failures}; missing exception stacks prevent
 attributing a specific technical cause.
 
+\FloatBarrier
 \section{Discussion}\hypertarget{sec:discussion-score}{}
 \subsection{What the model description lets us interpret}
 The task definition connects the horizon result to the two reference
@@ -533,45 +535,58 @@ clock-source verification are needed for broader inference. These are
 unexecuted studies, not results or editorial repairs supplied here.
 
 \section{Conclusion}
-\paragraph{Which model is better, and when.}
+The saved forecasts support the following six experimental conclusions,
+each with its own comparison metric and scope.
+\begin{enumerate}
+\renewcommand{\labelenumi}{\arabic{enumi}.}
+\item \textbf{Horizon determines the ES ordering of HSM and CV.}
 In this 46-block saved-clock evaluation, CV is better at 1 and 5 minutes;
 HSM-SDE is better at 15 and 30 minutes. ``Better'' here means lower average ES.
 
-\paragraph{RDM-SDE versus the main HSM-SDE model.}
+\item \textbf{Saved means favour RDM, without a confirmed consistent advantage.}
 RDM-SDE has lower average ES and thirty-minute mean-position error than
 the main HSM-SDE model. Its ES difference interval includes zero, so the
 observed means favour RDM-SDE without establishing a consistent ES advantage.
 
-\paragraph{Observation interval.}
+\item \textbf{Longer observation intervals improve ES but can sacrifice final location.}
 The 120 and 300 s configurations have lower average ES than the 60 s
 reference, but the 300 s configuration has higher final mean-position
 error. Its score improvement therefore comes with a location cost.
+The 300 s configuration lowers average ES by 23.40 m but increases final
+mean-position error by 9.64 m; the observation interval is not the integration step.
 
-\paragraph{Training and adaptation strategies.}
+\item \textbf{The examined added training/adaptation strategies show no clear ES gain.}
 The examined variants change average ES only slightly relative to the
 original training/adaptation procedure; no additional ES decrease is
 confirmed. This concerns changing those strategies, not whether training
 itself is useful.
 
-\paragraph{Prediction regions.}
+\item \textbf{Generating probabilistic forecasts does not establish reliable regions.}
 HSM-SDE's thirty-minute nominal 90\% disks achieve empirical coverage of
 only 46.52\%, rather than approximately 90\%. Their reported containment
 promise is not met. Mean-position error, coverage and area must be read
 together: a larger circle can cover more targets without locating them well.
 
-\paragraph{Terrain configurations.}
+\item \textbf{Terrain gains depend on horizon and context; combining all groups gives no average gain.}
 On the post-hoc 43-block common subset, the current all-terrain configuration
 is worse than its history base on both average ES ($+26.98$ m) and
 thirty-minute mean-position error ($+39.00$ m). Simply adding all terrain
 features has not produced an average gain in this implementation. Adding
 the current road features accompanies worse scores; removing them improves
-scores. The river-only configuration's 15-minute gain does not extend to
-30 minutes. Adding land cover alone lowers average ES by 1.64 m and final
+scores. Adding river alone lowers 15-minute ES by 42.51 m but increases
+30-minute ES by 57.27 m: the gain does not extend from 15 to 30 minutes.
+Adding land cover alone lowers average ES by 1.64 m and final
 mean-position error by 5.96 m, a small favourable mean result. No configuration's
 thirty-minute nominal 90\% coverage exceeds 52.09\% on this subset.
 The evaluation has not established that terrain information reliably helps
 forecasting. It raises the possibility of shortcomings in current terrain
 handling, but does not establish that explanation as a cause.
+\end{enumerate}
+
+In summary, this evaluation establishes that the mixture-SDE pipeline can
+generate probabilistic forecasts and lower average ES relative to CV at
+15 and 30 minutes. It establishes neither superiority to a simple
+probabilistic motion baseline nor reliable long-horizon prediction regions.
 
 \paragraph{Inference qualification, not an additional finding.}
 RQ1 yields 14 practically equivalent and seven inconclusive finite-procedure
