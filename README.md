@@ -97,6 +97,21 @@ CSV and evidence claims carry the same `slot-ms` charged/reserved/measured value
 unknown measured cost remains null and legacy absent costs remain unavailable.
 These are frozen export costs, not a query of the runtime's current arm balance.
 
+Opt-in propagation resource observations are separately validated for every
+attempt, including failures and linked checkpoint resumes. `resource_usage`
+binds the frozen measurement policy, original attempt/code/result, bounded
+artifact bytes and native-stop-before-settlement-before-publication evidence.
+Pipeline wall/CPU duration is in nanoseconds; CPU covers all process threads
+and may exceed wall time. Native peak RSS is in bytes and covers the current
+worker process lifetime through the observation, including imports: it is not
+a solver-only delta, process-tree peak or configured memory limit. Resume
+observations exclude prior attempts; their peaks must not be added together.
+Unavailable observations remain null with a reason. Legacy bundles remain
+valid without invented measurements. These per-attempt records stay in the
+source bundle; the cost aggregate does not silently turn them into RSS sums
+or solver-speed claims. Offline validation checks frozen internal consistency;
+the expected bundle hash must still come from a trusted transport boundary.
+
 `--formal` also validates each successful cell's `pirc25-admission-v1` receipt:
 spec/cell/attempt identity, protocol and execution grant, actual input exposure
 events, frozen preregistration/history, package/upstream/command bindings, and

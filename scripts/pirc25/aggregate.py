@@ -24,12 +24,14 @@ if __package__:
     from .admission import validate_admission
     from .dimensions import comparison_dimensions
     from .costs import validate_cost, summarize_cost
+    from .resource_usage import validate_resources
     from .output_eligibility import comparison_eligible, path_output_counts
     from .calibrated_study import validate_calibration_table
 else:
     from admission import validate_admission
     from dimensions import comparison_dimensions
     from costs import validate_cost, summarize_cost
+    from resource_usage import validate_resources
     from output_eligibility import comparison_eligible, path_output_counts
     from calibrated_study import validate_calibration_table
 
@@ -65,6 +67,7 @@ def validate_bundle(bundle, *, formal=False):
     cost_sources = set()
     for cell in rows.values():
         validate_cost(cell, bundle, cost_sources)
+        validate_resources(cell, bundle)
         if any(cell[key] != expected[cell["cell_hash"]][key] for key in ("arm_id", "block_id", "seed")):
             raise ValueError("cell identity changed")
         dimensions = comparison_dimensions(cell)
