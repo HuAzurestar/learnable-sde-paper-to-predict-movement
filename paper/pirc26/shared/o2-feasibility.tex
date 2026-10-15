@@ -1,6 +1,6 @@
 \begin{tabular}{r r r r r r}
 \toprule
-seed & $\Delta t$(s) & updates & fit(s) & lifetime RSS(MiB) & FD pass \\
+\reportlabel{\shortstack{Random\\seed}}{\shortstack{随机种子}} & \reportlabel{\shortstack{Time step\\(s)}}{\shortstack{时间步长\\（秒）}} & \reportlabel{\shortstack{Updates}}{\shortstack{更新次数}} & \reportlabel{\shortstack{Fit time\\(s)}}{\shortstack{拟合耗时\\（秒）}} & \reportlabel{\shortstack{Process lifetime\\peak resident memory\\(MiB)}}{\shortstack{进程生命周期\\峰值驻留内存\\（MiB）}} & \reportlabel{\shortstack{Gradient coordinates\\passing finite differences}}{\shortstack{通过有限差分检查\\的参数坐标数}} \\
 \midrule
 26101411 & 0.25 & 12 & 97.263 & 683.6 & 4 \\
 26101411 & 0.125 & 12 & 196.089 & 699.3 & 4 \\

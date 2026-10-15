@@ -42,8 +42,8 @@ class ReleaseTests(unittest.TestCase):
             self.assertEqual(len(re.findall(r'\\tabfile\{([^}]+)\}', text)), 7)
 
     def test_relative_recovery_not_absolute(self):
-        self.assertIn('relative residual-field RMSE', (PAPER / 'en/main.tex').read_text(encoding='utf8'))
-        self.assertIn('相对残差场 RMSE', (PAPER / 'zh/main.tex').read_text(encoding='utf8'))
+        self.assertIn('relative residual-field root-mean-square error', (PAPER / 'en/main.tex').read_text(encoding='utf8'))
+        self.assertIn('相对残差场均方根误差', (PAPER / 'zh/main.tex').read_text(encoding='utf8'))
 
     def test_rehashed_permission_promotion_rejected(self):
         for mutate in (lambda v: v['review'].update(raw_model_test_disclosure=True),

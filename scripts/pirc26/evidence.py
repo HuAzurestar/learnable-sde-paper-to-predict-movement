@@ -161,6 +161,11 @@ def table(columns, rows):
     return '\\begin{tabular}{' + ' '.join('r' for _ in columns) + '}\n\\toprule\n' + ' & '.join(columns) + ' \\\\\n\\midrule\n' + ''.join(' & '.join(map(str, row)) + ' \\\\\n' for row in rows) + '\\bottomrule\n\\end{tabular}\n'
 
 
+def report_label(english, chinese):
+    """Both editions select their own readable label from the same numeric table."""
+    return r'\reportlabel{\shortstack{' + english + r'}}{\shortstack{' + chinese + '}}'
+
+
 def render_tables(value):
     validate_summary(value)
     files = {}
@@ -171,7 +176,13 @@ def render_tables(value):
         rows.append([row['horizon_seconds'], row['paired_original_units'], row['paired_successful_segments'],
             number(e['M0_unit_mean']), number(e['M2_unit_mean']), number(e['M2_minus_M0_unit_mean']),
             '[' + ', '.join(number(x) for x in interval) + ']'])
-    files['real-energy.tex'] = table(['$h$(s)', '$n$', '$C$', 'M0 (m)', 'M2 (m)', '$\\Delta$(m)', 'conditional 95\\% interval'], rows)
+    label = report_label
+    horizon = label(r'Forecast\\horizon (s)', r'预测时域\\（秒）')
+    files['real-energy.tex'] = table([horizon, label('Sources', '来源数'), label('Segments', '片段数'),
+        label(r'Affine Energy\\score (m)', r'仿射基线\\Energy分数（米）'),
+        label(r'Neural Energy\\score (m)', r'神经残差\\Energy分数（米）'),
+        label(r'Neural minus\\affine (m)', r'神经残差减\\仿射基线（米）'),
+        label(r'Conditional 95\%\\interval (m)', r'条件95\%\\区间（米）')], rows)
     rows = []
     for i, h in enumerate((10, 30, 60)):
         left = value['real_diagnostics']['M0'][i]['equal_original_unit_metrics']
@@ -179,26 +190,57 @@ def render_tables(value):
         rows.append([h, number(left['marginal_x_coverage_0.95'], 6), number(left['marginal_y_coverage_0.95'], 6),
             number(right['marginal_x_coverage_0.95'], 6), number(right['marginal_y_coverage_0.95'], 6),
             number(left['paired_endpoint_position_rms_m']), number(right['paired_endpoint_position_rms_m'])])
-    files['real-calibration.tex'] = table(['$h$(s)', 'M0 $c_x$', 'M0 $c_y$', 'M2 $c_x$', 'M2 $c_y$', 'M0 RMS(m)', 'M2 RMS(m)'], rows)
-    files['m1-recovery.tex'] = table(['model', 'fits', 'rollouts', 'matched pass', 'matched total', 'condition max'],
-        [[family, m['aggregate']['measured_fits'], m['aggregate']['measured_rollouts'], m['aggregate']['matched_recovery_passes'],
+    files['real-calibration.tex'] = table([horizon,
+        label(r'Affine\\x coverage', r'仿射基线\\横坐标覆盖比例'),
+        label(r'Affine\\y coverage', r'仿射基线\\纵坐标覆盖比例'),
+        label(r'Neural\\x coverage', r'神经残差\\横坐标覆盖比例'),
+        label(r'Neural\\y coverage', r'神经残差\\纵坐标覆盖比例'),
+        label(r'Affine endpoint\\grid discrepancy (m)', r'仿射基线终点\\网格差异（米）'),
+        label(r'Neural endpoint\\grid discrepancy (m)', r'神经残差终点\\网格差异（米）')], rows)
+    basis_names = {'M1-R': label(r'Gaussian radial\\basis residual', r'高斯径向基\\残差模型'),
+                   'M1-S': label(r'Cubic spline\\residual', r'三次样条\\残差模型')}
+    files['m1-recovery.tex'] = table([label('Model', '模型'), label('Fits', '拟合次数'),
+        label('Rollouts', '滚动预测次数'), label(r'Matched settings\\passing both thresholds', r'同时满足两阈值\\的匹配设置数'),
+        label(r'Matched settings\\tested', r'匹配设置\\总数'), label(r'Maximum design\\condition number', r'设计矩阵\\最大条件数')],
+        [[basis_names[family], m['aggregate']['measured_fits'], m['aggregate']['measured_rollouts'], m['aggregate']['matched_recovery_passes'],
           m['aggregate']['matched_teacher_rows'], number(m['aggregate']['condition_number_max'])] for family, m in sorted(value['M1'].items())])
-    files['o2-feasibility.tex'] = table(['seed', '$\\Delta t$(s)', 'updates', 'fit(s)', 'lifetime RSS(MiB)', 'FD pass'],
+    files['o2-feasibility.tex'] = table([label(r'Random\\seed', r'随机种子'), label(r'Time step\\(s)', r'时间步长\\（秒）'),
+        label('Updates', '更新次数'), label(r'Fit time\\(s)', r'拟合耗时\\（秒）'),
+        label(r'Process lifetime\\peak resident memory\\(MiB)', r'进程生命周期\\峰值驻留内存\\（MiB）'),
+        label(r'Gradient coordinates\\passing finite differences', r'通过有限差分检查\\的参数坐标数')],
         [[r['seed'], r['step_seconds'], r['fit']['steps'], number(r['fit']['wall_seconds']),
           number(r['resources']['peak_resident_bytes'] / 1048576, 1), sum(c['passed'] for c in r['gradient_checks'])]
          for r in value['O2']['rows']])
     rows = []
     for r in value['gradient_routes']['rows']:
         direct, candidate = r['helpers']['direct'], r['helpers']['candidate']
-        rows.append([r['seed'], r['step_seconds'], r['route'], f"{r['gradient_relative_l2']:.3e}",
+        route_name = (label(r'Reversible\\Heun adjoint', r'可逆Heun\\伴随求导') if r['route'] == 'G2'
+                      else label(r'Continuous\\midpoint adjoint', r'中点法\\连续伴随求导'))
+        rows.append([r['seed'], r['step_seconds'], route_name, f"{r['gradient_relative_l2']:.3e}",
             number(direct['benchmark_wall_seconds']), number(candidate['benchmark_wall_seconds']),
             number(direct['resources']['peak_resident_bytes'] / 1048576, 1),
             number(candidate['resources']['peak_resident_bytes'] / 1048576, 1)])
-    files['gradient-routes.tex'] = table(['seed', '$\\Delta t$', 'route', 'rel.$\\ell_2$', 'direct(s)', 'candidate(s)', 'direct MiB', 'candidate MiB'], rows)
-    files['costs.tex'] = table(['arm', 'charged slot-s', 'cap slot-s'], [[arm.replace('_', '\\_'),
+    files['gradient-routes.tex'] = table([label(r'Random\\seed', r'随机种子'), label(r'Time step\\(s)', r'时间步长\\（秒）'),
+        label(r'Adjoint\\method', r'伴随求导\\方法'), label(r'Relative gradient\\Euclidean-norm error', r'梯度相对\\欧氏范数误差'),
+        label(r'Direct differentiation\\time (s)', r'直接反向传播\\耗时（秒）'),
+        label(r'Adjoint differentiation\\time (s)', r'伴随求导\\耗时（秒）'),
+        label(r'Direct process\\peak memory (MiB)', r'直接反向传播\\峰值内存（MiB）'),
+        label(r'Adjoint process\\peak memory (MiB)', r'伴随求导\\峰值内存（MiB）')], rows)
+    arm_names = {
+        'pirc26-m0-o1': label(r'Affine increment fitting\\and shared analysis', r'仿射增量拟合\\及共享分析'),
+        'pirc26-m1-r-o1': label(r'Gaussian radial basis\\increment fitting', r'高斯径向基\\增量拟合'),
+        'pirc26-m1-s-o1': label(r'Cubic spline\\increment fitting', r'三次样条\\增量拟合'),
+        'pirc26-m2-o1': label(r'Neural residual\\increment fitting', r'神经残差\\增量拟合'),
+        'pirc26-m2-o2': label(r'Neural residual\\marginal-score fitting', r'神经残差\\边际评分拟合')}
+    files['costs.tex'] = table([label('Computation', '计算任务'), label(r'Charged slot\\seconds', r'累计计费\\槽秒'),
+        label(r'Cap in slot\\seconds', r'槽秒上限')], [[arm_names[arm],
         number(sum(r['charged_ms'] for r in value['cost_snapshot'] if r['arm_id'] == arm) / 1000), '86400']
         for arm in sorted({r['arm_id'] for r in value['cost_snapshot']})])
-    files['fde-mc.tex'] = table(['$h$(s)', 'M0 FDE(m)', 'M2 FDE(m)', 'M0 point SE(m)', 'M2 point SE(m)'],
+    files['fde-mc.tex'] = table([horizon,
+        label(r'Affine\\mean endpoint\\error (m)', r'仿射基线\\平均终点误差（米）'),
+        label(r'Neural\\mean endpoint\\error (m)', r'神经残差\\平均终点误差（米）'),
+        label(r'Affine pointwise\\jackknife standard\\error mean (m)', r'仿射基线逐点评分\\刀切法标准误均值（米）'),
+        label(r'Neural pointwise\\jackknife standard\\error mean (m)', r'神经残差逐点评分\\刀切法标准误均值（米）')],
         [[r['horizon_seconds'], number(r['metrics']['fde_m']['M0_unit_mean']), number(r['metrics']['fde_m']['M2_unit_mean']),
           number(value['real_diagnostics']['M0'][i]['equal_original_unit_metrics']['mean_pointwise_energy_jackknife_se_m']),
           number(value['real_diagnostics']['M2'][i]['equal_original_unit_metrics']['mean_pointwise_energy_jackknife_se_m'])]
@@ -208,7 +250,9 @@ def render_tables(value):
 
 def claim_index(value, tables):
     validate_summary(value)
-    links = {'RQ1': ['M1-S', 'M1-R'], 'RQ2': ['paired', 'diagnostics'], 'RQ3': ['O2', 'routes']}
+    links = {'basis_residuals_fail_the_all_settings_recovery_requirement': ['M1-S', 'M1-R'],
+             'covered_development_scores_do_not_establish_population_superiority': ['paired', 'diagnostics'],
+             'specified_fits_and_gradient_pairs_pass_registered_checks': ['O2', 'routes']}
     return {'schema_version': 'pirc26-paper-claim-index-v1', 'safe_summary_hash': value['safe_summary_hash'],
         'source_compact_sha256': value['source_compact_sha256'], 'review_hash': value['review_hash'],
         'claims': {rq: {'source_labels': sources, 'qualification': 'not-established'} for rq, sources in links.items()},
