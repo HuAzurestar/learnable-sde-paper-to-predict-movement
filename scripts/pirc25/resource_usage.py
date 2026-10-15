@@ -190,3 +190,41 @@ def _validate(row, bundle):
             require(value["execution_state"] == "SUCCEEDED", "successful observation state")
         elif attempt["error_code"] == "CHECKPOINT_SAVED":
             require(value["execution_state"] == "CHECKPOINTED", "checkpoint observation state")
+
+
+def summarize_resources(cells):
+    """Summarize already-validated saved observations, never native counters.
+
+    Duration sums include failed/resumed attempts. An observed memory maximum
+    is not a sum, concurrent process-tree peak, solver-only delta or quota.
+    Missing sources keep totals unknown; partial observed values stay labelled.
+    Run this transformation in the managed comparison worker for real studies.
+    """
+    legacy = sum("resource_usage" not in c for c in cells)
+    unattempted = sum("resource_usage" in c and not c["resource_usage"]["attempts"] for c in cells)
+    entries = [a for c in cells for a in c.get("resource_usage", {}).get("attempts", [])]
+    recorded = [a for a in entries if a["status"] == "RECORDED"]
+    unavailable = sorted(a["attempt_id"] for a in entries if a["status"] != "RECORDED")
+    memory_unknown = sorted(a["attempt_id"] for a in recorded if a["packet"]["memory"]["status"] != "MEASURED")
+    peaks = [a["packet"]["memory"]["peak_resident_bytes"] for a in recorded
+             if a["packet"]["memory"]["status"] == "MEASURED"]
+    wall = sum(a["packet"]["duration"]["wall_ns"] for a in recorded) if recorded else None
+    cpu = sum(a["packet"]["duration"]["cpu_ns"] for a in recorded) if recorded else None
+    duration_complete = bool(recorded) and not legacy and not unavailable
+    memory_complete = bool(peaks) and not legacy and not unavailable and not memory_unknown
+    return {"schema_version": "pirc27-resource-summary-v1",
+        "scope": "all-cell-attempts-including-failures",
+        "duration_scope": DURATION, "duration_unit": "ns", "cpu_scope": "current-process-all-threads",
+        "memory_scope": MEMORY, "memory_unit": "bytes",
+        "peak_aggregation": "max-of-observed-self-peaks;not-additive;not-phase-delta;not-tree-peak",
+        "observed_attempt_count": len(recorded), "unattempted_cell_count": unattempted,
+        "legacy_unavailable_cell_count": legacy, "unavailable_attempt_ids": unavailable,
+        "memory_unavailable_attempt_ids": sorted(unavailable+memory_unknown),
+        "observed_pipeline_wall_ns": wall, "observed_pipeline_cpu_ns": cpu,
+        "pipeline_wall_ns": wall if duration_complete else None,
+        "pipeline_cpu_ns": cpu if duration_complete else None,
+        "duration_complete": duration_complete, "memory_complete": memory_complete,
+        "maximum_observed_self_peak_bytes": max(peaks) if peaks else None,
+        "source_artifact_ids": sorted(a["artifact"]["artifact_id"] for a in recorded),
+        "source_publication_event_hashes": sorted(a["publication_event"]["hash"] for a in entries
+                                                 if a["publication_event"] is not None)}

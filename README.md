@@ -112,6 +112,18 @@ source bundle; the cost aggregate does not silently turn them into RSS sums
 or solver-speed claims. Offline validation checks frozen internal consistency;
 the expected bundle hash must still come from a trusted transport boundary.
 
+The optional `--include-resource-summaries` engineering extension adds the
+same frozen resource-summary JSON to aggregate strata, CSV and the evidence
+index, including failed strata without successful quality claims. It sums
+observed pipeline nanoseconds across attempts, retains unknown full totals,
+and reports the maximum *observed self-process lifetime* peak in bytes, never
+a memory sum/tree peak or solver-only delta. Missing memory does not erase
+known duration. Unattempted and legacy-unavailable cells remain explicit.
+The flag defaults off: legacy aggregate/CSV/index bytes remain unchanged.
+The runtime import bridge must support these new fields before enabling them
+for managed study publication; do not run an unmetered real-data transform or
+reinterpret the existing budget charge as this pipeline timing.
+
 `--formal` also validates each successful cell's `pirc25-admission-v1` receipt:
 spec/cell/attempt identity, protocol and execution grant, actual input exposure
 events, frozen preregistration/history, package/upstream/command bindings, and
