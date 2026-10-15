@@ -1,6 +1,65 @@
 # Paper sources and review manuscripts
 
-## Current PIRC-17 manuscript: reader-v5
+## Current PIRC-17 manuscript: reader-v6 terrain evidence
+
+The terrain branch now has substantive results, not only an unavailable-
+inference statement. A new ten-configuration table and three-panel figure
+describe existing saved ES, mean-position error, coverage and area. The
+original grid has2297 successes/3 failures out of2300slots; the main fair
+configuration comparison uses the same43 execution-complete blocks in all
+ten configurations (five seeds each). This is post-hoc selected-subset
+description, not the full46-block estimand or the registered family inference.
+Larger45/46-block paired sensitivities and original failure counts remain.
+
+| Language | Main paper | Scientific supplement | Audit record |
+| --- | --- | --- | --- |
+| Chinese | [18-page paper](pirc17/revision46-review-v6/zh/main.pdf) | [78-page supplement](pirc17/revision46-review-v6/zh/supplement.pdf) | [15-page record](pirc17/revision46-review-v6/zh/audit-notes.pdf) |
+| English | [19-page paper](pirc17/revision46-review-v6/en/main.pdf) | [80-page supplement](pirc17/revision46-review-v6/en/supplement.pdf) | [16-page record](pirc17/revision46-review-v6/en/audit-notes.pdf) |
+
+The [build manifest](pirc17/revision46-review-v6/build-manifest.json) binds
+the six PDFs to clean reviewed source5a00b776fa98f8d18698b4605ed7bc3c342162f7.
+Keep same-language PDFs together for companion links. Existing model/task
+exposition, HSM-SDE/RDM-SDE/CV names and four method conclusion groups remain.
+Terrain adds a separate RST-organised question/evidence/interpretation/limit
+branch, documented in the [argument record](pirc17/reader-v6-argument.json).
+
+On the common subset, all-terrain raises ES26.98m and FDE39.00m versus its
+history-only base; road-group contrasts show score costs, river-only changes
+direction across horizons, land-cover-only has a small favourable mean, and
+30-minute90%coverage remains40.47–52.09%. These concern fitted configurations,
+not causal factor effects or significant general terrain benefit/harm.
+
+The anonymous [aggregate](pirc17/terrain-description-v1/summary.json),
+[CSV table](pirc17/terrain-description-v1/configurations.csv) and
+[figure](pirc17/figures/terrain-description-v1/terrain-evidence.pdf) are public.
+Reproduce the new plot/table without private inputs:
+
+```console
+python -m scripts.plot_pirc17_terrain --source paper/pirc17/terrain-description-v1/summary.json --output-dir <fresh-external-directory>
+```
+
+Private-cache scalar aggregation is a separate explicit command documented
+by `python -m scripts.describe_pirc17_terrain --help`; it never loads model
+or forecast arrays. New descriptive summaries are not new particle scores.
+The original full-family verdict remains unavailable. Rebuild manuscripts
+with `scripts/build_pirc17_revision46.py --output-dir <fresh-external-directory>`.
+
+A fresh actual gpt-6-astra/high/read-only ACP review completed11calls,
+independently checked original saved-score scalar arithmetic and selected
+actual EN/ZH terrain pages, and found no substantiveP1/P2 blockers. Host
+verified exact model/effort through ACP options and persisted turn_context;
+the reviewer could not query its model independently. The
+[review receipt](pirc17/reader-v6-editorial-record.json) records that distinction.
+All12 strict builds/page bounds and58links pass;45focusedchecks pass;
+[full regression](pirc17/reader-v6-regression-check.json)1009PASS/25FAIL/2ERROR
+introduces no failure/error identities, not a green full-suite claim.
+Local bodiesZH26/EN27 retain six unchanged private maps and are not uploaded.
+Five main figures/three tables now include one new terrain composite/table;
+the original four figures/two tables and all50supplementtables remain.
+No new fit, forecast, raw-array rescore, bootstrap or private publication.
+Real declarations and human acceptance remain separate from editorial delivery.
+
+## Previous reader-v5 delivery (superseded)
 
 The bilingual paper now follows one reading line: research object and task,
 model construction, evaluation criteria, horizon-dependent utility, grouped
