@@ -24,14 +24,14 @@ if __package__:
     from .admission import validate_admission
     from .dimensions import comparison_dimensions
     from .costs import validate_cost, summarize_cost
-    from .resource_usage import validate_resources
+    from .resource_usage import validate_resources, summarize_resources
     from .output_eligibility import comparison_eligible, path_output_counts
     from .calibrated_study import validate_calibration_table
 else:
     from admission import validate_admission
     from dimensions import comparison_dimensions
     from costs import validate_cost, summarize_cost
-    from resource_usage import validate_resources
+    from resource_usage import validate_resources, summarize_resources
     from output_eligibility import comparison_eligible, path_output_counts
     from calibrated_study import validate_calibration_table
 
@@ -128,7 +128,9 @@ def validate_bundle(bundle, *, formal=False):
     return rows
 
 
-def aggregate(bundle, *, formal=False, descriptive_intervals=True):
+def aggregate(bundle, *, formal=False, descriptive_intervals=True, include_resource_summaries=False):
+    if type(include_resource_summaries) is not bool:
+        raise ValueError("resource summary opt-in must be an explicit boolean")
     rows = validate_bundle(bundle, formal=formal)
     strata = defaultdict(list)
     for row in rows.values():
@@ -144,7 +146,7 @@ def aggregate(bundle, *, formal=False, descriptive_intervals=True):
     for key, cells in sorted(strata.items()):
         dimensions = json.loads(key)
         stratum_arms, stratum_comparisons = aggregate_stratum(cells, baseline, candidates,
-                                                           descriptive_intervals=descriptive_intervals)
+            descriptive_intervals=descriptive_intervals, include_resource_summaries=include_resource_summaries)
         for summary in [*stratum_arms, *stratum_comparisons]:
             summary.update(comparison_dimensions=dimensions, stratum_id=fingerprint(dimensions))
         arms.extend(stratum_arms)
@@ -169,8 +171,10 @@ def aggregate(bundle, *, formal=False, descriptive_intervals=True):
     return {**result, "aggregate_hash": fingerprint(result)}
 
 
-def aggregate_stratum(rows, baseline, candidates, *, descriptive_intervals=True):
+def aggregate_stratum(rows, baseline, candidates, *, descriptive_intervals=True, include_resource_summaries=False):
     """Average seeds inside a block, then compare only matching strata."""
+    if type(include_resource_summaries) is not bool:
+        raise ValueError("resource summary opt-in must be an explicit boolean")
     grouped = defaultdict(list)
     for row in rows:
         grouped[row["arm_id"]].append(row)
@@ -199,6 +203,8 @@ def aggregate_stratum(rows, baseline, candidates, *, descriptive_intervals=True)
                      "complete_block_ids": sorted(complete), "incomplete_block_ids": sorted(set(blocks) - complete.keys()),
                      "metrics": metrics, "metric_units": successful[0]["metric_units"] if successful else {},
                      "status": "complete" if len(complete) == len(blocks) else "incomplete"})
+        if include_resource_summaries and any("resource_usage" in c for c in cells):
+            arms[-1]["resource_usage_summary"] = summarize_resources(cells)
     comparisons = []
     # Deterministic reference ordering is explicit in the aggregate, not a claim
     # that alphabetical order constitutes scientific preregistration.
@@ -250,19 +256,21 @@ def csv_bytes(aggregate_value):
     calibration = calibration_summary(aggregate_value)
     shared_columns = ["row_kind", *calibration] if calibration else []
     arm_shared = ["method-metric", "", "", ""] if calibration else []
-    fields = ["aggregate_hash", "arm_id", "metric", "value", "unit", "independent_n", "expected_cells", "successful_cells", "status", "stratum_id", "comparison_dimensions", "charged_ms", "reserved_ms", "measured_ms", "cost_unit", "cost_scope", "status_rates", "comparison_eligible_cells", "path_output_dispositions", *shared_columns, *extra]
+    resource_columns = ["resource_usage_summary"] if any("resource_usage_summary" in a for a in aggregate_value["arms"]) else []
+    fields = ["aggregate_hash", "arm_id", "metric", "value", "unit", "independent_n", "expected_cells", "successful_cells", "status", "stratum_id", "comparison_dimensions", "charged_ms", "reserved_ms", "measured_ms", "cost_unit", "cost_scope", "status_rates", "comparison_eligible_cells", "path_output_dispositions", *resource_columns, *shared_columns, *extra]
     writer.writerow(fields)
     frozen = [canonical(aggregate_value[name]).decode() for name in extra]
     for arm in aggregate_value["arms"]:
         costs = [arm["cost"][key] for key in ("charged_ms", "reserved_ms", "measured_ms", "unit", "scope")]
         rates = canonical(arm.get("status_rates")).decode()
         eligibility = [arm["comparison_eligible_cells"], canonical(arm["path_output_dispositions"]).decode()]
+        resources = [canonical(arm.get("resource_usage_summary")).decode()] if resource_columns else []
         if not arm["metrics"]:
             writer.writerow([aggregate_value["aggregate_hash"], arm["arm_id"], "", "", "", arm["independent_n"],
-                             arm["expected_cells"], arm["successful_cells"], arm["status"], arm["stratum_id"], canonical(arm["comparison_dimensions"]).decode(), *costs, rates, *eligibility, *arm_shared, *frozen])
+                             arm["expected_cells"], arm["successful_cells"], arm["status"], arm["stratum_id"], canonical(arm["comparison_dimensions"]).decode(), *costs, rates, *eligibility, *resources, *arm_shared, *frozen])
         for metric, value in sorted(arm["metrics"].items()):
             writer.writerow([aggregate_value["aggregate_hash"], arm["arm_id"], metric, value, arm["metric_units"][metric],
-                             arm["independent_n"], arm["expected_cells"], arm["successful_cells"], arm["status"], arm["stratum_id"], canonical(arm["comparison_dimensions"]).decode(), *costs, rates, *eligibility, *arm_shared, *frozen])
+                             arm["independent_n"], arm["expected_cells"], arm["successful_cells"], arm["status"], arm["stratum_id"], canonical(arm["comparison_dimensions"]).decode(), *costs, rates, *eligibility, *resources, *arm_shared, *frozen])
     if calibration:
         cost = calibration["calibration_cost"]
         shared = {"aggregate_hash": aggregate_value["aggregate_hash"], "row_kind": "shared-calibration-preparation",
@@ -279,12 +287,17 @@ def evidence_index(value, csv_content):
             "aggregate_hash": value["aggregate_hash"], "table_sha256": hashlib.sha256(csv_content).hexdigest(),
             "code_hash": value["code_hash"], "evidence_status": "active", "relation": None,
             "disclosure_scope": value["disclosure_scope"],
+            **({"resource_usage_summaries": [
+                {"arm_id": a["arm_id"], "stratum_id": a["stratum_id"], "comparison_dimensions": a["comparison_dimensions"],
+                 "resource_usage_summary": a.get("resource_usage_summary")} for a in value["arms"]]}
+               if any("resource_usage_summary" in a for a in value["arms"]) else {}),
             **calibration_summary(value),
             **{name: value[name] for name in ("adjudication", "computation_ref") if name in value}, "claims": [
                 {"claim_id": fingerprint([arm['arm_id'], arm['stratum_id'], metric]), "metric": metric, "value": number,
                  "arm_id": arm["arm_id"], "stratum_id": arm["stratum_id"], "comparison_dimensions": arm["comparison_dimensions"],
                  "evidence_status": arm["status"], "independent_n": arm["independent_n"],
                  "cost": arm["cost"],
+                 **({"resource_usage_summary": arm["resource_usage_summary"]} if "resource_usage_summary" in arm else {}),
                  "unit": arm["metric_units"][metric], "aggregate_hash": value["aggregate_hash"],
                  "attempt_ids": [c["attempt_id"] for c in value["cell_dispositions"]
                                  if c["arm_id"] == arm["arm_id"] and c["status"] == "SUCCEEDED"
@@ -293,8 +306,8 @@ def evidence_index(value, csv_content):
                 for arm in value["arms"] for metric, number in sorted(arm["metrics"].items())]}
 
 
-def write_package(bundle, output: Path, *, formal=False):
-    value = aggregate(bundle, formal=formal)
+def write_package(bundle, output: Path, *, formal=False, include_resource_summaries=False):
+    value = aggregate(bundle, formal=formal, include_resource_summaries=include_resource_summaries)
     table = csv_bytes(value)
     index = evidence_index(value, table)
     output = output.resolve()
@@ -324,11 +337,13 @@ def main():
     parser.add_argument("--expected-hash", required=True)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--formal", action="store_true")
+    parser.add_argument("--include-resource-summaries", action="store_true",
+                        help="Opt-in new resource columns; requires a matching runtime import bridge")
     args = parser.parse_args()
     bundle = json.loads(args.bundle.read_text(encoding="utf-8"))
     if bundle.get("bundle_hash") != args.expected_hash:
         parser.error("unexpected source bundle hash")
-    value = write_package(bundle, args.output, formal=args.formal)
+    value = write_package(bundle, args.output, formal=args.formal, include_resource_summaries=args.include_resource_summaries)
     print(json.dumps({"aggregate_hash": value["aggregate_hash"], "expected_cells": value["expected_cell_count"]}))
 
 

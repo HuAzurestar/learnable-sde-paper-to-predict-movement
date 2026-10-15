@@ -258,6 +258,14 @@ def sampling(functional, last, request, q):
 
 
 def analysis_values(analysis, q, request, functional, cm, tm, *, target=False, production=None, evidence=None):
+    expected = _saved_analysis_values(analysis, q, request, functional, cm, tm,
+        target=target, production=production, evidence=evidence)
+    require(target or expected["status"] == "PASSED", "source must actually pass")
+    return expected
+
+
+def _saved_analysis_values(analysis, q, request, functional, cm, tm, *, target=False, production=None, evidence=None):
+    """Verify saved classification, including failed pilots; never admit a source."""
     bounded(analysis, 512*1024)
     sealed(analysis, "analysis_hash")
     sample = sampling(functional, analysis["completed_statistics"], request, q)
@@ -307,7 +315,6 @@ def analysis_values(analysis, q, request, functional, cm, tm, *, target=False, p
             maximum_job_seconds=production["maximum_job_seconds"], qualification_evidence_hash=evidence["evidence_hash"],
             qualification_source_attempt_id=evidence["source_attempt"]["attempt_id"], kernel_error_budget=functional["error_budget"])
     require(encoded({k: v for k, v in analysis.items() if k != "analysis_hash"}) == encoded(expected), "all saved numeric/statistical meanings and current classification")
-    require(target or expected["status"] == "PASSED", "source must actually pass")
     return expected
 
 

@@ -112,6 +112,35 @@ source bundle; the cost aggregate does not silently turn them into RSS sums
 or solver-speed claims. Offline validation checks frozen internal consistency;
 the expected bundle hash must still come from a trusted transport boundary.
 
+The optional `--include-resource-summaries` engineering extension adds the
+same frozen resource-summary JSON to aggregate strata, CSV and the evidence
+index, including failed strata without successful quality claims. It sums
+observed pipeline nanoseconds across attempts, retains unknown full totals,
+and reports the maximum *observed self-process lifetime* peak in bytes, never
+a memory sum/tree peak or solver-only delta. Missing memory does not erase
+known duration. Unattempted and legacy-unavailable cells remain explicit.
+The flag defaults off: legacy aggregate/CSV/index bytes remain unchanged.
+The runtime import bridge must support these new fields before enabling them
+for managed study publication; do not run an unmetered real-data transform or
+reinterpret the existing budget charge as this pipeline timing.
+
+When an authenticated aggregate contains the opt-in summaries, the frozen
+comparison renderer copies them into each figure's source metadata and labels
+observed pipeline wall/CPU nanoseconds, maximum observed lifetime self-RSS bytes,
+partial/unknown coverage and failed/resumed attempts. It does not re-observe
+resources or recalculate scientific scores. Legacy figure bytes stay unchanged
+without summaries. This display extension also requires the pending runtime
+summary/figure bridge before managed publication; it is not yet enabled there.
+
+The paper-side `compare_package(..., include_resource_summaries=True)` explicitly
+forwards the same opt-in through aggregate, CSV, evidence index and frozen figures.
+Its whole-package preflight includes bounded all-attempt source sorting and
+figure provenance work before statistical computation, without increasing the
+existing operation ceiling. Non-boolean flags and malformed/oversized resource
+histories are rejected. The default remains false and byte-compatible. This
+does not enable the flag in the runtime worker or grant permission to process
+real evidence outside that worker; the runtime bridge is still required.
+
 `--formal` also validates each successful cell's `pirc25-admission-v1` receipt:
 spec/cell/attempt identity, protocol and execution grant, actual input exposure
 events, frozen preregistration/history, package/upstream/command bindings, and
@@ -227,6 +256,27 @@ validates qualified source admission. They are inputs to the runtime's budgeted
 `compare` command, not formal statistical evidence. Formal outputs require the
 managed adjudication and its settled `ComputationReceipt.json`; removing their
 proof fields cannot turn a rehashed descriptive package into formal evidence.
+
+## Saved path-pilot reports (not production admission)
+
+The Runtime opt-in `export --include-path-pilot-evidence` transports actual saved
+pilot result bytes and their native execution/cost sources in a new immutable
+bundle. Legacy scalar-only exports remain readable but cannot verify these
+reports. With the trusted owner's expected hash, run:
+
+```console
+python scripts/pirc25/validate_path_pilots.py /absolute/runtime/pilot-proof.json --expected-hash BUNDLE_HASH
+```
+
+This stdlib-only reader verifies the complete registered matrix and saved
+numerical PASSED/FAILED classifications, sufficient statistics, frozen policy,
+certificates and whole-worker stop/settlement evidence. It never imports the
+Runtime, samples paths, recomputes a matrix/CDF reference or opens a data grant.
+Failed/missing computations stay explicit. Pilot results remain fixture and
+scientifically unqualified; production-source admission still requires PASSED
+through its separate existing contract. No statistical adjudication or
+full-distribution guarantee follows from this report. Actual comparisons and
+figures still require a funded managed job. Keep authorized bundles outside Git.
 
 ## CI/CD and releases
 
