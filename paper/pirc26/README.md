@@ -10,6 +10,15 @@ per-row real predictions, models, checkpoints, private paths or credentials.
 Source artifacts remain controlled in DSDE/shared storage. A summary hash is
 traceability, not permission to read those artifacts or a public raw-data license.
 
+## Paper organization
+
+[The rhetorical structure and linear outline](STRUCTURE.md) explains the three
+argument branches, their support relations and the content hierarchy. Both
+editions use Introduction, Related work, Model and fitting methods, Experimental
+design, Results, Discussion and Conclusion, followed by a reproduction appendix.
+Metric definitions and protocols precede measurements; interpretations follow
+them. The structure note is an authoring aid, not a section of the paper.
+
 ## Aggregate smoke reproduction
 
 From the repository root, using Python 3.10 or newer (standard library only):

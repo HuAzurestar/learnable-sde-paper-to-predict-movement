@@ -45,6 +45,27 @@ class ReleaseTests(unittest.TestCase):
         self.assertIn('relative residual-field root-mean-square error', (PAPER / 'en/main.tex').read_text(encoding='utf8'))
         self.assertIn('相对残差场均方根误差', (PAPER / 'zh/main.tex').read_text(encoding='utf8'))
 
+    def test_definitions_protocols_and_results_have_distinct_spans(self):
+        for language in ('en', 'zh'):
+            text = (PAPER / language / 'main.tex').read_text(encoding='utf8')
+            def position(label):
+                return text.index('\\label{' + label + '}')
+            order = ('sec:introduction', 'sec:related', 'sec:model',
+                     'sec:design', 'sec:results', 'sec:discussion',
+                     'sec:conclusion', 'sec:appendix')
+            self.assertEqual([position(label) for label in order],
+                             sorted(position(label) for label in order))
+            for label in ('sec:recovery-design', 'sec:real-design',
+                          'eq:real-score', 'sec:fit-design', 'sec:gradient-design'):
+                self.assertLess(position('sec:design'), position(label))
+                self.assertLess(position(label), position('sec:results'))
+            for table in ('m1-recovery.tex', 'real-energy.tex', 'fde-mc.tex',
+                          'real-calibration.tex', 'o2-feasibility.tex', 'gradient-routes.tex'):
+                location = text.index('\\tabfile{' + table + '}')
+                self.assertLess(position('sec:results'), location)
+                self.assertLess(location, position('sec:discussion'))
+            self.assertLess(position('sec:appendix'), text.index('\\tabfile{costs.tex}'))
+
     def test_rehashed_permission_promotion_rejected(self):
         for mutate in (lambda v: v['review'].update(raw_model_test_disclosure=True),
                        lambda v: v['review'].update(decision='ACCEPTED'),
