@@ -116,7 +116,15 @@ def test_historical_v2_six_document_structure_and_bounded_claims(language):
     assert r"\frac1{2N(N-1)}\sum_{i\ne j}" in equation
     assert r"2N^2" not in equation
     assert r"\appendix" not in main
-    assert r"\input{revision46-supplement-retained.tex}" in (PAPER / language / "supplement.tex").read_text(encoding="utf-8")
+    historical_supplement = subprocess.check_output(["git", "show", "6370953:paper/pirc17/"+language+"/supplement.tex"], cwd=ROOT).decode("utf-8")
+    assert r"\input{revision46-supplement-retained.tex}" in historical_supplement
+    # The historical main/supplement contract stays tied to the same snapshot.
+    # The current reader edition must retain the complete source via its bound
+    # name-only projection, not a hard-coded obsolete input pathname.
+    assert r"\input{reader-v9/revision46-supplement-retained.tex}" in (PAPER / language / "supplement.tex").read_text(encoding="utf-8")
+    old_retained = (PAPER / language / "revision46-supplement-retained.tex").read_text(encoding="utf-8")
+    current_retained = (PAPER / language / "reader-v9/revision46-supplement-retained.tex").read_text(encoding="utf-8")
+    assert re.findall(r"\\label\{([^}]+)\}", old_retained) == re.findall(r"\\label\{([^}]+)\}", current_retained)
     assert r"\input{revision46-audit-notes-retained.tex}" in (PAPER / language / "audit-notes.tex").read_text(encoding="utf-8")
     assert ("not a fresh blinded holdout" if language == "en" else "不是全新盲测留出集") in main
     assert ("not a positive or null terrain" if language == "en" else "不是地形正效应或零效应") in main

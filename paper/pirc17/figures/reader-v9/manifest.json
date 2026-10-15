@@ -8,8 +8,8 @@
     "plot_pirc17_calibration.py": "483ee0516c7d99058521f1c8db43c58e1954c7ccd4d86a3215bdf190785be3c0",
     "plot_pirc17_calibration_blocks.py": "db7844ea5251407e7d59e0bc83be344af177ac6af5d57973aa9e7529bc35c3f6",
     "plot_pirc17_terrain.py": "28ce7feb6f5b781ba91b8125cc12c42045a05c32eb850e7707339a1ae0451ec7",
-    "render_pirc17_reader_v9.py": "2c715a176920a41c6245a0b52fa67e56fb723483450e026ca5ccc0808594a27d",
-    "pirc17_display_names.py": "4514854182987d282bb30c0179870fbf896da9718f05b51a3d7cfd7e28c9b5d8"
+    "render_pirc17_reader_v9.py": "77ea755149831790d535a52e483bbe871397d3d5a5a32afec6d87770fa660967",
+    "pirc17_display_names.py": "cdbffd64d074af9357ec3b505cac8913b0e4e278da0d60acbcd7ab9e2150d762"
   },
   "active_unique_figures": 19,
   "figures": [
@@ -1600,7 +1600,7 @@
       "source": "paper/pirc17/zh/revision46-supplement-retained.tex",
       "source_utf8_lf_sha256": "7b987d8d997cc9c90737eeb95b6cd33b18d0656f6ad35cc03231521acc615ab4",
       "projection": "zh/reader-v9/revision46-supplement-retained.tex",
-      "projection_utf8_lf_sha256": "3e8e2eaff4ba90208ecb066e93553316b9edf7421d0cbf420c0c6da1b98dfb90",
+      "projection_utf8_lf_sha256": "9c06935f5326ae854858d37ceb8fe52b13fef8d56ec718bfa7d3550b65d8fd57",
       "table_anchors": [
         "tab:method-families",
         "tab:mode-rank-cardinality",
@@ -1649,7 +1649,7 @@
       "source": "paper/pirc17/zh/reader-v2-method-horizon-overview.tex",
       "source_utf8_lf_sha256": "e176d85573d93707034c427adf8ea926f096909b785648036ce8c66b5f185a2c",
       "projection": "zh/reader-v9/reader-v2-method-horizon-overview.tex",
-      "projection_utf8_lf_sha256": "9e7df14427f063fc61391f56f8c0268026b1bb2cc62eb4213b50ded05ce3c838",
+      "projection_utf8_lf_sha256": "768b9d2ad045a89aff95a1ae5ade30b9c8bed5aa22dd75a4ae7856997ebf7103",
       "table_anchors": []
     },
     {
@@ -1691,7 +1691,7 @@
       "source": "paper/pirc17/zh/method-seed-stability.tex",
       "source_utf8_lf_sha256": "df108a5ed11392965156fa9273466d2a43c47026cb65c242e2aee3dce015ddf9",
       "projection": "zh/reader-v9/method-seed-stability.tex",
-      "projection_utf8_lf_sha256": "a1c63cfc7848c72a6fe364698f30a64fd7f6da56bd06f08aa1ff59b87113a0e6",
+      "projection_utf8_lf_sha256": "a456c19b7f107a2462a8fae5b0518feba88397b8a4bfd50bdd836ae3ffc82c3d",
       "table_anchors": [
         "tab:method-seed-stability"
       ]
@@ -1718,7 +1718,7 @@
       "source": "paper/pirc17/zh/method-region-tables.tex",
       "source_utf8_lf_sha256": "bbe0904a446c809d71b79c140bd0dc4ab27f08b1cafb3b22abffce098b18edb8",
       "projection": "zh/reader-v9/method-region-tables.tex",
-      "projection_utf8_lf_sha256": "b9a54665e43a68dffe2f7893f47eed6e4c575b4f6e13b3f33279159579c123c4",
+      "projection_utf8_lf_sha256": "ffd16349acd9c231d6fd8a4abc2a052fca850a271eaf19a0032b9ddd0406870b",
       "table_anchors": [
         "tab:all-method-regions",
         "tab:all-level-coverage"

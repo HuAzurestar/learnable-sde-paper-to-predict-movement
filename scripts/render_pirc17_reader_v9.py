@@ -107,7 +107,7 @@ def name_figure(fig):
     if before != after:
         raise ValueError("display naming changed scientific artist data")
     labels = sorted({text.get_text() for text in fig.findobj(Text) if text.get_text()})
-    forbidden = [s for s in labels if re.search(r"\b(?:Full\d*|GMM|Inertial|inertial)\b", s)]
+    forbidden = [s for s in labels if re.search(r"\b(?:Full\d*|GMM|Inertial|inertial)\b", s, flags=re.ASCII)]
     if forbidden:
         raise ValueError("legacy visible model names remain: " + repr(forbidden))
     return {"label_changes": changed, "displayed_labels": labels,

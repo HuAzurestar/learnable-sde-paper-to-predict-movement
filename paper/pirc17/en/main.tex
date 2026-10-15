@@ -209,6 +209,8 @@ configurations. Its fitted mechanism is specified below.
 The ordinary HSM/RDM variable $S$ is only the solar/calendar proxy, not
 these map factors. Here the map input is the explicitly expanded
 $\widetilde\phi_g$ below; the two conditioning inputs must not be conflated.
+This branch fits its own history drift and residual conditioner; it does
+not reuse HSM/RDM's three sets of component parameters or add maps to their $S$.
 \input{reader-v4-terrain.tex}
 \paragraph{Map sources and attribution limits.}
 Model-source declarations identify

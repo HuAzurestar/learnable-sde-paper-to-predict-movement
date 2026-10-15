@@ -57,6 +57,7 @@ def test_display_policy_keeps_original_roles_and_tex_anchors():
     assert method_name("01", "full") == "HSM-01"
     assert method_name("11", "full") == "HSM-11"
     assert display_text("Full01 / GMM kernel / inertial") == "HSM-01 / RDM / CV"
+    assert tex_display("其Full01对照和GMM残差分组") == "其HSM-01对照和RDM残差分组"
     assert display_text("arm-04/gmm_kernel") == "RDM"
     assert display_text("arm-04/gmm\\_kernel") == "RDM"
     assert display_text("lio-river") == "B + river"
@@ -91,7 +92,7 @@ def test_all_active_figures_have_new_names_and_unchanged_artist_data():
     assert not manifest["historical_assets_overwritten"]
     for row in manifest["figures"]:
         assert row["scientific_artist_sha256_before"] == row["scientific_artist_sha256_after"]
-        assert not any(re.search(r"\b(?:Full\d*|GMM|Inertial|inertial)\b", label) for label in row["displayed_labels"])
+        assert not any(re.search(r"\b(?:Full\d*|GMM|Inertial|inertial)\b", label, flags=re.ASCII) for label in row["displayed_labels"])
         assert hashlib.sha256((ROOT / row["original_pdf"]).read_bytes()).hexdigest() == row["original_pdf_sha256"]
         for file, checksum in row["files_sha256"].items():
             assert hashlib.sha256((folder / file).read_bytes()).hexdigest() == checksum
@@ -114,7 +115,7 @@ def test_actual_pdf_figure_text_has_no_legacy_model_labels():
     for path in files:
         with fitz.open(path) as doc:
             text = " ".join(page.get_text() for page in doc)
-        assert not re.search(r"\b(?:Full\d*|GMM|Inertial|inertial)\b", text), path.name
+        assert not re.search(r"\b(?:Full\d*|GMM|Inertial|inertial)\b", text, flags=re.ASCII), path.name
     original = [line.split("&", 1)[1] for line in (PAPER / "revision46-numbers.tex").read_text().splitlines() if line.startswith(r"\newcommand{\PointRow")]
     current = [line.split("&", 1)[1] for line in (PAPER / "reader-v9-number-labels.tex").read_text().splitlines()]
     assert current == original

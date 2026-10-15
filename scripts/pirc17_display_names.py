@@ -48,15 +48,15 @@ def display_text(text: str, *, terrain_codes: bool = True) -> str:
         for spelling in (old, old.replace("_", r"\_")):
             value = re.sub(r"(?<![A-Za-z0-9_])" + re.escape(spelling) + r"(?![A-Za-z0-9_])",
                            lambda _: VARIANTS[old], value)
-    value = re.sub(r"\bFull(\d{2})\b", r"HSM-\1", value)
+    value = re.sub(r"\bFull(\d{2})\b", r"HSM-\1", value, flags=re.ASCII)
     value = value.replace("Full coverage percentages", "Complete coverage percentages")
-    value = re.sub(r"\bGMM(?: kernel)?\b", "RDM", value)
-    value = re.sub(r"\bResidual mixture\b", "RDM", value)
-    value = re.sub(r"\bFull\b", "HSM", value)
-    value = re.sub(r"\b(?:Inertial|inertial)\b", "CV", value)
-    value = re.sub(r"\bPointwise mixture\b", "Heading/redraw", value)
-    value = re.sub(r"\bExplicit features\b", "Speed/radial", value)
-    value = re.sub(r"\bdt(\d+)\b", r"Obs \1 s", value)
+    value = re.sub(r"\bGMM(?: kernel)?\b", "RDM", value, flags=re.ASCII)
+    value = re.sub(r"\bResidual mixture\b", "RDM", value, flags=re.ASCII)
+    value = re.sub(r"\bFull\b", "HSM", value, flags=re.ASCII)
+    value = re.sub(r"\b(?:Inertial|inertial)\b", "CV", value, flags=re.ASCII)
+    value = re.sub(r"\bPointwise mixture\b", "Heading/redraw", value, flags=re.ASCII)
+    value = re.sub(r"\bExplicit features\b", "Speed/radial", value, flags=re.ASCII)
+    value = re.sub(r"\bdt(\d+)\b", r"Obs \1 s", value, flags=re.ASCII)
     if terrain_codes:
         for old in sorted(TERRAIN_NAMES, key=len, reverse=True):
             value = re.sub(r"(?<![\w-])" + re.escape(old) + r"(?![\w-])",
