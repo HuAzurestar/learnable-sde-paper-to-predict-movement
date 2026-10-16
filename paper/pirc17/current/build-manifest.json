@@ -1,6 +1,6 @@
 {
   "schema_version": "pirc17-reader-six-document-build-v1",
-  "repository_head": "67912a0c0295f3d6e751cc7aec35a44403014975",
+  "repository_head": "033c8bc115fe2528b6d564eb5f0e60d42eaeed24",
   "working_tree_dirty_at_start": false,
   "manuscripts": [
     {
@@ -8,14 +8,14 @@
       "entry": "main",
       "pages": 24,
       "source_graph_sha256": {
-        "paper/pirc17/en/main.tex": "074cd603a91b8f34814e23641beff48dcf5b330bf4222dfe2eddef6350ed9dfd",
-        "paper/pirc17/en/revision46-preamble.tex": "b15b6bde2e2eca825297e08eca20ddb8bb66604e0e7dc06a0bc313e8a8a8d6d0",
+        "paper/pirc17/en/main.tex": "a7a85273537d01763a34a0256091d7c00e36f4878395639a01429e2c522999dd",
+        "paper/pirc17/en/revision46-preamble.tex": "3b9c83eaf855196b29052983128177112b17aca402913842b3b3eb8cfc53d2f2",
         "paper/pirc17/revision46-numbers.tex": "bd138a091860595f340e427c0b9acfe63f24fd5495bb00a26c40341210aa6ff9",
         "paper/pirc17/reader-v9-number-labels.tex": "123d6485155252011d9b546292ccd9f086d34e3ade663f5f515ea4acbcac3e0a",
         "paper/pirc17/en/reader-v4-task.tex": "4980567b2a765c5b36c8507d8c0c23567cdb1d35e887dffe134ad40ed9edb3d8",
         "paper/pirc17/figures/reader-v9/revision46-population.pdf": "9e42e4838dfdecf21d0bec491ac3b6bd77dfdb483815c4ea9d5dcd7e5774436d",
         "paper/pirc17/en/reader-v8-procedures.tex": "ea54f18e7131093287655100db3487a86ef0350b7e7d26da00e98c41b58fd3f1",
-        "paper/pirc17/en/reader-v4-full.tex": "e6577ba1e5738a311f230524dfbbe7431202c417bd6a6827e5e669e52e019317",
+        "paper/pirc17/en/reader-v4-full.tex": "252de5b47733d809d8bdce7e3450f69e2242d201a0e887cf48832f9953a1d01e",
         "paper/pirc17/en/reader-v4-propagation.tex": "9c844436ebcb3c1224e61742811e68e50adac4d1d8eea298b05c3696b6b23bc7",
         "paper/pirc17/en/reader-v4-terrain.tex": "5ca68d6c088d7837a9b4a58d4607675daf2ef913136f1dcd0b51aa467041a6a0",
         "paper/pirc17/en/reader-v9-terrain-factors.tex": "2603e1e15c638c39f0a7b2d1ecf7c70d23a5c008cd4aa3a22c75bfb2662a8354",
@@ -30,8 +30,8 @@
         "paper/pirc17/en/revision46-bibliography.tex": "7854d9e29db8f0d6c9a69ae675856cd23442dec845e317975146905bc1764141"
       },
       "pdf": "en/main.pdf",
-      "pdf_sha256": "f301a275e38648640ba21c021ad41a93d92712bc5e6b9e368f4ec10c3bf96ddf",
-      "log_sha256": "872f80c155a78d9708254841868b5c462a2ecbfb0fef4332d1b1f68a462e0883",
+      "pdf_sha256": "e5260de952a60db71aa9905465159add64fac21458152b86117cf223266f5b84",
+      "log_sha256": "2e884e43def475554beed3adeeafbcb83f37963f1b90b3d76f07ac5f74ff735d",
       "strict_log_passed": true
     },
     {
@@ -40,7 +40,7 @@
       "pages": 80,
       "source_graph_sha256": {
         "paper/pirc17/en/supplement.tex": "24f81321f81d95ba8cd613844c9a69abe346e49aee946fe65b00c4d385908828",
-        "paper/pirc17/en/revision46-preamble.tex": "b15b6bde2e2eca825297e08eca20ddb8bb66604e0e7dc06a0bc313e8a8a8d6d0",
+        "paper/pirc17/en/revision46-preamble.tex": "3b9c83eaf855196b29052983128177112b17aca402913842b3b3eb8cfc53d2f2",
         "paper/pirc17/revision46-numbers.tex": "bd138a091860595f340e427c0b9acfe63f24fd5495bb00a26c40341210aa6ff9",
         "paper/pirc17/figures/reader-v9/geometry.pdf": "2fcb75d4900e261a56d0a9574d49295c9bf192255e0347a0ebcab4b9e166a8d1",
         "paper/pirc17/figures/reader-v9/design.pdf": "78dbbb5e3984f1bac847d80182776c53b2c5d59a17449d45027f685170aaf9d0",
@@ -71,8 +71,8 @@
         "paper/pirc17/en/revision46-bibliography.tex": "7854d9e29db8f0d6c9a69ae675856cd23442dec845e317975146905bc1764141"
       },
       "pdf": "en/supplement.pdf",
-      "pdf_sha256": "cc08581a3f7a0fa0e74a6b127e928b8ed7187952632331bf5dc0229230b3d333",
-      "log_sha256": "9ef5bd094ea9d901c0152c5b49a021c96f27184307f541e13c5f7a28f13ed837",
+      "pdf_sha256": "92a3a0e724d833ff1c2c1b7b38ea1fff430b4f6dacc54d936a70941e0b6a08dc",
+      "log_sha256": "e4de80972aef997b468bdc3a3caf5878659dd10d3a9f7f3b7a6baae2de7f27bb",
       "strict_log_passed": true
     },
     {
@@ -81,7 +81,7 @@
       "pages": 17,
       "source_graph_sha256": {
         "paper/pirc17/en/audit-notes.tex": "0a3bd933f8973e8a78a6dd25a18044a9bd4680743f758dbb83deb23e4cb472be",
-        "paper/pirc17/en/revision46-preamble.tex": "b15b6bde2e2eca825297e08eca20ddb8bb66604e0e7dc06a0bc313e8a8a8d6d0",
+        "paper/pirc17/en/revision46-preamble.tex": "3b9c83eaf855196b29052983128177112b17aca402913842b3b3eb8cfc53d2f2",
         "paper/pirc17/revision46-numbers.tex": "bd138a091860595f340e427c0b9acfe63f24fd5495bb00a26c40341210aa6ff9",
         "paper/pirc17/en/reader-v2-errata.tex": "04ebeaf2bee8792cabcb1f36633ad3820522ac59d60b37df75a1b505a75d86e3",
         "paper/pirc17/en/revision46-audit-notes-retained.tex": "18480f6f880bae48a7f29c7e20c5008e5b51b525225a89f6c38df38605bf7ae1",
@@ -89,8 +89,8 @@
         "paper/pirc17/en/revision46-bibliography.tex": "7854d9e29db8f0d6c9a69ae675856cd23442dec845e317975146905bc1764141"
       },
       "pdf": "en/audit-notes.pdf",
-      "pdf_sha256": "d530c0f89c8953a80e273c20c5d6a0cbe0d58aeeb9cab4c760efaf17d5ff57e6",
-      "log_sha256": "162c30d5fd6cfb3dd694d4bef1046fbb834cc9c32d318178e580916c57a7685a",
+      "pdf_sha256": "b7c0bf5d2182e093cfcfd09f7d60b1fb6b701171e523e25f6da3dbde2e5017c3",
+      "log_sha256": "4dcc6cb7274daa91e919b0c51e6f70cff16faed22a9e386132654f521d51dd73",
       "strict_log_passed": true
     },
     {
@@ -98,14 +98,14 @@
       "entry": "main",
       "pages": 22,
       "source_graph_sha256": {
-        "paper/pirc17/zh/main.tex": "a98bf85d150fef14b66d1772e80ade9044b5690ff4e5dc9e829a25055545f6c5",
-        "paper/pirc17/zh/revision46-preamble.tex": "0ff646412c6e7c2f5cbb653d14fe35baf2a42e0f927cd0fa2791533ba90b31b5",
+        "paper/pirc17/zh/main.tex": "f0b75c1d4d032d3d39dbac1acd8749ed0f162c97b4f703abaee03bf72dd97521",
+        "paper/pirc17/zh/revision46-preamble.tex": "a47aba070fbde17fe03a36e4cd799964772c815a22814c8bae6c33ca6cb0436d",
         "paper/pirc17/revision46-numbers.tex": "bd138a091860595f340e427c0b9acfe63f24fd5495bb00a26c40341210aa6ff9",
         "paper/pirc17/reader-v9-number-labels.tex": "123d6485155252011d9b546292ccd9f086d34e3ade663f5f515ea4acbcac3e0a",
         "paper/pirc17/zh/reader-v4-task.tex": "b7cba5ae6c87fb99dbf4684a9235fa1f02a61d436a0cf233db4a27753d4ad1cb",
         "paper/pirc17/figures/reader-v9/revision46-population.pdf": "9e42e4838dfdecf21d0bec491ac3b6bd77dfdb483815c4ea9d5dcd7e5774436d",
         "paper/pirc17/zh/reader-v8-procedures.tex": "cbf9259d7e2452267ec5b90be2838530175f19fb77d71951ff1a949c081fca15",
-        "paper/pirc17/zh/reader-v4-full.tex": "7ce4d9d36788fd1cd9d1fa4acdc4d65b499122175691380296f6f937e426e2ba",
+        "paper/pirc17/zh/reader-v4-full.tex": "c021d01354cb3e1cdc03eb06cdf5bca28dd941006619044185124291bec9e870",
         "paper/pirc17/zh/reader-v4-propagation.tex": "e0255966221ec4a5067013a42967e32129f275ba816be24337cceb1e97532c1d",
         "paper/pirc17/zh/reader-v4-terrain.tex": "9eddcd3931c3ed577dbfef6fe953d9c6c555638f3a0a455762191e1a029ed36b",
         "paper/pirc17/zh/reader-v9-terrain-factors.tex": "1629614448ed1743062f1fd95010618c980f72b2df6b759a225b920fbd3dd18b",
@@ -120,8 +120,8 @@
         "paper/pirc17/zh/revision46-bibliography.tex": "7854d9e29db8f0d6c9a69ae675856cd23442dec845e317975146905bc1764141"
       },
       "pdf": "zh/main.pdf",
-      "pdf_sha256": "18fa990df46bad9be3c5787c8af56b50f6fe6145fc414eb546d90cf18fb70a47",
-      "log_sha256": "78174c8088db47d3a2387578d0dd77a57f4056366a87e6a3068393550ee1ad86",
+      "pdf_sha256": "0a28df231081a599ed5cedcda3317aa655fae4bb62098a43a8ab3f1019c49eb6",
+      "log_sha256": "b7005c98f58a2d77e52895636aa0fceb27d76ec773b9295171002392b14c4707",
       "strict_log_passed": true
     },
     {
@@ -130,7 +130,7 @@
       "pages": 80,
       "source_graph_sha256": {
         "paper/pirc17/zh/supplement.tex": "30c73496a1dddaf9ad3c56ab574c4695e951667e46f9c5cd6e389fb15eca2335",
-        "paper/pirc17/zh/revision46-preamble.tex": "0ff646412c6e7c2f5cbb653d14fe35baf2a42e0f927cd0fa2791533ba90b31b5",
+        "paper/pirc17/zh/revision46-preamble.tex": "a47aba070fbde17fe03a36e4cd799964772c815a22814c8bae6c33ca6cb0436d",
         "paper/pirc17/revision46-numbers.tex": "bd138a091860595f340e427c0b9acfe63f24fd5495bb00a26c40341210aa6ff9",
         "paper/pirc17/figures/reader-v9/geometry.pdf": "2fcb75d4900e261a56d0a9574d49295c9bf192255e0347a0ebcab4b9e166a8d1",
         "paper/pirc17/figures/reader-v9/design.pdf": "78dbbb5e3984f1bac847d80182776c53b2c5d59a17449d45027f685170aaf9d0",
@@ -161,8 +161,8 @@
         "paper/pirc17/zh/revision46-bibliography.tex": "7854d9e29db8f0d6c9a69ae675856cd23442dec845e317975146905bc1764141"
       },
       "pdf": "zh/supplement.pdf",
-      "pdf_sha256": "ff3ed563c01f9bca3479fe0e7c941dd5cec015ae7c869f4d05210b1712ffb6df",
-      "log_sha256": "608568c1b717303cc495b6c5d7a59f23ef8669eed6ae21494f7bb6f6f522f2b1",
+      "pdf_sha256": "09260d566f5bb1cb2567edff168434459126503fe1afe8699bff231d6cf963e3",
+      "log_sha256": "b86e90a6fec56c1488f9f7724b00f3c327a4c21075e6425068ff556fa25b96f7",
       "strict_log_passed": true
     },
     {
@@ -171,7 +171,7 @@
       "pages": 16,
       "source_graph_sha256": {
         "paper/pirc17/zh/audit-notes.tex": "70c4a1d6af2ab78edccf34e287525460e2635ed3cdb9869e5124daa083528c1c",
-        "paper/pirc17/zh/revision46-preamble.tex": "0ff646412c6e7c2f5cbb653d14fe35baf2a42e0f927cd0fa2791533ba90b31b5",
+        "paper/pirc17/zh/revision46-preamble.tex": "a47aba070fbde17fe03a36e4cd799964772c815a22814c8bae6c33ca6cb0436d",
         "paper/pirc17/revision46-numbers.tex": "bd138a091860595f340e427c0b9acfe63f24fd5495bb00a26c40341210aa6ff9",
         "paper/pirc17/zh/reader-v2-errata.tex": "c22c65379e28117ba5bd434d8a8db7620f8c5c9f94c4393212a8be762e826cf0",
         "paper/pirc17/zh/revision46-audit-notes-retained.tex": "94cc23cf3bfa1582888deafa69d26bed9ad9bafafa290d5f39960a32d43efce1",
@@ -179,8 +179,8 @@
         "paper/pirc17/zh/revision46-bibliography.tex": "7854d9e29db8f0d6c9a69ae675856cd23442dec845e317975146905bc1764141"
       },
       "pdf": "zh/audit-notes.pdf",
-      "pdf_sha256": "a22531e6d91a32aceb4b4866e245ecf16c24d8f36ac40fac569222b14eaee2e5",
-      "log_sha256": "da9dbfe9ba9ec59d146dd692c6c27d66e5576cd3cf0dc608a0219726f301967b",
+      "pdf_sha256": "09a57404ec602b5c19784473a4bd0d11c1cc3695ee9702b8f2b0e456a5f820d0",
+      "log_sha256": "eedffad00daea65dd0dc1ac1f6c615567aeeadb7e9500c2f2ebfc6f46bf45a1b",
       "strict_log_passed": true
     }
   ],
