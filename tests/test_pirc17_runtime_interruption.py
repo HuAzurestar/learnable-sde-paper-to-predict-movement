@@ -2,6 +2,7 @@
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
 """One retained original timing interruption; no correction or science gate."""
+from scripts.pirc17_paper_paths import paper_path
 from scripts.pirc17_historical_tex import historical_tex
 from collections import Counter
 import hashlib
@@ -105,7 +106,7 @@ def test_main_manuscripts_make_affected_cost_claims_explicit(language):
 
 
 def test_cost_review_response_binds_new_disclosure_without_promoting_acceptance():
-    registry = json.loads((PAPER / "review-response-v1.json").read_text(encoding="utf-8"))
+    registry = json.loads((paper_path(PAPER / "review-response-v1.json")).read_text(encoding="utf-8"))
     item = next(row for row in registry["items"] if row["id"] == "P1-23")
     assert EVIDENCE in item["evidence"]
     bindings = {row["path"]: row["sha256"] for row in registry["evidence_files"]}
@@ -127,7 +128,7 @@ def test_cost_review_response_binds_new_disclosure_without_promoting_acceptance(
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_delivered_current_pdf_and_source_match_the_actual_new_build(language):
-    public_manifest = PAPER / "public-review-build.json"
+    public_manifest = paper_path(PAPER / "public-review-build.json")
     is_public = public_manifest.exists()
     local_current = PAPER / "audited-review-build-v1.json"
     manifest_path = public_manifest if is_public else (

@@ -7,6 +7,7 @@ figures used by the current main/supplement graph are delivered. No model,
 private trajectories, new scores, fit, map query or inference is imported.
 """
 from __future__ import annotations
+from scripts.pirc17_paper_paths import paper_path
 
 import argparse
 import hashlib
@@ -29,7 +30,7 @@ from scripts.pirc17_display_names import display_text, figure_text, tex_display
 
 ROOT = Path(__file__).resolve().parents[1]
 PAPER = ROOT / "paper/pirc17"
-BASELINE = PAPER / "revision46-review-v8/build-manifest.json"
+BASELINE = paper_path(PAPER / "revision46-review-v8/build-manifest.json")
 
 
 def digest(path):

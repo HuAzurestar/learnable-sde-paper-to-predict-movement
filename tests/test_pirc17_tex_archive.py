@@ -1,4 +1,5 @@
 """Reversible archiving must preserve evidence and every active build input."""
+from scripts.pirc17_paper_paths import paper_path
 import hashlib
 import json
 from pathlib import Path
@@ -24,7 +25,7 @@ def test_all_twenty_moves_preserve_original_and_git_bytes():
 
 
 def test_every_v10_build_input_is_still_exact_and_outside_archive():
-    manifest = json.loads((PAPER / "revision46-review-v10/build-manifest.json").read_text())
+    manifest = json.loads((paper_path(PAPER / "revision46-review-v10/build-manifest.json")).read_text())
     inputs = {k: v for row in manifest["manuscripts"] for k, v in row["source_graph_sha256"].items()}
     assert len(inputs) == 76
     assert sum(k.endswith(".tex") for k in inputs) == 56

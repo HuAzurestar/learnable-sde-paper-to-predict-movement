@@ -2,6 +2,7 @@
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
 """Pure saved-artifact checks; registry coverage is not review acceptance."""
+from scripts.pirc17_paper_paths import paper_path
 from scripts.pirc17_historical_tex import historical_tex
 from collections import Counter
 import hashlib
@@ -16,7 +17,7 @@ PAPER = ROOT / "paper/pirc17"
 
 
 def response():
-    return json.loads((PAPER / "review-response-v1.json").read_text(encoding="utf-8"))
+    return json.loads((paper_path(PAPER / "review-response-v1.json")).read_text(encoding="utf-8"))
 
 
 def test_all_original_items_have_one_response_and_explicit_remaining_scope():

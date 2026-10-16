@@ -2,6 +2,7 @@
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
 """Whole anonymous descriptive-table transport, not scientific acceptance."""
+from scripts.pirc17_paper_paths import paper_path
 from scripts.pirc17_historical_tex import historical_tex
 from copy import deepcopy
 import hashlib
@@ -76,7 +77,7 @@ def test_new_ledger_pins_exact_files_and_retains_every_previous_root_and_review_
         assert hashlib.sha256((root/entry[field]).read_bytes()).hexdigest()==entry[field+"_sha256"]
     for language in ("en","zh"):
         assert hashlib.sha256((historical_tex(PAPER/language/"point-error-horizons.tex")).read_bytes()).hexdigest()==entry["bilingual_tex_sha256"][language]
-    review=json.loads((PAPER/"review-response-v1.json").read_text(encoding="utf-8"))
+    review=json.loads((paper_path(PAPER/"review-response-v1.json")).read_text(encoding="utf-8"))
     assert review["accepted_items"]==0 and not review["all_review_items_or_paper_complete"]
     assert review["status_counts"]=={"draft_checked":20,"partial":14,"awaiting_original_results":7,"permission_unverified":1}
     # Original81 paths remain; both individually bound timing disclosures are additive.

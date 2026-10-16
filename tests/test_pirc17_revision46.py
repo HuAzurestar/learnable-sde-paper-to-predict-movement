@@ -1,4 +1,5 @@
 """Current-revision scientific and source invariants; no human acceptance claim."""
+from scripts.pirc17_paper_paths import paper_path
 from scripts.pirc17_historical_tex import archive_entries, historical_tex
 import hashlib
 import json
@@ -13,7 +14,7 @@ PAPER = ROOT / "paper/pirc17"
 
 
 def read(name):
-    return json.loads((PAPER / name).read_text(encoding="utf-8"))
+    return json.loads((paper_path(PAPER / name)).read_text(encoding="utf-8"))
 
 
 def test_all46_and_original42_are_preserved_without_fake_acceptance():
@@ -44,7 +45,7 @@ def test_figure_sources_are_original_canonical_bytes_and_no_experiment():
     assert manifest["new_fits_forecasts_particle_scores_resampling_or_map_queries"] == 0
     assert {r["task"] for r in manifest["figures"]} == {f"G{n:02d}" for n in range(1,14) if n != 12}
     for name, sha in manifest["source_sha256"].items():
-        data = (PAPER / name).read_bytes()
+        data = (paper_path(PAPER / name)).read_bytes()
         assert hashlib.sha256(data).hexdigest() == sha
         original = subprocess.check_output(["git", "show", "8cbcb114:paper/pirc17/"+name], cwd=ROOT)
         assert data == original
@@ -79,7 +80,7 @@ def test_every_pre_revision_scientific_json_is_exact_canonical_git_bytes():
         if not name.endswith(".json"):
             continue
         original = subprocess.check_output(["git", "show", "8cbcb114:"+name], cwd=ROOT)
-        assert (ROOT / name).read_bytes() == original, name
+        assert (paper_path(ROOT / name)).read_bytes() == original, name
         count += 1
     assert count == 66
 
@@ -101,12 +102,21 @@ def test_historical_test_migration_does_not_change_a_scientific_assertion():
                 if (node.attr in {"read_text", "read_bytes"}
                         and isinstance(receiver, ast.Call)
                         and isinstance(receiver.func, ast.Name)
-                        and receiver.func.id == "historical_tex"
+                        and receiver.func.id in {"historical_tex", "paper_path"}
                         and len(receiver.args) == 1 and not receiver.keywords
                         and isinstance(receiver.args[0], ast.BinOp)):
-                    known = {Path(p).name for p in archive_entries()}
-                    assert any(isinstance(n, ast.Constant) and isinstance(n.value, str)
-                               and Path(n.value).name in known for n in ast.walk(receiver.args[0]))
+                    if receiver.func.id == "historical_tex":
+                        known = {Path(p).name for p in archive_entries()}
+                        assert any(isinstance(n, ast.Constant) and isinstance(n.value, str)
+                                   and Path(n.value).name in known for n in ast.walk(receiver.args[0]))
+                    else:
+                        # This resolver only maps indexed paper-artifact paths;
+                        # all scientific data/image aliases are forbidden by
+                        # test_pirc17_paper_layout. Dynamic legacy JSON names
+                        # remain exact file reads, not transformed evidence.
+                        assert isinstance(receiver.args[0].op, ast.Div)
+                        assert any(isinstance(n, ast.Name) and n.id in {"PAPER", "ROOT", "paper"}
+                                   for n in ast.walk(receiver.args[0]))
                     node.value = receiver.args[0]
                 return node
         asserts = lambda data: [ast.dump(ArchiveReadPaths().visit(n), include_attributes=False) for n in ast.walk(ast.parse(data)) if isinstance(n, ast.Assert)]
@@ -234,7 +244,7 @@ def test_historical_v2_reader_body_has_independent_companions_and_public_boundar
     # Source wrapping is not a reading-length measure. The editorial contract
     # is a 12--16 page body in the retained 11pt, one-inch-margin template.
     import fitz
-    with fitz.open(PAPER / "revision46-review-v1" / language / "main.pdf") as document:
+    with fitz.open(paper_path(PAPER / "revision46-review-v1" / language / "main.pdf")) as document:
         assert 12 <= len(document) <= 16
     assert r"\appendix" not in text
     assert "inertial-horizons.pdf" in text and "practical-effects.pdf" in text

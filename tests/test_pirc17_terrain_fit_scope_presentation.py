@@ -2,6 +2,7 @@
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
 """Saved-data arithmetic and bilingual presentation, not new experiments."""
+from scripts.pirc17_paper_paths import paper_path
 from scripts.pirc17_historical_tex import historical_tex
 import hashlib
 import json
@@ -22,7 +23,7 @@ def test_original_fit_design_and_clock_population_bindings():
     for name, field in (("terrain-fit-scope-description-v1.json", "projection_sha256"),
                         ("fit-diagnostics-v1.json", "original_fit_projection_sha256"),
                         ("feature-design-description-v1.json", "original_feature_projection_sha256")):
-        assert hashlib.sha256((PAPER / name).read_bytes()).hexdigest() == entry[field]
+        assert hashlib.sha256((paper_path(PAPER / name)).read_bytes()).hexdigest() == entry[field]
     assert result["base_fit_projection_sha256"] == entry["original_fit_projection_sha256"]
     assert result["base_feature_projection_sha256"] == entry["original_feature_projection_sha256"]
     feature = json.loads((PAPER / "feature-design-description-v1.json").read_text(encoding="utf-8"))

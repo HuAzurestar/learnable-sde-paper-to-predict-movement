@@ -1,4 +1,5 @@
 """The public review projection must not contain withheld route assets."""
+from scripts.pirc17_paper_paths import paper_path
 import subprocess
 from pathlib import Path
 
@@ -24,7 +25,7 @@ def test_public_sources_do_not_load_local_route_figures():
 
 def test_original_review_status_is_not_elevated_by_projection():
     import json
-    original = json.loads((ROOT / "paper/pirc17/review-response-v1.json").read_text(encoding="utf-8"))
+    original = json.loads((paper_path(ROOT / "paper/pirc17/review-response-v1.json")).read_text(encoding="utf-8"))
     assert original["accepted_items"] == 0
     assert original["all_review_items_or_paper_complete"] is False
     assert original["independent_saved_output_audit_completed"] is False

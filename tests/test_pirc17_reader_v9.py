@@ -11,6 +11,7 @@ from matplotlib import pyplot as plt
 import pytest
 
 from scripts.pirc17_display_names import display_text, figure_text, method_name, tex_display
+from scripts.pirc17_paper_paths import paper_entries, paper_path
 from scripts.render_pirc17_reader_v9 import name_figure
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -113,21 +114,27 @@ def test_original_numeric_evidence_and_data_files_are_not_renamed():
     paths = subprocess.check_output(["git", "diff", "fdc07f0", "--name-only", "--", "paper/pirc17"], cwd=ROOT, text=True).splitlines()
     # Existing numerical evidence remains exact; new display contracts/manifests
     # are separate files, not edits to scientific JSON/CSV keys or source numbers.
+    relocations = paper_entries()
+    relocated_paths = {"paper/pirc17/" + p for old, (new, _) in relocations.items() for p in (old, new)}
     build_manifests = [p for p in paths if re.fullmatch(
         r"paper/pirc17/revision46-review-v[0-9]+(?:-[a-z]+)?/build-manifest\.json", p)]
     assert not [p for p in paths if p.endswith((".json", ".csv"))
-                and "reader-v9" not in p and p not in build_manifests]
+                and "reader-v9" not in p and p not in build_manifests
+                and p not in relocated_paths and p != "paper/pirc17/current/build-manifest.json"]
     # Published build receipts are new provenance, not changed numerical evidence.
     # Validate their bounded schema and actual six PDF hashes rather than exempting
     # arbitrary JSON files from the scientific-data guard.
     for name in build_manifests:
-        manifest = json.loads((ROOT / name).read_text())
+        manifest_path = paper_path(ROOT / name)
+        manifest = json.loads(manifest_path.read_text())
         assert manifest["schema_version"] == "pirc17-reader-six-document-build-v1"
         assert len(manifest["manuscripts"]) == 6
         assert manifest["new_fits_forecasts_or_resampling"] == 0
         for row in manifest["manuscripts"]:
-            pdf = (ROOT / name).parent / row["pdf"]
+            pdf = manifest_path.parent / row["pdf"]
             assert hashlib.sha256(pdf.read_bytes()).hexdigest() == row["pdf_sha256"]
+    for new, checksum in relocations.values():
+        assert hashlib.sha256((PAPER / new).read_bytes()).hexdigest() == checksum
     assert "paper/pirc17/revision46-numbers.tex" not in paths
 
 

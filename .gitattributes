@@ -13,3 +13,4 @@ scripts/project_pirc17_secondary_scores.py -text
 paper/pirc17/replay-input-v1/** -text
 scripts/pirc17_replay_input.py -text
 paper/pirc17/archive/** -text
+paper/pirc17/current/** -text

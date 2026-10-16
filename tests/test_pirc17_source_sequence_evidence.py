@@ -2,6 +2,7 @@
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
 """Saved aggregate evidence only; not participant or route independence proof."""
+from scripts.pirc17_paper_paths import paper_path
 from scripts.pirc17_historical_tex import historical_tex
 import hashlib
 import json
@@ -183,7 +184,7 @@ def test_manuscript_ledger_binds_limited_evidence_without_changing_selection_or_
 
 
 def test_source_sequence_response_retains_original_unclosed_independence_boundary():
-    registry=json.loads((ROOT/"paper/pirc17/review-response-v1.json").read_text(encoding="utf-8"))
+    registry=json.loads((paper_path(ROOT/"paper/pirc17/review-response-v1.json")).read_text(encoding="utf-8"))
     row=next(x for x in registry["items"] if x["id"]=="P0-03")
     assert row["status"]=="partial" and row["final_review_accepted"] is False
     assert "paper/pirc17/source-sequence-description-v1.json" in row["evidence"]

@@ -2,6 +2,7 @@
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
 """Partial existing runtime scalars, not a repaired benchmark or new experiment."""
+from scripts.pirc17_paper_paths import paper_path
 from scripts.pirc17_historical_tex import historical_tex
 import hashlib
 import json
@@ -121,7 +122,7 @@ def test_two_flagged_conditions_are_visible_in_the_actual_main_manuscript(langua
 
 
 def test_census_is_bound_to_the_unpromoted_cost_review_item():
-    registry = json.loads((PAPER / "review-response-v1.json").read_text(encoding="utf-8"))
+    registry = json.loads((paper_path(PAPER / "review-response-v1.json")).read_text(encoding="utf-8"))
     item = next(row for row in registry["items"] if row["id"] == "P1-23")
     path = "paper/pirc17/" + NAME
     assert path in item["evidence"]

@@ -2,6 +2,7 @@
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
 """Current author response and prose consistency, not peer-review acceptance."""
+from scripts.pirc17_paper_paths import paper_path
 from scripts.pirc17_historical_tex import historical_tex
 from collections import Counter
 import json
@@ -17,7 +18,7 @@ BASE = '919488cbf3b1d83485c9f6126ffec4fe564eaa6c'
 
 
 def test_current_author_response_accounts_for_all_original_ids_without_acceptance():
-    text = (PAPER / 'review-current-v2.md').read_text(encoding='utf-8')
+    text = (paper_path(PAPER / 'review-current-v2.md')).read_text(encoding='utf-8')
     rows = re.findall(r'^\| (P[012]-\d{2}) \| ([^|]+) \| (.+) \|$', text, re.M)
     expected = {f'P{p}-{n:02d}' for p, count in ((0, 6), (1, 26), (2, 10))
                 for n in range(1, count + 1)}
@@ -29,13 +30,13 @@ def test_current_author_response_accounts_for_all_original_ids_without_acceptanc
                   '不自动新增模型', '不能用成功子集或编造数据', '不关闭REVIEW／ACCEPT／GOAL'):
         assert token in text
     assert 'review-response-v1.json' in text
-    registry = json.loads((PAPER / 'review-response-v1.json').read_text(encoding='utf-8'))
+    registry = json.loads((paper_path(PAPER / 'review-response-v1.json')).read_text(encoding='utf-8'))
     assert registry['accepted_items'] == 0
     assert not any(r['final_review_accepted'] for r in registry['items'])
 
 
 def test_unavailable_source_evidence_is_not_promoted_by_completed_audit():
-    text = (PAPER / 'review-current-v2.md').read_text(encoding='utf-8')
+    text = (paper_path(PAPER / 'review-current-v2.md')).read_text(encoding='utf-8')
     for identifier in ('P0-03', 'P1-02', 'P1-04', 'P1-05', 'P1-08', 'P1-13',
                        'P1-15', 'P1-18', 'P1-22', 'P1-24', 'P2-02', 'P2-10'):
         assert f'| {identifier} | 保留实质证据缺口 |' in text
