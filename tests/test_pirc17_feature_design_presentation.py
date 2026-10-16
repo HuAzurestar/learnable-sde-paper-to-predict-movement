@@ -2,6 +2,7 @@
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
 """Bind design diagnostics to original saved inputs, without new experiments."""
+from scripts.pirc17_historical_tex import historical_tex
 import hashlib
 import json
 from pathlib import Path
@@ -51,7 +52,7 @@ def test_original_full_grid_rank_and_masks(role, count):
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_bilingual_raw_design_table_and_penalty_caveat(language):
-    tex = (ROOT / language / "historical-main-v1.tex").read_text(encoding="utf-8")
+    tex = (historical_tex(ROOT / language / "historical-main-v1.tex")).read_text(encoding="utf-8")
     for name, train in EVIDENCE["roles"]["train"].items():
         validation = EVIDENCE["roles"]["validation"][name]
         expected = (f"{name} & {train['numeric_feature_columns']} & "

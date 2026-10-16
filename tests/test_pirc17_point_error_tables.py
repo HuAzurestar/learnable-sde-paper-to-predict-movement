@@ -2,6 +2,7 @@
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
 """Whole anonymous descriptive-table transport, not scientific acceptance."""
+from scripts.pirc17_historical_tex import historical_tex
 from copy import deepcopy
 import hashlib
 import json
@@ -21,11 +22,11 @@ def projection():
 @pytest.mark.parametrize("language",["en","zh"])
 def test_exact_complete_bilingual_inputs_values_definition_and_limits(language):
     text=renderer.tex(projection(),language)
-    assert (PAPER/language/"point-error-horizons.tex").read_text(encoding="utf-8")==text
+    assert (historical_tex(PAPER/language/"point-error-horizons.tex")).read_text(encoding="utf-8")==text
     assert text.count(r"\begin{table}")==1 and text.count(r"\begin{equation}")==1
     for v in ("73.77","332.31","812.26","1326.09","71.92","1299.11","75.88","1335.73","31.17","2095.78"):
         assert v in text
-    main=(PAPER/language/"historical-main-v1.tex").read_text(encoding="utf-8")
+    main=(historical_tex(PAPER/language/"historical-main-v1.tex")).read_text(encoding="utf-8")
     assert main.count(r"\input{point-error-horizons.tex}")==1
     assert main.index(r"\input{inertial-primary-comparison.tex}") < main.index(r"\input{point-error-horizons.tex}") < main.index(r"\label{sec:terrain-results}")
     assert "10^{-12}" in text and "dt300" in text
@@ -74,7 +75,7 @@ def test_new_ledger_pins_exact_files_and_retains_every_previous_root_and_review_
     for field in ("projection","reader","renderer","shared_closed_score_reader"):
         assert hashlib.sha256((root/entry[field]).read_bytes()).hexdigest()==entry[field+"_sha256"]
     for language in ("en","zh"):
-        assert hashlib.sha256((PAPER/language/"point-error-horizons.tex").read_bytes()).hexdigest()==entry["bilingual_tex_sha256"][language]
+        assert hashlib.sha256((historical_tex(PAPER/language/"point-error-horizons.tex")).read_bytes()).hexdigest()==entry["bilingual_tex_sha256"][language]
     review=json.loads((PAPER/"review-response-v1.json").read_text(encoding="utf-8"))
     assert review["accepted_items"]==0 and not review["all_review_items_or_paper_complete"]
     assert review["status_counts"]=={"draft_checked":20,"partial":14,"awaiting_original_results":7,"permission_unverified":1}

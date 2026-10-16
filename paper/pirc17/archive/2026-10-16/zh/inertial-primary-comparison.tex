@@ -1,0 +1,25 @@
+\FloatBarrier
+\subsection{已完成的恒速惯性参考}
+\label{sec:inertial-primary}
+登记的惯性参考使用保存的因果初始速度外推：$\widehat x^{\mathrm{I}}(t)=x_0+t\widehat v_0$。它是一条确定性路径，不是新拟合的 SDE，也不是五次重复的粒子预测。原58条参考路径均已有保存评分；表~\ref{tab:inertial-primary}、\ref{tab:inertial-horizons} 使用事前规定的完整46块主人群，不包含12个次要起点。每条参考与 Full 的起点、目标身份和实际目标时刻一致。先在每块内平均 Full 的五个预测种子，再等权平均46个记录哈希块；不把一条参考重复计成五份样本。
+
+\begin{table}[htbp]\centering\small
+\caption{相同主起点和保存目标时刻。全部误差单位为米，越低越好。ES 评价预测分布，ADE/FDE 评价均值路径；惯性参考是点质量分布，故其 ES 等于位移误差。份数指保存预测，不是独立人员或拟合模型数。仅描述均值，没有新增置信区间、显著性检验或资格结论。}\label{tab:inertial-primary}
+\begin{tabular}{@{}lrrrrr@{}}\toprule
+模型 & 预测份数 & 块数 & 加权 ES & ADE & FDE\\\midrule
+惯性参考 & 46 & 46 & 824.73 & 824.73 & 2095.78\\
+Full & 230 & 46 & 477.85 & 636.11 & 1326.09\\
+\bottomrule\end{tabular}\end{table}
+
+\begin{table}[htbp]\centering\small
+\caption{四个名义时域的平均边际 ES，单位米，越低越好。按未改变的原30秒容差，保存时钟上的实际目标分别为49--67、294--305、889--910、1785--1814秒；没有插值目标或新增模拟。}\label{tab:inertial-horizons}
+\begin{tabular}{@{}lrrrr@{}}\toprule
+模型 & 1 分钟 & 5 分钟 & 15 分钟 & 30 分钟\\\midrule
+惯性参考 & 31.17 & 237.93 & 934.03 & 2095.78\\
+Full & 50.57 & 243.23 & 609.27 & 1008.35\\
+\bottomrule\end{tabular}\end{table}
+
+Full 减惯性参考的均值差为：加权 ES -346.87 米、ADE -188.62 米、FDE -769.69 米。46块中有34块的 Full 加权 ES 严格更低。但1、5分钟的惯性平均 ES 更低，15、30分钟的 Full 更低，因此汇总收益并非所有时域都一致。
+
+这是对既有评分的事后描述，不是登记的组件对比或独立核验后的优越性结论。不从34/46计数作统计推断，记录哈希也不认证独立参与者。原验证数据确定的 $\delta=41.100259$ 米不按此次最终评估惯性均值重新设定。原输出核验、最终卡片与人工审阅仍待完成；不能据此声称优于引用的外部模型或已满足部署校准。
+\FloatBarrier

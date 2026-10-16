@@ -11,6 +11,10 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def main():
+    try:
+        from scripts.pirc17_historical_tex import historical_tex
+    except ModuleNotFoundError:
+        from pirc17_historical_tex import historical_tex
     paths = subprocess.check_output(["git", "ls-files", "paper/pirc17", "scripts"], cwd=ROOT, text=True).splitlines()
     count = 0
     for name in paths:
@@ -27,7 +31,7 @@ def main():
             count += 1
     for lang in ("en", "zh"):
         original = subprocess.check_output(["git", "show", "8cbcb114:paper/pirc17/"+lang+"/main.tex"], cwd=ROOT)
-        path = ROOT / "paper/pirc17" / lang / "historical-main-v1.tex"
+        path = historical_tex(ROOT / "paper/pirc17" / lang / "historical-main-v1.tex")
         if path.read_bytes().replace(b"\r\n", b"\n") != original:
             raise ValueError("Historical source differs beyond checkout line endings; no overwrite")
         path.write_bytes(original)

@@ -1,4 +1,5 @@
 """Current-revision scientific and source invariants; no human acceptance claim."""
+from scripts.pirc17_historical_tex import archive_entries, historical_tex
 import hashlib
 import json
 from pathlib import Path
@@ -28,7 +29,7 @@ def test_all46_and_original42_are_preserved_without_fake_acceptance():
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_historical_sources_are_exact_git_bytes_and_every_unit_is_accounted(language):
-    historical = (PAPER / language / "historical-main-v1.tex").read_bytes()
+    historical = (historical_tex(PAPER / language / "historical-main-v1.tex")).read_bytes()
     original = subprocess.check_output(["git", "show", "8cbcb114:paper/pirc17/"+language+"/main.tex"], cwd=ROOT)
     assert historical == original
     migration = read("revision46-source-migration.json")["languages"][language]
@@ -68,7 +69,7 @@ def test_presentation_corrections_are_versioned_and_used_by_current_supplements(
             assert r"\input{reader-v2-"+name+".tex}" in retained
             child = (PAPER / language / ("reader-v2-"+name+".tex")).read_text(encoding="utf-8")
             assert "reader-v2/"+name+".pdf" in child
-            assert (PAPER / language / ("revision46-"+name+".tex")).exists()
+            assert historical_tex(PAPER / language / ("revision46-"+name+".tex")).exists()
 
 
 def test_every_pre_revision_scientific_json_is_exact_canonical_git_bytes():
@@ -91,7 +92,24 @@ def test_historical_test_migration_does_not_change_a_scientific_assertion():
         path = ROOT / row["path"]
         original = subprocess.check_output(["git", "show", "8cbcb114:"+row["path"]], cwd=ROOT)
         assert hashlib.sha256(original).hexdigest() == row["original_test_sha256"]
-        asserts = lambda data: [ast.dump(n, include_attributes=False) for n in ast.walk(ast.parse(data)) if isinstance(n, ast.Assert)]
+        class ArchiveReadPaths(ast.NodeTransformer):
+            def visit_Attribute(self, node):
+                self.generic_visit(node)
+                receiver = node.value
+                # Ignore only the hash-checked relocation of an actual file
+                # read, never a wrapper around a scientific assertion/value.
+                if (node.attr in {"read_text", "read_bytes"}
+                        and isinstance(receiver, ast.Call)
+                        and isinstance(receiver.func, ast.Name)
+                        and receiver.func.id == "historical_tex"
+                        and len(receiver.args) == 1 and not receiver.keywords
+                        and isinstance(receiver.args[0], ast.BinOp)):
+                    known = {Path(p).name for p in archive_entries()}
+                    assert any(isinstance(n, ast.Constant) and isinstance(n.value, str)
+                               and n.value in known for n in ast.walk(receiver.args[0]))
+                    node.value = receiver.args[0]
+                return node
+        asserts = lambda data: [ast.dump(ArchiveReadPaths().visit(n), include_attributes=False) for n in ast.walk(ast.parse(data)) if isinstance(n, ast.Assert)]
         assert asserts(original.decode("utf-8")) == asserts(path.read_text(encoding="utf-8"))
         assert row["assertions_changed"] == 0
 

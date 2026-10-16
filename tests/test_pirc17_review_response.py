@@ -2,6 +2,7 @@
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
 """Pure saved-artifact checks; registry coverage is not review acceptance."""
+from scripts.pirc17_historical_tex import historical_tex
 from collections import Counter
 import hashlib
 import json
@@ -59,6 +60,7 @@ def test_all_referenced_existing_evidence_bytes_match_reviewed_revision():
             "scripts/plot_pirc17_method_horizons.py", "scripts/plot_pirc17_method_regions.py",
             "scripts/describe_pirc17_inertial.py", "scripts/render_pirc17_inertial_tables.py",
             "scripts/describe_pirc17_point_errors.py", "scripts/render_pirc17_point_error_tables.py"}
+        resolved = historical_tex(resolved) if resolved.is_relative_to(PAPER.resolve()) else resolved
         assert hashlib.sha256(resolved.read_bytes()).hexdigest() == expected, path
     for row in registry["items"]:
         assert set(row["evidence"]).issubset(files), row["id"]
@@ -66,7 +68,7 @@ def test_all_referenced_existing_evidence_bytes_match_reviewed_revision():
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_each_response_anchor_exists_in_bilingual_reviewed_manuscript(language):
-    text = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
+    text = (historical_tex(PAPER / language / "historical-main-v1.tex")).read_text(encoding="utf-8")
     inputs = re.findall(r"\\input\{([^}]+)\}", text)
     assert set(inputs) == {"all-method-absolute.tex", "method-seed-stability.tex",
                            "method-horizon-overview.tex", "method-horizon-tables.tex",
@@ -74,7 +76,7 @@ def test_each_response_anchor_exists_in_bilingual_reviewed_manuscript(language):
                            "inertial-primary-comparison.tex", "point-error-horizons.tex",
                            "secondary-score-diagnostics.tex"}
     for filename in inputs:
-        text += (PAPER / language / filename).read_text(encoding="utf-8")
+        text += (historical_tex(PAPER / language / filename)).read_text(encoding="utf-8")
     labels = Counter(re.findall(r"\\label\{([^}]+)\}", text))
     for row in response()["items"]:
         for anchor in row["manuscript_anchors"]:

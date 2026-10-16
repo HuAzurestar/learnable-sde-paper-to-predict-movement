@@ -2,6 +2,7 @@
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
 """Actual published aggregate bytes and scope; no new experimental work."""
+from scripts.pirc17_historical_tex import historical_tex
 import csv
 import hashlib
 import json
@@ -88,7 +89,7 @@ def test_all_comparisons_and_trials_keep_dispositions_and_denominators():
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_current_paper_updates_audit_and_retains_limitations(language):
-    text = (ROOT / "paper/pirc17" / language / "historical-main-v1.tex").read_text(encoding="utf-8")
+    text = (historical_tex(ROOT / "paper/pirc17" / language / "historical-main-v1.tex")).read_text(encoding="utf-8")
     assert text.count(r"\label{sec:audited-review-update}") == 1
     assert text.count(r"\label{tab:audited-review-delivery}") == 1
     assert text.count(r"\label{fig:audited-method-comparisons}") == 1

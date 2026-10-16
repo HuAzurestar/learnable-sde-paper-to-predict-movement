@@ -2,6 +2,7 @@
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
 """Current author response and prose consistency, not peer-review acceptance."""
+from scripts.pirc17_historical_tex import historical_tex
 from collections import Counter
 import json
 from pathlib import Path
@@ -46,7 +47,7 @@ def test_unavailable_source_evidence_is_not_promoted_by_completed_audit():
 
 @pytest.mark.parametrize('language', ['en', 'zh'])
 def test_current_prose_does_not_still_wait_for_completed_output_audit(language):
-    text = (PAPER / language / "historical-main-v1.tex").read_text(encoding='utf-8')
+    text = (historical_tex(PAPER / language / "historical-main-v1.tex")).read_text(encoding='utf-8')
     # Original historical captions are intentionally preserved and explicitly marked.
     prose = re.sub(r'\\caption\{.*?(?=\\label\{|\n)', '', text, flags=re.S)
     patterns = (r'pending independent saved-output audit', r'output audit remains pending',
@@ -68,7 +69,7 @@ def test_current_prose_does_not_still_wait_for_completed_output_audit(language):
 def test_status_revision_keeps_every_scientific_block_and_bibliography_exact(language):
     old = subprocess.check_output(['git', 'show', f'{BASE}:paper/pirc17/{language}/main.tex'],
                                   cwd=ROOT).decode('utf-8').replace('\r\n', '\n')
-    new = (PAPER / language / "historical-main-v1.tex").read_text(encoding='utf-8')
+    new = (historical_tex(PAPER / language / "historical-main-v1.tex")).read_text(encoding='utf-8')
     for kind in ('table', 'longtable', 'figure', 'equation', 'align'):
         pattern = r'\\begin\{' + kind + r'\}.*?\\end\{' + kind + r'\}'
         assert re.findall(pattern, old, re.S) == re.findall(pattern, new, re.S), kind

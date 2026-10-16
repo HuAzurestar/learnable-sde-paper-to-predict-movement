@@ -2,6 +2,7 @@
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
 """Saved metadata/document tests only; no scientific computation."""
+from scripts.pirc17_historical_tex import historical_tex
 import hashlib
 import json
 from pathlib import Path
@@ -42,7 +43,7 @@ def test_four_families_unavailable_not_successful_intersections():
 
 @pytest.mark.parametrize('language', ['en','zh'])
 def test_bilingual_failure_tables_and_no_unjustified_model_cause(language):
-    tex = (ROOT/language/"historical-main-v1.tex").read_text(encoding='utf-8')
+    tex = (historical_tex(ROOT/language/"historical-main-v1.tex")).read_text(encoding='utf-8')
     for label in ('tab:retained-failures','tab:failure-family-dispositions'):
         assert tex.count('\\label{'+label+'}') == 1
     assert 'failure-description-v1.json' in tex

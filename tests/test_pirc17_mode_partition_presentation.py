@@ -2,6 +2,7 @@
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
 """Original count and rank-rule documentation, not recovered transition labels."""
+from scripts.pirc17_historical_tex import historical_tex
 import hashlib
 import json
 from pathlib import Path
@@ -54,7 +55,7 @@ def test_reference_full_role_transitions_are_not_divided_equally_or_inverted_fro
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_bilingual_rank_formula_table_and_scope(language):
-    tex = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
+    tex = (historical_tex(PAPER / language / "historical-main-v1.tex")).read_text(encoding="utf-8")
     for label in ["eq:segment-rank-mode", "tab:mode-rank-cardinality"]:
         assert tex.count(r"\label{" + label + "}") == 1
     assert r"\min\{2,\lfloor 3r_s/K\rfloor\}" in tex

@@ -2,6 +2,7 @@
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
 """Saved status/count disclosure, not raw-output audit or terrain inference."""
+from scripts.pirc17_historical_tex import historical_tex
 import hashlib
 import json
 from pathlib import Path
@@ -78,7 +79,7 @@ def test_original_closed_score_scope_and_failure_policy_are_not_promoted():
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_current_main_terrain_explanation_does_not_repeat_historical_missingness(language):
-    text = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
+    text = (historical_tex(PAPER / language / "historical-main-v1.tex")).read_text(encoding="utf-8")
     terrain = text.split(r"\label{sec:terrain-results}", 1)[1].split(r"\paragraph", 1)[0]
     for value in ("1380", "1379", "1150", "1148", "2300", "2297", "230"):
         assert value in terrain

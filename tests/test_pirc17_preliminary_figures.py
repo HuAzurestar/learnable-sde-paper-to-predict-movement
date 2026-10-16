@@ -1,3 +1,4 @@
+from scripts.pirc17_historical_tex import historical_tex
 # Historical presentation fixture: exact public release 8cbcb114.
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
@@ -89,7 +90,7 @@ def test_interval_order_is_numeric_not_outcome_sorted_and_sources_unchanged():
 @pytest.mark.parametrize('language', ['en', 'zh'])
 def test_all_twenty_eight_absolute_rows_retained_in_bilingual_appendix(language):
     source = ROOT / 'paper/pirc17' / language
-    tex = (source / "historical-main-v1.tex").read_text(encoding='utf-8')
+    tex = (historical_tex(source / "historical-main-v1.tex")).read_text(encoding='utf-8')
     table = (source / 'all-method-absolute.tex').read_text(encoding='utf-8')
     assert r'\input{all-method-absolute.tex}' in tex
     assert table.count(r'\label{tab:all-method-absolute}') == 1

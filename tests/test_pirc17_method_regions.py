@@ -2,6 +2,7 @@
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
 """Complete saved region arithmetic/display contracts, not final qualification."""
+from scripts.pirc17_historical_tex import historical_tex
 from copy import deepcopy
 import hashlib
 import json
@@ -79,11 +80,11 @@ def test_reconciliation_rejects_changed_stage_and_old_profiles():
 @pytest.mark.parametrize("language",["en","zh"])
 def test_exact_generated_table_and_figure_in_right_manuscript_sections(language):
     assert (PAPER/language/"method-region-tables.tex").read_text(encoding="utf-8") == table_tex(source(),language)
-    assert (PAPER/language/"method-region-overview.tex").read_text(encoding="utf-8") == figure_tex(language)
+    assert (historical_tex(PAPER/language/"method-region-overview.tex")).read_text(encoding="utf-8") == figure_tex(language)
     table = table_tex(source(),language)
     assert len(re.findall(r" & \d+ / \d+\.\d+ / \d+\.\d+",table)) == 112
     assert table.count(r"}}\\*") == 6
-    tex=(PAPER/language/"historical-main-v1.tex").read_text(encoding="utf-8")
+    tex=(historical_tex(PAPER/language/"historical-main-v1.tex")).read_text(encoding="utf-8")
     assert tex.index(r"\input{method-region-overview.tex}") < tex.index(r"\appendix")
     assert tex.index(r"\input{method-region-tables.tex}") > tex.index(r"\appendix")
     for value in ("6440","1.247","12.609","79.13","2.78","1340.94","1326.09","0.400","0.294"):
@@ -95,7 +96,7 @@ def test_exact_generated_table_and_figure_in_right_manuscript_sections(language)
 @pytest.mark.parametrize("language",["en","zh"])
 def test_all_previous_literal_scientific_blocks_remain_exact(language):
     before=subprocess.check_output(["git","show",f"{BASE}:paper/pirc17/{language}/main.tex"],cwd=ROOT).decode("utf-8").replace("\r\n","\n")
-    after=(PAPER/language/"historical-main-v1.tex").read_text(encoding="utf-8")
+    after=(historical_tex(PAPER/language/"historical-main-v1.tex")).read_text(encoding="utf-8")
     for kind in ("table","longtable","figure","equation"):
         pattern=r"\\begin\{"+kind+r"\}.*?\\end\{"+kind+r"\}"
         assert_preserved_blocks(re.findall(pattern,before,re.S),re.findall(pattern,after,re.S),kind)
@@ -172,7 +173,7 @@ def test_all_probability_table_does_not_replace_original_90_percent_table(langua
     assert r"\label{tab:all-level-coverage}" in table
     assert coverage_envelope_tex(source(),language).startswith(r"\Needspace{.65\textheight}")
     assert len(re.findall(r"^\d+ & \d+ & \d+\.\d+--",table,re.M)) == 16
-    tex=(PAPER/language/"historical-main-v1.tex").read_text(encoding="utf-8")
+    tex=(historical_tex(PAPER/language/"historical-main-v1.tex")).read_text(encoding="utf-8")
     assert r"Table~\ref{tab:all-level-coverage}" in tex if language=="en" else r"表~\ref{tab:all-level-coverage}" in tex
     for value in ("26.52","87.39","24","27"):
         assert value in tex

@@ -2,6 +2,7 @@
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
 """Original saved-scalar population description, not forecast qualification."""
+from scripts.pirc17_historical_tex import historical_tex
 import hashlib
 import json
 from pathlib import Path
@@ -41,7 +42,7 @@ def test_exact_saved_scalar_projection_values_not_online_velocity():
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_all_bilingual_cells_and_statistical_definitions(language):
-    tex = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
+    tex = (historical_tex(PAPER / language / "historical-main-v1.tex")).read_text(encoding="utf-8")
     for label in ("sec:final-cohort-speeds", "tab:final-cohort-speeds", "eq:cohort-window-speed"):
         assert tex.count(r"\label{" + label + "}") == 1
     table = tex.split(r"\label{tab:final-cohort-speeds}", 1)[1].split(r"\end{tabular}", 1)[0]

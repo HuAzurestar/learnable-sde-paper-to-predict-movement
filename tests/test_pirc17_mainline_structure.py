@@ -2,6 +2,7 @@
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
 """Pure presentation placement checks; not experiment or peer-review acceptance."""
+from scripts.pirc17_historical_tex import historical_tex
 import hashlib
 import json
 import subprocess
@@ -19,7 +20,7 @@ def revision():
 @pytest.mark.parametrize("language", ["en", "zh"])
 @pytest.mark.parametrize("table", ["execution-coverage", "family-coverage", "forecast-counts"])
 def test_scale_and_execution_table_bodies_are_preserved_at_intended_locations(language, table):
-    tex = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
+    tex = (historical_tex(PAPER / language / "historical-main-v1.tex")).read_text(encoding="utf-8")
     label = r"\label{tab:" + table + "}"
     assert tex.count(label) == 1
     start = tex.index(label)
@@ -41,7 +42,7 @@ def test_scale_and_execution_table_bodies_are_preserved_at_intended_locations(la
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_scientific_guides_and_paired_estimates_remain_in_main_text(language):
-    tex = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
+    tex = (historical_tex(PAPER / language / "historical-main-v1.tex")).read_text(encoding="utf-8")
     main = tex.split(r"\appendix", 1)[0]
     for label in revision()["preserved_main_labels"]:
         assert main.count(r"\label{" + label + "}") == 1
@@ -58,7 +59,7 @@ def test_scientific_guides_and_paired_estimates_remain_in_main_text(language):
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_appendix_does_not_drop_failures_or_scheduled_auxiliary_scope(language):
-    tex = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
+    tex = (historical_tex(PAPER / language / "historical-main-v1.tex")).read_text(encoding="utf-8")
     appendix = tex.split(r"\appendix", 1)[1]
     for number in ("11020", "10514", "501", "261", "58", "38", "75", "15", "290"):
         assert number in appendix

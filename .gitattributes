@@ -12,3 +12,4 @@ paper/pirc17/*/secondary-score-diagnostics.tex -text
 scripts/project_pirc17_secondary_scores.py -text
 paper/pirc17/replay-input-v1/** -text
 scripts/pirc17_replay_input.py -text
+paper/pirc17/archive/** -text

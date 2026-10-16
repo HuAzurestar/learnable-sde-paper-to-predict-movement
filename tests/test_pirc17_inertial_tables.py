@@ -2,6 +2,7 @@
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
 """Bound saved-score rendering checks; no fit, forecast or statistical test."""
+from scripts.pirc17_historical_tex import historical_tex
 from copy import deepcopy
 from pathlib import Path
 
@@ -19,14 +20,14 @@ def projection():
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_exact_bilingual_saved_score_tables_and_manuscript_input(language):
     text = renderer.tex(projection(), language)
-    assert text == (PAPER / language / "inertial-primary-comparison.tex").read_text(encoding="utf-8")
+    assert text == (historical_tex(PAPER / language / "inertial-primary-comparison.tex")).read_text(encoding="utf-8")
     assert text.count(r"\begin{table}") == 2
     assert "824.73" in text and "477.85" in text
     assert "31.17" in text and "50.57" in text
     assert "237.93" in text and "243.23" in text
     assert "934.03" in text and "609.27" in text
     assert "2095.78" in text and "1008.35" in text
-    main = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
+    main = (historical_tex(PAPER / language / "historical-main-v1.tex")).read_text(encoding="utf-8")
     assert main.count(r"\input{inertial-primary-comparison.tex}") == 1
     section = "Method ablation results" if language == "en" else "方法消融结果"
     next_section = "Terrain ablation results" if language == "en" else "地形消融结果"

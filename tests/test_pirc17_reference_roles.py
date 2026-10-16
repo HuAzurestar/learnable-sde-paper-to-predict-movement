@@ -2,6 +2,7 @@
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
 """Citation trace and saved-source boundaries, not a literature or licence audit."""
+from scripts.pirc17_historical_tex import historical_tex
 import hashlib
 import json
 from pathlib import Path
@@ -13,7 +14,7 @@ PAPER = Path(__file__).resolve().parents[1] / "paper/pirc17"
 
 
 def manuscript(language):
-    return (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
+    return (historical_tex(PAPER / language / "historical-main-v1.tex")).read_text(encoding="utf-8")
 
 
 def bibliography(language):

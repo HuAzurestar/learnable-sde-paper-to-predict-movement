@@ -2,6 +2,7 @@
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
 """Check disclosed inventory arithmetic and manuscript status, not raw outputs."""
+from scripts.pirc17_historical_tex import historical_tex
 from collections import Counter
 import json
 from pathlib import Path
@@ -50,7 +51,7 @@ def test_count_evidence_has_original_closed_score_scope_not_scientific_acceptanc
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_opening_distinguishes_terminal_predictions_completed_audit_and_pending_acceptance(language):
-    text = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
+    text = (historical_tex(PAPER / language / "historical-main-v1.tex")).read_text(encoding="utf-8")
     opening = " ".join(text.split(r"\begin{quote}", 1)[1].split(r"\end{quote}", 1)[0].split())
     assert "11020" in opening and "11015" in opening
     assert "11368" in opening and "58" in opening

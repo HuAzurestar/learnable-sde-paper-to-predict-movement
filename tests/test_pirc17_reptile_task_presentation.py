@@ -2,6 +2,7 @@
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
 """Existing-label task counts and paper checks, not meta-learning qualification."""
+from scripts.pirc17_historical_tex import historical_tex
 import hashlib
 import json
 from pathlib import Path
@@ -41,7 +42,7 @@ def test_all30_tasks_and_rank_cardinalities_are_not_transition_frequencies():
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_bilingual_complete_task_table_and_main_group_definition(language):
-    tex = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
+    tex = (historical_tex(PAPER / language / "historical-main-v1.tex")).read_text(encoding="utf-8")
     for label in ("sec:reptile-task-accounting", "tab:reptile-task-accounting"):
         assert tex.count(r"\label{"+label+"}") == 1
     at = tex.index(r"\label{tab:reptile-task-accounting}")

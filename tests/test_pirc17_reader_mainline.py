@@ -2,6 +2,7 @@
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
 """Reader-facing placement and unchanged-data checks, not reader acceptance."""
+from scripts.pirc17_historical_tex import historical_tex
 import json
 import re
 import subprocess
@@ -17,7 +18,7 @@ BASE = "8457769ad6c76238525f1ee166c21a7b6895c948"
 
 
 def current(language):
-    return (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
+    return (historical_tex(PAPER / language / "historical-main-v1.tex")).read_text(encoding="utf-8")
 
 
 def original(language):
@@ -314,7 +315,7 @@ def test_all_scientific_cross_references_have_manuscript_or_appendix_anchors(lan
                            "inertial-primary-comparison.tex", "point-error-horizons.tex",
                            "secondary-score-diagnostics.tex"}
     for filename in inputs:
-        tex += (PAPER / language / filename).read_text(encoding="utf-8")
+        tex += (historical_tex(PAPER / language / filename)).read_text(encoding="utf-8")
     labels = set(re.findall(r"\\label\{([^}]+)\}", tex))
     references = set(re.findall(r"\\(?:eqref|ref)\{([^}]+)\}", tex))
     assert references <= labels, sorted(references - labels)

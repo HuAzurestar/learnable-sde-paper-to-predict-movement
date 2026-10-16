@@ -2,6 +2,7 @@
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
 """Retained-clock wording/acceptance-branch checks, not source certification."""
+from scripts.pirc17_historical_tex import historical_tex
 import hashlib
 import json
 from pathlib import Path
@@ -32,7 +33,7 @@ REPLACEMENTS = {
 def test_model_clock_passages_do_not_imply_source_clock_certification(language):
     before = subprocess.check_output(['git', 'show', BASE+':paper/pirc17/'+language+'/main.tex'],
         cwd=ROOT).decode('utf-8').replace('\r\n', '\n')
-    after = (PAPER/language/"historical-main-v1.tex").read_text(encoding='utf-8')
+    after = (historical_tex(PAPER/language/"historical-main-v1.tex")).read_text(encoding='utf-8')
     for old, new in REPLACEMENTS[language]:
         assert before.count(old) == 1
         assert old not in after

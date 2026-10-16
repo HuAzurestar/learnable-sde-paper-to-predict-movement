@@ -2,6 +2,7 @@
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
 """Existing population-table placement checks, not new empirical evidence."""
+from scripts.pirc17_historical_tex import historical_tex
 import json
 from pathlib import Path
 import re
@@ -24,7 +25,7 @@ def before(language):
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_three_original_population_tables_are_verbatim_once_in_appendix(language):
     original = before(language)
-    current = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
+    current = (historical_tex(PAPER / language / "historical-main-v1.tex")).read_text(encoding="utf-8")
     main, appendix = current.split(r"\appendix", 1)
     tables = re.findall(r"\\begin\{table\}.*?\\end\{table\}", original, re.S)
     for label in LABELS:
@@ -42,7 +43,7 @@ def test_three_original_population_tables_are_verbatim_once_in_appendix(language
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_main_summary_preserves_selection_limits_and_does_not_add_a_data_table(language):
-    current = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
+    current = (historical_tex(PAPER / language / "historical-main-v1.tex")).read_text(encoding="utf-8")
     main = current.split(r"\appendix", 1)[0]
     start = main.index(r"\label{sec:population-support-summary}")
     summary = main[start:main.index(r"\subsection", start)]

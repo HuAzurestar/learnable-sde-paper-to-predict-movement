@@ -2,6 +2,7 @@
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
 """Saved-number/table/figure bindings only, not scientific qualification."""
+from scripts.pirc17_historical_tex import historical_tex
 import copy
 import hashlib
 import json
@@ -35,7 +36,7 @@ def test_projection_and_figure_bindings():
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_bilingual_full_table_exact_rounding(language):
-    tex = (ROOT / "paper/pirc17" / language / "historical-main-v1.tex").read_text(encoding="utf-8")
+    tex = (historical_tex(ROOT / "paper/pirc17" / language / "historical-main-v1.tex")).read_text(encoding="utf-8")
     for time in data()["profiles"][0]["horizons"]:
         cells = [str(time["nominal_horizon_seconds"] // 60)]
         cells += [f"{100*v['empirical_coverage']:.2f} / {v['mean_disk_area_km2']:.3f}" for v in time["levels"]]
@@ -44,7 +45,7 @@ def test_bilingual_full_table_exact_rounding(language):
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_bilingual_same_target_model_table(language):
-    tex = (ROOT / "paper/pirc17" / language / "historical-main-v1.tex").read_text(encoding="utf-8")
+    tex = (historical_tex(ROOT / "paper/pirc17" / language / "historical-main-v1.tex")).read_text(encoding="utf-8")
     for name, model in zip(("Full", "GMM kernel", "dt300"), data()["profiles"]):
         v = model["horizons"][-1]["levels"][2]
         assert (f"{name} & {100*v['empirical_coverage']:.2f} & "

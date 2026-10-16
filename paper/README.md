@@ -1,5 +1,17 @@
 # Paper sources and review manuscripts
 
+## Source organisation
+
+Current PIRC-17 entry points are `pirc17/en/main.tex` and `pirc17/zh/main.tex`,
+plus each language's `supplement.tex` and `audit-notes.tex`. Older complete
+manuscripts and superseded layout fragments are now in the
+[dated review archive](pirc17/archive/2026-10-16/README.md), with an exact
+[original-path/SHA256 index](pirc17/tex-archive-index.tsv). They are retained
+pending owner inspection, not deleted. Current templates and versioned
+numerical evidence packages remain in place. Historical tests resolve
+archived or pinned Git bytes rather than forcing old chapters into current
+source directories. The manuscript/PDF content is unchanged by this move.
+
 ## Current PIRC-17 manuscript: reader-v10 conclusions and body layout
 
 The main body uses plain numbered pages instead of repeated section running

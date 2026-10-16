@@ -2,6 +2,7 @@
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
 """Saved aggregate metadata and manuscript tests; no simulation or fitting."""
+from scripts.pirc17_historical_tex import historical_tex
 import hashlib
 import json
 from pathlib import Path
@@ -59,7 +60,7 @@ def test_historical_exposure_and_independence_limits_not_erased():
 
 @pytest.mark.parametrize('language', ['en', 'zh'])
 def test_bilingual_denominators_definitions_and_conditional_interpretation(language):
-    tex = (ROOT / language / "historical-main-v1.tex").read_text(encoding='utf-8')
+    tex = (historical_tex(ROOT / language / "historical-main-v1.tex")).read_text(encoding='utf-8')
     assert tex.count(r'\label{tab:release-partition-identities}') == 1
     assert 'partition-description-v1.json' in tex
     assert r'\texttt{independent\_block\_id}' in tex

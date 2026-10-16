@@ -29,12 +29,16 @@ def sha(data):
 
 
 def export():
+    try:
+        from scripts.pirc17_historical_tex import historical_tex
+    except ModuleNotFoundError:
+        from pirc17_historical_tex import historical_tex
     report = {"schema_version": "pirc17-revision46-source-migration-v1",
               "source_commit": "8cbcb1140d804b25b553ab4e7cda0be3a0d34b1b",
               "new_fits_forecasts_or_resampling": 0, "languages": {}}
     for lang in ("en", "zh"):
         folder = PAPER / lang
-        frozen = folder / "historical-main-v1.tex"
+        frozen = historical_tex(folder / "historical-main-v1.tex")
         data = frozen.read_bytes()
         source = data.decode("utf-8").replace("\r\n", "\n")
         bib_start = source.index(r"\begin{thebibliography}")

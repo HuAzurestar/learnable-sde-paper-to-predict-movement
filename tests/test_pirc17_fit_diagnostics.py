@@ -2,6 +2,7 @@
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
 """Bind reader-facing fitting tables to saved aggregate evidence, not new runs."""
+from scripts.pirc17_historical_tex import historical_tex
 import hashlib
 import json
 from pathlib import Path
@@ -27,7 +28,7 @@ def test_ledger_and_saved_fit_population():
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_bilingual_terrain_table_exact_rounding(language):
-    tex = (ROOT / language / "historical-main-v1.tex").read_text(encoding="utf-8")
+    tex = (historical_tex(ROOT / language / "historical-main-v1.tex")).read_text(encoding="utf-8")
     for row in EVIDENCE["terrain"]:
         low, high = row["diffusion_eigenvalues_m2_per_s"]
         expected = (f"{row['configuration']} & {row['conditioner_input_columns']} & "
@@ -41,7 +42,7 @@ def test_bilingual_terrain_table_exact_rounding(language):
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_bilingual_interval_table_exact_counts(language):
-    tex = (ROOT / language / "historical-main-v1.tex").read_text(encoding="utf-8")
+    tex = (historical_tex(ROOT / language / "historical-main-v1.tex")).read_text(encoding="utf-8")
     for row in EVIDENCE["methods"]:
         counts = row["transitions"]
         expected = (f"{int(row['reference_interval_seconds'])} & {counts['train']:,} & "

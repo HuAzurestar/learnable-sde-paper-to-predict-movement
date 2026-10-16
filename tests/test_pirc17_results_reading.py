@@ -2,6 +2,7 @@
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
 """Reader-facing order and exact saved-display preservation, not acceptance."""
+from scripts.pirc17_historical_tex import historical_tex
 import json
 import re
 import subprocess
@@ -26,7 +27,7 @@ def sources(language):
     old = subprocess.check_output(
         ["git", "show", f"{BASE}:paper/pirc17/{language}/main.tex"], cwd=ROOT
     ).decode("utf-8").replace("\r\n", "\n")
-    new = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
+    new = (historical_tex(PAPER / language / "historical-main-v1.tex")).read_text(encoding="utf-8")
     return old, new
 
 

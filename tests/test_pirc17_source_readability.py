@@ -2,6 +2,7 @@
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
 """Pure manuscript reorganization checks; not scientific or reader acceptance."""
+from scripts.pirc17_historical_tex import historical_tex
 import json
 from pathlib import Path
 import re
@@ -24,7 +25,7 @@ def previous(language):
 
 
 def current(language):
-    return (PAPER/language/"historical-main-v1.tex").read_text(encoding="utf-8")
+    return (historical_tex(PAPER/language/"historical-main-v1.tex")).read_text(encoding="utf-8")
 
 
 @pytest.mark.parametrize("language", ["en", "zh"])

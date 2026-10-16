@@ -2,6 +2,7 @@
 # Old monolithic positions are not current six-document acceptance.
 # Current source graph, values and layouts: test_pirc17_revision46.py.
 """Saved-clock distribution checks, not new eligibility or forecasts."""
+from scripts.pirc17_historical_tex import historical_tex
 import hashlib
 import json
 from pathlib import Path
@@ -39,7 +40,7 @@ def test_exact_recorded_followup_distribution_not_forecast_horizon():
 
 @pytest.mark.parametrize("language", ["en", "zh"])
 def test_bilingual_table_matches_every_saved_cell_and_boundary(language):
-    tex = (PAPER / language / "historical-main-v1.tex").read_text(encoding="utf-8")
+    tex = (historical_tex(PAPER / language / "historical-main-v1.tex")).read_text(encoding="utf-8")
     for label in ("tab:final-cohort-durations", "sec:final-cohort-durations"):
         assert tex.count(r"\label{" + label + "}") == 1
     table = tex.split(r"\label{tab:final-cohort-durations}", 1)[1].split(r"\end{tabular}", 1)[0]
