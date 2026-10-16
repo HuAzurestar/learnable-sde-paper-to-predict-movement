@@ -106,7 +106,7 @@ def test_historical_test_migration_does_not_change_a_scientific_assertion():
                         and isinstance(receiver.args[0], ast.BinOp)):
                     known = {Path(p).name for p in archive_entries()}
                     assert any(isinstance(n, ast.Constant) and isinstance(n.value, str)
-                               and n.value in known for n in ast.walk(receiver.args[0]))
+                               and Path(n.value).name in known for n in ast.walk(receiver.args[0]))
                     node.value = receiver.args[0]
                 return node
         asserts = lambda data: [ast.dump(ArchiveReadPaths().visit(n), include_attributes=False) for n in ast.walk(ast.parse(data)) if isinstance(n, ast.Assert)]

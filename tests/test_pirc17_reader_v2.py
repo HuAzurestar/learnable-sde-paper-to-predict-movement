@@ -1,6 +1,7 @@
 """Regression guards for the review's concrete manuscript/estimator defects."""
 import ast
 import hashlib
+from scripts.pirc17_historical_tex import historical_tex
 import json
 from pathlib import Path
 import re
@@ -80,7 +81,7 @@ def test_corrected_groups_and_plot_values_preserve_canonical_evidence():
 def test_dated_status_updates_keep_historical_table_values_and_bindings(lang):
     source = (PAPER / lang / "revision46-supplement-retained.tex").read_text(encoding="utf-8")
     for stem in ("inertial-primary-comparison", "point-error-horizons"):
-        old = (PAPER / lang / (stem+".tex")).read_text(encoding="utf-8")
+        old = historical_tex(PAPER / lang / (stem+".tex")).read_text(encoding="utf-8")
         new = (PAPER / lang / ("reader-v2-"+stem+".tex")).read_text(encoding="utf-8")
         for environment in ("table", "equation"):
             pattern = r"\\begin\{"+environment+r"\}.*?\\end\{"+environment+r"\}"

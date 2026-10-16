@@ -104,7 +104,7 @@ def test_five_method_families_match_seven_panel_controls_and_layout_ledger():
     labels = ["Model structure / Full01", "Observation interval / Full01",
               "Objective and score / Full07", "Training and adaptation / Full11",
               "Numerical propagation / Full18, Full20"]
-    en = (PAPER / "en/historical-main-v1.tex").read_text(encoding="utf-8")
+    en = historical_tex(PAPER / "en/historical-main-v1.tex").read_text(encoding="utf-8")
     assert all(en.count(label) == 1 for label in labels)
     intro = en.split(r"\label{sec:method-results}", 1)[1].split(r"\subsection", 1)[0]
     assert "observation interval" in intro and "training/adaptation" in intro
@@ -113,7 +113,7 @@ def test_five_method_families_match_seven_panel_controls_and_layout_ledger():
     assert "Training and adaptation & 1150 & 1150" in en
     assert "Full anchor: training and adaptation" in en
     assert "Full anchor: transfer and adaptation" not in en
-    zh = (PAPER / "zh/historical-main-v1.tex").read_text(encoding="utf-8")
+    zh = historical_tex(PAPER / "zh/historical-main-v1.tex").read_text(encoding="utf-8")
     assert "Full 锚点：训练及适应" in zh
     assert "迁移与适应" not in zh
     value = revision()
