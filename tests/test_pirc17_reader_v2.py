@@ -2,6 +2,7 @@
 import ast
 import hashlib
 from scripts.pirc17_historical_tex import historical_tex
+from scripts.pirc17_paper_paths import paper_path
 import json
 from pathlib import Path
 import re
@@ -15,7 +16,7 @@ PAPER = ROOT / "paper/pirc17"
 
 
 def read(path):
-    return json.loads((PAPER / path).read_text(encoding="utf-8"))
+    return json.loads(paper_path(PAPER / path).read_text(encoding="utf-8"))
 
 
 def test_bound_scoring_operator_discriminates_u_from_empirical_distribution():
