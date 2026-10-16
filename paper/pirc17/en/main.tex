@@ -13,7 +13,7 @@ movement predictors applied to historical GPX position recordings with
 unverified carrier identities and transport modes, using 46 retrospectively selected recording-hash
 blocks, five simulation seeds and 512 particles per ensemble. At nominal
 1 and 5 minutes, deterministic constant-speed extrapolation has lower
-energy score (ES) than the heading-stratified mixture SDE (HSM-SDE); at 15 and 30 minutes the ordering reverses.
+energy score (ES) than the heading-stratified mixture SDE (HSM-SDE); at 15 and 30 minutes the sample-mean ordering reverses. The five-minute ordering is sensitive to deleting one block.
 Averaging the four targets gives ES \FullES\ m for HSM-SDE and
 \InertialES\ m for constant-velocity extrapolation (CV). A residual-direction
 mixture variant (RDM-SDE) has lower average ES and final
@@ -308,7 +308,7 @@ bootstrap-tail limitations. The descriptive horizon and coverage summaries
 below are not new superiority or calibration hypothesis tests.
 
 \section{Results}\label{sec:method-results}\hypertarget{sec:method-results}{}
-\subsection{CV is better at 1 and 5 minutes; HSM-SDE at 15 and 30}\label{sec:horizon-utility}
+\subsection{Observed short--long horizon ordering, with a fragile five-minute result}\label{sec:horizon-utility}
 In this evaluation, CV performs better at 1 and 5 saved minutes, and
 HSM-SDE at 15 and 30; here ``better'' means lower average ES across the
 46 recording blocks, not an improvement on every metric or every record.
@@ -319,6 +319,14 @@ Thus CV has
 lower ES at 1 and 5 minutes and HSM-SDE at 15 and 30 minutes
 (Figure~\ref{fig:inertial}). The same figure separates ES from mean-position
 error. Four discrete targets do not identify an exact crossover time.
+A review-stage leave-one-block-out diagnostic leaves the saved scores unchanged.
+At five minutes, mean HSM-minus-CV ES is $+5.30$ m; deleting each block in turn
+gives a range of $[-0.19,19.73]$ m and can reverse its sign. The one-, fifteen-
+and thirty-minute mean differences retain their signs under the same diagnostic.
+Each retained block has equal weight; no deletion selects a replacement final cohort.
+This is neither a confidence interval nor a new registered test, and does not
+certify other sensitivities or population generalisation. Reproduction entry:
+\path{scripts/describe_pirc17_cv_sensitivity.py}.
 \begin{figure}[!htbp]\centering
 \includegraphics[width=\linewidth]{../figures/reader-v9/cv-horizons.pdf}
 \caption{HSM-SDE versus CV at four nominal saved-clock
@@ -384,14 +392,19 @@ Training initialisation and parameter adaptation are separate choices.
 The examined variants make only small average ES changes relative to the
 original training/adaptation procedure; no additional ES decrease is confirmed.
 The scratch and Reptile variants change average ES by $+2.60$ and $+2.19$ m;
-their intervals are $[-4.73,10.02]$ and $[-11.95,12.91]$ m. The drift-only and
-two-step adaptation change ES by $+0.50$ and $-0.04$ m, with intervals
-$[-1.52,2.49]$ and $[-2.60,1.81]$ m. The original training/adaptation
+their intervals are $[-4.73,10.02]$ and $[-11.95,12.91]$ m. Drift-only adaptation
+changes ES by $+0.50$ m, with interval $[-1.52,2.49]$ m. The registered
+two-step slot changes ES by $-0.04$ m, with interval $[-2.60,1.81]$ m,
+but executes the same parameter-blending branch as default all adaptation,
+without a separate two-step optimiser. It is retained only as a repeated-simulation
+consistency contrast of the same fitted predictor, not independent evidence
+about an additional adaptation strategy. The original training/adaptation
 procedure is this group's reference (reference code HSM-11),
 not a replacement for the main model in the horizon comparison. All four
 original finite-procedure states are practically equivalent within the
-registered margin. The examined training/adaptation complexity therefore
-shows no clear added ES benefit; this is not evidence that learning itself
+registered margin; this count includes the alias contrast. The three actual
+strategy changes, scratch, Reptile and drift-only, show no clear added ES
+benefit; this is not evidence that learning itself
 is unnecessary. Fixed fitted models and simulation seeds do not measure
 variation across independently repeated training runs.
 
@@ -535,13 +548,17 @@ clock-source verification are needed for broader inference. These are
 unexecuted studies, not results or editorial repairs supplied here.
 
 \section{Conclusion}
-The saved forecasts support the following six experimental conclusions,
-each with its own comparison metric and scope.
+This study closes as an exploratory experiment. The saved forecasts support
+the following six conditional observations, each with its own comparison
+metric and scope. Closeout does not certify model effectiveness, submission
+readiness or resolution of the remaining design gaps.
 \begin{enumerate}
 \renewcommand{\labelenumi}{\arabic{enumi}.}
-\item \textbf{Horizon determines the ES ordering of HSM and CV.}
+\item \textbf{Sample means show a short--long horizon ordering change.}
 In this 46-block saved-clock evaluation, CV is better at 1 and 5 minutes;
 HSM-SDE is better at 15 and 30 minutes. ``Better'' here means lower average ES.
+The five-minute ordering can reverse under single-block deletion; these
+observations do not establish a stable crossover horizon.
 
 \item \textbf{Saved means favour RDM, without a confirmed consistent advantage.}
 RDM-SDE has lower average ES and thirty-minute mean-position error than
@@ -560,6 +577,9 @@ The examined variants change average ES only slightly relative to the
 original training/adaptation procedure; no additional ES decrease is
 confirmed. This concerns changing those strategies, not whether training
 itself is useful.
+The actual strategy changes here are scratch, Reptile and drift-only;
+two-step is an implementation alias of default adaptation and supplies
+no independent evidence about an added strategy.
 
 \item \textbf{Generating probabilistic forecasts does not establish reliable regions.}
 HSM-SDE's thirty-minute nominal 90\% disks achieve empirical coverage of
@@ -596,8 +616,14 @@ forecasts failed; no benefit, harm or equivalence verdict for that family
 can be claimed under that rule. The terrain descriptions above do not
 replace it or identify causal factor effects. Carrier identity and clock
 provenance remain unverified, and retrospective selection and prior evaluation
-exposure limit generalisation. These qualifications do not erase the
-observed comparisons, but prevent general superiority or operational guarantees.
+exposure limit generalisation. The observed comparisons remain conditional.
+RDM training/validation label mismatch and calibration of a proxy rather
+than the actual multi-step distribution, terrain penalty confounding and
+future-route cohort selection remain unresolved design gaps.
+With future-dependent inclusion event $A$, evaluation concerns
+$Y\mid\mathcal H_0,A=1$ and cannot directly establish deployment performance
+or calibration for $Y\mid\mathcal H_0$. The source of undercoverage is unidentified.
+These limitations prevent general superiority or operational guarantees.
 
 \paragraph{Data and reproducibility.}\label{sec:case-horizons}\hypertarget{sec:case-horizons}{}
 The accompanying scientific supplement contains full specifications and all

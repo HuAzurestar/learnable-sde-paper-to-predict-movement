@@ -24,8 +24,8 @@ def test_all_twenty_moves_preserve_original_and_git_bytes():
     assert SOURCE == "8caa3a09bdda29a1f8613f11710e1f84eb01e5dc"
 
 
-def test_every_v10_build_input_is_still_exact_and_outside_archive():
-    manifest = json.loads((paper_path(PAPER / "revision46-review-v10/build-manifest.json")).read_text())
+def test_every_current_build_input_matches_its_manifest_and_is_outside_archive():
+    manifest = json.loads((PAPER / "current/build-manifest.json").read_text())
     inputs = {k: v for row in manifest["manuscripts"] for k, v in row["source_graph_sha256"].items()}
     assert len(inputs) == 76
     assert sum(k.endswith(".tex") for k in inputs) == 56

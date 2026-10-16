@@ -34,13 +34,16 @@ def test_all_107_paper_moves_are_exact_and_cannot_include_scientific_assets():
         assert hashlib.sha256((PAPER / new).read_bytes()).hexdigest() == sha
 
 
-def test_single_current_release_has_exact_last_delivered_pdf_bytes():
+def test_single_current_release_matches_manifest_and_historical_release_is_preserved():
     manifest = json.loads((PAPER / "current/build-manifest.json").read_text())
     assert len(manifest["manuscripts"]) == 6
     for row in manifest["manuscripts"]:
         current = PAPER / "current" / row["pdf"]
         assert hashlib.sha256(current.read_bytes()).hexdigest() == row["pdf_sha256"]
-        assert current.read_bytes() == (PAPER / "archive/paper-versions/v10" / row["pdf"]).read_bytes()
+    historical = json.loads((PAPER / "archive/paper-versions/v10/build-manifest.json").read_text())
+    for row in historical["manuscripts"]:
+        archived = PAPER / "archive/paper-versions/v10" / row["pdf"]
+        assert hashlib.sha256(archived.read_bytes()).hexdigest() == row["pdf_sha256"]
     for language in ("en", "zh"):
         assert not (PAPER / language / "public-review.pdf").exists()
     assert not list(PAPER.glob("revision46-review-*"))

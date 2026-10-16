@@ -1,0 +1,40 @@
+{
+  "schema_version": "pirc17-cv-block-deletion-description-v1",
+  "original_export_content_sha256": "29cb892f47301365b3d7b9a2871f3f71d85fe297f7720d0c6489648f8a4d0c50",
+  "primary_blocks": 46,
+  "hsm_seeds_per_block": 5,
+  "difference": "HSM minus CV; negative favours HSM",
+  "horizons": [
+    {
+      "nominal_seconds": 60,
+      "mean_hsm_minus_cv_es_m": 19.397288815257966,
+      "single_block_deletion_range_m": [17.399804695844153, 20.87477598881453],
+      "hsm_lower_blocks": 11,
+      "ordering_sign_retained": true
+    },
+    {
+      "nominal_seconds": 300,
+      "mean_hsm_minus_cv_es_m": 5.301373414835881,
+      "single_block_deletion_range_m": [-0.18537614082627712, 19.72906913630881],
+      "hsm_lower_blocks": 19,
+      "ordering_sign_retained": false
+    },
+    {
+      "nominal_seconds": 900,
+      "mean_hsm_minus_cv_es_m": -324.76136385119116,
+      "single_block_deletion_range_m": [-350.3999963199427, -287.99064024475945],
+      "hsm_lower_blocks": 31,
+      "ordering_sign_retained": true
+    },
+    {
+      "nominal_seconds": 1800,
+      "mean_hsm_minus_cv_es_m": -1087.4342649143653,
+      "single_block_deletion_range_m": [-1140.0406171289767, -1015.653459262511],
+      "hsm_lower_blocks": 35,
+      "ordering_sign_retained": true
+    }
+  ],
+  "original_full_cohort_retained": true,
+  "diagnostic_scope": "Post-hoc sensitivity of saved sample means only; not confidence intervals, registered tests or population validation.",
+  "new_fits_forecasts_particle_scores_bootstrap_or_hypothesis_tests": 0
+}

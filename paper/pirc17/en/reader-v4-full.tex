@@ -93,6 +93,7 @@ the final component probabilities include the training/adaptation blend.
 HSM's saved component probabilities are 0.3350, 0.3302 and 0.3348,
 rather than a posterior re-estimated from each new prefix.
 HSM/RDM identify these constructions and forecast procedures. Scratch,
-Reptile, drift-only and two-step separately modify training/adaptation
-strategies or parameter-update scope; they are not training-method labels
-at the same level as the two procedure names.
+Reptile and drift-only separately modify training/adaptation strategies or
+parameter-update scope. The registered two-step slot executes the same blend
+as default all adaptation and is an implementation alias. These slot names
+are not training-method labels at the same level as the two procedure names.
