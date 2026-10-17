@@ -1,0 +1,57 @@
+\paragraph{Component schedules before position propagation.}
+Each particle starts at its internal-frame origin position $X_0$ and samples
+a component from its procedure's own final saved weights $\pi$.
+HSM keeps that component throughout its path. RDM independently
+redraws at the end of every reference interval $\tau=60$ saved seconds for
+the next interval, until the forecast endpoint. If $M_k$ denotes the component
+in interval $k$, then
+\begin{equation}\label{eq:mode-update-rules}
+ \Pr(M_{k+1}=j\mid M_k=i)=
+ \begin{cases}\mathbf1\{j=i\},&\text{HSM},\\ \pi_j,&\text{RDM}.
+ \end{cases}
+\end{equation}
+RDM is not a cyclic $1\to2\to3$ rotation or a mandatory change: it can draw
+the same component again. Redrawing does not depend on position, speed,
+recent heading or behaviour recognition. Its component clock differs from
+the maximum integration step $h=5$ seconds: a 60-second interval typically
+contains twelve 5-second numerical steps, not twelve component redraws.
+For illustration, either procedure can produce component sequence $2,2,2$;
+RDM, but not HSM, can produce $2,1,3$. These indices illustrate rules,
+not saved experimental trajectories. Thus the comparison changes training
+groups, fitted parameters and forecast-time persistence together; it cannot
+isolate the benefit of a grouping or redrawing mechanism.
+
+\paragraph{Position generation conditional on a component schedule.}
+On each event interval $\Delta\leq5$ saved
+seconds, write the locally affine drift as $\mathsf A_m x+a_n$, freezing
+the non-position feature at the conditional mean. $\mathsf A_m$ is the
+transpose of the two position rows of $\Theta_m$; $a_n$ contains the
+intercept and frozen solar term. HSM and RDM both use the registered FP/split procedure:
+an exact affine half-drift, an additive noise increment, then another
+half-drift. Its matrices and conditional-moment update are
+\begin{align}
+ H&=e^{\Delta\mathsf A_m/2},\qquad
+ J_{1/2}=\int_0^{\Delta/2} e^{v\mathsf A_m}\,dv,\nonumber\\
+ F&=H^2,\qquad J=(I+H)J_{1/2},\qquad
+ \Omega=H(\Delta Q_m)H^\top,
+ \label{eq:main-affine-kernel}\\
+ \mu_{n+1}&=F\mu_n+Ja_n,\qquad
+ C_{n+1}=FC_nF^\top+\Omega,\label{eq:main-moment-update}\\
+ X_{n+1}^{(p)}&=FX_n^{(p)}+Ja_n+Gz_{n,p},\quad
+ GG^\top=\Omega,\quad z_{n,p}\sim\mathcal N(0,I_2).
+ \label{eq:main-particle-update}
+\end{align}
+Initially $\mu_0=X_0$ and $C_0=0$. The same noisy path supplies its
+positions at all four actual target times. The drift substeps are exact
+for frozen affine coefficients; the split covariance generally differs
+from the affine-exact integral
+$\int_0^\Delta e^{v\mathsf A_m}Q_m e^{v\mathsf A_m^\top}\,dv$.
+Evaluating the solar feature at the conditional mean also approximates
+the nonlinear full model. In particular,
+``FP'' in the saved procedure denotes conditional Gaussian moments,
+not a spatial Fokker--Planck PDE solution. Numerical variants use
+Euler--Maruyama or affine-exact reference kernels, and MC/CRN variants evaluate nonlinear
+conditions along individual paths. Their complete definitions are in the
+\supp{sec:method-model}. This construction produces the empirical measures
+in Equation~\eqref{eq:forecast-object}; no subsequent radius calibration
+is part of the evaluated forecast.

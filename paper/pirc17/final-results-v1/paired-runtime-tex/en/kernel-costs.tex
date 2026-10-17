@@ -1,0 +1,60 @@
+% Public-card rendering only; manuscript integration and acceptance remain pending.
+\begingroup
+\small
+\setlength{\tabcolsep}{3pt}
+\setlength{\LTcapwidth}{\linewidth}
+\begin{longtable}{@{}p{0.28\linewidth}p{0.17\linewidth}p{0.12\linewidth}p{0.12\linewidth}p{0.23\linewidth}@{}}
+\caption{Recorded scientific prediction-kernel costs. Every subject retains 290 planned forecasts across all original modes and seeds. Total and mean use only recorded timings; missing timings and all statuses remain visible. No recorded timings means -- for the displayed total, not zero-cost prediction. These are not isolated latency, CPU time, or project wall time.}\label{tab:public-card-kernel-costs}\\
+\toprule
+Matrix / subject & Recorded / missing timings & Total (s) & Mean (s) & All work statuses\\
+\midrule
+\endfirsthead
+\multicolumn{5}{@{}l}{\tablename~\thetable\ (continued)}\\
+\toprule
+Matrix / subject & Recorded / missing timings & Total (s) & Mean (s) & All work statuses\\
+\midrule
+\endhead
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+NEX326-methods\newline arm-01/\allowbreak{}full & 290 / 0 & 227.7 & 0.785 & success: 290\\
+NEX326-methods\newline arm-02/\allowbreak{}pointwise & 290 / 0 & 229.9 & 0.7926 & success: 290\\
+NEX326-methods\newline arm-03/\allowbreak{}single\_\allowbreak{}gaussian & 289 / 1 & 202.1 & 0.6992 & failed: 1\newline success: 289\\
+NEX326-methods\newline arm-04/\allowbreak{}gmm\_\allowbreak{}kernel & 290 / 0 & 235.4 & 0.8116 & success: 290\\
+NEX326-methods\newline arm-05/\allowbreak{}explicit\_\allowbreak{}decomp & 290 / 0 & 214.1 & 0.7383 & success: 290\\
+NEX326-methods\newline arm-06/\allowbreak{}dt120 & 290 / 0 & 228.8 & 0.7891 & success: 290\\
+NEX326-methods\newline arm-06/\allowbreak{}dt30 & 289 / 1 & 225.7 & 0.7811 & failed: 1\newline success: 289\\
+NEX326-methods\newline arm-06/\allowbreak{}dt300 & 290 / 0 & 226.1 & 0.7797 & success: 290\\
+NEX326-methods\newline arm-06/\allowbreak{}dt60 & 290 / 0 & 225.6 & 0.7778 & success: 290\\
+NEX326-methods\newline arm-06/\allowbreak{}dt600 & 290 / 0 & 227.9 & 0.786 & success: 290\\
+NEX326-methods\newline arm-07/\allowbreak{}full & 290 / 0 & 231.8 & 0.7995 & success: 290\\
+NEX326-methods\newline arm-08/\allowbreak{}qmle & 290 / 0 & 230.9 & 0.7962 & success: 290\\
+NEX326-methods\newline arm-09/\allowbreak{}mixed & 290 / 0 & 227.4 & 0.7842 & success: 290\\
+NEX326-methods\newline arm-09/\allowbreak{}pure\_\allowbreak{}es & 290 / 0 & 230.5 & 0.7947 & success: 290\\
+NEX326-methods\newline arm-10/\allowbreak{}d2\_\allowbreak{}closed & 290 / 0 & 231 & 0.7964 & success: 290\\
+NEX326-methods\newline arm-10/\allowbreak{}d2\_\allowbreak{}mc & 290 / 0 & 234.4 & 0.8081 & success: 290\\
+NEX326-methods\newline arm-11/\allowbreak{}full & 290 / 0 & 229.3 & 0.7908 & success: 290\\
+NEX326-methods\newline arm-12/\allowbreak{}scratch & 290 / 0 & 231.6 & 0.7986 & success: 290\\
+NEX326-methods\newline arm-14/\allowbreak{}reptile & 290 / 0 & 231 & 0.7966 & success: 290\\
+NEX326-methods\newline arm-15/\allowbreak{}drift\_\allowbreak{}only & 290 / 0 & 234.9 & 0.81 & success: 290\\
+NEX326-methods\newline arm-15/\allowbreak{}two\_\allowbreak{}step & 290 / 0 & 232.1 & 0.8004 & success: 290\\
+NEX326-methods\newline arm-16/\allowbreak{}full & 290 / 0 & 228.8 & 0.7891 & success: 290\\
+NEX326-methods\newline arm-18/\allowbreak{}full & 290 / 0 & 228.6 & 0.7884 & success: 290\\
+NEX326-methods\newline arm-19/\allowbreak{}em & 290 / 0 & 229.4 & 0.7911 & success: 290\\
+NEX326-methods\newline arm-19/\allowbreak{}euler & 290 / 0 & 223.6 & 0.7709 & success: 290\\
+NEX326-methods\newline arm-20/\allowbreak{}full & 290 / 0 & 227.2 & 0.7836 & success: 290\\
+NEX326-methods\newline arm-21/\allowbreak{}crn & 290 / 0 & 189.7 & 0.6541 & success: 290\\
+NEX326-methods\newline arm-21/\allowbreak{}mc & 290 / 0 & 189.3 & 0.6529 & success: 290\\
+terrain\newline all-terrain & 289 / 1 & 5.291e+04 & 183.1 & failed: 1\newline success: 289\\
+terrain\newline base & 290 / 0 & 1124 & 3.876 & success: 290\\
+terrain\newline lio-river & 289 / 1 & 4.801e+04 & 166.1 & failed: 1\newline success: 289\\
+terrain\newline lio-road & 289 / 1 & 6.853e+04 & 237.1 & failed: 1\newline success: 289\\
+terrain\newline lio-surface & 290 / 0 & 4.741e+04 & 163.5 & success: 290\\
+terrain\newline lio-worldcover & 290 / 0 & 6.834e+04 & 235.6 & success: 290\\
+terrain\newline loo-river & 290 / 0 & 4.854e+04 & 167.4 & success: 290\\
+terrain\newline loo-road & 290 / 0 & 5.787e+04 & 199.6 & success: 290\\
+terrain\newline loo-surface & 290 / 0 & 5.01e+04 & 172.7 & success: 290\\
+terrain\newline loo-worldcover & 290 / 0 & 5.719e+04 & 197.2 & success: 290\\
+\end{longtable}
+\endgroup

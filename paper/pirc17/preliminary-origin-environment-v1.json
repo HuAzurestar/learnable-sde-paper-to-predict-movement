@@ -1,0 +1,420 @@
+{
+  "schema_version": "pirc17-origin-environment-description-v1",
+  "descriptor_scope": "one frozen offline snapshot row per admitted forecast origin",
+  "environment_scope": "original WorldCover origin pixel, not full route, predicted positions or city type",
+  "online_feature_value_equality_independently_verified": false,
+  "independent_blocks": 46,
+  "worldcover_at_origin": [
+    {
+      "code": 10,
+      "label": "Trees",
+      "blocks": 27
+    },
+    {
+      "code": 20,
+      "label": "Shrub",
+      "blocks": 0
+    },
+    {
+      "code": 30,
+      "label": "Grass",
+      "blocks": 9
+    },
+    {
+      "code": 40,
+      "label": "Cropland",
+      "blocks": 3
+    },
+    {
+      "code": 50,
+      "label": "Built-up",
+      "blocks": 7
+    },
+    {
+      "code": 60,
+      "label": "Bare",
+      "blocks": 0
+    },
+    {
+      "code": 70,
+      "label": "Snow/ice",
+      "blocks": 0
+    },
+    {
+      "code": 80,
+      "label": "Water",
+      "blocks": 0
+    },
+    {
+      "code": 90,
+      "label": "Wetland",
+      "blocks": 0
+    },
+    {
+      "code": 95,
+      "label": "Mangrove",
+      "blocks": 0
+    },
+    {
+      "code": 100,
+      "label": "Moss/lichen",
+      "blocks": 0
+    }
+  ],
+  "continuous_at_origin": {
+    "slope_degrees": {
+      "units": "degrees",
+      "n": 46,
+      "minimum": 0.19242217037086196,
+      "median": 3.007926624736111,
+      "maximum": 35.280829893513115
+    },
+    "road_distance_m": {
+      "units": "m",
+      "n": 46,
+      "minimum": 0.03543912619352341,
+      "median": 113.31625366210938,
+      "maximum": 1273.48095703125
+    },
+    "river_distance_m": {
+      "units": "m",
+      "n": 46,
+      "minimum": 9.449023246765137,
+      "median": 1229.946533203125,
+      "maximum": 3936.09228515625
+    }
+  },
+  "all_four_descriptors_valid": 46,
+  "origin_class_is_whole_route_environment": false,
+  "method_descriptive_scores": {
+    "cached_forecast_rows": 690,
+    "independent_blocks": 46,
+    "forecast_rng_seeds": 5,
+    "group_means": [
+      {
+        "code": 10,
+        "label": "Trees",
+        "independent_blocks": 27,
+        "status": "descriptive_complete",
+        "subjects": [
+          {
+            "configuration": "arm-01/full",
+            "forecast_rows": 135,
+            "weighted_es_m": 427.6628833716761,
+            "fde_m": 1184.63857675631
+          },
+          {
+            "configuration": "arm-04/gmm_kernel",
+            "forecast_rows": 135,
+            "weighted_es_m": 420.85114347204245,
+            "fde_m": 1153.520720728177
+          },
+          {
+            "configuration": "arm-06/dt300",
+            "forecast_rows": 135,
+            "weighted_es_m": 414.59210964304555,
+            "fde_m": 1203.9499622330202
+          }
+        ]
+      },
+      {
+        "code": 20,
+        "label": "Shrub",
+        "independent_blocks": 0,
+        "status": "not_represented",
+        "subjects": [
+          {
+            "configuration": "arm-01/full",
+            "forecast_rows": 0,
+            "weighted_es_m": null,
+            "fde_m": null
+          },
+          {
+            "configuration": "arm-04/gmm_kernel",
+            "forecast_rows": 0,
+            "weighted_es_m": null,
+            "fde_m": null
+          },
+          {
+            "configuration": "arm-06/dt300",
+            "forecast_rows": 0,
+            "weighted_es_m": null,
+            "fde_m": null
+          }
+        ]
+      },
+      {
+        "code": 30,
+        "label": "Grass",
+        "independent_blocks": 9,
+        "status": "descriptive_complete",
+        "subjects": [
+          {
+            "configuration": "arm-01/full",
+            "forecast_rows": 45,
+            "weighted_es_m": 556.8610143517261,
+            "fde_m": 1597.1587256656305
+          },
+          {
+            "configuration": "arm-04/gmm_kernel",
+            "forecast_rows": 45,
+            "weighted_es_m": 557.1606439752615,
+            "fde_m": 1587.7231697094817
+          },
+          {
+            "configuration": "arm-06/dt300",
+            "forecast_rows": 45,
+            "weighted_es_m": 514.087724621137,
+            "fde_m": 1579.125713231167
+          }
+        ]
+      },
+      {
+        "code": 40,
+        "label": "Cropland",
+        "independent_blocks": 3,
+        "status": "descriptive_complete",
+        "subjects": [
+          {
+            "configuration": "arm-01/full",
+            "forecast_rows": 15,
+            "weighted_es_m": 623.1350196425142,
+            "fde_m": 1678.486955524104
+          },
+          {
+            "configuration": "arm-04/gmm_kernel",
+            "forecast_rows": 15,
+            "weighted_es_m": 589.3993810221472,
+            "fde_m": 1591.5656841504506
+          },
+          {
+            "configuration": "arm-06/dt300",
+            "forecast_rows": 15,
+            "weighted_es_m": 600.8863060442388,
+            "fde_m": 1775.322875156918
+          }
+        ]
+      },
+      {
+        "code": 50,
+        "label": "Built-up",
+        "independent_blocks": 7,
+        "status": "descriptive_complete",
+        "subjects": [
+          {
+            "configuration": "arm-01/full",
+            "forecast_rows": 35,
+            "weighted_es_m": 507.60239521442264,
+            "fde_m": 1372.1559951488814
+          },
+          {
+            "configuration": "arm-04/gmm_kernel",
+            "forecast_rows": 35,
+            "weighted_es_m": 529.376004050368,
+            "fde_m": 1364.2278629588561
+          },
+          {
+            "configuration": "arm-06/dt300",
+            "forecast_rows": 35,
+            "weighted_es_m": 468.74593657775694,
+            "fde_m": 1342.7025585629285
+          }
+        ]
+      },
+      {
+        "code": 60,
+        "label": "Bare",
+        "independent_blocks": 0,
+        "status": "not_represented",
+        "subjects": [
+          {
+            "configuration": "arm-01/full",
+            "forecast_rows": 0,
+            "weighted_es_m": null,
+            "fde_m": null
+          },
+          {
+            "configuration": "arm-04/gmm_kernel",
+            "forecast_rows": 0,
+            "weighted_es_m": null,
+            "fde_m": null
+          },
+          {
+            "configuration": "arm-06/dt300",
+            "forecast_rows": 0,
+            "weighted_es_m": null,
+            "fde_m": null
+          }
+        ]
+      },
+      {
+        "code": 70,
+        "label": "Snow/ice",
+        "independent_blocks": 0,
+        "status": "not_represented",
+        "subjects": [
+          {
+            "configuration": "arm-01/full",
+            "forecast_rows": 0,
+            "weighted_es_m": null,
+            "fde_m": null
+          },
+          {
+            "configuration": "arm-04/gmm_kernel",
+            "forecast_rows": 0,
+            "weighted_es_m": null,
+            "fde_m": null
+          },
+          {
+            "configuration": "arm-06/dt300",
+            "forecast_rows": 0,
+            "weighted_es_m": null,
+            "fde_m": null
+          }
+        ]
+      },
+      {
+        "code": 80,
+        "label": "Water",
+        "independent_blocks": 0,
+        "status": "not_represented",
+        "subjects": [
+          {
+            "configuration": "arm-01/full",
+            "forecast_rows": 0,
+            "weighted_es_m": null,
+            "fde_m": null
+          },
+          {
+            "configuration": "arm-04/gmm_kernel",
+            "forecast_rows": 0,
+            "weighted_es_m": null,
+            "fde_m": null
+          },
+          {
+            "configuration": "arm-06/dt300",
+            "forecast_rows": 0,
+            "weighted_es_m": null,
+            "fde_m": null
+          }
+        ]
+      },
+      {
+        "code": 90,
+        "label": "Wetland",
+        "independent_blocks": 0,
+        "status": "not_represented",
+        "subjects": [
+          {
+            "configuration": "arm-01/full",
+            "forecast_rows": 0,
+            "weighted_es_m": null,
+            "fde_m": null
+          },
+          {
+            "configuration": "arm-04/gmm_kernel",
+            "forecast_rows": 0,
+            "weighted_es_m": null,
+            "fde_m": null
+          },
+          {
+            "configuration": "arm-06/dt300",
+            "forecast_rows": 0,
+            "weighted_es_m": null,
+            "fde_m": null
+          }
+        ]
+      },
+      {
+        "code": 95,
+        "label": "Mangrove",
+        "independent_blocks": 0,
+        "status": "not_represented",
+        "subjects": [
+          {
+            "configuration": "arm-01/full",
+            "forecast_rows": 0,
+            "weighted_es_m": null,
+            "fde_m": null
+          },
+          {
+            "configuration": "arm-04/gmm_kernel",
+            "forecast_rows": 0,
+            "weighted_es_m": null,
+            "fde_m": null
+          },
+          {
+            "configuration": "arm-06/dt300",
+            "forecast_rows": 0,
+            "weighted_es_m": null,
+            "fde_m": null
+          }
+        ]
+      },
+      {
+        "code": 100,
+        "label": "Moss/lichen",
+        "independent_blocks": 0,
+        "status": "not_represented",
+        "subjects": [
+          {
+            "configuration": "arm-01/full",
+            "forecast_rows": 0,
+            "weighted_es_m": null,
+            "fde_m": null
+          },
+          {
+            "configuration": "arm-04/gmm_kernel",
+            "forecast_rows": 0,
+            "weighted_es_m": null,
+            "fde_m": null
+          },
+          {
+            "configuration": "arm-06/dt300",
+            "forecast_rows": 0,
+            "weighted_es_m": null,
+            "fde_m": null
+          }
+        ]
+      }
+    ],
+    "overall": [
+      {
+        "configuration": "arm-01/full",
+        "weighted_es_m": 477.8536696875933,
+        "fde_m": 1326.0918029570767
+      },
+      {
+        "configuration": "arm-04/gmm_kernel",
+        "weighted_es_m": 475.0273226291634,
+        "fde_m": 1299.1056539175968
+      },
+      {
+        "configuration": "arm-06/dt300",
+        "weighted_es_m": 454.4490642636843,
+        "fde_m": 1335.7318898865935
+      }
+    ],
+    "hypothesis_tests": 0,
+    "confidence_intervals": null,
+    "categories_defined_after_outcome_inspection": true,
+    "scientific_verdict_authorized": false
+  },
+  "provenance": {
+    "context_sha256": "61354e87858d8dc54e2759e3b11f2501000e27ca9b2898115d72018b2f051f4f",
+    "population_sha256": "7061f44ef8647f7bee55822ca7e494e53d3c058e5973d6198e997893c70bb020",
+    "protocol_sha256": "2267ab84fa77ff4039234a61e8f44be1c3713317d8ad2d1bb4ced9af0c5b293a",
+    "snapshot_manifest_sha256": "56aabd7c20361bf8c5c01f0b534cd80823602129f473f534491c49a5c4e2665b",
+    "origin_source_records_sha256": "fb3e223a44c593b7cf444026a957b89f7a8a8c1db0a5094873c525052f638789",
+    "cached_score_records_sha256": "0b2bb32cfbe78aad7daa2029b6883d7232996adffa66cacc60182ab971ae9faf",
+    "stage_statistics_sha256": "8900f3dee68d5fc9cafd5ced2e2394503432d2493251601c0ba9cb771cbefba1",
+    "renderer_sha256": "b64fd075a2564802e0ec1572eb2f155de5a88a13a9cf95d1ff506704e43f10d6"
+  },
+  "private_coordinates_timestamps_or_identifiers_included": false,
+  "new_forecasts": 0,
+  "new_fits": 0,
+  "new_particle_scores": 0,
+  "new_inference_tests": 0,
+  "independent_saved_output_audit": false,
+  "interpretation": "Post-outcome descriptive means only. Small/unequal origin categories cannot establish environmental effects, whole-route classes, causal mechanisms or global applicability."
+}

@@ -1,0 +1,34 @@
+{
+  "schema_version": "pirc17-reader-v6-terrain-rhetorical-closure-v1",
+  "baseline": "ab811e483365bda5def327e321ef27e4584a7971",
+  "retained_argument": "reader-v5-argument.json",
+  "purpose": "Add a substantive terrain evidence branch, not replace unavailable registered inference with selected-subset significance claims.",
+  "question": "What do the already fitted terrain configurations predict, and how do the existing scores depend on configuration and horizon?",
+  "tree": {
+    "Background": "Separate history-plus-terrain branch, all ten fitted configurations; ordinary HSM-SDE/CV comparison is different.",
+    "Evidence population": "Original46 blocks,2300 slots,2297 success,3 failures; common43 blocks selected only by success of all50 forecasts per block; no imputation.",
+    "Results": ["T1: overall combination", "T2: factor configuration and horizon trade-offs", "T3: region reliability"],
+    "Qualification": "Post-hoc selected-subset description, larger paired-subset sensitivity, refitting/interactions/regularisation confounds and unchanged original family rule.",
+    "Interpretation and conclusion": "No uniform descriptive gain from adding all terrain groups; targeted representation/fitting and horizon-specific assessment are motivated, not isolated causal factor verdicts."
+  },
+  "claims": [
+    {"id":"T1","claim":"On common43 blocks all-terrain changes ES by+26.98m and FDE by+39.00m against base; 30-minute ES+69.11m, but22/43 blocks have lower average ES.","evidence":["tab:terrain-description","fig:terrain-description"],"qualification":"Heterogeneous selected-subset result, no significant harm or inherent terrain-uselessness claim."},
+    {"id":"T2","claim":"Road-only ES+42.96m; removing road from all-terrain ES-19.87m. River-only improves15-minute ES but worsens30-minute ES. Land-cover-only has a small favourable mean, and surface-only trades score against mean location.","evidence":["fig:terrain-description","terrain-description-v1/summary.json"],"qualification":"Full fitted configurations, not independent causal factor effects; river near-zero average changes sign on larger paired subsets."},
+    {"id":"T3","claim":"All ten30-minute nominal90% coverage means lie40.47–52.09%; all-terrain has lower coverage despite slightly larger area than base.","evidence":["tab:terrain-description","fig:terrain-description"],"qualification":"Same43-block subset, five simulation circles per target; not independent participants or calibrated long-horizon regions."}
+  ],
+  "relations": [
+    {"from":"methods","to":"terrain question","relation":"Background/Elaboration","note":"Training is performed; equations are not empirical benefit evidence."},
+    {"from":"table and figure","to":"T1,T2,T3","relation":"Evidence","note":"Two presentations of the same saved data, not independent replications."},
+    {"from":"larger paired subsets","to":"T1,T2","relation":"Interpretation","note":"Checks direction sensitivity to selected blocks, not a new inferential test."},
+    {"from":"selection, failures and refitting","to":"terrain conclusions","relation":"Concession/Qualification","note":"Conclusions remain descriptive; this does not erase actual observed results."},
+    {"from":"T1,T2,T3","to":"discussion and conclusion","relation":"Summary","note":"Uniform-gain hypothesis not supported descriptively on this subset; no causal chain or full-cohort verdict."}
+  ],
+  "main_figures":5,
+  "main_tables":3,
+  "retained_supplementary_tables":50,
+  "new_empirical_forecasts_or_fits":0,
+  "new_particle_scores_or_inference":0,
+  "new_saved_score_descriptive_aggregation":true,
+  "registered_terrain_family_verdict":"unavailable",
+  "human_or_submission_acceptance":false
+}

@@ -1,0 +1,79 @@
+{
+  "schema_version": "pirc17-data-reference-description-v1",
+  "scope": "Bibliographic and provider-document clarification using original saved receipt declarations. No model data, frozen snapshots, predictions or scientific statistics are changed.",
+  "documentation_checked_utc_date": "2026-10-06",
+  "documentation_access_date_local": "2026-10-07",
+  "original_map_provider_projection_sha256": "7b5ebb90c52304fcdbb2b8e2a45934e41ed95a9ad1ef490807c9d2894c7d1b97",
+  "original_case_acknowledgement_sha256": "e4590547ada23209f2efd27d9cc127e9efacfc22910bf6346810049719502b1c",
+  "model_input_reference_roles": {
+    "srtm_label": {
+      "product_distribution_citation": "mapzenterrain",
+      "distribution": "Mapzen Terrain Tiles on AWS, Skadi HGT",
+      "receipt_version_declaration": "SRTM GL1 / Mapzen Skadi public snapshot",
+      "documentation_revision": "e3d4351ee3e5be333e23f47cb500e9a7c310656a",
+      "documentation_url": "https://github.com/tilezen/joerd/blob/e3d4351ee3e5be333e23f47cb500e9a7c310656a/docs/formats.md",
+      "registry_url": "https://registry.opendata.aws/terrain-tiles/",
+      "attribution_citation": "mapzenattribution",
+      "interpretation": "The format document identifies SRTM and other open-data sources. HGT format and the saved GL1 label do not establish pure NASA SRTM provenance or the same acquisition epoch for every retained tile.",
+      "pure_nasa_srtm_provenance_of_all_retained_tiles_established": false,
+      "documentation_commit_is_assigned_as_data_release": false
+    },
+    "copernicus_dem": {
+      "product_distribution_citation": "copernicusdem2021",
+      "receipt_version_declaration": "Copernicus DEM GLO-30 2021 release",
+      "registry_url": "https://registry.opendata.aws/copernicus-dem/",
+      "interpretation": "AWS registry identifies GLO-30 Public and the 2021 release. This reference does not certify each original asset or change the frozen product-selection rule."
+    },
+    "worldcover": {
+      "product_citation": "worldcover2021",
+      "receipt_version_declaration": "WorldCover 2021 v200",
+      "doi": "10.5281/zenodo.7254221"
+    },
+    "overture": {
+      "product_release_citation": "overture202608",
+      "receipt_version_declaration": "2026-08-19.0",
+      "release_documentation_url": "https://docs.overturemaps.org/blog/2026/08/19/release-notes/",
+      "attribution_citation": "overtureattribution"
+    },
+    "hydrorivers": {
+      "methodology_citation": "hydrorivers2013",
+      "product_and_licence_documentation_citation": "hydroriverslicense",
+      "receipt_version_declaration": "HydroRIVERS v1.0"
+    }
+  },
+  "additional_primary_document_checks": {
+    "mapzenattribution": {
+      "documentation_revision": "d8f587b73d26e0a0c42cdccd9ae8c55de4197763",
+      "url": "https://github.com/tilezen/joerd/blob/d8f587b73d26e0a0c42cdccd9ae8c55de4197763/docs/attribution.md",
+      "interpretation": "Provider-specific attribution requirements must be matched to actual upstream sources; this document is not a blanket licence for all Skadi tiles."
+    },
+    "nichol2018": {
+      "version": "arXiv:1803.02999v3",
+      "version_date": "2018-10-22",
+      "url": "https://arxiv.org/abs/1803.02999v3",
+      "type": "preprint"
+    },
+    "davison1997": {
+      "doi": "10.1017/CBO9780511802843",
+      "publisher": "Cambridge University Press",
+      "print_year": 1997,
+      "publisher_url": "https://www.cambridge.org/core/books/bootstrap-methods-and-their-application/ED2FD043579F27952363566DC09CBD6A"
+    },
+    "holm1979": {
+      "stable_publication_url": "https://www.jstor.org/stable/4615733"
+    },
+    "noaa": {
+      "url": "https://gml.noaa.gov/grad/solcalc/solareqns.PDF",
+      "publication_date_in_document": null,
+      "type": "online method documentation"
+    }
+  },
+  "all_23_bibliography_entries_full_text_read_this_revision": false,
+  "target_journal_specific_style_finalized": false,
+  "per_tile_upstream_identity_and_acquisition_epoch_certified": false,
+  "all_redistribution_requirements_verified": false,
+  "public_case_route_release_authorized": false,
+  "new_fits_forecasts_scores_resampling_or_map_queries": 0,
+  "independent_saved_output_audit_completed": false,
+  "paper_or_human_acceptance_completed": false
+}

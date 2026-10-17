@@ -1,0 +1,71 @@
+{
+  "schema_version": "pirc17-terminal-score-inventory-v1",
+  "observed_date": "2026-10-08",
+  "source_base_commit": "f1a67c000da3bae1c6db1647f4d1489431e9918b",
+  "common_score_index_sha256": "fc7c9c4492b962763ecd0f13959a43bf00e2141e74d92273c45cf6ca98e7332f",
+  "common_score_cache_sha256": "892bb89b1d39d376c69d5a41570ad1655e50fe6950be6442db7f2b2f492c2878",
+  "source_scope": {
+    "protocol_sha256": "2267ab84fa77ff4039234a61e8f44be1c3713317d8ad2d1bb4ced9af0c5b293a",
+    "execution_sha256": "c3e44393f6bc5544aaa21bb273c94eaecb9d0becb4e0590771355c4c0be9b6c2",
+    "matrix_sha256": "3fcfc6c7858ee346b20040ef6e7728153b188bd4d2ada58839f39e769d44de13",
+    "population_sha256": "7061f44ef8647f7bee55822ca7e494e53d3c058e5973d6198e997893c70bb020",
+    "scoring_inputs_sha256": "07da73c55cc7aca5b8a9dee4759be73edac508cd52a12490ebb408460534a5f2"
+  },
+  "reader": "scripts/describe_pirc17_inertial.py",
+  "reader_sha256": "2254509e2d14c34583c7081345a3946f94563c73800fa808fa7d340680f68cbc",
+  "closed_blocks": 58,
+  "rows_per_block": 196,
+  "primary_blocks": 46,
+  "support_blocks": 12,
+  "total_score_rows": 11368,
+  "successful_score_rows": 11363,
+  "failed_score_rows": 5,
+  "scientific_forecasts_total": 11020,
+  "scientific_forecasts_success": 11015,
+  "scientific_forecasts_failed": 5,
+  "scientific_forecasts_nonterminal": 0,
+  "rows": [
+    {
+      "matrix": "NEX326-diagnostic",
+      "scientific": false,
+      "status": "success",
+      "rows": 290
+    },
+    {
+      "matrix": "NEX326-methods",
+      "scientific": true,
+      "status": "failed",
+      "rows": 2
+    },
+    {
+      "matrix": "NEX326-methods",
+      "scientific": true,
+      "status": "success",
+      "rows": 8118
+    },
+    {
+      "matrix": "inertial",
+      "scientific": false,
+      "status": "success",
+      "rows": 58
+    },
+    {
+      "matrix": "terrain",
+      "scientific": true,
+      "status": "failed",
+      "rows": 3
+    },
+    {
+      "matrix": "terrain",
+      "scientific": true,
+      "status": "success",
+      "rows": 2897
+    }
+  ],
+  "checkpoint_scientific_matrix_counts_match_saved_score_counts": true,
+  "scope": "Counts only from all hash-checked closed common-score blocks, cross-checked against original scientific workload completion/failure metadata. Scores are registered slots, not independent participants. Same-grid and inertial references are separate from the 11020 scientific forecasts. No raw forecast arrays, new scoring or statistical inference; terminal inventory is not an independent saved-output audit or qualified effect.",
+  "new_fits_forecasts_scores_resampling_or_map_queries": 0,
+  "independent_saved_output_audit_completed": false,
+  "final_statistics_or_cards_complete": false,
+  "human_accepted": false
+}

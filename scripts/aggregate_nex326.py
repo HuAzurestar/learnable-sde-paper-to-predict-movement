@@ -307,10 +307,46 @@ def load_records(source: Path | str) -> list[dict[str, object]]:
     return [dict(item) for item in payload]
 
 
+def _validate_implementation_identity(implementation: object) -> None:
+    """Recompute source/runtime identities for formal consumers."""
+    if not isinstance(implementation, Mapping):
+        raise AggregateError("formal records require an implementation identity")
+    files = implementation.get("files")
+    runtime = implementation.get("runtime")
+    if not isinstance(files, list) or not files or not isinstance(runtime, Mapping):
+        raise AggregateError("implementation identity lacks source files or runtime")
+    paths = []
+    for source in files:
+        if not isinstance(source, Mapping):
+            raise AggregateError("invalid implementation source")
+        path, digest = source.get("path"), source.get("sha256")
+        if (not isinstance(path, str) or not path or not isinstance(digest, str)
+                or len(digest) != 64 or any(c not in "0123456789abcdef" for c in digest)):
+            raise AggregateError("invalid implementation source")
+        paths.append(path)
+    if len(set(paths)) != len(paths):
+        raise AggregateError("duplicate implementation source paths")
+    if not runtime.get("python") or not all(isinstance(v, str) and v for v in runtime.values()):
+        raise AggregateError("invalid implementation runtime")
+    bundle = hashlib.sha256(json.dumps(files, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+    identity = hashlib.sha256(json.dumps(
+        {"source_bundle_sha256": bundle, "runtime": dict(runtime)},
+        sort_keys=True, separators=(",", ":"),
+    ).encode()).hexdigest()
+    if bundle != implementation.get("source_bundle_sha256") or identity != implementation.get("execution_identity_sha256"):
+        raise AggregateError("implementation identity hash mismatch")
+    lock = implementation.get("environment_lock")
+    if not isinstance(lock, Mapping) or lock.get("path") != "environment.lock.json" or lock.get("conformant") is not True:
+        raise AggregateError("formal implementation requires a conformant environment lock")
+    if not any(source["path"] == lock["path"] and source["sha256"] == lock.get("sha256") for source in files):
+        raise AggregateError("implementation environment lock source mismatch")
+
+
 def validate_records(
     records: Sequence[Mapping[str, object]],
     *,
     scope_policy: Path | str | None = None,
+    require_implementation: bool = False,
 ) -> None:
     if not records:
         raise AggregateError("no NEX326 records supplied")
@@ -340,6 +376,8 @@ def validate_records(
         if record.get("implementation_status") != "implemented":
             raise AggregateError(f"arm {arm_id} is not implemented")
         implementation = record.get("implementation")
+        if require_implementation or record.get("verdict") in {"retain", "redundant", "harmful", "inconclusive"}:
+            _validate_implementation_identity(implementation)
         implementation_presence.append(implementation is not None)
         if implementation is not None:
             if not isinstance(implementation, Mapping):
@@ -460,6 +498,19 @@ def validate_records(
                 or gate["sample_size"] < 0
             ):
                 raise AggregateError(f"arm {arm_id} mechanism gate has invalid statistic values")
+            if (
+                not math.isfinite(gate["value"])
+                or not math.isfinite(gate["threshold"])
+                or gate["operator"] not in {"ge", "le"}
+            ):
+                raise AggregateError(f"arm {arm_id} mechanism gate requires finite values and a registered operator")
+            expected = (
+                gate["value"] >= gate["threshold"]
+                if gate["operator"] == "ge"
+                else gate["value"] <= gate["threshold"]
+            )
+            if gate["passed"] != expected:
+                raise AggregateError(f"arm {arm_id} mechanism gate passed flag disagrees with its statistic")
         if record.get("is_full_anchor"):
             anchor_ids.add(arm_id)
             anchor_configs.add(json.dumps(record.get("config"), sort_keys=True, separators=(",", ":")))
@@ -943,8 +994,9 @@ def aggregate(
     *,
     records_root: Path | str | None = None,
     scope_policy: Path | str | None = None,
+    require_implementation: bool = False,
 ) -> dict[str, object]:
-    validate_records(records, scope_policy=scope_policy)
+    validate_records(records, scope_policy=scope_policy, require_implementation=require_implementation)
     scope = _scope_contract(scope_policy)
     scoped_manifest = None
     if scope is not None:
@@ -1045,6 +1097,8 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--records", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--require-implementation", action="store_true",
+                        help="require hash-verified source/runtime identity and a conformant lock for formal evidence")
     parser.add_argument(
         "--scope-policy",
         type=Path,
@@ -1056,6 +1110,7 @@ def main(argv: list[str] | None = None) -> int:
         args.output,
         records_root=args.records if args.records.is_dir() else None,
         scope_policy=args.scope_policy,
+        require_implementation=args.require_implementation,
     )
     print(json.dumps(summary, ensure_ascii=False, indent=2))
     return 0

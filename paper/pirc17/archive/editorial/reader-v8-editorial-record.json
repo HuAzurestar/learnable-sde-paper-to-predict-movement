@@ -1,0 +1,57 @@
+{
+  "schema_version": "pirc17-reader-v8-methods-delivery-v1",
+  "baseline_commit": "a318570249f7886c9e1546cacc1cc1918390f2da",
+  "reviewed_and_compiled_source": "0ce2ecbf972e402607968aef956faf04e3c9fe5d",
+  "method_contract": "reader-v8-methods.json",
+  "build_manifest": "revision46-review-v8/build-manifest.json",
+  "regression_comparison": "reader-v8-regression-check.json",
+  "scope": "Code-verified main-body separation of baselines, shared model structure, grouping-based training and forecast component schedules",
+  "native_read_only_verification": [
+    {"task": "verify_training", "scope": "Actual configurations, per-batch grouping, independent component regression, parameter blending and validation", "result": "HSM segment grouping and RDM transition-residual grouping verified; pooled RDM drift is not retained"},
+    {"task": "verify_prediction", "scope": "Actual formal forecast call, component draws, clocks, feature use and propagation", "result": "HSM fixed-path component; RDM independent categorical redraw at tau=60 saved seconds, repeats allowed; h=5 seconds separate"},
+    {"task": "paper_methods_audit", "scope": "Current bilingual main-body explanations versus supplement", "result": "Missing main-body RDM forecast schedule identified; explicit baseline/training/forecast organisation recommended"}
+  ],
+  "review": {
+    "transport": "ACP",
+    "session_id": "01a13eaf-fcc2-7712-bbd2-4041e6445c19",
+    "adapter": "@agentclientprotocol/codex-acp2.1.0",
+    "model": "gpt-6-astra",
+    "reasoning_effort": "high",
+    "sandbox": "read-only",
+    "configuration_evidence": "ACP configOptions and persisted turn_context",
+    "fresh_context": true,
+    "tool_calls": 10,
+    "stop_reason": "end_turn",
+    "candidate": "0ce2ecbf972e402607968aef956faf04e3c9fe5d",
+    "verdict": "No substantive P1/P2 omission or misleading claim against the methods-clarity goal; no required fix",
+    "checked": [
+      "Six changed TeX files, two new bilingual procedure tables and methods JSON against baseline",
+      "Scientific configurations, grouping/fitting/validation, origin secants, formal calls and rollout code",
+      "Actual public EN main pages3-7,11 and ZH pages3-7,9-10; Table1 readable and inside page bounds",
+      "Corresponding local methods/results text and rendered table pages; public source/PDF hashes match manifest",
+      "Bilingual agreement, retained validation limitations and qualified RDM results; no isolated mechanism attribution"
+    ],
+    "limits": ["Not a new 50-table or numeric-array audit", "No scientific execution or private-trajectory access", "Not human or submission acceptance"]
+  },
+  "host_verification": {
+    "strict_public_documents": 6,
+    "strict_local_documents": 6,
+    "public_pages": {"en": [21, 80, 16], "zh": [20, 78, 15]},
+    "local_main_pages": {"en": 29, "zh": 28},
+    "public_source_inputs": 73,
+    "public_companion_links": 59,
+    "broken_links": 0,
+    "text_outside_page": 0,
+    "original_private_map_hashes_unchanged": 6,
+    "selected_focused_checks_passed": 53,
+    "full_regression": {"passed": 1024, "failed": 25, "errors": 2, "seconds": 243.18, "introduced_failure_or_error_identities": []},
+    "whole_suite_passed": false
+  },
+  "main_figures": 5,
+  "main_tables": 4,
+  "supplementary_tables": 50,
+  "new_nonempirical_method_tables": 1,
+  "new_fits_forecasts_scores_figures_or_inference": 0,
+  "numeric_evidence_changed": false,
+  "human_acceptance": false
+}

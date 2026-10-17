@@ -1,0 +1,2083 @@
+{
+  "schema_version": "pirc17-aggregate-capture-reconciliation-v1",
+  "earlier_capture": {
+    "captured_utc": "2026-10-06T00:54:18.683579+00:00",
+    "settings_id": "37b7744c96b3a3663d902e3189b1fc9bbff480ced87a1f3e1476455c2840a8a9",
+    "score_index_sha256": "7d062d749d3591f0faacb806893cc0f5014a5f3600a0b1b15bb93ab2b2037b2e",
+    "predictor_index_sha256": "cf8a2ca9629ff6b590bb65a7c805da96948f80edc226800638466477b37c9aa0",
+    "captured_rows_sha256": "d339731e52bdaa387208db909d507131ac154eec350cd11c2ba500c78ab5efc2"
+  },
+  "later_capture": {
+    "captured_utc": "2026-10-06T06:53:13.846553+00:00",
+    "settings_id": "37b7744c96b3a3663d902e3189b1fc9bbff480ced87a1f3e1476455c2840a8a9",
+    "score_index_sha256": "bd7b2d509474e8b454ea42ec5d5986550385aed29581f831e2bfc5bc7c99d379",
+    "predictor_index_sha256": "6808a8c1a95a045aab0fbcfaae6baddb8ce0b6abe478873464cf0b1f6201a650"
+  },
+  "scientific_expected": 11020,
+  "totals": {
+    "earlier": {
+      "success": 10384,
+      "failed": 5,
+      "missing": 631
+    },
+    "later": {
+      "success": 10514,
+      "failed": 5,
+      "missing": 501
+    }
+  },
+  "matrix_modes": [
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "expected": 6440,
+      "earlier": {
+        "success": 6440,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 6440,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "known_velocity",
+      "expected": 840,
+      "earlier": {
+        "success": 838,
+        "failed": 2,
+        "missing": 0
+      },
+      "later": {
+        "success": 838,
+        "failed": 2,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "point_only",
+      "expected": 840,
+      "earlier": {
+        "success": 840,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 840,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "causal_prefix",
+      "expected": 2300,
+      "earlier": {
+        "success": 1974,
+        "failed": 3,
+        "missing": 323
+      },
+      "later": {
+        "success": 2031,
+        "failed": 3,
+        "missing": 266
+      },
+      "net_success_count_change": 57
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "known_velocity",
+      "expected": 300,
+      "earlier": {
+        "success": 292,
+        "failed": 0,
+        "missing": 8
+      },
+      "later": {
+        "success": 300,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 8
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "point_only",
+      "expected": 300,
+      "earlier": {
+        "success": 0,
+        "failed": 0,
+        "missing": 300
+      },
+      "later": {
+        "success": 65,
+        "failed": 0,
+        "missing": 235
+      },
+      "net_success_count_change": 65
+    }
+  ],
+  "configurations": [
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-01/full",
+      "expected": 230,
+      "earlier": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-02/pointwise",
+      "expected": 230,
+      "earlier": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-03/single_gaussian",
+      "expected": 230,
+      "earlier": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-04/gmm_kernel",
+      "expected": 230,
+      "earlier": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-05/explicit_decomp",
+      "expected": 230,
+      "earlier": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-06/dt120",
+      "expected": 230,
+      "earlier": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-06/dt30",
+      "expected": 230,
+      "earlier": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-06/dt300",
+      "expected": 230,
+      "earlier": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-06/dt60",
+      "expected": 230,
+      "earlier": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-06/dt600",
+      "expected": 230,
+      "earlier": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-07/full",
+      "expected": 230,
+      "earlier": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-08/qmle",
+      "expected": 230,
+      "earlier": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-09/mixed",
+      "expected": 230,
+      "earlier": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-09/pure_es",
+      "expected": 230,
+      "earlier": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-10/d2_closed",
+      "expected": 230,
+      "earlier": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-10/d2_mc",
+      "expected": 230,
+      "earlier": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-11/full",
+      "expected": 230,
+      "earlier": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-12/scratch",
+      "expected": 230,
+      "earlier": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-14/reptile",
+      "expected": 230,
+      "earlier": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-15/drift_only",
+      "expected": 230,
+      "earlier": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-15/two_step",
+      "expected": 230,
+      "earlier": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-16/full",
+      "expected": 230,
+      "earlier": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-18/full",
+      "expected": 230,
+      "earlier": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-19/em",
+      "expected": 230,
+      "earlier": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-19/euler",
+      "expected": 230,
+      "earlier": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-20/full",
+      "expected": 230,
+      "earlier": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-21/crn",
+      "expected": 230,
+      "earlier": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "causal_prefix",
+      "configuration": "arm-21/mc",
+      "expected": 230,
+      "earlier": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 230,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "known_velocity",
+      "configuration": "arm-01/full",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "known_velocity",
+      "configuration": "arm-02/pointwise",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "known_velocity",
+      "configuration": "arm-03/single_gaussian",
+      "expected": 30,
+      "earlier": {
+        "success": 29,
+        "failed": 1,
+        "missing": 0
+      },
+      "later": {
+        "success": 29,
+        "failed": 1,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "known_velocity",
+      "configuration": "arm-04/gmm_kernel",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "known_velocity",
+      "configuration": "arm-05/explicit_decomp",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "known_velocity",
+      "configuration": "arm-06/dt120",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "known_velocity",
+      "configuration": "arm-06/dt30",
+      "expected": 30,
+      "earlier": {
+        "success": 29,
+        "failed": 1,
+        "missing": 0
+      },
+      "later": {
+        "success": 29,
+        "failed": 1,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "known_velocity",
+      "configuration": "arm-06/dt300",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "known_velocity",
+      "configuration": "arm-06/dt60",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "known_velocity",
+      "configuration": "arm-06/dt600",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "known_velocity",
+      "configuration": "arm-07/full",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "known_velocity",
+      "configuration": "arm-08/qmle",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "known_velocity",
+      "configuration": "arm-09/mixed",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "known_velocity",
+      "configuration": "arm-09/pure_es",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "known_velocity",
+      "configuration": "arm-10/d2_closed",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "known_velocity",
+      "configuration": "arm-10/d2_mc",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "known_velocity",
+      "configuration": "arm-11/full",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "known_velocity",
+      "configuration": "arm-12/scratch",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "known_velocity",
+      "configuration": "arm-14/reptile",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "known_velocity",
+      "configuration": "arm-15/drift_only",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "known_velocity",
+      "configuration": "arm-15/two_step",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "known_velocity",
+      "configuration": "arm-16/full",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "known_velocity",
+      "configuration": "arm-18/full",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "known_velocity",
+      "configuration": "arm-19/em",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "known_velocity",
+      "configuration": "arm-19/euler",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "known_velocity",
+      "configuration": "arm-20/full",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "known_velocity",
+      "configuration": "arm-21/crn",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "known_velocity",
+      "configuration": "arm-21/mc",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "point_only",
+      "configuration": "arm-01/full",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "point_only",
+      "configuration": "arm-02/pointwise",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "point_only",
+      "configuration": "arm-03/single_gaussian",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "point_only",
+      "configuration": "arm-04/gmm_kernel",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "point_only",
+      "configuration": "arm-05/explicit_decomp",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "point_only",
+      "configuration": "arm-06/dt120",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "point_only",
+      "configuration": "arm-06/dt30",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "point_only",
+      "configuration": "arm-06/dt300",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "point_only",
+      "configuration": "arm-06/dt60",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "point_only",
+      "configuration": "arm-06/dt600",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "point_only",
+      "configuration": "arm-07/full",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "point_only",
+      "configuration": "arm-08/qmle",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "point_only",
+      "configuration": "arm-09/mixed",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "point_only",
+      "configuration": "arm-09/pure_es",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "point_only",
+      "configuration": "arm-10/d2_closed",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "point_only",
+      "configuration": "arm-10/d2_mc",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "point_only",
+      "configuration": "arm-11/full",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "point_only",
+      "configuration": "arm-12/scratch",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "point_only",
+      "configuration": "arm-14/reptile",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "point_only",
+      "configuration": "arm-15/drift_only",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "point_only",
+      "configuration": "arm-15/two_step",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "point_only",
+      "configuration": "arm-16/full",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "point_only",
+      "configuration": "arm-18/full",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "point_only",
+      "configuration": "arm-19/em",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "point_only",
+      "configuration": "arm-19/euler",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "point_only",
+      "configuration": "arm-20/full",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "point_only",
+      "configuration": "arm-21/crn",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "NEX326-methods",
+      "origin_mode": "point_only",
+      "configuration": "arm-21/mc",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "causal_prefix",
+      "configuration": "all-terrain",
+      "expected": 230,
+      "earlier": {
+        "success": 199,
+        "failed": 1,
+        "missing": 30
+      },
+      "later": {
+        "success": 204,
+        "failed": 1,
+        "missing": 25
+      },
+      "net_success_count_change": 5
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "causal_prefix",
+      "configuration": "base",
+      "expected": 230,
+      "earlier": {
+        "success": 200,
+        "failed": 0,
+        "missing": 30
+      },
+      "later": {
+        "success": 205,
+        "failed": 0,
+        "missing": 25
+      },
+      "net_success_count_change": 5
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "causal_prefix",
+      "configuration": "lio-river",
+      "expected": 230,
+      "earlier": {
+        "success": 199,
+        "failed": 1,
+        "missing": 30
+      },
+      "later": {
+        "success": 204,
+        "failed": 1,
+        "missing": 25
+      },
+      "net_success_count_change": 5
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "causal_prefix",
+      "configuration": "lio-road",
+      "expected": 230,
+      "earlier": {
+        "success": 196,
+        "failed": 1,
+        "missing": 33
+      },
+      "later": {
+        "success": 204,
+        "failed": 1,
+        "missing": 25
+      },
+      "net_success_count_change": 8
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "causal_prefix",
+      "configuration": "lio-surface",
+      "expected": 230,
+      "earlier": {
+        "success": 195,
+        "failed": 0,
+        "missing": 35
+      },
+      "later": {
+        "success": 204,
+        "failed": 0,
+        "missing": 26
+      },
+      "net_success_count_change": 9
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "causal_prefix",
+      "configuration": "lio-worldcover",
+      "expected": 230,
+      "earlier": {
+        "success": 195,
+        "failed": 0,
+        "missing": 35
+      },
+      "later": {
+        "success": 200,
+        "failed": 0,
+        "missing": 30
+      },
+      "net_success_count_change": 5
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "causal_prefix",
+      "configuration": "loo-river",
+      "expected": 230,
+      "earlier": {
+        "success": 195,
+        "failed": 0,
+        "missing": 35
+      },
+      "later": {
+        "success": 200,
+        "failed": 0,
+        "missing": 30
+      },
+      "net_success_count_change": 5
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "causal_prefix",
+      "configuration": "loo-road",
+      "expected": 230,
+      "earlier": {
+        "success": 195,
+        "failed": 0,
+        "missing": 35
+      },
+      "later": {
+        "success": 200,
+        "failed": 0,
+        "missing": 30
+      },
+      "net_success_count_change": 5
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "causal_prefix",
+      "configuration": "loo-surface",
+      "expected": 230,
+      "earlier": {
+        "success": 200,
+        "failed": 0,
+        "missing": 30
+      },
+      "later": {
+        "success": 205,
+        "failed": 0,
+        "missing": 25
+      },
+      "net_success_count_change": 5
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "causal_prefix",
+      "configuration": "loo-worldcover",
+      "expected": 230,
+      "earlier": {
+        "success": 200,
+        "failed": 0,
+        "missing": 30
+      },
+      "later": {
+        "success": 205,
+        "failed": 0,
+        "missing": 25
+      },
+      "net_success_count_change": 5
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "known_velocity",
+      "configuration": "all-terrain",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "known_velocity",
+      "configuration": "base",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "known_velocity",
+      "configuration": "lio-river",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "known_velocity",
+      "configuration": "lio-road",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "known_velocity",
+      "configuration": "lio-surface",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "known_velocity",
+      "configuration": "lio-worldcover",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "known_velocity",
+      "configuration": "loo-river",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "known_velocity",
+      "configuration": "loo-road",
+      "expected": 30,
+      "earlier": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 0
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "known_velocity",
+      "configuration": "loo-surface",
+      "expected": 30,
+      "earlier": {
+        "success": 27,
+        "failed": 0,
+        "missing": 3
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 3
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "known_velocity",
+      "configuration": "loo-worldcover",
+      "expected": 30,
+      "earlier": {
+        "success": 25,
+        "failed": 0,
+        "missing": 5
+      },
+      "later": {
+        "success": 30,
+        "failed": 0,
+        "missing": 0
+      },
+      "net_success_count_change": 5
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "point_only",
+      "configuration": "all-terrain",
+      "expected": 30,
+      "earlier": {
+        "success": 0,
+        "failed": 0,
+        "missing": 30
+      },
+      "later": {
+        "success": 10,
+        "failed": 0,
+        "missing": 20
+      },
+      "net_success_count_change": 10
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "point_only",
+      "configuration": "base",
+      "expected": 30,
+      "earlier": {
+        "success": 0,
+        "failed": 0,
+        "missing": 30
+      },
+      "later": {
+        "success": 10,
+        "failed": 0,
+        "missing": 20
+      },
+      "net_success_count_change": 10
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "point_only",
+      "configuration": "lio-river",
+      "expected": 30,
+      "earlier": {
+        "success": 0,
+        "failed": 0,
+        "missing": 30
+      },
+      "later": {
+        "success": 10,
+        "failed": 0,
+        "missing": 20
+      },
+      "net_success_count_change": 10
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "point_only",
+      "configuration": "lio-road",
+      "expected": 30,
+      "earlier": {
+        "success": 0,
+        "failed": 0,
+        "missing": 30
+      },
+      "later": {
+        "success": 5,
+        "failed": 0,
+        "missing": 25
+      },
+      "net_success_count_change": 5
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "point_only",
+      "configuration": "lio-surface",
+      "expected": 30,
+      "earlier": {
+        "success": 0,
+        "failed": 0,
+        "missing": 30
+      },
+      "later": {
+        "success": 5,
+        "failed": 0,
+        "missing": 25
+      },
+      "net_success_count_change": 5
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "point_only",
+      "configuration": "lio-worldcover",
+      "expected": 30,
+      "earlier": {
+        "success": 0,
+        "failed": 0,
+        "missing": 30
+      },
+      "later": {
+        "success": 5,
+        "failed": 0,
+        "missing": 25
+      },
+      "net_success_count_change": 5
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "point_only",
+      "configuration": "loo-river",
+      "expected": 30,
+      "earlier": {
+        "success": 0,
+        "failed": 0,
+        "missing": 30
+      },
+      "later": {
+        "success": 5,
+        "failed": 0,
+        "missing": 25
+      },
+      "net_success_count_change": 5
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "point_only",
+      "configuration": "loo-road",
+      "expected": 30,
+      "earlier": {
+        "success": 0,
+        "failed": 0,
+        "missing": 30
+      },
+      "later": {
+        "success": 5,
+        "failed": 0,
+        "missing": 25
+      },
+      "net_success_count_change": 5
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "point_only",
+      "configuration": "loo-surface",
+      "expected": 30,
+      "earlier": {
+        "success": 0,
+        "failed": 0,
+        "missing": 30
+      },
+      "later": {
+        "success": 5,
+        "failed": 0,
+        "missing": 25
+      },
+      "net_success_count_change": 5
+    },
+    {
+      "matrix": "terrain",
+      "origin_mode": "point_only",
+      "configuration": "loo-worldcover",
+      "expected": 30,
+      "earlier": {
+        "success": 0,
+        "failed": 0,
+        "missing": 30
+      },
+      "later": {
+        "success": 5,
+        "failed": 0,
+        "missing": 25
+      },
+      "net_success_count_change": 5
+    }
+  ],
+  "changed_count_cells": 22,
+  "net_success_count_change": 130,
+  "method_count_cells_unchanged": true,
+  "individual_work_id_sets_retained_in_these_sources": false,
+  "individual_identity_difference_reconstructed": false,
+  "no_replacements_within_a_cell_established": false,
+  "independent_saved_output_audit_completed": false,
+  "original_method_statistics_changed": false,
+  "new_forecasts_fits_scores_resampling_or_map_queries": 0,
+  "interpretation": "Exact net count differences on the same saved 114-cell grid; not individual work-ID set differences, proof of monotonic membership, payload validation, or final scientific qualification.",
+  "source_file_sha256": {
+    "stage": "8900f3dee68d5fc9cafd5ced2e2394503432d2493251601c0ba9cb771cbefba1",
+    "scoring_summary": "c4a8f38f264de511f5fc71de614dfc0b55bd8e77b6d563a39ae7b21a73ef76e5",
+    "execution_summary": "e736ea70f79f147e00e460b827a2f214368fc68da77a32c0086227df225557b2",
+    "generator": "2e661c661307364eee901805cdb6ff84c0d444cedb6b563a17b17af7268b81ea"
+  }
+}

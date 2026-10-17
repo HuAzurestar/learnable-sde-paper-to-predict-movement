@@ -1,0 +1,10 @@
+\begin{table}[!htbp]\centering\small
+\caption{Training and forecasting mechanisms of the three ordinary procedures. Components are fitted movement rules, not validated behaviour classes. HSM versus RDM changes both mechanism columns.}
+\label{tab:procedure-mechanisms}
+\begin{tabular}{@{}p{0.15\linewidth}p{0.39\linewidth}p{0.39\linewidth}@{}}\toprule
+Program / role & Training: obtaining the rules & Forecasting: using the rules\\\midrule
+CV / deterministic baseline & No development-set fitting; estimate velocity from the permitted prefix & Extrapolate at that velocity; no component draw\\
+HSM / ordinary reference & Sort segment net headings into three groups; fit drift and diffusion in each & Draw a component per particle at the origin; keep it throughout the path\\
+RDM / family variant & Fit a pooled regression; group transition residual directions; refit within each group & Draw at the origin; independently redraw every $\tau$, allowing the same component\\\bottomrule
+\end{tabular}
+\end{table}

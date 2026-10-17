@@ -1,0 +1,198 @@
+{
+  "schema_version": "pirc17-saved-estimator-calibration-description-v1",
+  "scope": "Four original saved 60-second fits and frozen calibration source; aggregate metadata and equality only; no validation observations or objectives recomputed",
+  "review_items": [
+    "P1-09",
+    "P1-07"
+  ],
+  "inventory_sha256": "675b755e7b234698cc2954e5d743b36d41e37284c4abff200ac888da212fe250",
+  "fit_projection_sha256": "b3d8b6e440399779f5fbac999aba13b23ab0749144441a4b767e746ae3123e3d",
+  "protocol_sha256": "2267ab84fa77ff4039234a61e8f44be1c3713317d8ad2d1bb4ced9af0c5b293a",
+  "source_sha256": {
+    "experiments/nex326/cohort.py": "e59617dc9b84fe5071ab94e2555f90af4199c3adb6c370c2cc206ba44f38af15",
+    "experiments/nex326/model.py": "8863e936419a55d95b4fe31ddb8790fcbb0a923b57cbc3f77cde3e095dea9aa2",
+    "experiments/pirc17/method_development.py": "da8f9c1d280c0203636699438f967bd7c831fade6f4e621f5b87a8fa4931ebb7",
+    "experiments/pirc17/method_inputs.py": "11757c38e5aa8a2a7b83520c2465887a467fd63422766330203448e6b3a933b8",
+    "experiments/pirc17/method_training.py": "65c78934a74f2725bf7f792cd851178fcc539d67a912fc8d33253d45a1d15598",
+    "experiments/pirc17/formal_forecasts.py": "a091265b6b5eaa4b149028952340f3909780c00d6018a176ab29c33c3b5ac6f4",
+    "experiments/pirc17/method_mechanisms.py": "30fda1e79a038bfaf88f38ce635fa155bdbac9e972074ee8099b182bced80033",
+    "experiments/pirc17/method_rollout.py": "076e3964d8f2f18ea45c93c964962be01a74eff62c380cc8719b5e3af4ac3560"
+  },
+  "constants": {
+    "COVARIANCE_JITTER": 1e-8,
+    "ESTIMATOR_SCALE_CANDIDATES": [
+      0.55,
+      0.75,
+      1,
+      1.3,
+      1.7
+    ],
+    "ESTIMATOR_DRIFT_FRACTIONS": [
+      0,
+      0.1,
+      0.25,
+      0.5
+    ]
+  },
+  "gauss_hermite_nodes_per_axis": 10,
+  "stage_projection_sha256": "8900f3dee68d5fc9cafd5ced2e2394503432d2493251601c0ba9cb771cbefba1",
+  "stage_comparisons": [
+    {
+      "candidate": "arm-08/qmle",
+      "control": "arm-07/full",
+      "delta_estimate_m": 0.2755523218728847,
+      "simultaneous_interval_m": [
+        -1.9167750469376164,
+        2.704417142102034
+      ],
+      "holm_adjusted_p_zero": 1
+    },
+    {
+      "candidate": "arm-09/mixed",
+      "control": "arm-07/full",
+      "delta_estimate_m": -6.550042294489723,
+      "simultaneous_interval_m": [
+        -16.861829984372257,
+        3.1796829073886403
+      ],
+      "holm_adjusted_p_zero": 0.5497251374312844
+    },
+    {
+      "candidate": "arm-09/pure_es",
+      "control": "arm-07/full",
+      "delta_estimate_m": -5.313594164510165,
+      "simultaneous_interval_m": [
+        -15.975849427704414,
+        5.259756313376008
+      ],
+      "holm_adjusted_p_zero": 0.8395802098950524
+    }
+  ],
+  "models": [
+    {
+      "estimator_method": "crps_energy",
+      "estimator_optimization_scope": "registered_covariance_scale_grid",
+      "estimator_candidate_count": 5,
+      "estimator_drift_fraction": 0,
+      "covariance_scale": 1,
+      "validation_objective_before": 0.7317031976240236,
+      "validation_objective_after": 0.7317031976240236,
+      "training_sample_count": 31771,
+      "representative_slot": "arm-01/full",
+      "original_record_file_sha256": "77d021b085dd298dcd43ca3e5ee568af1f24a59e5cbe67008fed53d79f516128",
+      "original_record_content_sha256": "1dfac636ebc00604e731f8ed936c5cb6a628f169e61fce54cd14e9a12c31c0a1",
+      "objective_lambda": null,
+      "transitions": {
+        "adapt": 5762,
+        "train": 26009,
+        "validation": 6149
+      },
+      "windows": {
+        "adapt": 76,
+        "train": 328,
+        "validation": 81
+      }
+    },
+    {
+      "estimator_method": "qmle",
+      "estimator_optimization_scope": "closed_form_linear_gaussian_fit",
+      "estimator_candidate_count": 0,
+      "estimator_drift_fraction": 0,
+      "covariance_scale": 1,
+      "validation_objective_before": 2.4533853204840232,
+      "validation_objective_after": 2.4533853204840232,
+      "training_sample_count": 31771,
+      "representative_slot": "arm-08/qmle",
+      "original_record_file_sha256": "32243c3f17667ae99902d6bd27819b8c9bfd5a5bccd3fa409e48b7118eebbb28",
+      "original_record_content_sha256": "b29600a01400d3e547b00f29131d336a01c43dc8b9ae03ce4a5aedb32d2b2f06",
+      "objective_lambda": null,
+      "transitions": {
+        "adapt": 5762,
+        "train": 26009,
+        "validation": 6149
+      },
+      "windows": {
+        "adapt": 76,
+        "train": 328,
+        "validation": 81
+      }
+    },
+    {
+      "estimator_method": "mixed",
+      "estimator_optimization_scope": "joint_drift_covariance_validation_grid",
+      "estimator_candidate_count": 20,
+      "estimator_drift_fraction": 0.5,
+      "covariance_scale": 1,
+      "validation_objective_before": 1,
+      "validation_objective_after": 0.9885247167269627,
+      "training_sample_count": 31771,
+      "representative_slot": "arm-09/mixed",
+      "original_record_file_sha256": "36deb747635b567de0a1b109ef5792530152ed5a0a5169a30e1d84457e71bdc2",
+      "original_record_content_sha256": "8e5d607ea0e20cc5e11ed567e01defb6289c70ef5ca19688d9040d313a7f070a",
+      "objective_lambda": 0.5,
+      "transitions": {
+        "adapt": 5762,
+        "train": 26009,
+        "validation": 6149
+      },
+      "windows": {
+        "adapt": 76,
+        "train": 328,
+        "validation": 81
+      }
+    },
+    {
+      "estimator_method": "pure_es",
+      "estimator_optimization_scope": "joint_drift_covariance_validation_grid",
+      "estimator_candidate_count": 20,
+      "estimator_drift_fraction": 0.5,
+      "covariance_scale": 1,
+      "validation_objective_before": 0.7317031976240236,
+      "validation_objective_after": 0.721423878252596,
+      "training_sample_count": 31771,
+      "representative_slot": "arm-09/pure_es",
+      "original_record_file_sha256": "1e7ff2d2d3c9e48d5a8b4c1e7684db38c267ec9831b88c60d4fbef6d5f1d7aba",
+      "original_record_content_sha256": "d900184907c408f6a2497980c9a352494516e63c3e55ce1bc6f8bd91b1936b6f",
+      "objective_lambda": "infinity",
+      "transitions": {
+        "adapt": 5762,
+        "train": 26009,
+        "validation": 6149
+      },
+      "windows": {
+        "adapt": 76,
+        "train": 328,
+        "validation": 81
+      }
+    }
+  ],
+  "saved_parameter_equalities": [
+    {
+      "first": "arm-01/full",
+      "second": "arm-08/qmle",
+      "saved_weights_exactly_equal": true,
+      "saved_covariances_exactly_equal": true,
+      "saved_mode_probabilities_exactly_equal": true
+    },
+    {
+      "first": "arm-09/mixed",
+      "second": "arm-09/pure_es",
+      "saved_weights_exactly_equal": true,
+      "saved_covariances_exactly_equal": true,
+      "saved_mode_probabilities_exactly_equal": true
+    },
+    {
+      "first": "arm-01/full",
+      "second": "arm-09/mixed",
+      "saved_weights_exactly_equal": false,
+      "saved_covariances_exactly_equal": true,
+      "saved_mode_probabilities_exactly_equal": true
+    }
+  ],
+  "grid_scores_or_validation_fit_weights_retained_in_this_projection": false,
+  "parameter_equality_not_independent_final_output_audit": true,
+  "reported_validation_objectives_are_selected_in_sample": true,
+  "new_fits_forecasts_validation_scores_or_map_queries": 0,
+  "independent_saved_output_audit_completed": false,
+  "all_review_items_or_paper_complete": false
+}

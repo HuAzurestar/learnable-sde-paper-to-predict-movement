@@ -1,0 +1,23 @@
+{
+  "archive": "export.json.gz",
+  "archive_bytes": 10601386,
+  "archive_sha256": "3f2477689aef427ba85f8bd0232f8c75cf3da44fdf14038cc1eef720a865a3b6",
+  "export_bytes": 65494805,
+  "export_file_sha256": "f15578e9da655a2e2df6601427724d11c2ee6effe200e78846bddde54c7fc75e",
+  "export_sha256": "29cb892f47301365b3d7b9a2871f3f71d85fe297f7720d0c6489648f8a4d0c50",
+  "human_accepted": false,
+  "new_fits": 0,
+  "new_forecasts": 0,
+  "new_resampling": 0,
+  "new_scores": 0,
+  "numerically_qualified": false,
+  "original_identifiers_exported": false,
+  "raw_trajectories_exported": false,
+  "retained_failed_score_rows": 5,
+  "schema_version": "pirc17-anonymous-replay-input-v1",
+  "scientific_claim_authorized": false,
+  "score_rows": 11368,
+  "source_analysis_sha256": "d1d67a3bf4cd08d46f7e73f0178950b047197275f3f32e29a61f3f699fe5febc",
+  "source_audit_sha256": "8ff917ad6db55bb3b058b51412ab2e76154ba8bd38c754dd60829db74e25ec67",
+  "successful_score_rows": 11363
+}

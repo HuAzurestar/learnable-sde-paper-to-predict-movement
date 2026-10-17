@@ -1,0 +1,44 @@
+{
+  "schema_version": "pirc17-revision46-presentation-corrections-v1",
+  "figures": [
+    {
+      "task": "R15",
+      "figure": "preliminary-full-horizons",
+      "renderer": "plot_pirc17_preliminary.py",
+      "renderer_sha256": "c8eee96d357508c64848e424c45422f51496d69cc933781a96a533b775c55bbf",
+      "files_sha256": {
+        "preliminary-full-horizons.pdf": "2f88c571c68b9d815c9f5d2bf6c123d72d7198e62325a7cc97f943e23fb6b809",
+        "preliminary-full-horizons.png": "d290963ba57284402527c4597679b96de2059958c5d1d60f241fb75f428cc70d"
+      },
+      "original_source_sha256": "8900f3dee68d5fc9cafd5ced2e2394503432d2493251601c0ba9cb771cbefba1",
+      "presentation_change": "uncropped axis"
+    },
+    {
+      "task": "R16",
+      "figure": "method-horizon-overview",
+      "renderer": "plot_pirc17_method_horizons.py",
+      "renderer_sha256": "066e61a73a21efa2fc7ea34dca6f7cf196d8ee003e644d5f432ad02cbac02547",
+      "files_sha256": {
+        "method-horizon-overview.pdf": "17ac0c480b991e812a2bcba72813121f354ba19a03d9d840a99c9963ac56aa27",
+        "method-horizon-overview.png": "153ef2998ddcc6de2da66fc0defea0eb4fdc777af1d41289fb047eb467c91c96"
+      },
+      "original_source_sha256": "8900f3dee68d5fc9cafd5ced2e2394503432d2493251601c0ba9cb771cbefba1",
+      "presentation_change": "coverage centred on nominal 90 percent"
+    },
+    {
+      "task": "R16",
+      "figure": "method-region-overview",
+      "renderer": "plot_pirc17_method_regions.py",
+      "renderer_sha256": "8b1b28f8b6019cb2783be70df613dcdd413236fdae0f0eb92712bd227e57c3b8",
+      "files_sha256": {
+        "method-region-overview.pdf": "3b0838eb00f8635e10eaeb3833c31434d300ab9138275d7cdc732334b4b49f85",
+        "method-region-overview.png": "1b802ddb6a3656c0f918a98ec6d8e0c5486b848c9b472d8fcbe23e4c95d93b69"
+      },
+      "original_source_sha256": "43247e7bbec10dc5f087b412c2b1b223f89b9adb33c64f97ba5ce1187a9092d8",
+      "presentation_change": "coverage centred on nominal 90 percent"
+    }
+  ],
+  "new_fits_forecasts_scores_or_resampling": 0,
+  "old_figures_or_historical_hashes_overwritten": false,
+  "human_accepted": false
+}

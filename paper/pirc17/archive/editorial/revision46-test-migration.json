@@ -1,0 +1,403 @@
+{
+  "schema_version": "pirc17-revision46-historical-test-migration-v1",
+  "historical_release": "8cbcb1140d804b25b553ab4e7cda0be3a0d34b1b",
+  "tests": [
+    {
+      "path": "tests/test_pirc17_analysis_stage_summary.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "6874f571624510d674d14b8b8af2fb755859bae1da3944b2ac0ec7c9d3d62bd3",
+      "new_test_sha256": "baea5cd67ff120ecbc32fc508031ce50b34ed02a2bef86f123148fafe859f446",
+      "assertions_preserved": 50,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_audited_review_package.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "9598d890ccca22fdd4fed512560bb6f6dc925ed2608d92c5e616e157100fe30c",
+      "new_test_sha256": "af7d13aed031a918facf252491e2b3bf3883c1f67508639e529161ba93f8293f",
+      "assertions_preserved": 30,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_calibration_block_presentation.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "c056a2da0ba8cdc78a9be26ab90c359c76e04925acca60d1fa498be433fc87df",
+      "new_test_sha256": "4f10569cc9c709d39c70d0e0beb24054e1c5f48122d506d6a04e2975ff78c46c",
+      "assertions_preserved": 30,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_calibration_presentation.py",
+      "old_path_operands_retargeted": 2,
+      "original_test_sha256": "2d7c184ea9ed980d5ae0617e5ba054fd5810fe8697a458f53371d02469b6bdf1",
+      "new_test_sha256": "acdff0b2bd3ea35b10dc98095305332abd2b5954657f5ec26112d773ed4bd284",
+      "assertions_preserved": 8,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_capture_difference.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "8d8e4e0d6cebc961e86684a4f44b0437ddefcaffd9ed16e5d30fdd4e0695fc1a",
+      "new_test_sha256": "1666bb15d4207bb38d51eb54b22a2e8c8d4d4c6665e4e38cfbdab1c91bef67fa",
+      "assertions_preserved": 17,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_clock_presentation.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "193470337f600a4734cd2e50b8ddafac575dbe08a711d4a07a919d993ecd768e",
+      "new_test_sha256": "214ecd19b3f684de50bb468484fd0bd59fd80cc95d850d127701087829967dc7",
+      "assertions_preserved": 33,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_clock_scope_fallback.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "7cbc7ad340fea7f274ee9273377f994ad0a5b32c54b6a9ead614166e99049526",
+      "new_test_sha256": "ad5a38286ac3cbcee10d0bbc0f46e7319761e7cd50fcde0ecdeaed757fc99e8b",
+      "assertions_preserved": 15,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_cohort_duration_presentation.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "eeb26683dc4a814781dee2a7b12db30b0b53ce68fdb8303f7967a0cadb40c7da",
+      "new_test_sha256": "d1b46898f2828466923bb0085885224113750b3195136dc81947885c33852c5e",
+      "assertions_preserved": 30,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_cohort_geography_presentation.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "b2a2034fe48deaee5f58c55dbb1936ee85ed784fda4468e9e24291d275defbb6",
+      "new_test_sha256": "aabc1c93394009dd93675e584435923cac583e25500d1ea9e367c3e5519e3ef1",
+      "assertions_preserved": 43,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_cohort_speed_presentation.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "349ff330ceb1bed9abb7b21c0feeab87c8aa2b029f672bae9684fc0b8dbe6f26",
+      "new_test_sha256": "7f0f944f949f485345e203f70c035d2378eacea406a0fbf7bbf460175133d8c2",
+      "assertions_preserved": 32,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_current_review.py",
+      "old_path_operands_retargeted": 2,
+      "original_test_sha256": "2729e22039a29d2794c1a0a406d18aad5284f8b19fca4c12d651cbb0698d0049",
+      "new_test_sha256": "67e65755bfe2016c2fbb2b494d10d0d81b62a60f2bf0b36627d0c11f40f979ab",
+      "assertions_preserved": 18,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_development_history_presentation.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "df699af1f64dcc5c1fb5048f5ae29170c8b63e3e893fa72d1278a0b8a9b35d6a",
+      "new_test_sha256": "9b96f1a32ab7e742aa0a49554beaaa675376ffd832146a78573ec7906700f9ae",
+      "assertions_preserved": 37,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_estimator_calibration.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "a95a110520c6b8dc88c0e6cbd6e7721c363e47ae67e7395a85d67d25658eff91",
+      "new_test_sha256": "607c07c47300b1a27ed43917df2167f523e7d21498faf412ea6dab7b8d0878d8",
+      "assertions_preserved": 55,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_failure_presentation.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "a5290852a35dfb97e368642360a20da53d70a4d4dcde1c16ece5cf70eb443424",
+      "new_test_sha256": "6c2b70843912ce18a356ea08d5418ec0fe10d962e07995482503533caafc7580",
+      "assertions_preserved": 24,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_feature_design_presentation.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "9a8fd8a3df2499e0e85c1d654dbd7b5a44b9305a7905e13b5a4a4150934260fd",
+      "new_test_sha256": "d8f23933d70c1a3c045ec45d36924e6cb37ee95a6ffc13225680bc920ef61b45",
+      "assertions_preserved": 24,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_final_cohort.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "31cd1b52598955693b98c3b256ffc8327a39ab75845498564971ac63c6ce3422",
+      "new_test_sha256": "4ef1238c79e4b9edf940099f86bcddb174338a2eac7e52f538979ac02a3e8bdd",
+      "assertions_preserved": 26,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_fit_diagnostics.py",
+      "old_path_operands_retargeted": 2,
+      "original_test_sha256": "87c18f59363040d377dfcf29d987b3b524e75dad45cf96ad9ec2668f6af95dbd",
+      "new_test_sha256": "473be9dcc0284de3bdaf6a3f21921e6c14af1a9593c11770a3bd591cce09b96d",
+      "assertions_preserved": 13,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_history_reading.py",
+      "old_path_operands_retargeted": 3,
+      "original_test_sha256": "7623370d58d0797d51cb74bbb97adc27dfadebd897821982f24a87404ae59336",
+      "new_test_sha256": "d432e89a4b28a89de25f560af735f72d5fa897e5e6afb90e71d917beebe8dbeb",
+      "assertions_preserved": 20,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_inertial_tables.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "0a4ab07e929e7f425f31ebd7fb6c6ef7bb52e184f8e2614c0abb9755363d1c85",
+      "new_test_sha256": "2dbf9c3e28d3ae9160c190ca9fe39dccfd64e9a766e77349f3626b58e6106ba8",
+      "assertions_preserved": 11,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_inference_presentation.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "07419149304e4f15f8c49ce36ebcc6c3da02645bb8eb4f5e5a31b2de4fa6f7f3",
+      "new_test_sha256": "79766dadeb72ae98dbce2eb1a58423aa085e23d9f51e6b898caeb48329f1ab31",
+      "assertions_preserved": 51,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_mainline_structure.py",
+      "old_path_operands_retargeted": 5,
+      "original_test_sha256": "f7542c610268f77518f2b894d19484501bc2d20559be06128dde5649fa2717a0",
+      "new_test_sha256": "f92c5c68c97f9be7c28eda029b47f66b96b768d7c82e079348c06dbcd0f0923b",
+      "assertions_preserved": 38,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_map_provider_presentation.py",
+      "old_path_operands_retargeted": 2,
+      "original_test_sha256": "400ea0210d7e0bd4a701b5e26606f6fb2ebc99fcff3e68097e2fdf213ca9f862",
+      "new_test_sha256": "eb01225c7a774a1e879ca3f8dc92b3b334bc284cb0d7bd483fd36ba333f2b5c5",
+      "assertions_preserved": 28,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_method_algorithm_presentation.py",
+      "old_path_operands_retargeted": 3,
+      "original_test_sha256": "cbef0a2d0c087bc8020c7bde3e88dd293c5297a87e6faa9a19b7e4a35e796d7f",
+      "new_test_sha256": "7c6a51bb41e728252636a4a21b8ab664708c20ededf6a25057884d6fc7fde9f3",
+      "assertions_preserved": 48,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_method_horizons.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "3fc02ff6503b475816bbf3a6f5f71eea2580e7ded8d4d12d03606055bcb972c7",
+      "new_test_sha256": "eea71ec4c25cd41bb46a05b687e17a25bc2c84ad6c7bd59aa77b333d0beb3c74",
+      "assertions_preserved": 41,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_method_noise_presentation.py",
+      "old_path_operands_retargeted": 2,
+      "original_test_sha256": "23de2f3e67ad3b8ae9c8edf1fcb9d95d00a8ae155cda22268883ad22f53e4fc4",
+      "new_test_sha256": "b118b9e28d659d1a041325c780d67b3e4b56b5c3d93466f58cf8d2341c73a7df",
+      "assertions_preserved": 40,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_method_regions.py",
+      "old_path_operands_retargeted": 3,
+      "original_test_sha256": "8fafba7f884cee565ee59e61909bd22e37f0373af1465a619fc1076c42f07fc0",
+      "new_test_sha256": "7eca3004828be41cfd04b1540e98f8719a62cc2ed735a492fcd3cd8f590b685d",
+      "assertions_preserved": 62,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_mode_partition_presentation.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "56ea19ab17f57e2cefbdfde49450ba1c1aadaa93da9ee461cc351a543c7f5363",
+      "new_test_sha256": "13c95946507710639d19d272265057e03d456b0da6cd016cfaf6ec8f363ee2e5",
+      "assertions_preserved": 37,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_partition_presentation.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "296b032619fdb0a57e7a57ddf1c07e7456160ae56d4a61db13a3cbf5ce864792",
+      "new_test_sha256": "848c8cc6d8968f7a24e83e96b22de9ff4f64a9133474f799ac5af69c965c6897",
+      "assertions_preserved": 33,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_point_error_tables.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "93cccaa1f07d2fffa5f9675d04e38b313b08e5b31aaffe65ac4c760b9835a4a0",
+      "new_test_sha256": "770d1c9dbc6a24e35885e4b65e1091a6b31413cca21b47f3b1b07e4c440cd234",
+      "assertions_preserved": 15,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_population_support_reading.py",
+      "old_path_operands_retargeted": 2,
+      "original_test_sha256": "1bda6773e483bb82c7a7322974f5fded846a9e83977165bac6f75f06295c1996",
+      "new_test_sha256": "1ca7b2f4b0369702d0ec7abf5d27c3c72e5d6ec6d938d7efbad2d7c921817fb8",
+      "assertions_preserved": 19,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_preliminary_figures.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "6ed90e04a46ae2da6ee1ed98ab03476c722ee35a958fc3554f9691577acaa194",
+      "new_test_sha256": "5d286a9167162d87d6e8b29e7b951cc4bc580e24445a4d5638dc4ec87de04631",
+      "assertions_preserved": 43,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_readability.py",
+      "old_path_operands_retargeted": 7,
+      "original_test_sha256": "3f42c5acb8b67b6c15ed5e22348a7090dcdeef6e15e55593604d7e37407b104d",
+      "new_test_sha256": "5de4a1b26d04128201654d88c975e2c431f90b154fd8cad6593fc34de894a3bc",
+      "assertions_preserved": 56,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_reader_mainline.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "ee81fe271818a2ae3ef7a136a0340432aa74c9ef255afd4b9004078baae53ea9",
+      "new_test_sha256": "0431fb09f999e50f81a5081d87240774392029bcbefd7da019ffedc56c918368",
+      "assertions_preserved": 62,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_reference_roles.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "dcab14e1d6369e4fb7979bae90054e627085f88f890578b71e076897fce33a21",
+      "new_test_sha256": "a998f802cceff9ec552fa3025c50b867048897898c036ba5b1d4a098f5f24a18",
+      "assertions_preserved": 36,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_related_work.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "24c9d2a861fd2a75acead007db2a4ff1a4fe20d3573fbcf6a0d44c0630531e27",
+      "new_test_sha256": "0855cae3ded24991f1c0f09fd3e1fd2f468459695d85c4f9269e55a2587cf8b1",
+      "assertions_preserved": 27,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_reptile_task_presentation.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "1b4c9a7dbff1f681feee77078c446b21b11cf93537bc78daa4a6d2bd764fd2f8",
+      "new_test_sha256": "648b5e3e9530fec382ab406ee4dce634f6a52f28248e9035480795dfe513d90f",
+      "assertions_preserved": 44,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_results_reading.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "ee3862e035644935bb1d67101f3d54e5c7258f814ff42c1a33e17771ba635154",
+      "new_test_sha256": "e34187798d26b1fe6494d6da361c3bdd1310316dba2916556969e5bdc16d6cf0",
+      "assertions_preserved": 26,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_review_response.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "3f8aba9adf1ed988ba0c7c598134657b7898d1c47a3bda7e8ba91f0dde5b25d6",
+      "new_test_sha256": "1ad500c9d5981897d6df93a7a6539be45312af11d5bb6c129d949afa004cea08",
+      "assertions_preserved": 43,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_runtime_census.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "5b5570ac78b0accf964553f523bd615af5c7bc28f996077799030eeebbf24808",
+      "new_test_sha256": "d2b18a9a35928903302848b35877a1399dd04128b762236997e39b68c76e61a4",
+      "assertions_preserved": 36,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_runtime_interruption.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "87bd4505952dd84e8e1f1797984fb12b48c55b3855ffe27b9ca4770b9091ea76",
+      "new_test_sha256": "9989f61775e1019a548097b37de2585dbfaf3b06065e2b2c25e70ffb0b8eda78",
+      "assertions_preserved": 42,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_scientific_narrative.py",
+      "old_path_operands_retargeted": 5,
+      "original_test_sha256": "feff33afbeb11518b746319ab59291d1d1304c893128feb528d592645477d2c5",
+      "new_test_sha256": "c641abe5e5e54ee8c85634d7ae703389a17865de9d1a4a0ca54ffab9951b6608",
+      "assertions_preserved": 68,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_secondary_score_package.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "8d690e8853c2736dfa5e2124c7a4e45b4987278a365ca95bc8742455228f03c5",
+      "new_test_sha256": "8543a97dbf14a3a34a2af8333ed3a0e68a31ba578af4d06d532aa33ca2b62060",
+      "assertions_preserved": 42,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_seed_stability.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "7a25d65b28535aa182a57206bf05c30149dd3cce63034ad75b0354c46e13945c",
+      "new_test_sha256": "e950bd17fc2a6e9282a32b27571332b923ee1e440995247118fb6ca159e1b0ad",
+      "assertions_preserved": 36,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_source_readability.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "797d66d3cdff533932711054fe1538346768817218a9a1a176be08ec620f675e",
+      "new_test_sha256": "0625afef575cf0f72f99c39df6ae4320bc61e6fa8d2a0c323b93c71f67460fc8",
+      "assertions_preserved": 23,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_source_sequence_evidence.py",
+      "old_path_operands_retargeted": 2,
+      "original_test_sha256": "940f05d9f2228454cd4d2c5329dd19a741e06a7ce4d8dd9f1c87e5ec4a7b199b",
+      "new_test_sha256": "9aa11c84f38444c088e277bdd7883c9357b803a630f926a1c0d0f48acdaa3e83",
+      "assertions_preserved": 49,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_target_times.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "acfb7f48fa0c8704ed8b5f7275ac86d808cc858ef819a7c9b6b8d610f5d2c176",
+      "new_test_sha256": "96ad7d2bcb1d6b4c8d8fae6fe80c9498a1f8a820cd3550e06bc5438c56508f36",
+      "assertions_preserved": 31,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_terminal_inventory.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "78bd96d09920e14afcdde3a02fb65369720faba678284e20b7b2564ef8ad29a7",
+      "new_test_sha256": "1f426631d00e5d959255010f4bdc8e2b4caf8fff034198b0ec50a07cee1dd5b8",
+      "assertions_preserved": 29,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_terrain_completeness.py",
+      "old_path_operands_retargeted": 1,
+      "original_test_sha256": "430e02f2eace2a11acb57a2cf5c7b64803e15042b60f19560dc6e0df4d8dfc7a",
+      "new_test_sha256": "0bc1293b32b5170e9254486e6a0120a34d857f692f2e7fc88ecfa2dd5238f45b",
+      "assertions_preserved": 40,
+      "assertions_changed": 0
+    },
+    {
+      "path": "tests/test_pirc17_terrain_fit_scope_presentation.py",
+      "old_path_operands_retargeted": 2,
+      "original_test_sha256": "84edace0816663c1fc50be8890045725be17c58c39f5b204388414ec48aaa25f",
+      "new_test_sha256": "a7f55084ffdcc9c7fcd7da2ac8f81e4496fdb42203dce1aa00fa8efa47e72415",
+      "assertions_preserved": 43,
+      "assertions_changed": 0
+    }
+  ],
+  "scientific_assertions_changed": 0,
+  "skip_exclude_or_deselect_added": false,
+  "current_contract_tests": "tests/test_pirc17_revision46.py",
+  "private_input_collection_errors_resolved": false,
+  "full_suite_claimed_passed": false
+}

@@ -1,0 +1,182 @@
+% Public-card metric formatting only; not manuscript integration or acceptance.
+\begingroup
+\small
+\setlength{\tabcolsep}{3pt}
+\setlength{\LTcapwidth}{\linewidth}
+\begin{longtable}{@{}p{0.4\linewidth}p{0.1\linewidth}p{0.17\linewidth}p{0.11\linewidth}p{0.11\linewidth}@{}}
+\caption{保存逐时刻分布指标：已知速度次要任务。原名义目标为1/5/15/30分钟，实际经过时间范围以秒显示，不插值构造目标。ES单位为米、越小越好；H为原固定网格的位置边缘熵（nat），不是准确率、联合路径熵或越小越好的排名。各时刻是同一预测行的重复视图，不增加独立样本或时域检验。不可用项保留--及原全部状态。}\label{tab:public-card-time-quality-known-velocity}\\
+\toprule
+矩阵／配置；状态 & 名义分钟 & 实际秒 & ES（米） & H（nat）\\
+\midrule
+\endfirsthead
+\multicolumn{5}{@{}l}{\tablename~\thetable\ (续表)}\\
+\toprule
+矩阵／配置；状态 & 名义分钟 & 实际秒 & ES（米） & H（nat）\\
+\midrule
+\endhead
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+NEX326-diagnostic\newline diagnostic/\allowbreak{}full-exact-kernel\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 51.44 & 1.383\\
+NEX326-diagnostic\newline diagnostic/\allowbreak{}full-exact-kernel\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 248.1 & 1.933\\
+NEX326-diagnostic\newline diagnostic/\allowbreak{}full-exact-kernel\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 593.4 & 3.285\\
+NEX326-diagnostic\newline diagnostic/\allowbreak{}full-exact-kernel\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 831.3 & 4.204\\
+NEX326-methods\newline arm-01/\allowbreak{}full\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 50.9 & 1.382\\
+NEX326-methods\newline arm-01/\allowbreak{}full\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 250.1 & 1.938\\
+NEX326-methods\newline arm-01/\allowbreak{}full\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 595.4 & 3.28\\
+NEX326-methods\newline arm-01/\allowbreak{}full\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 831.1 & 4.198\\
+NEX326-methods\newline arm-02/\allowbreak{}pointwise\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 51.64 & 1.384\\
+NEX326-methods\newline arm-02/\allowbreak{}pointwise\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 258.8 & 1.738\\
+NEX326-methods\newline arm-02/\allowbreak{}pointwise\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 656.7 & 2.666\\
+NEX326-methods\newline arm-02/\allowbreak{}pointwise\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 953.6 & 3.386\\
+NEX326-methods\newline arm-03/\allowbreak{}single\_\allowbreak{}gaussian\newline unavailable\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline failed: 1\newline success: 29 & 1 & -- & -- & --\\
+NEX326-methods\newline arm-03/\allowbreak{}single\_\allowbreak{}gaussian\newline unavailable\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline failed: 1\newline success: 29 & 5 & -- & -- & --\\
+NEX326-methods\newline arm-03/\allowbreak{}single\_\allowbreak{}gaussian\newline unavailable\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline failed: 1\newline success: 29 & 15 & -- & -- & --\\
+NEX326-methods\newline arm-03/\allowbreak{}single\_\allowbreak{}gaussian\newline unavailable\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline failed: 1\newline success: 29 & 30 & -- & -- & --\\
+NEX326-methods\newline arm-04/\allowbreak{}gmm\_\allowbreak{}kernel\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 51.68 & 1.386\\
+NEX326-methods\newline arm-04/\allowbreak{}gmm\_\allowbreak{}kernel\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 240.3 & 2.17\\
+NEX326-methods\newline arm-04/\allowbreak{}gmm\_\allowbreak{}kernel\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 603.4 & 3.222\\
+NEX326-methods\newline arm-04/\allowbreak{}gmm\_\allowbreak{}kernel\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 882.3 & 3.967\\
+NEX326-methods\newline arm-05/\allowbreak{}explicit\_\allowbreak{}decomp\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 52.26 & 1.277\\
+NEX326-methods\newline arm-05/\allowbreak{}explicit\_\allowbreak{}decomp\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 268 & 1.634\\
+NEX326-methods\newline arm-05/\allowbreak{}explicit\_\allowbreak{}decomp\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 672.3 & 2.531\\
+NEX326-methods\newline arm-05/\allowbreak{}explicit\_\allowbreak{}decomp\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 1352 & 3.158\\
+NEX326-methods\newline arm-06/\allowbreak{}dt120\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 50.69 & 1.391\\
+NEX326-methods\newline arm-06/\allowbreak{}dt120\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 237 & 2.314\\
+NEX326-methods\newline arm-06/\allowbreak{}dt120\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 573.6 & 3.615\\
+NEX326-methods\newline arm-06/\allowbreak{}dt120\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 822.3 & 4.531\\
+NEX326-methods\newline arm-06/\allowbreak{}dt30\newline unavailable\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline failed: 1\newline success: 29 & 1 & -- & -- & --\\
+NEX326-methods\newline arm-06/\allowbreak{}dt30\newline unavailable\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline failed: 1\newline success: 29 & 5 & -- & -- & --\\
+NEX326-methods\newline arm-06/\allowbreak{}dt30\newline unavailable\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline failed: 1\newline success: 29 & 15 & -- & -- & --\\
+NEX326-methods\newline arm-06/\allowbreak{}dt30\newline unavailable\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline failed: 1\newline success: 29 & 30 & -- & -- & --\\
+NEX326-methods\newline arm-06/\allowbreak{}dt300\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 55.92 & 1.529\\
+NEX326-methods\newline arm-06/\allowbreak{}dt300\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 229.3 & 2.835\\
+NEX326-methods\newline arm-06/\allowbreak{}dt300\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 554.3 & 4.056\\
+NEX326-methods\newline arm-06/\allowbreak{}dt300\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 805.4 & 4.884\\
+NEX326-methods\newline arm-06/\allowbreak{}dt60\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 50.9 & 1.382\\
+NEX326-methods\newline arm-06/\allowbreak{}dt60\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 250.1 & 1.938\\
+NEX326-methods\newline arm-06/\allowbreak{}dt60\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 595.4 & 3.28\\
+NEX326-methods\newline arm-06/\allowbreak{}dt60\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 831.1 & 4.198\\
+NEX326-methods\newline arm-06/\allowbreak{}dt600\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 62.02 & 1.795\\
+NEX326-methods\newline arm-06/\allowbreak{}dt600\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 224.2 & 3.277\\
+NEX326-methods\newline arm-06/\allowbreak{}dt600\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 529 & 4.403\\
+NEX326-methods\newline arm-06/\allowbreak{}dt600\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 787.4 & 5.148\\
+NEX326-methods\newline arm-07/\allowbreak{}full\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 52.2 & 1.383\\
+NEX326-methods\newline arm-07/\allowbreak{}full\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 250.9 & 1.92\\
+NEX326-methods\newline arm-07/\allowbreak{}full\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 599.7 & 3.277\\
+NEX326-methods\newline arm-07/\allowbreak{}full\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 837.9 & 4.184\\
+NEX326-methods\newline arm-08/\allowbreak{}qmle\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 51.09 & 1.383\\
+NEX326-methods\newline arm-08/\allowbreak{}qmle\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 250.2 & 1.933\\
+NEX326-methods\newline arm-08/\allowbreak{}qmle\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 596.1 & 3.281\\
+NEX326-methods\newline arm-08/\allowbreak{}qmle\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 833 & 4.197\\
+NEX326-methods\newline arm-09/\allowbreak{}mixed\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 51.69 & 1.383\\
+NEX326-methods\newline arm-09/\allowbreak{}mixed\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 252.6 & 1.922\\
+NEX326-methods\newline arm-09/\allowbreak{}mixed\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 604.2 & 3.259\\
+NEX326-methods\newline arm-09/\allowbreak{}mixed\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 855 & 4.211\\
+NEX326-methods\newline arm-09/\allowbreak{}pure\_\allowbreak{}es\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 51.51 & 1.384\\
+NEX326-methods\newline arm-09/\allowbreak{}pure\_\allowbreak{}es\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 250.7 & 1.916\\
+NEX326-methods\newline arm-09/\allowbreak{}pure\_\allowbreak{}es\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 601.7 & 3.268\\
+NEX326-methods\newline arm-09/\allowbreak{}pure\_\allowbreak{}es\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 853.2 & 4.216\\
+NEX326-methods\newline arm-10/\allowbreak{}d2\_\allowbreak{}closed\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 52.2 & 1.383\\
+NEX326-methods\newline arm-10/\allowbreak{}d2\_\allowbreak{}closed\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 250.9 & 1.92\\
+NEX326-methods\newline arm-10/\allowbreak{}d2\_\allowbreak{}closed\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 599.7 & 3.277\\
+NEX326-methods\newline arm-10/\allowbreak{}d2\_\allowbreak{}closed\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 837.9 & 4.184\\
+NEX326-methods\newline arm-10/\allowbreak{}d2\_\allowbreak{}mc\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 52.2 & 1.383\\
+NEX326-methods\newline arm-10/\allowbreak{}d2\_\allowbreak{}mc\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 250.9 & 1.92\\
+NEX326-methods\newline arm-10/\allowbreak{}d2\_\allowbreak{}mc\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 599.7 & 3.277\\
+NEX326-methods\newline arm-10/\allowbreak{}d2\_\allowbreak{}mc\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 837.9 & 4.184\\
+NEX326-methods\newline arm-11/\allowbreak{}full\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 51.81 & 1.384\\
+NEX326-methods\newline arm-11/\allowbreak{}full\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 252.1 & 1.933\\
+NEX326-methods\newline arm-11/\allowbreak{}full\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 599.2 & 3.282\\
+NEX326-methods\newline arm-11/\allowbreak{}full\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 840.9 & 4.208\\
+NEX326-methods\newline arm-12/\allowbreak{}scratch\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 51.76 & 1.382\\
+NEX326-methods\newline arm-12/\allowbreak{}scratch\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 251.2 & 1.958\\
+NEX326-methods\newline arm-12/\allowbreak{}scratch\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 601.2 & 3.322\\
+NEX326-methods\newline arm-12/\allowbreak{}scratch\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 856.4 & 4.219\\
+NEX326-methods\newline arm-14/\allowbreak{}reptile\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 51.82 & 1.384\\
+NEX326-methods\newline arm-14/\allowbreak{}reptile\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 253.9 & 1.907\\
+NEX326-methods\newline arm-14/\allowbreak{}reptile\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 611.6 & 3.219\\
+NEX326-methods\newline arm-14/\allowbreak{}reptile\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 861 & 4.162\\
+NEX326-methods\newline arm-15/\allowbreak{}drift\_\allowbreak{}only\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 51.58 & 1.382\\
+NEX326-methods\newline arm-15/\allowbreak{}drift\_\allowbreak{}only\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 252.9 & 1.921\\
+NEX326-methods\newline arm-15/\allowbreak{}drift\_\allowbreak{}only\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 602.9 & 3.267\\
+NEX326-methods\newline arm-15/\allowbreak{}drift\_\allowbreak{}only\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 845.8 & 4.181\\
+NEX326-methods\newline arm-15/\allowbreak{}two\_\allowbreak{}step\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 51.41 & 1.383\\
+NEX326-methods\newline arm-15/\allowbreak{}two\_\allowbreak{}step\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 250 & 1.925\\
+NEX326-methods\newline arm-15/\allowbreak{}two\_\allowbreak{}step\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 598.2 & 3.283\\
+NEX326-methods\newline arm-15/\allowbreak{}two\_\allowbreak{}step\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 835.2 & 4.2\\
+NEX326-methods\newline arm-16/\allowbreak{}full\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 51.33 & 1.384\\
+NEX326-methods\newline arm-16/\allowbreak{}full\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 250.9 & 1.938\\
+NEX326-methods\newline arm-16/\allowbreak{}full\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 596 & 3.293\\
+NEX326-methods\newline arm-16/\allowbreak{}full\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 834.3 & 4.21\\
+NEX326-methods\newline arm-18/\allowbreak{}full\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 51.44 & 1.383\\
+NEX326-methods\newline arm-18/\allowbreak{}full\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 248.1 & 1.933\\
+NEX326-methods\newline arm-18/\allowbreak{}full\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 593.4 & 3.285\\
+NEX326-methods\newline arm-18/\allowbreak{}full\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 831.3 & 4.204\\
+NEX326-methods\newline arm-19/\allowbreak{}em\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 51.44 & 1.383\\
+NEX326-methods\newline arm-19/\allowbreak{}em\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 248.1 & 1.933\\
+NEX326-methods\newline arm-19/\allowbreak{}em\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 593.4 & 3.284\\
+NEX326-methods\newline arm-19/\allowbreak{}em\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 831.3 & 4.203\\
+NEX326-methods\newline arm-19/\allowbreak{}euler\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 51.44 & 1.383\\
+NEX326-methods\newline arm-19/\allowbreak{}euler\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 248.1 & 1.933\\
+NEX326-methods\newline arm-19/\allowbreak{}euler\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 593.4 & 3.284\\
+NEX326-methods\newline arm-19/\allowbreak{}euler\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 831.3 & 4.203\\
+NEX326-methods\newline arm-20/\allowbreak{}full\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 51.74 & 1.383\\
+NEX326-methods\newline arm-20/\allowbreak{}full\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 250.6 & 1.92\\
+NEX326-methods\newline arm-20/\allowbreak{}full\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 596 & 3.273\\
+NEX326-methods\newline arm-20/\allowbreak{}full\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 837 & 4.186\\
+NEX326-methods\newline arm-21/\allowbreak{}crn\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 51.74 & 1.383\\
+NEX326-methods\newline arm-21/\allowbreak{}crn\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 250.6 & 1.92\\
+NEX326-methods\newline arm-21/\allowbreak{}crn\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 596 & 3.273\\
+NEX326-methods\newline arm-21/\allowbreak{}crn\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 837 & 4.186\\
+NEX326-methods\newline arm-21/\allowbreak{}mc\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 51.15 & 1.383\\
+NEX326-methods\newline arm-21/\allowbreak{}mc\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 250 & 1.941\\
+NEX326-methods\newline arm-21/\allowbreak{}mc\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 599 & 3.267\\
+NEX326-methods\newline arm-21/\allowbreak{}mc\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 834.1 & 4.195\\
+inertial\newline all\newline computed\newline 计划／有记录／缺失：6 /\allowbreak{} 6 /\allowbreak{} 0\newline success: 6 & 1 & [50, 67] & 16.51 & 0\\
+inertial\newline all\newline computed\newline 计划／有记录／缺失：6 /\allowbreak{} 6 /\allowbreak{} 0\newline success: 6 & 5 & [297, 305] & 127.9 & 0\\
+inertial\newline all\newline computed\newline 计划／有记录／缺失：6 /\allowbreak{} 6 /\allowbreak{} 0\newline success: 6 & 15 & [899, 910] & 556.6 & 0\\
+inertial\newline all\newline computed\newline 计划／有记录／缺失：6 /\allowbreak{} 6 /\allowbreak{} 0\newline success: 6 & 30 & [1792, 1805] & 1599 & 0\\
+terrain\newline all-terrain\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 20.84 & 0.8067\\
+terrain\newline all-terrain\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 155.7 & 2.079\\
+terrain\newline all-terrain\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 440.5 & 3.48\\
+terrain\newline all-terrain\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 803.7 & 4.18\\
+terrain\newline base\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 19.36 & 0.8563\\
+terrain\newline base\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 153.1 & 2.354\\
+terrain\newline base\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 500.6 & 3.725\\
+terrain\newline base\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 961.6 & 4.416\\
+terrain\newline lio-river\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 17.93 & 0.8364\\
+terrain\newline lio-river\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 145.6 & 2.29\\
+terrain\newline lio-river\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 438.2 & 3.68\\
+terrain\newline lio-river\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 849.9 & 4.326\\
+terrain\newline lio-road\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 23.04 & 0.8567\\
+terrain\newline lio-road\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 169.2 & 2.249\\
+terrain\newline lio-road\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 558.9 & 3.526\\
+terrain\newline lio-road\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 1007 & 4.21\\
+terrain\newline lio-surface\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 19.23 & 0.8362\\
+terrain\newline lio-surface\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 142.5 & 2.302\\
+terrain\newline lio-surface\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 465.7 & 3.682\\
+terrain\newline lio-surface\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 825 & 4.405\\
+terrain\newline lio-worldcover\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 18.88 & 0.86\\
+terrain\newline lio-worldcover\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 158.6 & 2.321\\
+terrain\newline lio-worldcover\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 504.1 & 3.689\\
+terrain\newline lio-worldcover\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 969.5 & 4.358\\
+terrain\newline loo-river\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 22.8 & 0.8182\\
+terrain\newline loo-river\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 161.6 & 2.119\\
+terrain\newline loo-river\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 526.7 & 3.45\\
+terrain\newline loo-river\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 945.1 & 4.16\\
+terrain\newline loo-road\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 17.98 & 0.8292\\
+terrain\newline loo-road\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 157.4 & 2.164\\
+terrain\newline loo-road\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 435.8 & 3.528\\
+terrain\newline loo-road\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 755 & 4.19\\
+terrain\newline loo-surface\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 21.13 & 0.8399\\
+terrain\newline loo-surface\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 162.9 & 2.153\\
+terrain\newline loo-surface\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 489.3 & 3.492\\
+terrain\newline loo-surface\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 918.8 & 4.153\\
+terrain\newline loo-worldcover\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 1 & [50, 67] & 20.59 & 0.7998\\
+terrain\newline loo-worldcover\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 5 & [297, 305] & 146.8 & 2.15\\
+terrain\newline loo-worldcover\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 15 & [899, 910] & 447.8 & 3.471\\
+terrain\newline loo-worldcover\newline computed\newline 计划／有记录／缺失：30 /\allowbreak{} 30 /\allowbreak{} 0\newline success: 30 & 30 & [1792, 1805] & 831.3 & 4.177\\
+\end{longtable}
+\endgroup

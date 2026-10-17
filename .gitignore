@@ -347,3 +347,8 @@ artifacts/
 *.ckpt
 *.zip
 *.7z
+
+# Public review projection: original route illustrations/PDFs stay local.
+paper/pirc17/figures/case-*
+paper/pirc17/en/main.pdf
+paper/pirc17/zh/main.pdf

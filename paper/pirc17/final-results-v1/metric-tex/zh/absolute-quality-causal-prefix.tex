@@ -1,0 +1,62 @@
+% Public-card metric formatting only; not manuscript integration or acceptance.
+\begingroup
+\small
+\setlength{\tabcolsep}{3pt}
+\setlength{\LTcapwidth}{\linewidth}
+\begin{longtable}{@{}p{0.31\linewidth}p{0.11\linewidth}p{0.11\linewidth}p{0.13\linewidth}p{0.11\linewidth}p{0.12\linewidth}@{}}
+\caption{保存绝对预测指标：可见前缀主要任务。五项指标单位均为米，各自越小越好，不表示统计优势。分布ES不同于均值位置ADE/FDE和时间加权位移误差；路径ES保留原轨迹估计器，不选择最优粒子轨迹。计划、有记录、缺失和失败状态完整保留；不可用指标为--，不取成功子集均值或零误差。记录哈希组及预测种子不等于独立参与者。}\label{tab:public-card-absolute-quality-causal-prefix}\\
+\toprule
+矩阵／配置；状态 & 加权ES & 网格ADE & 加权位置误差 & FDE & 路径ES\\
+\midrule
+\endfirsthead
+\multicolumn{6}{@{}l}{\tablename~\thetable\ (续表)}\\
+\toprule
+矩阵／配置；状态 & 加权ES & 网格ADE & 加权位置误差 & FDE & 路径ES\\
+\midrule
+\endhead
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+NEX326-diagnostic\newline diagnostic/\allowbreak{}full-exact-kernel\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 477.2 & 635.2 & 635.2 & 1325 & 611.4\\
+NEX326-methods\newline arm-01/\allowbreak{}full\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 477.9 & 636.1 & 636.1 & 1326 & 612.1\\
+NEX326-methods\newline arm-02/\allowbreak{}pointwise\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 510.8 & 635.2 & 635.2 & 1324 & 655.8\\
+NEX326-methods\newline arm-03/\allowbreak{}single\_\allowbreak{}gaussian\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 499.9 & 622.9 & 622.9 & 1316 & 648.3\\
+NEX326-methods\newline arm-04/\allowbreak{}gmm\_\allowbreak{}kernel\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 475 & 622 & 622 & 1299 & 612.9\\
+NEX326-methods\newline arm-05/\allowbreak{}explicit\_\allowbreak{}decomp\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 535.8 & 647.6 & 647.6 & 1403 & 700.6\\
+NEX326-methods\newline arm-06/\allowbreak{}dt120\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 466.3 & 638.7 & 638.7 & 1330 & 598\\
+NEX326-methods\newline arm-06/\allowbreak{}dt30\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 486.4 & 631.8 & 631.8 & 1318 & 621.8\\
+NEX326-methods\newline arm-06/\allowbreak{}dt300\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 454.4 & 644.4 & 644.4 & 1336 & 581.5\\
+NEX326-methods\newline arm-06/\allowbreak{}dt60\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 477.9 & 636.1 & 636.1 & 1326 & 612.1\\
+NEX326-methods\newline arm-06/\allowbreak{}dt600\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 453.2 & 651.5 & 651.5 & 1341 & 576.5\\
+NEX326-methods\newline arm-07/\allowbreak{}full\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 476.7 & 634.8 & 634.8 & 1322 & 610.7\\
+NEX326-methods\newline arm-08/\allowbreak{}qmle\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 477 & 635.6 & 635.6 & 1325 & 611.2\\
+NEX326-methods\newline arm-09/\allowbreak{}mixed\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 470.1 & 630.3 & 630.3 & 1316 & 602.9\\
+NEX326-methods\newline arm-09/\allowbreak{}pure\_\allowbreak{}es\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 471.4 & 631.4 & 631.4 & 1318 & 604.6\\
+NEX326-methods\newline arm-10/\allowbreak{}d2\_\allowbreak{}closed\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 476.7 & 634.8 & 634.8 & 1322 & 610.7\\
+NEX326-methods\newline arm-10/\allowbreak{}d2\_\allowbreak{}mc\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 476.7 & 634.8 & 634.8 & 1322 & 610.7\\
+NEX326-methods\newline arm-11/\allowbreak{}full\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 476 & 634 & 634 & 1321 & 609.8\\
+NEX326-methods\newline arm-12/\allowbreak{}scratch\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 478.6 & 640.1 & 640.1 & 1339 & 613.4\\
+NEX326-methods\newline arm-14/\allowbreak{}reptile\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 478.2 & 630 & 630 & 1321 & 614.7\\
+NEX326-methods\newline arm-15/\allowbreak{}drift\_\allowbreak{}only\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 476.5 & 634.4 & 634.4 & 1321 & 610.3\\
+NEX326-methods\newline arm-15/\allowbreak{}two\_\allowbreak{}step\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 475.9 & 634.3 & 634.3 & 1322 & 609.9\\
+NEX326-methods\newline arm-16/\allowbreak{}full\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 475.9 & 633.9 & 633.9 & 1321 & 609.7\\
+NEX326-methods\newline arm-18/\allowbreak{}full\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 477.2 & 635.2 & 635.2 & 1325 & 611.4\\
+NEX326-methods\newline arm-19/\allowbreak{}em\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 477.2 & 635.2 & 635.2 & 1325 & 611.5\\
+NEX326-methods\newline arm-19/\allowbreak{}euler\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 477.2 & 635.2 & 635.2 & 1325 & 611.5\\
+NEX326-methods\newline arm-20/\allowbreak{}full\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 476.3 & 634.2 & 634.2 & 1321 & 610.2\\
+NEX326-methods\newline arm-21/\allowbreak{}crn\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 476.3 & 634.2 & 634.2 & 1321 & 610.2\\
+NEX326-methods\newline arm-21/\allowbreak{}mc\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 475.5 & 633.7 & 633.7 & 1320 & 609.1\\
+inertial\newline all\newline computed\newline 计划／有记录／缺失：46 /\allowbreak{} 46 /\allowbreak{} 0\newline success: 46 & 824.7 & 824.7 & 824.7 & 2096 & 1163\\
+terrain\newline all-terrain\newline unavailable\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline failed: 1\newline success: 229 & -- & -- & -- & -- & --\\
+terrain\newline base\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 450.2 & 620.6 & 620.6 & 1408 & 603.6\\
+terrain\newline lio-river\newline unavailable\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline failed: 1\newline success: 229 & -- & -- & -- & -- & --\\
+terrain\newline lio-road\newline unavailable\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline failed: 1\newline success: 229 & -- & -- & -- & -- & --\\
+terrain\newline lio-surface\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 455 & 622.3 & 622.3 & 1392 & 607.9\\
+terrain\newline lio-worldcover\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 446.4 & 615.2 & 615.2 & 1396 & 598.5\\
+terrain\newline loo-river\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 487.9 & 645.5 & 645.5 & 1426 & 646\\
+terrain\newline loo-road\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 451.5 & 604.6 & 604.6 & 1423 & 613.2\\
+terrain\newline loo-surface\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 467 & 628.7 & 628.7 & 1457 & 628.3\\
+terrain\newline loo-worldcover\newline computed\newline 计划／有记录／缺失：230 /\allowbreak{} 230 /\allowbreak{} 0\newline success: 230 & 469.6 & 622.3 & 622.3 & 1432 & 629.7\\
+\end{longtable}
+\endgroup

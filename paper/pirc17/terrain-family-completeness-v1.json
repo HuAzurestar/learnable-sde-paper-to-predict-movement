@@ -1,0 +1,60 @@
+{
+  "schema_version": "pirc17-terrain-family-completeness-v1",
+  "scope": "Count-only description of the two entire original primary-mode terrain families in the closed saved common-score index. No successful-subset estimate, new scoring or inference; earlier dated census remains historical.",
+  "origin_mode": "causal_prefix",
+  "recording_hash_blocks": 46,
+  "forecast_seeds": [20260814, 20260815, 20260816, 20260817, 20260818],
+  "common_score_index_sha256": "fc7c9c4492b962763ecd0f13959a43bf00e2141e74d92273c45cf6ca98e7332f",
+  "common_score_cache_sha256": "892bb89b1d39d376c69d5a41570ad1655e50fe6950be6442db7f2b2f492c2878",
+  "shared_closed_score_reader": "scripts/describe_pirc17_inertial.py",
+  "shared_closed_score_reader_sha256": "2254509e2d14c34583c7081345a3946f94563c73800fa808fa7d340680f68cbc",
+  "source_scope": {
+    "protocol_sha256": "2267ab84fa77ff4039234a61e8f44be1c3713317d8ad2d1bb4ced9af0c5b293a",
+    "execution_sha256": "c3e44393f6bc5544aaa21bb273c94eaecb9d0becb4e0590771355c4c0be9b6c2",
+    "matrix_sha256": "3fcfc6c7858ee346b20040ef6e7728153b188bd4d2ada58839f39e769d44de13",
+    "population_sha256": "7061f44ef8647f7bee55822ca7e494e53d3c058e5973d6198e997893c70bb020",
+    "scoring_inputs_sha256": "07da73c55cc7aca5b8a9dee4759be73edac508cd52a12490ebb408460534a5f2"
+  },
+  "original_registry_source_sha256": {
+    "PSDE-SDE/experiments/pirc17/inference.py": "d25def4bec006173f5c0f005ab3eda0eab2c3a35ec39c842e6622ea446e1a1b2",
+    "PSDE-SDE/experiments/pirc17/comparison_registry.py": "889f914385c4329d24c4909f3821ea588e8888d05817768521eb17fde39d4da4",
+    "PSDE-SDE/experiments/pirc17/formal_paired.py": "8d23bbcf01f740042fb6fd3ad24aa5b8e471c0da392be79ead4e89f26628ece6"
+  },
+  "failure_description_sha256": "3d9167511b546c1496b8bc4b644264f920b78120bc49678ec7ab9953151a8d26",
+  "failure_description_content_sha256": "ae15db19d255261a4d7db0f6d854e89e19bbe7c5642e1f0a219e3014d838307a",
+  "failure_description_binding_scope": "Byte hash identifies the original local evidence file. Canonical JSON content hash also binds the public copy, whose whitespace differs; it does not authorize private output publication.",
+  "families": [
+    {
+      "family": "weighted-es-primary",
+      "configurations": ["all-terrain", "base", "loo-river", "loo-road", "loo-surface", "loo-worldcover"],
+      "required_rows": 1380,
+      "successful_rows": 1379,
+      "failed_rows": 1,
+      "missing_rows": 0,
+      "failed_configurations": [{"configuration": "all-terrain", "seed": 20260815}],
+      "disposition": "unavailable_entire_registered_family"
+    },
+    {
+      "family": "weighted-es-lio",
+      "configurations": ["base", "lio-river", "lio-road", "lio-surface", "lio-worldcover"],
+      "required_rows": 1150,
+      "successful_rows": 1148,
+      "failed_rows": 2,
+      "missing_rows": 0,
+      "failed_configurations": [{"configuration": "lio-river", "seed": 20260817}, {"configuration": "lio-road", "seed": 20260814}],
+      "disposition": "unavailable_entire_registered_family"
+    }
+  ],
+  "shared_baseline_rows": 230,
+  "distinct_union_rows": 2300,
+  "distinct_union_successful_rows": 2297,
+  "distinct_union_failed_rows": 3,
+  "new_fits_forecasts_scores_resampling_or_map_queries": 0,
+  "raw_trajectories_or_prediction_arrays_opened": false,
+  "successful_subset_inference_allowed": false,
+  "independent_saved_output_audit_completed": false,
+  "final_statistics_or_cards_complete": false,
+  "scientific_claim_authorized": false,
+  "human_accepted": false,
+  "interpretation": "Terminal execution is not availability of registered complete-pair inference. Retained failures leave both entire primary terrain families unavailable. This is neither a zero effect nor equivalence or evidence of terrain benefit/harm. Auxiliary completion and audit do not themselves replace failed rows. The unchanged original full analysis and single saved-output audit still remain required. Counts are forecast slots, not independent people; union counts subtract the shared baseline. No route coordinates, clocks, recording identifiers or private paths are exported."
+}

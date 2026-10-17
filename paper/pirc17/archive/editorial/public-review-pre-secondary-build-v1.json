@@ -1,0 +1,60 @@
+{
+  "schema_version": "pirc17-review-build-v1",
+  "repository_head": "d90299fbdda6d2757d5abf251fec7e091fde5ede",
+  "working_tree_dirty_at_start": false,
+  "claim_ledger_sha256": "1846fd94213477e0261819cfac2adeca0ae0bca7cb4fccfab1d1bebd894e6793",
+  "manuscripts": [
+    {
+      "language": "en",
+      "engine": "-pdf",
+      "source": "paper/pirc17/en/main.tex",
+      "source_sha256": "01b57b6bab74200e496f91c336f799efab4f86cd88cd1d5803a660467bd9934f",
+      "pdf": "en/main.pdf",
+      "pdf_sha256": "6f42a8463d1979607c3c8b76d7515c45b833ce06841a2a56d40f7227ec035f62",
+      "log": "en/main.log",
+      "log_sha256": "cb9a75d129a012e975c556b62ebafd47d8340ba6bafaf4d435c5cc27b445de08",
+      "tex_banner": "This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.3.1)  9 OCT 2026 00:59"
+    },
+    {
+      "language": "zh",
+      "engine": "-xelatex",
+      "source": "paper/pirc17/zh/main.tex",
+      "source_sha256": "0353cbe7f443a5e690b1647bd8603f9b37a9b63f5e43a337e6861425c2bcaafa",
+      "pdf": "zh/main.pdf",
+      "pdf_sha256": "e5be276e71cc753f50c13d74a097c13c17e78b515f4e28c8263f4cbec8671e11",
+      "log": "zh/main.log",
+      "log_sha256": "3090d9b5bc298d696f03eff9dadd4903ca008c541c9ccc04381d95359a30a944",
+      "tex_banner": "This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.1)  9 OCT 2026 01:00"
+    }
+  ],
+  "compilation_verified": true,
+  "empirical_claims_verified_by_build": false,
+  "acceptance_verified_by_build": false,
+  "ledger_declared_empirical_integration": false,
+  "ledger_declared_human_acceptance": false,
+  "page_counts": {
+    "en": 83,
+    "zh": 80
+  },
+  "reviewed_pages": {
+    "en": [
+      56,
+      57,
+      58
+    ],
+    "zh": [
+      52,
+      53,
+      54
+    ]
+  },
+  "public_review_projection": true,
+  "published_pdf_files": {
+    "en": "paper/pirc17/en/public-review.pdf",
+    "zh": "paper/pirc17/zh/public-review.pdf"
+  },
+  "original_local_pdfs_published": false,
+  "original_private_route_assets_loaded": false,
+  "original_local_review_bindings_requalified": false,
+  "full_final_manuscript_integration_complete": false
+}

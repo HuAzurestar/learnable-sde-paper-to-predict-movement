@@ -1,0 +1,40 @@
+\begingroup
+\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}p{.22\linewidth}p{.07\linewidth}rrrrrr@{}}
+\caption{Original five simulation-seed mean differences in weighted ES (m). Each entry averages the same 46 recording blocks. S1--S5 are 20260814--20260818 in order; the final column counts negative/positive/exact-zero entries before display rounding. Negative favours the candidate against its named Full reference. Scientific notation e-5 means times ten to the power minus five. These are not confidence intervals or five independent studies.}\label{tab:method-seed-stability}\\
+\toprule
+Candidate & Control & S1 & S2 & S3 & S4 & S5 & $-/+/0$\\
+\midrule\endfirsthead
+\multicolumn{8}{l}{Table~\thetable\ (continued)}\\
+\toprule
+Candidate & Control & S1 & S2 & S3 & S4 & S5 & $-/+/0$\\
+\midrule\endhead
+\bottomrule\endfoot
+\multicolumn{8}{l}{\textit{Model structure}}\\
+Pointwise mixture & Full01 & 32.60 & 29.70 & 33.89 & 33.83 & 34.75 & 0/5/0\\
+Single Gaussian & Full01 & 21.65 & 19.02 & 21.72 & 23.03 & 24.64 & 0/5/0\\
+Residual mixture & Full01 & -5.00 & -4.27 & -1.08 & -2.40 & -1.39 & 5/0/0\\
+Explicit features & Full01 & 57.28 & 56.49 & 58.30 & 58.59 & 59.13 & 0/5/0\\
+\multicolumn{8}{l}{\textit{Observation interval}}\\
+30 s observations & Full01 & 8.39 & 6.93 & 7.24 & 8.72 & 11.54 & 0/5/0\\
+120 s observations & Full01 & -10.76 & -14.89 & -10.32 & -11.07 & -10.74 & 5/0/0\\
+300 s observations & Full01 & -22.48 & -25.66 & -25.48 & -20.08 & -23.32 & 5/0/0\\
+600 s observations & Full01 & -22.60 & -24.92 & -21.92 & -28.96 & -25.05 & 5/0/0\\
+\multicolumn{8}{l}{\textit{Objective / score}}\\
+QMLE & Full07 & 1.90 & -0.41 & 1.66 & 0.58 & -2.35 & 2/3/0\\
+Mixed calibration & Full07 & -4.13 & -9.30 & -4.58 & -3.96 & -10.78 & 5/0/0\\
+Pure ES calibration & Full07 & -4.40 & -6.13 & -5.00 & -1.56 & -9.49 & 5/0/0\\
+d2 MC score route & Full07 & 0 & 0 & 0 & 0 & 0 & 0/0/5\\
+d2 closed score route & Full07 & 0 & 0 & 0 & 0 & 0 & 0/0/5\\
+\multicolumn{8}{l}{\textit{Training / adaptation}}\\
+Scratch & Full11 & 2.33 & -0.43 & 3.20 & 5.58 & 2.33 & 1/4/0\\
+Reptile & Full11 & 2.52 & -1.39 & 2.61 & 3.88 & 3.36 & 1/4/0\\
+Drift-only & Full11 & 0.50 & -1.12 & -0.81 & 3.84 & 0.11 & 2/3/0\\
+Two-step & Full11 & -1.06 & -1.90 & -1.82 & 1.40 & 3.19 & 3/2/0\\
+\multicolumn{8}{l}{\textit{Numerical propagation}}\\
+EM & Full18 & 0.02542 & 0.02503 & 0.02542 & 0.02621 & 0.02519 & 0/5/0\\
+Euler (EM alias) & Full18 & 0.02542 & 0.02503 & 0.02542 & 0.02621 & 0.02519 & 0/5/0\\
+MC & Full20 & -0.19 & -1.77 & 2.03 & -0.93 & -3.04 & 4/1/0\\
+CRN & Full20 & -5.06e-5 & -6.80e-5 & -6.10e-5 & -6.47e-5 & -3.74e-5 & 5/0/0\\
+\end{longtable}
+\endgroup

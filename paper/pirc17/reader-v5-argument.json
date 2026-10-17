@@ -1,0 +1,40 @@
+{
+  "schema_version": "pirc17-reader-v5-editorial-argument-v1",
+  "baseline_commit": "83a1958ffeefcdb3186771fd2c75794b578290ef",
+  "purpose": "Bounded section-level RST-inspired editorial check, not a formal EDU annotation, new research method, hypothesis test or causal graph.",
+  "names": {
+    "HSM-SDE": {"description": "heading-stratified mixture SDE", "registered_reference": "Full01", "scope": "ordinary method family, not all-terrain; other Full controls retain their numbered identities"},
+    "RDM-SDE": {"description": "residual-direction mixture SDE", "registered_identifier": "GMM", "scope": "one-pass residual-direction grouping, not conventional EM-fitted GMM; within the SDE family"},
+    "CV": {"description": "constant-velocity extrapolation", "registered_identifier": "Inertial/I", "scope": "deterministic visible-prefix secant extrapolation"}
+  },
+  "reading_order": ["object and task", "model construction", "evaluation criteria", "horizon utility", "design choices", "region reliability", "inference qualification", "interpretation and limits", "four conclusions"],
+  "section_tree": {
+    "Introduction": ["long-horizon focus", "four descriptive questions", "unchanged registered RQ1 and RQ2"],
+    "Data and predictive procedures": ["research object and task", "cohort and clock", "mechanism-based names and SDE construction", "separate terrain branch"],
+    "Evaluation measures and inference": ["ES versus mean-position error", "nominal versus empirical disk coverage", "original inference and practical margin"],
+    "Results": ["horizon utility", {"design choices": ["component construction", "observation interval", "training initialisation versus adaptation"]}, "region reliability", "inference qualification and unresolved terrain"],
+    "Discussion": ["possible interpretation without causal identification", "design priorities without global ranking", "reliability limits and remaining work"],
+    "Conclusion": ["C1", "C2", "C3", "C4", "original RQ1/RQ2 and scope"]
+  },
+  "conclusions": [
+    {"id": "C1", "claim": "CV has lower ES at saved 1/5-minute targets; HSM-SDE has lower ES at 15/30 minutes.", "evidence": ["fig:inertial"], "qualification": "Conditional descriptive utility relative to deterministic CV, not necessity of complex SDE or a precise crossover time."},
+    {"id": "C2", "claim": "RDM-SDE has lower saved mean ES and final mean-position error; residual-direction grouping is promising but not confirmed superior.", "evidence": ["tab:point-errors", "supplement:tab:preliminary-method-effects"], "qualification": "Paired ES interval [-21.22,16.33] includes zero; label mismatch limits attribution; no per-horizon ES claim from an aggregate."},
+    {"id": "C3", "claim": "120/300-second observation-interval mean ES changes are larger than examined training/adaptation changes against respective controls; additional training/adaptation complexity shows no clear added ES benefit.", "evidence": ["fig:reader-tradeoff", "supplement:tab:preliminary-method-effects", "tab:point-errors"], "qualification": "Not a direct cross-class significance test, causal importance ranking or proof that learning is unnecessary. dt is not integration step; dt300 increases FDE."},
+    {"id": "C4", "claim": "The procedure generates probabilistic forecasts, but reliable long-horizon disks are not established; HSM-SDE 30-minute nominal 90% coverage is 46.52%.", "evidence": ["fig:reader-calibration", "tab:reader-regions"], "qualification": "No new calibration test, radius adjustment or operational guarantee; coverage and area must be read together."}
+  ],
+  "relations": [
+    {"from": "Data and predictive procedures", "to": "Results", "relation": "Background/Elaboration", "role": "Defines what was forecast and how; equations are not empirical performance evidence."},
+    {"from": "Evaluation measures and inference", "to": "Results", "relation": "Background", "role": "Defines score, location, region and qualification so comparisons have a common meaning."},
+    {"from": "fig:population", "to": "cohort and scope", "relation": "Elaboration", "role": "Describes retrospective selection, not participant independence or population representativeness."},
+    {"from": "C1,C2,C3,C4 evidence", "to": "C1,C2,C3,C4", "relation": "Evidence", "role": "Separate findings support bounded conclusions; repeated views are not independent replications."},
+    {"from": "inference qualification and limitations", "to": "conclusions", "relation": "Concession/Interpretation", "role": "Restricts generalisation, structural superiority and reliability; terrain inference remains unavailable."},
+    {"from": "Results", "to": "Conclusion", "relation": "Summary", "role": "Four answer groups in the same order, not a causal chain between diagnostic outcomes."}
+  ],
+  "all_figure_assets_unchanged": true,
+  "main_figures": 4,
+  "main_tables": 2,
+  "supplementary_tables": 50,
+  "new_fits_forecasts_scores_map_queries_or_resampling": 0,
+  "original_registered_questions_or_inference_changed": false,
+  "human_acceptance_or_submission_certification": false
+}

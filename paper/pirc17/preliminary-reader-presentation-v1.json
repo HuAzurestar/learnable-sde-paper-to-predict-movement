@@ -1,0 +1,87 @@
+{
+  "schema_version": "pirc17-preliminary-reader-presentation-v1",
+  "snapshot_sha256": "8900f3dee68d5fc9cafd5ced2e2394503432d2493251601c0ba9cb771cbefba1",
+  "runtime_sha256": "e959b5404d0b245de66350bd017db7c0c2ab233ae29bc40ad5efe6435398a9aa",
+  "environment_sha256": "2b9b6825148bad0a78e12bed7cb2fb69d9604d15ffd30926f2854fc5031ef2b1",
+  "hardware": {
+    "device": "cpu",
+    "logical_cpus": 12,
+    "numba_threads": 12,
+    "numpy": "1.26.4",
+    "optional_map_packages": {
+      "duckdb": "1.5.5",
+      "numba": "0.65.1",
+      "pyarrow": "24.0.0",
+      "rasterio": "1.4.4"
+    },
+    "physical_cpus": 6,
+    "platform": "Windows-10-10.0.19045-SP0",
+    "processor": "Intel64 Family 6 Model 141 Stepping 1, GenuineIntel",
+    "psutil": "5.9.5",
+    "python": "3.10.13",
+    "ram_total_bytes": 34071752704,
+    "thread_environment": {
+      "MKL_NUM_THREADS": "6",
+      "NUMBA_NUM_THREADS": "12",
+      "OMP_NUM_THREADS": "6",
+      "OPENBLAS_NUM_THREADS": "12"
+    },
+    "torch": "2.3.1+cu121",
+    "torch_interop_threads": 12,
+    "torch_threads": 6
+  },
+  "packages": {
+    "duckdb": "1.5.5",
+    "llvmlite": "0.47.0",
+    "numba": "0.65.1",
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "psutil": "5.9.5",
+    "pyarrow": "24.0.0",
+    "rasterio": "1.4.4",
+    "scipy": "1.15.3",
+    "threadpoolctl": "3.2.0",
+    "torch": "2.3.1+cu121"
+  },
+  "environment_scope": "Original sealed CPU environment, not a new hardware probe or final isolated-runtime trial audit.",
+  "timing_scope": "Original prediction_seconds for the first registered primary origin and first forecast RNG seed, nominal 30 min, N512/max step5s. Individual ordinary kernel measurements, not isolated cold/warm trials, quantiles, a speed hypothesis or deployment cost.",
+  "timings": [
+    {
+      "configuration": "arm-01/full",
+      "prediction_seconds": 0.9727917000127491,
+      "source_sha256": "d608e747b19ffec3509def2b8cb8715751014f8c6232abd1c73cecda5efd57d8"
+    },
+    {
+      "configuration": "arm-04/gmm_kernel",
+      "prediction_seconds": 0.8173975000099745,
+      "source_sha256": "6fa11fda83b3c4f19bc5d2c07536859eb0ddb9f5a46d98563aed7641f12a2a99"
+    },
+    {
+      "configuration": "arm-06/dt300",
+      "prediction_seconds": 0.8617522999993525,
+      "source_sha256": "b502b6b0999c9879b5b617237ea2157d34c2c862e1963d8c61cc818ae0cf8af6"
+    },
+    {
+      "configuration": "arm-19/em",
+      "prediction_seconds": 0.6757110000180546,
+      "source_sha256": "a080b5428dffc18f172ee1818524e38f4d3b7c18434217d6457fad27e2265f29"
+    },
+    {
+      "configuration": "arm-21/mc",
+      "prediction_seconds": 0.5716383999970276,
+      "source_sha256": "124dfb8bd97f2219e649eb70993c57bd470ced6838271b2b72ba391d64dc1984"
+    }
+  ],
+  "geographic_presentation": {
+    "city_or_street_labels_integrated": false,
+    "raw_trajectory_or_map_example_integrated": false,
+    "global_or_country_generalization_claimed": false,
+    "registered_map_asset_extent_is_not_selected_cohort_geography": true
+  },
+  "new_forecasts": 0,
+  "new_fits": 0,
+  "new_particle_scores": 0,
+  "new_inference": 0,
+  "scientific_claim_authorized": false,
+  "final_audit_completed": false
+}

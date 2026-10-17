@@ -47,7 +47,7 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: "3.10"
-      - run: python -m pip install pytest
+      - run: python -m pip install -r requirements-test.txt
       - run: python -m pytest tests -q
   tex-en:
     name: tex / English PDF and references
@@ -73,6 +73,41 @@ jobs:
           name: paper-en-${{ github.sha }}
           path: paper/en/main.pdf
           retention-days: 7
+      - name: Compile current PIRC-17 English manuscript
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: main.tex
+          working_directory: paper/pirc17/en
+          args: -pdf -interaction=nonstopmode -halt-on-error -file-line-error
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.10"
+      - name: Reject unresolved or clipped PIRC-17 English output
+        run: |
+          python -c "from pathlib import Path; from scripts.build_pirc17 import check_log; check_log(Path('paper/pirc17/en/main.log').read_text(encoding='utf-8', errors='replace'))"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pirc17-en-${{ github.sha }}
+          path: paper/pirc17/en/main.pdf
+          retention-days: 7
+      - name: Compile PIRC-17 English companion documents
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: |
+            supplement.tex
+            audit-notes.tex
+          working_directory: paper/pirc17/en
+          args: -pdf -interaction=nonstopmode -halt-on-error -file-line-error
+      - name: Reject unresolved or clipped English companion output
+        run: |
+          python -c "from pathlib import Path; from scripts.build_pirc17 import check_log; [check_log(Path('paper/pirc17/en', n+'.log').read_text(encoding='utf-8', errors='replace')) for n in ('supplement','audit-notes')]"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pirc17-en-companions-${{ github.sha }}
+          path: |
+            paper/pirc17/en/supplement.pdf
+            paper/pirc17/en/audit-notes.pdf
+          retention-days: 7
   tex-zh:
     name: tex / Chinese PDF and references
     runs-on: ubuntu-latest
@@ -96,6 +131,41 @@ jobs:
         with:
           name: paper-zh-${{ github.sha }}
           path: paper/zh/main.pdf
+          retention-days: 7
+      - name: Compile current PIRC-17 Chinese manuscript
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: main.tex
+          working_directory: paper/pirc17/zh
+          args: -xelatex -interaction=nonstopmode -halt-on-error -file-line-error
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.10"
+      - name: Reject unresolved or clipped PIRC-17 Chinese output
+        run: |
+          python -c "from pathlib import Path; from scripts.build_pirc17 import check_log; check_log(Path('paper/pirc17/zh/main.log').read_text(encoding='utf-8', errors='replace'))"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pirc17-zh-${{ github.sha }}
+          path: paper/pirc17/zh/main.pdf
+          retention-days: 7
+      - name: Compile PIRC-17 Chinese companion documents
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: |
+            supplement.tex
+            audit-notes.tex
+          working_directory: paper/pirc17/zh
+          args: -xelatex -interaction=nonstopmode -halt-on-error -file-line-error
+      - name: Reject unresolved or clipped Chinese companion output
+        run: |
+          python -c "from pathlib import Path; from scripts.build_pirc17 import check_log; [check_log(Path('paper/pirc17/zh', n+'.log').read_text(encoding='utf-8', errors='replace')) for n in ('supplement','audit-notes')]"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pirc17-zh-companions-${{ github.sha }}
+          path: |
+            paper/pirc17/zh/supplement.pdf
+            paper/pirc17/zh/audit-notes.pdf
           retention-days: 7
   required:
     name: ci / required

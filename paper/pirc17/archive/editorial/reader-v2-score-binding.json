@@ -1,0 +1,24 @@
+{
+  "schema_version": "pirc17-es-definition-binding-v2",
+  "execution_content_sha256": "c3e44393f6bc5544aaa21bb273c94eaecb9d0becb4e0590771355c4c0be9b6c2",
+  "original_bundle_content_sha256": "ee8c8df2164bdbf5db1a0bb91feb3e33a48723d272e984e845590f1ad2f6df4a",
+  "source_file_sha256": {
+    "experiments/pirc17/metrics.py": "c00059e40421d5267deb35b73096048f22fd439dc9914801ccaf4fd609885570",
+    "experiments/pirc17/formal_scoring.py": "d39adc6de097cd792c5742beca8bc3ebaab1fa5151804e5fe1ac813134170187"
+  },
+  "runtime_settings_content_sha256": "37b7744c96b3a3663d902e3189b1fc9bbff480ced87a1f3e1476455c2840a8a9",
+  "original_public_replay_receipt_sha256": "0a017c3b7932a30f019a125ee2d53cc69342ccbf260d1d24a6c2874c3fb0b50e",
+  "call_chain": [
+    "ScoringConsumers",
+    "score_path",
+    "energy_score"
+  ],
+  "estimator": "ordered-pair U statistic; 2*N*(N-1); zero diagonal",
+  "deterministic_reference": "direct point-mass distance, not N=1 in the U formula",
+  "metric_source_projection": "def _samples(samples, target):\n    x, y = np.asarray(samples, dtype=float), np.asarray(target, dtype=float)\n    if x.ndim != 2 or len(x) < 2 or x.shape[1:] != y.shape or not x.shape[1]:\n        raise ValueError(\"at least two vector samples and matching target required\")\n    if not np.isfinite(x).all() or not np.isfinite(y).all():\n        raise ValueError(\"nonfinite forecasts/targets must be recorded as failures, not dropped\")\n    return x, y\n\ndef energy_score(samples, target, *, chunk_size=128):\n    \"\"\"Unbiased U-statistic Monte Carlo ES, same distance unit as positions.\"\"\"\n    x, y = _samples(samples, target)\n    if not isinstance(chunk_size, int) or chunk_size <= 0:\n        raise ValueError(\"positive integer chunk size required\")\n    distances = 0.\n    for start in range(0, len(x), chunk_size):\n        distances += np.linalg.norm(x[start:start+chunk_size, None] - x[None], axis=-1).sum()\n    return float(np.linalg.norm(x-y, axis=-1).mean() - distances/(2*len(x)*(len(x)-1)))",
+  "correction": "Previous body and checklist N^2 wording was wrong; scientific results remain unchanged.",
+  "original_arrays_rescored": false,
+  "new_research_scores": 0,
+  "new_fits_forecasts_or_resampling": 0,
+  "human_accepted": false
+}

@@ -1,0 +1,196 @@
+{
+  "schema_version": "pirc17-private-case-review-v1",
+  "independent_blocks": 46,
+  "country_count": 12,
+  "countries": {
+    "AT": 1,
+    "BE": 10,
+    "DE": 3,
+    "ES": 2,
+    "FR": 1,
+    "GB": 17,
+    "IE": 1,
+    "LU": 6,
+    "NL": 1,
+    "PL": 2,
+    "RU": 1,
+    "US": 1
+  },
+  "harvest_areas": [
+    {
+      "country": "AT",
+      "region": "Tyrol",
+      "harvest_area": "Vols",
+      "blocks": 1
+    },
+    {
+      "country": "BE",
+      "region": "Flanders",
+      "harvest_area": "Boechout",
+      "blocks": 5
+    },
+    {
+      "country": "BE",
+      "region": "Flanders",
+      "harvest_area": "Heist-op-den-Berg",
+      "blocks": 2
+    },
+    {
+      "country": "BE",
+      "region": "Flanders",
+      "harvest_area": "Niel",
+      "blocks": 1
+    },
+    {
+      "country": "BE",
+      "region": "Flanders",
+      "harvest_area": "Schilde",
+      "blocks": 1
+    },
+    {
+      "country": "BE",
+      "region": "Flanders",
+      "harvest_area": "Wuustwezel",
+      "blocks": 1
+    },
+    {
+      "country": "DE",
+      "region": "Lower Saxony",
+      "harvest_area": "Wilhelmshaven",
+      "blocks": 3
+    },
+    {
+      "country": "ES",
+      "region": "Valencia",
+      "harvest_area": "Olocau",
+      "blocks": 2
+    },
+    {
+      "country": "FR",
+      "region": "Rhone-Alpes",
+      "harvest_area": "Le Chambon",
+      "blocks": 1
+    },
+    {
+      "country": "GB",
+      "region": "England",
+      "harvest_area": "Bakewell",
+      "blocks": 1
+    },
+    {
+      "country": "GB",
+      "region": "England",
+      "harvest_area": "Barham",
+      "blocks": 1
+    },
+    {
+      "country": "GB",
+      "region": "England",
+      "harvest_area": "Bayswater",
+      "blocks": 7
+    },
+    {
+      "country": "GB",
+      "region": "England",
+      "harvest_area": "Grays",
+      "blocks": 2
+    },
+    {
+      "country": "GB",
+      "region": "England",
+      "harvest_area": "Hellington",
+      "blocks": 1
+    },
+    {
+      "country": "GB",
+      "region": "England",
+      "harvest_area": "North Walsham",
+      "blocks": 1
+    },
+    {
+      "country": "GB",
+      "region": "England",
+      "harvest_area": "Radley",
+      "blocks": 1
+    },
+    {
+      "country": "GB",
+      "region": "England",
+      "harvest_area": "Sudbury",
+      "blocks": 1
+    },
+    {
+      "country": "GB",
+      "region": "England",
+      "harvest_area": "White Waltham",
+      "blocks": 1
+    },
+    {
+      "country": "GB",
+      "region": "Wales",
+      "harvest_area": "Llanrhian",
+      "blocks": 1
+    },
+    {
+      "country": "IE",
+      "region": "Leinster",
+      "harvest_area": "Terenure",
+      "blocks": 1
+    },
+    {
+      "country": "LU",
+      "region": "Diekirch",
+      "harvest_area": "Wilwerwiltz",
+      "blocks": 3
+    },
+    {
+      "country": "LU",
+      "region": "Grevenmacher",
+      "harvest_area": "Junglinster",
+      "blocks": 3
+    },
+    {
+      "country": "NL",
+      "region": "Gelderland",
+      "harvest_area": "Voorthuizen",
+      "blocks": 1
+    },
+    {
+      "country": "PL",
+      "region": "Greater Poland Voivodeship",
+      "harvest_area": "Ostrow Wielkopolski",
+      "blocks": 1
+    },
+    {
+      "country": "PL",
+      "region": "Lubusz",
+      "harvest_area": "Zagan",
+      "blocks": 1
+    },
+    {
+      "country": "RU",
+      "region": "Tomsk",
+      "harvest_area": "Tomskiy Rayon",
+      "blocks": 1
+    },
+    {
+      "country": "US",
+      "region": "Pennsylvania",
+      "harvest_area": "Freemansburg",
+      "blocks": 1
+    }
+  ],
+  "location_semantics": "source cluster label, not verified point-level city/street address",
+  "route_coordinates_included": false,
+  "recording_ids_included": false,
+  "geographical_performance_inference": false,
+  "provenance": {
+    "context_sha256": "61354e87858d8dc54e2759e3b11f2501000e27ca9b2898115d72018b2f051f4f",
+    "population_sha256": "7061f44ef8647f7bee55822ca7e494e53d3c058e5973d6198e997893c70bb020",
+    "raw_harvest_sha256": "e35c814c7f0b7d37395c6dfcb2f6a1b67846e617082675d959492aeab1968b98",
+    "samples_sha256": "6e34c54a71c7b604329cbf63856e912cbeee2b1b63d1a0d03e85b021769d36bc",
+    "cluster_metadata_sha256": "6816971e6cdb5c615cbd627ea7ef0c819f941005f0c083c5f4f445c9c1adbf38",
+    "cluster_metadata_in_original_release_binding": false,
+    "label_normalization": "remove suffix beginning at first underscore; no external geocoding"
+  }
+}

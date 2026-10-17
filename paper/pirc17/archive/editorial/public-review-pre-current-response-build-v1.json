@@ -1,0 +1,59 @@
+{
+  "schema_version": "pirc17-review-build-v1",
+  "repository_head": "afc9d31dfc3516956022160844e649c0327400ec",
+  "working_tree_dirty_at_start": false,
+  "claim_ledger_sha256": "1846fd94213477e0261819cfac2adeca0ae0bca7cb4fccfab1d1bebd894e6793",
+  "manuscripts": [
+    {
+      "language": "en",
+      "engine": "-pdf",
+      "source": "paper/pirc17/en/main.tex",
+      "source_sha256": "30646aa3d91fefe8f0e8f7c4b12046c1c6ba684824594163297397553159adb8",
+      "pdf": "en/main.pdf",
+      "pdf_sha256": "b9cc3592db8774dc7a0ddbb1ac71df4703aad432d49da1ef536f01282b0dc1b4",
+      "log": "en/main.log",
+      "log_sha256": "343716b3ac2938b980f77a6eaa14507efa197d1ead6cf8f9c004e433493ad341",
+      "tex_banner": "This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.3.1)  9 OCT 2026 03:02"
+    },
+    {
+      "language": "zh",
+      "engine": "-xelatex",
+      "source": "paper/pirc17/zh/main.tex",
+      "source_sha256": "0c72ff91c6ab79ad4d5d716563d4ae9ff0b1156ab346b14129e3744a98a58567",
+      "pdf": "zh/main.pdf",
+      "pdf_sha256": "30efc1b408611caa5f6f4ef79f3a2f5c43fd09cb2b40aae5a669fae9960c7ed6",
+      "log": "zh/main.log",
+      "log_sha256": "2304aeadc6a872d181d7c810d82735099e400c83e9d7363ecec03e94c995708f",
+      "tex_banner": "This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.1)  9 OCT 2026 03:02"
+    }
+  ],
+  "compilation_verified": true,
+  "empirical_claims_verified_by_build": false,
+  "acceptance_verified_by_build": false,
+  "ledger_declared_empirical_integration": false,
+  "ledger_declared_human_acceptance": false,
+  "page_counts": {
+    "en": 84,
+    "zh": 82
+  },
+  "reviewed_pages": {
+    "en": [
+      52,
+      53
+    ],
+    "zh": [
+      49,
+      50
+    ]
+  },
+  "public_review_projection": true,
+  "published_pdf_files": {
+    "en": "paper/pirc17/en/public-review.pdf",
+    "zh": "paper/pirc17/zh/public-review.pdf"
+  },
+  "original_local_pdfs_published": false,
+  "original_private_route_assets_loaded": false,
+  "original_local_review_bindings_requalified": false,
+  "full_final_manuscript_integration_complete": false,
+  "secondary_score_projection_sha256": "f0cae23999322c49575e2b95d41b4713836666a5d02f0c55af8cc306167e92ac"
+}

@@ -1,0 +1,50 @@
+\subsection{Complete method horizon profiles}
+\label{sec:all-method-horizons}
+Every original primary configuration is shown separately, including the six extra reference/replay roles and both score-only routes. Each cell is marginal ES in metres / nominal 90\% disk coverage in percent, over the same 46 blocks and five simulation seeds. These are descriptive means, not paired tests, confidence intervals or independent algorithms. Target slots retain the original observation-time tolerance; equal display rounding does not certify equal full-precision scores.
+\begingroup\footnotesize\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{.90}
+\begin{longtable}{@{}p{.25\linewidth}rrrr@{}}
+\caption{All 28 saved primary configuration profiles. Cells: ES (m) / 90\% disk coverage (\%). ES lower is better; coverage should be interpreted against 90\% and region size, not maximized alone. Each row uses 230 saved scores, not 230 independent targets.}\label{tab:all-method-horizons}\\
+\toprule
+Configuration & 1 min & 5 min & 15 min & 30 min\\
+\midrule\endfirsthead
+\multicolumn{5}{l}{Table~\thetable\ (continued)}\\
+\toprule
+Configuration & 1 min & 5 min & 15 min & 30 min\\
+\midrule\endhead
+\bottomrule\endfoot
+\multicolumn{5}{l}{\textit{Model structure / Full01}}\\*
+Full01 & 50.57 / 95.65 & 243.23 / 37.83 & 609.27 / 35.22 & 1008.35 / 46.52\\
+Pointwise mixture & 50.37 / 95.65 & 249.10 / 24.78 & 652.09 / 10.87 & 1091.67 / 21.74\\
+Single Gaussian & 48.61 / 95.65 & 237.81 / 31.74 & 627.23 / 17.83 & 1085.82 / 32.61\\
+Residual mixture & 50.35 / 96.96 & 228.87 / 66.52 & 598.70 / 34.78 & 1022.19 / 45.22\\
+Explicit features & 48.21 / 91.30 & 239.20 / 32.17 & 658.21 / 13.48 & 1197.62 / 21.74\\
+\multicolumn{5}{l}{\textit{Observation interval / Full01}}\\*
+30 s observations & 51.36 / 72.61 & 251.36 / 23.04 & 621.77 / 24.35 & 1021.17 / 38.26\\
+60 s (Full01 replay) & 50.57 / 95.65 & 243.23 / 37.83 & 609.27 / 35.22 & 1008.35 / 46.52\\
+120 s observations & 51.53 / 98.26 & 233.98 / 70.87 & 592.55 / 54.78 & 987.12 / 56.96\\
+300 s observations & 56.58 / 100.00 & 229.28 / 96.52 & 574.53 / 71.74 & 957.40 / 64.35\\
+600 s observations & 63.78 / 100.00 & 234.32 / 99.13 & 572.65 / 92.61 & 941.89 / 79.13\\
+\multicolumn{5}{l}{\textit{Objective / score / Full07}}\\*
+Full07 & 50.52 / 95.65 & 242.28 / 37.83 & 608.76 / 33.48 & 1005.15 / 45.65\\
+QMLE & 50.33 / 95.65 & 242.14 / 38.70 & 608.85 / 34.35 & 1006.48 / 46.52\\
+Mixed calibration & 50.16 / 95.65 & 238.69 / 40.43 & 600.36 / 34.78 & 991.29 / 46.52\\
+Pure ES calibration & 50.09 / 95.65 & 238.94 / 39.13 & 601.74 / 35.22 & 994.67 / 45.65\\
+d2 MC score route & 50.52 / 95.65 & 242.28 / 37.83 & 608.76 / 33.48 & 1005.15 / 45.65\\
+d2 closed score route & 50.52 / 95.65 & 242.28 / 37.83 & 608.76 / 33.48 & 1005.15 / 45.65\\
+\multicolumn{5}{l}{\textit{Training / adaptation / Full11}}\\*
+Full11 & 50.37 / 95.65 & 242.17 / 38.70 & 607.73 / 34.78 & 1003.68 / 46.52\\
+Scratch & 50.65 / 95.65 & 242.97 / 40.43 & 607.79 / 37.83 & 1012.95 / 46.52\\
+Reptile & 50.15 / 95.65 & 239.46 / 37.39 & 602.72 / 33.04 & 1020.39 / 41.74\\
+Drift-only & 50.57 / 95.65 & 242.58 / 39.57 & 608.70 / 34.35 & 1004.12 / 46.96\\
+Two-step & 50.39 / 95.65 & 241.93 / 37.83 & 606.76 / 35.65 & 1004.71 / 46.96\\
+\multicolumn{5}{l}{\textit{Numerical / Full18, Full20}}\\*
+Full18 & 50.48 / 95.65 & 242.54 / 38.26 & 608.30 / 32.61 & 1007.57 / 45.65\\
+EM (Full18 control) & 50.48 / 95.65 & 242.56 / 38.26 & 608.34 / 32.61 & 1007.61 / 45.65\\
+Euler (EM alias) & 50.48 / 95.65 & 242.56 / 38.26 & 608.34 / 32.61 & 1007.61 / 45.65\\
+Full20 & 50.46 / 95.65 & 242.39 / 37.83 & 607.85 / 33.48 & 1004.44 / 46.96\\
+MC (Full20 control) & 50.48 / 95.65 & 242.05 / 36.52 & 607.04 / 34.35 & 1002.46 / 46.09\\
+CRN (Full20 control) & 50.46 / 95.65 & 242.39 / 37.83 & 607.85 / 33.48 & 1004.44 / 46.96\\
+\multicolumn{5}{l}{\textit{Additional reference (not a family)}}\\*
+Full16 (extra reference) & 50.29 / 95.65 & 242.06 / 37.83 & 607.10 / 33.48 & 1004.17 / 45.65\\
+\end{longtable}
+\endgroup

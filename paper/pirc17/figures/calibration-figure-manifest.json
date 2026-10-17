@@ -1,0 +1,15 @@
+{
+  "schema_version": "pirc17-calibration-presentation-v1",
+  "source_sha256": "3d79b46f7cf368547c4e9773c4f843fce4646044eaaec27032994bb982c062f3",
+  "renderer_sha256": "483ee0516c7d99058521f1c8db43c58e1954c7ccd4d86a3215bdf190785be3c0",
+  "matplotlib_version": "3.9.0",
+  "figures": {
+    "preliminary-calibration-area": {
+      "pdf": "fdacd6190e0570313e285fed22b4c1a7b3a2d886b944d5a81a02efdb3a64549a",
+      "png": "9d86773fc1d07db7d00e308c858e34c5c77b5731fb131f84b6f39d3344b5f61f"
+    }
+  },
+  "new_fits_predictions_scores_or_inference": 0,
+  "final_audit_performed": false,
+  "original_final_sixteen_figure_inventory_replaced": false
+}

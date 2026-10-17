@@ -1,0 +1,98 @@
+{
+  "schema_version": "pirc17-revision46-regression-comparison-v1",
+  "baseline_commit": "8cbcb1140d804b25b553ab4e7cda0be3a0d34b1b",
+  "baseline": {
+    "sha256": "7d051a8291fcac38c50d38ce3acef34ba44bb645623335261c083f8ea99d9b06",
+    "passed": 967,
+    "failed": 25,
+    "errors": 2,
+    "skipped": 0,
+    "states": {
+      "failure": [
+        "tests.test_pirc17_calibration_block_presentation::test_figure_and_reader_provenance_do_not_grant_empirical_or_route_permission",
+        "tests.test_pirc17_capture_difference::test_existing_input_and_generator_bytes_match_saved_source_bindings",
+        "tests.test_pirc17_cohort_geography_presentation::test_unchanged_base_projection_bytes_and_new_evidence_pin",
+        "tests.test_pirc17_history_reading::test_every_scientific_block_is_exact_with_only_the_two_named_table_moves[en]",
+        "tests.test_pirc17_history_reading::test_every_scientific_block_is_exact_with_only_the_two_named_table_moves[zh]",
+        "tests.test_pirc17_method_algorithm_presentation::test_base_fit_addition_preserves_all_previous_scientific_blocks[en]",
+        "tests.test_pirc17_method_algorithm_presentation::test_base_fit_addition_preserves_all_previous_scientific_blocks[zh]",
+        "tests.test_pirc17_method_horizons::test_projection_manifest_and_scientific_scope_remain_bound",
+        "tests.test_pirc17_method_regions::test_all_previous_literal_scientific_blocks_remain_exact[en]",
+        "tests.test_pirc17_method_regions::test_all_previous_literal_scientific_blocks_remain_exact[zh]",
+        "tests.test_pirc17_method_regions::test_saved_projection_manifest_and_ledger_are_exact_and_not_acceptance",
+        "tests.test_pirc17_preliminary_figures::test_manifest_and_appendix_bindings_without_qualification",
+        "tests.test_pirc17_reader_mainline::test_all_original_table_numbers_and_scientific_data_are_unchanged[en]",
+        "tests.test_pirc17_reader_mainline::test_all_original_table_numbers_and_scientific_data_are_unchanged[zh]",
+        "tests.test_pirc17_reader_mainline::test_reptile_readability_preserves_all_scientific_blocks_and_shortens_reptile_passage[en]",
+        "tests.test_pirc17_reader_mainline::test_reptile_readability_preserves_all_scientific_blocks_and_shortens_reptile_passage[zh]",
+        "tests.test_pirc17_results_reading::test_all_original_table_and_figure_blocks_are_exactly_preserved[en]",
+        "tests.test_pirc17_results_reading::test_all_original_table_and_figure_blocks_are_exactly_preserved[zh]",
+        "tests.test_pirc17_review_response::test_all_referenced_existing_evidence_bytes_match_reviewed_revision",
+        "tests.test_pirc17_runtime_interruption::test_delivered_current_pdf_and_source_match_the_actual_new_build[en]",
+        "tests.test_pirc17_runtime_interruption::test_delivered_current_pdf_and_source_match_the_actual_new_build[zh]",
+        "tests.test_pirc17_scientific_narrative::test_horizon_synthesis_preserves_original_evidence_and_nonacceptance",
+        "tests.test_pirc17_seed_stability::test_committed_projection_and_ledger_are_descriptive_only",
+        "tests.test_pirc17_source_sequence_evidence::test_new_source_table_preserves_every_previous_scientific_environment[en]",
+        "tests.test_pirc17_source_sequence_evidence::test_new_source_table_preserves_every_previous_scientific_environment[zh]"
+      ],
+      "error": [
+        "::tests.test_pirc17_case_horizons",
+        "::tests.test_pirc17_history_missingness"
+      ],
+      "skipped": []
+    },
+    "seconds": 167.605
+  },
+  "current": {
+    "sha256": "07c9f93bb6f2f5c94e2a2dd01169a0bbdf9e58ad5fa5be6eb5b021e38b89f76a",
+    "passed": 988,
+    "failed": 25,
+    "errors": 2,
+    "skipped": 0,
+    "states": {
+      "failure": [
+        "tests.test_pirc17_calibration_block_presentation::test_figure_and_reader_provenance_do_not_grant_empirical_or_route_permission",
+        "tests.test_pirc17_capture_difference::test_existing_input_and_generator_bytes_match_saved_source_bindings",
+        "tests.test_pirc17_cohort_geography_presentation::test_unchanged_base_projection_bytes_and_new_evidence_pin",
+        "tests.test_pirc17_history_reading::test_every_scientific_block_is_exact_with_only_the_two_named_table_moves[en]",
+        "tests.test_pirc17_history_reading::test_every_scientific_block_is_exact_with_only_the_two_named_table_moves[zh]",
+        "tests.test_pirc17_method_algorithm_presentation::test_base_fit_addition_preserves_all_previous_scientific_blocks[en]",
+        "tests.test_pirc17_method_algorithm_presentation::test_base_fit_addition_preserves_all_previous_scientific_blocks[zh]",
+        "tests.test_pirc17_method_horizons::test_projection_manifest_and_scientific_scope_remain_bound",
+        "tests.test_pirc17_method_regions::test_all_previous_literal_scientific_blocks_remain_exact[en]",
+        "tests.test_pirc17_method_regions::test_all_previous_literal_scientific_blocks_remain_exact[zh]",
+        "tests.test_pirc17_method_regions::test_saved_projection_manifest_and_ledger_are_exact_and_not_acceptance",
+        "tests.test_pirc17_preliminary_figures::test_manifest_and_appendix_bindings_without_qualification",
+        "tests.test_pirc17_reader_mainline::test_all_original_table_numbers_and_scientific_data_are_unchanged[en]",
+        "tests.test_pirc17_reader_mainline::test_all_original_table_numbers_and_scientific_data_are_unchanged[zh]",
+        "tests.test_pirc17_reader_mainline::test_reptile_readability_preserves_all_scientific_blocks_and_shortens_reptile_passage[en]",
+        "tests.test_pirc17_reader_mainline::test_reptile_readability_preserves_all_scientific_blocks_and_shortens_reptile_passage[zh]",
+        "tests.test_pirc17_results_reading::test_all_original_table_and_figure_blocks_are_exactly_preserved[en]",
+        "tests.test_pirc17_results_reading::test_all_original_table_and_figure_blocks_are_exactly_preserved[zh]",
+        "tests.test_pirc17_review_response::test_all_referenced_existing_evidence_bytes_match_reviewed_revision",
+        "tests.test_pirc17_runtime_interruption::test_delivered_current_pdf_and_source_match_the_actual_new_build[en]",
+        "tests.test_pirc17_runtime_interruption::test_delivered_current_pdf_and_source_match_the_actual_new_build[zh]",
+        "tests.test_pirc17_scientific_narrative::test_horizon_synthesis_preserves_original_evidence_and_nonacceptance",
+        "tests.test_pirc17_seed_stability::test_committed_projection_and_ledger_are_descriptive_only",
+        "tests.test_pirc17_source_sequence_evidence::test_new_source_table_preserves_every_previous_scientific_environment[en]",
+        "tests.test_pirc17_source_sequence_evidence::test_new_source_table_preserves_every_previous_scientific_environment[zh]"
+      ],
+      "error": [
+        "::tests.test_pirc17_case_horizons",
+        "::tests.test_pirc17_history_missingness"
+      ],
+      "skipped": []
+    },
+    "seconds": 214.715
+  },
+  "introduced_failures_or_errors": {
+    "failure": [],
+    "error": []
+  },
+  "whole_suite_passed": false,
+  "no_new_failures": true,
+  "collection_errors_not_excluded": true,
+  "command": "python -m pytest -q --continue-on-collection-errors --junitxml=<external-output>",
+  "scientific_runs_or_resampling": 0,
+  "human_acceptance": false
+}

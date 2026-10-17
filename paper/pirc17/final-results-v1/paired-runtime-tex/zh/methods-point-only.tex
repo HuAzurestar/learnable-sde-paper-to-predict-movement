@@ -1,0 +1,43 @@
+% Public-card rendering only; manuscript integration and acceptance remain pending.
+\begingroup
+\small
+\setlength{\tabcolsep}{3pt}
+\setlength{\LTcapwidth}{\linewidth}
+\begin{longtable}{@{}p{0.19\linewidth}p{0.18\linewidth}p{0.16\linewidth}p{0.29\linewidth}p{0.1\linewidth}@{}}
+\caption{保存配对比较：仅位置次要任务。差值为候选减对照的能量分数（米）；负值有利于候选，不自动表示地形因素有益。区间是原比较族内同时区间，次要任务仅作描述。缺失值为--，不是零。块数表示登记记录哈希组，不认证独立参与者。尾部、规划与分辨率不变裁定分别保留原状态；本表不授予科学或人工验收。}\label{tab:public-card-methods-point-only}\\
+\toprule
+比较族／比较 & 候选／对照 & $\Delta$及同时区间（米） & 保存资格状态／原因 & 块；计划／缺失／失败行\\
+\midrule
+\endfirsthead
+\multicolumn{5}{@{}l}{\tablename~\thetable\ (续表)}\\
+\toprule
+比较族／比较 & 候选／对照 & $\Delta$及同时区间（米） & 保存资格状态／原因 & 块；计划／缺失／失败行\\
+\midrule
+\endhead
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+模型结构\newline arm-02/\allowbreak{}pointwise & arm-02/\allowbreak{}pointwise\newline / arm-01/\allowbreak{}full & 46.07\newline [--, --] & inconclusive\newline secondary\_\allowbreak{}origin\_\allowbreak{}descriptive\_\allowbreak{}only\newline 尾部：未记录; 规划：未通过\newline 分辨率：inconclusive & 6\newline 150 / 0 / 0\\
+模型结构\newline arm-03/\allowbreak{}single\_\allowbreak{}gaussian & arm-03/\allowbreak{}single\_\allowbreak{}gaussian\newline / arm-01/\allowbreak{}full & 41.08\newline [--, --] & inconclusive\newline secondary\_\allowbreak{}origin\_\allowbreak{}descriptive\_\allowbreak{}only\newline 尾部：未记录; 规划：未通过\newline 分辨率：inconclusive & 6\newline 150 / 0 / 0\\
+模型结构\newline arm-04/\allowbreak{}gmm\_\allowbreak{}kernel & arm-04/\allowbreak{}gmm\_\allowbreak{}kernel\newline / arm-01/\allowbreak{}full & 7.916\newline [--, --] & inconclusive\newline secondary\_\allowbreak{}origin\_\allowbreak{}descriptive\_\allowbreak{}only\newline 尾部：未记录; 规划：未通过\newline 分辨率：inconclusive & 6\newline 150 / 0 / 0\\
+模型结构\newline arm-05/\allowbreak{}explicit\_\allowbreak{}decomp & arm-05/\allowbreak{}explicit\_\allowbreak{}decomp\newline / arm-01/\allowbreak{}full & 120.2\newline [--, --] & inconclusive\newline secondary\_\allowbreak{}origin\_\allowbreak{}descriptive\_\allowbreak{}only\newline 尾部：未记录; 规划：未通过\newline 分辨率：inconclusive & 6\newline 150 / 0 / 0\\
+数值传播\newline arm-19/\allowbreak{}em & arm-19/\allowbreak{}em\newline / arm-18/\allowbreak{}full & 0.02619\newline [--, --] & inconclusive\newline secondary\_\allowbreak{}origin\_\allowbreak{}descriptive\_\allowbreak{}only\newline 尾部：未记录; 规划：未通过\newline 分辨率：inconclusive & 6\newline 180 / 0 / 0\\
+数值传播\newline arm-19/\allowbreak{}euler & arm-19/\allowbreak{}euler\newline / arm-18/\allowbreak{}full & 0.02619\newline [--, --] & inconclusive\newline secondary\_\allowbreak{}origin\_\allowbreak{}descriptive\_\allowbreak{}only\newline 尾部：未记录; 规划：未通过\newline 分辨率：inconclusive & 6\newline 180 / 0 / 0\\
+数值传播\newline arm-21/\allowbreak{}crn & arm-21/\allowbreak{}crn\newline / arm-20/\allowbreak{}full & -2.351e-05\newline [--, --] & inconclusive\newline secondary\_\allowbreak{}origin\_\allowbreak{}descriptive\_\allowbreak{}only\newline 尾部：未记录; 规划：未通过\newline 分辨率：inconclusive & 6\newline 180 / 0 / 0\\
+数值传播\newline arm-21/\allowbreak{}mc & arm-21/\allowbreak{}mc\newline / arm-20/\allowbreak{}full & 1.492\newline [--, --] & inconclusive\newline secondary\_\allowbreak{}origin\_\allowbreak{}descriptive\_\allowbreak{}only\newline 尾部：未记录; 规划：未通过\newline 分辨率：inconclusive & 6\newline 180 / 0 / 0\\
+拟合与评分路线\newline arm-08/\allowbreak{}qmle & arm-08/\allowbreak{}qmle\newline / arm-07/\allowbreak{}full & -1.74\newline [--, --] & inconclusive\newline secondary\_\allowbreak{}origin\_\allowbreak{}descriptive\_\allowbreak{}only\newline 尾部：未记录; 规划：未通过\newline 分辨率：inconclusive & 6\newline 180 / 0 / 0\\
+拟合与评分路线\newline arm-09/\allowbreak{}mixed & arm-09/\allowbreak{}mixed\newline / arm-07/\allowbreak{}full & 7.622\newline [--, --] & inconclusive\newline secondary\_\allowbreak{}origin\_\allowbreak{}descriptive\_\allowbreak{}only\newline 尾部：未记录; 规划：未通过\newline 分辨率：inconclusive & 6\newline 180 / 0 / 0\\
+拟合与评分路线\newline arm-09/\allowbreak{}pure\_\allowbreak{}es & arm-09/\allowbreak{}pure\_\allowbreak{}es\newline / arm-07/\allowbreak{}full & 5.174\newline [--, --] & inconclusive\newline secondary\_\allowbreak{}origin\_\allowbreak{}descriptive\_\allowbreak{}only\newline 尾部：未记录; 规划：未通过\newline 分辨率：inconclusive & 6\newline 180 / 0 / 0\\
+拟合与评分路线\newline arm-10/\allowbreak{}d2\_\allowbreak{}closed & arm-10/\allowbreak{}d2\_\allowbreak{}closed\newline / arm-07/\allowbreak{}full & 0\newline [--, --] & inconclusive\newline secondary\_\allowbreak{}origin\_\allowbreak{}descriptive\_\allowbreak{}only\newline 尾部：未记录; 规划：未通过\newline 分辨率：inconclusive & 6\newline 180 / 0 / 0\\
+拟合与评分路线\newline arm-10/\allowbreak{}d2\_\allowbreak{}mc & arm-10/\allowbreak{}d2\_\allowbreak{}mc\newline / arm-07/\allowbreak{}full & 0\newline [--, --] & inconclusive\newline secondary\_\allowbreak{}origin\_\allowbreak{}descriptive\_\allowbreak{}only\newline 尾部：未记录; 规划：未通过\newline 分辨率：inconclusive & 6\newline 180 / 0 / 0\\
+观测间隔\newline arm-06/\allowbreak{}dt120 & arm-06/\allowbreak{}dt120\newline / arm-01/\allowbreak{}full & -11.97\newline [--, --] & inconclusive\newline secondary\_\allowbreak{}origin\_\allowbreak{}descriptive\_\allowbreak{}only\newline 尾部：未记录; 规划：未通过\newline 分辨率：inconclusive & 6\newline 150 / 0 / 0\\
+观测间隔\newline arm-06/\allowbreak{}dt30 & arm-06/\allowbreak{}dt30\newline / arm-01/\allowbreak{}full & 13.96\newline [--, --] & inconclusive\newline secondary\_\allowbreak{}origin\_\allowbreak{}descriptive\_\allowbreak{}only\newline 尾部：未记录; 规划：未通过\newline 分辨率：inconclusive & 6\newline 150 / 0 / 0\\
+观测间隔\newline arm-06/\allowbreak{}dt300 & arm-06/\allowbreak{}dt300\newline / arm-01/\allowbreak{}full & -27.36\newline [--, --] & inconclusive\newline secondary\_\allowbreak{}origin\_\allowbreak{}descriptive\_\allowbreak{}only\newline 尾部：未记录; 规划：未通过\newline 分辨率：inconclusive & 6\newline 150 / 0 / 0\\
+观测间隔\newline arm-06/\allowbreak{}dt600 & arm-06/\allowbreak{}dt600\newline / arm-01/\allowbreak{}full & -31.15\newline [--, --] & inconclusive\newline secondary\_\allowbreak{}origin\_\allowbreak{}descriptive\_\allowbreak{}only\newline 尾部：未记录; 规划：未通过\newline 分辨率：inconclusive & 6\newline 150 / 0 / 0\\
+训练与适应\newline arm-12/\allowbreak{}scratch & arm-12/\allowbreak{}scratch\newline / arm-11/\allowbreak{}full & 7.682\newline [--, --] & inconclusive\newline secondary\_\allowbreak{}origin\_\allowbreak{}descriptive\_\allowbreak{}only\newline 尾部：未记录; 规划：未通过\newline 分辨率：inconclusive & 6\newline 150 / 0 / 0\\
+训练与适应\newline arm-14/\allowbreak{}reptile & arm-14/\allowbreak{}reptile\newline / arm-11/\allowbreak{}full & 9.267\newline [--, --] & inconclusive\newline secondary\_\allowbreak{}origin\_\allowbreak{}descriptive\_\allowbreak{}only\newline 尾部：未记录; 规划：未通过\newline 分辨率：inconclusive & 6\newline 150 / 0 / 0\\
+训练与适应\newline arm-15/\allowbreak{}drift\_\allowbreak{}only & arm-15/\allowbreak{}drift\_\allowbreak{}only\newline / arm-11/\allowbreak{}full & -2.047\newline [--, --] & inconclusive\newline secondary\_\allowbreak{}origin\_\allowbreak{}descriptive\_\allowbreak{}only\newline 尾部：未记录; 规划：未通过\newline 分辨率：inconclusive & 6\newline 150 / 0 / 0\\
+训练与适应\newline arm-15/\allowbreak{}two\_\allowbreak{}step & arm-15/\allowbreak{}two\_\allowbreak{}step\newline / arm-11/\allowbreak{}full & -2.458\newline [--, --] & inconclusive\newline secondary\_\allowbreak{}origin\_\allowbreak{}descriptive\_\allowbreak{}only\newline 尾部：未记录; 规划：未通过\newline 分辨率：inconclusive & 6\newline 150 / 0 / 0\\
+\end{longtable}
+\endgroup

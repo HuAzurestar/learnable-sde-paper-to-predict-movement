@@ -1,0 +1,39 @@
+{
+  "schema_version": "pirc17-calibration-block-figure-v1",
+  "source_sha256": "4c844db56c697bb84b9657e90cb4993ba9dffae62588cc2f29cab8b04f005420",
+  "base_aggregate_sha256": "3d79b46f7cf368547c4e9773c4f843fce4646044eaaec27032994bb982c062f3",
+  "renderer_sha256": "db7844ea5251407e7d59e0bc83be344af177ac6af5d57973aa9e7529bc35c3f6",
+  "matplotlib_version": "3.9.0",
+  "panel_count": 12,
+  "points_per_panel": 46,
+  "shown_probability_level": 0.9,
+  "area_axis_scale": "log",
+  "shared_area_limits_by_nominal_horizon": [
+    [
+      0.028504743138229153,
+      0.2117397746151385
+    ],
+    [
+      0.20365373947194568,
+      1.2251887766458447
+    ],
+    [
+      0.8610573582242244,
+      6.310459361246047
+    ],
+    [
+      2.4100331756345943,
+      20.52591836007851
+    ]
+  ],
+  "figures": {
+    "preliminary-calibration-blocks": {
+      "pdf": "f9b9b619ed8169692dd439fd6103084d221a2ae6835a4f3aa4bf5185a35cc6ed",
+      "png": "8fc00c8167558709568bc879cda35ea5b9ed488f214d391556dcfa1a5614df6a"
+    }
+  },
+  "new_fits_predictions_scores_or_inference": 0,
+  "final_audit_performed": false,
+  "public_route_case_permission_verified": false,
+  "original_final_sixteen_figure_inventory_replaced": false
+}

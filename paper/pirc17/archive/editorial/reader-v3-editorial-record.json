@@ -1,0 +1,110 @@
+{
+  "schema_version": "pirc17-reader-v3-editorial-review-v1",
+  "pr_traceability": {
+    "issue": 16,
+    "pull_request": 17,
+    "source_branch": "paper/16-pirc17-review",
+    "required_title_prefix": "#16 paper(pirc17):",
+    "initial_delivery_title_failure_retained": true,
+    "title_corrected_and_local_rule_passed": true,
+    "policy_not_waived": true
+  },
+  "baseline_commit": "63709534043da99686e8ac13643e5af3320e62e2",
+  "final_source_checkpoint": "426923399d250d991bd2b4c5394b4967f5eeb3a9",
+  "scope": "Converge the bilingual manuscript using existing evidence and figures; no new experiments or images.",
+  "contribution": [
+    "horizon-dependent Full/inertia ordering",
+    "distribution-score versus predictive-mean error conflict",
+    "long-horizon marginal undercoverage"
+  ],
+  "figures_per_public_body": 4,
+  "tables_per_public_body": 2,
+  "supplementary_tables_per_language": 50,
+  "new_figure_assets": 0,
+  "new_fits_forecasts_research_scores_or_resampling": 0,
+  "original_terrain_question_preserved": true,
+  "terrain_family_inference": "unavailable; not a positive or null effect",
+  "reviews": [
+    {
+      "transport": "ACP",
+      "adapter": "@agentclientprotocol/codex-acp 2.1.0",
+      "session_id": "01a135a4-77d0-7fb2-94ad-250763bd351c",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "high",
+      "sandbox": "read-only",
+      "configuration_evidence": "ACP configOptions and persisted turn_context",
+      "fresh_context": true,
+      "tool_calls": 18,
+      "stop_reason": "end_turn",
+      "candidate": "0452fa9",
+      "result": "Three diagnostic findings and four-figure choice supported; task definition, navigation, short-horizon reading and private-case dependence needed editing; author declarations unverified."
+    },
+    {
+      "transport": "ACP",
+      "adapter": "@agentclientprotocol/codex-acp 2.1.0",
+      "session_id": "01a135b0-3279-7051-9966-b3a04b29617a",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "high",
+      "sandbox": "read-only",
+      "configuration_evidence": "ACP configOptions and persisted turn_context",
+      "fresh_context": true,
+      "tool_calls": 8,
+      "stop_reason": "end_turn",
+      "candidate": "7d12ce9",
+      "result": "No remaining body-editing blocker other than missing Chinese sec:protocol destination; no new numerical/interpretive contradiction found. Author confirmation remains required."
+    }
+  ],
+  "review_limits": [
+    "not an audit of all 50 tables",
+    "no raw-array rescoring or new inference",
+    "no independent verification of ethics, consent, authorship or permissions",
+    "not journal or human acceptance"
+  ],
+  "final_host_repairs": [
+    "Chinese experimental-setup named destination",
+    "public privacy anchor retained in data availability without private-case evidence",
+    "repository URL",
+    "relaxed float placement without resizing images"
+  ],
+  "final_host_verification": {
+    "strict_public_pdfs": 6,
+    "strict_local_pdfs": 6,
+    "public_pages": {
+      "en": [
+        11,
+        80,
+        16
+      ],
+      "zh": [
+        11,
+        78,
+        15
+      ]
+    },
+    "local_main_pages": {
+      "en": 19,
+      "zh": 19
+    },
+    "public_companion_links": 55,
+    "broken_links": 0,
+    "out_of_page_text": 0,
+    "local_existing_maps": 6,
+    "local_matched_annotations": 24,
+    "minimum_checked_map_font_pt": 8.16033935546875,
+    "focused_tests_passed": 33
+  },
+  "pending_author_confirmation": [
+    "author names, order, affiliations and contributions",
+    "conflict declarations",
+    "applicable ethics-review and consent basis",
+    "trajectory research-use permissions",
+    "human acceptance"
+  ],
+  "scientific_gaps_solved_by_prose": false,
+  "human_accepted": false,
+  "submission_readiness_certified": false,
+  "private_case_publication_authorized": false,
+  "retained_prior_response": "revision46-response-v3.json",
+  "final_regression_receipt": "reader-v3-regression-check.json",
+  "public_build": "revision46-review-v3/build-manifest.json"
+}

@@ -1,0 +1,53 @@
+\paragraph{The terrain model's inputs and fitted mechanism.}
+Here $X_t$ uses the forecast-origin-anchored east/north frame.
+Let $Z_t$ be a buffer of up to three visible or generated positions and
+times. Its first-to-last secant gives $v_t$, its normalized direction
+gives $h_t$, and $\eta_t$ indicates whether that direction is valid.
+The history design is
+$r(Z_t)=(1,v_{t,e},v_{t,n},\|v_t\|,h_{t,e},h_{t,n},\eta_t)^\top$.
+The terrain drift and position dynamics are
+\begin{equation}\label{eq:main-terrain-model}
+ b_g(X_t,Z_t)=B_0^\top r(Z_t)+\theta_g^\top\widetilde\phi_g(X_t,Z_t),
+ \qquad dX_t=b_g(X_t,Z_t)\,dt+L_g\,dW_t .
+\end{equation}
+$\widetilde\phi_g$ appends an intercept to the selected map/history
+feature vector, which contains encoded numerical values and validity
+masks. The road and river inputs describe nearest-feature distances and
+directions; land cover uses grouped indicators; surface inputs describe
+slope/orientation; registered interactions combine selected map and
+history quantities. These are fixed engineering representations. Their
+coefficients are learned from displacement rates, not constrained by a
+law of road attraction or river avoidance.
+\input{reader-v9-terrain-factors.tex}
+
+The shared $B_0$ is fitted first by ridge regression with strength
+$10^{-6}$. Each of the 404 outer-training windows contributes one actual
+first-future transition $(\Delta x_i,\Delta t_i)$; the elapsed times need
+not equal the method interval $\tau$. Then configuration $g$ fits the
+remaining rate $y_i=\Delta x_i/\Delta t_i-B_0^\top r(Z_i)$ by
+\begin{equation}\label{eq:main-terrain-fit}
+ \widehat\theta_g=\underset{\theta}{\operatorname{argmin}}
+ \left\{\frac1{2n}\|D_g\theta-Y\|_F^2+
+             \frac\lambda2\|\theta\|_F^2\right\},
+ \quad n=404,\quad\lambda=10^{-4} .
+\end{equation}
+$D_g$ stacks the augmented feature rows. This two-stage fit is linear in
+its parameters; map lookup and history feedback nevertheless make its
+position dynamics state dependent. Each configuration estimates its own
+diffusion from fitted displacement residuals,
+$Q_g=L_gL_g^\top=n^{-1}\sum_i
+(\Delta x_i-\widehat b_{g,i}\Delta t_i)
+(\Delta x_i-\widehat b_{g,i}\Delta t_i)^\top/\Delta t_i$.
+The diffusion estimate differs from the method branch's centred $\tau R$.
+Euler--Maruyama advances each path with drift $b_g\Delta$ and noise
+$\sqrt\Delta L_gz$; every five saved seconds the history buffer appends
+its generated position and recomputes the secant. Maps are queried at
+the predicted position. Future observed positions never enter this buffer.
+
+The base configuration retains the shared history drift and its fitted
+history-only residual conditioner; it queries no map layer. All-terrain adds all registered
+groups and interactions; LOO removes one group from that full configuration,
+and LIO adds one group to the history baseline. Thus RQ2 compares these
+forecasting configurations on matched targets. The shared baseline and
+separate residual fits make the intended increment explicit, while
+refitting and feature penalties limit attribution to an individual factor.

@@ -1,0 +1,582 @@
+{
+  "schema_version": "pirc17-existing-five-seed-description-v1",
+  "source_files_sha256": {
+    "inference-description-v1.json": "10e56e792fff20aa2f96df9df4f55b5929f2d4ab5d81d05ef54629f151b11253",
+    "preliminary-method-statistics-v1.json": "8900f3dee68d5fc9cafd5ced2e2394503432d2493251601c0ba9cb771cbefba1"
+  },
+  "seed_ids": [
+    20260814,
+    20260815,
+    20260816,
+    20260817,
+    20260818
+  ],
+  "recording_hash_blocks": 46,
+  "primary_saved_score_rows": 6440,
+  "comparison_rows": 21,
+  "seed_effect_definition": "equal 46 recording-block mean of candidate minus named control weighted ES, holding one registered forecast seed fixed",
+  "seed_role": "five fixed simulation RNG seeds per deterministic fitted configuration, not five refits or independent held-out studies; equal numeric seeds do not imply shared slot streams",
+  "sign_convention": "negative favours candidate; exact-zero counts use unrounded saved values",
+  "seed_range_is_confidence_interval": false,
+  "direction_row_counts": {
+    "all_positive": 6,
+    "all_negative": 7,
+    "mixed_or_zero": 6,
+    "all_exact_zero": 2
+  },
+  "comparisons": [
+    {
+      "family_id": "method-model-structure",
+      "candidate": "arm-02/pointwise",
+      "control": "arm-01/full",
+      "seed_delta_m": [
+        32.601070852842994,
+        29.69597511911838,
+        33.88527718689666,
+        33.833997537917114,
+        34.74921961861633
+      ],
+      "original_delta_estimate_m": 32.9531080630783,
+      "seed_min_m": 29.69597511911838,
+      "seed_max_m": 34.74921961861633,
+      "seed_range_m": 5.05324449949795,
+      "sign_counts": {
+        "negative": 0,
+        "positive": 5,
+        "exact_zero": 0
+      },
+      "direction_summary": "all_positive",
+      "original_simultaneous_interval_m": [
+        22.98749987202486,
+        43.36902971139333
+      ]
+    },
+    {
+      "family_id": "method-model-structure",
+      "candidate": "arm-03/single_gaussian",
+      "control": "arm-01/full",
+      "seed_delta_m": [
+        21.65456603092125,
+        19.019817790128844,
+        21.724251075147027,
+        23.025388236536095,
+        24.644673557786785
+      ],
+      "original_delta_estimate_m": 22.013739338104006,
+      "seed_min_m": 19.019817790128844,
+      "seed_max_m": 24.644673557786785,
+      "seed_range_m": 5.624855767657941,
+      "sign_counts": {
+        "negative": 0,
+        "positive": 5,
+        "exact_zero": 0
+      },
+      "direction_summary": "all_positive",
+      "original_simultaneous_interval_m": [
+        -14.190401879136918,
+        60.81038580814564
+      ]
+    },
+    {
+      "family_id": "method-model-structure",
+      "candidate": "arm-04/gmm_kernel",
+      "control": "arm-01/full",
+      "seed_delta_m": [
+        -4.999764832066935,
+        -4.272034919877216,
+        -1.0751347765885182,
+        -2.397970510507719,
+        -1.3868302531090733
+      ],
+      "original_delta_estimate_m": -2.8263470584298918,
+      "seed_min_m": -4.999764832066935,
+      "seed_max_m": -1.0751347765885182,
+      "seed_range_m": 3.924630055478417,
+      "sign_counts": {
+        "negative": 5,
+        "positive": 0,
+        "exact_zero": 0
+      },
+      "direction_summary": "all_negative",
+      "original_simultaneous_interval_m": [
+        -21.219952732309977,
+        16.333573171362854
+      ]
+    },
+    {
+      "family_id": "method-model-structure",
+      "candidate": "arm-05/explicit_decomp",
+      "control": "arm-01/full",
+      "seed_delta_m": [
+        57.28091092765321,
+        56.48588550714627,
+        58.296768289465135,
+        58.592576986374304,
+        59.13047512941512
+      ],
+      "original_delta_estimate_m": 57.95732336801082,
+      "seed_min_m": 56.48588550714627,
+      "seed_max_m": 59.13047512941512,
+      "seed_range_m": 2.644589622268846,
+      "sign_counts": {
+        "negative": 0,
+        "positive": 5,
+        "exact_zero": 0
+      },
+      "direction_summary": "all_positive",
+      "original_simultaneous_interval_m": [
+        -3.0348386483066676,
+        117.07772440418108
+      ]
+    },
+    {
+      "family_id": "method-observation-interval",
+      "candidate": "arm-06/dt30",
+      "control": "arm-01/full",
+      "seed_delta_m": [
+        8.38651309020865,
+        6.927125725064813,
+        7.238594487675265,
+        8.723008130447775,
+        11.537023309032792
+      ],
+      "original_delta_estimate_m": 8.562452948485857,
+      "seed_min_m": 6.927125725064813,
+      "seed_max_m": 11.537023309032792,
+      "seed_range_m": 4.609897583967979,
+      "sign_counts": {
+        "negative": 0,
+        "positive": 5,
+        "exact_zero": 0
+      },
+      "direction_summary": "all_positive",
+      "original_simultaneous_interval_m": [
+        3.733112028381705,
+        13.761609806673167
+      ]
+    },
+    {
+      "family_id": "method-observation-interval",
+      "candidate": "arm-06/dt120",
+      "control": "arm-01/full",
+      "seed_delta_m": [
+        -10.757821119521763,
+        -14.89033579880113,
+        -10.323152841732155,
+        -11.071605596561856,
+        -10.74324534774136
+      ],
+      "original_delta_estimate_m": -11.557232140871653,
+      "seed_min_m": -14.89033579880113,
+      "seed_max_m": -10.323152841732155,
+      "seed_range_m": 4.567182957068976,
+      "sign_counts": {
+        "negative": 5,
+        "positive": 0,
+        "exact_zero": 0
+      },
+      "direction_summary": "all_negative",
+      "original_simultaneous_interval_m": [
+        -20.370297340706486,
+        -3.04202751836584
+      ]
+    },
+    {
+      "family_id": "method-observation-interval",
+      "candidate": "arm-06/dt300",
+      "control": "arm-01/full",
+      "seed_delta_m": [
+        -22.477277720588923,
+        -25.66401573500061,
+        -25.48289451261822,
+        -20.083448920888415,
+        -23.315390230448724
+      ],
+      "original_delta_estimate_m": -23.404605423908972,
+      "seed_min_m": -25.66401573500061,
+      "seed_max_m": -20.083448920888415,
+      "seed_range_m": 5.580566814112196,
+      "sign_counts": {
+        "negative": 5,
+        "positive": 0,
+        "exact_zero": 0
+      },
+      "direction_summary": "all_negative",
+      "original_simultaneous_interval_m": [
+        -48.26887354826701,
+        -2.467493424090268
+      ]
+    },
+    {
+      "family_id": "method-observation-interval",
+      "candidate": "arm-06/dt600",
+      "control": "arm-01/full",
+      "seed_delta_m": [
+        -22.603185608843848,
+        -24.918199696449015,
+        -21.92475087959391,
+        -28.957495070783327,
+        -25.05332721411878
+      ],
+      "original_delta_estimate_m": -24.691391693957772,
+      "seed_min_m": -28.957495070783327,
+      "seed_max_m": -21.92475087959391,
+      "seed_range_m": 7.032744191189419,
+      "sign_counts": {
+        "negative": 5,
+        "positive": 0,
+        "exact_zero": 0
+      },
+      "direction_summary": "all_negative",
+      "original_simultaneous_interval_m": [
+        -67.65149680393148,
+        9.077053061204392
+      ]
+    },
+    {
+      "family_id": "method-objective-and-score",
+      "candidate": "arm-08/qmle",
+      "control": "arm-07/full",
+      "seed_delta_m": [
+        1.898120589312472,
+        -0.41222849064553513,
+        1.6601411342529246,
+        0.5771509529335784,
+        -2.345422576489017
+      ],
+      "original_delta_estimate_m": 0.2755523218728847,
+      "seed_min_m": -2.345422576489017,
+      "seed_max_m": 1.898120589312472,
+      "seed_range_m": 4.243543165801489,
+      "sign_counts": {
+        "negative": 2,
+        "positive": 3,
+        "exact_zero": 0
+      },
+      "direction_summary": "mixed_or_zero",
+      "original_simultaneous_interval_m": [
+        -1.9167750469376164,
+        2.704417142102034
+      ]
+    },
+    {
+      "family_id": "method-objective-and-score",
+      "candidate": "arm-09/mixed",
+      "control": "arm-07/full",
+      "seed_delta_m": [
+        -4.130051626019354,
+        -9.303196957948032,
+        -4.583169695553592,
+        -3.958720368485493,
+        -10.775072824442145
+      ],
+      "original_delta_estimate_m": -6.550042294489723,
+      "seed_min_m": -10.775072824442145,
+      "seed_max_m": -3.958720368485493,
+      "seed_range_m": 6.816352455956652,
+      "sign_counts": {
+        "negative": 5,
+        "positive": 0,
+        "exact_zero": 0
+      },
+      "direction_summary": "all_negative",
+      "original_simultaneous_interval_m": [
+        -16.861829984372257,
+        3.1796829073886403
+      ]
+    },
+    {
+      "family_id": "method-objective-and-score",
+      "candidate": "arm-09/pure_es",
+      "control": "arm-07/full",
+      "seed_delta_m": [
+        -4.399069885120756,
+        -6.126190366770271,
+        -4.995997035284206,
+        -1.5563983782499387,
+        -9.490315157125648
+      ],
+      "original_delta_estimate_m": -5.313594164510165,
+      "seed_min_m": -9.490315157125648,
+      "seed_max_m": -1.5563983782499387,
+      "seed_range_m": 7.93391677887571,
+      "sign_counts": {
+        "negative": 5,
+        "positive": 0,
+        "exact_zero": 0
+      },
+      "direction_summary": "all_negative",
+      "original_simultaneous_interval_m": [
+        -15.975849427704414,
+        5.259756313376008
+      ]
+    },
+    {
+      "family_id": "method-objective-and-score",
+      "candidate": "arm-10/d2_mc",
+      "control": "arm-07/full",
+      "seed_delta_m": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "original_delta_estimate_m": 0.0,
+      "seed_min_m": 0.0,
+      "seed_max_m": 0.0,
+      "seed_range_m": 0.0,
+      "sign_counts": {
+        "negative": 0,
+        "positive": 0,
+        "exact_zero": 5
+      },
+      "direction_summary": "all_exact_zero",
+      "original_simultaneous_interval_m": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "family_id": "method-objective-and-score",
+      "candidate": "arm-10/d2_closed",
+      "control": "arm-07/full",
+      "seed_delta_m": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "original_delta_estimate_m": 0.0,
+      "seed_min_m": 0.0,
+      "seed_max_m": 0.0,
+      "seed_range_m": 0.0,
+      "sign_counts": {
+        "negative": 0,
+        "positive": 0,
+        "exact_zero": 5
+      },
+      "direction_summary": "all_exact_zero",
+      "original_simultaneous_interval_m": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "family_id": "method-transfer-adaptation",
+      "candidate": "arm-12/scratch",
+      "control": "arm-11/full",
+      "seed_delta_m": [
+        2.33498811329242,
+        -0.4340849468600242,
+        3.19797421854895,
+        5.584893254420685,
+        2.334813904419561
+      ],
+      "original_delta_estimate_m": 2.6037169087643175,
+      "seed_min_m": -0.4340849468600242,
+      "seed_max_m": 5.584893254420685,
+      "seed_range_m": 6.018978201280709,
+      "sign_counts": {
+        "negative": 1,
+        "positive": 4,
+        "exact_zero": 0
+      },
+      "direction_summary": "mixed_or_zero",
+      "original_simultaneous_interval_m": [
+        -4.733928913009776,
+        10.023147100100026
+      ]
+    },
+    {
+      "family_id": "method-transfer-adaptation",
+      "candidate": "arm-14/reptile",
+      "control": "arm-11/full",
+      "seed_delta_m": [
+        2.522471202771407,
+        -1.3914273823059662,
+        2.6068654358209358,
+        3.879551814012706,
+        3.3561612892522383
+      ],
+      "original_delta_estimate_m": 2.194724471910266,
+      "seed_min_m": -1.3914273823059662,
+      "seed_max_m": 3.879551814012706,
+      "seed_range_m": 5.270979196318672,
+      "sign_counts": {
+        "negative": 1,
+        "positive": 4,
+        "exact_zero": 0
+      },
+      "direction_summary": "mixed_or_zero",
+      "original_simultaneous_interval_m": [
+        -11.946509337741741,
+        12.909470230227312
+      ]
+    },
+    {
+      "family_id": "method-transfer-adaptation",
+      "candidate": "arm-15/drift_only",
+      "control": "arm-11/full",
+      "seed_delta_m": [
+        0.4959570382666981,
+        -1.1206622557565016,
+        -0.8084198886271207,
+        3.842653716483429,
+        0.11466113240028836
+      ],
+      "original_delta_estimate_m": 0.5048379485533587,
+      "seed_min_m": -1.1206622557565016,
+      "seed_max_m": 3.842653716483429,
+      "seed_range_m": 4.963315972239931,
+      "sign_counts": {
+        "negative": 2,
+        "positive": 3,
+        "exact_zero": 0
+      },
+      "direction_summary": "mixed_or_zero",
+      "original_simultaneous_interval_m": [
+        -1.5215829928028777,
+        2.4869736201694357
+      ]
+    },
+    {
+      "family_id": "method-transfer-adaptation",
+      "candidate": "arm-15/two_step",
+      "control": "arm-11/full",
+      "seed_delta_m": [
+        -1.057220800394591,
+        -1.8961310905897397,
+        -1.8181146426525576,
+        1.4008965786554786,
+        3.1909953947263516
+      ],
+      "original_delta_estimate_m": -0.035914912051011445,
+      "seed_min_m": -1.8961310905897397,
+      "seed_max_m": 3.1909953947263516,
+      "seed_range_m": 5.087126485316091,
+      "sign_counts": {
+        "negative": 3,
+        "positive": 2,
+        "exact_zero": 0
+      },
+      "direction_summary": "mixed_or_zero",
+      "original_simultaneous_interval_m": [
+        -2.597689383094756,
+        1.8134643993895787
+      ]
+    },
+    {
+      "family_id": "method-numerical-propagation",
+      "candidate": "arm-19/em",
+      "control": "arm-18/full",
+      "seed_delta_m": [
+        0.025422765991702016,
+        0.02502644285903081,
+        0.02542099417352725,
+        0.026205582075461295,
+        0.02518822535889196
+      ],
+      "original_delta_estimate_m": 0.025452802091722654,
+      "seed_min_m": 0.02502644285903081,
+      "seed_max_m": 0.026205582075461295,
+      "seed_range_m": 0.0011791392164304838,
+      "sign_counts": {
+        "negative": 0,
+        "positive": 5,
+        "exact_zero": 0
+      },
+      "direction_summary": "all_positive",
+      "original_simultaneous_interval_m": [
+        0.00774080813916601,
+        0.050924798017468256
+      ]
+    },
+    {
+      "family_id": "method-numerical-propagation",
+      "candidate": "arm-19/euler",
+      "control": "arm-18/full",
+      "seed_delta_m": [
+        0.025422765991702016,
+        0.02502644285903081,
+        0.02542099417352725,
+        0.026205582075461295,
+        0.02518822535889196
+      ],
+      "original_delta_estimate_m": 0.025452802091722654,
+      "seed_min_m": 0.02502644285903081,
+      "seed_max_m": 0.026205582075461295,
+      "seed_range_m": 0.0011791392164304838,
+      "sign_counts": {
+        "negative": 0,
+        "positive": 5,
+        "exact_zero": 0
+      },
+      "direction_summary": "all_positive",
+      "original_simultaneous_interval_m": [
+        0.00774080813916601,
+        0.050924798017468256
+      ]
+    },
+    {
+      "family_id": "method-numerical-propagation",
+      "candidate": "arm-21/mc",
+      "control": "arm-20/full",
+      "seed_delta_m": [
+        -0.18592433909956965,
+        -1.766536561093532,
+        2.0340495246578363,
+        -0.9333378351426759,
+        -3.044819266540107
+      ],
+      "original_delta_estimate_m": -0.7793136954436097,
+      "seed_min_m": -3.044819266540107,
+      "seed_max_m": 2.0340495246578363,
+      "seed_range_m": 5.078868791197943,
+      "sign_counts": {
+        "negative": 4,
+        "positive": 1,
+        "exact_zero": 0
+      },
+      "direction_summary": "mixed_or_zero",
+      "original_simultaneous_interval_m": [
+        -2.9476694999233786,
+        1.49390450024681
+      ]
+    },
+    {
+      "family_id": "method-numerical-propagation",
+      "candidate": "arm-21/crn",
+      "control": "arm-20/full",
+      "seed_delta_m": [
+        -5.056924027505137e-05,
+        -6.804160947598595e-05,
+        -6.101608558788771e-05,
+        -6.47354348145605e-05,
+        -3.739343374413149e-05
+      ],
+      "original_delta_estimate_m": -5.635116077952339e-05,
+      "seed_min_m": -6.804160947598595e-05,
+      "seed_max_m": -3.739343374413149e-05,
+      "seed_range_m": 3.064817573185446e-05,
+      "sign_counts": {
+        "negative": 5,
+        "positive": 0,
+        "exact_zero": 0
+      },
+      "direction_summary": "all_negative",
+      "original_simultaneous_interval_m": [
+        -0.00015282414847221973,
+        1.4835609310136108e-05
+      ]
+    }
+  ],
+  "new_fits": 0,
+  "new_forecasts": 0,
+  "new_particle_scores": 0,
+  "new_resampling_draws": 0,
+  "forecast_arrays_opened": false,
+  "independent_saved_output_audit_completed": false,
+  "scientific_claim_authorized": false
+}

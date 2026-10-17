@@ -1,0 +1,43 @@
+{
+  "schema_version": "pirc17-reader-v9-terrain-methods-v1",
+  "scientific_head": "b3bacdc3c4b972c58917f2767fe0c067201df7a1",
+  "code_anchors": [
+    "PSDE experiments/pirc22/benchmark_selection.consumer.json:selected_configuration",
+    "PSDE experiments/pirc22/consumer.py:FACTOR_GROUPS,COMPOSITION_DEPENDENCIES",
+    "PSDE experiments/nex326/pirc21_adapter.py:_variant,_composition",
+    "PSDE experiments/pirc17/configurations.py:terrain_configurations",
+    "PSDE experiments/pirc17/features.py:PredictedPositionFeatures",
+    "DSDE registry/pirc21_feature_spec.contract.json:variants,compositions",
+    "DSDE trajectory/linear_materialization.py:_OVERTURE_PATH_CLASSES"
+  ],
+  "groups": {
+    "history": {"name": "Causal history direction", "numeric_width": 2, "expressions": ["h_e", "h_n"]},
+    "road": {"name": "Road proximity and direction", "source": "Overture transportation 2026-08-19.0 retained road lines", "numeric_width": 3, "expressions": ["log(1+d_road/(1m))", "u_road,e", "u_road,n"], "direction": "from query towards nearest road point, not tangent", "excluded_path_classes": ["bridleway", "cycleway", "footway", "path", "pedestrian", "steps", "track"]},
+    "river": {"name": "River proximity and direction", "source": "HydroRIVERS v1.0 river lines", "numeric_width": 3, "expressions": ["log(1+d_river/(1m))", "u_river,e", "u_river,n"], "direction": "from query towards nearest river point, not tangent or flow", "direct_history_velocity_product": false},
+    "worldcover": {"name": "Grouped land cover", "source": "ESA WorldCover2021 v200", "numeric_width": 4, "expressions": ["built:50", "vegetated:10,20,30,40,95,100", "water/wetland:80,90", "bare/snow/valid other:60,70 or other finite valid code"]},
+    "surface": {"name": "Surface geometry", "source": "retained Mapzen Skadi/Copernicus GLO-30 DEM rules", "numeric_width": 6, "expressions": ["slope_radians", "aspect_sin", "aspect_cos", "normal_east", "normal_north", "normal_up"]}
+  },
+  "compositions": {
+    "road.log_distance_x_direction": {"name": "Road distance-direction product", "parents": ["road"], "width": 2, "expression": "ell_road*u_road"},
+    "river.log_distance_x_direction": {"name": "River distance-direction product", "parents": ["river"], "width": 2, "expression": "ell_river*u_river"},
+    "worldcover.grouped_x_road_distance": {"name": "Cover-road product", "parents": ["worldcover", "road"], "width": 4, "expression": "ell_road*w"},
+    "surface.orientation_x_history": {"name": "History-surface alignment", "parents": ["surface", "history"], "width": 2, "expression": "(h dot uphill, h dot signed_contour); no slope or speed multiplier"}
+  },
+  "configurations": [
+    {"key": "base", "display": "B (history)", "groups": [], "numeric": 2},
+    {"key": "all-terrain", "display": "A (all groups)", "groups": ["road", "river", "worldcover", "surface"], "numeric": 28},
+    {"key": "loo-road", "display": "A - road", "groups": ["river", "worldcover", "surface"], "numeric": 19},
+    {"key": "loo-river", "display": "A - river", "groups": ["road", "worldcover", "surface"], "numeric": 23},
+    {"key": "loo-worldcover", "display": "A - cover", "groups": ["road", "river", "surface"], "numeric": 20},
+    {"key": "loo-surface", "display": "A - surface", "groups": ["road", "river", "worldcover"], "numeric": 20},
+    {"key": "lio-road", "display": "B + road", "groups": ["road"], "numeric": 7},
+    {"key": "lio-river", "display": "B + river", "groups": ["river"], "numeric": 7},
+    {"key": "lio-worldcover", "display": "B + cover", "groups": ["worldcover"], "numeric": 6},
+    {"key": "lio-surface", "display": "B + surface", "groups": ["surface"], "numeric": 10}
+  ],
+  "width_rule": "K numeric + K validity indicators; append one fitted intercept; separate 7-column history drift not included in K",
+  "LOO": "leave one group out of A, including all compositions depending on that group; refit conditioner and diffusion",
+  "LIO": "leave one group in above B, retaining only compositions whose parents remain; refit conditioner and diffusion",
+  "terrain_effect_is_not": "an identified causal effect of a raw geographic feature or a mask of one fixed fitted model",
+  "new_empirical_execution": false
+}

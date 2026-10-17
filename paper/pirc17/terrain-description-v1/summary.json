@@ -1,0 +1,653 @@
+{
+  "schema_version": "pirc17-terrain-posthoc-description-v1",
+  "source_index_sha256": "fc7c9c4492b962763ecd0f13959a43bf00e2141e74d92273c45cf6ca98e7332f",
+  "source_cache_sha256": "892bb89b1d39d376c69d5a41570ad1655e50fe6950be6442db7f2b2f492c2878",
+  "source_scope": {
+    "protocol_sha256": "2267ab84fa77ff4039234a61e8f44be1c3713317d8ad2d1bb4ced9af0c5b293a",
+    "execution_sha256": "c3e44393f6bc5544aaa21bb273c94eaecb9d0becb4e0590771355c4c0be9b6c2",
+    "matrix_sha256": "3fcfc6c7858ee346b20040ef6e7728153b188bd4d2ada58839f39e769d44de13",
+    "population_sha256": "7061f44ef8647f7bee55822ca7e494e53d3c058e5973d6198e997893c70bb020",
+    "scoring_inputs_sha256": "07da73c55cc7aca5b8a9dee4759be73edac508cd52a12490ebb408460534a5f2"
+  },
+  "population": {
+    "original_blocks": 46,
+    "seeds_per_block": 5,
+    "configurations": 10,
+    "original_slots": 2300,
+    "successful_slots": 2297,
+    "failed_slots": 3,
+    "missing_slots": 0,
+    "jointly_complete_blocks": 43,
+    "excluded_blocks": 3,
+    "jointly_complete_slots": 2150
+  },
+  "selection": "Post-hoc intersection of recording blocks with successful forecasts in all ten configurations and all five seeds; selection uses status only. No imputation. Both the common subset and larger pairwise-complete sensitivities condition on successful execution and do not recover the full-cohort estimand.",
+  "weighting": "Five seeds averaged within each complete recording block, then blocks weighted equally. Horizon-average ES weights four saved targets equally. Seed disks share real targets and are not independent participants.",
+  "horizons_saved_minutes": [
+    1,
+    5,
+    15,
+    30
+  ],
+  "rows": [
+    {
+      "configuration": "base",
+      "full_grid_expected_slots": 230,
+      "full_grid_successful_slots": 230,
+      "full_grid_failed_slots": 0,
+      "five_seed_complete_blocks": 46,
+      "common_complete_blocks": 43,
+      "common_complete_profile": {
+        "es_m": 455.08037999180397,
+        "fde_m": 1420.36898683067,
+        "ade_m": 624.9823972535376,
+        "es_by_horizon_m": [
+          23.286376286634752,
+          178.1070228295826,
+          558.8472470982995,
+          1060.0808737526988
+        ],
+        "coverage90_by_horizon": [
+          0.9767441860465116,
+          0.9255813953488372,
+          0.5720930232558139,
+          0.4604651162790698
+        ],
+        "area90_by_horizon_km2": [
+          0.018779163842241334,
+          0.4787411263872801,
+          2.416465264349387,
+          5.503011512006376
+        ]
+      },
+      "configuration_complete_profile": {
+        "es_m": 450.24317602859554,
+        "fde_m": 1408.070828427106,
+        "ade_m": 620.6345043560391,
+        "es_by_horizon_m": [
+          23.581079786250026,
+          176.76343029169914,
+          554.5618004676373,
+          1046.0663935687958
+        ],
+        "coverage90_by_horizon": [
+          0.9782608695652174,
+          0.9304347826086956,
+          0.5782608695652174,
+          0.4826086956521739
+        ],
+        "area90_by_horizon_km2": [
+          0.018935976536949596,
+          0.48052421236490417,
+          2.422293522752941,
+          5.505910429086518
+        ]
+      },
+      "contrast_control": "base",
+      "common_delta_es_m": 0.0,
+      "common_delta_fde_m": 0.0,
+      "common_blocks_lower_es": 0,
+      "pairwise_complete_blocks": 46,
+      "pairwise_delta_es_m": 0.0,
+      "pairwise_delta_fde_m": 0.0
+    },
+    {
+      "configuration": "all-terrain",
+      "full_grid_expected_slots": 230,
+      "full_grid_successful_slots": 229,
+      "full_grid_failed_slots": 1,
+      "five_seed_complete_blocks": 45,
+      "common_complete_blocks": 43,
+      "common_complete_profile": {
+        "es_m": 482.0613130372705,
+        "fde_m": 1459.3666866237218,
+        "ade_m": 635.7610224963829,
+        "es_by_horizon_m": [
+          26.42177903427774,
+          191.67820988681248,
+          580.9510285461549,
+          1129.1942346818369
+        ],
+        "coverage90_by_horizon": [
+          0.9720930232558139,
+          0.8093023255813954,
+          0.6186046511627907,
+          0.4046511627906977
+        ],
+        "area90_by_horizon_km2": [
+          0.016698537402493854,
+          0.44618180240257854,
+          2.340799893857385,
+          5.608882864946255
+        ]
+      },
+      "configuration_complete_profile": {
+        "es_m": 472.2341285673457,
+        "fde_m": 1431.9371275077776,
+        "ade_m": 623.1632983424334,
+        "es_by_horizon_m": [
+          26.01907800632441,
+          188.72695609772322,
+          568.2700289215727,
+          1105.9204512437625
+        ],
+        "coverage90_by_horizon": [
+          0.9733333333333334,
+          0.8177777777777778,
+          0.6355555555555555,
+          0.4088888888888889
+        ],
+        "area90_by_horizon_km2": [
+          0.01679665010974085,
+          0.44787036019980614,
+          2.328395038626491,
+          5.530732654465367
+        ]
+      },
+      "contrast_control": "base",
+      "common_delta_es_m": 26.980933045466543,
+      "common_delta_fde_m": 38.99769979305165,
+      "common_blocks_lower_es": 22,
+      "pairwise_complete_blocks": 45,
+      "pairwise_delta_es_m": 21.16620708669103,
+      "pairwise_delta_fde_m": 17.101335090283555
+    },
+    {
+      "configuration": "lio-road",
+      "full_grid_expected_slots": 230,
+      "full_grid_successful_slots": 229,
+      "full_grid_failed_slots": 1,
+      "five_seed_complete_blocks": 45,
+      "common_complete_blocks": 43,
+      "common_complete_profile": {
+        "es_m": 498.0427580882545,
+        "fde_m": 1493.3304932791757,
+        "ade_m": 667.4552997126575,
+        "es_by_horizon_m": [
+          25.360755529351646,
+          207.6869018063448,
+          618.7770419347412,
+          1140.3463330825805
+        ],
+        "coverage90_by_horizon": [
+          0.9627906976744186,
+          0.7813953488372093,
+          0.6744186046511628,
+          0.5209302325581395
+        ],
+        "area90_by_horizon_km2": [
+          0.018432816728963925,
+          0.4871432953036605,
+          2.574138920721442,
+          6.202295816887307
+        ]
+      },
+      "configuration_complete_profile": {
+        "es_m": 492.5591604666128,
+        "fde_m": 1479.7776180515746,
+        "ade_m": 662.0615173534231,
+        "es_by_horizon_m": [
+          25.619705941502318,
+          204.18607661251832,
+          614.3046913088522,
+          1126.1261680035784
+        ],
+        "coverage90_by_horizon": [
+          0.9644444444444444,
+          0.7911111111111111,
+          0.6666666666666666,
+          0.5422222222222223
+        ],
+        "area90_by_horizon_km2": [
+          0.018534094018266313,
+          0.48771466322255097,
+          2.575758783429717,
+          6.183841039089923
+        ]
+      },
+      "contrast_control": "base",
+      "common_delta_es_m": 42.96237809645055,
+      "common_delta_fde_m": 72.96150644850559,
+      "common_blocks_lower_es": 19,
+      "pairwise_complete_blocks": 45,
+      "pairwise_delta_es_m": 41.18339970749821,
+      "pairwise_delta_fde_m": 70.15823633729497
+    },
+    {
+      "configuration": "lio-river",
+      "full_grid_expected_slots": 230,
+      "full_grid_successful_slots": 229,
+      "full_grid_failed_slots": 1,
+      "five_seed_complete_blocks": 45,
+      "common_complete_blocks": 43,
+      "common_complete_profile": {
+        "es_m": 455.2695850345431,
+        "fde_m": 1478.3844499707081,
+        "ade_m": 615.900559572345,
+        "es_by_horizon_m": [
+          22.53503276601333,
+          164.85262963434994,
+          516.3407545451415,
+          1117.3499231926676
+        ],
+        "coverage90_by_horizon": [
+          0.9767441860465116,
+          0.9069767441860466,
+          0.7116279069767442,
+          0.413953488372093
+        ],
+        "area90_by_horizon_km2": [
+          0.0179876485050806,
+          0.469892685955454,
+          2.374803324206917,
+          5.700883635409232
+        ]
+      },
+      "configuration_complete_profile": {
+        "es_m": 451.3667672815074,
+        "fde_m": 1465.6182484370345,
+        "ade_m": 612.167996651879,
+        "es_by_horizon_m": [
+          23.480268457908057,
+          165.93301704706485,
+          510.7474282251646,
+          1105.306355395892
+        ],
+        "coverage90_by_horizon": [
+          0.9555555555555556,
+          0.9111111111111111,
+          0.7244444444444444,
+          0.4177777777777778
+        ],
+        "area90_by_horizon_km2": [
+          0.018046298770799007,
+          0.47088694925843144,
+          2.374010277365497,
+          5.67969082257069
+        ]
+      },
+      "contrast_control": "base",
+      "common_delta_es_m": 0.18920504273916094,
+      "common_delta_fde_m": 58.01546314003804,
+      "common_blocks_lower_es": 21,
+      "pairwise_complete_blocks": 45,
+      "pairwise_delta_es_m": -1.5412956849091302,
+      "pairwise_delta_fde_m": 54.10936370186232
+    },
+    {
+      "configuration": "lio-worldcover",
+      "full_grid_expected_slots": 230,
+      "full_grid_successful_slots": 230,
+      "full_grid_failed_slots": 0,
+      "five_seed_complete_blocks": 46,
+      "common_complete_blocks": 43,
+      "common_complete_profile": {
+        "es_m": 453.44082973637774,
+        "fde_m": 1414.404147211208,
+        "ade_m": 622.2590520615806,
+        "es_by_horizon_m": [
+          23.77056252514487,
+          180.84738928132467,
+          554.9523049937768,
+          1054.1930621452645
+        ],
+        "coverage90_by_horizon": [
+          0.9767441860465116,
+          0.9069767441860465,
+          0.641860465116279,
+          0.49767441860465117
+        ],
+        "area90_by_horizon_km2": [
+          0.018694620048919638,
+          0.4750293390867247,
+          2.458029094372945,
+          5.634545916231832
+        ]
+      },
+      "configuration_complete_profile": {
+        "es_m": 446.4338191837135,
+        "fde_m": 1396.131175157547,
+        "ade_m": 615.1625790060142,
+        "es_by_horizon_m": [
+          24.002643741145558,
+          178.64713150449617,
+          548.2434856222434,
+          1034.842015866969
+        ],
+        "coverage90_by_horizon": [
+          0.9782608695652174,
+          0.9130434782608695,
+          0.6434782608695652,
+          0.5304347826086957
+        ],
+        "area90_by_horizon_km2": [
+          0.01884600508002644,
+          0.47742709590806315,
+          2.467296748589413,
+          5.640038374012447
+        ]
+      },
+      "contrast_control": "base",
+      "common_delta_es_m": -1.6395502554262293,
+      "common_delta_fde_m": -5.9648396194620545,
+      "common_blocks_lower_es": 18,
+      "pairwise_complete_blocks": 46,
+      "pairwise_delta_es_m": -3.809356844882018,
+      "pairwise_delta_fde_m": -11.93965326955913
+    },
+    {
+      "configuration": "lio-surface",
+      "full_grid_expected_slots": 230,
+      "full_grid_successful_slots": 230,
+      "full_grid_failed_slots": 0,
+      "five_seed_complete_blocks": 46,
+      "common_complete_blocks": 43,
+      "common_complete_profile": {
+        "es_m": 462.6615405157672,
+        "fde_m": 1410.2741759897108,
+        "ade_m": 630.2417541896831,
+        "es_by_horizon_m": [
+          24.136607907167296,
+          186.27188550752373,
+          580.7854067895651,
+          1059.4522618588128
+        ],
+        "coverage90_by_horizon": [
+          0.9767441860465116,
+          0.8418604651162791,
+          0.586046511627907,
+          0.4744186046511628
+        ],
+        "area90_by_horizon_km2": [
+          0.01826324245689609,
+          0.47209952566605906,
+          2.4133618090194466,
+          5.670397190376778
+        ]
+      },
+      "configuration_complete_profile": {
+        "es_m": 455.04334506060184,
+        "fde_m": 1391.568417954944,
+        "ade_m": 622.3200039916663,
+        "es_by_horizon_m": [
+          24.196935795712935,
+          183.4883411526026,
+          572.5768583452099,
+          1039.9112449488819
+        ],
+        "coverage90_by_horizon": [
+          0.9782608695652174,
+          0.8521739130434782,
+          0.6130434782608696,
+          0.48695652173913045
+        ],
+        "area90_by_horizon_km2": [
+          0.018421827410714083,
+          0.4742116866164184,
+          2.420241911244852,
+          5.67163159811524
+        ]
+      },
+      "contrast_control": "base",
+      "common_delta_es_m": 7.581160523963206,
+      "common_delta_fde_m": -10.094810840959326,
+      "common_blocks_lower_es": 22,
+      "pairwise_complete_blocks": 46,
+      "pairwise_delta_es_m": 4.800169032006295,
+      "pairwise_delta_fde_m": -16.502410472162182
+    },
+    {
+      "configuration": "loo-road",
+      "full_grid_expected_slots": 230,
+      "full_grid_successful_slots": 230,
+      "full_grid_failed_slots": 0,
+      "five_seed_complete_blocks": 46,
+      "common_complete_blocks": 43,
+      "common_complete_profile": {
+        "es_m": 462.19101859802595,
+        "fde_m": 1459.686395105375,
+        "ade_m": 616.604279510283,
+        "es_by_horizon_m": [
+          23.560726615354916,
+          173.81949646231752,
+          535.564742378913,
+          1115.8191089355184
+        ],
+        "coverage90_by_horizon": [
+          0.9767441860465116,
+          0.8604651162790697,
+          0.6976744186046512,
+          0.44651162790697674
+        ],
+        "area90_by_horizon_km2": [
+          0.017278693960263835,
+          0.4475359800563377,
+          2.286726181311358,
+          5.718974368966822
+        ]
+      },
+      "configuration_complete_profile": {
+        "es_m": 451.5409750715863,
+        "fde_m": 1422.7279135958695,
+        "ade_m": 604.6153537484706,
+        "es_by_horizon_m": [
+          24.20871203814738,
+          173.92576160745043,
+          524.5729879723003,
+          1083.456438668447
+        ],
+        "coverage90_by_horizon": [
+          0.9565217391304348,
+          0.8695652173913043,
+          0.717391304347826,
+          0.4826086956521739
+        ],
+        "area90_by_horizon_km2": [
+          0.017378225191518337,
+          0.45414594958296356,
+          2.295637417884028,
+          5.6850989659335465
+        ]
+      },
+      "contrast_control": "all-terrain",
+      "common_delta_es_m": -19.87029443924456,
+      "common_delta_fde_m": 0.31970848165315147,
+      "common_blocks_lower_es": 23,
+      "pairwise_complete_blocks": 45,
+      "pairwise_delta_es_m": -18.499744406151308,
+      "pairwise_delta_fde_m": -5.187579674366361
+    },
+    {
+      "configuration": "loo-river",
+      "full_grid_expected_slots": 230,
+      "full_grid_successful_slots": 230,
+      "full_grid_failed_slots": 0,
+      "five_seed_complete_blocks": 46,
+      "common_complete_blocks": 43,
+      "common_complete_profile": {
+        "es_m": 498.28503084249684,
+        "fde_m": 1446.2217924946879,
+        "ade_m": 656.6039870176788,
+        "es_by_horizon_m": [
+          27.48203904869588,
+          211.6420460696701,
+          631.7126662768305,
+          1122.3033719747907
+        ],
+        "coverage90_by_horizon": [
+          0.9348837209302325,
+          0.7348837209302326,
+          0.6511627906976745,
+          0.5023255813953489
+        ],
+        "area90_by_horizon_km2": [
+          0.01746152075402889,
+          0.46213689315250545,
+          2.441937865895417,
+          5.6926752809373555
+        ]
+      },
+      "configuration_complete_profile": {
+        "es_m": 487.8846484740892,
+        "fde_m": 1425.6175240134176,
+        "ade_m": 645.4916891965589,
+        "es_by_horizon_m": [
+          27.27860795994771,
+          205.4877409378653,
+          617.7293801983684,
+          1101.0428648001755
+        ],
+        "coverage90_by_horizon": [
+          0.9391304347826087,
+          0.7521739130434782,
+          0.6739130434782609,
+          0.5130434782608696
+        ],
+        "area90_by_horizon_km2": [
+          0.017653918978746186,
+          0.4639050622607429,
+          2.4433176466583,
+          5.684944815302102
+        ]
+      },
+      "contrast_control": "all-terrain",
+      "common_delta_es_m": 16.22371780522633,
+      "common_delta_fde_m": -13.1448941290339,
+      "common_blocks_lower_es": 21,
+      "pairwise_complete_blocks": 45,
+      "pairwise_delta_es_m": 20.856795581201425,
+      "pairwise_delta_fde_m": 9.859616483835453
+    },
+    {
+      "configuration": "loo-worldcover",
+      "full_grid_expected_slots": 230,
+      "full_grid_successful_slots": 230,
+      "full_grid_failed_slots": 0,
+      "five_seed_complete_blocks": 46,
+      "common_complete_blocks": 43,
+      "common_complete_profile": {
+        "es_m": 482.13899936617037,
+        "fde_m": 1465.5523729088884,
+        "ade_m": 637.005002193382,
+        "es_by_horizon_m": [
+          25.57248907525515,
+          192.89021819649992,
+          575.2976319812086,
+          1134.7956582117176
+        ],
+        "coverage90_by_horizon": [
+          0.9720930232558139,
+          0.827906976744186,
+          0.6604651162790698,
+          0.413953488372093
+        ],
+        "area90_by_horizon_km2": [
+          0.017020222296122173,
+          0.46719093719193144,
+          2.4261469117609513,
+          5.886188712328071
+        ]
+      },
+      "configuration_complete_profile": {
+        "es_m": 469.561640778357,
+        "fde_m": 1432.1946816147415,
+        "ade_m": 622.2669635671576,
+        "es_by_horizon_m": [
+          25.985473504360996,
+          188.772899249897,
+          558.5109104612508,
+          1104.9772798979193
+        ],
+        "coverage90_by_horizon": [
+          0.9521739130434783,
+          0.8391304347826087,
+          0.682608695652174,
+          0.43043478260869567
+        ],
+        "area90_by_horizon_km2": [
+          0.01715038783920063,
+          0.471796017176078,
+          2.4180254889384214,
+          5.8150123310123325
+        ]
+      },
+      "contrast_control": "all-terrain",
+      "common_delta_es_m": 0.07768632889985838,
+      "common_delta_fde_m": 6.185686285166639,
+      "common_blocks_lower_es": 23,
+      "pairwise_complete_blocks": 45,
+      "pairwise_delta_es_m": -0.5406248853764737,
+      "pairwise_delta_fde_m": 3.4646858622936634
+    },
+    {
+      "configuration": "loo-surface",
+      "full_grid_expected_slots": 230,
+      "full_grid_successful_slots": 230,
+      "full_grid_failed_slots": 0,
+      "five_seed_complete_blocks": 46,
+      "common_complete_blocks": 43,
+      "common_complete_profile": {
+        "es_m": 477.1059453841315,
+        "fde_m": 1485.9553157551152,
+        "ade_m": 641.0067259530867,
+        "es_by_horizon_m": [
+          25.408599014998867,
+          192.0821644311,
+          563.1392252926973,
+          1127.7937927977296
+        ],
+        "coverage90_by_horizon": [
+          0.9767441860465116,
+          0.8325581395348838,
+          0.6790697674418604,
+          0.46511627906976744
+        ],
+        "area90_by_horizon_km2": [
+          0.01746128771249942,
+          0.45701361135003005,
+          2.4704619240848094,
+          6.1451442411968245
+        ]
+      },
+      "configuration_complete_profile": {
+        "es_m": 467.00428553137755,
+        "fde_m": 1457.30601942453,
+        "ade_m": 628.6553434570627,
+        "es_by_horizon_m": [
+          26.118726968938965,
+          188.94655991237505,
+          550.1553522367045,
+          1102.7965030074915
+        ],
+        "coverage90_by_horizon": [
+          0.9565217391304348,
+          0.8434782608695652,
+          0.682608695652174,
+          0.4782608695652174
+        ],
+        "area90_by_horizon_km2": [
+          0.017611611719338106,
+          0.4602329614655213,
+          2.469676322120587,
+          6.087257612368164
+        ]
+      },
+      "contrast_control": "all-terrain",
+      "common_delta_es_m": -4.955367653139035,
+      "common_delta_fde_m": 26.588629131393418,
+      "common_blocks_lower_es": 18,
+      "pairwise_complete_blocks": 45,
+      "pairwise_delta_es_m": -5.961433130065757,
+      "pairwise_delta_fde_m": 24.478882001558304
+    }
+  ],
+  "scope": {
+    "posthoc_descriptive_only": true,
+    "registered_full_family_inference": "unavailable",
+    "successful_subset_used_for_confirmatory_inference": false,
+    "raw_prediction_arrays_or_coordinates_exported": false,
+    "new_fits_forecasts_scores_resampling_or_map_queries": 0,
+    "causal_factor_effect_or_population_superiority_established": false
+  },
+  "reader_sha256": "39880fef712d8d83b2b87ec2dbf45713a35a6c16ce1302b94b4c96af0a628293"
+}

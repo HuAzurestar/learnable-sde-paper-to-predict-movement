@@ -1,0 +1,21 @@
+{
+  "schema_version": "pirc17-existing-method-horizon-render-v1",
+  "source_sha256": "8900f3dee68d5fc9cafd5ced2e2394503432d2493251601c0ba9cb771cbefba1",
+  "renderer_sha256": "1f0dce27dd72c279e27dbae373461517d16caf2851458c0df1b9f8a32dcaa5f6",
+  "matplotlib_version": "3.9.0",
+  "configs": 28,
+  "horizon_slots": 4,
+  "files_sha256": {
+    "en-method-horizon-overview.tex": "3527c0358cc4c7da9f784451defb1de1e19a7432aa6d7f1c15d2ca2366b23ab7",
+    "en-method-horizon-tables.tex": "0811a525795b68a628b0552a4594670e5dbfa8b1b6479c751d9504c6c23e07d9",
+    "method-horizon-description-v1.json": "196167ed0aaeb1e7c5a1dfb8858068ea339294eb0eaf49aac212ad8f76195106",
+    "method-horizon-overview.pdf": "43d8062bfd4ea78c60a38c387a6b78ea76bd453fe9e082342e28f47ca5977c30",
+    "method-horizon-overview.png": "d3f934222e0974093ac049c8a923d7002378c54d52c541e57d2e6d3a45c82eb9",
+    "zh-method-horizon-overview.tex": "f6f5f9f49fe58b16153432f87312fbef456ede6744e2b6586de06e8803dbafdf",
+    "zh-method-horizon-tables.tex": "cdcc5d3320cee1ae4c4b3c26b96b520746f393ae36bc849852e6e21f060bee26"
+  },
+  "new_forecasts_scores_fits_resampling_or_horizon_tests": 0,
+  "independent_saved_output_audit_completed": false,
+  "scientific_claim_authorized": false,
+  "original_final_sixteen_figure_inventory_replaced": false
+}

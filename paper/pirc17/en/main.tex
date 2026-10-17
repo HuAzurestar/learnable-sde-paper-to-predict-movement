@@ -1,0 +1,643 @@
+% Reader-v5: mechanism-based names and linear argument; unchanged evidence.
+\input{revision46-preamble.tex}
+\input{../reader-v9-number-labels.tex}
+\title{Horizon-dependent Benefits and Reliability Limits\\of Mixture-SDE Movement Forecasting}
+\begin{document}
+\pagestyle{plain}
+\maketitle
+\begin{abstract}
+A movement forecast can improve its distributional score without locating
+the target more accurately or providing reliable uncertainty regions. We
+examine these distinctions in an existing evaluation of fitted stochastic
+movement predictors applied to historical GPX position recordings with
+unverified carrier identities and transport modes, using 46 retrospectively selected recording-hash
+blocks, five simulation seeds and 512 particles per ensemble. At nominal
+1 and 5 minutes, deterministic constant-speed extrapolation has lower
+energy score (ES) than the heading-stratified mixture SDE (HSM-SDE); at 15 and 30 minutes the sample-mean ordering reverses. The five-minute ordering is sensitive to deleting one block.
+Averaging the four targets gives ES \FullES\ m for HSM-SDE and
+\InertialES\ m for constant-velocity extrapolation (CV). A residual-direction
+mixture variant (RDM-SDE) has lower average ES and final
+mean-position error, but its paired ES interval includes zero. Observation
+intervals of 120 and 300 saved seconds have lower average ES than the
+60 s reference, whereas the examined training/adaptation variants show
+small ES changes without a confirmed added decrease. The 300 s
+variant reduces average ES by 23.40 m but increases final mean-position
+error by 9.64 m. HSM-SDE's nominal 90\% prediction disk
+covers only 46.52\% of 30-minute targets. These are conditional descriptive
+findings: participant independence and physical clock provenance remain
+unverified, and the cohort was selected using future-route map support.
+Required forecast failures prevent registered terrain-family inference;
+a separate post-hoc 43-block comparison shows higher mean ES for all-terrain
+than its history-only base and horizon-dependent single-group trade-offs. The study
+identifies conditional long-horizon utility and design trade-offs, not the
+necessity of SDE complexity or a confirmed structural winner. It demonstrates
+an executable probabilistic forecasting procedure, but does not establish
+reliable long-horizon regions or superiority over a simple probabilistic baseline.
+\end{abstract}
+
+\section{Introduction}\label{sec:introduction}\hypertarget{sec:introduction}{}
+Movement prediction is often summarized by a single accuracy measure, yet
+three distinct tasks are involved: assigning a distribution to future
+positions, locating a representative position, and describing a region
+that contains the realized target at its stated frequency. A gain on one
+task need not imply a gain on the others. This distinction matters when a
+probabilistic forecast is interpreted as a reliable search region.
+
+Continuous-time correlated random walks model movement persistence and
+irregular observations~\cite{johnson2008}; switching state-space models
+represent latent regimes~\cite{ghahramani2000}. Step-selection models link
+movement to environmental selection~\cite{avgar2016,avgar2017correction}.
+Learned trajectory predictors~\cite{gupta2018,salzmann2020}, neural SDE
+generators~\cite{kidger2021} and interpretable stochastic system
+identification~\cite{gao2024} offer additional modelling approaches.
+These works provide context, not performance baselines executed here.
+Our empirical subject is future position in selected geographic recordings;
+the modelling object is a conditional distribution over those positions.
+A stochastic position model represents uncertainty through a fitted drift,
+residual diffusion and latent components. The study evaluates an existing,
+limited collection of these fitted predictors.
+
+Proper scoring rules evaluate predictive distributions against realized
+targets~\cite{gneiting2007,gneiting2008}; they do not certify coverage of
+a particular prediction region. We therefore ask how distributional
+score, error of the predictive mean and marginal disk coverage change
+across four horizons. Our primary concern is the utility and reliability
+of longer-horizon forecasts, with shorter horizons providing a contrast.
+The argument asks when CV or HSM-SDE performs better; how RDM-SDE compares
+with HSM-SDE; how observation interval changes score and location;
+whether training/adaptation strategies add a benefit; and whether
+the resulting long-horizon prediction disks can be trusted. Score--location
+disagreement is used to interpret these choices, not treated as a separate
+list of unrelated experimental outcomes.
+
+This focus is an interpretation of existing results, not a newly
+registered hypothesis test. The original questions remain explicit:
+RQ1 asks whether the registered changes in mode structure, observation
+interval, fitting/adaptation and numerical prediction yield a practically
+useful distribution-score change relative to each group's specified reference procedure. RQ2 asks
+whether selected terrain groups add predictive value beyond a fitted
+history baseline, through overall, leave-one-group-out and leave-one-group-in
+comparisons. Those registered questions and inference rules are retained.
+The questions organising the present paper are descriptive readings
+of the existing evidence, not additional registered tests. We first define
+the recordings and forecast task, explain the model construction and
+evaluation criteria, then move from horizon-specific utility through design
+choices to region reliability. Terrain efficacy is reported separately as
+an additional descriptive analysis with explicit complete-case selection;
+its unavailable registered inference is not treated as absence of results
+or as a demonstrated benefit of the ordinary SDE.
+
+\section{Data and predictive procedures}\label{sec:data}\hypertarget{sec:protocol}{}
+\input{reader-v4-task.tex}
+\subsection{Evaluation population and clock}
+The task is single-recording position forecasting from a visible trajectory
+prefix. The retained data pipeline identifies its source as a historical
+OpenStreetMap GPX harvest, not the separate GeoLife cohort used in earlier
+work. User identities, transport-mode labels and original GPX segment
+boundaries are not preserved; these records cannot be treated as verified
+pedestrian participants. R1-derived segments supply midpoint history/target
+windows. The frozen recording-hash assignment separates development and
+evaluation: qualified development contains 404 outer-training windows
+(328 training and 76 adaptation) and 81 validation windows. Terrain fitting
+uses one first-future transition per outer-training window. Exact identity
+intersections across splits are zero, which does not establish participant
+or near-route independence. The \supp{sec:protocol} details this assignment.
+
+The released final-evaluation split contains 12,370 windows from 1,094 recording-hash
+blocks. Temporal eligibility retains 127 windows/89 blocks, joint feature
+validity retains 106/73, and the fixed primary-origin rule selects 46/46
+(Figure~\ref{fig:population}). A block identifies a saved recording, not
+a verified independent participant. The selected cohort spans 12 countries
+and 27 source labels; 33/46 blocks are from Great Britain, Belgium or
+Luxembourg. It is not a representative population sample.
+\begin{figure}[!htbp]\centering
+\includegraphics[width=\linewidth]{../figures/reader-v9/revision46-population.pdf}
+\caption{Evaluation selection and population descriptors. Counts distinguish
+windows from recording blocks; duration and speed panels show saved
+medians and interquartile ranges. Eligibility includes map validity along
+the observed future route, which is unavailable at deployment from the
+prefix alone. Selection exclusions are not forecast failures.}
+\label{fig:population}\end{figure}
+
+Future observations are used to select this cohort and to score forecasts,
+but are not inputs to prediction: online map queries use simulated positions.
+This distinction prevents direct target leakage during rollout without
+removing the retrospective selection restriction. The evaluation data had
+previously been inspected; the full influence of that inspection on design
+choices is not recoverable. This is not a fresh blinded holdout.
+
+Targets are the actual observations matched to nominal 1, 5, 15 and 30
+minutes, with elapsed-time ranges 49--67, 294--305, 889--910 and
+1785--1814 saved seconds. No target is interpolated to an exact nominal
+time. Physical acquisition-time and UTC provenance are unverified. An
+absolute offset affects the calendar input; a relative-scale distortion
+also affects rates, diffusion units and the physical interpretation of
+the horizons. All minute labels below refer to the saved clock.
+
+\subsection{Three-component SDEs: design, training and forecasting}\label{sec:models}\hypertarget{sec:models}{}
+\subsubsection{Baselines and shared structure}
+We study two procedures within one three-component stochastic differential
+equation (SDE) framework: the heading-stratified mixture stochastic differential
+equation (HSM-SDE), and the residual-direction mixture stochastic differential
+equation (RDM-SDE). HSM groups fitting segments by heading; RDM constructs
+transition groups once from residual directions, rather than fitting a
+mixture likelihood by expectation--maximisation. They share a three-component
+SDE equation template but differ in grouping-based fitting and forecast-time
+component persistence. They are two complete procedures within one model family,
+not unrelated architectures or merely two training algorithms. The names are
+paper-specific descriptive shorthand, not a mixture-distribution versus SDE comparison.
+The deterministic reference is constant-velocity extrapolation (CV).
+The main paper and current figures/tables use these reader-facing names;
+numbers after HSM distinguish registered reference procedures, not new architectures.
+The audit record alone preserves the original identifier crosswalk;
+no saved identity or comparison control changes.
+% Saved identity crosswalk: Full01=HSM-01, Full11=HSM-11, GMM=RDM, Inertial/I=CV.
+\input{reader-v8-procedures.tex}
+\paragraph{Deterministic baseline CV.}
+For the 46 primary origins, the origin-state buffer retains the last three
+observed positions and their strictly increasing saved times. The origin
+is the last point. CV extrapolates
+$\widehat x^{\rm CV}(u)=x_0+u\widehat v_0$, where $\widehat v_0$ is the secant
+from the first to last of those three points, divided by their saved elapsed
+time; no future position or future speed is used. These spans range from
+2 to 61 saved seconds (median 7). CV fits no development-set parameters and
+adds no random diffusion. Ordinary HSM-01 is the main method-family reference,
+not the separate terrain branch's base, defined with all-terrain below.
+\paragraph{Shared stochastic position model.}
+In saved local east/north coordinates $X=(X_e,X_n)^\top$ (metres), both use
+\begin{equation}\label{eq:ordinary-full}
+ dX_t=\Theta_{m_t}^{\top}\psi(X_t,t)\,dt+L_{m_t}\,dW_t,
+ \quad \psi=(1,X_e,X_n,S)^\top,\quad L_mL_m^\top=Q_m=\tau R_m.
+\end{equation}
+The first visible position anchors the coordinate frame; forecasting starts
+at the last permitted prefix position. $S$ is a solar/calendar proxy computed
+from the retained absolute tick~\cite{noaa}, not a validated daylight
+mechanism. $R_m$ is a centred fitted displacement-rate residual covariance;
+its conversion uses observation interval $\tau$, not integration step $h$.
+Given frame, position, clock and random stream, neither ordinary HSM nor RDM
+uses initial speed or recent heading in its drift, diffusion or mode probabilities.
+HSM-SDE and CV thus receive the same permitted prefix but use its movement
+information differently; training heading labels are not a forecast-time heading classifier.
+\input{reader-v4-full.tex}
+
+The validation selection proxy is a one-step
+rate-residual Gaussian using the unweighted average mode covariance, whereas
+evaluation scores a multi-mode, multi-step position distribution. The RDM
+variant groups training residuals once by $\arg\max(r_e,r_n,-r_e-r_n)$ but
+uses segment-heading labels for validation components: these labels are not
+aligned. Independently heading-sorted batches are also mixed by mode index
+in the transfer procedures~\cite{nichol2018}. These are implementation
+limitations, not evidence that the corresponding modelling ideas fail.
+
+\subsubsection{Forecasting and component updates}\label{sec:forecast-methods}
+Evaluation uses $N=512$ particles, five fixed seeds and maximum integration
+step $h=5$ saved seconds. HSM uses conditional Gaussian moment propagation,
+evaluating nonlinear conditions at the conditional mean; this is not an
+exact solution of a globally nonlinear SDE~\cite{kloeden1992}. Four targets
+come from a continuing joint path, not independently sampled marginals.
+Observation-interval variants change fitting data, $Q=\tau R$ and update
+cadence together while retaining the integration cap. In particular, dt300
+and dt600 mean observation intervals of 300 and 600 saved seconds, not
+integration steps. Identical-parameter aliases and multi-factor changes
+make the 28 saved identities procedures rather than 28 independent algorithms.
+All 21 registered primary contrasts retain their specified reference procedures and reference codes.
+\input{reader-v4-propagation.tex}
+
+\subsection{Map factors: roads, rivers, land cover and surface geometry}\label{sec:terrain-methods}
+The separate terrain branch augments a fitted three-position history drift
+with independently fitted residual conditioners and diffusion for ten
+configurations. Its fitted mechanism is specified below.
+The ordinary HSM/RDM variable $S$ is only the solar/calendar proxy, not
+these map factors. Here the map input is the explicitly expanded
+$\widetilde\phi_g$ below; the two conditioning inputs must not be conflated.
+This branch fits its own history drift and residual conditioner; it does
+not reuse HSM/RDM's three sets of component parameters or add maps to their $S$.
+\input{reader-v4-terrain.tex}
+\paragraph{Map sources and attribution limits.}
+Model-source declarations identify
+WorldCover 2021 v200~\cite{worldcover2021}, Overture transportation
+2026-08-19.0~\cite{overture202608,overtureattribution}, HydroRIVERS
+v1.0~\cite{hydrorivers2013,hydroriverslicense}, and retained Mapzen Skadi /
+Copernicus GLO-30 rules~\cite{mapzenterrain,mapzenattribution,copernicusdem2021}.
+These product declarations do not certify tile/track contemporaneity.
+Road/river direction points to the nearest feature, not along its tangent
+or flow; the retained roads are not the complete pedestrian network.
+
+Constant validity masks, penalised intercepts, unstandardised features and
+refitted diffusion make effective regularisation differ among configurations.
+Thus even a complete comparison would concern configuration increments,
+not isolated terrain information. The \supp{sec:models} gives full equations,
+input geometry, excluded road classes, fitting rules and procedure-specific
+controls. The terrain research question remains separate from ordinary HSM.
+
+\section{Evaluation measures and inference}
+For particles $x_1,\ldots,x_N$ and target $y$ at one matched horizon, the
+execution-bound finite-ensemble energy score is
+\begin{equation}\label{eq:finite-es}
+ \ES_N=\frac1N\sum_i\|x_i-y\|
+       -\frac1{2N(N-1)}\sum_{i\ne j}\|x_i-x_j\|,\qquad N\geq2.
+\end{equation}
+The second sum uses ordered pairs. For the deterministic CV reference,
+ES is directly $\|x-y\|$. ES is measured in metres and lower is better;
+weighted ES is the equally weighted average over the four targets.
+Mean-position error is $e_j=\|\bar x_j-y_j\|$, with
+$\mathrm{ADE}=\tfrac14\sum_j e_j$ and $\mathrm{FDE}=e_4$.
+FDE is neither best-particle nor average-particle error, and ADE is not a
+dense-path integral. ES includes interparticle spread and cannot be
+converted into error of the predictive mean.
+The first ES term measures particle distances to the target; the second
+subtracts half the average interparticle distance. Their balance evaluates
+the distribution, rather than the distance from its centre alone.
+Consequently, changing spread or mixture geometry can change ES without
+moving the mean closer to the target. This motivates reporting both
+quantities rather than using ES as a proxy for localisation.
+
+\paragraph{What a prediction disk promises.}
+At each future target time, the model generates 512 possible positions.
+It draws a circle around their mean containing about 90\% of those
+simulated positions: this is the nominal 90\% prediction disk. That 90\%
+is initially a model-internal proportion, not proof that the model is right.
+Empirical coverage instead asks how often the actual target falls inside
+the disk. A reliable 90\% disk should contain actual targets about 90\%
+of the time across comparable repeated forecasts.
+
+More generally, a nominal level-$q$ disk is centred at the ensemble mean, with radius the
+$\lceil qN\rceil$-th ordered distance of particles from that mean. Coverage
+records whether the true target lies inside; area is $\pi r^2$.
+Mean area is $\mathrm E[\pi r^2]$, not $\pi\mathrm E[r]^2$. These are
+horizon-wise marginal regions, not joint path regions. Enclosing about
+90\% of simulated particles does not guarantee 90\% coverage of real targets.
+For multimodal clouds, the mean may lie in a low-density gap and a disk may
+include inaccessible terrain; it is not a highest-density or route-constrained
+region.
+For $\widehat P_j$'s own disk $D_{q,j}$, nominal mass concerns
+$\widehat P_j(D_{q,j})\approx q$. Empirical reliability instead concerns
+the observed frequency of $Y_j\in D_{q,j}$ across origins. The two coincide
+only under suitable calibration of the predictive distribution; the
+particle construction itself supplies no such guarantee. Area records
+how much spatial information that coverage costs.
+\begin{description}
+\item[Mean-position error:] How far is the predicted centre from the actual target?
+\item[Prediction-disk coverage:] Does the stated region actually contain the target, and how often?
+\item[Prediction-disk area:] How much space must be included to obtain that containment?
+\end{description}
+Coverage alone is insufficient: a disk as large as an entire city may
+contain more targets while offering little useful localisation. Nor does
+a miss prove that the radius alone is too small; an inaccurate centre
+can also put the target outside the circle.
+
+For each recording block, the five seed values are averaged first; blocks
+then receive equal weight. There are 46 targets per horizon, not 230
+independent targets. Six known-velocity and six point-only cases reuse
+primary records, giving 58 origin--mode cases rather than 58 independent
+blocks. Original family-wise simultaneous bootstrap-$t$ intervals use
+2,000 draws per stream, with shared block indices within a family;
+Holm-adjusted zero tests have a separate role~\cite{holm1979,davison1997}.
+Intervals condition on the saved fits and unverified block independence /
+exchangeability; seeds represent simulation variation, not training or
+participant replication.
+
+Deltas are candidate minus the reference procedure specified for that comparison. The registered practical margin
+is $\delta=41.100259$ m, 5\% of validation CV ES, not a validated
+operational utility threshold. Practical benefit/harm requires the entire
+original interval beyond $-\delta$/$+\delta$ and the original statistical,
+seed and qualification gates. Crossing zero is not equivalence. Practical
+equivalence, inconclusive information and unavailable evidence are distinct.
+The \supp{sec:bootstrap-table-detail} retains precise endpoints and finite
+bootstrap-tail limitations. The descriptive horizon and coverage summaries
+below are not new superiority or calibration hypothesis tests.
+
+\section{Results}\label{sec:method-results}\hypertarget{sec:method-results}{}
+\subsection{Observed short--long horizon ordering, with a fragile five-minute result}\label{sec:horizon-utility}
+In this evaluation, CV performs better at 1 and 5 saved minutes, and
+HSM-SDE at 15 and 30; here ``better'' means lower average ES across the
+46 recording blocks, not an improvement on every metric or every record.
+HSM-SDE's weighted ES is \FullES\ m versus \InertialES\ m for CV; the saved
+difference is \InertialDelta\ m, computed before rounding. At 1 minute,
+HSM-SDE/CV ES is 50.57/31.17 m; at 5 minutes it is 243.23/237.93 m.
+Thus CV has
+lower ES at 1 and 5 minutes and HSM-SDE at 15 and 30 minutes
+(Figure~\ref{fig:inertial}). The same figure separates ES from mean-position
+error. Four discrete targets do not identify an exact crossover time.
+A review-stage leave-one-block-out diagnostic leaves the saved scores unchanged.
+At five minutes, mean HSM-minus-CV ES is $+5.30$ m; deleting each block in turn
+gives a range of $[-0.19,19.73]$ m and can reverse its sign. The one-, fifteen-
+and thirty-minute mean differences retain their signs under the same diagnostic.
+Each retained block has equal weight; no deletion selects a replacement final cohort.
+This is neither a confidence interval nor a new registered test, and does not
+certify other sensitivities or population generalisation. Reproduction entry:
+\path{scripts/describe_pirc17_cv_sensitivity.py}.
+\begin{figure}[!htbp]\centering
+\includegraphics[width=\linewidth]{../figures/reader-v9/cv-horizons.pdf}
+\caption{HSM-SDE versus CV at four nominal saved-clock
+horizons: ES (left) and predictive-mean error (right). Each point averages
+five seeds within each of 46 primary blocks, then weights blocks equally;
+inertia is deterministic. Lower is better. Connecting lines guide reading,
+not interpolation or evidence for a precise crossover.}
+\label{fig:inertial}\end{figure}
+\begin{table}[!htbp]\centering
+\caption{Saved predictive-mean errors (m), using the original matched
+targets. Rows use the unified reader-facing procedure names.
+These are not ES or mean particle errors.}\label{tab:point-errors}
+\begin{tabular}{lrrrr}\toprule
+Model & 1 min & 5 min & 15 min & 30 min\\\midrule
+\PointRowFull
+\PointRowGMM
+\PointRowdtThreeHundred
+\PointRowInertial
+\bottomrule\end{tabular}\end{table}
+The result supports conditional longer-horizon utility relative to CV,
+not uniform improvement at every horizon. The deterministic reference is
+a valid point-mass distribution for ES. It
+does not establish that HSM-SDE's stochastic complexity is necessary relative
+to a simple probabilistic constant-velocity or correlated-random-walk model.
+
+\subsection{Design choices within the mixture-SDE family}\label{sec:design-choices}
+\subsubsection{RDM-SDE has better mean ES and final location than HSM-SDE}
+RDM-SDE's average ES and thirty-minute mean-position error are both lower
+than those of the main HSM-SDE model (reference code HSM-01).
+This comparison changes both grouping-based fitting and forecast-time
+component persistence; it is not a grouping-only controlled comparison.
+The average ES difference is $-2.83$ m.
+Its final mean-position error is also lower: 1299.11 versus 1326.09 m
+(Table~\ref{tab:point-errors}). Its mean-position errors are lower at all
+four saved targets, but that does not establish lower ES at each horizon.
+All five seed ES differences are negative; the simultaneous block interval,
+$[-21.22,16.33]$ m, nevertheless includes zero. RDM-SDE therefore has
+better observed mean performance, but a consistent ES advantage over
+HSM-SDE has not been established.
+The pointwise variant instead increases average ES by 32.95 m with interval
+$[22.99,43.37]$ m. The single-Gaussian and explicit-feature variants change
+ES by $+22.01$ and $+57.96$ m, with intervals including zero. None establishes
+a registered practical benefit or harm. These comparisons concern fitted
+procedures, not the general merit of mixtures or velocity information.
+
+\subsubsection{Observation interval: lower ES can accompany worse final location}
+Relative to the 60 s HSM-SDE reference, the 120 and 300 s configurations
+have lower average ES, but the 300 s configuration has higher thirty-minute
+mean-position error. Thus its distribution-score improvement comes with
+a location cost. The 120 s variant changes average ES by $-11.56$ m, with simultaneous
+interval $[-20.37,-3.04]$ m; the 300 s variant changes it by $-23.40$ m.
+Observation interval and training/adaptation are two separate design
+factors. Reading their saved mean changes is not a direct statistical
+comparison of the two design classes or a causal ranking of their importance.
+The interval is a fitting-data and update-cadence choice, not the integration
+step. Its effect must also be judged against mean-position error:
+\begingroup\renewcommand{\subsection}[1]{}
+\input{reader-v3-tradeoff.tex}
+\endgroup
+
+\subsubsection{Training and adaptation: no confirmed additional ES decrease}
+Training initialisation and parameter adaptation are separate choices.
+The examined variants make only small average ES changes relative to the
+original training/adaptation procedure; no additional ES decrease is confirmed.
+The scratch and Reptile variants change average ES by $+2.60$ and $+2.19$ m;
+their intervals are $[-4.73,10.02]$ and $[-11.95,12.91]$ m. Drift-only adaptation
+changes ES by $+0.50$ m, with interval $[-1.52,2.49]$ m. The registered
+two-step slot changes ES by $-0.04$ m, with interval $[-2.60,1.81]$ m,
+but executes the same parameter-blending branch as default all adaptation,
+without a separate two-step optimiser. It is retained only as a repeated-simulation
+consistency contrast of the same fitted predictor, not independent evidence
+about an additional adaptation strategy. The original training/adaptation
+procedure is this group's reference (reference code HSM-11),
+not a replacement for the main model in the horizon comparison. All four
+original finite-procedure states are practically equivalent within the
+registered margin; this count includes the alias contrast. The three actual
+strategy changes, scratch, Reptile and drift-only, show no clear added ES
+benefit; this is not evidence that learning itself
+is unnecessary. Fixed fitted models and simulation seeds do not measure
+variation across independently repeated training runs.
+
+\subsection{Long-horizon prediction disks are not empirically reliable}\label{sec:region-reliability}
+Generating a probability distribution and giving a trustworthy region are
+different achievements. A nominal 90\% disk is intended to contain real
+targets at roughly that frequency, not merely 90\% of simulated particles.
+HSM-SDE's nominal 90\% disk coverage is 95.65\%, 37.83\%, 35.22\% and 46.52\%
+at the four horizons. At one minute the nominal 50\% disk covers 33.04\%,
+while at thirty minutes even the nominal 95\% disk covers only 52.17\%.
+The departure therefore depends on horizon and probability level; no
+radius rescaling has been tested. Across all 28 identities, thirty-minute
+90\% coverage ranges from 21.74\% to 79.13\%. Thus, in this evaluation,
+the thirty-minute HSM-SDE disks achieve a seed-averaged inclusion rate of
+only 46.52\%, rather than the approximately 90\% expected of reliable
+90\% regions: their nominal containment promise is not met in this evaluation.
+Figures and tables use HSM and RDM consistently.
+\input{reader-v3-calibration.tex}
+The 600 s procedure also has a larger thirty-minute mean area
+(12.609 km$^2$) and higher coverage (79.13\%) than HSM, but its FDE is
+1340.94 m. This is another descriptive size--coverage trade-off, not
+evidence of calibrated uncertainty or improved mean location. No radius
+or parameter is retuned after inspection of this cohort.
+
+\subsection{Qualification of the registered method comparisons}
+Of the 21 registered primary method contrasts, 14 have practically
+equivalent and seven inconclusive finite-algorithm states; no original
+simultaneous interval lies wholly beyond the practical-benefit or harm
+boundary. All resolution-invariant states remain inconclusive. These
+states qualify the implemented finite procedures, not general algorithms.
+For example, all five RDM seed effects are negative but its block interval
+is $[-21.22,16.33]$ m. Seed-direction agreement does not resolve uncertainty
+across recording blocks. Complete effects, seeds and qualification reasons
+are retained in Supplement Table~\href{supplement.pdf\#tab:preliminary-method-effects}{25}
+and the accompanying qualification discussion.
+
+\subsection{What the saved terrain predictions show}\label{sec:terrain-results}\hypertarget{sec:terrain-results}{}
+\input{reader-v6-terrain-results.tex}
+
+Three required primary terrain forecasts failed: all-terrain once and
+LIO-river/LIO-road once each. LOO means leave-one-group-out and LIO means
+leave-one-group-in. The overall/LOO grid has 1379/1380 successes
+and LIO has 1148/1150, with no pending forecasts; the grids share baselines
+and are not additive. Under the original complete-family rule, both whole
+families are unavailable. Successful subsets or individual map cases cannot
+replace that rule. This is not a positive or null terrain result. Two
+further failures affect auxiliary known-velocity method families, not the
+complete primary method families. Failure identities and logging limits
+are in the \audit{sec:terminal-failures}; missing exception stacks prevent
+attributing a specific technical cause.
+
+\FloatBarrier
+\section{Discussion}\hypertarget{sec:discussion-score}{}
+\subsection{What the model description lets us interpret}
+The task definition connects the horizon result to the two reference
+constructions. CV extends a short observed secant as a single straight
+trajectory; it can remain accurate when that local rate persists, but any
+rate error is multiplied by elapsed time. HSM-SDE instead assigns probability
+to several fitted drift/diffusion components, without updating their weights
+from the new prefix's heading. This gives different uses of recent movement
+and different uncertainty representations. The observed short/long ordering
+is consistent with a changing forecasting trade-off, but does not identify
+which mechanism causes it: the comparison changes both mean dynamics and
+distributional spread, and no task-matched probabilistic inertia control
+isolates these effects. The constant-drift covariance explanation above is
+not a fitted explanation of the observed reversal.
+
+The other two diagnostics follow from the forecast summaries. ES evaluates
+both distances to the realized target and distances within the ensemble,
+whereas FDE evaluates only the final mean. An ES decrease with FDE increase
+therefore establishes a disagreement between criteria, not a mathematical
+contradiction. A radial particle quantile describes the model's own spread;
+coverage compares that region with actual target positions. The observed
+undercoverage rejects the interpretation of HSM-SDE's nominal disks as
+empirically reliable regions for this cohort, even when average ES is
+favourable. It does not identify whether drift error, insufficient spread,
+mixture geometry or selection is responsible.
+
+\subsection{Which design choices merit attention}
+The observed long-horizon benefit makes the mixture-SDE family worth
+examining beyond an average all-horizon score. Within it, RDM-SDE provides
+a favourable descriptive structural result, whereas the training/adaptation
+variants provide no confirmed additional ES decrease. Observation-interval
+choices can lower ES while worsening final mean-position error.
+These observations prioritise design questions, not a global algorithm
+ranking: the contrasts use their own controls, some change several factors,
+and the original practical/inference qualifications still apply.
+
+The objective-choice comparisons also require care. HSM and QMLE retain
+identical saved drift, covariance and mixture weights; mixed-loss and
+pure-ES variants likewise retain identical saved parameters to each other.
+Differences between those paired identities' finite scores do not prove
+distinct learned predictive models or the superiority of one training loss.
+
+\subsection{Reliability limits and remaining work}
+The pipeline can fit and generate probabilistic forecasts and score them
+at matched targets. The horizon result supplies conditional utility
+evidence relative to a deterministic reference. Neither establishes a
+reliable long-horizon prediction region: that requires empirical coverage
+at the stated level while retaining informative area and location.
+The coverage findings limit this capability even where average ES improves.
+
+The calibration proxy differs from the evaluated predictive distribution,
+and RDM training/validation component labels differ. Both are plausible
+contributors to poor uncertainty behaviour, but these results do not
+identify causes or validate a correction. Likewise, wider regions can
+increase inclusion while retaining an inaccurate centre; coverage alone
+would reward sufficiently uninformative regions. The metric conflict is
+therefore substantive, not a reason to discard an unfavourable metric.
+
+The scope is deliberately conditional. Retrospective future-route selection,
+previous evaluation exposure, uncertain recording independence and unverified
+clock provenance limit population and physical-time interpretation. Fixed
+fits and seeds omit training uncertainty. Parameter aliases, unmatched
+mode labels, joint procedure changes and representation-dependent penalties
+limit component attribution. The missing matched probabilistic baseline
+precludes a claim that complex stochastic structure is necessary. None of
+these limitations is removed by reproducing saved numerical summaries.
+
+The descriptive terrain analysis gives a more specific development target.
+The current all-terrain configuration is worse than its history base on
+both average ES and thirty-minute mean-position error; simply stacking
+terrain features has not produced an average gain here. Road addition
+accompanies worse scores and removal improves them; the river-only gain
+at 15 minutes does not extend to 30. Land-cover-only shows a small favourable
+mean, not an established general benefit of terrain information.
+These findings raise a substantive possibility that the current handling
+of terrain is inadequate. The road/river directions point towards nearest
+feature points, not along roads, and do not explicitly model river
+barriers and crossings. Such input choices need not encode the movement
+mechanism one expects. Representation, fitting and long-horizon use are
+therefore plausible sources of the disappointing results, but this study
+does not identify or validate a specific cause. This is an interpretation,
+not an additional empirical finding that the factors are intrinsically noise.
+
+Future work should compare a task-matched probabilistic motion baseline,
+align mode labels before transfer and calibration, and evaluate calibration
+of the actual multi-step distribution. Terrain comparisons require complete
+families and matched effective penalties. Independent route grouping and
+clock-source verification are needed for broader inference. These are
+unexecuted studies, not results or editorial repairs supplied here.
+
+\section{Conclusion}
+This study closes as an exploratory experiment. The saved forecasts support
+the following six conditional observations, each with its own comparison
+metric and scope. Closeout does not certify model effectiveness, submission
+readiness or resolution of the remaining design gaps.
+\begin{enumerate}
+\renewcommand{\labelenumi}{\arabic{enumi}.}
+\item \textbf{Sample means show a short--long horizon ordering change.}
+In this 46-block saved-clock evaluation, CV is better at 1 and 5 minutes;
+HSM-SDE is better at 15 and 30 minutes. ``Better'' here means lower average ES.
+The five-minute ordering can reverse under single-block deletion; these
+observations do not establish a stable crossover horizon.
+
+\item \textbf{Saved means favour RDM, without a confirmed consistent advantage.}
+RDM-SDE has lower average ES and thirty-minute mean-position error than
+the main HSM-SDE model. Its ES difference interval includes zero, so the
+observed means favour RDM-SDE without establishing a consistent ES advantage.
+
+\item \textbf{Longer observation intervals improve ES but can sacrifice final location.}
+The 120 and 300 s configurations have lower average ES than the 60 s
+reference, but the 300 s configuration has higher final mean-position
+error. Its score improvement therefore comes with a location cost.
+The 300 s configuration lowers average ES by 23.40 m but increases final
+mean-position error by 9.64 m; the observation interval is not the integration step.
+
+\item \textbf{The examined added training/adaptation strategies show no clear ES gain.}
+The examined variants change average ES only slightly relative to the
+original training/adaptation procedure; no additional ES decrease is
+confirmed. This concerns changing those strategies, not whether training
+itself is useful.
+The actual strategy changes here are scratch, Reptile and drift-only;
+two-step is an implementation alias of default adaptation and supplies
+no independent evidence about an added strategy.
+
+\item \textbf{Generating probabilistic forecasts does not establish reliable regions.}
+HSM-SDE's thirty-minute nominal 90\% disks achieve empirical coverage of
+only 46.52\%, rather than approximately 90\%. Their reported containment
+promise is not met. Mean-position error, coverage and area must be read
+together: a larger circle can cover more targets without locating them well.
+
+\item \textbf{Terrain gains depend on horizon and context; combining all groups gives no average gain.}
+On the post-hoc 43-block common subset, the current all-terrain configuration
+is worse than its history base on both average ES ($+26.98$ m) and
+thirty-minute mean-position error ($+39.00$ m). Simply adding all terrain
+features has not produced an average gain in this implementation. Adding
+the current road features accompanies worse scores; removing them improves
+scores. Adding river alone lowers 15-minute ES by 42.51 m but increases
+30-minute ES by 57.27 m: the gain does not extend from 15 to 30 minutes.
+Adding land cover alone lowers average ES by 1.64 m and final
+mean-position error by 5.96 m, a small favourable mean result. No configuration's
+thirty-minute nominal 90\% coverage exceeds 52.09\% on this subset.
+The evaluation has not established that terrain information reliably helps
+forecasting. It raises the possibility of shortcomings in current terrain
+handling, but does not establish that explanation as a cause.
+\end{enumerate}
+
+In summary, this evaluation establishes that the mixture-SDE pipeline can
+generate probabilistic forecasts and lower average ES relative to CV at
+15 and 30 minutes. It establishes neither superiority to a simple
+probabilistic motion baseline nor reliable long-horizon prediction regions.
+
+\paragraph{Inference qualification, not an additional finding.}
+RQ1 yields 14 practically equivalent and seven inconclusive finite-procedure
+contrasts, with all resolution-invariant judgements inconclusive. RQ2 does
+not meet the registered complete-family rule because three required terrain
+forecasts failed; no benefit, harm or equivalence verdict for that family
+can be claimed under that rule. The terrain descriptions above do not
+replace it or identify causal factor effects. Carrier identity and clock
+provenance remain unverified, and retrospective selection and prior evaluation
+exposure limit generalisation. The observed comparisons remain conditional.
+RDM training/validation label mismatch and calibration of a proxy rather
+than the actual multi-step distribution, terrain penalty confounding and
+future-route cohort selection remain unresolved design gaps.
+With future-dependent inclusion event $A$, evaluation concerns
+$Y\mid\mathcal H_0,A=1$ and cannot directly establish deployment performance
+or calibration for $Y\mid\mathcal H_0$. The source of undercoverage is unidentified.
+These limitations prevent general superiority or operational guarantees.
+
+\paragraph{Data and reproducibility.}\label{sec:case-horizons}\hypertarget{sec:case-horizons}{}
+The accompanying scientific supplement contains full specifications and all
+50 tables; the separate audit record contains execution and revision history.
+The public repository provides saved aggregate evidence and reproduction
+code; private trajectories and local case maps are not redistributed.
+Repository: \url{https://github.com/HuAzurestar/learnable-sde-paper-to-predict-movement}.
+The public argument does not rely on those private case illustrations.
+Trajectory research-use permissions and the applicable ethics-review /
+consent basis require author verification; public availability of a source
+or map product is not taken as evidence of that authorization.
+This manuscript revision changes no fit, forecast, score or inference rule.
+Author identities, affiliations and contribution/conflict declarations
+require owner confirmation before submission and are not inferred from
+repository accounts.
+\input{revision46-bibliography.tex}
+\end{document}

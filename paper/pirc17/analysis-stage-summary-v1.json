@@ -1,0 +1,961 @@
+{
+  "schema_version": "pirc17-anonymous-saved-analysis-stage-v1",
+  "analysis_content_sha256": "d1d67a3bf4cd08d46f7e73f0178950b047197275f3f32e29a61f3f699fe5febc",
+  "analysis_file_sha256": "edd988e3df7ae95de773b33f75d62656a5426585a79c4d65c9421c10b2a45c50",
+  "source_scope": {
+    "protocol_sha256": "2267ab84fa77ff4039234a61e8f44be1c3713317d8ad2d1bb4ced9af0c5b293a",
+    "execution_sha256": "c3e44393f6bc5544aaa21bb273c94eaecb9d0becb4e0590771355c4c0be9b6c2",
+    "matrix_sha256": "3fcfc6c7858ee346b20040ef6e7728153b188bd4d2ada58839f39e769d44de13",
+    "population_sha256": "7061f44ef8647f7bee55822ca7e494e53d3c058e5973d6198e997893c70bb020",
+    "scoring_inputs_sha256": "07da73c55cc7aca5b8a9dee4759be73edac508cd52a12490ebb408460534a5f2",
+    "saved_score_index_sha256": "a734f74e1d3c1431b2993105b3fd9379730ee75ad5f0463713ac52465f5e3a5a",
+    "decision_policy_sha256": "d78238790bbf4486fc26946574640f819afbf8b6dcbdeb65d6215266a8d36177"
+  },
+  "parameters": {
+    "alpha": 0.05,
+    "bootstrap_iterations": 2000,
+    "bootstrap_seed": 20260926,
+    "delta_m": 41.100259,
+    "mc_check_seed": 20260927,
+    "minimum_blocks": 30,
+    "required_agreeing_seeds": 4,
+    "tail_tolerance_fraction_of_delta": 0.25
+  },
+  "forecast_seeds": [
+    20260814,
+    20260815,
+    20260816,
+    20260817,
+    20260818
+  ],
+  "families": [
+    {
+      "origin_mode": "causal_prefix",
+      "family_id": "method-model-structure",
+      "blocks": 46,
+      "expected_rows": 1150,
+      "missing_rows": 0,
+      "failed_rows": 0,
+      "comparisons": 4,
+      "verdict_counts": {
+        "inconclusive": 3,
+        "equivalent": 1
+      },
+      "inference_present": true
+    },
+    {
+      "origin_mode": "causal_prefix",
+      "family_id": "method-numerical-propagation",
+      "blocks": 46,
+      "expected_rows": 1380,
+      "missing_rows": 0,
+      "failed_rows": 0,
+      "comparisons": 4,
+      "verdict_counts": {
+        "equivalent": 4
+      },
+      "inference_present": true
+    },
+    {
+      "origin_mode": "causal_prefix",
+      "family_id": "method-objective-and-score",
+      "blocks": 46,
+      "expected_rows": 1380,
+      "missing_rows": 0,
+      "failed_rows": 0,
+      "comparisons": 5,
+      "verdict_counts": {
+        "equivalent": 3,
+        "inconclusive": 2
+      },
+      "inference_present": true
+    },
+    {
+      "origin_mode": "causal_prefix",
+      "family_id": "method-observation-interval",
+      "blocks": 46,
+      "expected_rows": 1150,
+      "missing_rows": 0,
+      "failed_rows": 0,
+      "comparisons": 4,
+      "verdict_counts": {
+        "equivalent": 2,
+        "inconclusive": 2
+      },
+      "inference_present": true
+    },
+    {
+      "origin_mode": "causal_prefix",
+      "family_id": "method-transfer-adaptation",
+      "blocks": 46,
+      "expected_rows": 1150,
+      "missing_rows": 0,
+      "failed_rows": 0,
+      "comparisons": 4,
+      "verdict_counts": {
+        "equivalent": 4
+      },
+      "inference_present": true
+    },
+    {
+      "origin_mode": "causal_prefix",
+      "family_id": "weighted-es-lio",
+      "blocks": 46,
+      "expected_rows": 1150,
+      "missing_rows": 0,
+      "failed_rows": 2,
+      "comparisons": 4,
+      "verdict_counts": {
+        "unavailable": 4
+      },
+      "inference_present": false
+    },
+    {
+      "origin_mode": "causal_prefix",
+      "family_id": "weighted-es-primary",
+      "blocks": 46,
+      "expected_rows": 1380,
+      "missing_rows": 0,
+      "failed_rows": 1,
+      "comparisons": 5,
+      "verdict_counts": {
+        "unavailable": 5
+      },
+      "inference_present": false
+    },
+    {
+      "origin_mode": "known_velocity",
+      "family_id": "method-model-structure",
+      "blocks": 6,
+      "expected_rows": 150,
+      "missing_rows": 0,
+      "failed_rows": 1,
+      "comparisons": 4,
+      "verdict_counts": {
+        "unavailable": 4
+      },
+      "inference_present": false
+    },
+    {
+      "origin_mode": "known_velocity",
+      "family_id": "method-numerical-propagation",
+      "blocks": 6,
+      "expected_rows": 180,
+      "missing_rows": 0,
+      "failed_rows": 0,
+      "comparisons": 4,
+      "verdict_counts": {
+        "inconclusive": 4
+      },
+      "inference_present": false
+    },
+    {
+      "origin_mode": "known_velocity",
+      "family_id": "method-objective-and-score",
+      "blocks": 6,
+      "expected_rows": 180,
+      "missing_rows": 0,
+      "failed_rows": 0,
+      "comparisons": 5,
+      "verdict_counts": {
+        "inconclusive": 5
+      },
+      "inference_present": false
+    },
+    {
+      "origin_mode": "known_velocity",
+      "family_id": "method-observation-interval",
+      "blocks": 6,
+      "expected_rows": 150,
+      "missing_rows": 0,
+      "failed_rows": 1,
+      "comparisons": 4,
+      "verdict_counts": {
+        "unavailable": 4
+      },
+      "inference_present": false
+    },
+    {
+      "origin_mode": "known_velocity",
+      "family_id": "method-transfer-adaptation",
+      "blocks": 6,
+      "expected_rows": 150,
+      "missing_rows": 0,
+      "failed_rows": 0,
+      "comparisons": 4,
+      "verdict_counts": {
+        "inconclusive": 4
+      },
+      "inference_present": false
+    },
+    {
+      "origin_mode": "known_velocity",
+      "family_id": "weighted-es-lio",
+      "blocks": 6,
+      "expected_rows": 150,
+      "missing_rows": 0,
+      "failed_rows": 0,
+      "comparisons": 4,
+      "verdict_counts": {
+        "inconclusive": 4
+      },
+      "inference_present": false
+    },
+    {
+      "origin_mode": "known_velocity",
+      "family_id": "weighted-es-primary",
+      "blocks": 6,
+      "expected_rows": 180,
+      "missing_rows": 0,
+      "failed_rows": 0,
+      "comparisons": 5,
+      "verdict_counts": {
+        "inconclusive": 5
+      },
+      "inference_present": false
+    },
+    {
+      "origin_mode": "point_only",
+      "family_id": "method-model-structure",
+      "blocks": 6,
+      "expected_rows": 150,
+      "missing_rows": 0,
+      "failed_rows": 0,
+      "comparisons": 4,
+      "verdict_counts": {
+        "inconclusive": 4
+      },
+      "inference_present": false
+    },
+    {
+      "origin_mode": "point_only",
+      "family_id": "method-numerical-propagation",
+      "blocks": 6,
+      "expected_rows": 180,
+      "missing_rows": 0,
+      "failed_rows": 0,
+      "comparisons": 4,
+      "verdict_counts": {
+        "inconclusive": 4
+      },
+      "inference_present": false
+    },
+    {
+      "origin_mode": "point_only",
+      "family_id": "method-objective-and-score",
+      "blocks": 6,
+      "expected_rows": 180,
+      "missing_rows": 0,
+      "failed_rows": 0,
+      "comparisons": 5,
+      "verdict_counts": {
+        "inconclusive": 5
+      },
+      "inference_present": false
+    },
+    {
+      "origin_mode": "point_only",
+      "family_id": "method-observation-interval",
+      "blocks": 6,
+      "expected_rows": 150,
+      "missing_rows": 0,
+      "failed_rows": 0,
+      "comparisons": 4,
+      "verdict_counts": {
+        "inconclusive": 4
+      },
+      "inference_present": false
+    },
+    {
+      "origin_mode": "point_only",
+      "family_id": "method-transfer-adaptation",
+      "blocks": 6,
+      "expected_rows": 150,
+      "missing_rows": 0,
+      "failed_rows": 0,
+      "comparisons": 4,
+      "verdict_counts": {
+        "inconclusive": 4
+      },
+      "inference_present": false
+    },
+    {
+      "origin_mode": "point_only",
+      "family_id": "weighted-es-lio",
+      "blocks": 6,
+      "expected_rows": 150,
+      "missing_rows": 0,
+      "failed_rows": 0,
+      "comparisons": 4,
+      "verdict_counts": {
+        "inconclusive": 4
+      },
+      "inference_present": false
+    },
+    {
+      "origin_mode": "point_only",
+      "family_id": "weighted-es-primary",
+      "blocks": 6,
+      "expected_rows": 180,
+      "missing_rows": 0,
+      "failed_rows": 0,
+      "comparisons": 5,
+      "verdict_counts": {
+        "inconclusive": 5
+      },
+      "inference_present": false
+    }
+  ],
+  "primary_method_comparisons": [
+    {
+      "family_id": "method-model-structure",
+      "candidate": "arm-02/pointwise",
+      "control": "arm-01/full",
+      "delta_estimate_m": 32.9531080630783,
+      "simultaneous_interval_m": [
+        22.98749987202486,
+        43.36902971139333
+      ],
+      "holm_adjusted_p_zero": 0.001999000499750125,
+      "tail_check_passed": true,
+      "saved_verdict": "inconclusive",
+      "reason": "interval_overlaps_practical_boundary_or_not_significant",
+      "mechanism_passed": true,
+      "planning_qualified": true,
+      "precision_invariant_verdict": "inconclusive"
+    },
+    {
+      "family_id": "method-model-structure",
+      "candidate": "arm-03/single_gaussian",
+      "control": "arm-01/full",
+      "delta_estimate_m": 22.013739338104006,
+      "simultaneous_interval_m": [
+        -14.190401879136918,
+        60.81038580814564
+      ],
+      "holm_adjusted_p_zero": 0.3278360819590205,
+      "tail_check_passed": true,
+      "saved_verdict": "inconclusive",
+      "reason": "interval_overlaps_practical_boundary_or_not_significant",
+      "mechanism_passed": true,
+      "planning_qualified": true,
+      "precision_invariant_verdict": "inconclusive"
+    },
+    {
+      "family_id": "method-model-structure",
+      "candidate": "arm-04/gmm_kernel",
+      "control": "arm-01/full",
+      "delta_estimate_m": -2.8263470584298918,
+      "simultaneous_interval_m": [
+        -21.219952732309977,
+        16.333573171362854
+      ],
+      "holm_adjusted_p_zero": 0.711144427786107,
+      "tail_check_passed": true,
+      "saved_verdict": "equivalent",
+      "reason": "simultaneous_interval_strictly_inside_practical_band",
+      "mechanism_passed": true,
+      "planning_qualified": true,
+      "precision_invariant_verdict": "inconclusive"
+    },
+    {
+      "family_id": "method-model-structure",
+      "candidate": "arm-05/explicit_decomp",
+      "control": "arm-01/full",
+      "delta_estimate_m": 57.95732336801082,
+      "simultaneous_interval_m": [
+        -3.0348386483066676,
+        117.07772440418108
+      ],
+      "holm_adjusted_p_zero": 0.05397301349325337,
+      "tail_check_passed": true,
+      "saved_verdict": "inconclusive",
+      "reason": "interval_overlaps_practical_boundary_or_not_significant",
+      "mechanism_passed": true,
+      "planning_qualified": true,
+      "precision_invariant_verdict": "inconclusive"
+    },
+    {
+      "family_id": "method-numerical-propagation",
+      "candidate": "arm-19/em",
+      "control": "arm-18/full",
+      "delta_estimate_m": 0.025452802091722654,
+      "simultaneous_interval_m": [
+        0.00774080813916601,
+        0.050924798017468256
+      ],
+      "holm_adjusted_p_zero": 0.02798600699650175,
+      "tail_check_passed": true,
+      "saved_verdict": "equivalent",
+      "reason": "simultaneous_interval_strictly_inside_practical_band",
+      "mechanism_passed": true,
+      "planning_qualified": true,
+      "precision_invariant_verdict": "inconclusive"
+    },
+    {
+      "family_id": "method-numerical-propagation",
+      "candidate": "arm-19/euler",
+      "control": "arm-18/full",
+      "delta_estimate_m": 0.025452802091722654,
+      "simultaneous_interval_m": [
+        0.00774080813916601,
+        0.050924798017468256
+      ],
+      "holm_adjusted_p_zero": 0.02798600699650175,
+      "tail_check_passed": true,
+      "saved_verdict": "equivalent",
+      "reason": "simultaneous_interval_strictly_inside_practical_band",
+      "mechanism_passed": true,
+      "planning_qualified": true,
+      "precision_invariant_verdict": "inconclusive"
+    },
+    {
+      "family_id": "method-numerical-propagation",
+      "candidate": "arm-21/crn",
+      "control": "arm-20/full",
+      "delta_estimate_m": -0.00005635116077952339,
+      "simultaneous_interval_m": [
+        -0.00015282414847221973,
+        0.000014835609310136108
+      ],
+      "holm_adjusted_p_zero": 0.16691654172913542,
+      "tail_check_passed": true,
+      "saved_verdict": "equivalent",
+      "reason": "simultaneous_interval_strictly_inside_practical_band",
+      "mechanism_passed": true,
+      "planning_qualified": true,
+      "precision_invariant_verdict": "inconclusive"
+    },
+    {
+      "family_id": "method-numerical-propagation",
+      "candidate": "arm-21/mc",
+      "control": "arm-20/full",
+      "delta_estimate_m": -0.7793136954436097,
+      "simultaneous_interval_m": [
+        -2.9476694999233786,
+        1.49390450024681
+      ],
+      "holm_adjusted_p_zero": 0.36531734132933535,
+      "tail_check_passed": true,
+      "saved_verdict": "equivalent",
+      "reason": "simultaneous_interval_strictly_inside_practical_band",
+      "mechanism_passed": true,
+      "planning_qualified": true,
+      "precision_invariant_verdict": "inconclusive"
+    },
+    {
+      "family_id": "method-objective-and-score",
+      "candidate": "arm-08/qmle",
+      "control": "arm-07/full",
+      "delta_estimate_m": 0.2755523218728847,
+      "simultaneous_interval_m": [
+        -1.9167750469376164,
+        2.704417142102034
+      ],
+      "holm_adjusted_p_zero": 1,
+      "tail_check_passed": true,
+      "saved_verdict": "equivalent",
+      "reason": "simultaneous_interval_strictly_inside_practical_band",
+      "mechanism_passed": true,
+      "planning_qualified": true,
+      "precision_invariant_verdict": "inconclusive"
+    },
+    {
+      "family_id": "method-objective-and-score",
+      "candidate": "arm-09/mixed",
+      "control": "arm-07/full",
+      "delta_estimate_m": -6.550042294489723,
+      "simultaneous_interval_m": [
+        -16.861829984372257,
+        3.1796829073886403
+      ],
+      "holm_adjusted_p_zero": 0.5497251374312844,
+      "tail_check_passed": true,
+      "saved_verdict": "equivalent",
+      "reason": "simultaneous_interval_strictly_inside_practical_band",
+      "mechanism_passed": true,
+      "planning_qualified": true,
+      "precision_invariant_verdict": "inconclusive"
+    },
+    {
+      "family_id": "method-objective-and-score",
+      "candidate": "arm-09/pure_es",
+      "control": "arm-07/full",
+      "delta_estimate_m": -5.313594164510165,
+      "simultaneous_interval_m": [
+        -15.975849427704414,
+        5.259756313376008
+      ],
+      "holm_adjusted_p_zero": 0.8395802098950524,
+      "tail_check_passed": true,
+      "saved_verdict": "equivalent",
+      "reason": "simultaneous_interval_strictly_inside_practical_band",
+      "mechanism_passed": true,
+      "planning_qualified": true,
+      "precision_invariant_verdict": "inconclusive"
+    },
+    {
+      "family_id": "method-objective-and-score",
+      "candidate": "arm-10/d2_closed",
+      "control": "arm-07/full",
+      "delta_estimate_m": 0,
+      "simultaneous_interval_m": [
+        0,
+        0
+      ],
+      "holm_adjusted_p_zero": 1,
+      "tail_check_passed": true,
+      "saved_verdict": "inconclusive",
+      "reason": "zero_development_SD_is_not_power_evidence",
+      "mechanism_passed": true,
+      "planning_qualified": false,
+      "precision_invariant_verdict": "inconclusive"
+    },
+    {
+      "family_id": "method-objective-and-score",
+      "candidate": "arm-10/d2_mc",
+      "control": "arm-07/full",
+      "delta_estimate_m": 0,
+      "simultaneous_interval_m": [
+        0,
+        0
+      ],
+      "holm_adjusted_p_zero": 1,
+      "tail_check_passed": true,
+      "saved_verdict": "inconclusive",
+      "reason": "zero_development_SD_is_not_power_evidence",
+      "mechanism_passed": true,
+      "planning_qualified": false,
+      "precision_invariant_verdict": "inconclusive"
+    },
+    {
+      "family_id": "method-observation-interval",
+      "candidate": "arm-06/dt120",
+      "control": "arm-01/full",
+      "delta_estimate_m": -11.557232140871653,
+      "simultaneous_interval_m": [
+        -20.370297340706486,
+        -3.04202751836584
+      ],
+      "holm_adjusted_p_zero": 0.0029985007496251873,
+      "tail_check_passed": true,
+      "saved_verdict": "equivalent",
+      "reason": "simultaneous_interval_strictly_inside_practical_band",
+      "mechanism_passed": true,
+      "planning_qualified": true,
+      "precision_invariant_verdict": "inconclusive"
+    },
+    {
+      "family_id": "method-observation-interval",
+      "candidate": "arm-06/dt30",
+      "control": "arm-01/full",
+      "delta_estimate_m": 8.562452948485857,
+      "simultaneous_interval_m": [
+        3.733112028381705,
+        13.761609806673167
+      ],
+      "holm_adjusted_p_zero": 0.001999000499750125,
+      "tail_check_passed": true,
+      "saved_verdict": "equivalent",
+      "reason": "simultaneous_interval_strictly_inside_practical_band",
+      "mechanism_passed": true,
+      "planning_qualified": true,
+      "precision_invariant_verdict": "inconclusive"
+    },
+    {
+      "family_id": "method-observation-interval",
+      "candidate": "arm-06/dt300",
+      "control": "arm-01/full",
+      "delta_estimate_m": -23.404605423908972,
+      "simultaneous_interval_m": [
+        -48.26887354826701,
+        -2.467493424090268
+      ],
+      "holm_adjusted_p_zero": 0.022988505747126436,
+      "tail_check_passed": true,
+      "saved_verdict": "inconclusive",
+      "reason": "interval_overlaps_practical_boundary_or_not_significant",
+      "mechanism_passed": true,
+      "planning_qualified": true,
+      "precision_invariant_verdict": "inconclusive"
+    },
+    {
+      "family_id": "method-observation-interval",
+      "candidate": "arm-06/dt600",
+      "control": "arm-01/full",
+      "delta_estimate_m": -24.691391693957772,
+      "simultaneous_interval_m": [
+        -67.65149680393148,
+        9.077053061204392
+      ],
+      "holm_adjusted_p_zero": 0.11594202898550725,
+      "tail_check_passed": true,
+      "saved_verdict": "inconclusive",
+      "reason": "planning_power_below_target",
+      "mechanism_passed": true,
+      "planning_qualified": false,
+      "precision_invariant_verdict": "inconclusive"
+    },
+    {
+      "family_id": "method-transfer-adaptation",
+      "candidate": "arm-12/scratch",
+      "control": "arm-11/full",
+      "delta_estimate_m": 2.6037169087643175,
+      "simultaneous_interval_m": [
+        -4.733928913009776,
+        10.023147100100026
+      ],
+      "holm_adjusted_p_zero": 1,
+      "tail_check_passed": true,
+      "saved_verdict": "equivalent",
+      "reason": "simultaneous_interval_strictly_inside_practical_band",
+      "mechanism_passed": true,
+      "planning_qualified": true,
+      "precision_invariant_verdict": "inconclusive"
+    },
+    {
+      "family_id": "method-transfer-adaptation",
+      "candidate": "arm-14/reptile",
+      "control": "arm-11/full",
+      "delta_estimate_m": 2.194724471910266,
+      "simultaneous_interval_m": [
+        -11.946509337741741,
+        12.909470230227312
+      ],
+      "holm_adjusted_p_zero": 1,
+      "tail_check_passed": true,
+      "saved_verdict": "equivalent",
+      "reason": "simultaneous_interval_strictly_inside_practical_band",
+      "mechanism_passed": true,
+      "planning_qualified": true,
+      "precision_invariant_verdict": "inconclusive"
+    },
+    {
+      "family_id": "method-transfer-adaptation",
+      "candidate": "arm-15/drift_only",
+      "control": "arm-11/full",
+      "delta_estimate_m": 0.5048379485533587,
+      "simultaneous_interval_m": [
+        -1.5215829928028777,
+        2.4869736201694357
+      ],
+      "holm_adjusted_p_zero": 1,
+      "tail_check_passed": true,
+      "saved_verdict": "equivalent",
+      "reason": "simultaneous_interval_strictly_inside_practical_band",
+      "mechanism_passed": true,
+      "planning_qualified": true,
+      "precision_invariant_verdict": "inconclusive"
+    },
+    {
+      "family_id": "method-transfer-adaptation",
+      "candidate": "arm-15/two_step",
+      "control": "arm-11/full",
+      "delta_estimate_m": -0.035914912051011445,
+      "simultaneous_interval_m": [
+        -2.597689383094756,
+        1.8134643993895787
+      ],
+      "holm_adjusted_p_zero": 1,
+      "tail_check_passed": true,
+      "saved_verdict": "equivalent",
+      "reason": "simultaneous_interval_strictly_inside_practical_band",
+      "mechanism_passed": true,
+      "planning_qualified": true,
+      "precision_invariant_verdict": "inconclusive"
+    }
+  ],
+  "mechanisms": {
+    "causal_prefix": {
+      "required_count": 28,
+      "counts_by_status": {
+        "computed": 28
+      },
+      "passed_count": 28,
+      "diagnostics": [
+        {
+          "slot_id": "arm-10/d2_closed",
+          "statistic": "closed_mc_relative_error",
+          "operator": "le",
+          "threshold": 0.2,
+          "units": "relative_error",
+          "value": 0.19368532697679447,
+          "passed": true,
+          "expected_count": 230,
+          "available_count": 230,
+          "status": "computed"
+        },
+        {
+          "slot_id": "arm-10/d2_mc",
+          "statistic": "closed_mc_relative_error",
+          "operator": "le",
+          "threshold": 0.2,
+          "units": "relative_error",
+          "value": 0.19368532697679447,
+          "passed": true,
+          "expected_count": 230,
+          "available_count": 230,
+          "status": "computed"
+        },
+        {
+          "slot_id": "arm-18/full",
+          "statistic": "split_exact_error",
+          "operator": "le",
+          "threshold": 2,
+          "units": "m",
+          "value": 0.00002187948929134796,
+          "passed": true,
+          "expected_count": 230,
+          "available_count": 230,
+          "status": "computed"
+        },
+        {
+          "slot_id": "arm-19/em",
+          "statistic": "euler_discretization_error",
+          "operator": "ge",
+          "threshold": 0,
+          "units": "m",
+          "value": 0.23681812324308182,
+          "passed": true,
+          "expected_count": 230,
+          "available_count": 230,
+          "status": "computed"
+        },
+        {
+          "slot_id": "arm-19/euler",
+          "statistic": "euler_discretization_error",
+          "operator": "ge",
+          "threshold": 0,
+          "units": "m",
+          "value": 0.23681812324308182,
+          "passed": true,
+          "expected_count": 230,
+          "available_count": 230,
+          "status": "computed"
+        },
+        {
+          "slot_id": "arm-21/crn",
+          "statistic": "variance_reduction_factor",
+          "operator": "ge",
+          "threshold": 1,
+          "units": "variance_ratio",
+          "value": 8769043462.4522,
+          "passed": true,
+          "expected_count": 1,
+          "available_count": 1,
+          "status": "computed"
+        },
+        {
+          "slot_id": "arm-21/mc",
+          "statistic": "variance_reduction_factor",
+          "operator": "ge",
+          "threshold": 1,
+          "units": "variance_ratio",
+          "value": 8769043462.4522,
+          "passed": true,
+          "expected_count": 1,
+          "available_count": 1,
+          "status": "computed"
+        }
+      ]
+    },
+    "known_velocity": {
+      "required_count": 28,
+      "counts_by_status": {
+        "computed": 28
+      },
+      "passed_count": 28,
+      "diagnostics": [
+        {
+          "slot_id": "arm-10/d2_closed",
+          "statistic": "closed_mc_relative_error",
+          "operator": "le",
+          "threshold": 0.2,
+          "units": "relative_error",
+          "value": 0.13987951040803262,
+          "passed": true,
+          "expected_count": 30,
+          "available_count": 30,
+          "status": "computed"
+        },
+        {
+          "slot_id": "arm-10/d2_mc",
+          "statistic": "closed_mc_relative_error",
+          "operator": "le",
+          "threshold": 0.2,
+          "units": "relative_error",
+          "value": 0.13987951040803262,
+          "passed": true,
+          "expected_count": 30,
+          "available_count": 30,
+          "status": "computed"
+        },
+        {
+          "slot_id": "arm-18/full",
+          "statistic": "split_exact_error",
+          "operator": "le",
+          "threshold": 2,
+          "units": "m",
+          "value": 0.000021565740528189517,
+          "passed": true,
+          "expected_count": 30,
+          "available_count": 30,
+          "status": "computed"
+        },
+        {
+          "slot_id": "arm-19/em",
+          "statistic": "euler_discretization_error",
+          "operator": "ge",
+          "threshold": 0,
+          "units": "m",
+          "value": 0.23165481619295447,
+          "passed": true,
+          "expected_count": 30,
+          "available_count": 30,
+          "status": "computed"
+        },
+        {
+          "slot_id": "arm-19/euler",
+          "statistic": "euler_discretization_error",
+          "operator": "ge",
+          "threshold": 0,
+          "units": "m",
+          "value": 0.23165481619295447,
+          "passed": true,
+          "expected_count": 30,
+          "available_count": 30,
+          "status": "computed"
+        },
+        {
+          "slot_id": "arm-21/crn",
+          "statistic": "variance_reduction_factor",
+          "operator": "ge",
+          "threshold": 1,
+          "units": "variance_ratio",
+          "value": 11767041031.152756,
+          "passed": true,
+          "expected_count": 1,
+          "available_count": 1,
+          "status": "computed"
+        },
+        {
+          "slot_id": "arm-21/mc",
+          "statistic": "variance_reduction_factor",
+          "operator": "ge",
+          "threshold": 1,
+          "units": "variance_ratio",
+          "value": 11767041031.152756,
+          "passed": true,
+          "expected_count": 1,
+          "available_count": 1,
+          "status": "computed"
+        }
+      ]
+    },
+    "point_only": {
+      "required_count": 28,
+      "counts_by_status": {
+        "computed": 28
+      },
+      "passed_count": 28,
+      "diagnostics": [
+        {
+          "slot_id": "arm-10/d2_closed",
+          "statistic": "closed_mc_relative_error",
+          "operator": "le",
+          "threshold": 0.2,
+          "units": "relative_error",
+          "value": 0.14563844351466307,
+          "passed": true,
+          "expected_count": 30,
+          "available_count": 30,
+          "status": "computed"
+        },
+        {
+          "slot_id": "arm-10/d2_mc",
+          "statistic": "closed_mc_relative_error",
+          "operator": "le",
+          "threshold": 0.2,
+          "units": "relative_error",
+          "value": 0.14563844351466307,
+          "passed": true,
+          "expected_count": 30,
+          "available_count": 30,
+          "status": "computed"
+        },
+        {
+          "slot_id": "arm-18/full",
+          "statistic": "split_exact_error",
+          "operator": "le",
+          "threshold": 2,
+          "units": "m",
+          "value": 0.000021543409987982485,
+          "passed": true,
+          "expected_count": 30,
+          "available_count": 30,
+          "status": "computed"
+        },
+        {
+          "slot_id": "arm-19/em",
+          "statistic": "euler_discretization_error",
+          "operator": "ge",
+          "threshold": 0,
+          "units": "m",
+          "value": 0.23070203307146517,
+          "passed": true,
+          "expected_count": 30,
+          "available_count": 30,
+          "status": "computed"
+        },
+        {
+          "slot_id": "arm-19/euler",
+          "statistic": "euler_discretization_error",
+          "operator": "ge",
+          "threshold": 0,
+          "units": "m",
+          "value": 0.23070203307146517,
+          "passed": true,
+          "expected_count": 30,
+          "available_count": 30,
+          "status": "computed"
+        },
+        {
+          "slot_id": "arm-21/crn",
+          "statistic": "variance_reduction_factor",
+          "operator": "ge",
+          "threshold": 1,
+          "units": "variance_ratio",
+          "value": 13646205584.898294,
+          "passed": true,
+          "expected_count": 1,
+          "available_count": 1,
+          "status": "computed"
+        },
+        {
+          "slot_id": "arm-21/mc",
+          "statistic": "variance_reduction_factor",
+          "operator": "ge",
+          "threshold": 1,
+          "units": "variance_ratio",
+          "value": 13646205584.898294,
+          "passed": true,
+          "expected_count": 1,
+          "available_count": 1,
+          "status": "computed"
+        }
+      ]
+    }
+  },
+  "scoring_only_gaussian_draws_evaluated": 593920,
+  "registered_scoring_only_draw_ceiling": 593920,
+  "new_fits": 0,
+  "new_forecasts": 0,
+  "independent_saved_output_audit_completed": false,
+  "scientific_claim_authorized": false,
+  "numerically_qualified": false,
+  "human_accepted": false,
+  "private_case_data_exported": false,
+  "new_scores_or_resampling_by_projection": 0,
+  "scope": "Finite-budget predictor performance in the registered exposed cohort and short horizon; not untouched holdout, 72h or resolution-invariant evidence.",
+  "projection_scope": "Existing immutable analysis scalars only; no saved arrays, trajectories, maps, private identifiers or paths opened or exported. Original fixed analysis is not independent audit or acceptance."
+}

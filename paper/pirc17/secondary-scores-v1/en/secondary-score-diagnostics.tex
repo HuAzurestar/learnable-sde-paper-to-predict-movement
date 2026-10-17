@@ -1,0 +1,38 @@
+\begin{table}[htbp]
+\centering\small
+\caption{Saved marginal CRPS and within-forecast endpoint error quantiles (metres). Lower CRPS is better for that coordinate; two marginals do not determine joint calibration. Each stochastic configuration uses 46 recording-hash blocks and five seeds (230 forecasts); inertial uses the same 46 blocks with one deterministic path each. Quantile entries are block/seed means of per-forecast particle error quantiles, not population FDE quantiles, pooled particles or a best-particle path. All targets retain their original recorded elapsed time; no per-horizon hypothesis test.}
+\label{tab:crps-endpoint-diagnostics}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Model & Nominal min & CRPS east & CRPS north\\
+\midrule
+Full01 & 1 & 32.71 & 31.55\\
+Full01 & 5 & 157.30 & 153.31\\
+Full01 & 15 & 390.26 & 373.30\\
+Full01 & 30 & 737.72 & 535.72\\
+GMM & 1 & 32.58 & 31.51\\
+GMM & 5 & 149.27 & 142.28\\
+GMM & 15 & 384.50 & 367.09\\
+GMM & 30 & 736.79 & 549.33\\
+dt300 & 1 & 37.20 & 34.78\\
+dt300 & 5 & 147.70 & 144.49\\
+dt300 & 15 & 368.85 & 354.71\\
+dt300 & 30 & 687.11 & 524.07\\
+Inertial & 1 & 21.37 & 18.50\\
+Inertial & 5 & 137.90 & 160.72\\
+Inertial & 15 & 561.23 & 618.27\\
+Inertial & 30 & 1297.37 & 1356.32\\
+\bottomrule
+\end{tabular}
+\par\medskip
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Model & Mean FDE & Mean $q_{.50}$ & Mean $q_{.90}$ & Mean $q_{.95}$\\
+\midrule
+Full01 & 1326.09 & 1564.98 & 2205.44 & 2346.62\\
+GMM & 1299.11 & 1419.34 & 1979.14 & 2138.12\\
+dt300 & 1335.73 & 1663.28 & 2585.48 & 2827.57\\
+Inertial & 2095.78 & 2095.78 & 2095.78 & 2095.78\\
+\bottomrule
+\end{tabular}
+\end{table}

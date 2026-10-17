@@ -1,0 +1,90 @@
+\subsection{Complete primary predictive-region sizes}
+\label{sec:all-method-regions}
+\begingroup\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{.90}
+\begin{longtable}{@{}p{.25\linewidth}rrrr@{}}
+\caption{All 28 original primary configurations. Each cell: mean radius (m) / mean area (km$^2$) / empirical coverage (\%) of the nominal 90\% marginal disk. Each row uses the same 46 blocks and five seeds (230 saved scores), not 230 independent targets. Area averages individual disk areas; it is not the area of the mean radius. Descriptive only; all four probability levels remain in the saved aggregate.}\label{tab:all-method-regions}\\
+\toprule
+Configuration & 1 min & 5 min & 15 min & 30 min\\
+\midrule\endfirsthead
+\multicolumn{5}{l}{Table~\thetable\ (continued)}\\
+\toprule
+Configuration & 1 min & 5 min & 15 min & 30 min\\
+\midrule\endhead
+\bottomrule\endfoot
+\midrule
+\multicolumn{5}{l}{\textit{Model structure / Full01}}\\*
+Full01 & 118 / 0.044 / 95.7 & 305 / 0.294 / 37.8 & 665 / 1.415 / 35.2 & 1184 / 4.534 / 46.5\\
+Pointwise mixture & 117 / 0.043 / 95.7 & 268 / 0.226 / 24.8 & 482 / 0.731 / 10.9 & 720 / 1.629 / 21.7\\
+Single Gaussian & 116 / 0.042 / 95.7 & 267 / 0.224 / 31.7 & 492 / 0.760 / 17.8 & 765 / 1.840 / 32.6\\
+Residual mixture & 151 / 0.072 / 97.0 & 356 / 0.400 / 66.5 & 648 / 1.321 / 34.8 & 990 / 3.079 / 45.2\\
+Explicit features & 113 / 0.040 / 91.3 & 253 / 0.201 / 32.2 & 441 / 0.611 / 13.5 & 630 / 1.247 / 21.7\\
+\midrule
+\multicolumn{5}{l}{\textit{Observation interval / Full01}}\\*
+30 s observations & 89 / 0.025 / 72.6 & 244 / 0.190 / 23.0 & 567 / 1.039 / 24.3 & 1052 / 3.619 / 38.3\\
+60 s (Full01 replay) & 118 / 0.044 / 95.7 & 305 / 0.294 / 37.8 & 665 / 1.415 / 35.2 & 1184 / 4.534 / 46.5\\
+120 s observations & 157 / 0.077 / 98.3 & 386 / 0.469 / 70.9 & 797 / 2.019 / 54.8 & 1363 / 5.969 / 57.0\\
+300 s observations & 222 / 0.155 / 100.0 & 528 / 0.879 / 96.5 & 1036 / 3.395 / 71.7 & 1693 / 9.109 / 64.3\\
+600 s observations & 283 / 0.252 / 100.0 & 666 / 1.395 / 99.1 & 1267 / 5.058 / 92.6 & 1999 / 12.609 / 79.1\\
+\midrule
+\multicolumn{5}{l}{\textit{Objective / score / Full07}}\\*
+Full07 & 118 / 0.044 / 95.7 & 303 / 0.291 / 37.8 & 664 / 1.410 / 33.5 & 1184 / 4.537 / 45.7\\
+QMLE & 118 / 0.044 / 95.7 & 304 / 0.293 / 38.7 & 666 / 1.418 / 34.3 & 1187 / 4.558 / 46.5\\
+Mixed calibration & 118 / 0.044 / 95.7 & 302 / 0.287 / 40.4 & 661 / 1.378 / 34.8 & 1187 / 4.455 / 46.5\\
+Pure ES calibration & 117 / 0.043 / 95.7 & 302 / 0.287 / 39.1 & 662 / 1.380 / 35.2 & 1184 / 4.429 / 45.7\\
+d2 MC score route & 118 / 0.044 / 95.7 & 303 / 0.291 / 37.8 & 664 / 1.410 / 33.5 & 1184 / 4.537 / 45.7\\
+d2 closed score route & 118 / 0.044 / 95.7 & 303 / 0.291 / 37.8 & 664 / 1.410 / 33.5 & 1184 / 4.537 / 45.7\\
+\midrule
+\multicolumn{5}{l}{\textit{Training / adaptation / Full11}}\\*
+Full11 & 118 / 0.044 / 95.7 & 304 / 0.293 / 38.7 & 665 / 1.414 / 34.8 & 1183 / 4.535 / 46.5\\
+Scratch & 119 / 0.045 / 95.7 & 311 / 0.306 / 40.4 & 687 / 1.525 / 37.8 & 1237 / 5.021 / 46.5\\
+Reptile & 119 / 0.044 / 95.7 & 301 / 0.286 / 37.4 & 645 / 1.334 / 33.0 & 1141 / 4.227 / 41.7\\
+Drift-only & 118 / 0.044 / 95.7 & 304 / 0.293 / 39.6 & 665 / 1.415 / 34.3 & 1184 / 4.535 / 47.0\\
+Two-step & 118 / 0.044 / 95.7 & 305 / 0.294 / 37.8 & 666 / 1.418 / 35.7 & 1187 / 4.561 / 47.0\\
+\midrule
+\multicolumn{5}{l}{\textit{Numerical / Full18, Full20}}\\*
+Full18 & 118 / 0.044 / 95.7 & 304 / 0.292 / 38.3 & 663 / 1.407 / 32.6 & 1186 / 4.551 / 45.7\\
+EM (Full18 control) & 118 / 0.044 / 95.7 & 304 / 0.292 / 38.3 & 663 / 1.406 / 32.6 & 1185 / 4.549 / 45.7\\
+Euler (EM alias) & 118 / 0.044 / 95.7 & 304 / 0.292 / 38.3 & 663 / 1.406 / 32.6 & 1185 / 4.549 / 45.7\\
+Full20 & 118 / 0.044 / 95.7 & 305 / 0.295 / 37.8 & 665 / 1.415 / 33.5 & 1186 / 4.553 / 47.0\\
+MC (Full20 control) & 118 / 0.044 / 95.7 & 303 / 0.291 / 36.5 & 663 / 1.407 / 34.3 & 1182 / 4.526 / 46.1\\
+CRN (Full20 control) & 118 / 0.044 / 95.7 & 305 / 0.295 / 37.8 & 665 / 1.415 / 33.5 & 1186 / 4.553 / 47.0\\
+\midrule
+\multicolumn{5}{l}{\textit{Additional reference (not a family)}}\\*
+Full16 (extra reference) & 118 / 0.044 / 95.7 & 304 / 0.293 / 37.8 & 663 / 1.407 / 33.5 & 1181 / 4.521 / 45.7\\
+\end{longtable}
+\endgroup
+\Needspace{.65\textheight}
+\subsection{Coverage across all saved probability levels}
+\label{sec:all-level-coverage}
+\begingroup\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{@{}rrrrr@{}}
+\caption{All 28 original configuration identities at every saved probability level and target slot. Ranges are minima--maxima of configuration means, not confidence intervals, individual-target ranges or population uncertainty. Each configuration uses the same 46 blocks and five seeds; aliases and Full controls remain included, so counts are not independent algorithms or evidence replications. The final column counts configuration means below/equal to/above the nominal probability, using unrounded values (floating equality tolerance $10^{-12}$ only, not a statistical calibration margin). Exact agreement at one level does not certify calibration. Area is the mean of individual disk areas; no averaging over configurations, new tests or recalibration.}\label{tab:all-level-coverage}\\
+\toprule
+Minutes & Nominal (\%) & Coverage range (\%) & Area range (km$^2$) & Below/equal/above\\
+\midrule\endfirsthead
+\multicolumn{5}{l}{Table~\thetable\ (continued)}\\
+\toprule
+Minutes & Nominal (\%) & Coverage range (\%) & Area range (km$^2$) & Below/equal/above\\
+\midrule\endhead
+\bottomrule\endfoot
+1 & 50 & 22.17--97.83 & 0.008--0.075 & 24 / 0 / 4\\
+1 & 80 & 45.65--100.00 & 0.017--0.176 & 2 / 0 / 26\\
+1 & 90 & 72.61--100.00 & 0.025--0.252 & 1 / 0 / 27\\
+1 & 95 & 93.04--100.00 & 0.032--0.331 & 1 / 0 / 27\\
+\midrule
+5 & 50 & 2.17--52.17 & 0.060--0.422 & 27 / 0 / 1\\
+5 & 80 & 15.65--97.83 & 0.138--0.975 & 26 / 0 / 2\\
+5 & 90 & 23.04--99.13 & 0.190--1.395 & 26 / 0 / 2\\
+5 & 95 & 29.13--100.00 & 0.240--1.822 & 26 / 0 / 2\\
+\midrule
+15 & 50 & 0.43--38.26 & 0.184--1.602 & 28 / 0 / 0\\
+15 & 80 & 6.52--73.04 & 0.427--3.602 & 28 / 0 / 0\\
+15 & 90 & 10.87--92.61 & 0.611--5.058 & 27 / 0 / 1\\
+15 & 95 & 16.09--97.83 & 0.794--6.496 & 27 / 0 / 1\\
+\midrule
+30 & 50 & 6.52--50.00 & 0.375--4.360 & 27 / 1 / 0\\
+30 & 80 & 15.65--68.70 & 0.872--9.219 & 28 / 0 / 0\\
+30 & 90 & 21.74--79.13 & 1.247--12.609 & 28 / 0 / 0\\
+30 & 95 & 26.52--87.39 & 1.632--15.959 & 28 / 0 / 0\\
+\end{longtable}
+\endgroup

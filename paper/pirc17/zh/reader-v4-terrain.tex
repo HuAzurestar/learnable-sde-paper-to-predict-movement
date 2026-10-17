@@ -1,0 +1,40 @@
+\paragraph{地形模型的输入与拟合机制。}
+本分支的$X_t$使用预测起点锚定的东西／南北坐标系。
+令$Z_t$为至多三个可见或生成位置及其时间的缓冲。
+首末割线给出速度$v_t$，归一化得到历史方向$h_t$，$\eta_t$表示方向是否有效。
+历史设计为$r(Z_t)=(1,v_{t,e},v_{t,n},\|v_t\|,h_{t,e},h_{t,n},\eta_t)^\top$。
+地形漂移及位置动力学为
+\begin{equation}\label{eq:main-terrain-model}
+ b_g(X_t,Z_t)=B_0^\top r(Z_t)+\theta_g^\top\widetilde\phi_g(X_t,Z_t),
+ \qquad dX_t=b_g(X_t,Z_t)\,dt+L_g\,dW_t .
+\end{equation}
+$\widetilde\phi_g$是在选定地图／历史特征后追加截距的向量，包含编码数值及有效性掩码。
+道路和河流输入描述最近要素距离与方向，覆盖采用分组指示，坡面输入描述坡度／方向，
+登记交互组合部分地图和历史量。这些是固定工程表示；系数从位移率学习，
+不受道路吸引或河流回避等物理定律约束。
+\input{reader-v9-terrain-factors.tex}
+
+共享$B_0$先以强度$10^{-6}$的ridge拟合。
+404个外层训练窗口各贡献一个实际首未来转移$(\Delta x_i,\Delta t_i)$，
+经过时长不必等于方法观测间隔$\tau$。
+随后配置$g$对剩余位移率$y_i=\Delta x_i/\Delta t_i-B_0^\top r(Z_i)$拟合
+\begin{equation}\label{eq:main-terrain-fit}
+ \widehat\theta_g=\underset{\theta}{\operatorname{argmin}}
+ \left\{\frac1{2n}\|D_g\theta-Y\|_F^2+
+             \frac\lambda2\|\theta\|_F^2\right\},
+ \quad n=404,\quad\lambda=10^{-4} .
+\end{equation}
+$D_g$堆叠增广特征行。两阶段拟合对参数线性，但地图查询和历史反馈使位置动力学依赖状态。
+各配置分别从拟合位移残差估计扩散：
+$Q_g=L_gL_g^\top=n^{-1}\sum_i
+(\Delta x_i-\widehat b_{g,i}\Delta t_i)
+(\Delta x_i-\widehat b_{g,i}\Delta t_i)^\top/\Delta t_i$。
+这与方法分支的中心化$\tau R$估计不同。
+Euler--Maruyama逐路径加入漂移$b_g\Delta$与噪声$\sqrt\Delta L_gz$；
+每5个保存秒向历史缓冲追加生成位置并重算割线，地图在预测位置查询。
+真实未来观测不会进入缓冲。
+
+base配置保留共享历史漂移及拟合的纯历史残差条件器，不查询地图图层；
+all-terrain加入全部登记组及交互，LOO从该完整配置移除一组，
+LIO向历史基线加入一组。因此RQ2比较这些配置在匹配目标上的预测增量。
+共享基线与分开的残差拟合明确了所考察的增量，重拟合和特征惩罚则限制单个因素归因。

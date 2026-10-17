@@ -1,0 +1,56 @@
+{
+  "schema_version": "pirc17-runtime-interruption-disclosure-v1",
+  "scope": "Anonymous scalar disclosure from one original completed runtime trial and a read-only host-event check; not a corrected runtime benchmark or independent scientific audit.",
+  "source_artifact_content_sha256": "7c2325f975990c06ddb2c1ac28685f8aa7f78e65ab33f88ad580403861e55b66",
+  "original_condition": {
+    "matrix": "terrain",
+    "subject": "loo-surface",
+    "kind": "runtime_cold",
+    "repetition": 0,
+    "trials_per_condition": 5
+  },
+  "recorded": {
+    "prediction_seconds": 2315.9963217000004,
+    "actual_horizon_seconds": 1801,
+    "started_monotonic_ns": 243431900463500,
+    "ended_monotonic_ns": 245747896785200,
+    "end_to_end_ms": 2315996.3217,
+    "inclusive_stage_ms": {
+      "checkpoint_and_input_io": 1651.0027,
+      "rollout": 2314345.2324,
+      "terrain_io_and_query": 2295073.071799998
+    }
+  },
+  "host_observation": {
+    "sleep_provider": "Microsoft-Windows-Kernel-Power",
+    "sleep_event_id": 42,
+    "resume_provider": "Microsoft-Windows-Power-Troubleshooter",
+    "resume_event_id": 1,
+    "event_timestamp_gap_seconds": 1843,
+    "gap_resolution": "Second-resolution displayed host-event timestamps; not a precise CPU-inactivity duration.",
+    "original_trial_overlaps_observed_sleep": true,
+    "endpoint_mapping": "Saved perf_counter_ns endpoints mapped using a later paired UTC/counter observation; original stored UTC endpoints are unavailable."
+  },
+  "disposition": {
+    "original_values_and_costs_retained": true,
+    "original_trial_denominator_retained": true,
+    "trial_excluded": false,
+    "sleep_subtracted": false,
+    "replacement_trial_run": false,
+    "uninterrupted_latency_certified": false,
+    "affected_summary_uninterrupted_latency_certified": false,
+    "all_other_trials_interruption_free_certified": false,
+    "complete_runtime_qualification": false,
+    "independent_saved_output_audit_completed": false,
+    "predictive_scores_recomputed": false,
+    "predictive_scores_independently_validated": false,
+    "scientific_claim_authorized": false,
+    "human_accepted": false
+  },
+  "new_fits": 0,
+  "new_forecasts": 0,
+  "new_scores_or_resampling": 0,
+  "new_map_queries": 0,
+  "private_case_data_exported": false,
+  "interpretation": "Retain interruption-exposed elapsed time and affected quantiles/normalized means with this limitation; do not sum nested terrain time into rollout or infer speedup. This is not a numerical correction, predictive-quality conclusion, or certification of unaffected trials."
+}
