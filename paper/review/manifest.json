@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "project": "PIRC-41",
+  "research_completion": "INCOMPLETE",
+  "publication_status": "research-first-release draft; not a peer-reviewed publication",
+  "literature_cutoff": "2026-10-16",
+  "public_projection": {
+    "removed": [
+      "workstation/cache/image locations",
+      "internal evidence file references",
+      "internal browser reference handles",
+      "internal post-manuscript run/audit history"
+    ],
+    "preserved": [
+      "all 208 record identities",
+      "scientific metadata and technical annotations",
+      "scores, nulls and evidence statuses",
+      "public source URLs and page/section/version locators",
+      "historical and adjacent-year country qualifiers",
+      "current and prior scientific judgments"
+    ],
+    "reproducibility_limit": "Internal source caches, execution logs and the extraction environment are not published. Source URLs can become unavailable. This package is a qualified snapshot, not an independent re-extraction or replication."
+  },
+  "record_serialization": "UTF-8 JSON; ensure_ascii=false; compact separators; original record/key order",
+  "public_records_sha256": "9d8b5786b840dc08fadc3814e31b5e61af2b10fefc21e723a18f645f9bf29da0",
+  "manuscript_body_sha256": "9632f000f8826655a1802f5801d188eecdb1a2055ee82f8b9f83ab573574636b",
+  "counts": {
+    "records": 208,
+    "full_text_checked": 60,
+    "abstract_or_short_content": 143,
+    "metadata_only": 5,
+    "milestones": 23,
+    "score_candidates": 25,
+    "complete_score_candidates": 23,
+    "incomplete_score_candidates": 2,
+    "internal_edges": 585,
+    "external_edges": 9,
+    "excluded_assertions": 1,
+    "csv_rows": 595
+  },
+  "internal_input_fingerprints": [
+    {
+      "name": "papers.xlsx",
+      "bytes": 4227445,
+      "sha256": "a95ebb7ef9a007cd955afdc24b53ef9b39318bdfa4f958fe8ce6fd3cd8da1ade"
+    },
+    {
+      "name": "relations.csv",
+      "bytes": 549154,
+      "sha256": "04f92501fcd7e519e9f90e4f1e2275c83c61811be9da4141e02bc1f7e691c383"
+    },
+    {
+      "name": "timeline.html",
+      "bytes": 7449363,
+      "sha256": "d3f171bc83aa8c4999e24622f87af0fc8a74f7fd3cb07e96fa592d8da8f02203"
+    },
+    {
+      "name": "review.md",
+      "bytes": 545457,
+      "sha256": "7fcc8c3cd0c0b6d1bb0dc808906ef5e38b99cdc344d4231029a9ed3b7469f9c8"
+    }
+  ],
+  "public_artifacts": [
+    {
+      "name": "papers.xlsx",
+      "bytes": 4126827,
+      "sha256": "d41491dcb9e95d24a1f3936388bf3e15f92bb02ad9f43f1e729c65ffc73136da"
+    },
+    {
+      "name": "relations.csv",
+      "bytes": 545376,
+      "sha256": "4f61ace30c67f256f6d21bcc14a36bf4303924f6d863f561053b20744536929e"
+    },
+    {
+      "name": "timeline.html",
+      "bytes": 7170546,
+      "sha256": "89747df890567c7fbc53dbfe8eb4d38cba417385de738b3f219d00303f808204"
+    },
+    {
+      "name": "review.md",
+      "bytes": 44685,
+      "sha256": "9632f000f8826655a1802f5801d188eecdb1a2055ee82f8b9f83ab573574636b"
+    }
+  ],
+  "transformation_counts": {
+    "internal_file_reference": 927,
+    "internal_tool_reference": 24,
+    "private_service": 0,
+    "removed_key:audit_file": 2949,
+    "removed_key:audit_image_directory": 3,
+    "removed_key:audit_images": 12,
+    "removed_key:cached_path": 24,
+    "removed_key:evidence_file": 12052,
+    "removed_key:evidence_files": 64,
+    "removed_key:independent_render_paths": 4,
+    "removed_key:local_path": 977,
+    "removed_key:local_snapshot": 431,
+    "removed_key:path": 17,
+    "removed_key:prior_read_local_path": 3,
+    "removed_key:proof_file": 56,
+    "removed_key:raw_response_path": 3,
+    "removed_key:render_directory": 3,
+    "removed_key:risk_images": 420,
+    "removed_key:root_risk_image": 71,
+    "removed_key:seed_file": 416,
+    "removed_key:snapshot_path": 68,
+    "removed_key:source_file": 67,
+    "workstation_path": 0
+  }
+}

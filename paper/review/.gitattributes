@@ -1,0 +1,2 @@
+# Public export hashes bind exact bytes; do not translate line endings.
+* -text
