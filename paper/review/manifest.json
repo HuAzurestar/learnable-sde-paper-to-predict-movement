@@ -22,7 +22,167 @@
     "reproducibility_limit": "Internal source caches, execution logs and the extraction environment are not published. Source URLs can become unavailable. This package is a qualified snapshot, not an independent re-extraction or replication."
   },
   "record_serialization": "UTF-8 JSON; ensure_ascii=false; compact separators; original record/key order",
-  "public_records_sha256": "9d8b5786b840dc08fadc3814e31b5e61af2b10fefc21e723a18f645f9bf29da0",
+  "public_records_sha256": "36f91a9c1ed2cbeeb7084a8a5a5414affc4ba2a1013feb3e01475620ec538c42",
+  "editorial_source_priority": {
+    "policy_id": "journal-first-thesis-screening-v1",
+    "scope": "User-requested journal-first reading/resource-allocation preference, separate from scientific evidence, citation metrics and technical milestone scores. No records removed.",
+    "exception_rule": "A thesis exception requires explicit manual evidence of substantial milestone/actual-adoption importance and high influence interpreted in its field/era. Citation counts or degree type alone do not establish value; no universal numerical threshold is invented.",
+    "degree_identification": "Two masters and three doctoral works; provider source_type=dissertation alone does not distinguish degree level. Official repository/catalogue/title-page evidence is recorded individually.",
+    "citation_basis": "Existing OpenAlex work/version snapshots dated 2026-10-16; not refreshed or merged across versions/databases.",
+    "priority_counts": {
+      "journal_first": 134,
+      "other_research": 67,
+      "supplementary_thesis": 5,
+      "type_review_needed": 2
+    },
+    "reviewed_exception_ids": [],
+    "thesis_records": [
+      {
+        "id": "W2301402017",
+        "title": "A Monte Carlo approach to modeling lost person behavior in wilderness areas using a geographic information system",
+        "policy_id": "journal-first-thesis-screening-v1",
+        "judgment_kind": "editorial_reading_priority_not_intrinsic_quality_or_technical_score",
+        "publication_category": "degree_thesis",
+        "degree_level": "masters",
+        "degree_label": "硕士论文",
+        "priority": "supplementary_thesis",
+        "rank": 3,
+        "label": "补充材料／低优先级（硕士论文）",
+        "reason": "历史方法线索，当前正文证据不足；无已核里程碑／高引用例外，保留追溯，不优先投入补读。",
+        "exception_status": "not_established",
+        "selected_milestone": false,
+        "citation_snapshot": {
+          "provider": "OpenAlex",
+          "count": 0,
+          "queried_at": "2026-10-16T10:47:30.870897+00:00",
+          "scope": "Existing work/version-specific snapshot, not a fresh citation query, cross-database total or intrinsic-quality verdict. Zero is not proof of no influence."
+        },
+        "degree_evidence": {
+          "url": "https://libcat.library.tamu.edu/Record/in00001302822/Details",
+          "locator": "MARC 245$c Lori J. Erickson; 502$b M.S., Texas A&M University, 1995; 856 exact handle",
+          "scope": "Degree/type identification only; not an additional full-text reading."
+        },
+        "preferred_journal_candidate": null
+      },
+      {
+        "id": "W856206487",
+        "title": "Analysis of Search Incidents and Lost Person Behavior in Yosemite National Park",
+        "policy_id": "journal-first-thesis-screening-v1",
+        "judgment_kind": "editorial_reading_priority_not_intrinsic_quality_or_technical_score",
+        "publication_category": "degree_thesis",
+        "degree_level": "masters",
+        "degree_label": "硕士论文",
+        "priority": "supplementary_thesis",
+        "rank": 3,
+        "label": "补充材料／低优先级（硕士论文）",
+        "reason": "同一研究线已有2014年期刊论文；优先期刊篇。学位全文未得，不能把两篇当独立数据或认证全文等价。",
+        "exception_status": "not_established",
+        "selected_milestone": false,
+        "citation_snapshot": {
+          "provider": "OpenAlex",
+          "count": 15,
+          "queried_at": "2026-10-16T10:47:31.284265+00:00",
+          "scope": "Existing work/version-specific snapshot, not a fresh citation query, cross-database total or intrinsic-quality verdict. Zero is not proof of no influence."
+        },
+        "degree_evidence": {
+          "url": "https://kuscholarworks.ku.edu/server/api/core/items/62124f5b-087e-4cc2-a85c-cbed866e42a3",
+          "locator": "Official item handle 1808/10846; M.A., Geography, 2012; title and Jared Doke identity",
+          "scope": "Degree/type identification only; not an additional full-text reading."
+        },
+        "preferred_journal_candidate": {
+          "id": "W2004017040",
+          "doi": "10.1016/j.apgeog.2013.11.001",
+          "scope": "Related journal work prioritized; NOT certified identical text, cohort independence or complete thesis replacement."
+        }
+      },
+      {
+        "id": "W2772334031",
+        "title": "Agent-based lost person movement modelling, prediction and search in wilderness",
+        "policy_id": "journal-first-thesis-screening-v1",
+        "judgment_kind": "editorial_reading_priority_not_intrinsic_quality_or_technical_score",
+        "publication_category": "degree_thesis",
+        "degree_level": "doctoral",
+        "degree_label": "博士论文",
+        "priority": "supplementary_thesis",
+        "rank": 3,
+        "label": "补充材料／低优先级（博士论文）",
+        "reason": "保留代理运动／轨迹搜索的局部方法线索；现有影响与采用证据未达到里程碑／高引用例外，不作核心进展锚点。",
+        "exception_status": "not_established",
+        "selected_milestone": false,
+        "citation_snapshot": {
+          "provider": "OpenAlex",
+          "count": 3,
+          "queried_at": "2026-10-16T10:47:32.968770+00:00",
+          "scope": "Existing work/version-specific snapshot, not a fresh citation query, cross-database total or intrinsic-quality verdict. Zero is not proof of no influence."
+        },
+        "degree_evidence": {
+          "url": "https://discovery.ucl.ac.uk/id/eprint/1542167/",
+          "locator": "Official repository Type: Thesis (Doctoral); Mohibullah 2017; title-page PhD previously checked",
+          "scope": "Degree/type identification only; not an additional full-text reading."
+        },
+        "preferred_journal_candidate": null
+      },
+      {
+        "id": "W2967186720",
+        "title": "Decision making within missing person incidents",
+        "policy_id": "journal-first-thesis-screening-v1",
+        "judgment_kind": "editorial_reading_priority_not_intrinsic_quality_or_technical_score",
+        "publication_category": "degree_thesis",
+        "degree_level": "doctoral",
+        "degree_label": "博士论文",
+        "priority": "supplementary_thesis",
+        "rank": 3,
+        "label": "补充材料／低优先级（博士论文）",
+        "reason": "决策背景补充，优先核读2018年相关期刊篇；学位中的额外章节不自动视为已由期刊覆盖。",
+        "exception_status": "not_established",
+        "selected_milestone": false,
+        "citation_snapshot": {
+          "provider": "OpenAlex",
+          "count": 1,
+          "queried_at": "2026-10-16T10:47:33.761815+00:00",
+          "scope": "Existing work/version-specific snapshot, not a fresh citation query, cross-database total or intrinsic-quality verdict. Zero is not proof of no influence."
+        },
+        "degree_evidence": {
+          "url": "https://repository.nottingham.ac.uk/server/api/core/bitstreams/ced2a82f-6ab8-443a-a4fb-e83b475b54cf/content",
+          "locator": "Previously checked thesis PDF p1: Doctor of Philosophy, June 2018; p4 Journal Papers names companion article",
+          "scope": "Degree/type identification only; not an additional full-text reading."
+        },
+        "preferred_journal_candidate": {
+          "id": null,
+          "doi": "10.1007/s10111-018-0515-x",
+          "scope": "Related journal article outside the selected208, not silently added to corpus or certified whole-thesis equivalent."
+        }
+      },
+      {
+        "id": "W3015743749",
+        "title": "Unsolvable? Assessing the Accuracy of Missing Person Case Data",
+        "policy_id": "journal-first-thesis-screening-v1",
+        "judgment_kind": "editorial_reading_priority_not_intrinsic_quality_or_technical_score",
+        "publication_category": "degree_thesis",
+        "degree_level": "doctoral",
+        "degree_label": "博士论文",
+        "priority": "supplementary_thesis",
+        "rank": 3,
+        "label": "补充材料／低优先级（博士论文）",
+        "reason": "失踪记录数据质量背景，与运动预测—搜索方法主线较间接；未见已核里程碑／高引用例外，保留为补充。",
+        "exception_status": "not_established",
+        "selected_milestone": false,
+        "citation_snapshot": {
+          "provider": "OpenAlex",
+          "count": 5,
+          "queried_at": "2026-10-16T10:43:48.550546+00:00",
+          "scope": "Existing work/version-specific snapshot, not a fresh citation query, cross-database total or intrinsic-quality verdict. Zero is not proof of no influence."
+        },
+        "degree_evidence": {
+          "url": "https://nsuworks.nova.edu/fse_etd/256/",
+          "locator": "Official repository Document Type: Dissertation; Degree Name: Doctor of Philosophy; Scott Duncan, 2020",
+          "scope": "Degree/type identification only; not an additional full-text reading."
+        },
+        "preferred_journal_candidate": null
+      }
+    ],
+    "container_boundary": "A journal article reproduced inside an author thesis remains a journal record; an external journal candidate is not silently added to the selected208 or assumed whole-thesis equivalent."
+  },
   "manuscript_body_sha256": "9632f000f8826655a1802f5801d188eecdb1a2055ee82f8b9f83ab573574636b",
   "counts": {
     "records": 208,
@@ -63,8 +223,8 @@
   "public_artifacts": [
     {
       "name": "papers.xlsx",
-      "bytes": 4126827,
-      "sha256": "d41491dcb9e95d24a1f3936388bf3e15f92bb02ad9f43f1e729c65ffc73136da"
+      "bytes": 4211577,
+      "sha256": "2bbeba2f2f55c973ebc60c251603a41f3d7396ff83e64b7918b1da3388223f17"
     },
     {
       "name": "relations.csv",
@@ -73,8 +233,8 @@
     },
     {
       "name": "timeline.html",
-      "bytes": 7170546,
-      "sha256": "89747df890567c7fbc53dbfe8eb4d38cba417385de738b3f219d00303f808204"
+      "bytes": 7268158,
+      "sha256": "2a8e6a865dfaa482f2d27ee4fd38a4606d0fa93580733f3453cb825238febfdd"
     },
     {
       "name": "review.md",
@@ -83,27 +243,27 @@
     }
   ],
   "transformation_counts": {
-    "internal_file_reference": 927,
-    "internal_tool_reference": 24,
+    "internal_file_reference": 1138,
+    "internal_tool_reference": 32,
     "private_service": 0,
-    "removed_key:audit_file": 2949,
-    "removed_key:audit_image_directory": 3,
-    "removed_key:audit_images": 12,
-    "removed_key:cached_path": 24,
-    "removed_key:evidence_file": 12052,
-    "removed_key:evidence_files": 64,
-    "removed_key:independent_render_paths": 4,
-    "removed_key:local_path": 977,
-    "removed_key:local_snapshot": 431,
+    "removed_key:audit_file": 3287,
+    "removed_key:audit_image_directory": 4,
+    "removed_key:audit_images": 16,
+    "removed_key:cached_path": 32,
+    "removed_key:evidence_file": 14918,
+    "removed_key:evidence_files": 69,
+    "removed_key:independent_render_paths": 5,
+    "removed_key:local_path": 1277,
+    "removed_key:local_snapshot": 605,
     "removed_key:path": 17,
-    "removed_key:prior_read_local_path": 3,
-    "removed_key:proof_file": 56,
-    "removed_key:raw_response_path": 3,
-    "removed_key:render_directory": 3,
-    "removed_key:risk_images": 420,
-    "removed_key:root_risk_image": 71,
-    "removed_key:seed_file": 416,
-    "removed_key:snapshot_path": 68,
+    "removed_key:prior_read_local_path": 4,
+    "removed_key:proof_file": 61,
+    "removed_key:raw_response_path": 4,
+    "removed_key:render_directory": 4,
+    "removed_key:risk_images": 557,
+    "removed_key:root_risk_image": 93,
+    "removed_key:seed_file": 624,
+    "removed_key:snapshot_path": 85,
     "removed_key:source_file": 67,
     "workstation_path": 0
   }

@@ -7,6 +7,13 @@ than repeatedly retrying unavailable providers.
 
 ## Highest-priority source dependencies
 
+Priority update: under the journal-first editorial policy, Erickson's MS thesis
+below is now supplementary / low priority, not an urgent full-text recovery task
+without a demonstrated milestone/high-influence exception. Doke, Mohibullah,
+Harrington and Duncan are also supplementary thesis records (see README and
+`ReadingPriority`). Lower priority does not erase their unresolved fields or
+retroactively promote evidence; core journal-source verification takes precedence.
+
 Five records remain metadata-only. Abstracts, previews, earlier reports and later
 editions must not silently stand in for the exact target work.
 
